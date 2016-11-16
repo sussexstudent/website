@@ -1,0 +1,16 @@
+.Color {
+  font-family: monospace;
+}
+
+.Color__display {
+  height: 6rem;
+  width: 6rem;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABlBMVEXY2Nj///8B0aRxAAAAGElEQVR4AWNAB4xoYEQpGFUwGjCjCpABACRcAgFyjNYZAAAAAElFTkSuQmCC);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.Color__display-color {
+  width: 100%;
+  height: 100%;
+}

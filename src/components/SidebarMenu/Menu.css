@@ -1,0 +1,29 @@
+.Menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Menu__item {
+  margin-bottom: 1rem;
+}
+
+.Menu__header {
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1.1;
+  font-size: 1.1rem;
+  padding-bottom: 0.8rem;
+}
+
+.Menu__sub-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Menu__sub-link {
+  text-decoration: none;
+  color: #ffffff;
+}

@@ -1,0 +1,25 @@
+.SidebarMenu {
+  background-color: #1DB8A4;
+  color: #ffffff;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+
+.SidebarMenu__logo {
+  width: 100%;
+  margin-top: 1rem;
+  max-width: 130px;
+  display: block;
+  margin: 0 auto;
+}
+
+.SidebarMenu__tag {
+  display: block;
+  padding-top: 0.8rem;
+  text-align: center;
+}

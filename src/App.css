@@ -1,0 +1,23 @@
+.App {
+  display: flex;
+}
+
+.App__sidebar {
+  width: 240px;
+  flex: 0 0 240px;
+  height: 100vh;
+  position: fixed;
+}
+
+.App__content {
+  flex: auto;
+  padding: 1rem 2rem;
+  padding-left: calc(2rem + 240px);
+  box-sizing: border-box;
+}
+
+
+.Content {
+  max-width: 660px;
+  margin: 2rem auto;
+}

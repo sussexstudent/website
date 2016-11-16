@@ -1,0 +1,21 @@
+{
+  "extends": "airbnb",
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "no-console": 0,
+    "react/jsx-no-bind": 0,
+    "max-len": [1, 120],
+    "no-underscore-dangle": [0],
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }]
+  }
+}

@@ -26,4 +26,8 @@
 .Menu__sub-link {
   text-decoration: none;
   color: #ffffff;
+
+  &--active {
+    text-decoration: underline;
+  }
 }

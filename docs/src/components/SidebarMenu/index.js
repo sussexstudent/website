@@ -23,7 +23,7 @@ function SidebarMenu() {
             <ol className="Menu__sub-menu">
               {section.pages.map(page => (
                 <li className="Menu__sub-item" key={page.slug}>
-                  <Link className="Menu__sub-link" to={`/${section.slug}/${page.slug}`}>{page.title}</Link>
+                  <Link className="Menu__sub-link" activeClassName="Menu__sub-link--active" to={`/${section.slug}/${page.slug}`}>{page.title}</Link>
                 </li>
               ))}
             </ol>

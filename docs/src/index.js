@@ -9,6 +9,7 @@ import HomePage from './pages/home';
 import FourOhFour from './pages/404';
 
 import './index.css';
+import '../../src/css/main.css';
 
 
 ReactDOM.render(

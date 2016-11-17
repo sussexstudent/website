@@ -14,19 +14,19 @@ const env = {
   development: NODE_ENV === 'development' || typeof NODE_ENV === 'undefined',
 };
 env['build'] = (env.production || env.staging)
-let extractCSS = new ExtractTextPlugin(`style{isProduction ? '.[contenthash]' : ''}.css`, { allChunks: true });
+let extractCSS = new ExtractTextPlugin(`style${isProduction ? '.[contenthash]' : ''}.css`, { allChunks: true });
 
 module.exports = {
   target: 'web',
 
   entry: {
-    main: './src/index.js',
+    main: './src/entry.js',
   },
 
   output: {
-    path: path.join(__dirname),
+    path: path.resolve(path.join(__dirname, 'build')),
     pathInfo: true,
-    publicPath: '/',
+    publicPath: '/assets',
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
   },
@@ -49,9 +49,9 @@ module.exports = {
       __STAGING__: env.staging,
       __PRODUCTION__: env.production,
     }),
-//    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
-    //new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', }),
-  //  extractCSS,
+    // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
+    // new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', }),
+    extractCSS,
   ],
 
   module: {
@@ -60,7 +60,7 @@ module.exports = {
       { test: /\.json$/, loader: 'json' },
     ],
     loaders: [
-      { test: /\.css$/, loaders: ['style-loader', 'css-loader?importLoaders=1', 'postcss-loader'] },
+      { test: /\.css$/, loader: extractCSS.extract('style-loader', 'css-loader?importLoaders=1!postcss-loader') },
       { test: /\.svg|\.png$/, loader: 'url?limit=10000' },
     ],
 

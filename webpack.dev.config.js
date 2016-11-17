@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 const config = require('./webpack.base.config.js');
 
@@ -10,7 +11,7 @@ config.devServer = {
 };
 
 config.output = {
-  path: './build',
+  path: path.resolve('./build'),
   pathInfo: true,
   publicPath: '/build/',
   filename: '[name].js',

@@ -1,0 +1,28 @@
+.Social {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+
+  &__link {
+    display: block;
+    height: 32px;
+    width: 32px;
+
+    &--facebook {
+      background-image: url('../img/social-facebook.svg');
+    }
+
+    &--twitter {
+      background-image: url('../img/social-twitter.svg');
+    }
+
+    &--instagram {
+      background-image: url('../img/social-instagram.svg');
+    }
+
+    &--snapchat {
+      background-image: url('../img/social-snapchat.svg');
+    }
+  }
+}

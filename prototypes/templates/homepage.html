@@ -2,6 +2,51 @@
 {% block title_top %}{% endblock title_top %}
 
 {% block content %}
-<h1>Homepage!</h1>
+<div class="Container">
+  <div class="Trail">
+    <div class="Trail__row">
+      <div class="ContentBlock">Hello there.</div>
+    </div>
+    <div class="Trail__row Trail__row--211">
+      <div class="ContentBlock">
+        <div class="ContentBlock__heading">News</div>
+        <ul class="NewsGrid">
+          {% for item in range(0, 4) %}
+          <li class="NewsGrid__item NewsBlock">
+            <div class="NewsBlock__image" style="background-image: url(https://www.goldsmithssu.org/asset/News/6013/14556676_1780002735589659_9031388599201121360_o.jpg?thumbnail_width=600&thumbnail_height=300&resize_type=CropToFit);">
+              <div class="NewsBlock__title-outer">
+                <h2 class="NewsBlock__title">This is a news article headline words words as</h2>
+              </div>
+            </div>
+            <p class="NewsBlock__standfirst">Tofu 8-bit bespoke small batch put a bird on it sustainable. Portland subway tile tilde, YOLO ramps succulents beard la croix gochujang organic vinyl wolf poke chicharrones. Semiotics skateboard chillwave gentrify</p>
+            <div class="NewsBlock__meta">
+              <date class="NewsBlock__date">1 hour ago</date>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="ContentBlock">
+        <div class="ContentBlock__heading">What's on</div>
+      </div>
+      <div class="ContentBlock">
+        <div class="ContentBlock__heading">Twitter</div>
+      </div>
+    </div>
+    <div class="Trail__row Trail__row--111">
+      <div class="ContentBlock">More cool info here</div>
+      <div class="ContentBlock">And other stuff here.</div>
+      <div class="ContentBlock">Look at this.</div>
+    </div>
+    <div class="Trail__row Trail__row--11">
+      <div class="ContentBlock">More cool info here</div>
+      <div class="ContentBlock">Look at this.</div>
+    </div>
+    <div class="Trail__row Trail__row--21">
+      <div class="ContentBlock">And other stuff here.</div>
+      <div class="ContentBlock">Look at this.</div>
+    </div>
+  </div>
+</div>
 
-{% endblock content %}
+{% endblock %}

@@ -1,0 +1,9 @@
+@import '../core/colors.css';
+
+.ContentBlock {
+
+  &__heading {
+    font-weight: bold;
+    font-size: 1.6rem;
+  }
+}

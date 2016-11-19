@@ -1,0 +1,27 @@
+@import '../core/typography.css';
+
+.UserBar {
+  padding: 0.25lh 0;
+  background: #f7f7f7;
+  color: #000000;
+  font-weight: bold;
+  font-family: var(--type__primary);
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__item {
+    padding-left: 0.5lh;
+    margin-right: 0;
+  }
+
+  & a {
+    color: #000000;
+    font-weight: bold;
+  }
+}

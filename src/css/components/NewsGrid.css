@@ -1,0 +1,18 @@
+@import '../core/mq.css';
+
+.NewsGrid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+
+  }
+
+}
+
+@media (--medium) {
+  .NewsGrid {
+    gg: columns(1/2 1/2);
+  }
+}

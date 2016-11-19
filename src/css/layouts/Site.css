@@ -1,0 +1,11 @@
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+  font-family: sans-serif;
+
+  &__content {
+    flex: 1;
+  }
+}

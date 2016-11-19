@@ -1,0 +1,13 @@
+.AdvertBar {
+  background-color: rgb(237, 237, 237);
+  padding: 0.5lh;
+
+  &--hide {
+    display: none;
+  }
+
+  &__advert {
+    display: block;
+    margin: 0 auto;
+  }
+}

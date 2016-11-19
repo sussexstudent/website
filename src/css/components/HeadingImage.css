@@ -1,0 +1,28 @@
+@import '../core/typography.css';
+@import '../core/colors.css';
+
+.HeadingImage {
+  background-size: cover;
+  padding: 1lh;
+  margin-bottom: 1lh;
+  padding-top: 230px;
+  font-family: var(--type__primary);
+
+  &__title {
+    box-decoration-break: clone;
+    padding: 0 0.2em;
+    background-color: var(--color__yellow);
+    color: #000000;
+    display: inline;
+    font-size: 2lh;
+    position: relative;
+    line-height: 1;
+  }
+
+  &__desc {
+    background-color: var(--color__yellow);
+    color: #000000;
+    max-width: 550px;
+    padding: 0.2em;
+  }
+}

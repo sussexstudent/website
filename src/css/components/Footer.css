@@ -1,0 +1,9 @@
+@import '../core/typography.css';
+
+.Footer {
+  background: rgb(51, 51, 51);
+  padding-top: 1lh;
+  padding-bottom: 1lh;
+  color: #ffffff;
+  font-family: var(--type__primary);
+}

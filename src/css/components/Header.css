@@ -1,0 +1,15 @@
+@import '../core/typography.css';
+
+.Header {
+  padding-top: 1.5lh;
+  margin-bottom: 1.5lh;
+  font-family: var(--type__primary);
+
+  &__search {
+    background: #f7f7f7;
+    padding: 0.2rem;
+    font-size: 1.2rem;
+    border: 0;
+    font-weight: bold;
+  }
+}

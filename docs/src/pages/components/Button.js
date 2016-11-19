@@ -12,6 +12,11 @@ const warningMarkup = `
   Take the survey
 </a>
 `;
+const externalMarkup = `
+<a href="/survey" class="Button Button--external" role="button">
+  Take the survey
+</a>
+`;
 
 
 function ButtonComponentPage() {
@@ -20,13 +25,14 @@ function ButtonComponentPage() {
       <h1>Button</h1>
       <p>Buttons are used for actions. For example</p>
 
-      <button className="Button">Take the survey</button>
+      <a href="" className="Button" role="button">Take the survey</a>
 
       <h2>Modifiers</h2>
 
       <Playground>
         <PlaygroundState name="Standard" markup={standardMarkup} />
         <PlaygroundState name="Warning" markup={warningMarkup} />
+        <PlaygroundState name="External" markup={externalMarkup} />
       </Playground>
 
       <h2>Accessibility</h2>

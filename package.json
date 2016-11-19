@@ -42,6 +42,7 @@
     "postcss-ant": "^1.1.0",
     "postcss-cssnext": "^2.8.0",
     "postcss-import": "^8.2.0",
+    "postcss-lh": "^1.1.4",
     "postcss-loader": "1.0.0",
     "promise": "7.1.1",
     "react-dev-utils": "^0.3.0",

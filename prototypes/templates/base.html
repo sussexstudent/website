@@ -2,11 +2,88 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{% block title_top %}{% block title %}{% endblock title %} | {% endblock title_top %}Sussex Students' Union</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title_top %}{% block title %}{% endblock %} | {% endblock %}Sussex Students' Union</title>
     <link href="/assets/style.css" rel="stylesheet" />
+    <link href="https://blokkfont-losgordos.netdna-ssl.com/v2/blokkfont.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/site_resources/MyFontsWebfontsKit.css">
+    <style>
+      .ph {
+        font-family: "BLOKK";
+      }
+    </style>
   </head>
-  <body>
-    {% block content %}{% endblock content %}
+  <body class="Site">
+    <div class="AdvertBar AdvertBar--hide">
+      <img class="AdvertBar__advert" src="https://sussexstudent.com/asset/Advert/1/studenttaxisbannerad.jpg" />
+    </div>
+    <div class="UserBar">
+      <div class="Container">
+        <ul class="UserBar__list">
+          <li class="UserBar__item">Hi James</li>
+          <li class="UserBar__item">
+            <a href="/log-out">Log out</a>
+          </li>
+          <li class="UserBar__item">
+            <a href="/basket">Basket</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <header class="Header">
+      <div class="Container">
+        <div class="Logo">
+          <a href="/">
+            {% include 'logo_svg.html' %}
+          </a>
+        </div>
+
+        <form>
+          <input class="Header__search" type="search" placeholder="Search" />
+        </form>
+        <ul class="Social">
+          <li>
+            <a class="Social__link Social__link--facebook" href="https://www.facebook.com/thestudentsunion/">
+              <span class="u-h">Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a class="Social__link Social__link--twitter" href="https://twitter.com/ussu">
+              <span class="u-h">Twitter</span>
+            </a>
+          </li>
+          <li>
+            <a class="Social__link Social__link--instagram" href="https://www.instagram.com/sussexsu/">
+              <span class="u-h">Instagram</span>
+            </a>
+          </li>
+          <li>
+            <a class="Social__link Social__link--snapchat" href="https://www.facebook.com/thestudentsunion/">
+              <span class="u-h">Snapchat</span>
+            </a>
+          </li>
+        </ul>
+        <nav class="AnodyneMenu">
+          <ul class="AnodyneMenu__list">
+            {% for item in menu %}
+            <li class="AnodyneMenu__item {% if item.active %}AnodyneMenu__item--active{% endif %}">
+              <a class="AnodyneMenu__link" href="{{ item.link }}">{{ item.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="Site__content">
+      {% block content %}{% endblock content %}
+    </main>
+
+    <footer class="Footer">
+      <div class="Container">
+        Designed by Sussex Students' Union & powered by MSL
+      </div>
+    </footer>
 
     <script src="/assets/main.js"></script>
   </body>

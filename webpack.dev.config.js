@@ -13,7 +13,7 @@ config.devServer = {
 config.output = {
   path: path.resolve('./build'),
   pathInfo: true,
-  publicPath: '/build/',
+  publicPath: '/assets/',
   filename: '[name].js',
   chunkFilename: '[id].chunk.js',
 };

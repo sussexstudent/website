@@ -61,7 +61,7 @@ module.exports = {
     ],
     loaders: [
       { test: /\.css$/, loader: extractCSS.extract('style-loader', 'css-loader?importLoaders=1!postcss-loader') },
-      { test: /\.svg|\.png$/, loader: 'url?limit=10000' },
+      { test: /\.svg|\.png|\.woff/, loader: 'url?limit=10000' },
     ],
 
     noParse: /\.min\.js/,
@@ -72,6 +72,7 @@ module.exports = {
         addDependencyTo: webpackInner,
       }),
       require('postcss-ant')(),
+      require('postcss-lh'),
       require('postcss-cssnext'),
     ];
   },

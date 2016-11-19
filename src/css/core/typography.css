@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Larsseit-Bold';
+  src: url('../font/Larsseit-Bold.woff');
+}
+
+@font-face {
+  font-family: 'Larsseit';
+  src: url('../font/Larsseit.woff');
+}
+
+:root {
+  --type__secondary: "Helvetica", "Arial", sans-serif;
+  --type__primary: 'Larsseit-Bold', var(--type__secondary);
+  font: 18px / 1.5 var(--type__secondary);
+}

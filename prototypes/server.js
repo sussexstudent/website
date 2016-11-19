@@ -27,6 +27,14 @@ const server = new WebpackDevServer(compiler, {
   staticOptions: {
   },
 
+  proxy: {
+    '/site_resources': {
+      target: 'https://sussexstudent.com/assets/site_resources/',
+      secure: false,
+    },
+  },
+
+
   clientLogLevel: 'info',
   publicPath: '/assets',
 

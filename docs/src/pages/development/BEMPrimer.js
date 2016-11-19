@@ -9,4 +9,8 @@ function BEMPrimerPage() {
   );
 }
 
+BEMPrimerPage.title = 'BEM Primer';
+BEMPrimerPage.slug = 'bem';
+
+
 export default BEMPrimerPage;

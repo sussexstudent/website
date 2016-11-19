@@ -5,6 +5,7 @@
   background: #f7f7f7;
   color: #000000;
   font-weight: bold;
+  font-size: 1.1rem;
   font-family: var(--type__primary);
 
   &__list {

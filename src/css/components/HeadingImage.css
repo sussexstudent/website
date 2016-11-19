@@ -10,7 +10,7 @@
 
   &__title {
     box-decoration-break: clone;
-    padding: 0 0.2em;
+    padding: 0 0.2rem;
     background-color: var(--color__yellow);
     color: #000000;
     display: inline;
@@ -23,6 +23,6 @@
     background-color: var(--color__yellow);
     color: #000000;
     max-width: 550px;
-    padding: 0.2em;
+    padding: 0 0.2rem;
   }
 }

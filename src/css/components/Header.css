@@ -5,11 +5,20 @@
   margin-bottom: 1.5lh;
   font-family: var(--type__primary);
 
+  &__top {
+    display: flex;
+    align-items: flex-end;
+  }
+
   &__search {
-    background: #f7f7f7;
-    padding: 0.2rem;
-    font-size: 1.2rem;
-    border: 0;
-    font-weight: bold;
+    flex: 1;
+  }
+
+  &__logo {
+    flex: 2;
+  }
+
+  &__social {
+    flex: 1;
   }
 }

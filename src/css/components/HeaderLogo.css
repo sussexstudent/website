@@ -1,0 +1,9 @@
+.HeaderLogo {
+  &__link {
+    float: left;
+  }
+
+  &__svg {
+    display: block;
+  }
+}

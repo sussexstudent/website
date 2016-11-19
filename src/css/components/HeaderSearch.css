@@ -1,0 +1,15 @@
+.HeaderSearch {
+  background: #f7f7f7;
+  padding: 0.2rem;
+  font-size: 1.2rem;
+  border: 0;
+  font-weight: bold;
+  padding-left: 48px;
+  background-image: url('../img/search.svg');
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  height: 45px;
+  background-position: 8px center;
+  width: 100%;
+  box-sizing: border-box;
+}

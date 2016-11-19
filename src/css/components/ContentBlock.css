@@ -1,8 +1,10 @@
 @import '../core/colors.css';
+@import '../core/typography.css';
 
 .ContentBlock {
 
   &__heading {
+    font-family: var(--type__primary);
     font-weight: bold;
     font-size: 1.6rem;
   }

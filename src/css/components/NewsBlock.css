@@ -1,3 +1,4 @@
+@import '../core/typography.css';
 @import '../core/mq.css';
 
 .NewsBlock {
@@ -13,14 +14,16 @@
     font-size: 2lh;
     position: relative;
     line-height: 0.9;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin: 0;
+    font-family: var(--type__primary);
   }
 
   &__title-outer {
     position: absolute;
     bottom: -1px;
     left: 0;
+    right: 20px;
   }
 
   &__image {
@@ -39,7 +42,7 @@
       display: block;
       width: 30px;
       height: 3px;
-      background: var(--color__green);
+      background: var(--color__yellow);
       margin: 0.2rem 0;
     }
   }
@@ -51,5 +54,6 @@
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-family: var(--type__primary);
   }
 }

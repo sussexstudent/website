@@ -21,4 +21,6 @@
 @import './components/UserBar.css';
 @import './components/Social.css';
 @import './components/HeaderSearch.css';
+@import './components/ModalOverlay.css';
+@import './components/Modal.css';
 @import './components/HeaderLogo.css';

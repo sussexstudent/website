@@ -1,16 +1,24 @@
 import React from 'react';
 import Modal from '../Modal';
 
-function ModalControler(props) {
-  if (props.stack.length <= 0) {
-    return null;
+const siteEl = document.querySelector('.Site');
+
+class ModalControler extends React.Component {
+  componentWillReceiveProps(nextProps) {
+    siteEl.classList.toggle('Site--modal-active', nextProps.stack.length > 0);
   }
 
-  return (
-    <Modal handleClose={props.onClose}>
-      {props.stack[props.stack.length - 1]}
-    </Modal>
-  );
+  render() {
+    if (this.props.stack.length <= 0) {
+      return null;
+    }
+
+    return (
+      <Modal handleClose={this.props.onClose}>
+        {this.props.stack[this.props.stack.length - 1]}
+      </Modal>
+    );
+  }
 }
 
 ModalControler.propTypes = {

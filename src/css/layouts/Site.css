@@ -5,6 +5,10 @@
   margin: 0;
   font-family: sans-serif;
 
+  &--modal-active {
+    overflow: hidden;
+  }
+
   &__content {
     flex: 1;
   }

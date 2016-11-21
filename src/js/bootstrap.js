@@ -30,7 +30,8 @@ function ModalManager() {
 const modals = ModalManager();
 
 const actions = {
-  login() {
+  login(e) {
+    e.preventDefault();
     modals.add(<LoginModal />);
   },
 };

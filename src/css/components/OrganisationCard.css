@@ -1,0 +1,35 @@
+.OrganisationCard {
+  display: block;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+
+  &__link {
+    box-shadow: 0 1px 3px 0 rgba(30, 30, 30, 0.2);
+    display: block;
+    height: 100%;
+  }
+
+  &__image {
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    max-height: 200px;
+  }
+
+  &__title {
+    color: #000000;
+    margin: 0;
+    margin-bottom: 0.6rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  &__description {
+    text-align: center;
+  }
+
+  &__info {
+    padding: 1rem;
+  }
+}

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ModalControler from './components/ModalControler';
 import LoginModal from './components/LoginModal';
 
+import renderSearch from './apps/search';
 
 function ModalManager() {
   const stack = [];
@@ -46,4 +47,19 @@ document.addEventListener('DOMContentLoaded', () => {
   [...document.querySelectorAll('a')].forEach((e) => {
     e.addEventListener('click', linkListener);
   });
+
+  if (document.querySelector('.app__search')) {
+    // eslint-disable-next-line
+    renderSearch();
+  }
+
+  if (document.querySelector('.app__events')) {
+    // eslint-disable-next-line
+    require('./apps/events-calender');
+  }
+
+  if (document.querySelector('.app__activities')) {
+    // eslint-disable-next-line
+    require('./apps/activities');
+  }
 });

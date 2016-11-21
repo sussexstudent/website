@@ -1,0 +1,32 @@
+.SearchResult {
+  &__listItem {
+    margin-bottom: 3rem;
+  }
+
+  &__kicker {
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 2.4rem;
+  }
+
+  &__snippet {
+    max-width: 600px;
+  }
+
+  &__anchor {
+    color: black;
+  }
+
+  &__anchor:hover {
+    text-decoration: none;
+  }
+
+  &__anchor:hover .title {
+    text-decoration: underline;
+  }
+}

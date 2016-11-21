@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  padding: 1rem 0;
+}
+
+.navigationButton {
+  display: block;
+  width: 30%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.meta {
+  display: block;
+  width: 40%;
+  text-align: center;
+}

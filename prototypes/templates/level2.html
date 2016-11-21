@@ -7,30 +7,6 @@
     <h1 class="HeadingImage__title">{{ page.title }}</h1>
     <p class="HeadingImage__desc">{{ page.desc }}</p>
   </div>
-
-  <div class="Trail">
-    <div class="Trail__row">
-      <div class="ContentBlock">Hello there.</div>
-    </div>
-    <div class="Trail__row Trail__row--211">
-      <div class="ContentBlock">More cool info here</div>
-      <div class="ContentBlock">And other stuff here.</div>
-      <div class="ContentBlock">Look at this.</div>
-    </div>
-    <div class="Trail__row Trail__row--111">
-      <div class="ContentBlock">More cool info here</div>
-      <div class="ContentBlock">And other stuff here.</div>
-      <div class="ContentBlock">Look at this.</div>
-    </div>
-    <div class="Trail__row Trail__row--11">
-      <div class="ContentBlock">More cool info here</div>
-      <div class="ContentBlock">Look at this.</div>
-    </div>
-    <div class="Trail__row Trail__row--21">
-      <div class="ContentBlock">And other stuff here.</div>
-      <div class="ContentBlock">Look at this.</div>
-    </div>
-  </div>
+  {% block level2content %}{% endblock %}
 </div>
-
 {% endblock %}

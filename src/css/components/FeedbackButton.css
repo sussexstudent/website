@@ -1,0 +1,22 @@
+.FeedbackButton {
+  padding: 1rem;
+  font-size: 1.6rem;
+  text-align: center;
+
+  &__feedbackGiven {
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+    font-style: italic;
+    color: grey;
+  }
+
+  &__button {
+    padding: 1rem;
+    text-align: center;
+    display: inline-block;
+    color: black;
+    background: lightgrey;
+    cursor: pointer;
+  }
+}

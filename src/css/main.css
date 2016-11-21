@@ -24,3 +24,9 @@
 @import './components/ModalOverlay.css';
 @import './components/Modal.css';
 @import './components/HeaderLogo.css';
+@import './components/OrganisationCard.css';
+@import './components/OrgansiationGrid.css';
+@import './components/ActivitiesApp.css';
+@import './components/SearchResult.css';
+@import './components/FeedbackButton.css';
+@import './components/PaginationNavigation.css';

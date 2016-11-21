@@ -1,7 +1,7 @@
 @import '../core/mq.css';
 
 .AnodyneMenu {
-  padding-top: 1lh;
+  padding-top: 1.5lh;
 
   &__list {
     list-style: none;

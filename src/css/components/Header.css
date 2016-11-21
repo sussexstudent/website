@@ -7,7 +7,21 @@
 
   &__top {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    flex-direction: column;
+
+    @media (--medium) {
+      flex-direction: row;
+      align-items: flex-end;
+    }
+  }
+
+  &__search, &__logo, &__social {
+    margin-bottom: 1lh;
+
+    @media (--medium) {
+      margin-bottom: 0;
+    }
   }
 
   &__search {

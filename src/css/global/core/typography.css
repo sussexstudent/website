@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Larsseit-Bold';
-  src: url('../font/Larsseit-Bold.woff');
+  src: url('./global/font/Larsseit-Bold.woff');
 }
 
 @font-face {
   font-family: 'Larsseit';
-  src: url('../font/Larsseit.woff');
+  src: url('./global/font/Larsseit.woff');
 }
 
 :root {

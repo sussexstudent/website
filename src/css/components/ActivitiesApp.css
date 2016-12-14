@@ -4,7 +4,7 @@
   }
 
   &__sidebar {
-    flex: 0 0 200px;
+    list-style: none;
   }
 
   &__header {

@@ -1,5 +1,5 @@
-@import '../core/colors.css';
-@import '../core/typography.css';
+@import '../global/core/colors.css';
+@import '../global/core/typography.css';
 
 .ContentBlock {
 

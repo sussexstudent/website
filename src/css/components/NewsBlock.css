@@ -1,9 +1,11 @@
-@import '../core/typography.css';
-@import '../core/mq.css';
+@import '../global/core/typography.css';
+@import '../global/core/mq.css';
 
 .NewsBlock {
   margin-bottom: 1lh;
   border-bottom: 3px solid #ebebeb;
+  display: flex;
+  flex-direction: column;
 
   &__title {
     box-decoration-break: clone;
@@ -41,6 +43,8 @@
     font-size: 0.6rem;
     padding: 0.2rem 0;
     margin: 0.2rem 0;
+    margin-top: auto;
+
     &:before {
       content: '';
       position: relative;
@@ -49,6 +53,7 @@
       height: 3px;
       background: var(--color__yellow);
       margin: 0.2rem 0;
+      margin-top: auto;
     }
   }
 

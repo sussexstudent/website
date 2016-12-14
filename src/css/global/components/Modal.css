@@ -7,7 +7,7 @@
   position: relative;
 
   &__close {
-    background-image: url('../img/cross-temp.svg');
+    background-image: url('./global/img/cross-temp.svg');
     background-size: contain;
     display: block;
     width: 32px;

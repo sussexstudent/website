@@ -1,4 +1,4 @@
-@import '../core/typography.css';
+@import '../global/core/typography.css';
 
 .Header {
   padding-top: 1.5lh;
@@ -14,6 +14,10 @@
       flex-direction: row;
       align-items: flex-end;
     }
+
+    & * {
+      transition: all ease 300ms;
+    }
   }
 
   &__search, &__logo, &__social {
@@ -25,14 +29,36 @@
   }
 
   &__search {
-    flex: 1;
+    flex: 2;
   }
 
   &__logo {
-    flex: 2;
+    flex: 1;
   }
 
   &__social {
     flex: 1;
+  }
+}
+
+.Header--search-focus {
+  @media(--medium) {
+    & .Header {
+      &__search {
+        flex: 4;
+      }
+
+      &__logo {
+        opacity: 0;
+        flex: 0;
+        width: 0;
+      }
+
+      &__social {
+        opacity: 0;
+        flex: 0;
+        width: 0;
+      }
+    }
   }
 }

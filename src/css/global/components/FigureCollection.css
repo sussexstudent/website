@@ -1,0 +1,55 @@
+.FigureCollection {
+  font-family: var(--type__primary);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  gg: columns(1/1);
+  justify-content: center;
+  
+  @media(--small) {
+    & {
+      gg: columns(1/2 1/2);
+    }
+  }
+  
+  @media(--medium) {
+    & {
+      gg: columns(1/3 1/3 1/3);
+    }
+  }
+  
+  @media(--large) {
+    & {
+      gg: columns(1/4 1/4 1/4 1/4);
+    }
+  }
+  
+  &__item {
+    
+  }
+  
+  &__link {
+    display: block;
+    border-bottom: 2px solid #f7f7f7;
+    margin-bottom: 1lh;
+  }
+  
+  &__image {
+    max-width: 100%;
+    display: block;
+  }
+  
+  &__title {
+    background: var(--color__yellow);
+    display: block;
+    box-sizing: border-box;
+  }
+  
+  &__secondary {
+    display: block;
+  }
+  
+  &__title, &__secondary {
+    padding: 0.2rem;
+  }
+}

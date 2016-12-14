@@ -1,12 +1,14 @@
 .OrganisationCard {
   display: block;
-  margin-bottom: 30px;
+  margin-bottom: 1lh;
   box-sizing: border-box;
 
   &__link {
     box-shadow: 0 1px 3px 0 rgba(30, 30, 30, 0.2);
     display: block;
     height: 100%;
+    text-decoration: none;
+    color: black;
   }
 
   &__image {
@@ -14,7 +16,7 @@
     max-width: 100%;
     display: block;
     margin: 0 auto;
-    max-height: 200px;
+    max-height: 140px;
   }
 
   &__title {
@@ -22,14 +24,17 @@
     margin: 0;
     margin-bottom: 0.6rem;
     text-align: center;
-    padding: 0 1rem;
+    font-size: 1rem;
+    font-family: var(--type__primary);
   }
 
   &__description {
     text-align: center;
+    font-size: 0.8rem;
+    color: grey;
   }
 
   &__info {
-    padding: 1rem;
+    padding: 0.5lh;
   }
 }

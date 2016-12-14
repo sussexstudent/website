@@ -4,6 +4,7 @@
   flex-direction: column;
   margin: 0;
   font-family: sans-serif;
+  transition: transform ease 300ms;
 
   &--modal-active {
     overflow: hidden;
@@ -11,5 +12,9 @@
 
   &__content {
     flex: 1;
+  }
+
+  &--inverted {
+    transform: scaleX(-1);
   }
 }

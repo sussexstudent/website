@@ -11,25 +11,13 @@ const server = new WebpackDevServer(compiler, {
   contentBase: '/assets',
   hot: true,
   compress: true,
-
-  setup(app) {
-    nunjucks.configure(path.resolve(path.join(__dirname, '/templates')), {
-      autoescape: true,
-      express: app,
-      noCache: true,
-      watch: true,
-    });
-
-    setupRoutes(app);
-  },
-
   // pass [static options](http://expressjs.com/en/4x/api.html#express.static) to inner express server
   staticOptions: {
   },
 
   proxy: {
-    '/site_resources': {
-      target: 'https://sussexstudent.com/assets/site_resources/',
+    '/': {
+      target: 'http://localhost:8080/',
       secure: false,
     },
   },

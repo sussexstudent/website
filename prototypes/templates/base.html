@@ -6,7 +6,6 @@
     <title>{% block title_top %}{% block title %}{% endblock %} | {% endblock %}Sussex Students' Union</title>
     <link href="/assets/style.css" rel="stylesheet" />
     <link href="https://blokkfont-losgordos.netdna-ssl.com/v2/blokkfont.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="/site_resources/MyFontsWebfontsKit.css">
     <style>
       .ph {
         font-family: "BLOKK";
@@ -19,18 +18,25 @@
     </div>
     <div class="UserBar">
       <div class="Container">
-        <ul class="UserBar__list">
-          <li class="UserBar__item">Hi James</li>
-          <li class="UserBar__item">
-            <a href="/log-out">Log out</a>
-          </li>
-          <li class="UserBar__item">
-            <a href="#" data-action="login">Log in</a>
-          </li>
-          <li class="UserBar__item">
-            <a href="/basket">Basket</a>
-          </li>
-        </ul>
+          <div class="proto__logged-in u-h">
+            <ul class="UserBar__list">
+              <li class="UserBar__item">Hi James!</li>
+              <li class="UserBar__item">
+                <a href="/log-out">Log out</a>
+              </li>
+              <li class="UserBar__item">
+                <a href="/basket">Basket</a>
+              </li>
+            </ul>
+          </div>
+          <div class="proto__logged-out u-h">
+            <ul class="UserBar__list">
+              <li class="UserBar__item">Hi there!</li>
+              <li class="UserBar__item">
+                <a href="#" data-action="login">Log in</a>
+              </li>
+            </ul>
+          </div>
       </div>
     </div>
     <header class="Header">

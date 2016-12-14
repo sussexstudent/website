@@ -14,7 +14,7 @@
       <div class="ContentBlock">
         <div class="ContentBlock__heading">News</div>
         <ul class="NewsGrid">
-          {% for item in news_items %}
+          {% for item in page.metadata.news_items %}
           <li class="NewsGrid__item NewsBlock">
 
             <a class="NewsBlock__title-link" href="#">
@@ -39,19 +39,18 @@
         <div class="ContentBlock__heading">Twitter</div>
       </div>
     </div>
-    <div class="Trail__row Trail__row--111">
-      <div class="ContentBlock">More cool info here</div>
-      <div class="ContentBlock">And other stuff here.</div>
-      <div class="ContentBlock">Look at this.</div>
-    </div>
-    <div class="Trail__row Trail__row--11">
-      <div class="ContentBlock">More cool info here</div>
-      <div class="ContentBlock">Look at this.</div>
-    </div>
-    <div class="Trail__row Trail__row--21">
-      <div class="ContentBlock">And other stuff here.</div>
-      <div class="ContentBlock">Look at this.</div>
-    </div>
+    
+    <ul class="FigureCollection">
+      {% for i in [1, 2, 3, 4, 5, 6] %}
+      <li class="FigureCollection__item">
+        <a class="FigureCollection__link">
+          <img class="FigureCollection__image" src="https://www.sussexstudent.com/pageassets/about-us/full-time-elected-officers/Savannah(1).jpg" />
+          <span class="FigureCollection__title">Not the president</span>
+          <span class="FigureCollection__secondary">Runs everything</span>
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
   </div>
 </div>
 

@@ -1,0 +1,40 @@
+{
+  "locals": {
+    "url": "http://localhost:8888",
+    "name": "The Wintersmith's blog",
+    "owner": "Someone",
+    "description": "Ramblings of an immor(t)al demigod"
+  },
+  "plugins": [
+    "wintersmith-nunjucks"
+  ],
+  "require": {
+    "moment": "moment",
+    "_": "underscore",
+    "typogr": "typogr"
+  },
+  "markdown": {
+    "smartLists": true,
+    "smartypants": true
+  },
+  "locals": {
+    "menu": [
+      {
+        "title": "Get involved",
+        "link": "/get-involved"
+      },
+      {
+        "title": "What's on",
+        "link": "/whats-on"
+      },
+      {
+        "title": "About us",
+        "link": "/about-us"
+      },
+      {
+        "title": "Support",
+        "link": "/support"
+      }
+    ]
+  }
+}

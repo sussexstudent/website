@@ -1,6 +1,5 @@
 import React from 'react';
 import Path from '../../components/Path';
-import Color from '../../components/Color';
 
 function ColoursPage() {
   return (
@@ -11,7 +10,7 @@ function ColoursPage() {
   );
 }
 
-ColoursPage.title = 'Colours';
-ColoursPage.slug = 'colours';
+ColoursPage.title = 'Typography';
+ColoursPage.slug = 'type';
 
 export default ColoursPage;

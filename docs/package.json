@@ -57,11 +57,12 @@
     "highlight.js": "^9.8.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-dropzone": "^3.7.3",
     "react-highlight": "^0.9.0",
     "react-router": "^3.0.0"
   },
   "scripts": {
-    "serve": "NODE_ENV=development webpack-dev-server --content-base public/",
+    "serve": "NODE_ENV=development webpack-dev-server --content-base public/ --port 5555",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },

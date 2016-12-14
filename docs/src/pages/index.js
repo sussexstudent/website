@@ -5,6 +5,8 @@ import BEMPrimerPage from './development/BEMPrimer';
 
 import ButtonComponentPage from './components/Button';
 import HeadingsComponentPage from './components/Headings';
+import TrailComponentPage from './components/Trail';
+import NewsBlockComponentPage from './components/NewsBlock';
 
 
 function createSection(name, slug, pages) {
@@ -26,5 +28,7 @@ export default [
   createSection('Components', 'component', [
     page(ButtonComponentPage),
     page(HeadingsComponentPage),
+    page(TrailComponentPage),
+    page(NewsBlockComponentPage),
   ]),
 ];

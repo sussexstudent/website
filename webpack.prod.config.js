@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const S3Plugin = require('webpack-s3-plugin');
 const config = require('./webpack.base.config.js');
 
 config.bail = true;
@@ -11,12 +10,12 @@ config.devtool = '#source-map';
 config.output = {
   path: './dist',
   pathInfo: true,
-  publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
-  filename: '[name].[hash].js',
+  publicPath: '/assets/',
+  filename: '[name].js',
 };
 
 config.plugins = config.plugins.concat([
-  new CleanWebpackPlugin(['dist']),
+  new CleanWebpackPlugin(['dist', 'prototypes/build']),
   new webpack.optimize.OccurenceOrderPlugin(true),
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.UglifyJsPlugin({ output: { comments: false } }),

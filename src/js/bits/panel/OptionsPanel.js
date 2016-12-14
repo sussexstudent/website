@@ -1,0 +1,76 @@
+import React from 'react';
+import './style.css';
+import dots from './dots.svg';
+
+function showAds(toggle = false) {
+  document.querySelector('.AdvertBar').classList.toggle('AdvertBar--hide', !toggle);
+  return toggle;
+}
+
+function isLoggedIn(toggle = true) {
+  document.querySelector('.proto__logged-in').classList.toggle('u-h', !toggle);
+  document.querySelector('.proto__logged-out').classList.toggle('u-h', toggle);
+  return toggle;
+}
+
+const optionsList = {
+  showAds,
+  isLoggedIn,
+};
+
+function generateInitial(options) {
+  const optionDict = {};
+  const previous = localStorage.getItem('suop') ? JSON.parse(localStorage.getItem('suop')) : {};
+
+  Object.keys(options).forEach((optionName) => {
+    if (Object.hasOwnProperty.call(previous, optionName)) {
+      optionDict[optionName] = options[optionName](previous[optionName]);
+    } else {
+      optionDict[optionName] = options[optionName];
+    }
+  });
+
+  return optionDict;
+}
+
+class OptionsPanel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      options: generateInitial(optionsList),
+    };
+  }
+
+  handleChange(optionName) {
+    this.setState({ options: {
+      ...this.state.options,
+      [optionName]: optionsList[optionName](!this.state.options[optionName]),
+    } }, () => localStorage.setItem('suop', JSON.stringify(this.state.options)));
+  }
+
+  render() {
+    const options = this.state.options;
+    return (
+      <div className="OptionsPanel">
+        <img src={dots} role="presentation" height="20" />
+        <ul>
+          {Object.keys(options).map(optionName => (
+            <li key={optionName}>
+              <label htmlFor={optionName}>
+                {optionName}
+              </label>
+              <input
+                type="checkbox"
+                id={optionName}
+                checked={options[optionName]}
+                onChange={this.handleChange.bind(this, optionName)}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
+
+export default OptionsPanel;

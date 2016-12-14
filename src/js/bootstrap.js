@@ -1,32 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ModalControler from './components/ModalControler';
+import ModalManager from './bits/modals/manager';
 import LoginModal from './components/LoginModal';
 
 import renderSearch from './apps/search';
 
-function ModalManager() {
-  const stack = [];
-
-  function render() {
-    function pop() {
-      stack.pop();
-      render();
-    }
-
-    ReactDOM.render(<ModalControler stack={stack} onClose={pop} />, document.querySelector('.js__modal'));
-  }
-
-  render();
-
-  return {
-    init: render,
-    add: (instance) => {
-      stack.push(instance);
-      render();
-    },
-  };
-}
 const modals = ModalManager();
 
 const actions = {
@@ -63,4 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // eslint-disable-next-line
     require('./apps/activities');
   }
+
+  const search = document.querySelector('.HeaderSearch');
+  const header = document.querySelector('.Header');
+  search.addEventListener('focus', () => header.classList.add('Header--search-focus'));
+  search.addEventListener('blur', () => header.classList.remove('Header--search-focus'));
+
+  // eslint-disable-next-line global-require
+  require('./bits/panel').default();
+  // eslint-disable-next-line global-require
+  console.log(require('./bits/easter-eggs'));
 });

@@ -9,7 +9,7 @@ class HeaderSearch extends React.Component {
     super(props);
 
     this.state = {
-      value: null,
+      query: null,
       isOpen: false,
       hasFocus: false,
       transitionSize: null,
@@ -17,6 +17,7 @@ class HeaderSearch extends React.Component {
 
     this.handleBlur = this.handleHasFocus.bind(this, false);
     this.handleFocus = this.handleHasFocus.bind(this, true);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -26,16 +27,23 @@ class HeaderSearch extends React.Component {
     }
   }
 
+  handleInputChange(e) {
+    this.setState({ query: e.target.value });
+  }
+
   handleHasFocus(hasFocus) {
+    const isOpen = hasFocus || this.state.query !== null;
+
     this.setState({
       hasFocus,
-      transitionSize: {
+      isOpen,
+      transitionSize: hasFocus ? {
         paddingLeft: this.dummyInput.offsetLeft,
         width: this.dummyInput.clientWidth,
-      },
+      } : null,
     });
 
-    if (hasFocus) {
+    if (isOpen) {
       header.classList.add('Header--search-focus');
     } else {
       header.classList.remove('Header--search-focus');
@@ -49,35 +57,38 @@ class HeaderSearch extends React.Component {
           className={cx('InlineSearch__input')}
           style={this.state.transitionSize}
         >
+          <div className="HeaderSearch__highlight">{this.state.query}</div>
           <input
             className="HeaderSearch HeaderSearch--no-outline"
             placeholder="Search"
+            value={this.state.query}
             onBlur={this.handleBlur}
+            onChange={this.handleInputChange}
             autoFocus
           />
           <button className="HeaderSearch__submit" type="submit">
             <span className="u-h">Search</span>
           </button>
         </form>
-        <SearchPage searchTerm="vegsoc" />
+        <SearchPage query={this.state.query} />
       </div>
     );
   }
 
   render() {
-    const { hasFocus } = this.state;
-    const containerClasses = cx('InlineSearch', { 'InlineSearch--isOpen': hasFocus });
+    const { isOpen } = this.state;
+    const containerClasses = cx('InlineSearch', { 'InlineSearch--isOpen': isOpen });
 
     return (
       <div className={containerClasses}>
         <input
-          className="HeaderSearch"
+          className="HeaderSearch HeaderSearch--search-icon"
           placeholder="Search"
           onFocus={this.handleFocus}
           ref={(el) => { this.dummyInput = el; }}
         />
 
-        {hasFocus ? this.renderSearching() : null}
+        {isOpen ? this.renderSearching() : null}
 
         <div className="InlineSearch__backdrop" />
       </div>

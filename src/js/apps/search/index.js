@@ -26,13 +26,12 @@ class SearchPage extends React.Component {
     super(props);
 
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleQueryUpdate = this.handleQueryUpdate.bind(this);
     this.handleAreaUpdate = this.handleAreaUpdate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleNotFoundDesiredPage = this.handleNotFoundDesiredPage.bind(this);
 
     this.state = {
-      query: qs.parse(location.search).q || '',
+      // query: qs.parse(location.search).q || '',
       page: parseInt(qs.parse(location.search).page, 10) || 1,
       searchArea: SEARCH_AREAS.EVERYTHING,
       results: null,
@@ -41,33 +40,39 @@ class SearchPage extends React.Component {
   }
 
   componentWillMount() {
-    if (this.state.query) {
+    if (this.props.query) {
       this.loadQueryResults();
+    }
+  }
+  
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.query);
+    if (nextProps.query !== this.props.query) {
+      this.handleUpdate(nextProps.query);
     }
   }
 
   onEmptyResults() {
     // eslint-disable-next-line no-undef
-    ga('send', 'event', 'Search', 'emptyresults', this.state.query);
+    ga('send', 'event', 'Search', 'emptyresults', this.props.query);
   }
 
-  loadQueryResults() {
-    const { query, page } = this.state;
+  loadQueryResults(query) {
+    const { page } = this.state;
     this.setState({ isLoading: true })
     window
       .fetch(`https://www.googleapis.com/customsearch/v1?q=${query}&num=10&start=${((page - 1) * 10) + 1}&cx=012345016055136658152%3Aaszn2y43suc&key=AIzaSyCMGfdDaSfjqv5zYoS0mTJnOT3e9MURWkU&fields=${fields}`)
       .then(res => res.json())
       .then(payload => {
-        if (query === this.state.query) {
+        if (query === this.props.query) {
           this.setState({ results: payload, isLoading: false })
-          console.log(this.state);
         }
       });
   }
 
   handleNotFoundDesiredPage() {
     // eslint-disable-next-line no-undef
-    ga('send', 'event', 'Search', 'nothappy', this.state.query);
+    ga('send', 'event', 'Search', 'nothappy', this.props.query);
   }
 
   handleSearch(e) {
@@ -75,20 +80,16 @@ class SearchPage extends React.Component {
     this.setState({ page: 1 }, () => this.handleUpdate());
   }
 
-  handleUpdate() {
-    this.loadQueryResults();
+  handleUpdate(query) {
+    this.loadQueryResults(query);
     const search = qs.parse(location.search);
-    search.q = this.state.query;
-    search.page = this.state.page;
+    search.q = query;
+    search.page = this.props.page;
     window.history.replaceState({}, '', `${location.pathname}?${qs.stringify(search)}`);
     // eslint-disable-next-line no-undef
     ga('set', 'page', location.pathname + location.search);
     // eslint-disable-next-line no-undef
     ga('send', 'pageview');
-  }
-
-  handleQueryUpdate(e) {
-    this.setState({ query: e.target.value });
   }
 
   handleAreaUpdate(e) {
@@ -105,7 +106,8 @@ class SearchPage extends React.Component {
   }
 
   renderResults() {
-    const { results, isLoading, query, searchArea, page } = this.state;
+    const { query } = this.props;
+    const { results, isLoading, searchArea, page } = this.state;
 
     const loadingElement = (
       <div className={`${styles.resultsMessage} ${isLoading ? styles.resultsMessage_visible : null}`}>
@@ -128,7 +130,7 @@ class SearchPage extends React.Component {
     return (
       <div className={containerclassNamees}>
         {loadingElement}
-        <ul className={styles.resultsList}>
+        <ul className="ResultsList">
           {items && items.map(item => ((
             <SearchResult key={item.cacheId} item={item} />
           )))}
@@ -150,7 +152,8 @@ class SearchPage extends React.Component {
   }
 
   render() {
-    const { query, searchArea } = this.state;
+    const { query } = this.props;
+    const { searchArea } = this.state;
 
     return (
       <div ref={(ref) => { this.containerRef = ref; }}>

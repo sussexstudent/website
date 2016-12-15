@@ -14,10 +14,6 @@
     font-size: 2.4rem;
   }
 
-  &__snippet {
-    max-width: 600px;
-  }
-
   &__anchor {
     color: black;
   }

@@ -23,13 +23,32 @@
     outline: 0;
   }
   
+  &--search-icon {
+    background-image: url('./global/img/search.svg');
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+  }
+  
+  &__highlight {
+    position: absolute;
+    bottom: -4px;
+    background: var(--color__yellow);
+    color: var(--color__yellow);
+    font-size: 1.2rem;
+    height: 4px;
+    font-weight: bold;
+    overflow: hidden;
+    padding-left: 0.6rem;
+    padding-right: 0.2rem;
+  }
   
   &__submit {
     width: 45px;
     height: 45px;
     border: 0;
     background-color: var(--color__yellow);
-    background-image: url('./global/img/search.svg');
+    background-image: url('./global/img/search-white.svg');
     background-size: 24px 24px;
     background-repeat: no-repeat;
     background-position: 8px center;

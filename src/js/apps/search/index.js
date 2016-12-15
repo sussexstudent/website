@@ -2,7 +2,6 @@ import 'es6-shim';
 import 'whatwg-fetch';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import qs from 'query-string';
 
 import SearchResult from '../../components/SearchResult';
@@ -18,6 +17,8 @@ const SEARCH_AREAS = {
 };
 
 const fields = 'items(cacheId,image,kind,labels,link,mime,pagemap,snippet,title),spelling,url,searchInformation';
+
+const styles = {};
 
 class SearchPage extends React.Component {
 
@@ -153,32 +154,13 @@ class SearchPage extends React.Component {
 
     return (
       <div ref={(ref) => { this.containerRef = ref; }}>
-        <form onSubmit={this.handleSearch}>
-          <div className={styles.header}>
-            <h1 className={styles.heading}>Search</h1>
-
-            <input
-              className={styles.searchInput}
-              type="search"
-              name="q"
-              value={this.state.query}
-              onChange={this.handleQueryUpdate}
-              placeholder="badminton, refreshers, etc"
-              autoFocus
-            />
-          </div>
-        </form>
-        <div>
-          {this.renderResults()}
-        </div>
+        {this.renderResults()}
       </div>
     );
   }
 }
 
-export default (element) => {
-  ReactDOM.render(<SearchPage />, element);
-};
+export default SearchPage;
 
 /*            <span className={styles.for}>for</span>
             <fieldset className={styles.fieldset}>

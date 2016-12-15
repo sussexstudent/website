@@ -1,0 +1,39 @@
+.InlineSearch {
+  
+  &__content {
+    z-index: var(--layer__search);
+  }
+  
+  &__input {
+    transition: all 400ms ease-out;
+    display: flex;
+  }
+  
+  &__backdrop {
+    z-index: var(--layer__search-backdrop);
+    transition: background 200ms ease;
+  }
+  
+  &--isOpen &__backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(41,41,41,0.92);
+  }
+  
+  &--isOpen &__content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding-top: 64px;
+    top: 0;
+  }
+  
+  &--isOpen &__input {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+}

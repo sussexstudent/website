@@ -13,6 +13,7 @@
 @import './components/NewsBlock.css';
 @import './components/UserBar.css';
 @import './components/Social.css';
+@import './components/InlineSearch.css';
 @import './components/PrefooterMenu.css';
 @import './components/OrganisationCard.css';
 @import './components/OrgansiationGrid.css';

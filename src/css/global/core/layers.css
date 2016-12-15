@@ -1,4 +1,6 @@
 :root {
   --layer__modal: 100;
-  --layer__modal-back: 50;
+  --layer__search: 100;
+  --layer__modal-back: 75;
+  --layer__search-backdrop: 75;
 }

@@ -9,14 +9,11 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    position: relative;
 
     @media (--medium) {
       flex-direction: row;
       align-items: flex-end;
-    }
-
-    & * {
-      transition: all ease 300ms;
     }
   }
 
@@ -44,20 +41,12 @@
 .Header--search-focus {
   @media(--medium) {
     & .Header {
-      &__search {
-        flex: 4;
-      }
-
       &__logo {
         opacity: 0;
-        flex: 0;
-        width: 0;
       }
 
       &__social {
         opacity: 0;
-        flex: 0;
-        width: 0;
       }
     }
   }

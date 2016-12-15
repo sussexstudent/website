@@ -2,8 +2,7 @@
 
 .Footer {
   background: rgb(51, 51, 51);
-  padding-top: 1lh;
-  padding-bottom: 1lh;
+  padding: 1lh 0;
   color: #ffffff;
   font-family: var(--type__primary);
 }

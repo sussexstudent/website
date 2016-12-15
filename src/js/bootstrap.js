@@ -1,5 +1,7 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ModalManager from './bits/modals/manager';
+import HeaderSearch from './components/HeaderSearch';
 import LoginModal from './components/LoginModal';
 
 import renderSearch from './apps/search';
@@ -31,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     renderSearch();
   }
 
+  ReactDOM.render(<HeaderSearch />, document.querySelector('.Header__search'));
+
   if (document.querySelector('.app__events')) {
     // eslint-disable-next-line
     require('./apps/events-calender');
@@ -40,11 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // eslint-disable-next-line
     require('./apps/activities');
   }
-
-  const search = document.querySelector('.HeaderSearch');
-  const header = document.querySelector('.Header');
-  search.addEventListener('focus', () => header.classList.add('Header--search-focus'));
-  search.addEventListener('blur', () => header.classList.remove('Header--search-focus'));
 
   // eslint-disable-next-line global-require
   require('./bits/panel').default();

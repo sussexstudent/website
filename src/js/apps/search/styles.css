@@ -7,16 +7,6 @@
   opacity: 0.4;
 }
 
-.searchInput {
-  -moz-appearance:none;
-  -webkit-appearance:none;
-  border: 0.1rem solid grey;
-  font-size: 2.8rem;
-  width: 100%;
-  padding: 0.6rem;
-  margin-top: 1rem;
-}
-
 .heading {
   display: inline-block;
   margin: 0;

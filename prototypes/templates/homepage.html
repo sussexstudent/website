@@ -16,13 +16,10 @@
         <ul class="NewsGrid">
           {% for item in page.metadata.news_items %}
           <li class="NewsGrid__item NewsBlock">
+            <div class="NewsBlock__image" style="background-image: url({{item.image}});"></div>
 
             <a class="NewsBlock__title-link" href="#">
-              <div class="NewsBlock__image" style="background-image: url({{item.image}});">
-                <div class="NewsBlock__title-outer">
-                  <h2 class="NewsBlock__title">{{item.title}}</h2>
-                </div>
-              </div>
+              <h2 class="NewsBlock__title">{{item.title}}</h2>
             </a>
             <p class="NewsBlock__standfirst">{{item.desc}}</p>
             <div class="NewsBlock__meta">
@@ -43,10 +40,10 @@
     <ul class="FigureCollection">
       {% for i in [1, 2, 3, 4, 5, 6] %}
       <li class="FigureCollection__item">
-        <a class="FigureCollection__link">
+        <a href="/officers/example" class="FigureCollection__link">
           <img class="FigureCollection__image" src="https://www.sussexstudent.com/pageassets/about-us/full-time-elected-officers/Savannah(1).jpg" />
-          <span class="FigureCollection__title">Not the president</span>
-          <span class="FigureCollection__secondary">Runs everything</span>
+          <span class="FigureCollection__title">Savannah Sevenzo</span>
+          <span class="FigureCollection__secondary">Undergraduate Officer</span>
         </a>
       </li>
     {% endfor %}

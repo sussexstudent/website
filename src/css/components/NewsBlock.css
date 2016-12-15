@@ -21,22 +21,16 @@
     font-family: var(--type__primary);
   }
 
-  &__title-outer {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 20px;
-  }
-
   &__title-link {
     text-decoration: none;
+    padding-right: 1rem;
   }
 
   &__image {
-    padding-right: 1rem;
     height: 200px;
     position: relative;
     background-size: cover;
+    margin-bottom: 1rem;
   }
 
   &__meta {

@@ -19,7 +19,7 @@
     margin: 0;
     margin-bottom: 1lh;
     
-    @media (--media) {
+    @media (--medium) {
       margin-bottom: 0;
     }
     

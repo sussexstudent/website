@@ -1,0 +1,50 @@
+.Deckchair {
+  background-color: var(--color__blue);
+  color: white;
+  padding: 0.5lh;
+  margin-bottom: 1.5lh;
+  font-family: var(--type__primary);
+  padding-right: calc(0.5lh + 24px + 12px);
+  position: relative;
+  overflow: hidden;
+  
+  &__cta {
+    float: left;
+    padding-top: 1rem;
+  }
+
+  &__info {
+    float: left;
+    width: 65%;
+  }
+
+  &__close {
+    display: block;
+    background: url('./global/img/cross-temp-white.svg');
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+  }
+  
+  &__header {
+    margin: 0;
+    font-size: 1.6rem;
+  }
+  
+  &__about {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  
+  &__button {
+    background: white;
+    color: black;
+    padding: 0.2rem 0.6rem;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}

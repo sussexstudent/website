@@ -1,0 +1,45 @@
+.PrefooterMenu {
+  font-family: var(--type__primary);
+  padding: 1lh 0;
+  background: #f7f7f7;
+
+  &__inner {
+    gg: columns(1/1);
+    
+    @media (--medium) {
+      & {
+        gg: columns(1/4 1/4 1/4 1/4);
+      }
+    }
+  }
+  
+  &__column {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1lh;
+    
+    @media (--media) {
+      margin-bottom: 0;
+    }
+    
+    & a {
+      text-decoration: none;
+      color: black;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  &__column-header {
+    font-weight: bold;
+  }
+  
+  
+  &__column-item {
+
+  }
+  
+}

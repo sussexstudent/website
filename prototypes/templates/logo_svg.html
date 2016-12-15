@@ -14,7 +14,7 @@
 }
 </style>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  (function() {
     var index;
     try {
       var lsResult = localStorage.getItem('su_cc');
@@ -33,6 +33,7 @@
     } catch (e) {
       index = 0;
     }
+    
     document.querySelector('#LogoSVG').style.fill = [
       '#27428c',
       '#1db8a4',
@@ -44,5 +45,5 @@
       '#1db8a4',
       '#ee534f',
     ][index];
-  });
+  })();
 </script>

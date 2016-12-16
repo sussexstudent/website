@@ -15,6 +15,15 @@
     transition: background 200ms ease;
   }
   
+  &__close {
+    height: 48px;
+    width: 48px;
+    background-color: transparent;
+    border: 0;
+    background-image: url('./global/img/cross-temp-white.svg');
+    background-size: contain;
+  }
+  
   &--isOpen &__backdrop {
     position: fixed;
     top: 0;

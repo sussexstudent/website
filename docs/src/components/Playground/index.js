@@ -13,6 +13,7 @@ class Playground extends React.Component {
 
     this.state = {
       currentIndex: 0,
+      fullScreen: false,
     };
   }
 
@@ -20,11 +21,15 @@ class Playground extends React.Component {
     this.setState({ currentIndex });
   }
 
+  handleFullScreen() {
+    this.setState({ fullScreen: !this.state.fullScreen });
+  }
+
   render() {
     const markup = this.props.children[this.state.currentIndex].props.markup;
     const { currentIndex } = this.state;
     return (
-      <div className="Playground">
+      <div className={cx('Playground', { 'Playground--full-screen': this.state.fullScreen })}>
         <ul className="Playground__tab-list">
           {this.props.children.map((state, index) => (
             <li
@@ -40,6 +45,7 @@ class Playground extends React.Component {
               </a>
             </li>
           ))}
+          <li className="Playground__toggle-size"><button onClick={this.handleFullScreen.bind(this)}>FS</button></li>
         </ul>
         {/* eslint-disable react/no-danger */}
         <div className="Playground__canvas" dangerouslySetInnerHTML={{ __html: markup }} />

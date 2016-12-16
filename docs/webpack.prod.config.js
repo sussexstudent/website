@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const S3Plugin = require('webpack-s3-plugin');
 const config = require('./webpack.base.config.js');
 
 config.bail = true;
@@ -11,7 +10,7 @@ config.devtool = '#source-map';
 config.output = {
   path: './dist',
   pathInfo: true,
-  publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
+  publicPath: '/',
   filename: '[name].[hash].js',
 };
 

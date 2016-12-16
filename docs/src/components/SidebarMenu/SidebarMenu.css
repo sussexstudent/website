@@ -1,5 +1,7 @@
+@import '../../../../src/css/global/core/colors.css';
+
 .SidebarMenu {
-  background-color: #1DB8A4;
+  background-color: var(--color__red);
   color: #ffffff;
   width: 100%;
   padding: 1rem;
@@ -13,13 +15,15 @@
 .SidebarMenu__logo {
   width: 100%;
   margin-top: 1rem;
-  max-width: 130px;
+  max-width: 120px;
   display: block;
   margin: 0 auto;
 }
 
 .SidebarMenu__tag {
   display: block;
-  padding-top: 0.8rem;
+  padding-top: 0.4rem;
+  font-size: 0.8rem;
   text-align: center;
+  margin-bottom: 1rem;
 }

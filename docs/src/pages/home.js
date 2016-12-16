@@ -3,7 +3,7 @@ import React from 'react';
 export default function HomePage() {
   return (
     <div>
-      <h1>Welcome to our styleguide</h1>
+      <h1>Docs, components, apps and more</h1>
     </div>
   );
 }

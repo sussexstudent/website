@@ -55,6 +55,8 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "highlight.js": "^9.8.0",
+    "html-webpack-harddisk-plugin": "^0.0.2",
+    "html-webpack-plugin": "^2.24.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-dropzone": "^3.7.3",
@@ -62,9 +64,11 @@
     "react-router": "^3.0.0"
   },
   "scripts": {
-    "serve": "NODE_ENV=development webpack-dev-server --content-base public/ --port 5555",
+    "serve": "export NODE_ENV=development && node ./devserver.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "prod": "export NODE_ENV=production && /Users/brudil/Projects/su/union/docs/node_modules/.bin/webpack -p --config webpack.prod.config.js",
+    "deploy": "surge --domain ussu-docs.surge.sh --project ./dist"
   },
   "babel": {
     "presets": [

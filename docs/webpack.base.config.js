@@ -1,4 +1,6 @@
 const webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
 const path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -49,6 +51,19 @@ module.exports = {
       __STAGING__: env.staging,
       __PRODUCTION__: env.production,
     }),
+    new HtmlWebpackPlugin({
+      title: 'USSU Docs',
+      filename: '200.html',
+      template: './public/template.html',
+      alwaysWriteToDisk: true,
+    }),
+    new HtmlWebpackPlugin({
+      title: 'USSU Docs',
+      filename: 'index.html',
+      template: './public/template.html',
+      alwaysWriteToDisk: true,
+    }),
+    new HtmlWebpackHarddiskPlugin(),
 //    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
     //new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', }),
   //  extractCSS,

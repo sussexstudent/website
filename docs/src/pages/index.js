@@ -7,6 +7,7 @@ import ButtonComponentPage from './components/Button';
 import HeadingsComponentPage from './components/Headings';
 import TrailComponentPage from './components/Trail';
 import NewsBlockComponentPage from './components/NewsBlock';
+import DeckchairComponentPage from './components/Deckchair';
 
 
 function createSection(name, slug, pages) {
@@ -30,5 +31,6 @@ export default [
     page(HeadingsComponentPage),
     page(TrailComponentPage),
     page(NewsBlockComponentPage),
+    page(DeckchairComponentPage),
   ]),
 ];

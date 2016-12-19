@@ -47,6 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
     require('./apps/activities');
   }
 
+  if (document.querySelector('.app__tweets')) {
+    // eslint-disable-next-line
+    require('./apps/tweets');
+  }
+
   // eslint-disable-next-line global-require
   require('./bits/panel').default();
   // eslint-disable-next-line global-require

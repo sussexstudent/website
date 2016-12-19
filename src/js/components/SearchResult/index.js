@@ -2,7 +2,7 @@ import React from 'react';
 
 function getKicker(link) {
   if (link.indexOf('/organisation') >= 0) {
-    return 'Society/Sport';
+    return 'Sports & Societies';
   }
 
   if (link.indexOf('/event') >= 0) {

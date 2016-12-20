@@ -4,6 +4,7 @@ const path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
+console.log(JSON.stringify(NODE_ENV));
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -14,7 +15,10 @@ const env = {
   development: NODE_ENV === 'development' || typeof NODE_ENV === 'undefined',
 };
 env['build'] = (env.production || env.staging)
-let extractCSS = new ExtractTextPlugin(`style${isProduction ? '.[contenthash]' : ''}.css`, { allChunks: true });
+const extractCSS = new ExtractTextPlugin({
+  filename: `style${false ? '.[contenthash]' : ''}.css`,
+  allChunks: true,
+});
 
 module.exports = {
   target: 'web',
@@ -25,25 +29,24 @@ module.exports = {
 
   output: {
     path: path.resolve(path.join(__dirname, 'build')),
-    pathInfo: true,
     publicPath: '/assets',
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
   },
 
   resolve: {
-    modulesDirectories: [
+    modules: [
       'web_modules',
       'node_modules',
       './src/images',
     ],
-    extentions: ['js', 'svg'],
+    extensions: ['.js', '.svg'],
   },
 
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: `'${NODE_ENV}'`,
+        NODE_ENV: JSON.stringify(NODE_ENV),
       },
       __DEV__: env.development,
       __STAGING__: env.staging,
@@ -53,28 +56,26 @@ module.exports = {
     // new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', }),
     extractCSS,
   ],
-
   module: {
-    preLoaders: [
-      { test: /\.js$/, loader: 'eslint-loader', exclude: /node_modules/ },
-      { test: /\.json$/, loader: 'json' },
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        enforce: 'pre',
+      },
+      {
+        test: /\.css$/,
+        loader: extractCSS.extract({
+          fallbackLoader: 'style-loader',
+          loader: 'css-loader?importLoaders=1!postcss-loader',
+        }),
+      },
+      {
+        test: /\.svg|\.png|\.woff|\.json/,
+        loader: 'url-loader?limit=10000',
+      },
     ],
-    loaders: [
-      { test: /\.css$/, loader: extractCSS.extract('style-loader', 'css-loader?importLoaders=1!postcss-loader') },
-      { test: /\.svg|\.png|\.woff/, loader: 'url?limit=10000' },
-    ],
-
     noParse: /\.min\.js/,
   },
-  postcss(webpackInner) {
-    return [
-      require('postcss-import')({
-        addDependencyTo: webpackInner,
-      }),
-      require('postcss-ant')(),
-      require('postcss-lh'),
-      require('postcss-cssnext'),
-    ];
-  },
-
 };

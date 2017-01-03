@@ -1,0 +1,65 @@
+.SelectionGrid {
+  gg: columns(1/1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--type__primary);
+  
+  @media (--medium) {
+    & {
+      gg: columns(1/2 1/2);      
+    }
+  }
+  
+  &__link {
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
+  
+  &__item {
+    margin-bottom: 1rem;
+  }
+  
+  &__title {
+    font-weight: bold;
+    font-size: 1.6rem;
+    background: var(--color__yellow);
+    padding: 0 0.2rem;
+    display: inline-block;
+  }
+  
+  &__image {
+    padding-top: 30%;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  &--undderneath &__image-inside {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  &--on-top &__image-inside {
+    padding: 0.5rem;
+  }
+  
+  &__description {
+    font-weight: bold;    
+    margin: 0;
+    margin-top: 0.5rem;
+  }
+  
+  &--on-top &__description {
+    width: 80%;
+    background: var(--color__yellow);
+    padding: 0.3rem;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    position: relative;
+    top: -0.5rem;
+  }
+}

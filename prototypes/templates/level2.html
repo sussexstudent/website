@@ -9,13 +9,23 @@
   </div>
   {% block level2content %}{% endblock %}
   <ul class="SelectionGrid">
-    <li>
-      <a href="http://example.com">
-        <div class="SelectionGrid__image">
-          <img src="">
+    {% for i in [1, 2, 3, 4, 5, 6] %}
+    <li class="SelectionGrid__item SelectionGrid--{{ 'on-top' if ((i % 3) == 0) else 'underneath' }}">
+      <a class="SelectionGrid__link" href="http://example.com">
+        <div class="SelectionGrid__image" style="background-image: url('https://www.sussexstudent.com/pageassets/our-campus-services/the_deli_falmer_house_university_of_sussex.jpg');">
+          <div class="SelectionGrid__image-inside">
+            <div class="SelectionGrid__title">Sports & Societies</div>
+          </div>
+            {% if i % 3 == 0 %}
+            <p class="SelectionGrid__description">Far far away behind the something or other, I'm manually typing this you know. Far far away behind the something or other, I'm manually typing this you know</p>
+            {% endif %}
         </div>
+        {% if i % 3 != 0 %}
+        <p class="SelectionGrid__description">Far far away behind the something or other, I'm manually typing this you know</p>
+        {% endif %}
       </a>
     </li>
+    {% endfor %}
   </ul>
 </div>
 {% endblock %}

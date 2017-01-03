@@ -8,7 +8,6 @@ import { tweetType } from './props';
 function getEntities(types, tweet) {
   let entities = [];
   types.forEach((type) => {
-    console.log(tweet.entities[type], type);
     entities = entities.concat((tweet.entities[type] || []).map((entity) => {
       const e = entity;
       e._type = type;
@@ -42,16 +41,17 @@ function renderTweetContent(tweet) {
   const parts = [];
   let position = 0;
 
+  const getKey = (() => { let x = 1; return () => { x += 1; return x; }; });
+
   const typeHandlers = {
     hashtags(entity, replaced) {
-      console.log({ replaced });
-      parts.push(<a href={`https://twitter.com/hashtag/${entity.text}`}>{replaced}</a>);
+      parts.push(<a href={`https://twitter.com/hashtag/${entity.text}`} key={getKey()}>{replaced}</a>);
     },
     user_mentions(entity, replaced) {
-      parts.push(<a href={`https://twitter.com/${entity.screen_name}`}>{replaced}</a>);
+      parts.push(<a href={`https://twitter.com/${entity.screen_name}`} key={getKey()}>{replaced}</a>);
     },
     urls(entity) {
-      parts.push(<a href={entity.url}>{entity.display_url}</a>);
+      parts.push(<a href={entity.url} key={getKey()}>{entity.display_url}</a>);
     },
   };
 
@@ -77,7 +77,6 @@ function renderTweetContent(tweet) {
 }
 
 function Tweet({ data }) {
-  console.log(data);
   if (Object.hasOwnProperty.call(data, 'retweeted_status')) {
     return (
       <li className="Tweet">

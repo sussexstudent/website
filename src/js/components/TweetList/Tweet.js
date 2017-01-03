@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import { tweetType } from './props';
 
 function getEntities(types, tweet) {
@@ -88,7 +89,9 @@ function Tweet({ data }) {
         <div>
           <div className="Tweet__content">{renderTweetContent(data.retweeted_status)}</div>
           {getTweetAttachment(data.retweeted_status)}
-          <a href={`https://twitter.com/statuses/${data.id_str}`} className="Tweet__permalink">14 minutes ago</a>
+          <a href={`https://twitter.com/statuses/${data.id_str}`} className="Tweet__permalink">
+            {distanceInWordsToNow(data.retweeted_status.created_at)} ago
+          </a>
         </div>
       </li>
     );
@@ -103,7 +106,9 @@ function Tweet({ data }) {
       <div>
         <div className="Tweet__content">{renderTweetContent(data)}</div>
         {getTweetAttachment(data)}
-        <a href={`https://twitter.com/statuses/${data.id_str}`} className="Tweet__permalink">14 minutes ago</a>
+        <a href={`https://twitter.com/statuses/${data.id_str}`} className="Tweet__permalink">
+          {distanceInWordsToNow(data.created_at)} ago
+        </a>
       </div>
     </li>
   );

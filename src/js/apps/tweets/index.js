@@ -2,6 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TweetList from '../../components/TweetList';
 
-import data from './list-ussu-ussu.json';
+const tweetsResource = 'https://dxziiu0wrgyxg.cloudfront.net/getTweets';
 
-ReactDOM.render(<TweetList tweets={data} />, document.querySelector('.app__tweets'));
+function render(props) {
+  ReactDOM.render(<TweetList {...props} />, document.querySelector('.app__tweets'));
+}
+
+fetch(tweetsResource)
+  .then(response => response.json())
+  .then(data => render({ tweets: data, isLoading: false }))
+  .catch(e => render({ tweets: e }));
+
+render({ isLoading: true });

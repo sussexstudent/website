@@ -1,5 +1,7 @@
 import React from 'react';
-import _ from 'lodash';
+import split from 'lodash/split';
+import sortBy from 'lodash/sortBy';
+import unescape from 'lodash/unescape';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import { tweetType } from './props';
 
@@ -32,10 +34,10 @@ function getTweetAttachment(tweet) {
 }
 
 function renderTweetContent(tweet) {
-  const fullText = _.split(tweet.full_text, '');
+  const fullText = split(tweet.full_text, '');
   const displayText = fullText.slice(...tweet.display_text_range);
 
-  const entities = _.sortBy(getEntities(['hashtags', 'urls', 'media', 'user_mentions'], tweet), e => e.indices[0]);
+  const entities = sortBy(getEntities(['hashtags', 'urls', 'media', 'user_mentions'], tweet), e => e.indices[0]);
 
   const parts = [];
   let position = 0;
@@ -58,7 +60,7 @@ function renderTweetContent(tweet) {
       return;
     }
 
-    parts.push(displayText.slice(position, entity.indices[0]).join(''));
+    parts.push(unescape(displayText.slice(position, entity.indices[0]).join('')));
 
     const handler = typeHandlers[entity._type];
 
@@ -69,7 +71,7 @@ function renderTweetContent(tweet) {
     position = entity.indices[1];
   });
 
-  parts.push(displayText.slice(position, tweet.display_text_range[1]).join(''));
+  parts.push(unescape(displayText.slice(position, tweet.display_text_range[1]).join('')));
 
   return parts;
 }

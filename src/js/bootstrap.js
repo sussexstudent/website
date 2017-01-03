@@ -1,3 +1,5 @@
+import 'whatwg-fetch';
+import Promise from 'promise-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ModalManager from './bits/modals/manager';
@@ -5,6 +7,11 @@ import HeaderSearch from './components/HeaderSearch';
 import LoginModal from './components/LoginModal';
 
 import renderSearch from './apps/search';
+
+// Promise polyfil
+if (!window.Promise) {
+  window.Promise = Promise;
+}
 
 const modals = ModalManager();
 

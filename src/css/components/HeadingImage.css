@@ -4,7 +4,7 @@
 .HeadingImage {
   background-size: cover;
   padding: 1lh;
-  margin-bottom: 1lh;
+  margin-bottom: 1.5lh;
   padding-top: 230px;
   font-family: var(--type__primary);
 
@@ -12,6 +12,7 @@
     box-decoration-break: clone;
     padding: 0 0.2rem;
     background-color: var(--color__yellow);
+    font-weight: bold;
     color: #000000;
     display: inline;
     font-size: 2lh;
@@ -20,6 +21,7 @@
   }
 
   &__desc {
+    font-weight: bold;
     background-color: var(--color__yellow);
     color: #000000;
     max-width: 550px;

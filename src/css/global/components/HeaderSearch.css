@@ -10,6 +10,7 @@
   width: 100%;
   box-sizing: border-box;
   transition: transform ease 300ms, box-shadow ease 300ms;
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,0.1);
 
   &--massive {
     @media (--medium) {
@@ -28,21 +29,9 @@
     background-position: right 12px center;
     background-repeat: no-repeat;
     background-size: 24px 24px;
+    box-shadow: none;
   }
-  
-  &__highlight {
-    position: absolute;
-    bottom: -4px;
-    background: var(--color__yellow);
-    color: var(--color__yellow);
-    font-size: 1.2rem;
-    height: 4px;
-    font-weight: bold;
-    overflow: hidden;
-    padding-left: 0.6rem;
-    padding-right: 0.2rem;
-  }
-  
+
   &__submit {
     width: 45px;
     height: 45px;

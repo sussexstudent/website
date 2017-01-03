@@ -6,7 +6,7 @@
   font-family: sans-serif;
   transition: transform ease 300ms;
 
-  &--modal-active {
+  &--locked {
     overflow: hidden;
   }
 

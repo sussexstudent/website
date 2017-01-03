@@ -4,10 +4,29 @@
     z-index: var(--layer__search);
   }
   
+  &__header {
+    background: var(--color__green);
+    height: 240px;
+    position: relative;
+    left: 0;
+    right: 0;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.1);
+    z-index: var(--layer__search-header)
+  }
+  
   &__input {
     transition: all 400ms ease-out;
     display: flex;
     position: relative;
+    z-index: var(--layer__search-input)
+  }
+  
+  &__input-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-top: 64px;
   }
   
   &__backdrop {
@@ -24,21 +43,26 @@
     background-size: contain;
   }
   
-  &--isOpen &__backdrop {
+  &__backdrop {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(41,41,41,0.92);
+    background: rgba(251, 251, 251, 0.90);
   }
   
-  &--isOpen &__content {
-    position: absolute;
+  &__content {
+    display: none;
+  }
+  
+  &__content {
+    display: block;
+    position: fixed;
     left: 0;
     right: 0;
-    padding-top: 64px;
     top: 0;
+    botom: 0;
   }
   
   &--isOpen &__input {
@@ -46,4 +70,41 @@
     padding-right: 0;
     width: 100%;
   }
+}
+
+.test-enter {
+  height: 0;
+}
+
+.test-enter.test-enter-active {
+  height: 240px;
+  transition: height 300ms ease;
+}
+
+.test-leave {
+  height: 240px;
+  transition: height 300ms ease;
+}
+
+.test-leave.test-leave-active {
+  height: 0;
+}
+
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.fade-leave {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0;
 }

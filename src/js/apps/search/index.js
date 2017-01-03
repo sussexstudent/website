@@ -1,6 +1,6 @@
-
 import React from 'react';
 import qs from 'query-string';
+import cx from 'classnames';
 
 import SearchResult from '../../components/SearchResult';
 import FeedbackButton from '../../components/FeedbackButton';
@@ -15,8 +15,6 @@ const SEARCH_AREAS = {
 };
 
 const fields = 'items(cacheId,image,kind,labels,link,mime,pagemap,snippet,title),spelling,url,searchInformation';
-
-const styles = {};
 
 class SearchPage extends React.Component {
 
@@ -42,7 +40,7 @@ class SearchPage extends React.Component {
       this.loadQueryResults();
     }
   }
-  
+
   componentWillReceiveProps(nextProps) {
     console.log(nextProps.query);
     if (nextProps.query !== this.props.query) {
@@ -107,8 +105,9 @@ class SearchPage extends React.Component {
     const { query } = this.props;
     const { results, isLoading, searchArea, page } = this.state;
 
+    const containerclassNamees = cx('SearchApp__container', { 'SearchApp__container--is-loading':  isLoading === true });
     const loadingElement = (
-      <div className={`${styles.resultsMessage} ${isLoading ? styles.resultsMessage_visible : null}`}>
+      <div className={cx('SearchApp__result-message', { 'SearchApp__result-message--is-visible':  isLoading })}>
         Loading…
       </div>
     );
@@ -123,7 +122,6 @@ class SearchPage extends React.Component {
 
     const { items} = results;
 
-    const containerclassNamees = `${isLoading === true ? styles.container_loading : styles.container}`;
 
     return (
       <div className={containerclassNamees}>

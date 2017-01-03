@@ -1,0 +1,19 @@
+.SearchApp {
+  &__container {
+
+  }
+
+  &__container--is-loading {
+    opacity: 0.4;
+  }
+
+  &__result-message {
+    visibility: hidden;
+    padding: 1rem 0;
+    font-style: italic;
+  }
+
+  &__results-message--is-visible {
+    visibility: visible;
+  }
+}

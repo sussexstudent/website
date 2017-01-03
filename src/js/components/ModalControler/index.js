@@ -5,7 +5,7 @@ const siteEl = document.querySelector('.Site');
 
 class ModalControler extends React.Component {
   componentWillReceiveProps(nextProps) {
-    siteEl.classList.toggle('Site--modal-active', nextProps.stack.length > 0);
+    siteEl.classList.toggle('Site--locked', nextProps.stack.length > 0);
   }
 
   render() {

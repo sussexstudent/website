@@ -37,17 +37,3 @@
     flex: 1;
   }
 }
-
-.Header--search-focus {
-  @media(--medium) {
-    & .Header {
-      &__logo {
-        opacity: 0;
-      }
-
-      &__social {
-        opacity: 0;
-      }
-    }
-  }
-}

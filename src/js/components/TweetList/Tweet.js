@@ -41,17 +41,17 @@ function renderTweetContent(tweet) {
   const parts = [];
   let position = 0;
 
-  const getKey = (() => { let x = 1; return () => { x += 1; return x; }; });
+  let key = 0;
 
   const typeHandlers = {
     hashtags(entity, replaced) {
-      parts.push(<a href={`https://twitter.com/hashtag/${entity.text}`} key={getKey()}>{replaced}</a>);
+      parts.push(<a href={`https://twitter.com/hashtag/${entity.text}`} key={key += 1}>{replaced}</a>);
     },
     user_mentions(entity, replaced) {
-      parts.push(<a href={`https://twitter.com/${entity.screen_name}`} key={getKey()}>{replaced}</a>);
+      parts.push(<a href={`https://twitter.com/${entity.screen_name}`} key={key += 1}>{replaced}</a>);
     },
     urls(entity) {
-      parts.push(<a href={entity.url} key={getKey()}>{entity.display_url}</a>);
+      parts.push(<a href={entity.url} key={key += 1}>{entity.display_url}</a>);
     },
   };
 

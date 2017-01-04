@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import ModalManager from './bits/modals/manager';
 import HeaderSearch from './components/HeaderSearch';
 import LoginModal from './components/LoginModal';
-
+import perf from './tracking/perf';
 import renderSearch from './apps/search';
 
 // Promise polyfil
@@ -45,22 +45,19 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<HeaderSearch />, document.querySelector('.Header__search'));
 
   if (document.querySelector('.app__events')) {
-    // eslint-disable-next-line
-    require('./apps/events-calender');
+    const t = perf.recordTime('import', 'calender');
+    System.import('./apps/events-calender').then(() => t.done());
   }
 
   if (document.querySelector('.app__activities')) {
-    // eslint-disable-next-line
-    require('./apps/activities');
+    const t = perf.recordTime('import', 'activities');
+    System.import('./apps/activities').then(() => t.done());
   }
 
   if (document.querySelector('.app__tweets')) {
-    // eslint-disable-next-line
-    require('./apps/tweets');
+    const t = perf.recordTime('import', 'tweets');
+    System.import('./apps/tweets').then(() => t.done());
   }
 
-  // eslint-disable-next-line global-require
-  require('./bits/panel').default();
-  // eslint-disable-next-line global-require
-  console.log(require('./bits/easter-eggs'));
+  System.import('./bits/panel').then(panel => panel.default());
 });

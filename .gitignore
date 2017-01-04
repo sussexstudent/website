@@ -15,3 +15,6 @@ build
 npm-debug.log
 /docs/dist
 /dist
+/prototypes/config-prod.json
+/webpack-assets.json
+/.s3cfg

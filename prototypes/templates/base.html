@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title_top %}{% block title %}{% endblock %} | {% endblock %}Sussex Students' Union</title>
-    <link href="/assets/style.css" rel="stylesheet" />
     <link href="https://blokkfont-losgordos.netdna-ssl.com/v2/blokkfont.css" rel="stylesheet" type="text/css">
     <style>
       .ph {
         font-family: "BLOKK";
       }
     </style>
+    <link href="{{ assets.main.css }}" rel="stylesheet" />
   </head>
   <body class="Site">
     <div class="AdvertBar AdvertBar--hide">
@@ -171,6 +171,6 @@
     </footer>
 
     <div class="js__modal"></div>
-    <script src="/assets/main.js"></script>
+    <script src="{{ assets.main.js }}"></script>
   </body>
 </html>

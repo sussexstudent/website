@@ -16,7 +16,7 @@ const env = {
 };
 env['build'] = (env.production || env.staging)
 const extractCSS = new ExtractTextPlugin({
-  filename: `style${false ? '.[contenthash]' : ''}.css`,
+  filename: isProduction ? 'union.[contenthash].css' : 'style.css',
   allChunks: true,
 });
 

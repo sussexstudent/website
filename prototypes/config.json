@@ -18,6 +18,12 @@
     "smartypants": true
   },
   "locals": {
+    "assets": {
+      "main": {
+        "js": "/assets/main.js",
+        "css": "/assets/style.css"
+      }
+    },
     "menu": [
       {
         "title": "Get involved",

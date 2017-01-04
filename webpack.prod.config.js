@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const config = require('./webpack.base.config.js');
 
 config.bail = true;
@@ -8,8 +9,8 @@ config.devtool = '#source-map';
 
 config.output = {
   path: './dist',
-  publicPath: '/assets/',
-  filename: '[name].js',
+  publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
+  filename: 'union.[name].[hash].js',
 };
 
 config.plugins = config.plugins.concat([
@@ -18,6 +19,7 @@ config.plugins = config.plugins.concat([
     minimize: true,
   }),
   new webpack.optimize.UglifyJsPlugin({ output: { comments: false } }),
+  new AssetsWebpackPlugin(),
 ]);
 
 config.module.rules = config.module.rules.concat([

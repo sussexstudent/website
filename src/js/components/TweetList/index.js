@@ -1,12 +1,13 @@
 import React from 'react';
 import Tweet from './Tweet';
+import Loader from '../Loader';
 import { tweetType } from './props';
 
 function TweetList({ tweets, isLoading }) {
   if (isLoading) {
     return (
       <ul className="TweetList">
-        <p>Loading</p>
+        <Loader />
       </ul>
     );
   }

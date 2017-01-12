@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ModalManager from './bits/modals/manager';
 import HeaderSearch from './components/HeaderSearch';
+import LazyLoadApp from './components/LazyLoadApp';
 import LoginModal from './components/LoginModal';
 import perf from './tracking/perf';
 import renderSearch from './apps/search';
@@ -37,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     e.addEventListener('click', linkListener);
   });
 
+  const activitiesApp = document.querySelector('.app__activities');
+
   if (document.querySelector('.app__search')) {
     // eslint-disable-next-line
     renderSearch();
@@ -49,9 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
     System.import('./apps/events-calender').then(() => t.done());
   }
 
-  if (document.querySelector('.app__activities')) {
+  if (activitiesApp) {
     const t = perf.recordTime('import', 'activities');
-    System.import('./apps/activities').then(() => t.done());
+    System.import('./apps/activities').then((app) => {
+      t.done();
+      const ActivitiesApp = app.default;
+      ReactDOM.render(<LazyLoadApp><ActivitiesApp /></LazyLoadApp>, activitiesApp);
+    });
+    ReactDOM.render(<LazyLoadApp />, activitiesApp);
   }
 
   if (document.querySelector('.app__tweets')) {

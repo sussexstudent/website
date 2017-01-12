@@ -43,7 +43,6 @@ class SearchPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.query);
     if (nextProps.query !== this.props.query) {
       this.handleUpdate(nextProps.query);
     }

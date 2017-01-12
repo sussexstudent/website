@@ -2,9 +2,17 @@ import React from 'react';
 import cx from 'classnames';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import SearchPage from '../../apps/search';
+import smoothscroll from '../../bits/smoothscroll';
 
 const header = document.querySelector('.Header');
+const advertBarEl = document.querySelector('.AdvertBar');
+const userBarEl = document.querySelector('.UserBar');
 const siteEl = document.querySelector('.Site');
+
+function getDistanceFromUserBar() {
+  const offset = userBarEl.getBoundingClientRect().top;
+  return Math.abs(offset);
+}
 
 class HeaderSearch extends React.Component {
   constructor(props) {
@@ -40,22 +48,41 @@ class HeaderSearch extends React.Component {
       return;
     }
 
-    this.setState({
-      isOpen,
-      transitionSize: isOpen ? {
-        paddingLeft: this.dummyInput.offsetLeft,
-        width: this.dummyInput.clientWidth,
-      } : null,
-    });
-
     siteEl.classList.toggle('Site--locked', isOpen);
 
     if (isOpen) {
-      document.body.scrollIntoView(true, { behaviour: 'smooth' });
-      header.classList.add('Header--search-focus');
+      const distance = Math.abs(getDistanceFromUserBar());
+      if (distance >= 10) {
+        const time = Math.round(distance * 3.85);
+        setTimeout(this.handleOpen.bind(this), time);
+        smoothscroll(userBarEl, time);
+      } else {
+        window.scrollTo(0, advertBarEl.getBoundingClientRect().height);
+        this.handleOpen();
+      }
     } else {
-      header.classList.remove('Header--search-focus');
+      this.handleClose();
     }
+  }
+
+  handleOpen() {
+    this.setState({
+      isOpen: true,
+      transitionSize: {
+        paddingLeft: this.dummyInput.offsetLeft,
+        width: this.dummyInput.clientWidth,
+      },
+    });
+    header.classList.add('Header--search-focus');
+  }
+
+  handleClose() {
+    this.setState({
+      isOpen: false,
+      transitionSize: null,
+    });
+
+    header.classList.remove('Header--search-focus');
   }
 
   handleBackdropClose() {

@@ -12,7 +12,7 @@
   background: white;
   margin-bottom: 0.5rem;
   padding: 0.5rem 0;
-  
+
   &__retweeted,
   &__header,
   &__content,
@@ -20,7 +20,7 @@
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
-  
+
   &__retweeted {
     color: rgba(155, 155, 155, 1.0);
     font-size: 0.9em;
@@ -42,31 +42,37 @@
     margin-right: 0.4em;
     display: inline-block;
   }
-  
+
   &__screen-name {
     color: rgba(155, 155, 155, 1.0);
     display: inline-block;
   }
-  
+
   &__content {
     white-space: pre-wrap;
     word-wrap: break-word;
     font-size: 1.1em;
     margin: 0.3em 0;
-    
+
     & a {
       color: black;
     }
   }
-  
+
   &__media {
     & > img {
       max-width: 100%;
       width: auto;
     }
   }
-  
+
   &__permalink {
     color: rgba(155, 155, 155, 1.0);
+  }
+
+  &__quoted {
+    width: calc(100% - 18px);
+    margin-left: 9px;
+    border: 1px solid rgba(155, 155, 155, 0.4);
   }
 }

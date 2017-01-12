@@ -1,46 +1,46 @@
 .EventsList {
-  background: var(--color__green);
+  background: var(--color__brand-green);
   font-size: 0.8rem;
   list-style: none;
   margin: 0;
   padding: 0.5rem;
   font-family: var(--type__primary);
-  
+
   & dl {
     margin-top: 0;
   }
-  
+
   & dd {
     margin: 0;
   }
-  
+
   & .msl_event_image {
     display: none;
   }
-  
+
   & .event_item {
     background: white;
     margin-bottom: 0.5rem;
     padding: 0.4rem;
   }
-  
+
   & .msl_event_name {
     font-size: 1rem;
   }
-  
+
   & .msl_event_time {
     font-weight: bold;
     font-style: italic;
   }
-  
+
   & .msl_event_description {
   }
-  
+
   & .msl_event_organisation {
     font-weight: bold;
     display: block;
   }
-  
+
   & a {
     color: black;
   }

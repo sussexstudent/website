@@ -1,7 +1,21 @@
 :root {
-  --color__blue: #27428c;
-  --color__pink: #fdd2c6;
-  --color__red: #ee534f;
-  --color__green: #1db8a4;
-  --color__yellow: #ffdb7a;
+
+  /* BRAND COLORS */
+  --color__brand-green: #1db8a4;
+  --color__brand-yellow: #ffdb7a;
+  --color__brand-blue: #27428c;
+  --color__brand-red: #ee534f;
+  --color__brand-pink: #fdd2c6;
+
+  --color__black: #000000;
+
+  /* E.L James */
+  --color__grey-slate: #323232;
+  --color__grey-winter: #9b9b9b;
+  --color__grey-spring: #ececec;
+  --color__grey-summer: #f5f5f5;
+
+  /* other brands */
+  --color__twitter: ##50abf1;
+  --color__snapchat: #fff900;
 }

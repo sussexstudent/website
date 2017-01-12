@@ -1,15 +1,11 @@
 @import '../core/colors.css';
 
 .Button {
-  background-color: var(--color__blue);
+  background-color: var(--color_brand-blue);
   color: #ffffff;
   display: inline-block;
   padding: 0.8rem 0.4rem;
   text-decoration: none;
-
-  &--warning {
-    background: rgb(255, 69, 0)
-  }
 
   &--external {
     &:after {

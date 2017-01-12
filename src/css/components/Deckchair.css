@@ -1,5 +1,5 @@
 .Deckchair {
-  background-color: var(--color__blue);
+  background-color: var(--color__brand-blue);
   color: white;
   padding: 0.5lh;
   margin-bottom: 1.5lh;
@@ -7,15 +7,15 @@
   padding-right: calc(0.5lh + 24px + 12px);
   position: relative;
   overflow: hidden;
-  
+
   &--color-red {
-    background-color: var(--color__red);
+    background-color: var(--color__brand-red);
   }
-  
+
   &--color-green {
-    background-color: var(--color__green);
+    background-color: var(--color__brand-green);
   }
-   
+
   &__cta {
     float: left;
     padding-top: 1rem;
@@ -36,17 +36,17 @@
     right: 12px;
     top: 12px;
   }
-  
+
   &__header {
     margin: 0;
     font-size: 1.6rem;
   }
-  
+
   &__about {
     margin: 0;
     font-size: 0.9rem;
   }
-  
+
   &__button {
     background: white;
     color: black;

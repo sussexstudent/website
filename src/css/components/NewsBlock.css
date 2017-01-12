@@ -10,7 +10,7 @@
   &__title {
     box-decoration-break: clone;
     padding: 0 0.2em;
-    background-color: var(--color__yellow);
+    background-color: var(--color__brand-yellow);
     color: #000000;
     display: inline;
     font-size: 2lh;
@@ -45,7 +45,7 @@
       display: block;
       width: 30px;
       height: 3px;
-      background: var(--color__yellow);
+      background: var(--color__brand-yellow);
       margin: 0.2rem 0;
       margin-top: auto;
     }

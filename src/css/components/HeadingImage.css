@@ -11,7 +11,7 @@
   &__title {
     box-decoration-break: clone;
     padding: 0 0.2rem;
-    background-color: var(--color__yellow);
+    background-color: var(--color__brand-yellow);
     font-weight: bold;
     color: #000000;
     display: inline;
@@ -22,7 +22,7 @@
 
   &__desc {
     font-weight: bold;
-    background-color: var(--color__yellow);
+    background-color: var(--color__brand-yellow);
     color: #000000;
     max-width: 550px;
     padding: 0 0.2rem;

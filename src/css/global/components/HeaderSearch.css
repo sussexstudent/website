@@ -10,6 +10,7 @@
   width: 100%;
   box-sizing: border-box;
   transition: transform ease 300ms, box-shadow ease 300ms;
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,0.1); /* TOOO */
   box-shadow: 0 3px 5px 0 rgba(0,0,0,0.1);
 
   &--massive {
@@ -17,13 +18,13 @@
       transform: scale(2);
     }
 
-    box-shadow: 0 0 30px 0 rgba(30, 30, 30, 0.4);
+    box-shadow: 0 0 30px 0 rgba(30, 30, 30, 0.4); /* TOOO */
   }
-  
+
   &--no-outline {
     outline: 0;
   }
-  
+
   &--search-icon {
     background-image: url('./global/img/search.svg');
     background-position: right 12px center;
@@ -36,7 +37,7 @@
     width: 45px;
     height: 45px;
     border: 0;
-    background-color: var(--color__yellow);
+    background-color: var(--color__brand-yellow);
     background-image: url('./global/img/search-white.svg');
     background-size: 24px 24px;
     background-repeat: no-repeat;

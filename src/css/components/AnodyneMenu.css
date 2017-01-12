@@ -35,26 +35,26 @@
 }
 
 .AnodyneMenu__item:nth-child(1) .AnodyneMenu__link {
-  border-bottom-color: var(--color__blue);
+  border-bottom-color: var(--color__brand-blue);
 
     &:hover {
-      background-color: var(--color__blue);
+      background-color: var(--color__brand-blue);
     }
 }
 
 .AnodyneMenu__item:nth-child(2) .AnodyneMenu__link {
-  border-bottom-color: var(--color__green);
+  border-bottom-color: var(--color__brand-green);
 
   &:hover {
-    background-color: var(--color__green);
+    background-color: var(--color__brand-green);
   }
 }
 
 .AnodyneMenu__item:nth-child(3) .AnodyneMenu__link {
-  border-bottom-color: var(--color__red);
+  border-bottom-color: var(--color__brand-red);
 
     &:hover {
-      background-color: var(--color__red);
+      background-color: var(--color__brand-red);
     }
 }
 

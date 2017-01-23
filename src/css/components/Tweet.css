@@ -12,10 +12,12 @@
   background: white;
   margin-bottom: 0.5rem;
   padding: 0.5rem 0;
+  @mixin card flat;
 
   &--quoted {
     padding-bottom: 0;
     margin-bottom: 0;
+    box-shadow: none;
   }
 
   &__header,

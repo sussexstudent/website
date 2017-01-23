@@ -31,11 +31,10 @@
 
   &__link {
     display: block;
-    border-bottom: 2px solid #f7f7f7;
     margin-bottom: 1lh;
-
     color: black;
     text-decoration: none;
+    @mixin card flat;
 
     &:hover {
       text-decoration: underline;
@@ -59,5 +58,6 @@
 
   &__title, &__secondary {
     padding: 0.2rem;
+    padding-left: 0.8rem;
   }
 }

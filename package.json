@@ -48,6 +48,7 @@
     "postcss-import": "^9.0.0",
     "postcss-lh": "^1.1.4",
     "postcss-loader": "^1.2.1",
+    "postcss-mixins": "^5.4.1",
     "promise": "7.1.1",
     "react-dev-utils": "^0.4.2",
     "recursive-readdir": "2.1.0",

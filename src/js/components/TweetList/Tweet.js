@@ -1,127 +1,37 @@
 import React from 'react';
-import split from 'lodash/split';
-import sortBy from 'lodash/sortBy';
-import unescape from 'lodash/unescape';
-import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
-import { tweetType } from './props';
-
-function getEntities(types, tweet) {
-  let entities = [];
-  types.forEach((type) => {
-    entities = entities.concat((tweet.entities[type] || []).map((entity) => {
-      const e = entity;
-      e._type = type;
-      return e;
-    }));
-  });
-
-  return entities;
-}
-
-function getTweetAttachment(tweet) {
-  if (Object.hasOwnProperty.call(tweet.entities, 'media') && tweet.entities.media.length > 0) {
-    const media = tweet.entities.media[0];
-
-    return (
-      <div className="Tweet__media">
-        <img src={media.media_url_https} role="presentation" />
-      </div>
-    );
-  }
-
-  return null;
-}
-
-function renderTweetContent(tweet) {
-  console.log(tweet);
-  const fullText = split(tweet.full_text, '');
-  const displayText = fullText.slice(0, tweet.display_text_range[1]);
-  console.log(displayText.join(''));
-
-  const entities = sortBy(getEntities(['hashtags', 'urls', 'media', 'user_mentions'], tweet), e => e.indices[0]);
-
-  const parts = [];
-  let position = 0;
-  let key = 0;
-
-  const typeHandlers = {
-    hashtags(entity, replaced) {
-      parts.push(<a href={`https://twitter.com/hashtag/${entity.text}`} key={key += 1}>{replaced}</a>);
-    },
-    user_mentions(entity, replaced) {
-      parts.push(<a href={`https://twitter.com/${entity.screen_name}`} key={key += 1}>{replaced}</a>);
-    },
-    urls(entity) {
-      parts.push(<a href={entity.url} key={key += 1}>{entity.display_url}</a>);
-    },
-  };
-
-  entities.forEach((entity) => {
-    // our entity starts after the end of our tweet, skip
-    if (entity.indices[0] > tweet.display_text_range[1]) {
-      return;
-    }
-
-    parts.push(unescape(displayText.slice(position, entity.indices[0]).join('')));
-
-    const handler = typeHandlers[entity._type];
-
-    if (handler) {
-      handler(entity, fullText.slice(...entity.indices));
-    }
-
-    position = entity.indices[1];
-  });
-
-  parts.push(unescape(displayText.slice(position, tweet.display_text_range[1]).join('')));
-
-  return parts;
-}
+import TweetHeader from './TweetHeader';
+import TweetPermalink from './TweetPermalink';
+import TweetContent from './TweetContent';
+import TweetAttachment from './TweetAttachment';
 
 function Tweet({ quoted, data }) {
-  if (Object.hasOwnProperty.call(data, 'retweeted_status')) {
-    return (
-      <li className="Tweet">
-        <div>
-          <span className="Tweet__retweeted">{data.user.name} Retweeted</span>
-        </div>
-        <div className="Tweet__header">
-          <span className="Tweet__name">{data.retweeted_status.user.name}</span>
-          <span className="Tweet__screen-name">@{data.retweeted_status.user.screen_name}</span>
-        </div>
-        <div>
-          <div className="Tweet__content">{renderTweetContent(data.retweeted_status)}</div>
-          {getTweetAttachment(data.retweeted_status)}
-          <a href={`https://twitter.com/statuses/${data.id_str}`} className="Tweet__permalink">
-            {distanceInWordsToNow(data.retweeted_status.created_at)} ago
-          </a>
-        </div>
-      </li>
-    );
-  }
+  const isRetweet = Object.hasOwnProperty.call(data, 'retweeted_status');
+  const tweet = isRetweet ? data.retweeted_status : data;
 
   return (
     <li className="Tweet">
-      <div className="Tweet__header">
-        <span className="Tweet__name">{data.user.name}</span>
-        <span className="Tweet__screen-name">@{data.user.screen_name}</span>
-      </div>
+      { isRetweet ? (
+        <div className="Tweet__header">
+          <span className="Tweet__retweeted">{data.user.name} Retweeted</span>
+        </div>
+      ) : null }
+      <TweetHeader user={tweet.user} />
       <div>
-        <div className="Tweet__content">{renderTweetContent(data)}</div>
-        {getTweetAttachment(data)}
-        {data.quoted_status ? <div className="Tweet__quoted">
-          <Tweet data={data.quoted_status} quoted />
+        <TweetContent tweet={tweet} />
+        <TweetAttachment tweet={tweet} />
+        {tweet.quoted_status ? <div className="Tweet__quoted">
+          <Tweet data={tweet.quoted_status} quoted />
         </div> : null}
-        {!quoted ? <a href={`https://twitter.com/statuses/${data.id_str}`} className="Tweet__permalink">
-          {distanceInWordsToNow(data.created_at)} ago
-        </a> : null}
+        {!quoted ? <TweetPermalink tweet={tweet} /> : null}
       </div>
     </li>
   );
 }
 
 Tweet.propTypes = {
-  data: tweetType,
+  data: React.PropTypes.arrayOf(React.PropTypes.shape({
+    id_str: React.PropTypes,
+  })),
   quoted: React.PropTypes.boolean,
 };
 

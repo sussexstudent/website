@@ -4,6 +4,7 @@ import TweetList from '../../components/TweetList';
 import perf from '../../tracking/perf';
 
 const tweetsResource = 'https://dxziiu0wrgyxg.cloudfront.net/getTweets';
+// const tweetsResource = 'http://localhost:3000/tweets';
 
 function render(props) {
   const t = perf.recordTime('TweetList', 'render', null, !props.isLoading);
@@ -12,6 +13,7 @@ function render(props) {
 }
 
 const t = perf.recordTime('TweetList', 'fetch');
+
 fetch(tweetsResource)
   .then((response) => { t.done(); return response.json(); })
   .then(data => render({ tweets: data, isLoading: false }))

@@ -13,7 +13,6 @@
   margin-bottom: 0.5rem;
   padding: 0.5rem 0;
 
-  &__retweeted,
   &__header,
   &__content,
   &__permalink {
@@ -24,6 +23,7 @@
   &__retweeted {
     color: rgba(155, 155, 155, 1.0);
     font-size: 0.9em;
+    margin-bottom: 1em;
     &::before {
       content: '';
       margin-right: 0.3em;

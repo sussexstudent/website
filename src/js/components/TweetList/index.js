@@ -1,7 +1,6 @@
 import React from 'react';
 import Tweet from './Tweet';
 import Loader from '../Loader';
-import { tweetType } from './props';
 
 function TweetList({ tweets, isLoading }) {
   if (isLoading) {
@@ -28,7 +27,9 @@ function TweetList({ tweets, isLoading }) {
 }
 
 TweetList.propTypes = {
-  tweets: React.PropTypes.arrayOf(tweetType),
+  tweets: React.PropTypes.arrayOf(React.PropTypes.shape({
+    id_str: React.PropTypes,
+  })),
   isLoading: React.PropTypes.bool,
 };
 

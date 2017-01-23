@@ -6,6 +6,10 @@
     display: none;
   }
 
+  &--dark {
+    background-color: rgb(38, 38, 38);
+  }
+
   &__advert {
     display: block;
     margin: 0 auto;

@@ -3,7 +3,7 @@ import './style.css';
 import dots from './dots.svg';
 
 function showAds(toggle = false) {
-  document.querySelector('.AdvertBar').classList.toggle('AdvertBar--hide', !toggle);
+  [...document.querySelectorAll('.AdvertBar')].forEach(el => el.classList.toggle('AdvertBar--hide', !toggle));
   return toggle;
 }
 

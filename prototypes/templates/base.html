@@ -4,6 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title_top %}{% block title %}{% endblock %} | {% endblock %}Sussex Students' Union</title>
+
+    <link href="https://www.sussexstudent.com/skins/print.css" rel="stylesheet" type="text/css" media="print" />
+    <link href="https://www.sussexstudent.com/skins/system.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://www.sussexstudent.com/skins/icons.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://www.sussexstudent.com/skins/Controls/AdminList.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://www.sussexstudent.com/skins/Controls/JoinOrganisation.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://www.sussexstudent.com/skins/Controls/ControlPanel.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://www.sussexstudent.com/skins/Controls/Basket.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://www.sussexstudent.com/skins/Common/Shop/ReviewBasket.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://www.sussexstudent.com/skins/Common/Shop/Checkout.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://www.sussexstudent.com/skins/Controls/News.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://www.sussexstudent.com/skins/Controls/newslayouts.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://www.sussexstudent.com/skins/Controls/EventList.css" rel="stylesheet" type="text/css" media="all" />
+
     <link href="{{ assets.main.css }}" rel="stylesheet" />
   </head>
   <body class="Site">
@@ -15,10 +29,10 @@
           <div class="proto__logged-in u-h">
             <ul class="UserBar__list">
               <li class="UserBar__item">Hi James!</li>
-              <li class="UserBar__item">
+              <li class="UserBar__item UserBar__item--action">
                 <a href="/log-out">Log out</a>
               </li>
-              <li class="UserBar__item">
+              <li class="UserBar__item UserBar__item--action UserBar__item--action-highlight">
                 <a href="/basket">Basket</a>
               </li>
             </ul>
@@ -26,7 +40,7 @@
           <div class="proto__logged-out">
             <ul class="UserBar__list">
               <li class="UserBar__item">Hi there!</li>
-              <li class="UserBar__item">
+              <li class="UserBar__item UserBar__item--action">
                 <a href="#" data-action="login">Log in</a>
               </li>
             </ul>
@@ -163,6 +177,9 @@
         </p>
       </div>
     </footer>
+    <div class="AdvertBar AdvertBar--dark AdvertBar--hide">
+      <img class="AdvertBar__advert" src="https://sussexstudent.com/asset/Advert/1/studenttaxisbannerad.jpg" />
+    </div>
 
     <div class="js__modal"></div>
     <script src="{{ assets.main.js }}"></script>

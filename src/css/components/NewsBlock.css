@@ -3,9 +3,16 @@
 
 .NewsBlock {
   margin-bottom: 1lh;
-  border-bottom: 3px solid #ebebeb;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
+
+  &__content {
+    padding: 0 0.5lh;
+    flex-direction: column;
+    display: flex;
+    flex: auto;
+  }
 
   &__title {
     box-decoration-break: clone;
@@ -30,7 +37,7 @@
     height: 200px;
     position: relative;
     background-size: cover;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5lh;
   }
 
   &__meta {
@@ -53,9 +60,8 @@
 
   &__standfirst {
     display: block;
-    color: #323232;
+    color: #000000;
     font-size: 0.8rem;
-    font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
     font-family: var(--type__primary);

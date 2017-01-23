@@ -1,8 +1,7 @@
 @import '../global/core/typography.css';
 
 .UserBar {
-  padding: 0.25lh 0;
-  background: #f7f7f7;
+  background: #f5f5f5;
   color: #000000;
   font-weight: bold;
   font-size: 1.1rem;
@@ -17,12 +16,25 @@
   }
 
   &__item {
-    padding-left: 0.5lh;
-    margin-right: 0;
+    padding: 0 0.75lh;
   }
 
-  & a {
-    color: #000000;
-    font-weight: bold;
+  &__item--action {
+    background: #eeeeee;
+    padding: 0;
+
+    & > a {
+      padding: 0 0.75lh;
+      color: #000000;
+      text-decoration: none;
+      display: block;
+    }
+  }
+
+  &__item--action-highlight {
+    & > a {
+      background: var(--color__brand-blue);
+      color: #ffffff;
+    }
   }
 }

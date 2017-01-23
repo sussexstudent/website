@@ -67,5 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
     System.import('./apps/tweets').then(() => t.done());
   }
 
+
+  if (localStorage.getItem('su_cookie') !== '1') {
+    const el = document.createElement('div');
+    document.body.insertBefore(el, document.body.firstChild);
+    System.import('./components/CookieMessage')
+      .then(module => module.default)
+      .then((CookieMessage) => {
+        ReactDOM.render(<CookieMessage />, el);
+      });
+    localStorage.setItem('su_cookie', '1');
+  }
+
   System.import('./bits/panel').then(panel => panel.default());
 });

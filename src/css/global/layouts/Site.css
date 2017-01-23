@@ -5,6 +5,8 @@
   margin: 0;
   font-family: sans-serif;
   transition: transform ease 300ms;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   &--locked {
     overflow: hidden;

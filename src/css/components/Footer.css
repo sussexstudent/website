@@ -5,6 +5,7 @@
   padding: 1lh 0;
   color: #ffffff;
   font-family: var(--type__primary);
+  font-weight: bold;
 
   & p {
     margin-top: 0;

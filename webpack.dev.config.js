@@ -17,7 +17,7 @@ config.output = {
   chunkFilename: '[id].chunk.js',
 };
 
-config.devtool = 'eval-source-map';
+config.devtool = 'inline-source-map';
 
 config.plugins = config.plugins.concat([
   new webpack.NoErrorsPlugin(),

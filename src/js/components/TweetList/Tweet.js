@@ -33,14 +33,15 @@ function getTweetAttachment(tweet) {
 }
 
 function renderTweetContent(tweet) {
+  console.log(tweet);
   const fullText = split(tweet.full_text, '');
-  const displayText = fullText.slice(...tweet.display_text_range);
+  const displayText = fullText.slice(0, tweet.display_text_range[1]);
+  console.log(displayText.join(''));
 
   const entities = sortBy(getEntities(['hashtags', 'urls', 'media', 'user_mentions'], tweet), e => e.indices[0]);
 
   const parts = [];
   let position = 0;
-
   let key = 0;
 
   const typeHandlers = {
@@ -56,6 +57,7 @@ function renderTweetContent(tweet) {
   };
 
   entities.forEach((entity) => {
+    // our entity starts after the end of our tweet, skip
     if (entity.indices[0] > tweet.display_text_range[1]) {
       return;
     }
@@ -76,7 +78,7 @@ function renderTweetContent(tweet) {
   return parts;
 }
 
-function Tweet({ data }) {
+function Tweet({ quoted, data }) {
   if (Object.hasOwnProperty.call(data, 'retweeted_status')) {
     return (
       <li className="Tweet">
@@ -107,9 +109,12 @@ function Tweet({ data }) {
       <div>
         <div className="Tweet__content">{renderTweetContent(data)}</div>
         {getTweetAttachment(data)}
-        <a href={`https://twitter.com/statuses/${data.id_str}`} className="Tweet__permalink">
+        {data.quoted_status ? <div className="Tweet__quoted">
+          <Tweet data={data.quoted_status} quoted />
+        </div> : null}
+        {!quoted ? <a href={`https://twitter.com/statuses/${data.id_str}`} className="Tweet__permalink">
           {distanceInWordsToNow(data.created_at)} ago
-        </a>
+        </a> : null}
       </div>
     </li>
   );
@@ -117,6 +122,11 @@ function Tweet({ data }) {
 
 Tweet.propTypes = {
   data: tweetType,
+  quoted: React.PropTypes.boolean,
+};
+
+Tweet.defaultProps = {
+  quoted: false,
 };
 
 export default Tweet;

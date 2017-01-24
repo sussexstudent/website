@@ -19,26 +19,47 @@
   }
 
   & .event_item {
-    background: white;
+    background: #ffffff;
     margin-bottom: 0.5rem;
     padding: 0.4rem;
+
+    @mixin card flat;
   }
 
   & .msl_event_name {
     font-size: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 1.1;
+    margin-bottom: 0.3em;
+    display: block;
   }
 
   & .msl_event_time {
     font-weight: bold;
-    font-style: italic;
+    font-size: 0.9em;
+  }
+
+  & .msl_event_location {
+    font-size: 0.8em;
+    color: var(--color__grey-winter);
   }
 
   & .msl_event_description {
+    &:before {
+      content: '';
+      width: 18px;
+      border-top: 2px solid var(--color__brand-green);
+      display: block;
+      margin-top: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
   }
 
   & .msl_event_organisation {
     font-weight: bold;
     display: block;
+    margin-bottom: 0.2em;
   }
 
   & a {

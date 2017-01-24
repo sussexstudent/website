@@ -1,17 +1,18 @@
-.root {
+.PaginationNavigation {
   display: flex;
   padding: 1rem 0;
-}
+  font-weight: bold;
 
-.navigationButton {
-  display: block;
-  width: 30%;
-  text-align: center;
-  cursor: pointer;
-}
+  &__meta {
+    display: block;
+    width: 40%;
+    text-align: center;
+  }
 
-.meta {
-  display: block;
-  width: 40%;
-  text-align: center;
+  &__button {
+    display: block;
+    width: 30%;
+    text-align: center;
+    cursor: pointer;
+  }
 }

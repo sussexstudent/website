@@ -1,11 +1,11 @@
 .InlineSearch {
-  
+
   &__content {
     z-index: var(--layer__search);
   }
-  
+
   &__header {
-    background: var(--color__green);
+    background: var(--color__brand-green);
     height: 240px;
     position: relative;
     left: 0;
@@ -13,14 +13,15 @@
     box-shadow: 0 3px 5px 0 rgba(0,0,0,0.1);
     z-index: var(--layer__search-header)
   }
-  
+
   &__input {
     transition: all 400ms ease-out;
     display: flex;
+    float: right;
     position: relative;
     z-index: var(--layer__search-input)
   }
-  
+
   &__input-container {
     position: absolute;
     left: 0;
@@ -28,21 +29,35 @@
     top: 0;
     padding-top: 64px;
   }
-  
+
   &__backdrop {
     z-index: var(--layer__search-backdrop);
     transition: background 200ms ease;
   }
-  
-  &__close {
-    height: 48px;
-    width: 48px;
-    background-color: transparent;
+
+  &__clear,
+  &__exit {
+    position: absolute;
+    top: 10px;
+    height: 28px;
+    width: 28px;
     border: 0;
-    background-image: url('./global/img/cross-temp-white.svg');
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__clear {
+    right: 8px;
+    background-image: url('./global/img/cross-temp.svg');
     background-size: contain;
   }
-  
+
+  &__exit {
+    left: 8px;
+    background-image: url('./global/img/cross-temp.svg');
+    background-size: contain;
+  }
+
   &__backdrop {
     position: fixed;
     top: 0;
@@ -51,11 +66,11 @@
     left: 0;
     background: rgba(251, 251, 251, 0.90);
   }
-  
+
   &__content {
     display: none;
   }
-  
+
   &__content {
     display: block;
     position: fixed;
@@ -64,7 +79,7 @@
     top: 0;
     botom: 0;
   }
-  
+
   &--isOpen &__input {
     padding-left: 0;
     padding-right: 0;

@@ -1,6 +1,6 @@
 .SearchApp {
   &__container {
-
+    padding-bottom: 2rem;
   }
 
   &__container--is-loading {

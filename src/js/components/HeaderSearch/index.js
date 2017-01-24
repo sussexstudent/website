@@ -19,7 +19,7 @@ class HeaderSearch extends React.Component {
     super(props);
 
     this.state = {
-      query: null,
+      query: '',
       isOpen: false,
       hasFocus: false,
     };
@@ -28,6 +28,8 @@ class HeaderSearch extends React.Component {
     this.handleFocus = this.handleHasFocus.bind(this, true);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBackdropClose = this.handleBackdropClose.bind(this);
+    this.handleExitClose = this.handleExitClose.bind(this);
+    this.handleQueryClear = this.handleQueryClear.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -42,7 +44,7 @@ class HeaderSearch extends React.Component {
   }
 
   handleHasFocus(hasFocus) {
-    const isOpen = hasFocus || this.state.query !== null;
+    const isOpen = hasFocus || this.state.query !== '';
 
     if (isOpen === this.state.isOpen) {
       return;
@@ -69,7 +71,7 @@ class HeaderSearch extends React.Component {
     this.setState({
       isOpen: true,
       transitionSize: {
-        paddingLeft: this.dummyInput.offsetLeft,
+        paddingRight: this.dummyInput.offsetLeft,
         width: this.dummyInput.clientWidth,
       },
     });
@@ -86,9 +88,19 @@ class HeaderSearch extends React.Component {
   }
 
   handleBackdropClose() {
-    if (this.state.query === null) {
+    if (this.state.query === '') {
       this.handleHasFocus(false);
     }
+  }
+
+  handleExitClose(e) {
+    e.preventDefault();
+    this.setState({ query: '' }, () => { this.handleHasFocus(false); });
+  }
+
+  handleQueryClear(e) {
+    e.preventDefault();
+    this.setState({ query: '' });
   }
 
   renderSearching(isOpen) {
@@ -99,6 +111,9 @@ class HeaderSearch extends React.Component {
             className={cx('InlineSearch__input')}
             style={this.state.transitionSize}
           >
+            <button className="InlineSearch__exit" onClick={this.handleExitClose}>
+              <span className="u-h">Exit search</span>
+            </button>
             <input
               className="HeaderSearch HeaderSearch--no-outline"
               placeholder="Search"
@@ -107,6 +122,11 @@ class HeaderSearch extends React.Component {
               onChange={this.handleInputChange}
               autoFocus={isOpen}
             />
+            {this.state.query ? (
+              <button className="InlineSearch__clear" onClick={this.handleQueryClear}>
+                <span className="u-h">Clear search</span>
+              </button>
+            ) : null}
           </form>
         </div>) : null}
         <div className="InlineSearch__content">

@@ -4,13 +4,13 @@ function PaginationNavigation(props) {
   return (
     <div className="PaginationNavigation">
       <a
-        className="PaginationNavigation__navigationButton"
+        className="PaginationNavigation__button"
         tabIndex="-1"
         onClick={props.onPageChange.bind(null, props.currentPage - 1)}
       >Previous</a>
       <span className="PaginationNavigation__meta">Page {props.currentPage} of {props.totalPages}</span>
       <a
-        className="PaginationNavigation__navigationButton"
+        className="PaginationNavigation__button"
         tabIndex="-1"
         onClick={props.onPageChange.bind(null, props.currentPage + 1)}
       >Next</a>

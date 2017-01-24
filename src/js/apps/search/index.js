@@ -1,6 +1,7 @@
 import React from 'react';
 import qs from 'query-string';
 import cx from 'classnames';
+import debounce from 'lodash/debounce';
 
 import perf from '../../tracking/perf';
 import SearchResult from '../../components/SearchResult';
@@ -26,6 +27,7 @@ class SearchPage extends React.Component {
     this.handleAreaUpdate = this.handleAreaUpdate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleNotFoundDesiredPage = this.handleNotFoundDesiredPage.bind(this);
+    this.loadQueryResultsDebounced = debounce(this.loadQueryResults.bind(this), 350);
 
     this.state = {
       // query: qs.parse(location.search).q || '',
@@ -56,7 +58,7 @@ class SearchPage extends React.Component {
   loadQueryResults(query) {
     const { page } = this.state;
     this.setState({ isLoading: true })
-    const t = perf.recordTime('Search', 'fetchResults')
+    const t = perf.recordTime('Search', 'fetchResults', { query });
     window
       .fetch(`https://www.googleapis.com/customsearch/v1?q=${query}&num=10&start=${((page - 1) * 10) + 1}&cx=012345016055136658152%3Aaszn2y43suc&key=AIzaSyCMGfdDaSfjqv5zYoS0mTJnOT3e9MURWkU&fields=${fields}`)
       .then((res) => { t.done(); return res.json() })
@@ -77,12 +79,19 @@ class SearchPage extends React.Component {
     this.setState({ page: 1 }, () => this.handleUpdate());
   }
 
-  handleUpdate(query) {
-    this.loadQueryResults(query);
+  handleUpdate(forceSearchTerm = null) {
+    const query = forceSearchTerm === null ? this.props.query : forceSearchTerm;
+
+    if (query !== '') {
+      this.loadQueryResultsDebounced(query);
+    } else {
+      this.setState({ results: null, isLoading: false });
+    }
+
     const search = qs.parse(location.search);
     search.q = query;
     search.page = this.props.page;
-    window.history.replaceState({}, '', `${location.pathname}?${qs.stringify(search)}`);
+    // window.history.replaceState({}, '', `${location.pathname}?${qs.stringify(search)}`);
     // eslint-disable-next-line no-undef
     ga('set', 'page', location.pathname + location.search);
     // eslint-disable-next-line no-undef
@@ -131,19 +140,19 @@ class SearchPage extends React.Component {
           {items && items.map(item => ((
             <SearchResult key={item.cacheId} item={item} />
           )))}
-          {!items ? (<li>No results found.</li>) : null}
+          {!items && query !== '' ? (<li>No results found.</li>) : null}
         </ul>
-        {results.searchInformation && <PaginationNavigation
+        {items && <PaginationNavigation
           currentPage={page}
           totalPages={Math.ceil(results.searchInformation.totalResults / 10)}
           onPageChange={this.handlePageChange}
         />}
-        <FeedbackButton
+        { true ? null : <FeedbackButton
           buttonText="Haven't found what you were looking for?"
           givenText="Sorry you couldn't find what you were looking for. Thank you for the feedback, we are alway wanting to improve our site."
           feedbackKey={`${query}:${searchArea}`}
           onFeedback={this.handleNotFoundDesiredPage}
-        />
+        /> }
       </div>
     );
   }

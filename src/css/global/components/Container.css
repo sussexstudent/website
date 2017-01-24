@@ -10,9 +10,11 @@
 
   &--for-search {
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     height: 100vh;
     padding-top: 240px;
     position: absolute;
+    box-sizing: border-box;
     top: 0;
     left: 0;
     right: 0;
@@ -20,5 +22,15 @@
     padding-right: 1lh;
     max-width: 1280px;
     margin: 0 auto;
+  }
+
+  &--sv-bleed {
+    padding-left: 0;
+    padding-right: 0;
+
+    @media (--medium) {
+      padding-left: 1lh;
+      padding-right: 1lh;
+    }
   }
 }

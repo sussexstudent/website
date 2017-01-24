@@ -10,7 +10,7 @@
     position: relative;
     left: 0;
     right: 0;
-    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.1);
+    @mixin card raised;
     z-index: var(--layer__search-header)
   }
 

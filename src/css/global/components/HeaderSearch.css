@@ -10,8 +10,8 @@
   width: 100%;
   box-sizing: border-box;
   transition: transform ease 300ms, box-shadow ease 300ms;
-  box-shadow: 0 3px 5px 0 rgba(0,0,0,0.1); /* TOOO */
-  box-shadow: 0 3px 5px 0 rgba(0,0,0,0.1);
+  @mixin card raised;
+
 
   &--massive {
     @media (--medium) {

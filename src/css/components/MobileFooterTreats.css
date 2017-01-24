@@ -1,0 +1,29 @@
+.MobileFooterTreats {
+  padding-top: 1lh;
+  @media (--medium) {
+    display: none;
+  }
+
+  display: block;
+  text-align: center;
+
+  & > div {
+    margin-bottom: 1lh;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__social > .Social {
+    justify-content: center;
+  }
+
+  &__to-top {
+    background: var(--color__grey-slate);
+    color: #ffffff;
+    padding: 0.5lh 0;
+    text-align: center;
+    font-weight: bold;
+  }
+}

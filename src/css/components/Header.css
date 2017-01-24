@@ -17,14 +17,6 @@
     }
   }
 
-  &__search, &__logo, &__social {
-    margin-bottom: 1lh;
-
-    @media (--medium) {
-      margin-bottom: 0;
-    }
-  }
-
   &__search {
     flex: 2;
   }
@@ -35,5 +27,20 @@
 
   &__social {
     flex: 1;
+    display: none;
+    & .Social {
+      justify-content: flex-end;
+    }
+  }
+
+  &__search
+  &__logo,
+  &__social {
+    margin-bottom: 1lh;
+
+    @media (--medium) {
+      margin-bottom: 0;
+      display: block;
+    }
   }
 }

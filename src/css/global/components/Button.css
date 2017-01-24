@@ -1,11 +1,17 @@
 @import '../core/colors.css';
 
 .Button {
-  background-color: var(--color_brand-blue);
+  background-color: var(--color__brand-blue);
   color: #ffffff;
   display: inline-block;
-  padding: 0.8rem 0.4rem;
+  padding: 0.2em 0.6em;
   text-decoration: none;
+  font-weight: bold;
+
+  &--yellow {
+    background: var(--color__brand-yellow);
+    color: #000000;
+  }
 
   &--external {
     &:after {

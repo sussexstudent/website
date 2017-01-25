@@ -7,7 +7,7 @@ import HeaderSearch from './components/HeaderSearch';
 import LazyLoadApp from './components/LazyLoadApp';
 import LoginModal from './components/LoginModal';
 import NewsletterModal from './components/NewsletterModal';
-import SnapchatModal from './components/SnapchatModal';
+// import SnapchatModal from './components/SnapchatModal';
 import perf from './tracking/perf';
 import renderSearch from './apps/search';
 import eventCardLinking from './bits/events_card_linking';
@@ -24,9 +24,9 @@ const actions = {
     e.preventDefault();
     modals.add(<LoginModal />);
   },
-  snapchat(e) {
-    e.preventDefault();
-    modals.add(<SnapchatModal />);
+  snapchat() {
+    // e.preventDefault();
+    // modals.add(<SnapchatModal />);
   },
   newsletter_subscribe(e) {
     e.preventDefault();

@@ -10,6 +10,7 @@ import NewsletterModal from './components/NewsletterModal';
 import SnapchatModal from './components/SnapchatModal';
 import perf from './tracking/perf';
 import renderSearch from './apps/search';
+import eventCardLinking from './bits/events_card_linking';
 
 // Promise polyfil
 if (!window.Promise) {
@@ -89,5 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('su_cookie', '1');
   }
 
-  System.import('./bits/panel').then(panel => panel.default());
+  eventCardLinking();
+
+  if (localStorage.getItem('su_proto') === '1') {
+    System.import('./bits/panel').then(panel => panel.default());
+  }
 });

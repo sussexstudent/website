@@ -22,8 +22,28 @@
     background: #ffffff;
     margin-bottom: 0.5rem;
     padding: 0.4rem;
-
     @mixin card flat;
+  }
+
+  &__item {
+    background: #ffffff;
+    margin-bottom: 0.5rem;
+    padding: 0.4rem;
+    text-decoration: none;
+    transition: box-shadow 300ms ease;
+    display: block;
+    @mixin card flat;
+
+    &:hover {
+      @mixin card raised;
+    }
+
+    & .event_item {
+      box-shadow: none;
+      padding: 0;
+      margin-bottom: 0;
+      background: transparent;
+    }
   }
 
   & .msl_event_name {

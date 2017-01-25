@@ -2,6 +2,9 @@
 @import '../global/core/typography.css';
 
 .ContentBlock {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1lh;
 
   &__heading {
     font-family: var(--type__primary);

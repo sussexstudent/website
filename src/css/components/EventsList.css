@@ -5,6 +5,9 @@
   margin: 0;
   padding: 0.5rem;
   font-family: var(--type__primary);
+  flex: auto;
+  display: flex;
+  flex-direction: column;
 
   & dl {
     margin-top: 0;
@@ -16,6 +19,14 @@
 
   & .msl_event_image {
     display: none;
+  }
+
+  &__view-more {
+    display: block;
+    margin-top: auto;
+    color: #ffffff !important; /* TODO: launch rush, plz fix */
+    font-weight: bold;
+    text-decoration: none;
   }
 
   & .event_item {

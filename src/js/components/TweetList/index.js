@@ -22,6 +22,7 @@ function TweetList({ tweets, isLoading }) {
   return (
     <ul className="TweetList">
       {tweets.map(tweet => <Tweet data={tweet} key={tweet.id_str} />)}
+      <a className="TweetList__view-more" href="https://twitter.com/USSU/lists/ussu">View on Twitter</a>
     </ul>
   );
 }

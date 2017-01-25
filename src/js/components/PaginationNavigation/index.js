@@ -1,19 +1,21 @@
 import React from 'react';
 
-function PaginationNavigation(props) {
+function PaginationNavigation({ currentPage, totalPages, onPageChange }) {
   return (
     <div className="PaginationNavigation">
-      <a
+      <button
         className="PaginationNavigation__button"
         tabIndex="-1"
-        onClick={props.onPageChange.bind(null, props.currentPage - 1)}
-      >Previous</a>
-      <span className="PaginationNavigation__meta">Page {props.currentPage} of {props.totalPages}</span>
-      <a
+        onClick={onPageChange.bind(null, currentPage - 1)}
+        disabled={currentPage <= 1}
+      >Previous</button>
+      <span className="PaginationNavigation__meta">Page {currentPage} of {totalPages}</span>
+      <button
         className="PaginationNavigation__button"
         tabIndex="-1"
-        onClick={props.onPageChange.bind(null, props.currentPage + 1)}
-      >Next</a>
+        onClick={onPageChange.bind(null, currentPage + 1)}
+        disabled={currentPage >= totalPages}
+      >Next</button>
     </div>
   );
 }

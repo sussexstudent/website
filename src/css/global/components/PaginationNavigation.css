@@ -14,5 +14,9 @@
     width: 30%;
     text-align: center;
     cursor: pointer;
+    border: 0;
+    background: transparent;
+    font-size: 1rem;
+    font-family: var(--type__primary);
   }
 }

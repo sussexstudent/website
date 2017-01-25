@@ -10,6 +10,7 @@ function Tweet({ isQuoted, data }) {
   const hasQuote = Object.hasOwnProperty.call(data, 'quoted_status');
   const tweet = isRetweet ? data.retweeted_status : data;
 
+  /* eslint-disable */
   return (
     <li className={cx('Tweet', { 'Tweet--quoted': isQuoted })}>
       { isRetweet ? (
@@ -26,9 +27,11 @@ function Tweet({ isQuoted, data }) {
         </div> : null}
         {!isQuoted ? <TweetPermalink tweet={tweet} /> : null}
       </div>
+      <a href={`https://twitter.com/statuses/${tweet.id_str}`} className="Tweet__faux-link" />
     </li>
   );
 }
+/* eslint-enable */
 
 Tweet.propTypes = {
   data: React.PropTypes.arrayOf(React.PropTypes.shape({

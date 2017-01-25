@@ -104,4 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
       welcome.appendChild(document.createTextNode(`Hi ${firstName}!`));
     }
   }
+
+  [...document.querySelectorAll('.UserBar__item-dropdown')].forEach((dropdownEl) => {
+    if (dropdownEl.firstChild) {
+      dropdownEl.parentNode.classList.remove('UserBar__item--empty');
+    }
+  });
+
+  [...document.querySelectorAll('.UserBar__item-admin')]
+    .forEach(item => item.querySelector('span').addEventListener('click', () => item.classList.toggle('UserBar__item--open')));
 });

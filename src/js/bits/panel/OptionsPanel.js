@@ -7,15 +7,8 @@ function showAds(toggle = false) {
   return toggle;
 }
 
-function isLoggedIn(toggle = true) {
-  document.querySelector('.proto__logged-in').classList.toggle('u-h', !toggle);
-  document.querySelector('.proto__logged-out').classList.toggle('u-h', toggle);
-  return toggle;
-}
-
 const optionsList = {
   showAds,
-  isLoggedIn,
 };
 
 function generateInitial(options) {

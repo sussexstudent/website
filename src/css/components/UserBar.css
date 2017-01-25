@@ -19,6 +19,18 @@
     padding: 0 0.75lh;
   }
 
+  &__item--empty {
+    display: none;
+  }
+
+  &__item-admin {
+    flex: auto;
+    position: relative;
+    &:last-child {
+      margin-right: auto;
+    }
+  }
+
   &__item--action {
     background: #eeeeee;
     padding: 0;
@@ -37,4 +49,53 @@
       color: #ffffff;
     }
   }
+
+  &__item-dropdown {
+    display: none;
+    background-color: var(--color__grey-summer);
+    position: absolute;
+    top: 29px;
+    left: 0;
+    padding: 1rem;
+    z-index: var(--layer__user-bar-dropdown);
+    @mixin card flat;
+  }
+
+  &__item--open &__item-dropdown {
+    display: block;
+  }
+}
+
+.UserBar__item-admin {
+  & h3 {
+    display: none;
+  }
+
+  & li, & .msl_admin {
+    font-size: 0.9rem;
+    display: block !important;
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  & a {
+    text-decoration: none;
+    color: #000000;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.UserBar__admin-menu {
+
+
+}
+
+
+.UserBar__admin-control-panel {
+
 }

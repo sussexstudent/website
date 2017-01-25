@@ -37,8 +37,11 @@
     </div>
     <div class="UserBar">
       <div class="Container Container--sv-bleed">
-          <div class="UserBar__admin">
-            <div class="UserBar__admin-list">
+        <ul class="UserBar__list">
+
+            <li class="UserBar__item UserBar__item-admin UserBar__item--empty UserBar__admin-menu">
+              <span>Admin</span>
+              <div class="UserBar__item-dropdown">
               <div class="mslwidget">
 <div id="msl_admin" class="msl_admin_menu">
 
@@ -106,16 +109,18 @@
 
 </div>
 </div>
-            </div>
-            <div class="UserBar__admin-page">
+</div>
+            </li>
+            <li class="UserBar__item UserBar__item-admin UserBar__item--empty UserBar__admin-control-panel">
+              <span>Edit</span>
+              <div class="UserBar__item-dropdown">
+
               <div id="controlpanel" class="sidepanel">
 	<h3>Control Panel</h3>
 	<ul id="ctl00_controlpanel_ulControlPanel"><li id="ctl00_controlpanel_organisationadminnews0" class="msl_edit"><a href="/organisation/admin/news/0/">Edit MSL Membership System News</a></li><li id="ctl00_controlpanel_editpagepagenamehomenext" class="msl_edit"><a href="/edit/page/?page_name=/home-next/">Edit Page</a></li><li id="ctl00_controlpanel_editpagesnewpageparenthomenext" class="msl_add"><a href="/edit/pages/newpage/?parent=/home-next/">Add child page</a></li><li id="ctl00_controlpanel_adminents" class="msl_edit"><a href="/admin/ents/">Edit MSL Membership System events</a></li></ul>
 </div>
-            </div>
-          </div>
-          <div class="proto__logged-in u-h">
-            <ul class="UserBar__list">
+</div>
+            </li>
               <li class="UserBar__item UserBar__item--welcome"></li>
               <li class="UserBar__item UserBar__item--action">
                 <a href="/log-out">Log out</a>
@@ -124,15 +129,6 @@
                 <a href="/basket">Basket</a>
               </li>
             </ul>
-          </div>
-          <div class="proto__logged-out">
-            <ul class="UserBar__list">
-              <li class="UserBar__item UserBar__item--welcome">Hi there!</li>
-              <li class="UserBar__item UserBar__item--action">
-                <a href="#" data-action="login">Log in</a>
-              </li>
-            </ul>
-          </div>
       </div>
     </div>
     <header class="Header">

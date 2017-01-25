@@ -19,6 +19,17 @@
     <link href="https://www.sussexstudent.com/skins/Controls/EventList.css" rel="stylesheet" type="text/css" media="all" />
 
     <link href="{{ assets.main.css }}" rel="stylesheet" />
+    <script type="text/javascript">
+    //<![CDATA[
+    var mslUserInfo =
+    {"userinfo": {
+      "IdCardNumber": "21501812",
+      "FirstName": "James",
+      "LastName": "Canning",
+      "UniqueId": "fdf269d8-90a1-43f2-af0d-d94515544190"
+    }}//]]>
+    </script>
+
   </head>
   <body class="Site">
     <div class="AdvertBar AdvertBar--hide">
@@ -26,9 +37,86 @@
     </div>
     <div class="UserBar">
       <div class="Container Container--sv-bleed">
+          <div class="UserBar__admin">
+            <div class="UserBar__admin-list">
+              <div class="mslwidget">
+<div id="msl_admin" class="msl_admin_menu">
+
+    <h3>
+	Admin
+    </h3>
+
+
+
+    <ul id="ulAdmin">
+            <li><a href="/admin/adverts/" class="msl_admin">Adverts Admin</a></li>
+
+            <li><a href="/admin/blogs/" class="msl_admin">Blog Admin</a></li>
+
+            <li><a href="/admin/directory/" class="msl_admin">Directory Admin</a></li>
+
+            <li><a href="/admin/elections/" class="msl_admin">Elections Admin</a></li>
+
+            <li><a href="/admin/ents/" class="msl_admin">Events Admin</a></li>
+
+            <li><a href="/admin/forums/" class="msl_admin">Forum Admin</a></li>
+
+            <li><a href="/admin/ideas/" class="msl_admin">Ideas Admin</a></li>
+
+            <li><a href="/admin/jobs/" class="msl_admin">Jobs Admin</a></li>
+
+            <li><a href="/admin/livefeed/" class="msl_admin">LiveFeed Admin</a></li>
+
+            <li><a href="/admin/marketplace/" class="msl_admin">Marketplace Admin</a></li>
+
+            <li><a href="/admin/messaging/" class="msl_admin">Messaging Admin</a></li>
+
+            <li><a href="/admin/news/" class="msl_admin">News Admin</a></li>
+
+            <li><a href="/admin/poll/" class="msl_admin">Poll Admin</a></li>
+
+            <li><a href="/admin/profile/" class="msl_admin">Profile Admin</a></li>
+
+            <li><a href="/admin/referenda/" class="msl_admin">Referenda Admin</a></li>
+
+            <li><a href="/admin/shop/" class="msl_admin">Shop Admin</a></li>
+
+            <li><a href="/admin/surveys/" class="msl_admin">Survey Admin</a></li>
+
+            <li><a href="/admin/surveyadmin/" class="msl_admin">Survey Admin (All surveys)</a></li>
+
+            <li><a href="/admin/volunteering/" class="msl_admin">Volunteering Admin</a></li>
+
+            <li><a href="/admin/portal/" class="msl_admin">Website Admin</a></li>
+        </ul>
+
+	<div id="ctl00_AdminPanel_pnlOrganisations">
+
+        <h4>
+	    <a id="ctl00_AdminPanel_lbOrganisations" href="javascript:__doPostBack('ctl00$AdminPanel$lbOrganisations','')">Organisations</a>
+        </h4>
+
+        <ul id="ulOrgs">
+                <li><a href="/organisation/admin/6312/" class="msl_admin">Comedy</a></li>
+
+                <li><a href="/organisation/admin/0/" class="msl_admin">MSL Membership System</a></li>
+            </ul>
+
+</div>
+
+</div>
+</div>
+            </div>
+            <div class="UserBar__admin-page">
+              <div id="controlpanel" class="sidepanel">
+	<h3>Control Panel</h3>
+	<ul id="ctl00_controlpanel_ulControlPanel"><li id="ctl00_controlpanel_organisationadminnews0" class="msl_edit"><a href="/organisation/admin/news/0/">Edit MSL Membership System News</a></li><li id="ctl00_controlpanel_editpagepagenamehomenext" class="msl_edit"><a href="/edit/page/?page_name=/home-next/">Edit Page</a></li><li id="ctl00_controlpanel_editpagesnewpageparenthomenext" class="msl_add"><a href="/edit/pages/newpage/?parent=/home-next/">Add child page</a></li><li id="ctl00_controlpanel_adminents" class="msl_edit"><a href="/admin/ents/">Edit MSL Membership System events</a></li></ul>
+</div>
+            </div>
+          </div>
           <div class="proto__logged-in u-h">
             <ul class="UserBar__list">
-              <li class="UserBar__item">Hi James!</li>
+              <li class="UserBar__item UserBar__item--welcome"></li>
               <li class="UserBar__item UserBar__item--action">
                 <a href="/log-out">Log out</a>
               </li>
@@ -39,7 +127,7 @@
           </div>
           <div class="proto__logged-out">
             <ul class="UserBar__list">
-              <li class="UserBar__item">Hi there!</li>
+              <li class="UserBar__item UserBar__item--welcome">Hi there!</li>
               <li class="UserBar__item UserBar__item--action">
                 <a href="#" data-action="login">Log in</a>
               </li>

@@ -95,4 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (localStorage.getItem('su_proto') === '1') {
     System.import('./bits/panel').then(panel => panel.default());
   }
+  // eslint-disable-next-line no-undef
+  if (mslUserInfo && mslUserInfo.userinfo && mslUserInfo.userinfo.FirstName) {
+    // eslint-disable-next-line no-undef
+    const firstName = mslUserInfo.userinfo.FirstName;
+    const welcome = document.querySelector('.UserBar__item--welcome');
+    if (welcome) {
+      welcome.appendChild(document.createTextNode(`Hi ${firstName}!`));
+    }
+  }
 });

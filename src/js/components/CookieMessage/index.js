@@ -21,7 +21,7 @@ class CookieMessage extends React.Component {
     return (
       <div className="GlobalNotice">
         {'This site uses cookies. By continuing to browse, you agree to our use of cookies on the site. '}
-        <a href="/privacy-policy">Learn more</a>.
+        <a href="/cookie-policy">Learn more</a>.
         <button className="GlobalNotice__close" title="Close" onClick={this.handleHide}>
           <span className="u-h">
             Close

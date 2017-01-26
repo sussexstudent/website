@@ -1,6 +1,9 @@
 .AdvertBar {
   background-color: var(--color__grey-spring);
   box-sizing: border-box;
+  display: flex;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 
   &--hide {
     display: none;
@@ -10,9 +13,17 @@
     background-color: var(--color__grey-sad-slate);
   }
 
+  & a {
+    display: block;
+  }
+
   &__advert {
     display: block;
     margin: 0.5lh auto;
+  }
+
+  & img {
+    display: block;
     width: auto;
     max-width: 100%;
   }

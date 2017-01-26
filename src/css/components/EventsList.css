@@ -27,6 +27,10 @@
     color: #ffffff !important; /* TODO: launch rush, plz fix */
     font-weight: bold;
     text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   & .event_item {

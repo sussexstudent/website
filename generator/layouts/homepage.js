@@ -16,6 +16,7 @@ const Homepage = () => (
           <div className="ContentBlock__heading">News</div>
           <ul className="NewsGrid">
             {'{news}'}
+            <a className="NewsGrid__view-more" href="/news">Read more news stories</a>
           </ul>
         </div>
         <div className="ContentBlock">

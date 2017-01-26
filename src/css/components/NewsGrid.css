@@ -4,11 +4,12 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  flex: auto;
+  align-content: flex-start;
 
   &__item {
 
   }
-
 }
 
 @media (--small) {
@@ -16,3 +17,18 @@
     gg: columns(1/2 1/2);
   }
 }
+
+.NewsViewMore {
+    background: var(--color__brand-yellow);
+    color: var(--color__grey-slate);
+    font-size: 0.8rem;
+    align-self: flex-start;
+    padding: 0.1rem 0.4rem;
+    font-family: var(--type__primary);
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }

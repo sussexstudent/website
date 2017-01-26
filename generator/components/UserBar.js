@@ -1,6 +1,8 @@
 import React from 'react';
 import MSLTag from './MSLTag';
 
+const mslLogout = MSLTag('LoginButton', { LoginText: 'Log in', LogoutText: 'Log out', GoHomeOnLogout: 'True' });
+
 const loggedInList = (
   <ul className="UserBar__list">
     <li className="UserBar__item UserBar__item-admin UserBar__item--empty UserBar__admin-menu">
@@ -13,14 +15,11 @@ const loggedInList = (
     </li>
 
     <li className="UserBar__item UserBar__item--welcome" />
-    <li className="UserBar__item UserBar__item--action">
-      <a href="/login" data-action="login">Log in</a>
-    </li>
+    <li className="UserBar__item UserBar__item--action" dangerouslySetInnerHTML={{ __html: mslLogout }} />
 
     <li className="UserBar__item UserBar__item--action UserBar__item--action-highlight">
-      <a href="/basket">Basket</a>
+      <a href="/shop/basket">Basket</a>
     </li>
-
   </ul>
 );
 

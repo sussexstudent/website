@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import throttle from 'lodash/throttle';
 import MainLayout from './layouts/main';
+import Homepage from './layouts/homepage';
 import assets from '../webpack-assets.json';
-import ncp from "copy-paste";
+import ncp from 'copy-paste';
 
 const render = (element) => {
   return ReactDOM.renderToStaticMarkup(element);
@@ -23,6 +24,7 @@ const partials = {
   'Main: <head> Content': headContent,
   'Main: Public Template': render(<MainLayout assets={assets} />),
   'Main: Logged In User Template': render(<MainLayout assets={assets} loggedIn />),
+  'Homepage!:': render(<Homepage />),
 };
 /*
 Object.keys(partials).forEach((key) => {

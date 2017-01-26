@@ -1,6 +1,9 @@
 @import './global/screen.css';
 
 
+/* msl */
+@import './msl/index.css';
+
 /* general */
 @import './components/Footer.css';
 @import './components/Header.css';

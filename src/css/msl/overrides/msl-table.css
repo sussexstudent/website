@@ -1,0 +1,12 @@
+table.msl_table {
+  border: 0;
+}
+
+table.msl_table th {
+  background: transparent;
+  color: black;
+
+  &:last-child {
+    border-right: 0;
+  }
+}

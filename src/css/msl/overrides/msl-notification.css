@@ -1,0 +1,27 @@
+.msl_notification {
+  padding: 0 !important;
+
+  & .msl_info {
+    padding: 0.2rem 0.4rem;
+    margin: 0;
+    border: 0;
+    background: #ffdb7a;
+    color: #354650;
+  }
+
+  & .confirm {
+    margin: 0;
+    padding: 0.2rem 0.4rem;
+    border: 0;
+    background: #1db8a4;
+
+
+    & a {
+      color: #ffffff;
+
+      &:after {
+        content: "!";
+      }
+    }
+  }
+}

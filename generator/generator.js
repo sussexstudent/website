@@ -13,6 +13,7 @@ const render = (element) => {
 const headContent = `
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="${assets.productionFonts.css}" rel="stylesheet" />
 <link href="${assets.main.css}" rel="stylesheet" />
 <MSL:JsonUserInfo />
 `;

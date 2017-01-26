@@ -21,7 +21,11 @@
     "assets": {
       "main": {
         "js": "/assets/main.js",
-        "css": "/assets/style.css"
+        "css": "/assets/style.main.css"
+      },
+      "devFonts": {
+        "js": "/assets/main.js",
+        "css": "/assets/style.devFonts.css"
       }
     },
     "menu": [

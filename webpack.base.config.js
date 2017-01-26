@@ -16,8 +16,8 @@ const env = {
 };
 env['build'] = (env.production || env.staging)
 const extractCSS = new ExtractTextPlugin({
-  filename: isProduction ? 'union.[contenthash].css' : 'style.css',
-  allChunks: true,
+  filename: isProduction ? 'union.[contenthash].[name].css' : 'style.[name].css',
+  allChunks: false,
 });
 
 module.exports = {
@@ -25,6 +25,8 @@ module.exports = {
 
   entry: {
     main: './src/entry.js',
+    devFonts: './src/env-dev.js',
+    productionFonts: './src/env-production.js',
   },
 
   output: {

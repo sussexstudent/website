@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Larsseit';
+  src: url('../font/Larsseit-Bold.woff');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Larsseit';
+  src: url('../font/Larsseit.woff');
+  font-weight: normal;
+}

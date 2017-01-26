@@ -1,6 +1,5 @@
 .AdvertBar {
-  background-color: rgb(237, 237, 237);
-  padding: 0.5lh;
+  background-color: var(--color__grey-spring);
   box-sizing: border-box;
 
   &--hide {
@@ -8,12 +7,12 @@
   }
 
   &--dark {
-    background-color: rgb(38, 38, 38);
+    background-color: var(--color__grey-sad-slate);
   }
 
   &__advert {
     display: block;
-    margin: 0 auto;
+    margin: 0.5lh auto;
     width: auto;
     max-width: 100%;
   }

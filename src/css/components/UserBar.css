@@ -24,8 +24,8 @@
   }
 
   &__item-admin {
-    flex: auto;
     position: relative;
+
     &:last-child {
       margin-right: auto;
     }
@@ -43,6 +43,10 @@
     }
   }
 
+  &__item--welcome {
+    margin-left: auto;
+  }
+
   &__item--action-highlight {
     & > a {
       background: var(--color__brand-blue);
@@ -56,6 +60,7 @@
     position: absolute;
     top: 29px;
     left: 0;
+    min-width: 220px;
     padding: 1rem;
     z-index: var(--layer__user-bar-dropdown);
     @mixin card flat;
@@ -67,6 +72,10 @@
 }
 
 .UserBar__item-admin {
+  & > span {
+    cursor: pointer;
+  }
+
   & h3 {
     display: none;
   }

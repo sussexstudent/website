@@ -112,5 +112,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   [...document.querySelectorAll('.UserBar__item-admin')]
-    .forEach(item => item.querySelector('span').addEventListener('click', () => item.classList.toggle('UserBar__item--open')));
+    .forEach((item) => {
+      item.querySelector('span')
+        .addEventListener('click', () => {
+          item.classList.toggle('UserBar__item--open');
+          setTimeout(() => {
+            registerOnClickOff(item.querySelector('.UserBar__item-dropdown'), () => {
+              console.log('clicked off');
+              item.classList.toggle('UserBar__item--open', false);
+            });
+          }, 0);
+        });
+    });
 });

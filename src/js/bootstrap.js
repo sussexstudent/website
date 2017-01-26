@@ -2,13 +2,15 @@ import 'whatwg-fetch';
 import Promise from 'promise-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import has from 'lodash/has';
 import ModalManager from './bits/modals/manager';
 import HeaderSearch from './components/HeaderSearch';
 import LazyLoadApp from './components/LazyLoadApp';
-import LoginModal from './components/LoginModal';
-import NewsletterModal from './components/NewsletterModal';
+// import LoginModal from './components/LoginModal';
+// import NewsletterModal from './components/NewsletterModal';
 // import SnapchatModal from './components/SnapchatModal';
 import perf from './tracking/perf';
+import registerOnClickOff from './libs/registerOnClickOff';
 import renderSearch from './apps/search';
 import eventCardLinking from './bits/events_card_linking';
 import pseudoActiveMenu from './bits/pseudoActiveMenu';
@@ -21,17 +23,17 @@ if (!window.Promise) {
 const modals = ModalManager();
 
 const actions = {
-  login(e) {
-    e.preventDefault();
-    modals.add(<LoginModal />);
+  login() {
+    // e.preventDefault();
+    // modals.add(<LoginModal />);
   },
   snapchat() {
     // e.preventDefault();
     // modals.add(<SnapchatModal />);
   },
-  newsletter_subscribe(e) {
-    e.preventDefault();
-    modals.add(<NewsletterModal />);
+  newsletter_subscribe() {
+    // e.preventDefault();
+    // modals.add(<NewsletterModal />);
   },
 };
 
@@ -43,6 +45,7 @@ function linkListener(e) {
 }
 
 window.ga = () => {};
+
 
 document.addEventListener('DOMContentLoaded', () => {
   modals.init();
@@ -97,9 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
     System.import('./bits/panel').then(panel => panel.default());
   }
   // eslint-disable-next-line no-undef
-  if (mslUserInfo && mslUserInfo.userinfo && mslUserInfo.userinfo.FirstName) {
+  if (has(window, 'mslUserInfo.userinfo.FirstName')) {
     // eslint-disable-next-line no-undef
-    const firstName = mslUserInfo.userinfo.FirstName;
+    const firstName = window.mslUserInfo.userinfo.FirstName;
     const welcome = document.querySelector('.UserBar__item--welcome');
     if (welcome) {
       welcome.appendChild(document.createTextNode(`Hi ${firstName}!`));

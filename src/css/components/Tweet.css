@@ -4,7 +4,7 @@
 }
 
 .TweetList {
-  background-color: rgba(85, 172, 238, 1.0);
+  background-color: var(--color__twitter);
   font-size: 0.8rem;
   list-style: none;
   padding: 0;
@@ -21,6 +21,10 @@
     color: #ffffff !important; /* TODO: launch rush, plz fix */
     font-weight: bold;
     text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -50,11 +54,25 @@
     padding-bottom: 0;
     margin-bottom: 0;
     box-shadow: none;
+    z-index: var(--layer__tweet-quoted);
+    cursor: pointer;
+    border: 1px solid rgba(155, 155, 155, 0.4);
+
+    &:hover {
+      box-shadow: none;
+      border: 1px solid var(--color__twitter);
+    }
   }
 
   & div a {
     z-index: var(--layer__tweet-link);
+    color: var(--color__twitter);
+    text-decoration: none;
     position: relative;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
 
@@ -115,12 +133,12 @@
   &__permalink {
     display: block;
     padding-top: 0.5lh;
-    color: rgba(155, 155, 155, 1.0);
+    color: rgba(155, 155, 155, 1.0) !important; /* TODO: don't do this */
+    text-decoration: none;
   }
 
   &__quoted {
     width: calc(100% - 18px);
     margin-left: 9px;
-    border: 1px solid rgba(155, 155, 155, 0.4);
   }
 }

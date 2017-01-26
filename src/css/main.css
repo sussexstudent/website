@@ -23,11 +23,13 @@
 @import './components/Deckchair.css';
 @import './components/RippleLoader.css';
 @import './components/ResultsList.css';
+@import './components/FlexibleHero.css';
 @import './components/Tweet.css';
 @import './components/EventsList.css';
 @import './components/SelectionGrid.css';
 @import './components/OrgansiationGrid.css';
 @import './components/ActivitiesApp.css';
 @import './components/SearchResult.css';
+@import './components/MobileSearch.css';
 @import './components/Legacy.css';
 @import './components/MobileFooterTreats.css';

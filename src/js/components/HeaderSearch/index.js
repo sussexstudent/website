@@ -5,13 +5,30 @@ import SearchPage from '../../apps/search';
 import smoothscroll from '../../bits/smoothscroll';
 
 const header = document.querySelector('.Header');
-const advertBarEl = document.querySelector('.AdvertBar');
 const userBarEl = document.querySelector('.UserBar');
 const siteEl = document.querySelector('.Site');
 
 function getDistanceFromUserBar() {
   const offset = userBarEl.getBoundingClientRect().top;
   return Math.abs(offset);
+}
+
+function getCoords(elem) {
+  const box = elem.getBoundingClientRect();
+
+  const body = document.body;
+  const docEl = document.documentElement;
+
+  const scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+  const scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+
+  const clientTop = docEl.clientTop || body.clientTop || 0;
+  const clientLeft = docEl.clientLeft || body.clientLeft || 0;
+
+  const top = box.top + (scrollTop - clientTop);
+  const left = box.left + (scrollLeft - clientLeft);
+
+  return { top: Math.round(top), left: Math.round(left) };
 }
 
 class HeaderSearch extends React.Component {
@@ -22,6 +39,7 @@ class HeaderSearch extends React.Component {
       query: '',
       isOpen: false,
       hasFocus: false,
+      isMobile: null,
     };
 
     this.handleBlur = this.handleHasFocus.bind(this, false);
@@ -49,22 +67,29 @@ class HeaderSearch extends React.Component {
     if (isOpen === this.state.isOpen) {
       return;
     }
+    const isMobile = window.innerWidth < 800;
 
-    siteEl.classList.toggle('Site--locked', isOpen);
+    this.setState({ isMobile }, () => {
+      siteEl.classList.toggle('Site--locked', isOpen);
 
-    if (isOpen) {
-      const distance = Math.abs(getDistanceFromUserBar());
-      if (distance >= 10) {
-        const time = Math.round(distance * 3.85);
-        setTimeout(this.handleOpen.bind(this), time);
-        smoothscroll(userBarEl, time);
+      if (isOpen) {
+        if (isMobile) {
+          this.handleOpen();
+        } else {
+          const distance = Math.abs(getDistanceFromUserBar());
+          if (distance >= 10) {
+            const time = Math.round(distance * 3.85);
+            setTimeout(this.handleOpen.bind(this), time);
+            smoothscroll(userBarEl, time);
+          } else {
+            window.scrollTo(0, getCoords(userBarEl).top);
+            this.handleOpen();
+          }
+        }
       } else {
-        window.scrollTo(0, advertBarEl.getBoundingClientRect().height);
-        this.handleOpen();
+        this.handleClose();
       }
-    } else {
-      this.handleClose();
-    }
+    });
   }
 
   handleOpen() {
@@ -145,8 +170,37 @@ class HeaderSearch extends React.Component {
     );
   }
 
+  renderMobileSearch() {
+    return (
+      <div className="MobileSearch">
+        <form
+          className={cx('InlineSearch__input')}
+        >
+          <button className="InlineSearch__exit" onClick={this.handleExitClose}>
+            <span className="u-h">Exit search</span>
+          </button>
+          <input
+            className="HeaderSearch HeaderSearch--no-outline"
+            placeholder="Search"
+            value={this.state.query}
+            onBlur={this.handleBlur}
+            onChange={this.handleInputChange}
+            autoFocus={this.state.isOpen}
+          />
+          {this.state.query ? (
+            <button className="InlineSearch__clear" onClick={this.handleQueryClear}>
+              <span className="u-h">Clear search</span>
+            </button>
+          ) : null}
+        </form>
+        <SearchPage query={this.state.query} />
+
+      </div>
+    );
+  }
+
   render() {
-    const { isOpen } = this.state;
+    const { isOpen, isMobile } = this.state;
     const containerClasses = cx('InlineSearch', { 'InlineSearch--isOpen': isOpen });
 
     return (
@@ -158,14 +212,15 @@ class HeaderSearch extends React.Component {
           ref={(el) => { this.dummyInput = el; }}
         />
 
-        {this.renderSearching(isOpen)}
+        {this.renderSearching(isOpen && !isMobile)}
+        {isOpen && isMobile ? this.renderMobileSearch() : null}
         <ReactCSSTransitionGroup
           transitionName="fade"
           transitionEnterTimeout={300}
           transitionLeaveTimeout={300}
         >
           { // eslint-disable-next-line
-          }{isOpen ? <div className="InlineSearch__backdrop" onClick={this.handleBackdropClose} /> : null}
+          }{isOpen && !isMobile ? <div className="InlineSearch__backdrop" onClick={this.handleBackdropClose} /> : null}
         </ReactCSSTransitionGroup>
       </div>
     );

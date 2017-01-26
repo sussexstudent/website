@@ -1,5 +1,6 @@
 :root {
   --layer__search-input: 120;
+  --layer__mobile-search: 150;
   --layer__search-header: 110;
   --layer__search: 100;
   --layer__modal: 100;

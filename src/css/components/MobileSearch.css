@@ -1,0 +1,11 @@
+.MobileSearch {
+  position: fixed;
+  z-index: var(--layer__mobile-search);
+  background: var(--color__grey-summer);
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}

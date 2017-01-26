@@ -1,3 +1,7 @@
+.MobileSearch .HeaderSearch {
+  background-color: #ffffff;
+}
+
 .HeaderSearch {
   font-family: var(--type__primary);
   background: #f7f7f7;
@@ -11,7 +15,6 @@
   box-sizing: border-box;
   transition: transform ease 300ms, box-shadow ease 300ms;
   @mixin card raised;
-
 
   &--massive {
     @media (--medium) {

@@ -6,7 +6,7 @@
 
   &__header {
     background: var(--color__brand-green);
-    height: 240px;
+    height: 200px;
     position: relative;
     left: 0;
     right: 0;
@@ -38,23 +38,23 @@
   &__clear,
   &__exit {
     position: absolute;
-    top: 10px;
-    height: 28px;
-    width: 28px;
+    top: 12px;
+    height: 20px;
+    width: 20px;
     border: 0;
     background-color: transparent;
     cursor: pointer;
   }
 
   &__clear {
-    right: 8px;
+    right: 12px;
     background-image: url('./global/img/cross-temp.svg');
     background-size: contain;
   }
 
   &__exit {
-    left: 8px;
-    background-image: url('./global/img/cross-temp.svg');
+    left: 12px;
+    background-image: url('./global/img/back.svg');
     background-size: contain;
   }
 
@@ -92,12 +92,12 @@
 }
 
 .test-enter.test-enter-active {
-  height: 240px;
+  height: 200px;
   transition: height 300ms ease;
 }
 
 .test-leave {
-  height: 240px;
+  height: 200px;
   transition: height 300ms ease;
 }
 

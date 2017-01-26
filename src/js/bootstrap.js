@@ -12,8 +12,10 @@ import LazyLoadApp from './components/LazyLoadApp';
 import perf from './tracking/perf';
 import registerOnClickOff from './libs/registerOnClickOff';
 import renderSearch from './apps/search';
+import renderNews from './apps/news';
 import eventCardLinking from './bits/events_card_linking';
 import pseudoActiveMenu from './bits/pseudoActiveMenu';
+import smoothscroll from './bits/smoothscroll';
 
 // Promise polyfil
 if (!window.Promise) {
@@ -34,6 +36,10 @@ const actions = {
   newsletter_subscribe() {
     // e.preventDefault();
     // modals.add(<NewsletterModal />);
+  },
+  scrollTop(e) {
+    e.preventDefault();
+    smoothscroll(document.body, 300);
   },
 };
 
@@ -80,6 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.app__tweets')) {
     const t = perf.recordTime('import', 'tweets');
     System.import('./apps/tweets').then(() => t.done());
+  }
+
+  if (document.querySelector('.app__news')) {
+    renderNews();
   }
 
 

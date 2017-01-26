@@ -1,0 +1,17 @@
+
+        <ul class="NewsGrid">
+          {% for item in page.metadata.news_items %}
+          <li class="NewsGrid__item NewsBlock">
+            <div class="NewsBlock__image" style="background-image: url({{item.image}});"></div>
+            <div class="NewsBlock__content">
+              <a class="NewsBlock__title-link" href="#">
+                <h2 class="NewsBlock__title">{{item.title}}</h2>
+              </a>
+              <p class="NewsBlock__standfirst">{{item.desc}}</p>
+              <div class="NewsBlock__meta">
+                <date class="NewsBlock__date">1 hour ago</date>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>

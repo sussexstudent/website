@@ -22,7 +22,7 @@
     display: inline;
     font-size: 2lh;
     position: relative;
-    line-height: 0.9;
+    line-height: 1.4rem;
     font-size: 1.5rem;
     margin: 0;
     font-family: var(--type__primary);

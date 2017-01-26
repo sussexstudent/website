@@ -14,10 +14,11 @@ const Homepage = () => (
       <div className="Trail__row Trail__row--211">
         <div className="ContentBlock">
           <div className="ContentBlock__heading">News</div>
-          <ul className="NewsGrid">
+          <div className="u-h">
             {'{news}'}
-            <a className="NewsGrid__view-more" href="/news">Read more news stories</a>
-          </ul>
+          </div>
+          <div className="app__news" />
+          <a className="NewsViewMore" href="/news">Read more news stories</a>
         </div>
         <div className="ContentBlock">
           <div className="ContentBlock__heading">{'What\'s on'}</div>
@@ -32,12 +33,42 @@ const Homepage = () => (
       <div className="ContentBlock">
         <div className="ContentBlock__heading">Your officers</div>
         <FigureCollection>
-          <FigureCollectionFigure image="https://www.sussexstudent.com/pageassets/about-us/full-time-elected-officers/Savannah(1).jpg" title="Example name" sub="example role" />
-          <FigureCollectionFigure image="https://www.sussexstudent.com/pageassets/about-us/full-time-elected-officers/Savannah(1).jpg" title="Example name" sub="example role" />
-          <FigureCollectionFigure image="https://www.sussexstudent.com/pageassets/about-us/full-time-elected-officers/Savannah(1).jpg" title="Example name" sub="example role" />
-          <FigureCollectionFigure image="https://www.sussexstudent.com/pageassets/about-us/full-time-elected-officers/Savannah(1).jpg" title="Example name" sub="example role" />
-          <FigureCollectionFigure image="https://www.sussexstudent.com/pageassets/about-us/full-time-elected-officers/Savannah(1).jpg" title="Example name" sub="example role" />
-          <FigureCollectionFigure image="https://www.sussexstudent.com/pageassets/about-us/full-time-elected-officers/Savannah(1).jpg" title="Example name" sub="example role" />
+          <FigureCollectionFigure
+            image="https://www.sussexstudent.com/pageassets/about-us/full-time-elected-officers/Adele(1).jpg"
+            title="Adèle Duvillier"
+            sub="Activities Officer"
+            link="/about-us/full-time-elected-officers/activities"
+          />
+          <FigureCollectionFigure
+            image="https://www.sussexstudent.com/pageassets/about-us/full-time-elected-officers/Sarah-bw.jpg"
+            title="Sarah Gibbons"
+            sub="Society and Citizenship Officer"
+            link="/about-us/full-time-elected-officers/society-citizenship"
+          />
+          <FigureCollectionFigure
+            image="https://www.sussexstudent.com/pageassets/about-us/full-time-elected-officers/Savannah(1).jpg"
+            title="Savannah Sevenzo"
+            sub="Undergraduate Education Officer"
+            link="/about-us/full-time-elected-officers/undergraduate-education"
+          />
+          <FigureCollectionFigure
+            image="https://www.sussexstudent.com/pageassets/about-us/full-time-elected-officers/Rose-bw.jpg"
+            title="Rose Taylor"
+            sub="Postgraduate Education Officer"
+            link="/about-us/full-time-elected-officers/postgraduate-education"
+          />
+          <FigureCollectionFigure
+            image="https://www.sussexstudent.com/pageassets/about-us/full-time-elected-officers/Annie-bw.jpg"
+            title="Annie Pickering"
+            sub="President"
+            link="/about-us/full-time-elected-officers/president"
+          />
+          <FigureCollectionFigure
+            image="https://www.sussexstudent.com/asset/News/6013/Group-on-white.jpg"
+            title="Grainne Gahan"
+            sub="Welfare Officer"
+            link="/about-us/full-time-elected-officers/welfare"
+          />
         </FigureCollection>
       </div>
     </div>

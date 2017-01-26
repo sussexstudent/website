@@ -1,11 +1,17 @@
 @import '../global/core/mq.css';
 
+
+.app__news {
+  display: flex;
+  flex: auto;
+}
+
 .NewsGrid {
   list-style: none;
   padding: 0;
   margin: 0;
   flex: auto;
-  align-content: flex-start;
+  align-content: stretch;
 
   &__item {
 

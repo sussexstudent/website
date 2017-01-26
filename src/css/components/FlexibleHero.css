@@ -1,0 +1,20 @@
+.FlexibleHero {
+  padding: 1lh;
+
+  &--link {
+    display: block;
+  }
+
+  &__image {
+    max-width: 100%;
+    display: block;
+
+    &--center {
+      margin: 0 auto;
+    }
+  }
+
+  &--link:hover &__image {
+    transform: scale(1.05);
+  }
+}

@@ -11,6 +11,7 @@ import NewsletterModal from './components/NewsletterModal';
 import perf from './tracking/perf';
 import renderSearch from './apps/search';
 import eventCardLinking from './bits/events_card_linking';
+import pseudoActiveMenu from './bits/pseudoActiveMenu';
 
 // Promise polyfil
 if (!window.Promise) {
@@ -124,4 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
           }, 0);
         });
     });
+
+  pseudoActiveMenu(window.location);
 });

@@ -1,8 +1,13 @@
 .Container {
-  padding-left: 1lh;
-  padding-right: 1lh;
   max-width: 1280px;
   margin: 0 auto;
+  padding-left: 0.5lh;
+  padding-right: 0.5lh;
+
+  @media (--medium) {
+    padding-left: 1lh;
+    padding-right: 1lh;
+  }
 
   &--as-child {
     flex: auto;

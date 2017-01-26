@@ -3,7 +3,7 @@ import cx from 'classnames';
 import MSLTag from './MSLTag';
 
 const Main = ({ legacy }) => (
-  <main className={cx('Site__content', { Legacy: legacy })} dangerouslySetInnerHTML={{ __html: MSLTag({ name: 'Content' }) }} />
+  <main className={cx('Site__content', { Legacy: legacy })} dangerouslySetInnerHTML={{ __html: MSLTag('Content') }} />
 );
 
 Main.propTypes = {

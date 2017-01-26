@@ -9,14 +9,14 @@ import AdvertBar from '../components/AdvertBar';
 
 const mainLayout = ({ loggedIn, assets, legacy }) => (
   <body className="Site">
-    <AdvertBar />
+    <AdvertBar position="TopBanner" />
     <UserBar loggedIn={loggedIn} />
     <Header />
     <Main legacy={legacy} />
     <MobileFooterTreats />
     <PrefooterMenu />
     <Footer />
-    <AdvertBar dark />
+    <AdvertBar position="lozenge1" dark />
     <div className="js__modal" />
     <script src={assets.main.js} />
   </body>

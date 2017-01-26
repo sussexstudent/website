@@ -1,5 +1,11 @@
-const MSLTag = ({ name }) => (
-  `<MSL:${name} />`
-);
+const MSLTag = (name, properties = null) => {
+  let props = '';
+
+  if (properties !== null) {
+    props = Object.keys(properties).map(propName => `${propName}="${properties[propName]}" `).join(' ');
+  }
+
+  return `<MSL:${name} ${props}/>`;
+};
 
 export default MSLTag;

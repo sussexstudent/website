@@ -5,11 +5,11 @@ const loggedInList = (
   <ul className="UserBar__list">
     <li className="UserBar__item UserBar__item-admin UserBar__item--empty UserBar__admin-menu">
       <span>Admin</span>
-      <div className="UserBar__item-dropdown" dangerouslySetInnerHTML={{ __html: MSLTag({ name: 'Admin' }) }} />
+      <div className="UserBar__item-dropdown" dangerouslySetInnerHTML={{ __html: MSLTag('Admin') }} />
     </li>
     <li className="UserBar__item UserBar__item-admin UserBar__item--empty UserBar__admin-control-panel">
       <span>Page</span>
-      <div className="UserBar__item-dropdown" dangerouslySetInnerHTML={{ __html: MSLTag({ name: 'ControlPanel' }) }} />
+      <div className="UserBar__item-dropdown" dangerouslySetInnerHTML={{ __html: MSLTag('ControlPanel') }} />
     </li>
 
     <li className="UserBar__item UserBar__item--welcome" />

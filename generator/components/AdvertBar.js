@@ -1,13 +1,15 @@
 import React from 'react';
+import MSLTag from './MSLTag';
 import cx from 'classnames';
 
-const AdvertBar = ({ dark = false }) => (
+const AdvertBar = ({ position, dark = false }) => (
   <div className={cx('AdvertBar', { 'AdvertBar--dark': dark })}>
-    <img className="AdvertBar__advert" alt="ad" src="https://sussexstudent.com/asset/Advert/1/studenttaxisbannerad.jpg" />
+    <div className="AdvertBar__advert" dangerouslySetInnerHTML={{ __html: MSLTag('Advert', { Position: position }) }} />
   </div>
 );
 
 AdvertBar.propTypes = {
+  position: React.PropTypes.string.isRequired,
   dark: React.PropTypes.bool,
 };
 

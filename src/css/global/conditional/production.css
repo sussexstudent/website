@@ -59,121 +59,121 @@
 /*
 @font-face {
   font-family: 'Larsseit-BoldItalic';
-  src: url('/assets/site_resources/2E6B7C_0_0.eot');
-  src: url('/assets/site_resources/2E6B7C_0_0.eot?#iefix') format('embedded-opentype'),
-    url('/assets/site_resources/2E6B7C_0_0.woff2') format('woff2'),
-    url('/assets/site_resources/2E6B7C_0_0.woff') format('woff'),
-    url('/assets/site_resources/2E6B7C_0_0.ttf') format('truetype');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_0_0.eot');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_0_0.eot?#iefix') format('embedded-opentype'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_0_0.woff2') format('woff2'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_0_0.woff') format('woff'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_0_0.ttf') format('truetype');
 }
 
 
 @font-face {
   font-family: 'Larsseit-ExtraBoldItalic';
-  src: url('/assets/site_resources/2E6B7C_1_0.eot');
-  src: url('/assets/site_resources/2E6B7C_1_0.eot?#iefix') format('embedded-opentype'),
-    url('/assets/site_resources/2E6B7C_1_0.woff2') format('woff2'),
-    url('/assets/site_resources/2E6B7C_1_0.woff') format('woff'),
-    url('/assets/site_resources/2E6B7C_1_0.ttf') format('truetype');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_1_0.eot');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_1_0.eot?#iefix') format('embedded-opentype'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_1_0.woff2') format('woff2'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_1_0.woff') format('woff'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_1_0.ttf') format('truetype');
   }
 */
 @font-face {
   font-family: 'Larsseit';
-  font-weight: bold;
-  src: url('/assets/site_resources/2E6B7C_8_0.eot');
-  src: url('/assets/site_resources/2E6B7C_8_0.eot?#iefix') format('embedded-opentype'),
-    url('/assets/site_resources/2E6B7C_8_0.woff2') format('woff2'),
-    url('/assets/site_resources/2E6B7C_8_0.woff') format('woff'),
-    url('/assets/site_resources/2E6B7C_8_0.ttf') format('truetype');
+  font-weight: normal;
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_8_0.eot');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_8_0.eot?#iefix') format('embedded-opentype'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_8_0.woff2') format('woff2'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_8_0.woff') format('woff'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_8_0.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Larsseit';
-  font-weight: normal;
-  src: url('/assets/site_resources/2E6B7C_2_0.eot');
-  src: url('/assets/site_resources/2E6B7C_2_0.eot?#iefix') format('embedded-opentype'),
-  url('/assets/site_resources/2E6B7C_2_0.woff2') format('woff2'),
-  url('/assets/site_resources/2E6B7C_2_0.woff') format('woff'),
-  url('/assets/site_resources/2E6B7C_2_0.ttf') format('truetype');
+  font-weight: bold;
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_2_0.eot');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_2_0.eot?#iefix') format('embedded-opentype'),
+  url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_2_0.woff2') format('woff2'),
+  url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_2_0.woff') format('woff'),
+  url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_2_0.ttf') format('truetype');
 }
 
 /*
 @font-face {
   font-family: 'Larsseit-ExtraBold';
-  src: url('/assets/site_resources/2E6B7C_3_0.eot');
-  src: url('/assets/site_resources/2E6B7C_3_0.eot?#iefix') format('embedded-opentype'),
-    url('/assets/site_resources/2E6B7C_3_0.woff2') format('woff2'),
-    url('/assets/site_resources/2E6B7C_3_0.woff') format('woff'),
-    url('/assets/site_resources/2E6B7C_3_0.ttf') format('truetype');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_3_0.eot');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_3_0.eot?#iefix') format('embedded-opentype'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_3_0.woff2') format('woff2'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_3_0.woff') format('woff'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_3_0.ttf') format('truetype');
 }
 
 
 @font-face {
   font-family: 'Larsseit-Light';
-  src: url('/assets/site_resources/2E6B7C_4_0.eot');
-  src: url('/assets/site_resources/2E6B7C_4_0.eot?#iefix') format('embedded-opentype'),
-    url('/assets/site_resources/2E6B7C_4_0.woff2') format('woff2'),
-    url('/assets/site_resources/2E6B7C_4_0.woff') format('woff'),
-    url('/assets/site_resources/2E6B7C_4_0.ttf') format('truetype');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_4_0.eot');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_4_0.eot?#iefix') format('embedded-opentype'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_4_0.woff2') format('woff2'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_4_0.woff') format('woff'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_4_0.ttf') format('truetype');
 }
 
 
 @font-face {
   font-family: 'Larsseit-LightItalic';
-  src: url('/assets/site_resources/2E6B7C_5_0.eot');
-  src: url('/assets/site_resources/2E6B7C_5_0.eot?#iefix') format('embedded-opentype'),
-    url('/assets/site_resources/2E6B7C_5_0.woff2') format('woff2'),
-    url('/assets/site_resources/2E6B7C_5_0.woff') format('woff'),
-    url('/assets/site_resources/2E6B7C_5_0.ttf') format('truetype');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_5_0.eot');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_5_0.eot?#iefix') format('embedded-opentype'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_5_0.woff2') format('woff2'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_5_0.woff') format('woff'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_5_0.ttf') format('truetype');
 }
 
 
 @font-face {
   font-family: 'Larsseit-Medium';
-  src: url('/assets/site_resources/2E6B7C_6_0.eot');
-  src: url('/assets/site_resources/2E6B7C_6_0.eot?#iefix') format('embedded-opentype'),
-    url('/assets/site_resources/2E6B7C_6_0.woff2') format('woff2'),
-    url('/assets/site_resources/2E6B7C_6_0.woff') format('woff'),
-    url('/assets/site_resources/2E6B7C_6_0.ttf') format('truetype');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_6_0.eot');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_6_0.eot?#iefix') format('embedded-opentype'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_6_0.woff2') format('woff2'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_6_0.woff') format('woff'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_6_0.ttf') format('truetype');
 }
 
 
 @font-face {
   font-family: 'Larsseit-MediumItalic';
-  src: url('/assets/site_resources/2E6B7C_7_0.eot');
-  src: url('/assets/site_resources/2E6B7C_7_0.eot?#iefix') format('embedded-opentype'),
-    url('/assets/site_resources/2E6B7C_7_0.woff2') format('woff2'),
-    url('/assets/site_resources/2E6B7C_7_0.woff') format('woff'),
-    url('/assets/site_resources/2E6B7C_7_0.ttf') format('truetype');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_7_0.eot');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_7_0.eot?#iefix') format('embedded-opentype'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_7_0.woff2') format('woff2'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_7_0.woff') format('woff'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_7_0.ttf') format('truetype');
 }
 
 
 @font-face {
   font-family: 'Larsseit-Italic';
-  src: url('/assets/site_resources/2E6B7C_9_0.eot');
-  src: url('/assets/site_resources/2E6B7C_9_0.eot?#iefix') format('embedded-opentype'),
-    url('/assets/site_resources/2E6B7C_9_0.woff2') format('woff2'),
-    url('/assets/site_resources/2E6B7C_9_0.woff') format('woff'),
-    url('/assets/site_resources/2E6B7C_9_0.ttf') format('truetype');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_9_0.eot');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_9_0.eot?#iefix') format('embedded-opentype'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_9_0.woff2') format('woff2'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_9_0.woff') format('woff'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_9_0.ttf') format('truetype');
 }
 
 
 @font-face {
   font-family: 'Larsseit-Thin';
-  src: url('/assets/site_resources/2E6B7C_A_0.eot');
-  src: url('/assets/site_resources/2E6B7C_A_0.eot?#iefix') format('embedded-opentype'),
-    url('/assets/site_resources/2E6B7C_A_0.woff2') format('woff2'),
-    url('/assets/site_resources/2E6B7C_A_0.woff') format('woff'),
-    url('/assets/site_resources/2E6B7C_A_0.ttf') format('truetype');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_A_0.eot');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_A_0.eot?#iefix') format('embedded-opentype'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_A_0.woff2') format('woff2'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_A_0.woff') format('woff'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_A_0.ttf') format('truetype');
 }
 
 
 @font-face {
   font-family: 'Larsseit-ThinItalic';
-  src: url('/assets/site_resources/2E6B7C_B_0.eot');
-  src: url('/assets/site_resources/2E6B7C_B_0.eot?#iefix') format('embedded-opentype'),
-    url('/assets/site_resources/2E6B7C_B_0.woff2') format('woff2'),
-    url('/assets/site_resources/2E6B7C_B_0.woff') format('woff'),
-    url('/assets/site_resources/2E6B7C_B_0.ttf') format('truetype');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_B_0.eot');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_B_0.eot?#iefix') format('embedded-opentype'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_B_0.woff2') format('woff2'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_B_0.woff') format('woff'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_B_0.ttf') format('truetype');
 }
 
 

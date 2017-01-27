@@ -11,9 +11,9 @@ const MobileFooterTreats = () => (
         Subscribe to our email newsletter
       </a>
     </div>
-    <div className="MobileFooterTreats__to-top">
+    <a className="MobileFooterTreats__to-top" href="#top">
       <span>Back to top</span>
-    </div>
+    </a>
   </div>
 );
 

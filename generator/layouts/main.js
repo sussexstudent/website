@@ -8,7 +8,7 @@ import Main from '../components/Main';
 import AdvertBar from '../components/AdvertBar';
 
 const mainLayout = ({ loggedIn, assets, legacy }) => (
-  <body className="Site">
+  <body className="Site" id="top">
     <AdvertBar position="TopBanner" />
     <UserBar loggedIn={loggedIn} />
     <Header />

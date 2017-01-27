@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import throttle from 'lodash/throttle';
 import MainLayout from './layouts/main';
+import GetInvolvedLayout from './layouts/getinvolved';
 import Homepage from './layouts/homepage';
 import assets from '../webpack-assets.json';
 import ncp from 'copy-paste';
@@ -26,6 +27,7 @@ const partials = {
   'Main: Public Template': render(<MainLayout assets={assets} />),
   'Main: Logged In User Template': render(<MainLayout assets={assets} loggedIn />),
   'Homepage!:': render(<Homepage />),
+  '/get-involved': render(<GetInvolvedLayout />),
 };
 /*
 Object.keys(partials).forEach((key) => {
@@ -53,6 +55,6 @@ function next() {
   i += 1;
 }
 
-stdin.addListener('data', throttle(next, 1000));
+stdin.addListener('data', throttle(next, 500));
 
 console.log('Press enter to start.');

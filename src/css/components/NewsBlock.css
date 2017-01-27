@@ -22,7 +22,7 @@
     display: inline;
     font-size: 2lh;
     position: relative;
-    line-height: 1.4rem;
+    line-height: 1.5rem;
     font-size: 1.5rem;
     margin: 0;
     font-family: var(--type__primary);
@@ -31,6 +31,14 @@
   &__title-link {
     text-decoration: none;
     padding-right: 1rem;
+  }
+
+  &__link {
+    text-decoration: none;
+    display: flex;
+    flex: auto;
+    color: var(--color__grey-slate);
+    flex-direction: column;
   }
 
   &__image {

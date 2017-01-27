@@ -4668,3 +4668,11 @@
     display: none !important;
   }
 }
+
+/* 2016.css */
+.Legacy {
+  & img {
+    max-width: 100%;
+    height: auto !important;
+  }
+}

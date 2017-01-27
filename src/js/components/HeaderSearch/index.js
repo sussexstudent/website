@@ -48,6 +48,7 @@ class HeaderSearch extends React.Component {
     this.handleBackdropClose = this.handleBackdropClose.bind(this);
     this.handleExitClose = this.handleExitClose.bind(this);
     this.handleQueryClear = this.handleQueryClear.bind(this);
+    this.handleSubmit = e => e.preventDefault();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -135,6 +136,7 @@ class HeaderSearch extends React.Component {
           <form
             className={cx('InlineSearch__input')}
             style={this.state.transitionSize}
+            onSubmit={this.handleSubmit}
           >
             <button className="InlineSearch__exit" onClick={this.handleExitClose}>
               <span className="u-h">Exit search</span>

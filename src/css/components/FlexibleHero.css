@@ -1,5 +1,6 @@
 .FlexibleHero {
   padding: 1lh;
+  margin-bottom: 2lh;
 
   &--link {
     display: block;

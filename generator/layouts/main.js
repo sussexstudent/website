@@ -2,7 +2,7 @@ import React from 'react';
 import UserBar from '../components/UserBar';
 import Header from '../components/Header';
 import MobileFooterTreats from '../components/MobileFooterTreats';
-import PrefooterMenu from '../components/PrefooterMenu';
+// import PrefooterMenu from '../components/PrefooterMenu';
 import Footer from '../components/Footer';
 import Main from '../components/Main';
 import AdvertBar from '../components/AdvertBar';
@@ -14,7 +14,7 @@ const mainLayout = ({ loggedIn, assets, legacy }) => (
     <Header />
     <Main legacy={legacy} />
     <MobileFooterTreats />
-    <PrefooterMenu />
+    {/* <PrefooterMenu /> */}
     <Footer />
     <AdvertBar position="lozenge1" dark />
     <div className="js__modal" />

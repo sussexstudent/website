@@ -24,7 +24,7 @@
 
 .checkoutpage table.msl_table {
   border: 0 !important;
-  font-size: 1.5rem;
+  font-size: 1rem;
 
   & th {
     border-bottom: 1px solid #000;

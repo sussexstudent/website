@@ -6,7 +6,6 @@ export default () => {
   const articles = [...document.querySelectorAll('.news_full .news_item')].map((item) => {
     const anchor = item.querySelector('h5 a');
     const image = item.querySelector('.news_image img');
-    console.log(anchor.innerText);
     return {
       title: anchor.innerText.replace(' ', ' ').replace('&nbsp;', ' '),
       link: anchor.href,

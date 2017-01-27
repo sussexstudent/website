@@ -63,10 +63,10 @@
 }
 
 .AnodyneMenu__item:nth-child(4) .AnodyneMenu__link {
-  border-bottom-color: #000000;
+  border-bottom-color: var(--color__grey-slate);
 
     &:hover,
     &.AnodyneMenu__link--active {
-      background-color: #000000;
+      background-color: var(--color__grey-slate);
     }
 }

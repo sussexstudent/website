@@ -14,7 +14,6 @@ class FeedbackButton extends React.Component {
   handleFeedbackClicked() {
     this.props.onFeedback();
     this.setState({ feedbackGivenKeys: [...this.state.feedbackGivenKeys, this.props.feedbackKey] });
-    console.log(this.state);
   }
 
   render() {

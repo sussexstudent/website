@@ -132,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
           item.classList.toggle('UserBar__item--open');
           setTimeout(() => {
             registerOnClickOff(item.querySelector('.UserBar__item-dropdown'), () => {
-              console.log('clicked off');
               item.classList.toggle('UserBar__item--open', false);
             });
           }, 0);

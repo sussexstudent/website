@@ -120,6 +120,7 @@ class HeaderSearch extends React.Component {
   }
 
   handleExitClose(e) {
+    console.log(e);
     e.preventDefault();
     this.setState({ query: '' }, () => { this.handleHasFocus(false); });
   }
@@ -138,11 +139,16 @@ class HeaderSearch extends React.Component {
             style={this.state.transitionSize}
             onSubmit={this.handleSubmit}
           >
-            <button className="InlineSearch__exit" onClick={this.handleExitClose}>
+            <button
+              className="InlineSearch__exit"
+              type="button"
+              onClick={this.handleExitClose}
+            >
               <span className="u-h">Exit search</span>
             </button>
             <input
               className="HeaderSearch HeaderSearch--no-outline"
+              type="text"
               placeholder="Search"
               value={this.state.query}
               onBlur={this.handleBlur}
@@ -150,7 +156,11 @@ class HeaderSearch extends React.Component {
               autoFocus={isOpen}
             />
             {this.state.query ? (
-              <button className="InlineSearch__clear" onClick={this.handleQueryClear}>
+              <button
+                className="InlineSearch__clear"
+                type="button"
+                onClick={this.handleQueryClear}
+              >
                 <span className="u-h">Clear search</span>
               </button>
             ) : null}
@@ -177,12 +187,18 @@ class HeaderSearch extends React.Component {
       <div className="MobileSearch">
         <form
           className={cx('InlineSearch__input')}
+          onSubmit={this.handleSubmit}
         >
-          <button className="InlineSearch__exit" onClick={this.handleExitClose}>
+          <button
+            className="InlineSearch__exit"
+            type="button"
+            onClick={this.handleExitClose}
+          >
             <span className="u-h">Exit search</span>
           </button>
           <input
             className="HeaderSearch HeaderSearch--no-outline"
+            type="text"
             placeholder="Search"
             value={this.state.query}
             onBlur={this.handleBlur}
@@ -190,7 +206,11 @@ class HeaderSearch extends React.Component {
             autoFocus={this.state.isOpen}
           />
           {this.state.query ? (
-            <button className="InlineSearch__clear" onClick={this.handleQueryClear}>
+            <button
+              className="InlineSearch__clear"
+              type="button"
+              onClick={this.handleQueryClear}
+            >
               <span className="u-h">Clear search</span>
             </button>
           ) : null}

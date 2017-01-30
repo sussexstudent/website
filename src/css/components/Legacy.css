@@ -35,9 +35,7 @@
 .Legacy [hidden], .Legacy template {
   display: none;
 }
-.Legacy a {
-  background: 0 0;
-}
+
 .Legacy a:active, .Legacy a:hover {
   outline: 0;
 }

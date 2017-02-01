@@ -50,9 +50,6 @@ function linkListener(e) {
   }
 }
 
-window.ga = () => {};
-
-
 document.addEventListener('DOMContentLoaded', () => {
   modals.init();
   [...document.querySelectorAll('a')].forEach((e) => {

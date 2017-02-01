@@ -11,7 +11,7 @@ const NewsBlock = ({ item: { title, link, pubDate, led, imageURL = null } }) => 
         </div>
         <p className="NewsBlock__standfirst">{led}</p>
         <div className="NewsBlock__meta">
-          <date className="NewsBlock__date">{distanceInWordsToNow(pubDate)}</date>
+          <date className="NewsBlock__date">{distanceInWordsToNow(pubDate)} ago</date>
         </div>
       </div>
     </a>

@@ -230,6 +230,8 @@ class HeaderSearch extends React.Component {
         <input
           className="HeaderSearch HeaderSearch--search-icon"
           placeholder="Search"
+          value={this.state.query}
+          onChange={this.handleInputChange}
           onFocus={this.handleFocus}
           ref={(el) => { this.dummyInput = el; }}
         />

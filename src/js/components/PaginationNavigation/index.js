@@ -5,6 +5,7 @@ function PaginationNavigation({ currentPage, totalPages, onPageChange }) {
     <div className="PaginationNavigation">
       <button
         className="PaginationNavigation__button"
+        type="button"
         tabIndex="-1"
         onClick={onPageChange.bind(null, currentPage - 1)}
         disabled={currentPage <= 1}
@@ -12,6 +13,7 @@ function PaginationNavigation({ currentPage, totalPages, onPageChange }) {
       <span className="PaginationNavigation__meta">Page {currentPage} of {totalPages}</span>
       <button
         className="PaginationNavigation__button"
+        type="button"
         tabIndex="-1"
         onClick={onPageChange.bind(null, currentPage + 1)}
         disabled={currentPage >= totalPages}

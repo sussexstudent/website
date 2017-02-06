@@ -14,8 +14,4 @@
       margin: 0 auto;
     }
   }
-
-  &--link:hover &__image {
-    transform: scale(1.05);
-  }
 }

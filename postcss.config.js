@@ -1,4 +1,4 @@
-var mixins = require('./src/css/global/mixins');
+var mixins = require('./src/css/mixins');
 
 module.exports = {
   plugins: [

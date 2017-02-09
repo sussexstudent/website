@@ -18,9 +18,7 @@
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
-.Legacy body {
-  margin: 0;
-}
+
 .Legacy article, .Legacy aside, .Legacy details, .Legacy figcaption, .Legacy figure, .Legacy footer, .Legacy header, .Legacy hgroup, .Legacy main, .Legacy nav, .Legacy section, .Legacy summary {
   display: block;
 }
@@ -229,34 +227,13 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.Legacy html {
-  font-size: 10px;
-  -webkit-tap-highlight-color: transparent;
-}
-.Legacy body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #333;
-  background-color: #fff;
-}
+
 .Legacy input, .Legacy button, .Legacy select, .Legacy textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
-.Legacy a {
-  color: var(--color__twitter);
-  text-decoration: none;
-}
-.Legacy a:hover, .Legacy a:focus {
-  text-decoration: underline;
-}
-.Legacy a:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
+
 .Legacy figure {
   margin: 0;
 }
@@ -269,26 +246,7 @@
   max-width: 100%;
   height: auto;
 }
-.Legacy .img-rounded {
-  border-radius: 6px;
-}
-.Legacy .img-thumbnail {
-  display: inline-block;
-  width: 100% \9;
-  max-width: 100%;
-  height: auto;
-  padding: 4px;
-  line-height: 1.42857143;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  -webkit-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
-}
-.Legacy .img-circle {
-  border-radius: 50%;
-}
+
 .Legacy hr {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -312,49 +270,6 @@
   margin: 0;
   overflow: visible;
   clip: auto;
-}
-.Legacy h1, .Legacy h2, .Legacy h3, .Legacy h4, .Legacy h5, .Legacy h6, .Legacy .h1, .Legacy .h2, .Legacy .h3, .Legacy .h4, .Legacy .h5, .Legacy .h6 {
-  font-family: var(--type__primary);
-  font-weight: bold;
-  line-height: 1.1;
-  color: inherit;
-}
-.Legacy h1 small, .Legacy h2 small, .Legacy h3 small, .Legacy h4 small, .Legacy h5 small, .Legacy h6 small, .Legacy .h1 small, .Legacy .h2 small, .Legacy .h3 small, .Legacy .h4 small, .Legacy .h5 small, .Legacy .h6 small, .Legacy h1 .small, .Legacy h2 .small, .Legacy h3 .small, .Legacy h4 .small, .Legacy h5 .small, .Legacy h6 .small, .Legacy .h1 .small, .Legacy .h2 .small, .Legacy .h3 .small, .Legacy .h4 .small, .Legacy .h5 .small, .Legacy .h6 .small {
-  font-weight: 400;
-  line-height: 1;
-  color: #777;
-}
-.Legacy h1, .Legacy .h1, .Legacy h2, .Legacy .h2, .Legacy h3, .Legacy .h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-.Legacy h1 small, .Legacy .h1 small, .Legacy h2 small, .Legacy .h2 small, .Legacy h3 small, .Legacy .h3 small, .Legacy h1 .small, .Legacy .h1 .small, .Legacy h2 .small, .Legacy .h2 .small, .Legacy h3 .small, .Legacy .h3 .small {
-  font-size: 65%;
-}
-.Legacy h4, .Legacy .h4, .Legacy h5, .Legacy .h5, .Legacy h6, .Legacy .h6 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.Legacy h4 small, .Legacy .h4 small, .Legacy h5 small, .Legacy .h5 small, .Legacy h6 small, .Legacy .h6 small, .Legacy h4 .small, .Legacy .h4 .small, .Legacy h5 .small, .Legacy .h5 .small, .Legacy h6 .small, .Legacy .h6 .small {
-  font-size: 75%;
-}
-.Legacy h1, .Legacy .h1 {
-  font-size: 36px;
-}
-.Legacy h2, .Legacy .h2 {
-  font-size: 30px;
-}
-.Legacy h3, .Legacy .h3 {
-  font-size: 24px;
-}
-.Legacy h4, .Legacy .h4 {
-  font-size: 18px;
-}
-.Legacy h5, .Legacy .h5 {
-  font-size: 14px;
-}
-.Legacy h6, .Legacy .h6 {
-  font-size: 12px;
 }
 .Legacy p {
   margin: 0 0 10px;

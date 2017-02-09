@@ -48,13 +48,13 @@
 
   &__clear {
     right: 12px;
-    background-image: url('./global/img/cross-temp.svg');
+    background-image: url('./img/cross-temp.svg');
     background-size: contain;
   }
 
   &__exit {
     left: 12px;
-    background-image: url('./global/img/back.svg');
+    background-image: url('./img/back.svg');
     background-size: contain;
   }
 

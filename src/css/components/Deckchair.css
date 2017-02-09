@@ -29,7 +29,7 @@
 
   &__close {
     display: block;
-    background: url('./global/img/cross-temp-white.svg');
+    background: url('./img/cross-temp-white.svg');
     background-size: contain;
     width: 24px;
     height: 24px;

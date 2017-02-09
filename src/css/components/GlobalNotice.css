@@ -15,7 +15,7 @@
     width: 18px;
     height: 18px;
     display: block;
-    background-image: url('./global/img/cross-temp.svg');
+    background-image: url('./img/cross-temp.svg');
     background-color: transparent;
     background-size: contain;
     cursor: pointer;

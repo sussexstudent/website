@@ -1,1 +1,1 @@
-import './css/global/conditional/dev.css';
+import './css/conditional/dev.css';

@@ -49,6 +49,11 @@ class HeaderSearch extends React.Component {
     this.handleExitClose = this.handleExitClose.bind(this);
     this.handleQueryClear = this.handleQueryClear.bind(this);
     this.handleSubmit = e => e.preventDefault();
+    this.escapeClose = (event) => {
+      if (event.key === 'Escape') {
+        this.setState({ query: '' }, () => { this.handleHasFocus(false); });
+      }
+    };
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -102,6 +107,8 @@ class HeaderSearch extends React.Component {
       },
     });
     header.classList.add('Header--search-focus');
+
+    document.addEventListener('keyup', this.escapeClose);
   }
 
   handleClose() {
@@ -111,6 +118,7 @@ class HeaderSearch extends React.Component {
     });
 
     header.classList.remove('Header--search-focus');
+    document.removeEventListener('keyup', this.escapeClose);
   }
 
   handleBackdropClose() {
@@ -120,7 +128,6 @@ class HeaderSearch extends React.Component {
   }
 
   handleExitClose(e) {
-    console.log(e);
     e.preventDefault();
     this.setState({ query: '' }, () => { this.handleHasFocus(false); });
   }

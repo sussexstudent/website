@@ -1,5 +1,4 @@
 import 'whatwg-fetch';
-import Promise from 'promise-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import has from 'lodash/has';
@@ -16,11 +15,6 @@ import renderNews from './apps/news';
 import eventCardLinking from './bits/events_card_linking';
 import pseudoActiveMenu from './bits/pseudoActiveMenu';
 import smoothscroll from './bits/smoothscroll';
-
-// Promise polyfil
-if (!window.Promise) {
-  window.Promise = Promise;
-}
 
 const modals = ModalManager();
 

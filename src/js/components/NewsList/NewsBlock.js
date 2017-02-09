@@ -1,5 +1,6 @@
 import React from 'react';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import isToday from 'date-fns/is_today';
 
 const NewsBlock = ({ item: { title, link, pubDate, led, imageURL = null } }) => (
   <li className="NewsGrid__item NewsBlock">
@@ -11,7 +12,7 @@ const NewsBlock = ({ item: { title, link, pubDate, led, imageURL = null } }) => 
         </div>
         <p className="NewsBlock__standfirst">{led}</p>
         <div className="NewsBlock__meta">
-          <date className="NewsBlock__date">{distanceInWordsToNow(pubDate)} ago</date>
+          <date className="NewsBlock__date">{isToday(pubDate) ? 'Today' : `${distanceInWordsToNow(pubDate)} ago`}</date>
         </div>
       </div>
     </a>

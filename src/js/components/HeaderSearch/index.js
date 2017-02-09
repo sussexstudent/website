@@ -134,7 +134,7 @@ class HeaderSearch extends React.Component {
 
   handleQueryClear(e) {
     e.preventDefault();
-    this.setState({ query: '' });
+    this.setState({ query: '' }, () => this.input.focus());
   }
 
   renderSearching(isOpen) {
@@ -161,6 +161,7 @@ class HeaderSearch extends React.Component {
               onBlur={this.handleBlur}
               onChange={this.handleInputChange}
               autoFocus={isOpen}
+              ref={(input) => { this.input = input; }}
             />
             {this.state.query ? (
               <button
@@ -211,6 +212,7 @@ class HeaderSearch extends React.Component {
             onBlur={this.handleBlur}
             onChange={this.handleInputChange}
             autoFocus={this.state.isOpen}
+            ref={(input) => { this.input = input; }}
           />
           {this.state.query ? (
             <button

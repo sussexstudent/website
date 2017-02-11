@@ -3,6 +3,7 @@ import cx from 'classnames';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import SearchPage from '../../apps/search';
 import smoothscroll from '../../bits/smoothscroll';
+import classToggle from '../../libs/dom/classToggle';
 
 const header = document.querySelector('.Header');
 const userBarEl = document.querySelector('.UserBar');
@@ -76,7 +77,7 @@ class HeaderSearch extends React.Component {
     const isMobile = window.innerWidth < 800;
 
     this.setState({ isMobile }, () => {
-      siteEl.classList.toggle('Site--locked', isOpen);
+      classToggle(siteEl, 'Site--locked', isOpen);
 
       if (isOpen) {
         if (isMobile) {

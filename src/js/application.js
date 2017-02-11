@@ -1,4 +1,5 @@
 import 'whatwg-fetch';
+import Promise from 'promise-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import has from 'lodash/has';
@@ -12,9 +13,15 @@ import perf from './tracking/perf';
 import registerOnClickOff from './libs/registerOnClickOff';
 import renderSearch from './apps/search';
 import renderNews from './apps/news';
+import classToggle from './libs/dom/classToggle';
 import eventCardLinking from './bits/events_card_linking';
 import pseudoActiveMenu from './bits/pseudoActiveMenu';
 import smoothscroll from './bits/smoothscroll';
+
+// Promise polyfil
+if (!window.Promise) {
+  window.Promise = Promise;
+}
 
 const modals = ModalManager();
 
@@ -120,10 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
     .forEach((item) => {
       item.querySelector('span')
         .addEventListener('click', () => {
-          item.classList.toggle('UserBar__item--open');
+          classToggle(item, 'UserBar__item--open');
           setTimeout(() => {
             registerOnClickOff(item.querySelector('.UserBar__item-dropdown'), () => {
-              item.classList.toggle('UserBar__item--open', false);
+              classToggle(item, 'UserBar__item--open', false);
             });
           }, 0);
         });

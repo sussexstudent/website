@@ -1,9 +1,10 @@
 import React from 'react';
 import './style.css';
 import dots from './dots.svg';
+import classToggle from '../../libs/dom/classToggle';
 
 function showAds(toggle = false) {
-  [...document.querySelectorAll('.AdvertBar')].forEach(el => el.classList.toggle('AdvertBar--hide', !toggle));
+  [...document.querySelectorAll('.AdvertBar')].forEach(el => classToggle(el, 'AdvertBar--hide', !toggle));
   return toggle;
 }
 

@@ -76,7 +76,7 @@ const GetInvolved = () => (
     </div>
     <ul className="SelectionGrid">
       {items.map(item => (
-        <li className="SelectionGrid__item SelectionGrid--underneath">
+        <li className="SelectionGrid__item SelectionGrid--underneath" key={item.link}>
           <a className="SelectionGrid__link" href={item.link}>
             <div className="SelectionGrid__image" style={{ backgroundImage: `url(${item.imageURL}?thumbnail=true&height=230&width=640&resize_type=CropToFit)` }}>
               <div className="SelectionGrid__image-inside">

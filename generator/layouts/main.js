@@ -7,6 +7,14 @@ import Footer from '../components/Footer';
 import Main from '../components/Main';
 import AdvertBar from '../components/AdvertBar';
 
+const ga = `!function(u,s,S,U){u.GoogleAnalyticsObject=S;u[S]||(u[S]=function(){
+(u[S].q=u[S].q||[]).push(arguments)});u[S].l=+new Date;U=s.createElement('script');
+var e=s.scripts[0];U.src='//www.google-analytics.com/analytics.js';
+e.parentNode.insertBefore(U,e)}(window,document,'ga');
+
+ga('create', 'UA-258929-3', 'auto');
+ga('send', 'pageview');`;
+
 const mainLayout = ({ loggedIn, assets, legacy }) => (
   <body className="Site" id="top">
     <AdvertBar position="TopBanner" />
@@ -19,6 +27,7 @@ const mainLayout = ({ loggedIn, assets, legacy }) => (
     <AdvertBar position="lozenge1" dark />
     <div className="js__modal" />
     <script src={assets.main.js} />
+    <script type="text/javascript" dangerouslySetInnerHTML={{ __html: ga }} />
   </body>
 );
 

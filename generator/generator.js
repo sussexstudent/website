@@ -1,68 +1,138 @@
+import fs from 'fs';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import throttle from 'lodash/throttle';
-import MainLayout from './layouts/main';
-import GetInvolvedLayout from './layouts/getinvolved';
-import Homepage from './layouts/homepage';
+import isString from 'lodash/isString';
+import isObject from 'lodash/isObject';
+import chalk from 'chalk';
 import assets from '../webpack-assets.json';
 import ncp from 'copy-paste';
+import * as ui from './generator/ui';
+import { createChangesGenerator } from './generator/changes';
+import config from './setup';
 
-const render = (element) => {
-  return ReactDOM.renderToStaticMarkup(element);
+const render = (Element, other) => {
+  return ReactDOM.renderToStaticMarkup(<Element {...other} />);
 };
 
-const headContent = `
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="${assets.productionFonts.css}" rel="stylesheet" />
-<link href="${assets.main.css}" rel="stylesheet" />
-<link rel="apple-touch-icon" sizes="180x180" href="/stylesheet/union/apple-touch-icon.png">
-<link rel="icon" type="image/png" href="/stylesheet/union/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/stylesheet/union/favicon-16x16.png" sizes="16x16">
-<link rel="manifest" href="/stylesheet/union/manifest.json">
-<link rel="mask-icon" href="/stylesheet/union/safari-pinned-tab.svg" color="#1db8a4">
-<meta name="apple-mobile-web-app-title" content="Students' Union">
-<meta name="application-name" content="Students' Union">
-<meta name="theme-color" content="#ffffff">
-<MSL:JsonUserInfo />
-`;
-
-const partials = {
-  'Legacy: <head> Content': headContent,
-  'Legacy: Public Template': render(<MainLayout assets={assets} legacy />),
-  'Legacy: Logged In User Template': render(<MainLayout assets={assets} legacy loggedIn />),
-  'Main: <head> Content': headContent,
-  'Main: Public Template': render(<MainLayout assets={assets} />),
-  'Main: Logged In User Template': render(<MainLayout assets={assets} loggedIn />),
-  'Homepage!:': render(<Homepage />),
-  '/get-involved': render(<GetInvolvedLayout />),
-};
-/*
-Object.keys(partials).forEach((key) => {
-  console.log(`\n//////////START OF: ${key}////////////`);
-  console.log(partials[key]);
-  console.log(`////////////END OF: ${key}////////////\n\n`);
-});
-*/
-
-const stdin = process.openStdin();
-
-const partialKeys = Object.keys(partials);
-let i = 0;
-
-function next() {
-  if (i > partialKeys.length - 1) {
-    process.exit(0);
-  }
-
-  const partialKey = partialKeys[i];
-  ncp.copy(partials[partialKey], () => {
-    console.log(`${partialKey} now ready to paste. Press enter to continue.`);
+function renderTemplates(templates) {
+  const renderedTemplates = {};
+  Object.keys(templates).forEach((templateName) => {
+    renderedTemplates[templateName] = {
+      name: templateName,
+      head: templates[templateName].head(assets),
+      templateLoggedIn: render(templates[templateName].templateLoggedIn, { assets, loggedIn: true }),
+      templateLoggedOut: render(templates[templateName].templateLoggedOut, { assets, loggedIn: false }),
+    };
   });
 
-  i += 1;
+  return renderedTemplates;
 }
 
-stdin.addListener('data', throttle(next, 500));
+function renderPages(pages) {
+  const renderedPages = {};
+  Object.keys(pages).forEach((pageName) => {
+    renderedPages[pageName] = {
+      name: pageName,
+      content: render(pages[pageName]),
+    };
+  });
 
-console.log('Press enter to start.');
+  return renderedPages;
+}
+
+function doDiff(next, previous) {
+  const dirtyTemplates = [];
+  const dirtyPages = [];
+
+  Object.keys(next.templates).forEach((templateName) => {
+    const nextTemplate = next.templates[templateName];
+    const previousTemplate = previous.templates[templateName];
+    if (previousTemplate === undefined) {
+      dirtyTemplates.push({ name: templateName, isNew: true });
+    } else {
+      const dirtyHead = nextTemplate.head !== previousTemplate.head;
+      const dirtyTemplateLoggedIn = nextTemplate.templateLoggedIn !== previousTemplate.templateLoggedIn;
+      const dirtyTemplateLoggedOut = nextTemplate.templateLoggedOut !== previousTemplate.templateLoggedOut;
+      if (dirtyHead || dirtyTemplateLoggedIn || dirtyTemplateLoggedOut) {
+        dirtyTemplates.push({ name: templateName, dirtyHead, dirtyTemplateLoggedIn, dirtyTemplateLoggedOut });
+      }
+    }
+  });
+
+  Object.keys(next.pages).forEach((pageName) => {
+    if (!Object.hasOwnProperty.call(previous.pages, pageName) || next.pages[pageName].content !== previous.pages[pageName].content) {
+      dirtyPages.push(pageName);
+    }
+  });
+
+  return { dirtyTemplates, dirtyPages };
+}
+
+const next = {
+  templates: renderTemplates(config.templates),
+  pages: renderPages(config.pages),
+};
+
+
+let previousFile;
+
+try {
+  const file = fs.readFileSync('./previous.json', { encoding: 'utf-8', flag: 'r+' });
+  previousFile = JSON.parse(file);
+} catch (e) {
+  previousFile = { templates: {}, pages: {} };
+}
+
+if (!isObject(previousFile)) {
+  previousFile = {};
+}
+
+previousFile = { templates: {}, pages: {}, ...previousFile };
+
+
+function saveState(state) {
+  fs.writeFileSync('./previous.json', JSON.stringify(state), { encoding: 'utf-8' });
+}
+
+const differences = doDiff(next, previousFile);
+
+function differencesUI(differences) {
+  // exit if nothing
+  if (differences.dirtyTemplates.length <= 0 && differences.dirtyPages.length <= 0) {
+    console.log(`${chalk.red('No changes!')}. Use ${chalk.blue('-f')} to force all, ${chalk.blue('-p')} to name pages and ${chalk.blue('-t')} for templates`);
+    return;
+  }
+
+  ui.renderDifferencesList(differences);
+
+
+  console.log('Press enter to start.');
+
+  const stdin = process.openStdin();
+  const changes = createChangesGenerator(differences, next);
+
+  function nextAction() {
+    const change = changes.next();
+    if (change && change.done) {
+      console.log('All done!');
+      saveState(next);
+      console.log(chalk.green('Saved to state file. 👍'));
+      process.exit(0);
+    }
+
+    const { type, name, part, content } = change.value;
+    ncp.copy(content, () => {
+      if (type === 'template') {
+        console.log(`📋  ${chalk.underline('Template')} ${chalk.blue(name)}: ${chalk.green(part)}. ${chalk.italic('Paste away!')}`);
+      } else if (type === 'page') {
+        console.log(`📋  ${chalk.underline('Page')} ${chalk.blue(name)}.  ${chalk.italic('Paste away!')}`);
+      }
+    });
+  }
+
+  nextAction();
+  stdin.on('data', throttle(nextAction, 300));
+}
+
+differencesUI(differences);

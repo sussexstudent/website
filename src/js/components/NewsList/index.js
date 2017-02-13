@@ -3,7 +3,7 @@ import NewsBlock from './NewsBlock';
 
 const NewsList = ({ items }) => (
   <ul className="NewsGrid">
-    {items.map(item => <NewsBlock item={item} />)}
+    {items.map(item => <NewsBlock item={item} key={item.id} />)}
   </ul>
 );
 

@@ -11,7 +11,7 @@ TweetHeader.propTypes = {
   user: React.PropTypes.shape({
     name: React.PropTypes.string.isRequired,
     screen_name: React.PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default TweetHeader;

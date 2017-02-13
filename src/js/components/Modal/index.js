@@ -15,8 +15,8 @@ function Modal(props) {
 }
 
 Modal.propTypes = {
-  children: React.PropTypes.node,
-  handleClose: React.PropTypes.function,
+  children: React.PropTypes.node.isRequired,
+  handleClose: React.PropTypes.func.isRequired,
 };
 /* eslint-enable jsx-a11y/no-static-element-interactions */
 export default Modal;

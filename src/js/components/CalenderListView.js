@@ -20,7 +20,7 @@ class CalenderListView extends React.Component {
 }
 
 CalenderListView.propTypes = {
-  days: React.PropTypes.arrayOf(React.PropTypes.shape({})),
+  days: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
 };
 
 export default CalenderListView;

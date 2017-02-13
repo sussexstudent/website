@@ -67,7 +67,7 @@ const TweetContent = ({ tweet }) => (
 TweetContent.propTypes = {
   tweet: React.PropTypes.shape({
     full_text: React.PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default TweetContent;

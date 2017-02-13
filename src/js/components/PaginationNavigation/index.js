@@ -23,9 +23,9 @@ function PaginationNavigation({ currentPage, totalPages, onPageChange }) {
 }
 
 PaginationNavigation.propTypes = {
-  currentPage: React.PropTypes.number,
-  totalPages: React.PropTypes.number,
-  onPageChange: React.PropTypes.func,
+  currentPage: React.PropTypes.number.isRequired,
+  totalPages: React.PropTypes.number.isRequired,
+  onPageChange: React.PropTypes.func.isRequired,
 };
 
 export default PaginationNavigation;

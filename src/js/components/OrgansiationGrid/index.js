@@ -20,5 +20,5 @@ const orgShape = React.PropTypes.shape({
 });
 
 OrgansiationGrid.propTypes = {
-  organsiations: React.PropTypes.arrayOf(orgShape),
+  organsiations: React.PropTypes.arrayOf(orgShape).isRequired,
 };

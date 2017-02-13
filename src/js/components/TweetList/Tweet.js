@@ -36,7 +36,7 @@ function Tweet({ isQuoted, data }) {
 Tweet.propTypes = {
   data: React.PropTypes.arrayOf(React.PropTypes.shape({
     id_str: React.PropTypes,
-  })),
+  })).isRequired,
   isQuoted: React.PropTypes.boolean,
 };
 

@@ -11,7 +11,7 @@ TweetPermalink.propTypes = {
   tweet: React.PropTypes.shape({
     id_str: React.PropTypes.string.isRequired,
     created_at: React.PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default TweetPermalink;

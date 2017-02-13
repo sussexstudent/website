@@ -7,7 +7,7 @@ function OrganisationCard(props) {
     <li className="OrganisationCard">
       <a className="OrganisationCard__link" href={org.link}>
         <LazyLoad height={200} offset={400} once>
-          <img className="OrganisationCard__image" src={org.image.src} role="presentation" />
+          <img className="OrganisationCard__image" src={org.image.src} alt="" />
         </LazyLoad>
         <div className="OrganisationCard__info">
           <h3 className="OrganisationCard__title">{org.name}</h3>
@@ -26,7 +26,7 @@ OrganisationCard.propTypes = {
     image: React.PropTypes.shape({
       src: React.PropTypes.string,
     }),
-  }),
+  }).isRequired,
 };
 
 export default OrganisationCard;

@@ -46,7 +46,7 @@ class OptionsPanel extends React.Component {
     const options = this.state.options;
     return (
       <div className="OptionsPanel">
-        <img src={dots} role="presentation" height="20" />
+        <img src={dots} alt="" height="20" />
         <ul>
           {Object.keys(options).map(optionName => (
             <li key={optionName}>

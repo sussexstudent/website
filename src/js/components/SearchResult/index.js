@@ -54,7 +54,7 @@ SearchResult.propTypes = {
     link: React.PropTypes.string,
     title: React.PropTypes.string,
     snippet: React.PropTypes.string,
-  }),
+  }).isRequired,
 };
 
 export default SearchResult;

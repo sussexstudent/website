@@ -9,7 +9,11 @@ function Loader({ dark }) {
 }
 
 Loader.propTypes = {
-  dark: React.PropTypes.boolean,
+  dark: React.PropTypes.bool.isRequired,
+};
+
+Loader.defaultProps = {
+  dark: false,
 };
 
 export default Loader;

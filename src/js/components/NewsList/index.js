@@ -14,7 +14,7 @@ NewsList.propTypes = {
     pubDate: React.PropTypes.instanceOf(Date).isRequired,
     led: React.PropTypes.string.isRequired,
     imageURL: React.PropTypes.string,
-  })),
+  })).isRequired,
 };
 
 export default NewsList;

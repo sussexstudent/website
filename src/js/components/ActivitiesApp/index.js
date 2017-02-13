@@ -58,9 +58,9 @@ class ActivitiesApp extends React.Component {
 }
 
 ActivitiesApp.propTypes = {
-  organsiationMap: React.PropTypes.shape({}),
-  organsiationList: React.PropTypes.arrayOf(),
-  allIds: React.PropTypes.arrayOf(React.PropTypes.string),
+  organsiationMap: React.PropTypes.shape({}).isRequired,
+  organsiationList: React.PropTypes.arrayOf().isRequired,
+  allIds: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
 };
 
 export default ActivitiesApp;

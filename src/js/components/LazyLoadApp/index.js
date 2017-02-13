@@ -8,7 +8,7 @@ const LazyLoadApp = ({ children }) => (
 );
 
 LazyLoadApp.propTypes = {
-  children: React.PropTypes.children,
+  children: React.PropTypes.node.isRequired,
 };
 
 export default LazyLoadApp;

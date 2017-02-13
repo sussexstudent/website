@@ -6,7 +6,7 @@ const TweetAttachment = ({ tweet }) => {
 
     return (
       <div className="Tweet__media">
-        <img src={`${media.media_url_https}:small`} role="presentation" />
+        <img src={`${media.media_url_https}:small`} alt="" />
       </div>
     );
   }
@@ -21,7 +21,7 @@ TweetAttachment.propTypes = {
         media_url_https: React.PropTypes.string.isRequired,
       })),
     }),
-  }),
+  }).isRequired,
 };
 
 

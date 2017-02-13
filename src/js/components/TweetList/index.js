@@ -31,7 +31,11 @@ TweetList.propTypes = {
   tweets: React.PropTypes.arrayOf(React.PropTypes.shape({
     id_str: React.PropTypes,
   })),
-  isLoading: React.PropTypes.bool,
+  isLoading: React.PropTypes.bool.isRequired,
+};
+
+TweetList.defaultProps = {
+  tweets: false,
 };
 
 export default TweetList;

@@ -23,8 +23,8 @@ class ModalControler extends React.Component {
 }
 
 ModalControler.propTypes = {
-  stack: React.PropTypes.arrayOf(React.PropTypes.node),
-  onClose: React.PropTypes.function,
+  stack: React.PropTypes.arrayOf(React.PropTypes.node).isRequired,
+  onClose: React.PropTypes.func.isRequired,
 };
 
 export default ModalControler;

@@ -32,7 +32,7 @@ CalenderListDay.propTypes = {
         organsiation: React.PropTypes.string,
         title: React.PropTypes.string,
       })),
-  }),
+  }).isRequired,
 };
 
 export default CalenderListDay;

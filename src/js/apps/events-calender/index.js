@@ -30,7 +30,7 @@ function EventsApp(props) {
 }
 
 EventsApp.propTypes = {
-  events: React.PropTypes.arrayOf(React.PropTypes.shape({})),
+  events: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
 };
 
 const eventData = getEventDataFromDocument(document);

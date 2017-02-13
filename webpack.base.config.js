@@ -62,20 +62,20 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        loader: 'eslint-loader',
+        use: 'eslint-loader',
         exclude: /node_modules/,
         enforce: 'pre',
       },
       {
         test: /\.css$/,
         loader: extractCSS.extract({
-          fallbackLoader: 'style-loader',
-          loader: 'css-loader?importLoaders=1!postcss-loader',
+          fallback: 'style-loader',
+          use: 'css-loader?importLoaders=1!postcss-loader',
         }),
       },
       {
         test: /\.svg|\.png|\.woff|\.json/,
-        loader: 'url-loader?limit=10000',
+        use: 'url-loader?limit=10000',
       },
     ],
     noParse: /\.min\.js/,

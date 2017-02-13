@@ -20,7 +20,7 @@ config.output = {
 config.devtool = 'inline-source-map';
 
 config.plugins = config.plugins.concat([
-  new webpack.NoErrorsPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
 ]);
 
 config.module.rules = config.module.rules.concat([

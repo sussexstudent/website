@@ -58,6 +58,10 @@ class SearchPage extends React.Component {
   loadQueryResults(query) {
     const { page } = this.state;
     this.setState({ isLoading: true })
+
+    ga('set', 'page', `/search?q=${query}`);
+    ga('send', 'pageview');
+
     const t = perf.recordTime('Search', 'fetchResults', { query });
     window
       .fetch(`https://www.googleapis.com/customsearch/v1?q=${query}&num=10&start=${((page - 1) * 10) + 1}&cx=012345016055136658152%3Aaszn2y43suc&key=AIzaSyCMGfdDaSfjqv5zYoS0mTJnOT3e9MURWkU&fields=${fields}`)
@@ -91,11 +95,6 @@ class SearchPage extends React.Component {
     const search = qs.parse(location.search);
     search.q = query;
     search.page = this.props.page;
-    // window.history.replaceState({}, '', `${location.pathname}?${qs.stringify(search)}`);
-    // eslint-disable-next-line no-undef
-    ga('set', 'page', location.pathname + location.search);
-    // eslint-disable-next-line no-undef
-    ga('send', 'pageview');
   }
 
   handleAreaUpdate(e) {

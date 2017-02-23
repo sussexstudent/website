@@ -29,6 +29,9 @@ const anonymousList = (
     <li className="UserBar__item UserBar__item--action">
       <a href="/login" data-action="login">Log in</a>
     </li>
+    <li className="UserBar__item UserBar__item--action UserBar__item--action-highlight">
+      <a href="/shop/basket">Basket</a>
+    </li>
   </ul>
 );
 

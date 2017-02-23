@@ -1,45 +1,13 @@
 import fs from 'fs';
-import React from 'react';
-import ReactDOM from 'react-dom/server';
 import throttle from 'lodash/throttle';
-import isString from 'lodash/isString';
 import isObject from 'lodash/isObject';
 import chalk from 'chalk';
-import assets from '../webpack-assets.json';
 import ncp from 'copy-paste';
+import assets from '../webpack-assets.json';
 import * as ui from './generator/ui';
 import { createChangesGenerator } from './generator/changes';
+import { renderTemplates, renderPages } from './generator/rendering';
 import config from './setup';
-
-const render = (Element, other) => {
-  return ReactDOM.renderToStaticMarkup(<Element {...other} />);
-};
-
-function renderTemplates(templates) {
-  const renderedTemplates = {};
-  Object.keys(templates).forEach((templateName) => {
-    renderedTemplates[templateName] = {
-      name: templateName,
-      head: templates[templateName].head(assets),
-      templateLoggedIn: render(templates[templateName].templateLoggedIn, { assets, loggedIn: true }),
-      templateLoggedOut: render(templates[templateName].templateLoggedOut, { assets, loggedIn: false }),
-    };
-  });
-
-  return renderedTemplates;
-}
-
-function renderPages(pages) {
-  const renderedPages = {};
-  Object.keys(pages).forEach((pageName) => {
-    renderedPages[pageName] = {
-      name: pageName,
-      content: render(pages[pageName]),
-    };
-  });
-
-  return renderedPages;
-}
 
 function doDiff(next, previous) {
   const dirtyTemplates = [];
@@ -53,9 +21,9 @@ function doDiff(next, previous) {
     } else {
       const dirtyHead = nextTemplate.head !== previousTemplate.head;
       const dirtyTemplateLoggedIn = nextTemplate.templateLoggedIn !== previousTemplate.templateLoggedIn;
-      const dirtyTemplateLoggedOut = nextTemplate.templateLoggedOut !== previousTemplate.templateLoggedOut;
-      if (dirtyHead || dirtyTemplateLoggedIn || dirtyTemplateLoggedOut) {
-        dirtyTemplates.push({ name: templateName, dirtyHead, dirtyTemplateLoggedIn, dirtyTemplateLoggedOut });
+      const dirtyTemplatePublic = nextTemplate.templatePublic !== previousTemplate.templatePublic;
+      if (dirtyHead || dirtyTemplateLoggedIn || dirtyTemplatePublic) {
+        dirtyTemplates.push({ name: templateName, dirtyHead, dirtyTemplateLoggedIn, dirtyTemplatePublic });
       }
     }
   });
@@ -70,8 +38,8 @@ function doDiff(next, previous) {
 }
 
 const next = {
-  templates: renderTemplates(config.templates),
-  pages: renderPages(config.pages),
+  templates: renderTemplates(config.templates, assets),
+  pages: renderPages(config.pages, assets),
 };
 
 

@@ -1,8 +1,8 @@
-const branding = `<link rel="apple-touch-icon" sizes="180x180" href="/stylesheet/union/apple-touch-icon.png">
-<link rel="icon" type="image/png" href="/stylesheet/union/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/stylesheet/union/favicon-16x16.png" sizes="16x16">
-<link rel="manifest" href="/stylesheet/union/manifest.json">
-<link rel="mask-icon" href="/stylesheet/union/safari-pinned-tab.svg" color="#1db8a4">
+const branding = `<link rel="apple-touch-icon" sizes="180x180" href="https://du9l8eemj97rm.cloudfront.net/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="https://du9l8eemj97rm.cloudfront.net/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://du9l8eemj97rm.cloudfront.net/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="https://du9l8eemj97rm.cloudfront.net/manifest.json">
+<link rel="mask-icon" href="https://du9l8eemj97rm.cloudfront.net/safari-pinned-tab.svg" color="#1db8a4">
 <meta name="apple-mobile-web-app-title" content="Students' Union">
 <meta name="application-name" content="Students' Union">
 <meta name="theme-color" content="#ffffff">`;

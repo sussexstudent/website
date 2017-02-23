@@ -2,6 +2,7 @@ import React from 'react';
 import FigureCollection from '../components/FigureCollection';
 import FigureCollectionFigure from '../components/FigureCollectionFigure';
 import HomepageEventsList from '../components/HomepageEventsList';
+import HeadingImage from '../components/HeadingImage';
 
 // cafe
 //
@@ -71,9 +72,7 @@ const items = [
 const img = '/pageassets/get-involved/get-involved.jpg';
 const GetInvolved = () => (
   <div className="Container">
-    <div className="HeadingImage" style={{ backgroundImage: `url(${img}?thumbnail=true&height=700&width=2000&resize_type=CropToFit)` }}>
-      <h1 className="HeadingImage__title">Get involved</h1>
-    </div>
+    <HeadingImage imageURL={img} title="Get involved" />
     <ul className="SelectionGrid">
       {items.map(item => (
         <li className="SelectionGrid__item SelectionGrid--underneath" key={item.link}>

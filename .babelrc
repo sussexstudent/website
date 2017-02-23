@@ -1,4 +1,9 @@
 {
-  "presets": [["es2015", {"modules": false}], "react", "stage-3"],
-  "plugins": ["transform-runtime"],
+"presets": [["es2015", {"modules": "commonjs"}], "react", "stage-3"],
+  "env": {
+    "bundle": {
+      "presets": [["es2015", {"modules": false}], "react", "stage-3"],
+      "plugins": ["transform-runtime"]
+    }
+  }
 }

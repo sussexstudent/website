@@ -3,31 +3,30 @@ import MainLayout from './layouts/main';
 import { headContent, headContentLegacy } from './head';
 import GetInvolvedLayout from './layouts/getinvolved';
 import Homepage from './layouts/homepage';
-const MainLayoutLegacy = (props) => {
-  return <MainLayout legacy {...props} />
-};
+
+const MainLayoutLegacy = props => <MainLayout {...props} legacy />;
 
 export default {
   templates: {
     main: {
       head: headContent,
+      templatePublic: MainLayout,
       templateLoggedIn: MainLayout,
-      templateLoggedOut: MainLayout,
     },
     'main-containerless': {
       head: headContent,
+      templatePublic: MainLayout,
       templateLoggedIn: MainLayout,
-      templateLoggedOut: MainLayout,
     },
     legacy: {
       head: headContent,
+      templatePublic: MainLayoutLegacy,
       templateLoggedIn: MainLayoutLegacy,
-      templateLoggedOut: MainLayoutLegacy,
     },
     'legacy-jquery': {
       head: headContentLegacy,
+      templatePublic: MainLayoutLegacy,
       templateLoggedIn: MainLayoutLegacy,
-      templateLoggedOut: MainLayoutLegacy,
     },
   },
   pages: {

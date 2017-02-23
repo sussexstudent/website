@@ -12,12 +12,12 @@ export function renderDifferencesList(differences) {
         changes.push('<head>');
       }
 
-      if (template.dirtyTemplateLoggedIn) {
-        changes.push('Logged in template');
+      if (template.dirtyTemplatePublic) {
+        changes.push('Public template');
       }
 
-      if (template.dirtyTemplateLoggedOut) {
-        changes.push('Logged out template');
+      if (template.dirtyTemplateLoggedIn) {
+        changes.push('Logged in template');
       }
 
       changes = `${changes.join(', ')} changed`;

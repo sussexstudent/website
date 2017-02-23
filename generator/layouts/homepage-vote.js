@@ -1,5 +1,6 @@
 import React from 'react';
 import FigureCollection from '../components/FigureCollection';
+import VoteHero from '../components/VoteHero';
 import FigureCollectionFigure from '../components/FigureCollectionFigure';
 import HomepageEventsList from '../components/HomepageEventsList';
 
@@ -7,9 +8,7 @@ const Homepage = () => (
   <div>
     <div className="Trail">
       <div className="Trail__row">
-        <a className="FlexibleHero FlexibleHero--link" style={{ backgroundColor: '#840056' }} href="/nssboycott">
-          <img className="FlexibleHero__image FlexibleHero__image--center" src="https://www.sussexstudent.com/pageassets/web-banner-img.svg" alt="Boycott the NSS" />
-        </a>
+        <VoteHero />
       </div>
       <div className="Trail__row Trail__row--211">
         <div className="ContentBlock">
@@ -64,7 +63,7 @@ const Homepage = () => (
             link="/about-us/full-time-elected-officers/president"
           />
           <FigureCollectionFigure
-            imageURL="https://www.sussexstudent.com/pageassets/about-us/full-time-elected-officers/on-white.jpg"
+            imageURL="https://www.sussexstudent.com/asset/News/6013/Group-on-white.jpg"
             title="Grainne Gahan"
             sub="Welfare Officer"
             link="/about-us/full-time-elected-officers/welfare"

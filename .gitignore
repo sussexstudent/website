@@ -18,3 +18,4 @@ npm-debug.log
 /prototypes/config-prod.json
 /webpack-assets.json
 /.s3cfg
+/.vscode

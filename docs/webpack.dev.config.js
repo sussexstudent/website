@@ -12,7 +12,6 @@ config.devServer = {
 
 config.output = {
   path: path.resolve('./build'),
-  pathInfo: true,
   publicPath: '/',
   filename: '[name].js',
   chunkFilename: '[id].chunk.js',
@@ -21,11 +20,11 @@ config.output = {
 config.devtool = 'eval-source-map';
 
 config.plugins = config.plugins.concat([
-  new webpack.NoErrorsPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
 ]);
 
-config.module.loaders = config.module.loaders.concat([
-  { test: /\.js?$/, loaders: ['babel?cacheDirectory'], exclude: /node_modules/ },
+config.module.rules = config.module.rules.concat([
+  { test: /\.js?$/, loaders: ['babel-loader?cacheDirectory'], exclude: /node_modules/ },
 ]);
 
 module.exports = config;

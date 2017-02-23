@@ -6,6 +6,7 @@ import App from './App';
 import pages from './pages';
 
 import HomePage from './pages/home';
+import EditorPage from './pages/EditorPage';
 import FourOhFour from './pages/404';
 
 import './index.css';
@@ -24,6 +25,7 @@ ReactDOM.render(
             ))}
           </Route>
         ))}
+        <Route path="/editor" component={EditorPage} />
         <Route path="*" component={FourOhFour} />
       </Route>
     </Router>), document.getElementById('root'));

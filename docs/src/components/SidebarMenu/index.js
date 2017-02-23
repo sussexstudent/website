@@ -35,6 +35,9 @@ function SidebarMenu() {
             </ol>
           </li>
         ))}
+        <li>
+          <Link className="Button" to="/editor">Create a page</Link>
+        </li>
       </ol>
     </div>
   );

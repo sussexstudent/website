@@ -13,6 +13,7 @@ const server = new WebpackDevServer(compiler, {
   // pass [static options](http://expressjs.com/en/4x/api.html#express.static) to inner express server
   staticOptions: {
   },
+  historyApiFallback: true,
 
 
   clientLogLevel: 'info',

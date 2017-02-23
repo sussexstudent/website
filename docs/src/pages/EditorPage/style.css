@@ -1,0 +1,11 @@
+.Editor {
+  display: flex;
+
+  &__renderer {
+    flex: auto;
+  }
+
+  &__tree {
+    width: 320px;
+  }
+}

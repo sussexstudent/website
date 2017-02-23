@@ -16,7 +16,10 @@ const env = {
   development: NODE_ENV === 'development' || typeof NODE_ENV === 'undefined',
 };
 env['build'] = (env.production || env.staging)
-let extractCSS = new ExtractTextPlugin(`style{isProduction ? '.[contenthash]' : ''}.css`, { allChunks: true });
+let extractCSS = new ExtractTextPlugin({
+  filename: `style{isProduction ? '.[contenthash]' : ''}.css`,
+  allChunks: true
+});
 
 module.exports = {
   target: 'web',
@@ -27,19 +30,18 @@ module.exports = {
 
   output: {
     path: path.join(__dirname),
-    pathInfo: true,
     publicPath: '/',
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
   },
 
   resolve: {
-    modulesDirectories: [
+    modules: [
       'web_modules',
       'node_modules',
       './src/images',
     ],
-    extentions: ['js', 'svg'],
+    moduleExtensions: ['js', 'svg'],
   },
 
   plugins: [
@@ -70,26 +72,13 @@ module.exports = {
   ],
 
   module: {
-    preLoaders: [
-      { test: /\.js$/, loader: 'eslint-loader', exclude: /node_modules/ },
-      { test: /\.json$/, loader: 'json' },
-    ],
-    loaders: [
-      { test: /\.css$/, loaders: ['style-loader', 'css-loader?importLoaders=1', 'postcss-loader'] },
-      { test: /\.svg|\.png|\.woff/, loader: 'url?limit=10000' },
+    rules: [
+      { test: /\.js$/, use: 'eslint-loader', enforce: 'pre', exclude: /node_modules/ },
+      { test: /\.json$/, use: 'json-loader', enforce: 'pre' },
+      { test: /\.css$/, use: ['style-loader', 'css-loader?importLoaders=1', 'postcss-loader'] },
+      { test: /\.svg|\.png|\.woff/, use: 'url-loader?limit=10000' },
     ],
 
     noParse: /\.min\.js/,
-  },
-  postcss(webpackInner) {
-    return [
-      require('postcss-import')({
-        addDependencyTo: webpackInner,
-      }),
-      require('postcss-ant')(),
-      require('postcss-lh'),
-      require('postcss-cssnext'),
-    ];
-  },
-
+  }
 };

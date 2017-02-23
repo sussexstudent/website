@@ -1,7 +1,7 @@
-@import '../../../../src/css/global/core/colors.css';
+@import '../../../../src/css/core/colors.css';
 
 .SidebarMenu {
-  background-color: var(--color__red);
+  background-color: var(--color__brand-red);
   color: #ffffff;
   width: 100%;
   padding: 1rem;

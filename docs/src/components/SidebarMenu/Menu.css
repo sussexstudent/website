@@ -1,7 +1,11 @@
+@import '../../../../src/css/core/typography.css';
+
 .Menu {
   list-style: none;
   padding: 0;
   margin: 0;
+    font-family: var(--type__primary);
+
 }
 
 .Menu__item {
@@ -10,11 +14,10 @@
 
 .Menu__header {
   display: block;
-  text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1.1;
   font-size: 1.1rem;
-  padding-bottom: 0.4rem;
+  padding-bottom: 0.2rem;
 }
 
 .Menu__sub-menu {

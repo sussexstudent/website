@@ -19,12 +19,12 @@ class App extends React.Component {
   render() {
     const { children } = this.props;
     return (
-      <div className="App">
-        <div className="App__sidebar">
-          <SidebarMenu />
-        </div>
-        <div className="App__content">
-          <div className="Content">
+      <div className="Site">
+        <div className="App">
+          <div className="App__sidebar">
+            <SidebarMenu />
+          </div>
+          <div className="App__content">
             {children}
           </div>
         </div>

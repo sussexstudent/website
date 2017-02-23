@@ -24,7 +24,7 @@ config.plugins = config.plugins.concat([
 ]);
 
 config.module.rules = config.module.rules.concat([
-  { test: /\.js?$/, loaders: ['babel-loader?cacheDirectory'], exclude: /node_modules/ },
+  { test: /\.js?$/, loaders: ['babel-loader?cacheDirectory&forceEnv=bundle'], exclude: /node_modules/ },
 ]);
 
 module.exports = config;

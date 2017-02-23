@@ -23,7 +23,7 @@ config.plugins = config.plugins.concat([
 ]);
 
 config.module.rules = config.module.rules.concat([
-  { test: /\.js?$/, loaders: ['babel-loader'], exclude: /node_modules/ },
+  { test: /\.js?$/, loaders: ['babel-loader?forceEnv=bundle'], exclude: /node_modules/ },
 ]);
 
 module.exports = config;

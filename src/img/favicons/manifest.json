@@ -1,5 +1,7 @@
 {
 	"name": "Students' Union",
+  "short_name": "USSU",
+  "background_color": "#ffffff",
 	"icons": [
 		{
 			"src": "\/android-chrome-192x192.png",

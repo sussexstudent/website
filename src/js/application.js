@@ -2,6 +2,7 @@ import 'whatwg-fetch';
 import Promise from 'promise-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import startsWith from 'lodash/startsWith';
 import has from 'lodash/has';
 import ModalManager from './bits/modals/manager';
 import HeaderSearch from './components/HeaderSearch';
@@ -9,6 +10,7 @@ import LazyLoadApp from './components/LazyLoadApp';
 // import LoginModal from './components/LoginModal';
 // import NewsletterModal from './components/NewsletterModal';
 // import SnapchatModal from './components/SnapchatModal';
+import VoteModal from './components/VoteModal';
 import perf from './tracking/perf';
 import registerOnClickOff from './libs/registerOnClickOff';
 import renderSearch from './apps/search';
@@ -88,6 +90,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (document.querySelector('.app__news')) {
     renderNews();
+  }
+
+  // VOTE NOW
+  try {
+    if (localStorage.getItem('seen_vote') === null) {
+      const p = window.location.pathname;
+      if (p !== '/' && !startsWith(p, '/vote') && !startsWith(p, '/elections') && !startsWith(p, '/referenda')) {
+        modals.add(<VoteModal />);
+        localStorage.setItem('seen_vote', '1');
+      } else if (p === '/vote/') {
+        localStorage.setItem('seen_vote', '1');
+      }
+    }
+  } catch (e) {
+    console.warn('unable to get ls');
   }
 
 

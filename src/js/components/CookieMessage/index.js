@@ -28,7 +28,7 @@ class CookieMessage extends React.Component {
           </span>
         </button>
       </div>
-    )
+    );
   }
 }
 

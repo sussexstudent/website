@@ -1,0 +1,36 @@
+.VoteModal {
+  font-family: var(--type__primary);
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--color__brand-blue);
+  text-align: center;
+  line-height: 2rem;
+  display: block;
+
+  &__container {
+    max-width: 660px;
+    margin: 0 auto;
+  }
+
+  &__button {
+    border: 6px solid var(--color__brand-blue);
+    display: inline-block;
+    margin: 1rem 0;
+    padding: 0.8rem 1.2rem;
+    text-transform: uppercase;
+
+    & svg {
+      width: auto;
+      max-width: 100%;
+    }
+  }
+
+  &:hover &__button  {
+    color: var(--color__brand-yellow);
+    background-color: var(--color__brand-blue);
+  }
+
+  &:hover #VoteNow {
+    fill: var(--color__brand-yellow);
+  }
+}

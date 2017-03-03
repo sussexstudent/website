@@ -32,7 +32,7 @@ export default {
   },
   pages: {
     homepage: Homepage,
-    homepageVote: HomepageVote,
+    // homepageVote: HomepageVote,
     'get-involved': GetInvolvedLayout,
   },
 };

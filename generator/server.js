@@ -27,6 +27,7 @@ chokidar.watch([
 
 const pages = {
   homepage: () => require('./layouts/homepage').default,
+  support: () => require('./layouts/Support').default,
   'homepage-vote': () => require('./layouts/homepage-vote').default,
 };
 

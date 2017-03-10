@@ -3,6 +3,7 @@ import MainLayout from './layouts/main';
 import { headContent, headContentLegacy } from './head';
 import GetInvolvedLayout from './layouts/getinvolved';
 import Homepage from './layouts/homepage';
+import Support from './layouts/Support';
 import HomepageVote from './layouts/homepage-vote';
 
 const MainLayoutLegacy = props => <MainLayout {...props} legacy />;
@@ -32,6 +33,7 @@ export default {
   },
   pages: {
     homepage: Homepage,
+    support: Support,
     // homepageVote: HomepageVote,
     'get-involved': GetInvolvedLayout,
   },

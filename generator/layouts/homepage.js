@@ -7,8 +7,14 @@ const Homepage = () => (
   <div>
     <div className="Trail">
       <div className="Trail__row">
-        <a className="FlexibleHero FlexibleHero--link" style={{ backgroundColor: '#840056' }} href="/nssboycott">
-          <img className="FlexibleHero__image FlexibleHero__image--center" src="https://www.sussexstudent.com/pageassets/web-banner-img.svg" alt="Boycott the NSS" />
+        <a className="FlexibleHero FlexibleHero--oww FlexibleHero--link" style={{ backgroundColor: '#120e1c' }} href="/oww">
+          <div className="FlexibleHero__content">
+            <h1 className="FlexibleHero__title">One World Week 2017</h1>
+            <h2 className="FlexibleHero__sub">13th - 17th March</h2>
+          </div>
+          <div className="FlexibleHero__bgImage-container">
+            <div style={{ backgroundImage: 'url(/pageassets/oww-center.jpg)' }} />
+          </div>
         </a>
       </div>
       <div className="Trail__row Trail__row--211">

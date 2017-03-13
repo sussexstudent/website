@@ -1,6 +1,8 @@
 .FlexibleHero {
   padding: 1lh;
   margin-bottom: 2lh;
+  position: relative;
+  font-family: var(--type__primary);
 
   &--link {
     display: block;
@@ -13,5 +15,72 @@
     &--center {
       margin: 0 auto;
     }
+  }
+
+  &__title {
+    color: #ffffff;
+    text-align: center;
+  }
+
+  &__bgImage-container {
+    z-index: 0;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+
+    & div {
+      max-width: 700px;
+      margin: 0 auto;
+      display: block;
+      height: 100%;
+      background-size: cover;
+      background-position: top center;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.FlexibleHero--oww {
+  color: #ffffff;
+  text-align: center;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .FlexibleHero {
+
+    &__container {
+    }
+
+    &__bgImage-container {
+    }
+
+    &__title {
+      font-size: 2.2rem;
+    }
+
+    &__sub {
+      font-size: 1.6rem;
+    }
+
+    @media screen and (min-width: 500px) {
+      &__title {
+        font-size: 3.4rem;
+      }
+
+      &__sub {
+        font-size: 2.2rem;
+      }
+    }
+
   }
 }

@@ -2,20 +2,13 @@ import React from 'react';
 import FigureCollection from '../components/FigureCollection';
 import FigureCollectionFigure from '../components/FigureCollectionFigure';
 import HomepageEventsList from '../components/HomepageEventsList';
+import VarsityBanner from '../components/banners/VarsityBanner';
 
 const Homepage = () => (
   <div>
     <div className="Trail">
       <div className="Trail__row">
-        <a className="FlexibleHero FlexibleHero--oww FlexibleHero--link" style={{ backgroundColor: '#120e1c' }} href="/oww">
-          <div className="FlexibleHero__content">
-            <h1 className="FlexibleHero__title">One World Week 2017</h1>
-            <h2 className="FlexibleHero__sub">13th - 17th March</h2>
-          </div>
-          <div className="FlexibleHero__bgImage-container">
-            <div style={{ backgroundImage: 'url(/pageassets/oww-center.jpg)' }} />
-          </div>
-        </a>
+        <VarsityBanner />
       </div>
       <div className="Trail__row Trail__row--211">
         <div className="ContentBlock">

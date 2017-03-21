@@ -1,5 +1,5 @@
-import 'whatwg-fetch';
-import Promise from 'promise-polyfill';
+import 'core-js/es6';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import has from 'lodash/has';
@@ -12,16 +12,10 @@ import LazyLoadApp from './components/LazyLoadApp';
 import perf from './tracking/perf';
 import registerOnClickOff from './libs/registerOnClickOff';
 import renderSearch from './apps/search';
-import renderNews from './apps/news';
 import classToggle from './libs/dom/classToggle';
 import eventCardLinking from './bits/events_card_linking';
 import pseudoActiveMenu from './bits/pseudoActiveMenu';
 import smoothscroll from './bits/smoothscroll';
-
-// Promise polyfil
-if (!window.Promise) {
-  window.Promise = Promise;
-}
 
 const modals = ModalManager();
 
@@ -51,6 +45,34 @@ function linkListener(e) {
   }
 }
 
+// AD BLOCKING
+// TODO: tidy up.
+if (localStorage.getItem('blocking') != null) {
+  try {
+    window.blocking = JSON.parse(localStorage.getItem('blocking')).enabled;
+  } catch (e) {
+    window.blocking = false;
+  }
+} else {
+  fetch('https://du9l8eemj97rm.cloudfront.net/showads.js')
+    .then(() => {
+      console.log('checked: blocking disabled');
+      localStorage.setItem('blocking', JSON.stringify({ enabled: false }));
+      window.blocking = false;
+    })
+    .catch(() => {
+      console.log('checked: blocking enabled');
+      localStorage.setItem('blocking', JSON.stringify({ enabled: true }));
+      window.blocking = true;
+    });
+}
+
+if (window.blocking) {
+  [...document.querySelectorAll('.AdvertBar')].forEach((advert) => {
+    advert.remove();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   modals.init();
   [...document.querySelectorAll('a')].forEach((e) => {
@@ -71,6 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
     System.import('./apps/events-calender').then(() => t.done());
   }
 
+  // const twitter = [...document.querySelectorAll('.App-tweets')]
+
   if (activitiesApp) {
     const t = perf.recordTime('import', 'activities');
     System.import('./apps/activities').then((app) => {
@@ -86,8 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
     System.import('./apps/tweets').then(() => t.done());
   }
 
+
+  // NEWS RENDERING
+  // TODO: work everywhere
   if (document.querySelector('.app__news')) {
-    renderNews();
+    System.import('./bits/news');
   }
 
   if (localStorage.getItem('su_cookie') !== '1') {

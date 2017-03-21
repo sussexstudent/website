@@ -2,6 +2,7 @@ const webpack = require('webpack');
 
 const path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 console.log(JSON.stringify(NODE_ENV));
@@ -56,6 +57,10 @@ module.exports = {
     }),
     // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
     // new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', }),
+    new ChunkManifestPlugin({
+      filename: 'manifest.json',
+      manifestVariable: 'chunkManifest',
+    }),
     extractCSS,
   ],
   module: {

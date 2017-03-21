@@ -11,6 +11,8 @@
     "babel-jest": "^18.0.0",
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.2.2",
     "babel-preset-react-app": "^2.1.0",
     "babel-preset-stage-3": "^6.17.0",
     "babel-register": "^6.22.0",
@@ -26,6 +28,7 @@
     "css-loader": "^0.26.1",
     "detect-port": "^1.1.0",
     "dotenv": "^4.0.0",
+    "duplicate-package-checker-webpack-plugin": "^1.1.0",
     "eslint": "^3.15.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-config-react-app": "^0.5.1",
@@ -48,6 +51,7 @@
     "jest": "^18.1.0",
     "json-loader": "0.5.4",
     "lint-staged": "^3.3.0",
+    "lodash-webpack-plugin": "^0.11.2",
     "object-assign": "^4.1.1",
     "path-exists": "^3.0.0",
     "postcss-ant": "^2.1.1",
@@ -68,11 +72,13 @@
     "underscore": "^1.8.3",
     "url-loader": "0.5.7",
     "webpack": "^2.2.1",
+    "webpack-bundle-analyzer": "^2.3.1",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-dev-server": "^2.3.0",
     "webpack-manifest-plugin": "1.1.0"
   },
   "dependencies": {
+    "chunk-manifest-webpack-plugin": "^1.0.0",
     "classnames": "^2.2.5",
     "date-fns": "^1.27.2",
     "es6-shim": "^0.35.1",
@@ -94,7 +100,7 @@
     "gen": "node ./generator/start.js",
     "deploy": "yarn run prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run gen",
     "precommit": "`npm bin`/eslint",
-    "serve": "BABEL_ENV=dev-server nodemon ./generator/start-server.js"
+    "serve": "BABEL_ENV=dev-server node ./generator/start-server.js"
   },
   "jest": {
     "moduleFileExtensions": [

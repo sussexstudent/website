@@ -4,10 +4,13 @@ import isObject from 'lodash/isObject';
 import chalk from 'chalk';
 import ncp from 'copy-paste';
 import assets from '../webpack-assets.json';
+import manifest from '../dist/manifest.json';
 import * as ui from './generator/ui';
 import { createChangesGenerator } from './generator/changes';
 import { renderTemplates, renderPages } from './generator/rendering';
 import config from './setup';
+
+assets.manifest = manifest;
 
 function doDiff(next, previous) {
   const dirtyTemplates = [];

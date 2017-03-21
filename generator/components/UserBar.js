@@ -5,6 +5,9 @@ const mslLogout = MSLTag('LoginButton', { LoginText: 'Log in', LogoutText: 'Log 
 
 const loggedInList = (
   <ul className="UserBar__list">
+    <li className="UserBar__item UserBar__item--welcome" />
+    <li className="UserBar__item UserBar__item--action" dangerouslySetInnerHTML={{ __html: mslLogout }} />
+
     <li className="UserBar__item UserBar__item-admin UserBar__item--empty UserBar__admin-menu">
       <span>Admin</span>
       <div className="UserBar__item-dropdown" dangerouslySetInnerHTML={{ __html: MSLTag('Admin') }} />
@@ -13,9 +16,6 @@ const loggedInList = (
       <span>Page</span>
       <div className="UserBar__item-dropdown" dangerouslySetInnerHTML={{ __html: MSLTag('ControlPanel') }} />
     </li>
-
-    <li className="UserBar__item UserBar__item--welcome" />
-    <li className="UserBar__item UserBar__item--action" dangerouslySetInnerHTML={{ __html: mslLogout }} />
 
     <li className="UserBar__item UserBar__item--action UserBar__item--action-highlight">
       <a href="/shop/basket">Basket</a>
@@ -38,7 +38,7 @@ const anonymousList = (
 
 const UserBar = ({ loggedIn }) => (
   <div className="UserBar">
-    <div className="Container Container--sv-bleed">
+    <div className="Container UserBar__container">
       {loggedIn ? loggedInList : anonymousList}
     </div>
   </div>

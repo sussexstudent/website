@@ -36,6 +36,19 @@ ${more.join('')}
 {head_content}
 <script type="text/javascript">
   ${manifestHandler(assets)}
+  try {
+    if (JSON.parse(localStorage.getItem('blocking')).enabled) {
+      var css = '.AdvertBar { display: none; }';
+      var style = document.createElement('style');
+      style.type = 'text/css';
+      if (style.styleSheet){
+        style.styleSheet.cssText = css;
+      } else {
+        style.appendChild(document.createTextNode(css));
+      }
+      document.head.appendChild(style);
+    }
+  } catch (e) {}
 </script>
 `;
 

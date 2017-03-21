@@ -2,6 +2,10 @@ const webpack = require('webpack');
 
 const path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+var DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 console.log(JSON.stringify(NODE_ENV));
@@ -24,6 +28,7 @@ module.exports = {
   target: 'web',
 
   entry: {
+    vendor: ['react', 'react-dom', 'whatwg-fetch'],
     main: './src/entry.js',
     devFonts: './src/env-dev.js',
     productionFonts: './src/env-production.js',
@@ -46,6 +51,7 @@ module.exports = {
   },
 
   plugins: [
+    // new BundleAnalyzerPlugin({ analyzerPort: 3999 }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(NODE_ENV),
@@ -54,8 +60,17 @@ module.exports = {
       __STAGING__: env.staging,
       __PRODUCTION__: env.production,
     }),
-    // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
-    // new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', }),
+    new LodashModuleReplacementPlugin({
+      collections: true,
+      shorthands: true,
+    }),
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', minChunks: Infinity }),
+    new ChunkManifestPlugin({
+      filename: 'manifest.json',
+      manifestVariable: 'chunkManifest',
+    }),
+    new webpack.optimize.CommonsChunkPlugin({ async: true, children: true, minChunks: 2 }),
+    new DuplicatePackageCheckerPlugin(),
     extractCSS,
   ],
   module: {

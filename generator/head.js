@@ -8,6 +8,23 @@ const branding = `<link rel="apple-touch-icon" sizes="180x180" href="https://du9
 <meta name="theme-color" content="#ffffff">`;
 
 
+function manifestHandler(assets) {
+  if (Object.hasOwnProperty.call(assets, 'manifest')) {
+    return `
+      window['chunkManifest'] = ${JSON.stringify(assets.manifest)};
+    `;
+  }
+
+  // For development, simple chunk naming proxy
+  return `
+    window['chunkManifest'] = new Proxy([], {
+      get: function(target, chunk) {
+        return chunk + '.chunk.js';
+      }
+    });
+  `;
+}
+
 export const headContent = (assets, ...more) => `
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +34,22 @@ ${branding}
 ${more.join('')}
 <MSL:JsonUserInfo />
 {head_content}
+<script type="text/javascript">
+  ${manifestHandler(assets)}
+  try {
+    if (JSON.parse(localStorage.getItem('blocking')).enabled) {
+      var css = '.AdvertBar { display: none; }';
+      var style = document.createElement('style');
+      style.type = 'text/css';
+      if (style.styleSheet){
+        style.styleSheet.cssText = css;
+      } else {
+        style.appendChild(document.createTextNode(css));
+      }
+      document.head.appendChild(style);
+    }
+  } catch (e) {}
+</script>
 `;
 
 const legacyScripts = `

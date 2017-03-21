@@ -1,1 +1,1 @@
-# Students' Union Style guide
+# sussexstudent.com

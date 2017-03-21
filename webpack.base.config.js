@@ -25,6 +25,7 @@ module.exports = {
   target: 'web',
 
   entry: {
+    vendor: ['react', 'react-dom', 'whatwg-fetch'],
     main: './src/entry.js',
     devFonts: './src/env-dev.js',
     productionFonts: './src/env-production.js',
@@ -57,6 +58,7 @@ module.exports = {
     }),
     // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
     // new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', }),
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', minChunks: Infinity }),
     new ChunkManifestPlugin({
       filename: 'manifest.json',
       manifestVariable: 'chunkManifest',

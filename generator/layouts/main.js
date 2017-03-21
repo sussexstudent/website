@@ -31,6 +31,7 @@ const mainLayout = ({ loggedIn, assets, legacy }) => (
     <Footer />
     <AdvertBar position="lozenge1" dark />
     <div className="js__modal" />
+    <script src={assets.vendor.js} />
     <script src={assets.main.js} />
     <script type="text/javascript" dangerouslySetInnerHTML={{ __html: ga }} />
   </body>

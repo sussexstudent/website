@@ -39,6 +39,9 @@ const localAssetsStub = {
   productionFonts: {
     css: '/assets/style.productionFonts.css',
   },
+  vendor: {
+    js: '/assets/vendor.js',
+  },
 };
 
 function handleTemplaing(html) {

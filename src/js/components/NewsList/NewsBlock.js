@@ -1,11 +1,17 @@
 import React from 'react';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import isToday from 'date-fns/is_today';
+import Logotype from '../../../img/logotype';
 
 const NewsBlock = ({ item: { title, link, pubDate, led, imageURL = null } }) => (
   <li className="NewsGrid__item NewsBlock">
     <a className="NewsBlock__link" href={link}>
       {imageURL && <div className="NewsBlock__image" style={{ backgroundImage: `url(${imageURL})` }} />}
+      {!imageURL && (
+        <div className="NewsBlock__image NewsBlock__image--default">
+          <Logotype />
+        </div>
+      )}
       <div className="NewsBlock__content">
         <div className="NewsBlock__title-link">
           <h2 className="NewsBlock__title">{title}</h2>

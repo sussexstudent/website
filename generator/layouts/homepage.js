@@ -7,7 +7,7 @@ import VarsityBanner from '../components/banners/VarsityBanner';
 const Homepage = () => (
   <div>
     <div className="Trail">
-      <div className="Trail__row">
+      <div className="Trail__row  u-container-bleed-2">
         <VarsityBanner />
       </div>
       <div className="Trail__row Trail__row--211">
@@ -25,7 +25,7 @@ const Homepage = () => (
         </div>
         <div className="ContentBlock">
           <div className="ContentBlock__heading">Twitter</div>
-          <div className="app__tweets" />
+          <div className="App-Tweets u-container-bleed-1" />
         </div>
       </div>
 

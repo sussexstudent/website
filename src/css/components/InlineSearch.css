@@ -6,7 +6,7 @@
 
   &__header {
     background: var(--color__brand-green);
-    height: 200px;
+    height: 165px;
     position: relative;
     left: 0;
     right: 0;
@@ -92,12 +92,12 @@
 }
 
 .test-enter.test-enter-active {
-  height: 200px;
+  height: 165px;
   transition: height 300ms ease;
 }
 
 .test-leave {
-  height: 200px;
+  height: 165px;
   transition: height 300ms ease;
 }
 

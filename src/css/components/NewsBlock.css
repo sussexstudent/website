@@ -3,9 +3,10 @@
 
 .NewsBlock {
   margin-bottom: 1lh;
-  @mixin card flat;
   display: flex;
   flex-direction: column;
+
+  @mixin card standard;
 
   &__content {
     padding: 0 0.5lh;

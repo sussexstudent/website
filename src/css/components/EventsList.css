@@ -2,7 +2,6 @@
   background: var(--color__brand-green);
   font-size: 0.8rem;
   list-style: none;
-  margin: 0;
   padding: 0.5rem;
   font-family: var(--type__primary);
   flex: auto;
@@ -37,7 +36,6 @@
     background: #ffffff;
     margin-bottom: 0.5rem;
     padding: 0.4rem;
-    @mixin card flat;
   }
 
   &__item {
@@ -45,13 +43,8 @@
     margin-bottom: 0.5rem;
     padding: 0.7rem;
     text-decoration: none;
-    transition: box-shadow 300ms ease;
     display: block;
-    @mixin card flat;
-
-    &:hover {
-      @mixin card raised;
-    }
+    @mixin card standard;
 
     & .event_item {
       box-shadow: none;

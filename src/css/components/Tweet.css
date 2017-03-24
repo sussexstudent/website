@@ -35,12 +35,7 @@
   margin-bottom: 0.5rem;
   padding: 0.5rem 0;
   position: relative;
-  transition: box-shadow 300ms ease;
-  @mixin card flat;
-
-  &:hover {
-    @mixin card raised;
-  }
+  @mixin card standard;
 
   &__faux-link {
     position: absolute !important;

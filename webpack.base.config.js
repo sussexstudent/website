@@ -28,7 +28,7 @@ module.exports = {
   target: 'web',
 
   entry: {
-    vendor: ['react', 'react-dom', 'whatwg-fetch'],
+    vendor: ['react', 'react-dom', 'unfetch/polyfill'],
     main: './src/entry.js',
     devFonts: './src/env-dev.js',
     productionFonts: './src/env-production.js',

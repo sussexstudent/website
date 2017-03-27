@@ -56,12 +56,10 @@ if (localStorage.getItem('blocking') != null) {
 } else {
   fetch('https://du9l8eemj97rm.cloudfront.net/showads.js')
     .then(() => {
-      console.log('checked: blocking disabled');
       localStorage.setItem('blocking', JSON.stringify({ enabled: false }));
       window.blocking = false;
     })
     .catch(() => {
-      console.log('checked: blocking enabled');
       localStorage.setItem('blocking', JSON.stringify({ enabled: true }));
       window.blocking = true;
     });

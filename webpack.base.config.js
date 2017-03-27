@@ -60,10 +60,12 @@ module.exports = {
       __STAGING__: env.staging,
       __PRODUCTION__: env.production,
     }),
-    new LodashModuleReplacementPlugin({
+    /*new LodashModuleReplacementPlugin({
       collections: true,
       shorthands: true,
-    }),
+      paths: true,
+      unicode: true,
+    }),*/
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', minChunks: Infinity }),
     new ChunkManifestPlugin({
       filename: 'manifest.json',

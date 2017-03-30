@@ -1,0 +1,15 @@
+.SearchFilterNav {
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+  }
+
+  &__item {
+
+    &--current {
+
+    }
+  }
+}

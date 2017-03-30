@@ -16,6 +16,10 @@
   transition: transform ease 300ms, box-shadow ease 300ms;
   @mixin card raised;
 
+  &[disabled] {
+    opacity: 0.5;
+  }
+
   &--massive {
     @media (--medium) {
       transform: scale(2);

@@ -232,6 +232,7 @@ class HeaderSearch extends React.Component {
   }
 
   render() {
+    const { disabled } = this.props;
     const { isOpen, isMobile } = this.state;
     const containerClasses = cx('InlineSearch', { 'InlineSearch--isOpen': isOpen });
 
@@ -239,12 +240,13 @@ class HeaderSearch extends React.Component {
       <div className={containerClasses}>
         <input
           className="HeaderSearch HeaderSearch--search-icon"
-          placeholder="Search"
+          placeholder={disabled ? 'Search unavailable' : 'Search'}
           aria-label="search"
           value={this.state.query}
           onChange={this.handleInputChange}
           onFocus={this.handleFocus}
           ref={(el) => { this.dummyInput = el; }}
+          disabled={disabled}
         />
 
         {this.renderSearching(isOpen && !isMobile)}
@@ -261,5 +263,13 @@ class HeaderSearch extends React.Component {
     );
   }
 }
+
+HeaderSearch.propTypes = {
+  disabled: React.PropTypes.bool,
+};
+
+HeaderSearch.defaultProps = {
+  disabled: false,
+};
 
 export default HeaderSearch;

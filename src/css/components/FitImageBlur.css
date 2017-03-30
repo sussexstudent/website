@@ -1,0 +1,29 @@
+.FitImageBlur {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  background-color: #3f3f3f;
+
+  &__background {
+    background-size: cover;
+    filter: blur(20px);
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    bottom: -60px;
+    left: -60px;
+    background-repeat: none;
+    background-position: center center;
+    opacity: 0.9;
+  }
+
+  &__image {
+    background-size: contain;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}

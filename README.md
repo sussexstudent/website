@@ -4,17 +4,23 @@ The University of Sussex Students' Union website frontend.
 
 A set of components used for building pages, along with prebuilt pages and templates that can be generated.
 
-## Source
+### Source
 `/src` contains frontend assets:
 * PostCSS styles in components via BEM
 * React Components where needed for interactivity such as the society search & filtering (*coming soon*)
 
-## Generator
+### Generator
 See `/generator`
 
 To ease the use of components, they are pre-built as React components are rendered to static markup in a number of ways. The generator can be used to build full pages and kept inside of git, for example the Homepage. Our docs also include a Composer to create pages of components visually on the fly without any need of writing markup, handy for societies to use in their microsites.
 
-## Developing
+
+### Docs
+Documentation for the components and more lives in `/docs`. Within the docs lives a composer application for building pages from components visually.
+
+## Getting started
+
+### Developing
 Install dependencies with
 ```bash
 $ yarn
@@ -34,10 +40,7 @@ This is sussexstudent.com using locally built assets and a locallly generated ba
 
 To aid in developing pages, locally rendered pages can be accessed under the `/~/` path, for example `http://localhost:3002/~/get-involved` - this uses generators `get-involved` template to build this file.
 
-## Docs
-Documentation for the components and more lives in `/docs`. Within the docs lives a composer application for building pages from components visually.
-
-## Deploying
+### Deploying
 ```bash
 $ yarn run deploy
 ```

@@ -32,7 +32,10 @@ Woo! Have a gander at `http://localhost:3002`.
 
 This is sussexstudent.com using locally built assets and a locallly generated base template. The content is proxied from the live site.
 
-To aid in developing pages, the development server used a ~ to denote local pages, for example `http://localhost:3002/~/get-involved` used the generators get-involved template to build this file.
+To aid in developing pages, locally rendered pages can be accessed under the `/~/` path, for example `http://localhost:3002/~/get-involved` - this uses generators `get-involved` template to build this file.
+
+## Docs
+Documentation for the components and more lives in `/docs`. Within the docs lives a composer application for building pages from components visually.
 
 ## Deploying
 ```bash

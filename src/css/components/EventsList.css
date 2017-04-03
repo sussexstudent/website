@@ -74,6 +74,8 @@
   }
 
   & .msl_event_description {
+    word-wrap: break-word;
+
     &:before {
       content: '';
       width: 18px;

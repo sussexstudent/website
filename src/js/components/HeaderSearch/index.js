@@ -183,9 +183,11 @@ class HeaderSearch extends React.Component {
           >
             {isOpen ? <div className="InlineSearch__header" /> : null}
           </ReactCSSTransitionGroup>
-          { isOpen ? <div className="Container--for-search">
-            <SearchPage query={this.state.query} />
-          </div> : null }
+          { isOpen ? (
+            <div>
+              <SearchPage query={this.state.query} />
+            </div>
+          ) : null }
         </div>
       </div>
     );
@@ -226,7 +228,6 @@ class HeaderSearch extends React.Component {
           ) : null}
         </form>
         <SearchPage query={this.state.query} />
-
       </div>
     );
   }

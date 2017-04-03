@@ -1,17 +1,8 @@
 .SearchApp {
   &__container {
     padding-bottom: 2rem;
-    padding-left: 0.3rem;
-    padding-right: 0.3rem;
-
-    @media (--medium) {
       padding-left: 0;
       padding-right: 0;
-    }
-  }
-
-  &__container--is-loading {
-    opacity: 0.4;
   }
 
   &__result-message {

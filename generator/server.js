@@ -1,13 +1,13 @@
-import path from 'path';
 import React from 'react';
 import express from 'express';
 import 'isomorphic-fetch';
 import jsdom from 'jsdom';
 import webpackMiddleware from 'webpack-dev-middleware';
-import { render, renderHtml } from './generator/rendering';
 import webpack from 'webpack';
-import devWebpackConfig from '../webpack.config';
 import chokidar from 'chokidar';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import devWebpackConfig from '../webpack.config';
+import { render, renderHtml } from './generator/rendering';
 
 const server = express();
 
@@ -195,10 +195,13 @@ function loadFromSite(req, res) {
     .catch(e => console.log(e));
 }
 
-
-server.use(webpackMiddleware(webpack(devWebpackConfig), {
+const compiler = webpack(devWebpackConfig);
+server.use(webpackMiddleware(compiler, {
   publicPath: '/assets/',
 }));
+
+server.use(webpackHotMiddleware(compiler));
+
 server.get('/~/:page', loadFromLocal);
 server.get('/*', loadFromSite);
 

@@ -9,12 +9,16 @@
     margin-bottom: 1.5rem;
     padding: 0.5rem;
     transition: transform 300ms ease;
-
-    @mixin card raised;
+    @mixin card standard-no-transition;
+    transition: box-shadow 300ms ease, transform 300ms ease;
 
     &:hover {
       transform: scale(1.02);
     }
+  }
+
+  &--stale {
+    opacity: 0.4;
   }
 
   &__title {

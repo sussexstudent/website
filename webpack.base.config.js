@@ -1,16 +1,12 @@
 const webpack = require('webpack');
 
 const path = require('path');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-var DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 console.log(JSON.stringify(NODE_ENV));
-
-const isProduction = process.env.NODE_ENV === 'production';
 
 const env = {
   production: NODE_ENV === 'production',
@@ -18,18 +14,14 @@ const env = {
   test: NODE_ENV === 'test',
   development: NODE_ENV === 'development' || typeof NODE_ENV === 'undefined',
 };
-env['build'] = (env.production || env.staging)
-const extractCSS = new ExtractTextPlugin({
-  filename: isProduction ? 'union.[contenthash].[name].css' : 'style.[name].css',
-  allChunks: false,
-});
+env.build = (env.production || env.staging);
 
 module.exports = {
   target: 'web',
 
   entry: {
     vendor: ['react', 'react-dom', 'unfetch/polyfill'],
-    main: './src/entry.js',
+    main: ['./src/entry.js'],
     devFonts: './src/env-dev.js',
     productionFonts: './src/env-production.js',
   },
@@ -67,13 +59,7 @@ module.exports = {
       unicode: true,
     }),*/
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', minChunks: Infinity }),
-    new ChunkManifestPlugin({
-      filename: 'manifest.json',
-      manifestVariable: 'chunkManifest',
-    }),
-    new webpack.optimize.CommonsChunkPlugin({ async: true, children: true, minChunks: 2 }),
     new DuplicatePackageCheckerPlugin(),
-    extractCSS,
   ],
   module: {
     rules: [
@@ -82,13 +68,6 @@ module.exports = {
         use: 'eslint-loader',
         exclude: /node_modules/,
         enforce: 'pre',
-      },
-      {
-        test: /\.css$/,
-        loader: extractCSS.extract({
-          fallback: 'style-loader',
-          use: 'css-loader?importLoaders=1!postcss-loader',
-        }),
       },
       {
         test: /\.svg|\.png|\.woff|\.json/,

@@ -34,7 +34,7 @@ function formatTitle(title) {
 }
 
 function SearchResult(props) {
-  const { link, title, snippet } = props.item;
+  const { link, title, description } = props.item;
 
   return (
     <li className="ResultsList__result">
@@ -43,7 +43,7 @@ function SearchResult(props) {
           {getKicker(link)}
         </div>
         <h1 className="ResultsList__title">{formatTitle(title)}</h1>
-        <p className="ResultsList__snippet">{snippet}</p>
+        <p className="ResultsList__snippet">{description}</p>
       </a>
     </li>
   );

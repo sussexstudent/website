@@ -1,0 +1,29 @@
+.SearchFilterNav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  font-weight: bold;
+
+  &__item {
+    padding: 0.8rem 0.8rem;
+    border-bottom: 3px solid transparent;
+    display: block;
+    flex: 0 0 auto;
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 60px;
+
+    &--current {
+      color: var(--color__brand-green);
+      border-bottom-color: var(--color__brand-green);
+    }
+
+    &--disabled {
+      color: var(--color__grey-winter);
+      font-weight: normal;
+      cursor: default;
+    }
+  }
+}

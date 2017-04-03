@@ -16,20 +16,14 @@ function manifestHandler(assets) {
   }
 
   // For development, simple chunk naming proxy
-  return `
-    window['chunkManifest'] = new Proxy([], {
-      get: function(target, chunk) {
-        return chunk + '.chunk.js';
-      }
-    });
-  `;
+  return '';
 }
 
 export const headContent = (assets, ...more) => `
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="${assets.productionFonts.css}" rel="stylesheet" />
-<link href="${assets.main.css}" rel="stylesheet" />
+${assets.manifest ? `<link href="${assets.productionFonts.css}" rel="stylesheet" />
+<link href="${assets.main.css}" rel="stylesheet" />` : ''}
 ${branding}
 ${more.join('')}
 <MSL:JsonUserInfo />

@@ -1,5 +1,9 @@
 .MobileSearch .HeaderSearch {
   background-color: #ffffff;
+  border-radius: 2px;
+
+  border-radius: 2px 2px 0 0;
+
 }
 
 .HeaderSearch {
@@ -14,7 +18,12 @@
   width: 100%;
   box-sizing: border-box;
   transition: transform ease 300ms, box-shadow ease 300ms;
-  @mixin card raised;
+  border-radius: 2px;
+  @mixin card flat;
+
+  @media (--medium) {
+    @mixin card raised;
+  }
 
   &[disabled] {
     opacity: 0.5;

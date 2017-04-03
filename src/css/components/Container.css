@@ -5,6 +5,7 @@
 .u-container-bleed-1 {
   margin-left: -0.5lh;
   margin-right: -0.5lh;
+
   @media(--small) {
     margin-left: 0;
     margin-right: 0;
@@ -14,6 +15,7 @@
 .u-container-bleed-2 {
   margin-left: -0.5lh;
   margin-right: -0.5lh;
+
   @media(--medium) {
     margin-left: 0;
     margin-right: 0;
@@ -37,19 +39,20 @@
   }
 
   &--for-search {
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    height: 100vh;
-    padding-top: 165px;
-    position: absolute;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding-left: 1lh;
-    padding-right: 1lh;
-    max-width: 1200px;
-    margin: 0 auto;
+    @media (--medium) {
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
+      height: 100vh;
+      padding-top: 245px;
+      padding-bottom: 40px;
+      position: absolute;
+      box-sizing: border-box;
+      top: 0;
+      left: 0;
+      right: 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
   }
 
   &--sv-bleed {

@@ -10,16 +10,20 @@
     position: relative;
     left: 0;
     right: 0;
-    @mixin card raised;
-    z-index: var(--layer__search-header)
+    z-index: var(--layer__search-header);
+    @mixin card flat;
   }
 
   &__input {
     transition: all 400ms ease-out;
     display: flex;
-    float: right;
     position: relative;
-    z-index: var(--layer__search-input)
+    z-index: var(--layer__search-input);
+    margin-bottom: 0;
+
+    @media (--medium) {
+      float: right;
+    }
   }
 
   &__input-container {
@@ -64,7 +68,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(251, 251, 251, 0.90);
+    background: color(var(--color__grey-summer) alpha(95%));
   }
 
   &__content {

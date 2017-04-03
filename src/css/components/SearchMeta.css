@@ -1,0 +1,25 @@
+.SearchMeta {
+  background: #ffffff;
+  margin-bottom: 1lh;
+  position: relative;
+  box-sizing: border-box;
+  height: 60px;
+  @mixin card flat;
+  z-index: var(--layer__search-header-nav--mobile);
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 0 0 2px 2px;
+  border-top: 1px solid var(--color__grey-spring);
+
+  @media (--medium) {
+    border-radius: 0;
+    z-index: var(--layer__search-header-nav);
+  }
+
+  &__note {
+    display: block;
+    color: var(--color__grey-winter);
+    padding: 0.8rem;
+  }
+}

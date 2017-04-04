@@ -1,5 +1,6 @@
 @custom-media --extra-small (width <= 480px);
 @custom-media --small (width >= 480px);
+@custom-media --up-to-medium (width < 768px);
 @custom-media --medium (width >= 768px);
 @custom-media --large (width >= 960px);
 @custom-media --extra-large (width >= 1100px);

@@ -54,12 +54,14 @@
     right: 12px;
     background-image: url('./img/cross-temp.svg');
     background-size: contain;
+    background-repeat: no-repeat;
   }
 
   &__exit {
     left: 12px;
     background-image: url('./img/back.svg');
     background-size: contain;
+    background-repeat: no-repeat;
   }
 
   &__backdrop {

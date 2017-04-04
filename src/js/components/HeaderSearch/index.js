@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import Portal from 'react-portal';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import SearchPage from '../../apps/search';
 import smoothscroll from '../../bits/smoothscroll';
@@ -7,7 +8,7 @@ import classToggle from '../../libs/dom/classToggle';
 
 const header = document.querySelector('.Header');
 const userBarEl = document.querySelector('.UserBar');
-const siteEl = document.querySelector('.Site');
+const htmlEl = document.documentElement;
 
 function getDistanceFromUserBar() {
   const offset = userBarEl.getBoundingClientRect().top;
@@ -77,7 +78,7 @@ class HeaderSearch extends React.Component {
     const isMobile = window.innerWidth < 800;
 
     this.setState({ isMobile }, () => {
-      classToggle(siteEl, 'Site--locked', isOpen);
+      classToggle(htmlEl, 'html--search-active', isOpen);
 
       if (isOpen) {
         if (isMobile) {
@@ -195,40 +196,42 @@ class HeaderSearch extends React.Component {
 
   renderMobileSearch() {
     return (
-      <div className="MobileSearch">
-        <form
-          className={cx('InlineSearch__input')}
-          onSubmit={this.handleSubmit}
-        >
-          <button
-            className="InlineSearch__exit"
-            type="button"
-            onClick={this.handleExitClose}
+      <Portal isOpened>
+        <div className="MobileSearch">
+          <form
+            className={cx('InlineSearch__input')}
+            onSubmit={this.handleSubmit}
           >
-            <span className="u-h">Exit search</span>
-          </button>
-          <input
-            className="HeaderSearch HeaderSearch--no-outline"
-            type="text"
-            placeholder="Search"
-            value={this.state.query}
-            onBlur={this.handleBlur}
-            onChange={this.handleInputChange}
-            autoFocus={this.state.isOpen}
-            ref={(input) => { this.input = input; }}
-          />
-          {this.state.query ? (
             <button
-              className="InlineSearch__clear"
+              className="InlineSearch__exit"
               type="button"
-              onClick={this.handleQueryClear}
+              onClick={this.handleExitClose}
             >
-              <span className="u-h">Clear search</span>
+              <span className="u-h">Exit search</span>
             </button>
-          ) : null}
-        </form>
-        <SearchPage query={this.state.query} />
-      </div>
+            <input
+              className="HeaderSearch HeaderSearch--no-outline"
+              type="text"
+              placeholder="Search"
+              value={this.state.query}
+              onBlur={this.handleBlur}
+              onChange={this.handleInputChange}
+              autoFocus={this.state.isOpen}
+              ref={(input) => { this.input = input; }}
+            />
+            {this.state.query ? (
+              <button
+                className="InlineSearch__clear"
+                type="button"
+                onClick={this.handleQueryClear}
+              >
+                <span className="u-h">Clear search</span>
+              </button>
+            ) : null}
+          </form>
+          <SearchPage query={this.state.query} />
+        </div>
+      </Portal>
     );
   }
 

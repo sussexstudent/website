@@ -11,6 +11,8 @@
 
   &--locked {
     overflow: hidden;
+    position: fixed;
+    width: 100%;
   }
 
   &__content {
@@ -20,4 +22,24 @@
   &--inverted {
     transform: scaleX(-1);
   }
+}
+
+.html--search-active  {
+  @media (--up-to-medium) {
+    & .Site__content, & .Footer, & .MobileFooterTreats, & .AdvertBar, & .UserBar, & .Header {
+        display: none;
+    }
+  }
+
+  & .Site {
+    @media (--medium) {
+      overflow: hidden;
+    }
+  }
+}
+
+.html--locked {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
 }

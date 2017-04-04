@@ -38,6 +38,10 @@
     display: none;
     & .Social {
       justify-content: flex-end;
+
+      @media screen and (max-width: 945px) {
+        visibility: hidden;
+      }
     }
   }
 

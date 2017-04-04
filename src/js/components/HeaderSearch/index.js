@@ -183,9 +183,11 @@ class HeaderSearch extends React.Component {
           >
             {isOpen ? <div className="InlineSearch__header" /> : null}
           </ReactCSSTransitionGroup>
-          { isOpen ? <div className="Container--for-search">
-            <SearchPage query={this.state.query} />
-          </div> : null }
+          { isOpen ? (
+            <div>
+              <SearchPage query={this.state.query} />
+            </div>
+          ) : null }
         </div>
       </div>
     );
@@ -226,12 +228,12 @@ class HeaderSearch extends React.Component {
           ) : null}
         </form>
         <SearchPage query={this.state.query} />
-
       </div>
     );
   }
 
   render() {
+    const { disabled } = this.props;
     const { isOpen, isMobile } = this.state;
     const containerClasses = cx('InlineSearch', { 'InlineSearch--isOpen': isOpen });
 
@@ -239,12 +241,13 @@ class HeaderSearch extends React.Component {
       <div className={containerClasses}>
         <input
           className="HeaderSearch HeaderSearch--search-icon"
-          placeholder="Search"
+          placeholder={disabled ? 'Search unavailable' : 'Search'}
           aria-label="search"
           value={this.state.query}
           onChange={this.handleInputChange}
           onFocus={this.handleFocus}
           ref={(el) => { this.dummyInput = el; }}
+          disabled={disabled}
         />
 
         {this.renderSearching(isOpen && !isMobile)}
@@ -261,5 +264,13 @@ class HeaderSearch extends React.Component {
     );
   }
 }
+
+HeaderSearch.propTypes = {
+  disabled: React.PropTypes.bool,
+};
+
+HeaderSearch.defaultProps = {
+  disabled: false,
+};
 
 export default HeaderSearch;

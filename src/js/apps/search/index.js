@@ -2,21 +2,32 @@ import React from 'react';
 import qs from 'query-string';
 import cx from 'classnames';
 import debounce from 'lodash/debounce';
+import orderBy from 'lodash/orderBy';
 
 import perf from '../../tracking/perf';
 import SearchResult from '../../components/SearchResult';
-import FeedbackButton from '../../components/FeedbackButton';
-import PaginationNavigation from '../../components/PaginationNavigation';
+import SearchFilterNav from '../../components/SearchFilterNav';
 
 /* eslint-disable */
 
-const SEARCH_AREAS = {
-  EVERYTHING: 'a',
-  SOCSPORT: 's',
-  EVENTS: 'e',
-};
-
-const fields = 'items(cacheId,image,kind,labels,link,mime,pagemap,snippet,title),spelling,url,searchInformation';
+function getPayloadMetadata(payload) {
+  const areas = {
+    groups: 'Sports & Societies',
+    news: 'News',
+    events: 'Events',
+    pages: 'Content',
+  };
+  const orderedAreas = orderBy(
+    Object.keys(areas).map(key => ({ count: payload[key].length, key, title: areas[key] })),
+    ['count', 'name'], ['desc', 'asc']
+  );
+  console.log(payload);
+  const hasResults = Object.keys(areas).reduce((acc, key) => payload[key].length + acc, 0) > 0;
+  return {
+    orderedAreas,
+    hasResults
+  };
+}
 
 class SearchPage extends React.Component {
 
@@ -24,17 +35,17 @@ class SearchPage extends React.Component {
     super(props);
 
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleAreaUpdate = this.handleAreaUpdate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleAreaChange = this.handleAreaChange.bind(this);
     this.handleNotFoundDesiredPage = this.handleNotFoundDesiredPage.bind(this);
     this.loadQueryResultsDebounced = debounce(this.loadQueryResults.bind(this), 350);
 
     this.state = {
       // query: qs.parse(location.search).q || '',
       page: parseInt(qs.parse(location.search).page, 10) || 1,
-      searchArea: SEARCH_AREAS.EVERYTHING,
       results: null,
-      isLoading: null,
+      isLoading: false,
+      currentArea: null,
     };
   }
 
@@ -57,18 +68,35 @@ class SearchPage extends React.Component {
 
   loadQueryResults(query) {
     const { page } = this.state;
-    this.setState({ isLoading: true })
 
+    // alleviate flash of loading when result is cached and gets returned quickly
+    let didFinish = false;
+    setTimeout(() => {
+      if (!didFinish) {
+        this.setState({ isLoading: true });
+      }
+    }, 60)
+
+    // TODO: send after 1s. not here. causes half words in stats
+    // send ga
     ga('set', 'page', `/search?q=${query}`);
     ga('send', 'pageview');
 
     const t = perf.recordTime('Search', 'fetchResults', { query });
     window
-      .fetch(`https://www.googleapis.com/customsearch/v1?q=${query}&num=10&start=${((page - 1) * 10) + 1}&cx=012345016055136658152%3Aaszn2y43suc&key=AIzaSyCMGfdDaSfjqv5zYoS0mTJnOT3e9MURWkU&fields=${fields}`)
+      .fetch(`https://dgv7dbrr4a1ou.cloudfront.net/search/${query}`)
       .then((res) => { t.done(); return res.json() })
       .then(payload => {
         if (query === this.props.query) {
-          this.setState({ results: payload, isLoading: false })
+          didFinish = true;
+          const { orderedAreas, hasResults } = getPayloadMetadata(payload);
+          this.setState({
+            results: payload,
+            orderedAreas,
+            hasResults,
+            currentArea: orderedAreas[0].key,
+            isLoading: false
+          });
         }
       });
   }
@@ -89,16 +117,12 @@ class SearchPage extends React.Component {
     if (query !== '') {
       this.loadQueryResultsDebounced(query);
     } else {
-      this.setState({ results: null, isLoading: false });
+      this.setState({ results: null, isLoading: false, hasResults: null, orderedAreas: null });
     }
 
     const search = qs.parse(location.search);
     search.q = query;
     search.page = this.props.page;
-  }
-
-  handleAreaUpdate(e) {
-    this.setState({ searchArea: e.target.value });
   }
 
   handlePageChange(nextNumber) {
@@ -110,48 +134,58 @@ class SearchPage extends React.Component {
     this.containerRef.scrollIntoView(true);
   }
 
-  renderResults() {
-    const { query } = this.props;
-    const { results, isLoading, searchArea, page } = this.state;
+  handleAreaChange(area) {
+    this.setState({ currentArea: area });
+  }
 
-    const containerclassNamees = cx('SearchApp__container', { 'SearchApp__container--is-loading':  isLoading === true });
-    const loadingElement = (
-      <div className={cx('SearchApp__result-message', { 'SearchApp__result-message--is-visible':  isLoading })}>
-        Loading…
-      </div>
-    );
-
-    if (!results) {
-      return (
-        <div className={containerclassNamees}>
-          {loadingElement}
-        </div>
+  renderMeta() {
+    const { results, isLoading, hasResults, searchArea, page, orderedAreas, currentArea } = this.state;
+    let content;
+    if (isLoading) {
+      content = <span className="SearchMeta__note">Loading…</span>;
+    } else if (hasResults === false) {
+      content = <span className="SearchMeta__note">No results found.</span>;
+    } else if (orderedAreas) {
+      content = (
+        <SearchFilterNav
+          value={currentArea}
+          options={orderedAreas}
+          onSelect={this.handleAreaChange}
+        />
       );
+    } else {
+      return null;
     }
 
-    const { items} = results;
+    return (
+      <div className="SearchMeta">
+        <div className="Container">
+          {content}
+        </div>
+      </div>
+    );
+  }
 
+  renderResults() {
+    const { query } = this.props;
+    const { results, isLoading, searchArea, page, currentArea } = this.state;
+
+    const containerclassNamees = cx('SearchApp__container', { 'SearchApp__container--is-loading':  isLoading === true });
 
     return (
       <div className={containerclassNamees}>
-        {loadingElement}
-        <ul className="ResultsList">
-          {items && items.map(item => ((
-            <SearchResult key={item.cacheId} item={item} />
-          )))}
-          {!items && query !== '' ? (<li>No results found.</li>) : null}
-        </ul>
-        {items && <PaginationNavigation
-          currentPage={page}
-          totalPages={Math.ceil(results.searchInformation.totalResults / 10)}
-          onPageChange={this.handlePageChange}
-        />}
-        { true ? null : <FeedbackButton
-          buttonText="Haven't found what you were looking for?"
-          givenText="Sorry you couldn't find what you were looking for. Thank you for the feedback, we are alway wanting to improve our site."
-          feedbackKey={`${query}:${searchArea}`}
-          onFeedback={this.handleNotFoundDesiredPage}
-        /> }
+        {this.renderMeta()}
+        <div className="Container--for-search" ref={ref => this.searchContainerRef = ref}>
+          <div className="Container">
+            {results !== null && results[currentArea].length > 0 ? (
+              <ul className={cx('ResultsList', { 'ResultsList--stale': isLoading })}>
+                {results[currentArea].map(item => ((
+                  <SearchResult key={item.link} item={item} />
+                )))}
+              </ul>
+            ): null}
+          </div>
+        </div>
       </div>
     );
   }
@@ -170,20 +204,52 @@ class SearchPage extends React.Component {
 
 export default SearchPage;
 
-/*            <span className={styles.for}>for</span>
+/*
+
+import FeedbackButton from '../../components/FeedbackButton';
+import PaginationNavigation from '../../components/PaginationNavigation';
+
+
+            <span className={styles.for}>for</span>
             <fieldset className={styles.fieldset}>
               <label className={styles.radioItem} htmlFor="everythingOption">
-                <input className={styles.radioInput} onChange={this.handleAreaUpdate} type="radio" id="everythingOption" name="searchArea" value={SEARCH_AREAS.EVERYTHING} checked={searchArea == SEARCH_AREAS.EVERYTHING} />
+                <input
+                  className={styles.radioInput}
+                  onChange={this.handleAreaUpdate}
+                  type="radio"
+                  id="everythingOption"
+                  name="searchArea"
+                  value={SEARCH_AREAS.EVERYTHING}
+                  checked={searchArea == SEARCH_AREAS.EVERYTHING}
+                />
                 everything
               </label>
 
               <label className={styles.radioItem} htmlFor="socsportsOption">
-                <input className={styles.radioInput} onChange={this.handleAreaUpdate} type="radio" id="socsportsOption" name="searchArea" value={SEARCH_AREAS.SOCSPORT} checked={searchArea == SEARCH_AREAS.SOCSPORT} />
+                <input className={styles.radioInput} onChange={this.handleAreaUpdate} type="radio" id="socsportsOption"
+                name="searchArea" value={SEARCH_AREAS.SOCSPORT} checked={searchArea == SEARCH_AREAS.SOCSPORT} />
                 societies & sports
               </label>
               <label className={styles.radioItem} htmlFor="eventsOption">
-                <input className={styles.radioInput} onChange={this.handleAreaUpdate} type="radio" id="eventsOption" name="searchArea" value={SEARCH_AREAS.EVENTS} checked={searchArea == SEARCH_AREAS.EVENTS} />
+                <input className={styles.radioInput} onChange={this.handleAreaUpdate} type="radio" id="eventsOption"
+                name="searchArea" value={SEARCH_AREAS.EVENTS} checked={searchArea == SEARCH_AREAS.EVENTS} />
                 events
               </label>
             </fieldset>
+*/
+
+
+/*
+
+        {items && <PaginationNavigation
+          currentPage={page}
+          totalPages={Math.ceil(results.searchInformation.totalResults / 10)}
+          onPageChange={this.handlePageChange}
+        />}
+        { true ? null : <FeedbackButton
+          buttonText="Haven't found what you were looking for?"
+          givenText="Sorry you couldn't find what you were looking for. Thank you for the feedback, we are alway wanting to improve our site."
+          feedbackKey={`${query}:${searchArea}`}
+          onFeedback={this.handleNotFoundDesiredPage}
+        /> }
 */

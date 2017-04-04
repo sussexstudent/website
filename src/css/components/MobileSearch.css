@@ -8,4 +8,9 @@
   bottom: 0;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  padding: 7px 6px;
+
+  & .Container {
+    padding: 0;
+  }
 }

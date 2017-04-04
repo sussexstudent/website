@@ -52,5 +52,7 @@
 @import './components/FeedbackButton.css';
 @import './components/PaginationNavigation.css';
 @import './components/GlobalNotice.css';
+@import './components/SearchFilterNav.css';
+@import './components/SearchMeta.css';
 @import './components/VoteHero.css';
 @import './components/VoteModal.css';

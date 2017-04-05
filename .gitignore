@@ -19,3 +19,4 @@ npm-debug.log
 /webpack-assets.json
 /.s3cfg
 /.vscode
+/previous.json

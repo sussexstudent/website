@@ -12,6 +12,10 @@
   border-radius: 0 0 2px 2px;
   border-top: 1px solid var(--color__grey-spring);
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   @media (--medium) {
     border-radius: 0;
     z-index: var(--layer__search-header-nav);

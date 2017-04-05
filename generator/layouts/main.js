@@ -20,16 +20,18 @@ const authStyles = loggedIn => `
 `;
 
 const mainLayout = ({ loggedIn, assets, legacy }) => (
-  <body className="Site" id="top">
+  <body className="Body" id="top">
     <style>{authStyles(loggedIn)}</style>
-    <AdvertBar position="TopBanner" />
-    <UserBar loggedIn={loggedIn} />
-    <Header />
-    <Main legacy={legacy} />
-    <MobileFooterTreats />
-    {/* <PrefooterMenu /> */}
-    <Footer />
-    <AdvertBar position="lozenge1" dark />
+    <div className="Site">
+      <AdvertBar position="TopBanner" />
+      <UserBar loggedIn={loggedIn} />
+      <Header />
+      <Main legacy={legacy} />
+      <MobileFooterTreats />
+      {/* <PrefooterMenu /> */}
+      <Footer />
+      <AdvertBar position="lozenge1" dark />
+    </div>
     <div className="js__modal" />
     <script src={assets.vendor.js} />
     <script src={assets.main.js} />

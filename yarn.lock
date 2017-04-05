@@ -5759,6 +5759,10 @@ react-lazyload@^2.2.0:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/react-lazyload/-/react-lazyload-2.2.4.tgz#c7bed08405dd00d6bf4196502c7a7fd71b37d721"
 
+react-portal@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-portal/-/react-portal-3.0.0.tgz#9304fce836e8a3216b22588f8dc91b447728f0ae"
+
 react-router@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-3.0.2.tgz#5a19156678810e01d81901f9c0fef63284b8a514"

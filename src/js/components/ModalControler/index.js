@@ -2,11 +2,11 @@ import React from 'react';
 import Modal from '../Modal';
 import classToggle from '../../libs/dom/classToggle';
 
-const siteEl = document.querySelector('.Site');
+const htmlEl = document.documentElement;
 
 class ModalControler extends React.Component {
   componentWillReceiveProps(nextProps) {
-    classToggle(siteEl, 'Site--locked', nextProps.stack.length > 0);
+    classToggle(htmlEl, 'html--locked', nextProps.stack.length > 0);
   }
 
   render() {

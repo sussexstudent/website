@@ -1,23 +1,38 @@
 .Site {
   display: flex;
   min-height: 100vh;
-  background-color: var(--color__grey-bg);
   flex-direction: column;
-  margin: 0;
   font-family: sans-serif;
   transition: transform ease 300ms;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  &--locked {
-    overflow: hidden;
-  }
 
   &__content {
     flex: 1;
   }
+}
 
-  &--inverted {
-    transform: scaleX(-1);
+.Body {
+  background-color: var(--color__grey-bg);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.html--search-active  {
+  & .Site {
+    @media (--up-to-medium) {
+      display: none;
+    }
   }
+
+  & .Body {
+    @media (--medium) {
+      overflow: hidden;
+    }
+  }
+}
+
+.html--locked {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
 }

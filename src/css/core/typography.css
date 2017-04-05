@@ -1,5 +1,14 @@
 :root {
   --type__secondary: "Helvetica", "Arial", sans-serif;
   --type__primary: 'Larsseit', var(--type__secondary);
-  font: 18px / 1.5 var(--type__secondary);
+
+  font: 16px / 1.5 var(--type__secondary);
+
+  @media (--small) {
+    font: 17px / 1.5 var(--type__secondary);
+  }
+
+  @media (--medium) {
+    font: 18px / 1.5 var(--type__secondary);
+  }
 }

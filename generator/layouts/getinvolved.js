@@ -30,7 +30,7 @@ const items = [
   createItem(
     'Join the Welcome Team',
     '/volunteer/welcome-team',
-    '/pageassets/get-involved/couple-at-the-beach.jpg',
+    '/pageassets/get-involved/welcome-team-2.jpg',
   ),
   createItem(
     'Join a campaign team',

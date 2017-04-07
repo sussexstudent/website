@@ -17,11 +17,30 @@ function getPayloadMetadata(payload) {
     events: 'Events',
     pages: 'Content',
   };
+
+  const calcWeight = key => {
+    if (key === 'news') {
+      return -1;
+    }
+    const count = payload[key].length;
+    if (count <= 0) {
+      return -Infinity;
+    } else {
+      return count;
+    }
+  };
+
+  const mk = key => ({
+    weight: calcWeight(key),
+    count: payload[key].length,
+    key, title: areas[key]
+  });
+
   const orderedAreas = orderBy(
-    Object.keys(areas).map(key => ({ count: payload[key].length, key, title: areas[key] })),
-    ['count', 'name'], ['desc', 'asc']
+    ['groups', 'events', 'pages', 'news'].map(mk),
+    ['weight', 'name'], ['desc', 'asc']
   );
-  console.log(payload);
+
   const hasResults = Object.keys(areas).reduce((acc, key) => payload[key].length + acc, 0) > 0;
   return {
     orderedAreas,

@@ -17,7 +17,7 @@ function SearchFilterItem({ currentValue, option, onSelect }) {
       })}
       key={option.key}
       onClick={option.count > 0 ? handleClick : () => {}}
-    >{option.title}</li>
+    >{option.title} ({option.count})</li>
   );
 }
 

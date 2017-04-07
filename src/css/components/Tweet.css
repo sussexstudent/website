@@ -4,6 +4,7 @@
 }
 
 .TweetList {
+  @mixin rounded;
   background-color: var(--color__twitter);
   font-size: 0.8rem;
   list-style: none;

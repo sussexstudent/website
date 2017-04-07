@@ -18,6 +18,7 @@
   }
 
   &__list {
+    @mixin rounded;
     padding: 0;
     margin: 0;
     margin-left: auto;

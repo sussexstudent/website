@@ -11,14 +11,18 @@ function Tweet({ isQuoted, data }) {
   const tweet = isRetweet ? data.retweeted_status : data;
 
   /* eslint-disable */
-  return (
-    <li className={cx('Tweet', { 'Tweet--quoted': isQuoted })}>
-      { isRetweet ? (
+
+  return React.createElement(
+      isQuoted ? 'div' : 'li',
+      {
+        className: cx('Tweet', { 'Tweet--quoted': isQuoted }),
+      },
+      isRetweet ? (
         <div className="Tweet__header">
           <span className="Tweet__retweeted">{data.user.name} Retweeted</span>
         </div>
-      ) : null }
-      <TweetHeader user={tweet.user} />
+      ) : null,
+      <TweetHeader user={tweet.user} />,
       <div>
         <TweetContent tweet={tweet} />
         <TweetAttachment tweet={tweet} />
@@ -26,18 +30,17 @@ function Tweet({ isQuoted, data }) {
           <Tweet data={tweet.quoted_status} isQuoted />
         </div> : null}
         {!isQuoted ? <TweetPermalink tweet={tweet} /> : null}
-      </div>
+      </div>,
       <a href={`https://twitter.com/statuses/${tweet.id_str}`} className="Tweet__faux-link" />
-    </li>
   );
 }
 /* eslint-enable */
 
 Tweet.propTypes = {
-  data: React.PropTypes.arrayOf(React.PropTypes.shape({
-    id_str: React.PropTypes,
-  })).isRequired,
-  isQuoted: React.PropTypes.boolean,
+  data: React.PropTypes.shape({
+    id_str: React.PropTypes.string.isRequired,
+  }).isRequired,
+  isQuoted: React.PropTypes.bool.isRequired,
 };
 
 Tweet.defaultProps = {

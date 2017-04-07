@@ -1,4 +1,5 @@
 .EventsList {
+  @mixin rounded;
   background: var(--color__brand-green);
   font-size: 0.8rem;
   list-style: none;

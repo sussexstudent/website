@@ -117,6 +117,7 @@ const pages = {
   homepage: () => require('./layouts/homepage').default,
   'get-involved': () => require('./layouts/getinvolved').default,
   support: () => require('./layouts/Support').default,
+  society: () => require('./layouts/society').default,
   'homepage-vote': () => require('./layouts/homepage-vote').default,
 };
 

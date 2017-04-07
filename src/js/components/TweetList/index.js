@@ -29,13 +29,13 @@ function TweetList({ tweets, isLoading }) {
 
 TweetList.propTypes = {
   tweets: React.PropTypes.arrayOf(React.PropTypes.shape({
-    id_str: React.PropTypes,
+    id_str: React.PropTypes.string.isRequired,
   })),
   isLoading: React.PropTypes.bool.isRequired,
 };
 
 TweetList.defaultProps = {
-  tweets: false,
+  tweets: null,
 };
 
 export default TweetList;

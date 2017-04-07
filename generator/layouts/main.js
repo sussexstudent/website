@@ -33,6 +33,7 @@ const mainLayout = ({ loggedIn, assets, legacy }) => (
       <AdvertBar position="lozenge1" dark />
     </div>
     <div className="js__modal" />
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?rum=0&features=es6,es7,default-3.6&flags=gated&callback=hasPolyfilled" />
     <script src={assets.vendor.js} />
     <script src={assets.main.js} />
     <script type="text/javascript" dangerouslySetInnerHTML={{ __html: ga }} />

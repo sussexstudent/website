@@ -28,7 +28,7 @@ const items = [
     '/pageassets/get-involved/Rhiannon.jpg',
   ),
   createItem(
-    'Join the Welcome Team',
+    'Become a Students\' Union Ambassador',
     '/volunteer/welcome-team',
     '/pageassets/get-involved/welcome-team-2.jpg',
   ),

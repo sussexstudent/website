@@ -1,4 +1,13 @@
 module.exports = {
+  'a11y-hide': {
+    '&': {
+      clip: 'rect(1px, 1px, 1px, 1px)',
+      position: 'absolute !important',
+      height: '1px',
+      width: '1px',
+      overflow: 'hidden',
+    }
+  },
   rounded: function roundedMixin(mixin, type) {
     return {
       '&': {

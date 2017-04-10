@@ -1,12 +1,18 @@
 import React from 'react';
-
+import Deckchair from '../../components/Deckchair';
+import HeadingImage from '../../components/HeadingImage';
 
 function Feedback() {
 
   return (
     <div>
-      <h1>Student feedback on the Students’ Union’s environmental work and initiatives</h1>
+      <HeadingImage
+        title="Student feedback"
+        imageURL="/pageassets/about-us/ethics-environment/feedback/The-gloves-are-off.jpg"
+        description="on the Students’ Union’s environmental work and initiatives"
+      />
       <h2>What should be a priority for the SU to focus on in regards to environmental sustainability?</h2>
+      <p><em>Numbers indicate number of students who selected the point</em></p>
       <ul>
         <li>Supplying ethical produce <em>15</em></li>
         <li>Encouraging and supporting all to take low or non-carbon travel <em>8</em></li>
@@ -92,7 +98,7 @@ function Feedback() {
           <li>
             Green energy and more renewable energy production
             <div className="QuoteSlips__item-answer">
-              <p>The SU has supported the decision for the University installing approx. 750kWp of Solar PV panels which will make Sussex University the University with the most solar in the UK.</p>
+              <p>The SU is supporting the decision for the University to install Solar PV panels across the campus before 2018.</p>
             </div>
           </li>
           <li>
@@ -104,7 +110,7 @@ function Feedback() {
           <li>
             More bike racks to encourage more to cycle to University and the removal of old bikes which have been locked up for a long time
             <div className="QuoteSlips__item-answer">
-              <p>The University are planning to install more bike racks across campus.</p>
+              <p>The University will be installing more bike racks across campus from the end of May 2017.</p>
             </div>
           </li>
           <li>
@@ -127,6 +133,13 @@ function Feedback() {
           </div>
         </div>
       </div>
+      <Deckchair
+        color="green"
+        header="Thoughts, comments or questions?"
+        about="If you have any further thoughts , comments, questions on the SU’s environmental sustainability work or would like support running a project, campaign, initiative then please get in contact."
+        buttonTitle="Email environment@sussexstudent.com"
+        buttonLink="mailto:environment@sussexstudent.com"
+      />
     </div>
   );
 }

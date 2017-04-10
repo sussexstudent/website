@@ -9,12 +9,17 @@ module.exports = {
     }
   },
   rounded: function roundedMixin(mixin, type) {
-    return {
-      '&': {
-        'border-radius': '2px',
-        overflow: 'hidden',
-      }
+    const self = {
+      'border-radius': '2px',
+    };
+
+    if (type === 'mask') {
+      self.overflow = 'hidden';
     }
+
+    return {
+      '&': self,
+    };
   },
   card: function cardMixin(mixin, type) {
     switch (type) {

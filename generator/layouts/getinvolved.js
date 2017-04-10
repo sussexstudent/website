@@ -30,7 +30,7 @@ const items = [
   createItem(
     'Become a Students\' Union Ambassador',
     '/volunteer/welcome-team',
-    '/pageassets/get-involved/welcome-team-2.jpg',
+    '/pageassets/get-involved/suab.jpg',
   ),
   createItem(
     'Join a campaign team',
@@ -71,7 +71,7 @@ const items = [
 
 const img = '/pageassets/get-involved/get-involved.jpg';
 const GetInvolved = () => (
-  <div className="Container">
+  <div>
     <HeadingImage imageURL={img} title="Get involved" />
     <ul className="SelectionGrid">
       {items.map(item => (

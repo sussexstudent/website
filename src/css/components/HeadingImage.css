@@ -18,9 +18,11 @@
     font-size: 2lh;
     position: relative;
     line-height: 1;
+    clear: right;
   }
 
   &__desc {
+    display: inline-block;
     font-weight: bold;
     background-color: var(--color__brand-yellow);
     color: #000000;

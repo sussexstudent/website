@@ -5,6 +5,7 @@ import GetInvolvedLayout from './layouts/getinvolved';
 import Homepage from './layouts/homepage';
 import Support from './layouts/Support';
 import HomepageVote from './layouts/homepage-vote';
+import EnvironmentFeedback from './layouts/environment/student-feedback';
 
 const MainLayoutLegacy = props => <MainLayout {...props} legacy />;
 
@@ -36,5 +37,6 @@ export default {
     support: Support,
     // homepageVote: HomepageVote,
     'get-involved': GetInvolvedLayout,
+    'environment-feedback': EnvironmentFeedback,
   },
 };

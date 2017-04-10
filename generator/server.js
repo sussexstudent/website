@@ -114,7 +114,7 @@ chokidar.watch([
   });
 
 const pages = {
-  'enviroment/feedback': () => require('./layouts/enviroment/student-feedback').default,
+  'environment/feedback': () => require('./layouts/environment/student-feedback').default,
   homepage: () => require('./layouts/homepage').default,
   'get-involved': () => require('./layouts/getinvolved').default,
   support: () => require('./layouts/Support').default,

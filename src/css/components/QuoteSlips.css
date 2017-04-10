@@ -1,0 +1,37 @@
+.QuoteSlips {
+  @media (--medium) {
+    & {
+      gg: columns(2/3 1/3);
+    }
+  }
+
+  &__questions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__questions > li {
+    @mixin rounded;
+    @mixin card standard;
+    display: inline-block;
+    margin-right: 0.5lh;
+    margin-bottom: 0.5lh;
+    padding: 0.3rem;
+    background: #ffffff;
+    cursor: pointer;
+  }
+
+  &__item-answer {
+    @mixin a11y-hide;
+  }
+
+  &__answer-container {
+    position: sticky;
+    top: 10px;
+  }
+
+  &__answer-question {
+    margin-top: 0;
+  }
+}

@@ -114,6 +114,7 @@ chokidar.watch([
   });
 
 const pages = {
+  'enviroment/feedback': () => require('./layouts/enviroment/student-feedback').default,
   homepage: () => require('./layouts/homepage').default,
   'get-involved': () => require('./layouts/getinvolved').default,
   support: () => require('./layouts/Support').default,
@@ -202,7 +203,7 @@ server.use(webpackMiddleware(compiler, {
 
 server.use(webpackHotMiddleware(compiler));
 
-server.get('/~/:page', loadFromLocal);
+server.get('/~/:page(*)', loadFromLocal);
 server.get('/*', loadFromSite);
 
 

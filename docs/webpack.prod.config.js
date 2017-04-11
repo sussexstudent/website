@@ -8,7 +8,7 @@ config.profile = false;
 config.devtool = '#source-map';
 
 config.output = {
-  path: './dist',
+  path: './docs/dist',
   publicPath: '/',
   filename: '[name].[hash].js',
 };
@@ -16,7 +16,7 @@ config.output = {
 config.plugins = config.plugins.concat([
   new CleanWebpackPlugin(['dist']),
   new CopyWebpackPlugin([
-    { from: './src/root', to: './' },
+    { from: './docs/src/root', to: './' },
   ]),
   new webpack.optimize.UglifyJsPlugin({ output: { comments: false } }),
 ]);

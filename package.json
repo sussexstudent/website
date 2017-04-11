@@ -88,6 +88,7 @@
     "inquirer": "^3.0.1",
     "jsdom": "^9.11.0",
     "lodash": "^4.17.4",
+    "msl-utils": "^0.3.0",
     "promise-polyfill": "^6.0.2",
     "query-string": "^4.2.3",
     "react": "^15.4.2",

@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (document.querySelector('.app__events')) {
     const t = perf.recordTime('import', 'calender');
-    System.import('./apps/events-calender').then(() => t.done());
+    import('./apps/events-calender').then(() => t.done());
   }
 
 
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (activitiesApp) {
     const t = perf.recordTime('import', 'activities');
-    System.import('./apps/activities').then((app) => {
+    import('./apps/activities').then((app) => {
       t.done();
       const ActivitiesApp = app.default;
       ReactDOM.render(<LazyLoadApp><ActivitiesApp /></LazyLoadApp>, activitiesApp);
@@ -119,20 +119,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (document.querySelector('.app__tweets')) {
     const t = perf.recordTime('import', 'tweets');
-    System.import('./apps/tweets').then(() => t.done());
+    import('./apps/tweets').then(() => t.done());
   }
 
 
   // NEWS RENDERING
   // TODO: work everywhere
   if (document.querySelector('.app__news')) {
-    System.import('./bits/news');
+    import('./bits/news');
   }
 
   if (localStorage.getItem('su_cookie') !== '1') {
     const el = document.createElement('div');
     document.body.insertBefore(el, document.body.firstChild);
-    System.import('./components/CookieMessage')
+    import('./components/CookieMessage')
       .then(module => module.default)
       .then((CookieMessage) => {
         ReactDOM.render(<CookieMessage />, el);
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
   eventCardLinking();
 
   if (localStorage.getItem('su_proto') === '1') {
-    System.import('./bits/panel').then(panel => panel.default());
+    import('./bits/panel').then(panel => panel.default());
   }
   // eslint-disable-next-line no-undef
   if (has(window, 'mslUserInfo.userinfo.FirstName')) {

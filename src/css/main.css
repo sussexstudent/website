@@ -54,6 +54,8 @@
 @import './components/QuoteSlips.css';
 @import './components/GlobalNotice.css';
 @import './components/SearchFilterNav.css';
+@import './components/FitImageBlur.css';
+@import './components/ContentCard.css';
 @import './components/SearchMeta.css';
 @import './components/VoteHero.css';
 @import './components/VoteModal.css';

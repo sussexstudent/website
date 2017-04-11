@@ -3,6 +3,8 @@ import Frame from 'react-frame-component';
 import './style.css';
 import assets from '../../../.././webpack-assets.json';
 
+/* eslint-disable */
+
 function renderComponent(part, components) {
   console.log(part, components);
   const component = components[part.component];
@@ -23,5 +25,6 @@ const Renderer = ({ document, components }) => (
   </div>
 )
 
+/* eslint-enable */
 
 export default Renderer;

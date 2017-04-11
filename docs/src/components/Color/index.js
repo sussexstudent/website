@@ -15,8 +15,8 @@ function Color(props) {
 }
 
 Color.propTypes = {
-  color: React.PropTypes.string,
-  cssVar: React.PropTypes.string,
+  color: React.PropTypes.string.isRequired,
+  cssVar: React.PropTypes.string.isRequired,
 };
 
 export default Color;

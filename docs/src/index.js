@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import ReactDOM from 'react-dom';
+import '../../src/css/main.css';
 import App from './App';
 
 import pages from './pages';
@@ -10,7 +11,6 @@ import EditorPage from './pages/EditorPage';
 import FourOhFour from './pages/404';
 
 import './index.css';
-import '../../src/css/main.css';
 
 
 ReactDOM.render(

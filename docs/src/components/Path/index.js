@@ -9,7 +9,7 @@ function Path(props) {
 }
 
 Path.propTypes = {
-  location: React.PropTypes.string,
+  location: React.PropTypes.string.isRequired,
 };
 
 export default Path;

@@ -1,5 +1,7 @@
 import React from 'react';
 
+/* eslint-disable */
+
 const PropField = ({ name, value, component, path, onChange }) => {
   const change = event => onChange({ name, path, type: 'CHANGE', value: event.target.value  });
 
@@ -78,5 +80,6 @@ const TreeNode = ({ components, node, path, onChange }) => {
     </li>
   );
 }
+/* eslint-enable */
 
 export default Tree;

@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const config = require('./webpack.base.config.js');
 
 config.bail = true;
@@ -14,6 +15,9 @@ config.output = {
 
 config.plugins = config.plugins.concat([
   new CleanWebpackPlugin(['dist']),
+  new CopyWebpackPlugin([
+    { from: './src/root', to: './' },
+  ]),
   new webpack.optimize.UglifyJsPlugin({ output: { comments: false } }),
 ]);
 

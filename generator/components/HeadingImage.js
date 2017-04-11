@@ -16,4 +16,8 @@ HeadingImage.propTypes = {
   description: React.PropTypes.string,
 };
 
+HeadingImage.defaultProps = {
+  description: null,
+};
+
 export default HeadingImage;

@@ -1,7 +1,6 @@
 import React from 'react';
 import Frame from 'react-frame-component';
 import './style.css';
-import assets from '../../../.././webpack-assets.json';
 
 /* eslint-disable */
 
@@ -15,10 +14,12 @@ function renderComponent(part, components) {
   return React.createElement(component, props, children);
 }
 
+const siteStyle = require('!to-string-loader!css-loader!postcss-loader!../../../../src/css/main.css');
+
 const Renderer = ({ document, components }) => (
   <div className="Renderer">
     <Frame className="Renderer__frame" head={
-      <link rel="stylesheet" href={assets.main.css} />
+      <style>{siteStyle}</style>
     }>
       {document.toJS().map(part => renderComponent(part, components))}
     </Frame>

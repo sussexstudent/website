@@ -34,7 +34,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  children: React.PropTypes.node,
+  children: React.PropTypes.node.isRequired,
 };
 
 export default App;

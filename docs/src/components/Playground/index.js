@@ -56,7 +56,7 @@ class Playground extends React.Component {
 }
 
 Playground.propTypes = {
-  children: React.PropTypes.node,
+  children: React.PropTypes.node.isRequired,
 };
 
 export default Playground;

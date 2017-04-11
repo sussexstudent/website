@@ -74,6 +74,7 @@
     "rimraf": "2.5.4",
     "strip-ansi": "3.0.1",
     "style-loader": "0.13.1",
+    "to-string-loader": "^1.1.5",
     "typogr": "^0.6.6",
     "underscore": "^1.8.3",
     "url-loader": "0.5.7",

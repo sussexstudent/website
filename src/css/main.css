@@ -15,9 +15,11 @@
 /* layouts */
 @import './base.css';
 @import './layouts/Site.css';
+@import './components/Layout.css';
 
 /* components */
 @import './components/AnodyneMenu.css';
+@import './components/Heading.css';
 @import './components/HeadingImage.css';
 @import './components/ContentBlock.css';
 @import './components/NewsGrid.css';

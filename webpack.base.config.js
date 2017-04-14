@@ -58,6 +58,7 @@ module.exports = {
       paths: true,
       unicode: true,
     }),*/
+    new webpack.NamedChunksPlugin(),
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', minChunks: Infinity }),
     new DuplicatePackageCheckerPlugin(),
   ],

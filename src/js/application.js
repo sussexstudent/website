@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (document.querySelector('.app__events')) {
     const t = perf.recordTime('import', 'calender');
-    import('./apps/events-calender').then(() => t.done());
+    import(/* webpackChunkName: "events-calender.module" */ './apps/events-calender').then(() => t.done());
   }
 
 
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (activitiesApp) {
     const t = perf.recordTime('import', 'activities');
-    import('./apps/activities').then((app) => {
+    import(/* webpackChunkName: "discover-orgs.module" */'./apps/activities').then((app) => {
       t.done();
       const ActivitiesApp = app.default;
       ReactDOM.render(<LazyLoadApp><ActivitiesApp /></LazyLoadApp>, activitiesApp);
@@ -119,20 +119,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (document.querySelector('.app__tweets')) {
     const t = perf.recordTime('import', 'tweets');
-    import('./apps/tweets').then(() => t.done());
+    import(/* webpackChunkName: "tweet-list.module" */ './apps/tweets').then(() => t.done());
   }
 
 
   // NEWS RENDERING
   // TODO: work everywhere
   if (document.querySelector('.app__news')) {
-    import('./bits/news');
+    import(/* webpackChunkName: "news-blocks.module" */ './bits/news');
   }
 
   if (localStorage.getItem('su_cookie') !== '1') {
     const el = document.createElement('div');
     document.body.insertBefore(el, document.body.firstChild);
-    import('./components/CookieMessage')
+    import(/* webpackChunkName: "cookie-message.component" */ './components/CookieMessage')
       .then(module => module.default)
       .then((CookieMessage) => {
         ReactDOM.render(<CookieMessage />, el);
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
   eventCardLinking();
 
   if (localStorage.getItem('su_proto') === '1') {
-    import('./bits/panel').then(panel => panel.default());
+    import(/* webpackChunkName: "panel.module" */'./bits/panel').then(panel => panel.default());
   }
   // eslint-disable-next-line no-undef
   if (has(window, 'mslUserInfo.userinfo.FirstName')) {

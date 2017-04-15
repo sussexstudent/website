@@ -12,6 +12,9 @@
 @import './components/Header.css';
 @import './components/Container.css';
 
+/* utils */
+@import './utils/extend-flex.css';
+
 /* layouts */
 @import './base.css';
 @import './layouts/Site.css';

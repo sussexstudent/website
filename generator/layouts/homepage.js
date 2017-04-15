@@ -25,7 +25,7 @@ const Homepage = () => (
         </div>
         <div className="ContentBlock">
           <div className="ContentBlock__heading">Twitter</div>
-          <div className="App-Tweets u-container-bleed-1" />
+          <div className="js-module--tweetList u-container-bleed-1 u-extend-flex" data-query="list/ussu,ussu" data-signature="f1b9176fddbe7114295eb4bfc65070c5a130a94d" />
         </div>
       </div>
 

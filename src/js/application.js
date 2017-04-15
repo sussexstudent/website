@@ -88,11 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // const twitter = [...document.querySelectorAll('.App-tweets')]
-
   if (activitiesApp) {
     const t = perf.recordTime('import', 'activities');
-    import(/* webpackChunkName: "discover-orgs.module" */'./apps/activities').then((app) => {
+    import(/* webpackChunkName: "discover_orgs.module" */'./apps/activities').then((app) => {
       t.done();
       const ActivitiesApp = app.default;
       ReactDOM.render(<LazyLoadApp><ActivitiesApp /></LazyLoadApp>, activitiesApp);
@@ -100,22 +98,16 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(<LazyLoadApp />, activitiesApp);
   }
 
-  if (document.querySelector('.app__tweets')) {
-    const t = perf.recordTime('import', 'tweets');
-    import(/* webpackChunkName: "tweet-list.module" */ './apps/tweets').then(() => t.done());
-  }
-
-
   // NEWS RENDERING
   // TODO: work everywhere
   if (document.querySelector('.app__news')) {
-    import(/* webpackChunkName: "news-blocks.module" */ './bits/news');
+    import(/* webpackChunkName: "news_blocks.module" */ './bits/news');
   }
 
   if (localStorage.getItem('su_cookie') !== '1') {
     const el = document.createElement('div');
     document.body.insertBefore(el, document.body.firstChild);
-    import(/* webpackChunkName: "cookie-message.component" */ './components/CookieMessage')
+    import(/* webpackChunkName: "cookie_message.component" */ './components/CookieMessage')
       .then(module => module.default)
       .then((CookieMessage) => {
         ReactDOM.render(<CookieMessage />, el);
@@ -130,7 +122,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* New module style */
+
+  // All pages
   eventCards();
   menu();
   userBar();
+
+  // Conditional modules
+
+  // Module: tweetList
+  if (document.querySelector('.js-module--tweetList')) {
+    const t = perf.recordTime('import', 'tweetList');
+    import(/* webpackChunkName: "tweet_list.module" */ './modules/tweet_list').then((module) => {
+      module.default();
+      t.done();
+    });
+  }
 });

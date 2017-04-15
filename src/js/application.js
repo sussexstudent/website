@@ -152,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-
   /* New module style */
   eventCards();
   menu();

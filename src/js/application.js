@@ -47,7 +47,7 @@ function linkListener(e) {
   }
 }
 
-if (window.blocking) {
+if (currentUser.fundraising.blocking) {
   [...document.querySelectorAll('.AdvertBar')].forEach((advert) => {
     advert.remove();
   });

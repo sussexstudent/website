@@ -6,6 +6,7 @@ import Homepage from './layouts/homepage';
 import Support from './layouts/Support';
 import HomepageVote from './layouts/homepage-vote';
 import EnvironmentFeedback from './layouts/environment/student-feedback';
+import EnvironmentIndex from './layouts/environment/environment';
 
 const MainLayoutLegacy = props => <MainLayout {...props} legacy />;
 
@@ -38,5 +39,6 @@ export default {
     // homepageVote: HomepageVote,
     'get-involved': GetInvolvedLayout,
     'environment-feedback': EnvironmentFeedback,
+    'environment': EnvironmentIndex,
   },
 };

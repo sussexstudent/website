@@ -1,0 +1,16 @@
+.Heading {
+
+  &--highlight {
+    box-decoration-break: clone;
+    padding: 0 0.2em;
+    background-color: var(--color__brand-yellow);
+    color: #000000;
+    display: inline;
+    font-size: 2lh;
+    position: relative;
+    line-height: 1.5rem;
+    font-size: 1.5rem;
+    margin: 0;
+    font-family: var(--type__primary);
+  }
+}

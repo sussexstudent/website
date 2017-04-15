@@ -7,11 +7,11 @@
 }
 
 .Color__display {
-  height: 6rem;
-  width: 6rem;
+  @mixin card flat;
+  @mixin card rounded;
+  height: 4rem;
+  width: 3rem;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABlBMVEXY2Nj///8B0aRxAAAAGElEQVR4AWNAB4xoYEQpGFUwGjCjCpABACRcAgFyjNYZAAAAAElFTkSuQmCC);
-  border-radius: 50%;
-  overflow: hidden;
   margin: 0 auto;
 }
 
@@ -23,8 +23,4 @@
 
 .ColorGrid {
   display: flex;
-
-  & .Color {
-    flex: auto;
-  }
 }

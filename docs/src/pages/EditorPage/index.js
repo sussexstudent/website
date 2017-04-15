@@ -1,8 +1,8 @@
 import React from 'react';
+import Immutable from 'immutable';
+import flatMap from 'lodash/flatMap';
 import Renderer from '../../components/Renderer';
 import TreeEditor from '../../components/TreeEditor';
-import Immutable from 'immutable'
-import flatMap from 'lodash/flatMap'
 import './style.css';
 // components
 import FigureCollection from '../../../../generator/components/FigureCollection';
@@ -26,8 +26,8 @@ const components = {
 };
 
 
-function createDefaultForComponent(components, key) {
-  const component = components[key];
+function createDefaultForComponent(componentsList, key) {
+  const component = componentsList[key];
 
   const dict = {
     component: key,
@@ -35,10 +35,9 @@ function createDefaultForComponent(components, key) {
 
   if (component.propTypes) {
     const props = {};
-    Object.keys(component.propTypes).forEach(propKey => {
+    Object.keys(component.propTypes).forEach((propKey) => {
       if (propKey === 'children') {
         dict.children = [];
-        return;
       } else if (propKey === 'imageURL') {
         props[propKey] = 'https://www.sussexstudent.com/pageassets/get-involved/get-involved.jpg';
       } else {
@@ -57,7 +56,7 @@ class EditorPage extends React.Component {
 
     this.state = {
       document: Immutable.List([]),
-    }
+    };
 
     this.handleDocumentChange = (change) => {
       const path = change.path;
@@ -75,8 +74,8 @@ class EditorPage extends React.Component {
         document = this.state.document.deleteIn([...flatMap(path, part => [part, 'children']), index]);
       }
 
-      this.setState({ document })
-    }
+      this.setState({ document });
+    };
   }
 
   render() {

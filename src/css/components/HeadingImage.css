@@ -2,6 +2,7 @@
 @import '../core/colors.css';
 
 .HeadingImage {
+  @mixin rounded mask;
   background-size: cover;
   padding: 1lh;
   margin-bottom: 1.5lh;

@@ -2,6 +2,7 @@ import React from 'react';
 import Tree from './Tree';
 import './style.css';
 
+/* eslint-disable */
 
 class TreeEditor extends React.Component {
   constructor() {
@@ -61,3 +62,4 @@ class TreeEditor extends React.Component {
   }
 }
 export default TreeEditor;
+/* eslint-enable */

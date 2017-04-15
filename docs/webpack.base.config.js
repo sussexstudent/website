@@ -25,7 +25,7 @@ module.exports = {
   target: 'web',
 
   entry: {
-    main: './src/index.js',
+    main: './docs/src/index.js',
   },
 
   output: {
@@ -54,15 +54,9 @@ module.exports = {
       __PRODUCTION__: env.production,
     }),
     new HtmlWebpackPlugin({
-      title: 'USSU Docs',
-      filename: '200.html',
-      template: './public/template.html',
-      alwaysWriteToDisk: true,
-    }),
-    new HtmlWebpackPlugin({
-      title: 'USSU Docs',
+      title: 'Sussex Student\'s Union Website Docs',
       filename: 'index.html',
-      template: './public/template.html',
+      template: './docs/public/template.html',
       alwaysWriteToDisk: true,
     }),
     new HtmlWebpackHarddiskPlugin(),
@@ -73,9 +67,14 @@ module.exports = {
 
   module: {
     rules: [
-      { test: /\.js$/, use: 'eslint-loader', enforce: 'pre', exclude: /node_modules/ },
+      {
+        test: /\.js$/,
+        use: 'eslint-loader',
+        exclude: /node_modules/,
+        enforce: 'pre',
+      },
       { test: /\.json$/, use: 'json-loader', enforce: 'pre' },
-      { test: /\.css$/, use: ['style-loader', 'css-loader?importLoaders=1', 'postcss-loader'] },
+      { test: /\.css$/, use: ['style-loader', 'css-loader?importLoaders=1!postcss-loader'] },
       { test: /\.svg|\.png|\.woff/, use: 'url-loader?limit=10000' },
     ],
 

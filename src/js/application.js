@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import has from 'lodash/has';
 import ModalManager from './bits/modals/manager';
 import HeaderSearch from './components/HeaderSearch';
 import LazyLoadApp from './components/LazyLoadApp';
@@ -11,9 +10,10 @@ import perf from './tracking/perf';
 import registerOnClickOff from './libs/registerOnClickOff';
 import renderSearch from './apps/search';
 import classToggle from './libs/dom/classToggle';
-import eventCardLinking from './bits/events_card_linking';
-import pseudoActiveMenu from './bits/pseudoActiveMenu';
-import smoothscroll from './bits/smoothscroll';
+import currentUser from './libs/user';
+import smoothscroll from './libs/smoothscroll';
+import eventCards from './modules/event_cards';
+import menu from './modules/menu';
 
 const modals = ModalManager();
 
@@ -41,26 +41,6 @@ function linkListener(e) {
   if (Object.hasOwnProperty.call(actions, el.action)) {
     actions[el.action](e);
   }
-}
-
-// AD BLOCKING
-// TODO: tidy up.
-if (localStorage.getItem('blocking') != null) {
-  try {
-    window.blocking = JSON.parse(localStorage.getItem('blocking')).enabled;
-  } catch (e) {
-    window.blocking = false;
-  }
-} else {
-  fetch('https://du9l8eemj97rm.cloudfront.net/showads.js')
-    .then(() => {
-      localStorage.setItem('blocking', JSON.stringify({ enabled: false }));
-      window.blocking = false;
-    })
-    .catch(() => {
-      localStorage.setItem('blocking', JSON.stringify({ enabled: true }));
-      window.blocking = true;
-    });
 }
 
 if (window.blocking) {
@@ -140,18 +120,15 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('su_cookie', '1');
   }
 
-  eventCardLinking();
 
   if (localStorage.getItem('su_proto') === '1') {
     import(/* webpackChunkName: "panel.module" */'./bits/panel').then(panel => panel.default());
   }
-  // eslint-disable-next-line no-undef
-  if (has(window, 'mslUserInfo.userinfo.FirstName')) {
-    // eslint-disable-next-line no-undef
-    const firstName = window.mslUserInfo.userinfo.FirstName;
+
+  if (currentUser.auth.isLoggedIn) {
     const welcome = document.querySelector('.UserBar__item--welcome');
     if (welcome) {
-      welcome.appendChild(document.createTextNode(`Hi ${firstName}!`));
+      welcome.appendChild(document.createTextNode(`Hi ${currentUser.auth.firstName}!`));
     }
   }
 
@@ -174,5 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-  pseudoActiveMenu(window.location);
+
+
+  /* New module style */
+  eventCards();
+  menu();
 });

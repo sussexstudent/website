@@ -3,7 +3,7 @@ import cx from 'classnames';
 import Portal from 'react-portal';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import SearchPage from '../../apps/search';
-import smoothscroll from '../../bits/smoothscroll';
+import smoothscroll from '../../libs/smoothscroll';
 import classToggle from '../../libs/dom/classToggle';
 
 const header = document.querySelector('.Header');

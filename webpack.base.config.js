@@ -20,7 +20,7 @@ module.exports = {
   target: 'web',
 
   entry: {
-    vendor: ['react', 'react-dom', 'unfetch/polyfill'],
+    vendor: ['react', 'react-dom', 'unfetch/polyfill', 'raven-js'],
     main: ['./src/entry.js'],
     devFonts: './src/env-dev.js',
     productionFonts: './src/env-production.js',
@@ -58,6 +58,7 @@ module.exports = {
       paths: true,
       unicode: true,
     }),*/
+    new webpack.NamedChunksPlugin(),
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', minChunks: Infinity }),
     new DuplicatePackageCheckerPlugin(),
   ],

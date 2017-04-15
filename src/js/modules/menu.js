@@ -5,7 +5,7 @@ function setMenuItemActiveFromPosition(position) {
   }
 }
 
-export default function onReady() {
+function pseudoActiveMenu() {
   const pathList = window.location.pathname.slice(1).split('/');
   const firstPath = pathList[0] || '';
 
@@ -20,4 +20,8 @@ export default function onReady() {
   if (Object.hasOwnProperty.call(pathToMenuPosition, firstPath)) {
     setMenuItemActiveFromPosition(pathToMenuPosition[firstPath]);
   }
+}
+
+export default function onReady() {
+  pseudoActiveMenu();
 }

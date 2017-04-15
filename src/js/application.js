@@ -1,6 +1,6 @@
+import Raven from 'raven-js';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import has from 'lodash/has';
 import ModalManager from './bits/modals/manager';
 import HeaderSearch from './components/HeaderSearch';
 import LazyLoadApp from './components/LazyLoadApp';
@@ -11,9 +11,13 @@ import perf from './tracking/perf';
 import registerOnClickOff from './libs/registerOnClickOff';
 import renderSearch from './apps/search';
 import classToggle from './libs/dom/classToggle';
-import eventCardLinking from './bits/events_card_linking';
-import pseudoActiveMenu from './bits/pseudoActiveMenu';
-import smoothscroll from './bits/smoothscroll';
+import currentUser from './libs/user';
+import smoothscroll from './libs/smoothscroll';
+import eventCards from './modules/event_cards';
+import menu from './modules/menu';
+
+// Install raven for sentry error reporting
+Raven.config('https://fd478822b69843a2a3718c621c5fadad@sentry.io/158659').install();
 
 const modals = ModalManager();
 
@@ -43,27 +47,7 @@ function linkListener(e) {
   }
 }
 
-// AD BLOCKING
-// TODO: tidy up.
-if (localStorage.getItem('blocking') != null) {
-  try {
-    window.blocking = JSON.parse(localStorage.getItem('blocking')).enabled;
-  } catch (e) {
-    window.blocking = false;
-  }
-} else {
-  fetch('https://du9l8eemj97rm.cloudfront.net/showads.js')
-    .then(() => {
-      localStorage.setItem('blocking', JSON.stringify({ enabled: false }));
-      window.blocking = false;
-    })
-    .catch(() => {
-      localStorage.setItem('blocking', JSON.stringify({ enabled: true }));
-      window.blocking = true;
-    });
-}
-
-if (window.blocking) {
+if (currentUser.fundraising.blocking) {
   [...document.querySelectorAll('.AdvertBar')].forEach((advert) => {
     advert.remove();
   });
@@ -86,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (document.querySelector('.app__events')) {
     const t = perf.recordTime('import', 'calender');
-    System.import('./apps/events-calender').then(() => t.done());
+    import(/* webpackChunkName: "events-calender.module" */ './apps/events-calender').then(() => t.done());
   }
 
 
@@ -109,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (activitiesApp) {
     const t = perf.recordTime('import', 'activities');
-    System.import('./apps/activities').then((app) => {
+    import(/* webpackChunkName: "discover-orgs.module" */'./apps/activities').then((app) => {
       t.done();
       const ActivitiesApp = app.default;
       ReactDOM.render(<LazyLoadApp><ActivitiesApp /></LazyLoadApp>, activitiesApp);
@@ -119,20 +103,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (document.querySelector('.app__tweets')) {
     const t = perf.recordTime('import', 'tweets');
-    System.import('./apps/tweets').then(() => t.done());
+    import(/* webpackChunkName: "tweet-list.module" */ './apps/tweets').then(() => t.done());
   }
 
 
   // NEWS RENDERING
   // TODO: work everywhere
   if (document.querySelector('.app__news')) {
-    System.import('./bits/news');
+    import(/* webpackChunkName: "news-blocks.module" */ './bits/news');
   }
 
   if (localStorage.getItem('su_cookie') !== '1') {
     const el = document.createElement('div');
     document.body.insertBefore(el, document.body.firstChild);
-    System.import('./components/CookieMessage')
+    import(/* webpackChunkName: "cookie-message.component" */ './components/CookieMessage')
       .then(module => module.default)
       .then((CookieMessage) => {
         ReactDOM.render(<CookieMessage />, el);
@@ -140,18 +124,15 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('su_cookie', '1');
   }
 
-  eventCardLinking();
 
   if (localStorage.getItem('su_proto') === '1') {
-    System.import('./bits/panel').then(panel => panel.default());
+    import(/* webpackChunkName: "panel.module" */'./bits/panel').then(panel => panel.default());
   }
-  // eslint-disable-next-line no-undef
-  if (has(window, 'mslUserInfo.userinfo.FirstName')) {
-    // eslint-disable-next-line no-undef
-    const firstName = window.mslUserInfo.userinfo.FirstName;
+
+  if (currentUser.auth.isLoggedIn) {
     const welcome = document.querySelector('.UserBar__item--welcome');
     if (welcome) {
-      welcome.appendChild(document.createTextNode(`Hi ${firstName}!`));
+      welcome.appendChild(document.createTextNode(`Hi ${currentUser.auth.firstName}!`));
     }
   }
 
@@ -174,5 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-  pseudoActiveMenu(window.location);
+
+  /* New module style */
+  eventCards();
+  menu();
 });

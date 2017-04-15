@@ -8,13 +8,12 @@ import LazyLoadApp from './components/LazyLoadApp';
 // import NewsletterModal from './components/NewsletterModal';
 // import SnapchatModal from './components/SnapchatModal';
 import perf from './tracking/perf';
-import registerOnClickOff from './libs/registerOnClickOff';
 import renderSearch from './apps/search';
-import classToggle from './libs/dom/classToggle';
 import currentUser from './libs/user';
 import smoothscroll from './libs/smoothscroll';
 import eventCards from './modules/event_cards';
 import menu from './modules/menu';
+import userBar from './modules/user_bar';
 
 // Install raven for sentry error reporting
 Raven.config('https://fd478822b69843a2a3718c621c5fadad@sentry.io/158659').install();
@@ -129,34 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
     import(/* webpackChunkName: "panel.module" */'./bits/panel').then(panel => panel.default());
   }
 
-  if (currentUser.auth.isLoggedIn) {
-    const welcome = document.querySelector('.UserBar__item--welcome');
-    if (welcome) {
-      welcome.appendChild(document.createTextNode(`Hi ${currentUser.auth.firstName}!`));
-    }
-  }
-
-  [...document.querySelectorAll('.UserBar__item-dropdown')].forEach((dropdownEl) => {
-    if (dropdownEl.firstChild) {
-      dropdownEl.parentNode.classList.remove('UserBar__item--empty');
-    }
-  });
-
-  [...document.querySelectorAll('.UserBar__item-admin')]
-    .forEach((item) => {
-      item.querySelector('span')
-        .addEventListener('click', () => {
-          classToggle(item, 'UserBar__item--open');
-          setTimeout(() => {
-            registerOnClickOff(item.querySelector('.UserBar__item-dropdown'), () => {
-              classToggle(item, 'UserBar__item--open', false);
-            });
-          }, 0);
-        });
-    });
-
 
   /* New module style */
   eventCards();
   menu();
+  userBar();
 });

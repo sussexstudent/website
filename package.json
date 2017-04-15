@@ -92,6 +92,7 @@
     "msl-utils": "^0.3.0",
     "promise-polyfill": "^6.0.2",
     "query-string": "^4.2.3",
+    "raven-js": "^3.14.2",
     "react": "^15.5.4",
     "react-addons-css-transition-group": "^15.5.2",
     "react-dom": "^15.5.4",

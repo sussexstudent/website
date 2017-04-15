@@ -113,15 +113,6 @@ chokidar.watch([
     });
   });
 
-const pages = {
-  environment: () => require('./layouts/environment/environment').default,
-  'environment/feedback': () => require('./layouts/environment/student-feedback').default,
-  homepage: () => require('./layouts/homepage').default,
-  'get-involved': () => require('./layouts/getinvolved').default,
-  support: () => require('./layouts/Support').default,
-  'homepage-vote': () => require('./layouts/homepage-vote').default,
-};
-
 const localAssetsStub = {
   main: {
     js: '/assets/main.js',
@@ -154,7 +145,7 @@ function clearViewCache() {
   return;
   Object.keys(require.cache).forEach((module) => {
     console.log(require.cache[module].filename);
-    /*if (moduleDetectRegEx.test(require.cache[module].filename)) {
+    /* if (moduleDetectRegEx.test(require.cache[module].filename)) {
       delete require.cache[module];
     */
   });
@@ -162,11 +153,12 @@ function clearViewCache() {
 
 function loadFromLocal(req, res) {
   clearViewCache();
+  const pages = require('./setup').default.pages;
   if (Object.hasOwnProperty.call(pages, req.params.page)) {
     const Main = require('./layouts/main').default;
     const page = renderHtml((
       <Main assets={localAssetsStub} loggedIn={Object.hasOwnProperty.call(req.query, 'auth')} />
-    ), localAssetsStub, { inject: { Content: render(pages[req.params.page]()) } });
+    ), localAssetsStub, { inject: { Content: render(pages[req.params.page]) } });
     res.send(page);
   } else {
     res.status(404);

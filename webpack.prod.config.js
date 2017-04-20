@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
@@ -16,7 +17,7 @@ config.profile = false;
 config.devtool = '#source-map';
 
 config.output = {
-  path: './dist',
+  path: path.resolve(path.join(__dirname, 'dist')),
   publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
   filename: 'union.[name].[hash].js',
 };

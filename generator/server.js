@@ -99,12 +99,13 @@ var mslUserInfo =
 
 
 
-const moduleDetectRegEx = /(layout|components).*\.js$/;
+const moduleDetectRegEx = /(layout|components|setup).*\.js$/;
 chokidar.watch([
   './generator/layouts',
   './generator/components',
 ])
   .on('change', () => {
+    console.log('updated!')
     Object.keys(require.cache).forEach((module) => {
       if (moduleDetectRegEx.test(require.cache[module].filename)) {
         console.log(`deleting ${require.cache[module].filename}`);
@@ -141,18 +142,7 @@ function handleTemplaing(html) {
   });
 }
 
-function clearViewCache() {
-  return;
-  Object.keys(require.cache).forEach((module) => {
-    console.log(require.cache[module].filename);
-    /* if (moduleDetectRegEx.test(require.cache[module].filename)) {
-      delete require.cache[module];
-    */
-  });
-}
-
 function loadFromLocal(req, res) {
-  clearViewCache();
   const pages = require('./setup').default.pages;
   if (Object.hasOwnProperty.call(pages, req.params.page)) {
     const Main = require('./layouts/main').default;
@@ -167,7 +157,6 @@ function loadFromLocal(req, res) {
 }
 
 function loadFromSite(req, res) {
-  clearViewCache();
   fetch(`https://www.sussexstudent.com/${req.originalUrl}`)
     .then((response) => {
       const contentType = response.headers.get('Content-Type');

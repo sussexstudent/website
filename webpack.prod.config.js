@@ -5,7 +5,6 @@ const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const config = require('./webpack.base.config.js');
 const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const GitRevisionPlugin = require('git-revision-webpack-plugin')
 
 const extractCSS = new ExtractTextPlugin({
   filename: 'union.[contenthash].[name].css',
@@ -28,7 +27,6 @@ config.plugins = config.plugins.concat([
   new webpack.LoaderOptionsPlugin({
     minimize: true,
   }),
-  new GitRevisionPlugin(),
   extractCSS,
   new ChunkManifestPlugin({
     filename: 'manifest.json',

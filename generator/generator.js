@@ -2,6 +2,7 @@ import fs from 'fs';
 import throttle from 'lodash/throttle';
 import isObject from 'lodash/isObject';
 import chalk from 'chalk';
+import git from 'git-rev';
 import ncp from 'copy-paste';
 import assets from '../webpack-assets.json';
 import manifest from '../dist/manifest.json';
@@ -40,70 +41,77 @@ function doDiff(next, previous) {
   return { dirtyTemplates, dirtyPages };
 }
 
-const next = {
-  templates: renderTemplates(config.templates, assets),
-  pages: renderPages(config.pages, assets),
-};
-
-
-let previousFile;
-
-try {
-  const file = fs.readFileSync('./previous.json', { encoding: 'utf-8', flag: 'r+' });
-  previousFile = JSON.parse(file);
-} catch (e) {
-  previousFile = { templates: {}, pages: {} };
-}
-
-if (!isObject(previousFile)) {
-  previousFile = {};
-}
-
-previousFile = { templates: {}, pages: {}, ...previousFile };
-
-
 function saveState(state) {
   fs.writeFileSync('./previous.json', JSON.stringify(state), { encoding: 'utf-8' });
 }
 
-const differences = doDiff(next, previousFile);
+function runGenerator(gitRev) {
+  assets.gitRev = gitRev;
+  const next = {
+    templates: renderTemplates(config.templates, assets),
+    pages: renderPages(config.pages, assets),
+  };
 
-function differencesUI(differences) {
-  // exit if nothing
-  if (differences.dirtyTemplates.length <= 0 && differences.dirtyPages.length <= 0) {
-    console.log(`${chalk.red('No changes!')}. Use ${chalk.blue('-f')} to force all, ${chalk.blue('-p')} to name pages and ${chalk.blue('-t')} for templates`);
-    return;
+
+  let previousFile;
+
+  try {
+    const file = fs.readFileSync('./previous.json', { encoding: 'utf-8', flag: 'r+' });
+    previousFile = JSON.parse(file);
+  } catch (e) {
+    previousFile = { templates: {}, pages: {} };
   }
 
-  ui.renderDifferencesList(differences);
+  if (!isObject(previousFile)) {
+    previousFile = {};
+  }
+
+  previousFile = { templates: {}, pages: {}, ...previousFile };
+
+  const differences = doDiff(next, previousFile);
 
 
-  console.log('Press enter to start.');
-
-  const stdin = process.openStdin();
-  const changes = createChangesGenerator(differences, next);
-
-  function nextAction() {
-    const change = changes.next();
-    if (change && change.done) {
-      console.log('All done!');
-      saveState(next);
-      console.log(chalk.green('Saved to state file. 👍'));
-      process.exit(0);
+  function differencesUI() {
+    // exit if nothing
+    if (differences.dirtyTemplates.length <= 0 && differences.dirtyPages.length <= 0) {
+      console.log(`${chalk.red('No changes!')}. Use ${chalk.blue('-f')} to force all, ${chalk.blue('-p')} to name pages and ${chalk.blue('-t')} for templates`);
+      return;
     }
 
-    const { type, name, part, content } = change.value;
-    ncp.copy(content, () => {
-      if (type === 'template') {
-        console.log(`📋  ${chalk.underline('Template')} ${chalk.blue(name)}: ${chalk.green(part)}. ${chalk.italic('Paste away!')}`);
-      } else if (type === 'page') {
-        console.log(`📋  ${chalk.underline('Page')} ${chalk.blue(name)}.  ${chalk.italic('Paste away!')}`);
+    ui.renderDifferencesList(differences);
+
+
+    console.log('Press enter to start.');
+
+    const stdin = process.openStdin();
+    const changes = createChangesGenerator(differences, next);
+
+    function nextAction() {
+      const change = changes.next();
+      if (change && change.done) {
+        console.log('All done!');
+        saveState(next);
+        console.log(chalk.green('Saved to state file. 👍'));
+        process.exit(0);
       }
-    });
+
+      const { type, name, part, content } = change.value;
+      ncp.copy(content, () => {
+        if (type === 'template') {
+          console.log(`📋  ${chalk.underline('Template')} ${chalk.blue(name)}: ${chalk.green(part)}. ${chalk.italic('Paste away!')}`);
+        } else if (type === 'page') {
+          console.log(`📋  ${chalk.underline('Page')} ${chalk.blue(name)}.  ${chalk.italic('Paste away!')}`);
+        }
+      });
+    }
+
+    nextAction();
+    stdin.on('data', throttle(nextAction, 300));
   }
 
-  nextAction();
-  stdin.on('data', throttle(nextAction, 300));
+  differencesUI();
 }
 
-differencesUI(differences);
+git.long(((gitRev) => {
+  runGenerator(gitRev);
+}));

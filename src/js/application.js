@@ -17,11 +17,11 @@ import menu from './modules/menu';
 import userBar from './modules/user_bar';
 
 
-// Install raven for sentry error reporting
+// Install raven for sentry error  reporting
 if (process.env.NODE_ENV === 'production') {
   Raven.config('https://fd478822b69843a2a3718c621c5fadad@sentry.io/158659', {
     // eslint-disable-next-line
-    release: COMMITHASH || 'dev',
+    release: window.releaseMetadata.gitRev || 'dev',
     environment: 'production',
   }).install();
 }

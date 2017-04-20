@@ -30,6 +30,7 @@ ${more.join('')}
 {head_content}
 <script type="text/javascript">
   ${manifestHandler(assets)}
+  window.releaseMetadata = {gitRev: "${assets.gitRev || 'dev'}"};
   try {
     if (JSON.parse(localStorage.getItem('blocking')).enabled) {
       var css = '.AdvertBar { display: none; }';

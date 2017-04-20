@@ -5,6 +5,7 @@
   margin-bottom: 1lh;
   display: flex;
   flex-direction: column;
+  background: #ffffff;
 
   @mixin card standard;
 

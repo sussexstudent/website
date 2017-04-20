@@ -2,13 +2,13 @@ import React from 'react';
 import FigureCollection from '../components/FigureCollection';
 import FigureCollectionFigure from '../components/FigureCollectionFigure';
 import HomepageEventsList from '../components/HomepageEventsList';
-import VarsityBanner from '../components/banners/VarsityBanner';
+import NSSBanner from '../components/banners/NSSBanner';
 
 const Homepage = () => (
   <div>
     <div className="Trail">
       <div className="Trail__row  u-container-bleed-2">
-        <VarsityBanner />
+        <NSSBanner />
       </div>
       <div className="Trail__row Trail__row--211">
         <div className="ContentBlock">

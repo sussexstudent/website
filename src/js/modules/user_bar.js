@@ -5,7 +5,7 @@ import registerOnClickOff from '../libs/registerOnClickOff';
 function updateUsersName() {
   const welcome = document.querySelector('.UserBar__item--welcome');
   if (welcome) {
-    welcome.appendChild(document.createTextNode(`Hi ${currentUser.auth.firstName}!`));
+    welcome.appendChild(document.createTextNode(`Hi ${currentUser.auth.details.firstName}!`));
   }
 }
 

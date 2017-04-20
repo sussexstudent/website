@@ -6,6 +6,7 @@ import perf from '../../tracking/perf';
 
 const ATTACHMENT_TWEET_HEIGHT = 375;
 const TWEET_HEIGHT = 175;
+const MIN_TWEET_COUNT = 3;
 const TWITTER_CACHE_RESOURCE = 'https://dxziiu0wrgyxg.cloudfront.net/tweets';
 
 class TweetList extends React.Component {
@@ -50,8 +51,7 @@ class TweetList extends React.Component {
         currentHeight += TWEET_HEIGHT;
       }
     });
-    console.log(count);
-    return count;
+    return count > MIN_TWEET_COUNT ? count : MIN_TWEET_COUNT;
   }
 
   render() {

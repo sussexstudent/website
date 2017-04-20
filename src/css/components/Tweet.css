@@ -1,8 +1,3 @@
-.app__tweets { /* TODO: tidy */
-  flex: auto;
-  display: flex;
-}
-
 .TweetList {
   @mixin rounded;
   background-color: var(--color__twitter);

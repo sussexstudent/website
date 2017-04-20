@@ -21,7 +21,7 @@ const externalMarkup = `
 
 function TrailComponentPage() {
   return (
-    <div>
+    <div className="App__content-container">
       <h1>Trail Grid</h1>
       <p>Trail is our simple fraction based grid. Usually we will have have unique layouts for anything more complex.</p>
       <div className="Trail">

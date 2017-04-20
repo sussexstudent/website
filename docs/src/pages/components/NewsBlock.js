@@ -33,7 +33,7 @@ class NewsBlockComponentPage extends React.Component {
   render() {
     const { imageBase64, imageURL, title, standfirst } = this.state;
     return (
-      <div>
+      <div className="App__content-container">
         <h1>NewsBlock</h1>
         <p>Our news block is an item-in-list element for displaying articles.</p>
         <div className="Trail">

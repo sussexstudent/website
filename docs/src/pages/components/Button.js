@@ -21,7 +21,7 @@ const externalMarkup = `
 
 function ButtonComponentPage() {
   return (
-    <div>
+    <div className="App__content-container">
       <h1>Button</h1>
       <p>Buttons are used for actions. For example</p>
 

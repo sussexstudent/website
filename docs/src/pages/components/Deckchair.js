@@ -16,7 +16,7 @@ const standardMarkup = color => `
 
 function DeckchairComponentPage() {
   return (
-    <div>
+    <div className="App__content-container">
       <h1>Deckchair 🍹</h1>
       <p>A full width banner, with an call to action button.</p>
 

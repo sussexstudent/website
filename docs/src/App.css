@@ -11,9 +11,12 @@
 
 .App__content {
   flex: auto;
-  padding: 1rem 2rem;
-  padding-left: calc(2rem + 240px);
+  padding-left: calc(240px);
   box-sizing: border-box;
+}
+
+.App__content-container {
+  padding: 1rem 2rem;
 }
 
 

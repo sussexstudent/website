@@ -25,6 +25,7 @@
 @import './components/Heading.css';
 @import './components/HeadingImage.css';
 @import './components/ContentBlock.css';
+@import './components/ContentCard.css';
 @import './components/NewsGrid.css';
 @import './components/NewsBlock.css';
 @import './components/UserBar.css';

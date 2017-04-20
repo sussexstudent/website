@@ -2,7 +2,7 @@ import React from 'react';
 
 function ButtonComponentPage() {
   return (
-    <div>
+    <div className="App__content-container">
       <h1>Headings</h1>
       <hr />
       <h1>Heading h1</h1>

@@ -75,7 +75,7 @@ module.exports = {
       },
       { test: /\.json$/, use: 'json-loader', enforce: 'pre' },
       { test: /\.css$/, use: ['style-loader', 'css-loader?importLoaders=1!postcss-loader'] },
-      { test: /\.svg|\.png|\.woff/, use: 'url-loader?limit=10000' },
+      { test: /\.svg|\.png|\.jpg|\.woff/, use: 'url-loader?limit=10000' },
     ],
 
     noParse: /\.min\.js/,

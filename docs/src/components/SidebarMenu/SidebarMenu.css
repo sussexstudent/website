@@ -11,6 +11,16 @@
   overflow-x: hidden;
 }
 
+.SidebarMenu__container {
+
+}
+
+.SidebarMenu__fix-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
 
 .SidebarMenu__logo {
   width: 100%;

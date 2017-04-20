@@ -2,6 +2,7 @@ import React from 'react';
 import each from 'lodash/each';
 import Tweet from './Tweet';
 import Loader from '../Loader';
+import FitOverflowChildren from '../FitOverflowChildren';
 import perf from '../../tracking/perf';
 
 const ATTACHMENT_TWEET_HEIGHT = 375;
@@ -72,9 +73,12 @@ class TweetList extends React.Component {
       );
     }
 
+    console.log(tweets);
     return (
       <ul className="TweetList">
-        {tweets.slice(0, this.getTweetQuantityForHeight()).map(tweet => <Tweet data={tweet} key={tweet.id_str} />)}
+        <FitOverflowChildren area="TweetList" minItems={3}>
+          {tweets.map(tweet => <Tweet data={tweet} key={tweet.id_str} />)}
+        </FitOverflowChildren>
         <a className="TweetList__view-more" href="https://twitter.com/USSU/lists/ussu">View on Twitter</a>
       </ul>
     );

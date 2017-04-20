@@ -1,5 +1,6 @@
 import Raven from 'raven-js';
 import React from 'react';
+import mitt from 'mitt';
 import ReactDOM from 'react-dom';
 import ModalManager from './bits/modals/manager';
 import HeaderSearch from './components/HeaderSearch';
@@ -15,8 +16,14 @@ import eventCards from './modules/event_cards';
 import menu from './modules/menu';
 import userBar from './modules/user_bar';
 
+
 // Install raven for sentry error reporting
-Raven.config('https://fd478822b69843a2a3718c621c5fadad@sentry.io/158659').install();
+if (process.env.NODE_ENV === 'production') {
+  Raven.config('https://fd478822b69843a2a3718c621c5fadad@sentry.io/158659').install();
+}
+
+// props not great
+window.emitter = mitt();
 
 const modals = ModalManager();
 

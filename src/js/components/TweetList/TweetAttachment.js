@@ -1,4 +1,5 @@
 import React from 'react';
+import LoadLinkedImage from '../LoadLinkedImage';
 
 const TweetAttachment = ({ tweet }) => {
   if (Object.hasOwnProperty.call(tweet.entities, 'media') && tweet.entities.media.length > 0) {
@@ -6,7 +7,7 @@ const TweetAttachment = ({ tweet }) => {
 
     return (
       <div className="Tweet__media">
-        <img src={`${media.media_url_https}:small`} alt="" />
+        <LoadLinkedImage src={`${media.media_url_https}:small`} area="TweetList" alt="" />
       </div>
     );
   }

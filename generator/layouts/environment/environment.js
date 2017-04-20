@@ -8,7 +8,10 @@ function Environment() {
         <div>
           <aside>
             <div className="ContentCard">
-              If you would like to find out more about the Students' Union's ethical and environmental work, or if you have any suggestions or information that might be useful, please contact Sian, Environmental Assistant on <a href="sian.w@sussexstudent.com">sian.w@sussexstudent.com</a>.
+              If you would like to find out more about the Students' Union's ethical and environmental work, or if you have any suggestions or information that might be useful please contact our Environmental Assistant at <a href="environment@sussexstudent.com">environment@sussexstudent.com</a>.
+              <p>
+                See what we are doing about feedback: <a className="Button" href="/about-us/ethics-environment/feedback/">Student Feedback</a>
+              </p>
             </div>
           </aside>
         </div>
@@ -17,6 +20,18 @@ function Environment() {
             title="Environment"
             imageURL="/pageassets/about-us/ethics-environment/planter.jpg"
           />
+          <div className="ContentCard">
+            <h2 className="Heading Heading--highlight">Sussex SU Sustainability Hub</h2>
+            <p>
+              Many students within the University of Sussex are concerned about environmental issues, whether it is about energy usage, food and/or clothing waste, recycling, ethical consumption or protecting the biodiversity on campus.
+            </p>
+            <p>
+              Do you have an idea for planning, running and leading a project, initiative or campaign on environmental sustainability? Or maybe you would just like to be involved? The Students’ Union are always keen to hear from students so that we can support you to drive positive change.
+            </p>
+            <p>
+              Here, you can find out how, as a Sussex student, you can get involved with a range of sustainability projects which are currently running across campus and how the SU are also championing Environmental issues.
+            </p>
+          </div>
           <div className="ContentCard">
             <h2 className="Heading Heading--highlight">Green Impact</h2>
             <p>Each year we take part in the NUS Green Impact scheme in order to help monitor and reduce our negative and increase our positive environmental impact. The Green Impact ‘toolkit’ provides Students’ Union’s with a set of criteria to work towards which is ensuring operations are maintained and improved, Environmental Sustainability is embedded in the Union’s ethos and helping to engage and bring together students and staff to collaborate on bringing about a just and sustainable future.</p>
@@ -31,18 +46,6 @@ function Environment() {
               For the year-round Free Shop:
               Accepted items include books, stationery, household items, clean kitchenware (no sharp knives) and clothing
               We cannot accept electrical items and food.
-            </p>
-          </div>
-          <div className="ContentCard">
-            <h2 className="Heading Heading--highlight">Sussex SU Sustainability Hub</h2>
-            <p>
-              Many students within the University of Sussex are concerned about environmental issues, whether it is about energy usage, food and/or clothing waste, recycling, ethical consumption or protecting the biodiversity on campus.
-            </p>
-            <p>
-              Do you have an idea for planning, running and leading a project, initiative or campaign on environmental sustainability? Or maybe you would just like to be involved? The Students’ Union are always keen to hear from students so that we can support you to drive positive change.
-            </p>
-            <p>
-              Here, you can find out how, as a Sussex student, you can get involved with a range of sustainability projects which are currently running across campus and how the SU are also championing Environmental issues.
             </p>
           </div>
           <div className="ContentCard">

@@ -14,12 +14,12 @@ const extractCSS = new ExtractTextPlugin({
 
 config.bail = true;
 config.profile = false;
-config.devtool = '#source-map';
+config.devtool = 'source-map';
 
 config.output = {
   path: path.resolve(path.join(__dirname, 'dist')),
   publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
-  filename: 'union.[name].[hash].js',
+  filename: 'union.[name].[chunkhash].js',
 };
 
 config.plugins = config.plugins.concat([
@@ -32,10 +32,9 @@ config.plugins = config.plugins.concat([
     filename: 'manifest.json',
     manifestVariable: 'chunkManifest',
   }),
-  new webpack.optimize.UglifyJsPlugin({ output: { comments: false } }),
+  new webpack.optimize.UglifyJsPlugin({ output: { comments: false }, sourceMap: true }),
   new AssetsWebpackPlugin(),
   new webpack.optimize.CommonsChunkPlugin({ async: true, children: true, minChunks: 3 }),
-
 ]);
 
 config.module.rules = config.module.rules.concat([

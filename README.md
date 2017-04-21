@@ -2,12 +2,23 @@
 
 The University of Sussex Students' Union website frontend.
 
-A set of components used for building pages, along with prebuilt pages and templates that can be generated.
+A set of UI components and tools used for building and generating pages.
 
-### Source
-`/src` contains frontend assets:
-* PostCSS styles in components via BEM
-* React Components where needed for interactivity such as the society search & filtering (*coming soon*)
+### Components & assets
+`/src` contains frontend assets. Generally focused around a component based architecture.
+
+#### Stying
+* Post-processed via PostCSS (largely using cssnext plugins)
+* Written in a style of BEM
+* No linting yet! :O
+
+
+#### JavaScript
+* ES6/7 (plus a few other stage-x features) via Babel
+* Coding splitting of 'modules' where possible
+* React is first-class citizen for more complex interativity
+* Follows Airbnb's JavaScript styleguide
+* Polyfilling via the FT's Polyfill.io service
 
 ### Generator
 See `/generator`
@@ -15,8 +26,8 @@ See `/generator`
 To ease the use of components, they are pre-built as React components are rendered to static markup in a number of ways. The generator can be used to build full pages and kept inside of git, for example the Homepage. Our docs also include a Composer to create pages of components visually on the fly without any need of writing markup, handy for societies to use in their microsites.
 
 
-### Docs
-Documentation for the components and more lives in `/docs`. Within the docs lives a composer application for building pages from components visually.
+### Styleguide
+A styleguide & documentation lives in `/docs`. It is automatically published to [style.sussexstudent.com](https://style.sussexstudent.com).
 
 ## Getting started
 
@@ -41,8 +52,11 @@ This is sussexstudent.com using locally built assets and a locallly generated ba
 To aid in developing pages, locally rendered pages can be accessed under the `/~/` path, for example `http://localhost:3002/~/get-involved` - this uses generators `get-involved` template to build this file.
 
 ### Deploying
+**Deploying requires for your working directory to be clean** This is to ensure the release revision via git is correct.
+
 ```bash
 $ yarn run deploy
 ```
 Deploy will build the assets for production and upload them to the CDN. After the generator will run. Within the website admin, the templates should be updated as the generate instructs, automatically putting the templates on your clipboard.
+
 

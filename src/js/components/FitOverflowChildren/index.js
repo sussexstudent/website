@@ -28,9 +28,10 @@ class FitOverflowChildren extends React.Component {
   }
 
   componentWillMount() {
-    window.emitter.on('imageLoaded', () => {
-      console.log(this.props.area);
-      this.updateSize();
+    window.emitter.on('imageLoaded', (data) => {
+      if (data.area === this.props.area) {
+        this.updateSize();
+      }
     });
   }
 
@@ -47,7 +48,6 @@ class FitOverflowChildren extends React.Component {
     const containerHeight = this.container.getBoundingClientRect().height;
     forEach(items, (element) => {
       const elementHeight = element.getBoundingClientRect().height + 10;
-      console.log({ elementHeight, currentHeight, containerHeight });
       if (currentHeight + elementHeight > containerHeight) {
         return false;
       }
@@ -81,9 +81,10 @@ class FitOverflowChildren extends React.Component {
       <div
         style={{
           overflow: 'hidden',
-          [needsHeight ? 'height' : 'flex']: needsHeight ? `${reduce(this.items.slice(0, this.props.minItems), (sum, el) => (
-            sum + el.getBoundingClientRect().height + 10
-          ), 0)}px` : '1 1 0',
+          [needsHeight ? 'height' : 'flex']: needsHeight ? `${
+            reduce(this.items.slice(0, this.props.minItems), (sum, el) => (
+              sum + el.getBoundingClientRect().height + 10
+            ), 0)}px` : '1 1 0',
         }}
         ref={this.handleContainerRef.bind(this)}
       >

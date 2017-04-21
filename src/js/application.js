@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     e.addEventListener('click', linkListener);
   });
 
-  const activitiesApp = document.querySelector('.app__activities');
 
   if (document.querySelector('.app__search')) {
     // eslint-disable-next-line
@@ -99,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const activitiesApp = document.querySelector('.app__activities');
   if (activitiesApp) {
     const t = perf.recordTime('import', 'activities');
     import(/* webpackChunkName: "discover_orgs.module" */'./apps/activities').then((app) => {
@@ -114,18 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.app__news')) {
     import(/* webpackChunkName: "news_blocks.module" */ './bits/news');
   }
-
-  if (localStorage.getItem('su_cookie') !== '1') {
-    const el = document.createElement('div');
-    document.body.insertBefore(el, document.body.firstChild);
-    import(/* webpackChunkName: "cookie_message.component" */ './components/CookieMessage')
-      .then(module => module.default)
-      .then((CookieMessage) => {
-        ReactDOM.render(<CookieMessage />, el);
-      });
-    localStorage.setItem('su_cookie', '1');
-  }
-
 
   if (localStorage.getItem('su_proto') === '1') {
     import(/* webpackChunkName: "panel.module" */'./bits/panel').then(panel => panel.default());
@@ -148,5 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
       module.default();
       t.done();
     });
+  }
+
+  // Module: cookie_message
+  if (localStorage.getItem('su_cookie') !== '1') {
+    import(/* webpackChunkName: "cookie_message.module" */ './modules/cookie_message')
+      .then(module => module.default());
   }
 });

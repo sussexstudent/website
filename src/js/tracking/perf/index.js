@@ -1,9 +1,10 @@
 function recordTime(component, event, attr, enable = true) {
-  if (!enable) {
+  if (!enable || 'performance' in window === false || 'now' in window.performance === false) {
     return {
       done() {},
     };
   }
+
   const start = window.performance.now();
   return {
     done() {

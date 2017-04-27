@@ -23,6 +23,7 @@ if (process.env.NODE_ENV === 'production') {
     // eslint-disable-next-line
     release: window.releaseMetadata.gitRev || 'dev',
     environment: 'production',
+    whitelistUrls: [/sussexstudent\.com/, /du9l8eemj97rm.cloudfront\.net/],
   }).install();
 }
 

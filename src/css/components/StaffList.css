@@ -1,0 +1,13 @@
+.StaffList {
+
+  &__item {
+    margin-bottom: 1lh;
+  }
+
+  &__contact {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1rem;
+    list-style: none;
+  }
+}

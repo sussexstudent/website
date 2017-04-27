@@ -4,9 +4,9 @@ function StaffList({ value: { heading, body } }) {
   return (
     <div>
       <h2 className="Heading Heading--highlight">{heading}</h2>
-      <ul className="FigureCollection FigureCollection--5">
+      <ul className="FigureCollection FigureCollection--5 StaffList">
         {body.map(member => (
-          <li className="FigureCollection__item">
+          <li className="FigureCollection__item StaffList__item">
             {member.photo ? <img
               className="FigureCollection__image"
               src={member.photo.resourceUrl}
@@ -14,12 +14,6 @@ function StaffList({ value: { heading, body } }) {
             /> : null}
             <span className="FigureCollection__title">{member.name}</span>
             <span className="FigureCollection__secondary">{member.jobTitle}</span>
-            <ul>
-              {member.email ? <li><a href={`mailto:${member.email}`}>Email: {member.email}</a></li> : null}
-              {member.officePhoneNumber ? <li>Office Tel: {member.officePhoneNumber}</li> : null}
-              {member.mobilePhoneNumber ? <li>Mobile Tel: {member.mobilePhoneNumber}</li> : null}
-              {member.officeLocation ? <li>{member.officeLocation}</li> : null}
-            </ul>
             <div>
               <div
                 className="Prose"
@@ -27,6 +21,12 @@ function StaffList({ value: { heading, body } }) {
                 dangerouslySetInnerHTML={{ __html: member.jobDescription }}
               />
             </div>
+            <ul className="StaffList__contact">
+              {member.email ? <li><a href={`mailto:${member.email}`}>{member.email}</a></li> : null}
+              {member.officePhoneNumber ? <li>{member.officePhoneNumber}</li> : null}
+              {member.mobilePhoneNumber ? <li>{member.mobilePhoneNumber}</li> : null}
+              {member.officeLocation ? <li>{member.officeLocation}</li> : null}
+            </ul>
           </li>
         ))}
       </ul>

@@ -5,6 +5,7 @@ const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const config = require('./webpack.base.config.js');
 const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const extractCSS = new ExtractTextPlugin({
   filename: 'union.[contenthash].[name].css',
@@ -32,6 +33,9 @@ config.plugins = config.plugins.concat([
     filename: 'manifest.json',
     manifestVariable: 'chunkManifest',
   }),
+  new CopyWebpackPlugin([
+    { from: './src/img/favicons', to: './branding' },
+  ]),
   new webpack.optimize.UglifyJsPlugin({ output: { comments: false }, sourceMap: true }),
   new AssetsWebpackPlugin(),
   new webpack.optimize.CommonsChunkPlugin({ async: true, children: true, minChunks: 3 }),

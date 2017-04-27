@@ -31,7 +31,7 @@ function Tweet({ isQuoted, data }) {
         </div> : null}
         {!isQuoted ? <TweetPermalink tweet={tweet} /> : null}
       </div>,
-      <a href={`https://twitter.com/statuses/${tweet.id_str}`} className="Tweet__faux-link" />
+      <a href={`https://twitter.com/${tweet.user.screen_name}/statuses/${tweet.id_str}`} className="Tweet__faux-link" />
   );
 }
 /* eslint-enable */

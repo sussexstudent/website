@@ -136,6 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Conditional modules
 
   // Module: tweetList
+  if (document.querySelector('.js-module--contentAPI')) {
+    const t = perf.recordTime('import', 'contentAPI');
+    import(/* webpackChunkName: "contentAPI.module" */ './modules/contentAPI').then((module) => {
+      module.default();
+      t.done();
+    });
+  }
+
+  // Module: tweetList
   if (document.querySelector('.js-module--tweetList')) {
     const t = perf.recordTime('import', 'tweetList');
     import(/* webpackChunkName: "tweet_list.module" */ './modules/tweet_list').then((module) => {

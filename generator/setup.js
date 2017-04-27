@@ -5,6 +5,7 @@ import GetInvolvedLayout from './layouts/getinvolved';
 import Homepage from './layouts/homepage';
 import Support from './layouts/Support';
 import HomepageVote from './layouts/homepage-vote';
+import StaffPage from './layouts/StaffPage';
 import EnvironmentFeedback from './layouts/environment/student-feedback';
 import EnvironmentIndex from './layouts/environment/environment';
 
@@ -40,5 +41,6 @@ export default {
     'get-involved': GetInvolvedLayout,
     'environment-feedback': EnvironmentFeedback,
     'environment': EnvironmentIndex,
+    'staff': StaffPage,
   },
 };

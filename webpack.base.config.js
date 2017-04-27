@@ -47,6 +47,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(NODE_ENV),
+        FALMER_ENDPOINT: JSON.stringify(env.production ? 'https://falmer.sussexstudent.com' : 'http://localhost:5000'),
       },
       __DEV__: env.development,
       __STAGING__: env.staging,

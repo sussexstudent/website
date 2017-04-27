@@ -5,7 +5,6 @@
   list-style: none;
   gg: columns(1/1);
   justify-content: center;
-  font-weight: bold;
 
   @media(--small) {
     & {
@@ -55,5 +54,6 @@
   &__title, &__secondary {
     padding: 0.2rem;
     padding-left: 0.8rem;
+    font-weight: bold;
   }
 }

@@ -62,8 +62,4 @@ ContentAPIComposer.propTypes = {
   pageId: React.PropTypes.number.isRequired,
 };
 
-ContentAPIComposer.defaultProps = {
-  pageId: 3,
-};
-
 export default ContentAPIComposer;

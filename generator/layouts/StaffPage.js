@@ -4,7 +4,7 @@ const StaffPage = () => (
   <div>
     <div className="Layout">
       <div>
-        <div className="js-module--contentAPI" data-pageId="3" />
+        <div className="js-module--contentAPI" data-page-id="3" />
       </div>
     </div>
   </div>

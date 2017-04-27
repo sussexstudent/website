@@ -30,6 +30,11 @@ if (process.env.NODE_ENV === 'production') {
 // props not great
 window.emitter = mitt();
 
+window.LinkshimAsyncLink = {
+  referrer_log() {},
+  swap() {},
+};
+
 const modals = ModalManager();
 
 const actions = {

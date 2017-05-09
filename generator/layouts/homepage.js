@@ -2,13 +2,13 @@ import React from 'react';
 import FigureCollection from '../components/FigureCollection';
 import FigureCollectionFigure from '../components/FigureCollectionFigure';
 import HomepageEventsList from '../components/HomepageEventsList';
-import NSSBanner from '../components/banners/NSSBanner';
+import VoteGE from '../components/banners/VoteGE';
 
 const Homepage = () => (
   <div>
     <div className="Trail">
       <div className="Trail__row  u-container-bleed-2">
-        <NSSBanner />
+        <VoteGE />
       </div>
       <div className="Trail__row Trail__row--211">
         <div className="ContentBlock">

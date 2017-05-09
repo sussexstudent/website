@@ -23,11 +23,6 @@ const items = [
     '/pageassets/get-involved/role-models.jpg',
   ),
   createItem(
-    'Volunteer at reception',
-    '/volunteer/reception',
-    '/pageassets/get-involved/Rhiannon.jpg',
-  ),
-  createItem(
     'Become a Students\' Union Ambassador',
     '/volunteer/welcome-team',
     '/pageassets/get-involved/suab.jpg',

@@ -14,6 +14,7 @@
 
 /* utils */
 @import './utils/extend-flex.css';
+@import './utils/responsive-ratio.css';
 
 /* layouts */
 @import './base.css';
@@ -59,6 +60,8 @@
 @import './components/FeedbackButton.css';
 @import './components/PaginationNavigation.css';
 @import './components/QuoteSlips.css';
+@import './components/Peekable.css';
+@import './components/Prose.css';
 @import './components/GlobalNotice.css';
 @import './components/SearchFilterNav.css';
 @import './components/SearchMeta.css';

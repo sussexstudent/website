@@ -2,6 +2,18 @@ import React from 'react';
 import Loader from '../Loader';
 import StaffList from '../StaffList';
 
+function getEndpoint() {
+  if (process.env.NODE_ENV === 'production') {
+    return process.env.FALMER_ENDPOINT;
+  }
+
+  return window.location.pathname.startsWith('/~/')
+    ? process.env.FALMER_ENDPOINT
+    : 'https://falmer.sussexstudent.com';
+}
+
+const ENDPOINT = getEndpoint();
+
 /* eslint-disable react/prop-types */
 const components = {
   heading: ({ value }) => <h1>{value}</h1>,
@@ -38,7 +50,7 @@ class ContentAPIComposer extends React.Component {
 
   componentWillMount() {
     if (!this.state.isLoading && !this.state.isLoaded) {
-      fetch(`${process.env.FALMER_ENDPOINT}/content-api/v2/pages/${this.props.pageId}/`)
+      fetch(`${ENDPOINT}/content-api/v2/pages/${this.props.pageId}/`)
         .then(data => data.json())
         .then(json => this.setState({ isLoaded: true, isLoading: false, data: json }))
         .catch(error => this.setState({ isLoading: false, isLoaded: false, isError: true, data: error }));

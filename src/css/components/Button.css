@@ -7,6 +7,9 @@
   padding: 0.2em 0.6em;
   text-decoration: none;
   font-weight: bold;
+  border: 0;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
 
   &--yellow {
     background: var(--color__brand-yellow);
@@ -17,5 +20,10 @@
     &:after {
       content: '🔥';
     }
+  }
+
+  &--above {
+    @mixin card flat;
+    @mixin rounded;
   }
 }

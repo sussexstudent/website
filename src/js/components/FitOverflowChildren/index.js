@@ -88,12 +88,17 @@ class FitOverflowChildren extends React.Component {
     const { children } = this.props;
     const { visibleToIndex, needsHeight } = this.state;
 
+    const fixedHeight = reduce(
+      this.items.slice(0, this.props.minItems),
+      (sum, el) => sum + el.getBoundingClientRect().height + 10,
+      0
+    );
     return (
       <div
         style={{
           overflow: 'hidden',
           [needsHeight ? 'height' : 'flex']: needsHeight
-            ? `${reduce(this.items.slice(0, this.props.minItems), (sum, el) => sum + el.getBoundingClientRect().height + 10, 0)}px`
+            ? `${fixedHeight}px`
             : '1 1 0',
         }}
         ref={this.handleContainerRef.bind(this)}

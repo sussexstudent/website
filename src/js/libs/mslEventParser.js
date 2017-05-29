@@ -46,8 +46,8 @@ function parseDate(dateString) {
   const timeMatch = dateString
     .split('-')
     .map(part => part.match(/(([0-9]+):)?([0-9]+)(am|pm)|(?:midnight)/));
+  // eslint-disable-next-line
   const dateMatch = /([0-9]+)(?:rd|st|nd|th) (january|febuary|march|april|may|june|july|august|september|october|november|december)/gi;
-  //    .map(date => date.match(/(([0-9]+)(rd|st|nd|th)) (january|febuary|march|april|may|june|july|august|september|october|november|december)/));
   let parsedDate;
   const dateData = [];
   // eslint-disable-next-line

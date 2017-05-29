@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import CookieMessage from './index';
 
 it('renders a snapshot', () => {
-  const tree = renderer.create(<CookieMessage/>).toJSON();
+  const tree = renderer.create(<CookieMessage />).toJSON();
   expect(tree).toMatchSnapshot();
 });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Peekable from '../Peekable';
-
+/* eslint-disable react/no-danger */
 function StaffList({ value: { heading, body } }) {
   return (
     <div>
@@ -50,5 +50,6 @@ function StaffList({ value: { heading, body } }) {
     </div>
   );
 }
+/* eslint-enable react/no-danger */
 
 export default StaffList;

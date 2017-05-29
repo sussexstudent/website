@@ -29,13 +29,15 @@ config.module.rules = config.module.rules.concat([
   { test: /\.js?$/, loaders: ['babel-loader?cacheDirectory&forceEnv=bundle'], exclude: /node_modules/ },
   {
     test: /\.css$/,
-    // fallback: 'style-loader',
     use: [
-      'style-loader',
+      {
+        loader: 'style-loader',
+      },
       {
         loader: 'css-loader',
         options: {
           importLoaders: 1,
+          //root: './src/'
         },
       },
       'postcss-loader',

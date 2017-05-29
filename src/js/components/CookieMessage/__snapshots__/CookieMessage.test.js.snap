@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a snapshot 1`] = `
+<div
+  className="GlobalNotice"
+>
+  This site uses cookies. By continuing to browse, you agree to our use of cookies on the site. 
+  <a
+    href="/cookie-policy"
+  >
+    Learn more
+  </a>
+  .
+  <button
+    className="GlobalNotice__close"
+    onClick={[Function]}
+    title="Close"
+  >
+    <span
+      className="u-h"
+    >
+      Close
+    </span>
+  </button>
+</div>
+`;

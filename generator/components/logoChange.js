@@ -18,5 +18,5 @@ try {
 }
 
 var pallet = ['ee534f', '1db8a4', '27428c'];
-document.querySelector('.HeaderLogo__svg-group').style.fill = '#' + pallet[[2,1,2,0,1,0,2,1,0][index]];
+document.querySelector('.HeaderLogo__svg-group').style.fill = '#' + pallet[[2, 1, 2, 0, 1, 0, 2, 1, 0][index]];
 })();

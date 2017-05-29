@@ -1,0 +1,11 @@
+.EventsCalender {
+
+  &__item {
+    @mixin card standard;
+    background: #ffffff;
+    display: block;
+    position: relative;
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+}

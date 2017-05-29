@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'production') {
   }).install();
 }
 
-// props not great
+// probs not great
 window.emitter = mitt();
 
 window.LinkshimAsyncLink = {
@@ -115,12 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(<LazyLoadApp />, activitiesApp);
   }
 
-  // NEWS RENDERING
-  // TODO: work everywhere
-  if (document.querySelector('.app__news')) {
-    import(/* webpackChunkName: "news_blocks.module" */ './bits/news');
-  }
-
   if (localStorage.getItem('su_proto') === '1') {
     import(/* webpackChunkName: "panel.module" */'./bits/panel').then(panel => panel.default());
   }
@@ -129,28 +123,47 @@ document.addEventListener('DOMContentLoaded', () => {
   /* New module style */
 
   // All pages
-  eventCards();
+  if (process.env.NODE_ENV === 'production') {
+    eventCards();
+  }
   menu();
   userBar();
 
   // Conditional modules
 
+  // Module: eventsPage
+  // document.querySelector('.js-module--eventsPage')
+  if (window.location.pathname === '/events') {
+    import(/* webpackChunkName: "eventsPage.module" */ './modules/eventsPage')
+      .then(module => module.default());
+  }
+
+
+  // Module: homepageNews
+  // TODO: update homepage news selector
+  if (document.querySelector('.app__news')) {
+    import(/* webpackChunkName: "homepageNews.module" */ './modules/homepageNews')
+      .then(module => module.default());
+  }
+
   // Module: tweetList
   if (document.querySelector('.js-module--contentAPI')) {
     const t = perf.recordTime('import', 'contentAPI');
-    import(/* webpackChunkName: "contentAPI.module" */ './modules/contentAPI').then((module) => {
-      module.default();
-      t.done();
-    });
+    import(/* webpackChunkName: "contentAPI.module" */ './modules/contentAPI')
+      .then((module) => {
+        module.default();
+        t.done();
+      });
   }
 
   // Module: tweetList
   if (document.querySelector('.js-module--tweetList')) {
     const t = perf.recordTime('import', 'tweetList');
-    import(/* webpackChunkName: "tweet_list.module" */ './modules/tweet_list').then((module) => {
-      module.default();
-      t.done();
-    });
+    import(/* webpackChunkName: "tweet_list.module" */ './modules/tweet_list')
+      .then((module) => {
+        module.default();
+        t.done();
+      });
   }
 
   // Module: cookie_message

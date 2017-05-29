@@ -15,6 +15,7 @@
 /* utils */
 @import './utils/extend-flex.css';
 @import './utils/responsive-ratio.css';
+@import './utils/faux-link.css';
 
 /* layouts */
 @import './base.css';
@@ -41,6 +42,7 @@
 @import './components/FlexibleHero.css';
 @import './components/Tweet.css';
 @import './components/EventsList.css';
+@import './components/EventsCalender.css';
 @import './components/SelectionGrid.css';
 @import './components/OrgansiationGrid.css';
 @import './components/ActivitiesApp.css';

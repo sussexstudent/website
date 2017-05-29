@@ -33,6 +33,7 @@
     "duplicate-package-checker-webpack-plugin": "^1.2.4",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
+    "eslint-config-prettier": "^2.1.1",
     "eslint-config-react-app": "^0.6.2",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-flowtype": "^2.33.0",
@@ -118,7 +119,8 @@
     "precommit": "`npm bin`/eslint",
     "serve": "BABEL_ENV=dev-server node ./generator/start-server.js",
     "docs:serve": "export NODE_ENV=development && node ./docs/devserver.js",
-    "docs:prod": "export NODE_ENV=production && webpack --config ./docs/webpack.prod.config.js"
+    "docs:prod": "export NODE_ENV=production && webpack --config ./docs/webpack.prod.config.js",
+    "format": "prettier --single-quote --print-width 80 --trailing-comma es5 --write \"./src/**/*.js\""
   },
   "jest": {
     "moduleFileExtensions": [

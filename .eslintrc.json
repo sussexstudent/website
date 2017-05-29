@@ -4,6 +4,9 @@
     "prettier",
     "prettier/react"
   ],
+  "plugins": [
+    "prettier"
+  ],
   "parser": "babel-eslint",
   "parserOptions": {
     "allowImportExportEverywhere": true,
@@ -13,6 +16,7 @@
     "browser": true
   },
   "rules": {
+    "prettier/prettier": ["error", { "singleQuote": true, "bracketSpacing": true, "trailingComma": "es5" }],
     "no-console": 0,
     "react/jsx-no-bind": 0,
     "import/no-extraneous-dependencies": 0,

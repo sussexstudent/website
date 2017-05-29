@@ -128,18 +128,12 @@ const localAssetsStub = {
 };
 
 function handleTemplaing(html) {
-  return new Promise((resolve, reject) => {
-    jsdom.env(html, (err, window) => {
-      if (err) {
-        reject(err);
-      }
-      const pageContentHTML = window.document.querySelector('main .Container');
-      const Main = require('./layouts/main').default;
-      resolve(renderHtml((
-        <Main assets={localAssetsStub} />
-      ), localAssetsStub, { inject: { Content: pageContentHTML ? pageContentHTML.innerHTML : html } }));
-    });
-  });
+  const { window } = new jsdom.JSDOM(html);
+  const pageContentHTML = window.document.querySelector('main .Container');
+  const Main = require('./layouts/main').default;
+  return renderHtml((
+    <Main assets={localAssetsStub} />
+  ), localAssetsStub, { inject: { Content: pageContentHTML ? pageContentHTML.innerHTML : html } });
 }
 
 function loadFromLocal(req, res) {

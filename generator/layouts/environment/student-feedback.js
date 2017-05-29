@@ -1,11 +1,13 @@
 import React from 'react';
 import Deckchair from '../../components/Deckchair';
+import BackBar from '../../components/BackBar';
 import HeadingImage from '../../components/HeadingImage';
 
 function Feedback() {
 
   return (
     <div>
+      <BackBar color="blue" link="/">Environment thing</BackBar>
       <HeadingImage
         title="Student feedback"
         imageURL="/pageassets/about-us/ethics-environment/feedback/The-gloves-are-off.jpg"

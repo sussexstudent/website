@@ -8,5 +8,4 @@ function NewsletterModal() {
   );
 }
 
-
 export default NewsletterModal;

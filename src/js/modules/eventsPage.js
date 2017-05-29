@@ -6,5 +6,8 @@ import EventsCalender from '../components/EventsCalender';
 export default function eventsPage() {
   const events = parseEvents(document.body);
 
-  ReactDOM.render(<EventsCalender events={events} />, document.querySelector('.Legacy .row'));
+  ReactDOM.render(
+    <EventsCalender events={events} />,
+    document.querySelector('.Legacy .row')
+  );
 }

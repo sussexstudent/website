@@ -22,7 +22,12 @@ class Peekable extends React.Component {
         {children}
         <div className="Peekable__mask">
           <div className="Peekable__button">
-            <button className="Button Button--above" onClick={this.handleOpen.bind(this)}>{expandText}</button>
+            <button
+              className="Button Button--above"
+              onClick={this.handleOpen.bind(this)}
+            >
+              {expandText}
+            </button>
           </div>
         </div>
       </div>

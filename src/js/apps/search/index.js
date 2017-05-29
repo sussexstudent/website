@@ -33,23 +33,25 @@ function getPayloadMetadata(payload) {
   const mk = key => ({
     weight: calcWeight(key),
     count: payload[key].length,
-    key, title: areas[key]
+    key,
+    title: areas[key],
   });
 
   const orderedAreas = orderBy(
     ['groups', 'events', 'pages', 'news'].map(mk),
-    ['weight', 'name'], ['desc', 'asc']
+    ['weight', 'name'],
+    ['desc', 'asc']
   );
 
-  const hasResults = Object.keys(areas).reduce((acc, key) => payload[key].length + acc, 0) > 0;
+  const hasResults =
+    Object.keys(areas).reduce((acc, key) => payload[key].length + acc, 0) > 0;
   return {
     orderedAreas,
-    hasResults
+    hasResults,
   };
 }
 
 class SearchPage extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -57,7 +59,10 @@ class SearchPage extends React.Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleAreaChange = this.handleAreaChange.bind(this);
     this.handleNotFoundDesiredPage = this.handleNotFoundDesiredPage.bind(this);
-    this.loadQueryResultsDebounced = debounce(this.loadQueryResults.bind(this), 350);
+    this.loadQueryResultsDebounced = debounce(
+      this.loadQueryResults.bind(this),
+      350
+    );
 
     this.state = {
       // query: qs.parse(location.search).q || '',
@@ -94,7 +99,7 @@ class SearchPage extends React.Component {
       if (!didFinish) {
         this.setState({ isLoading: true });
       }
-    }, 60)
+    }, 60);
 
     // TODO: send after 1s. not here. causes half words in stats
     // send ga
@@ -104,7 +109,10 @@ class SearchPage extends React.Component {
     const t = perf.recordTime('Search', 'fetchResults', { query });
     window
       .fetch(`https://dgv7dbrr4a1ou.cloudfront.net/search/${query}`)
-      .then((res) => { t.done(); return res.json() })
+      .then(res => {
+        t.done();
+        return res.json();
+      })
       .then(payload => {
         if (query === this.props.query) {
           didFinish = true;
@@ -114,7 +122,7 @@ class SearchPage extends React.Component {
             orderedAreas,
             hasResults,
             currentArea: orderedAreas[0].key,
-            isLoading: false
+            isLoading: false,
           });
         }
       });
@@ -136,7 +144,12 @@ class SearchPage extends React.Component {
     if (query !== '') {
       this.loadQueryResultsDebounced(query);
     } else {
-      this.setState({ results: null, isLoading: false, hasResults: null, orderedAreas: null });
+      this.setState({
+        results: null,
+        isLoading: false,
+        hasResults: null,
+        orderedAreas: null,
+      });
     }
 
     const search = qs.parse(location.search);
@@ -158,7 +171,15 @@ class SearchPage extends React.Component {
   }
 
   renderMeta() {
-    const { results, isLoading, hasResults, searchArea, page, orderedAreas, currentArea } = this.state;
+    const {
+      results,
+      isLoading,
+      hasResults,
+      searchArea,
+      page,
+      orderedAreas,
+      currentArea,
+    } = this.state;
     let content;
     if (isLoading) {
       content = <span className="SearchMeta__note">Loading…</span>;
@@ -189,20 +210,29 @@ class SearchPage extends React.Component {
     const { query } = this.props;
     const { results, isLoading, searchArea, page, currentArea } = this.state;
 
-    const containerclassNamees = cx('SearchApp__container', { 'SearchApp__container--is-loading':  isLoading === true });
+    const containerclassNamees = cx('SearchApp__container', {
+      'SearchApp__container--is-loading': isLoading === true,
+    });
 
     return (
       <div className={containerclassNamees}>
         {this.renderMeta()}
-        <div className="Container--for-search" ref={ref => this.searchContainerRef = ref}>
+        <div
+          className="Container--for-search"
+          ref={ref => (this.searchContainerRef = ref)}
+        >
           <div className="Container">
-            {results !== null && results[currentArea].length > 0 ? (
-              <ul className={cx('ResultsList', { 'ResultsList--stale': isLoading })}>
-                {results[currentArea].map(item => ((
-                  <SearchResult key={item.link} item={item} />
-                )))}
-              </ul>
-            ): null}
+            {results !== null && results[currentArea].length > 0
+              ? <ul
+                  className={cx('ResultsList', {
+                    'ResultsList--stale': isLoading,
+                  })}
+                >
+                  {results[currentArea].map(item => (
+                    <SearchResult key={item.link} item={item} />
+                  ))}
+                </ul>
+              : null}
           </div>
         </div>
       </div>
@@ -214,7 +244,11 @@ class SearchPage extends React.Component {
     const { searchArea } = this.state;
 
     return (
-      <div ref={(ref) => { this.containerRef = ref; }}>
+      <div
+        ref={ref => {
+          this.containerRef = ref;
+        }}
+      >
         {this.renderResults()}
       </div>
     );
@@ -256,7 +290,6 @@ import PaginationNavigation from '../../components/PaginationNavigation';
               </label>
             </fieldset>
 */
-
 
 /*
 

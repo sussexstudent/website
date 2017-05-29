@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import ContentAPIComposer from '../components/ContentAPIComposer';
 import perf from '../tracking/perf';
 
-
 function render(root) {
   const t = perf.recordTime('ContentAPI', 'render');
   const pageId = root.dataset.pageId;

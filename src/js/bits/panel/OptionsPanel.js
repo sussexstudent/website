@@ -4,7 +4,9 @@ import dots from './dots.svg';
 import classToggle from '../../libs/dom/classToggle';
 
 function showAds(toggle = false) {
-  [...document.querySelectorAll('.AdvertBar')].forEach(el => classToggle(el, 'AdvertBar--hide', !toggle));
+  [...document.querySelectorAll('.AdvertBar')].forEach(el =>
+    classToggle(el, 'AdvertBar--hide', !toggle)
+  );
   return toggle;
 }
 
@@ -14,9 +16,11 @@ const optionsList = {
 
 function generateInitial(options) {
   const optionDict = {};
-  const previous = localStorage.getItem('suop') ? JSON.parse(localStorage.getItem('suop')) : {};
+  const previous = localStorage.getItem('suop')
+    ? JSON.parse(localStorage.getItem('suop'))
+    : {};
 
-  Object.keys(options).forEach((optionName) => {
+  Object.keys(options).forEach(optionName => {
     if (Object.hasOwnProperty.call(previous, optionName)) {
       optionDict[optionName] = options[optionName](previous[optionName]);
     } else {
@@ -36,10 +40,17 @@ class OptionsPanel extends React.Component {
   }
 
   handleChange(optionName) {
-    this.setState({ options: {
-      ...this.state.options,
-      [optionName]: optionsList[optionName](!this.state.options[optionName]),
-    } }, () => localStorage.setItem('suop', JSON.stringify(this.state.options)));
+    this.setState(
+      {
+        options: {
+          ...this.state.options,
+          [optionName]: optionsList[optionName](
+            !this.state.options[optionName]
+          ),
+        },
+      },
+      () => localStorage.setItem('suop', JSON.stringify(this.state.options))
+    );
   }
 
   render() {

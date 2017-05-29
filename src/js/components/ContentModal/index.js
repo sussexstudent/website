@@ -2,9 +2,7 @@ import React from 'react';
 
 /* eslint-disable */
 function ContentModal({ html }) {
-  return (
-    <div dangerouslySetInnerHTML={{ __html: html }} />
-  );
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
 }
 /* eslint-enable */
 

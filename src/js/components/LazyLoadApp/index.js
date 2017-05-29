@@ -3,7 +3,7 @@ import Loader from '../Loader';
 
 const LazyLoadApp = ({ children }) => (
   <div>
-    { React.Children.count(children) <= 0 ? <Loader dark /> : children }
+    {React.Children.count(children) <= 0 ? <Loader dark /> : children}
   </div>
 );
 

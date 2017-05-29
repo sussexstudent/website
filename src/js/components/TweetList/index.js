@@ -29,8 +29,13 @@ class TweetList extends React.Component {
     }
     const t = perf.recordTime(`TweetList: ${this.props.query}`, 'fetch');
 
-    fetch(`${TWITTER_CACHE_RESOURCE}?q=${this.props.query}&s=${this.props.signature}`)
-      .then((response) => { t.done(); return response.json(); })
+    fetch(
+      `${TWITTER_CACHE_RESOURCE}?q=${this.props.query}&s=${this.props.signature}`
+    )
+      .then(response => {
+        t.done();
+        return response.json();
+      })
       .then(data => this.setState({ tweets: data, isLoading: false }))
       .catch(e => this.setState({ tweets: e }));
   }
@@ -39,14 +44,17 @@ class TweetList extends React.Component {
     let count = 0;
     let currentHeight = 0;
     // eslint-disable-next-line
-    each(this.state.tweets, (tweet) => {
+    each(this.state.tweets, tweet => {
       if (currentHeight > this.state.height) {
         count -= 1;
         return false;
       }
 
       count += 1;
-      if (tweet.quoted_status || (tweet.entities.media && tweet.entities.media.length > 0)) {
+      if (
+        tweet.quoted_status ||
+        (tweet.entities.media && tweet.entities.media.length > 0)
+      ) {
         currentHeight += ATTACHMENT_TWEET_HEIGHT;
       } else {
         currentHeight += TWEET_HEIGHT;
@@ -59,7 +67,12 @@ class TweetList extends React.Component {
     const { tweets, isLoading } = this.state;
     if (isLoading) {
       return (
-        <ul className="TweetList" ref={(ref) => { this.listEL = ref; }}>
+        <ul
+          className="TweetList"
+          ref={ref => {
+            this.listEL = ref;
+          }}
+        >
           <Loader />
         </ul>
       );
@@ -68,7 +81,7 @@ class TweetList extends React.Component {
     if (!isLoading && !tweets) {
       return (
         <ul className="TweetList">
-          <p>{'Something went wong, we\'re unable to load the latest tweets'}</p>
+          <p>{"Something went wong, we're unable to load the latest tweets"}</p>
         </ul>
       );
     }
@@ -79,7 +92,12 @@ class TweetList extends React.Component {
         <FitOverflowChildren area="TweetList" minItems={3}>
           {tweets.map(tweet => <Tweet data={tweet} key={tweet.id_str} />)}
         </FitOverflowChildren>
-        <a className="TweetList__view-more" href="https://twitter.com/USSU/lists/ussu">View on Twitter</a>
+        <a
+          className="TweetList__view-more"
+          href="https://twitter.com/USSU/lists/ussu"
+        >
+          View on Twitter
+        </a>
       </ul>
     );
   }

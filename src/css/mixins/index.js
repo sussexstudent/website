@@ -6,7 +6,7 @@ module.exports = {
       height: '1px',
       width: '1px',
       overflow: 'hidden',
-    }
+    },
   },
   rounded: function roundedMixin(mixin, type) {
     const self = {

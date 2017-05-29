@@ -11,14 +11,17 @@ export default function ModalManager() {
       render();
     }
 
-    ReactDOM.render(<ModalControler stack={stack} onClose={pop} />, document.querySelector('.js__modal'));
+    ReactDOM.render(
+      <ModalControler stack={stack} onClose={pop} />,
+      document.querySelector('.js__modal')
+    );
   }
 
   render();
 
   return {
     init: render,
-    add: (instance) => {
+    add: instance => {
       stack.push(instance);
       render();
     },

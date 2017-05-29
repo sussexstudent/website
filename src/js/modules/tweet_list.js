@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import TweetList from '../components/TweetList';
 import perf from '../tracking/perf';
 
-
 function render(root) {
   const t = perf.recordTime('TweetList', 'render');
   const signature = root.dataset.signature;

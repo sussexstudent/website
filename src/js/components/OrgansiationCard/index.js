@@ -11,7 +11,9 @@ function OrganisationCard(props) {
         </LazyLoad>
         <div className="OrganisationCard__info">
           <h3 className="OrganisationCard__title">{org.name}</h3>
-          {org.description ? <p className="OrganisationCard__description">{org.description}</p> : null}
+          {org.description
+            ? <p className="OrganisationCard__description">{org.description}</p>
+            : null}
         </div>
       </a>
     </li>

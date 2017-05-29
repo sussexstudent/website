@@ -35,4 +35,7 @@ EventsApp.propTypes = {
 
 const eventData = getEventDataFromDocument(document);
 console.log(eventData);
-ReactDOM.render(<EventsApp events={eventData} />, document.getElementById('eventsRoot'));
+ReactDOM.render(
+  <EventsApp events={eventData} />,
+  document.getElementById('eventsRoot')
+);

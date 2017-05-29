@@ -1,5 +1,9 @@
 function recordTime(component, event, attr, enable = true) {
-  if (!enable || 'performance' in window === false || 'now' in window.performance === false) {
+  if (
+    !enable ||
+    'performance' in window === false ||
+    'now' in window.performance === false
+  ) {
     return {
       done() {},
     };
@@ -9,7 +13,10 @@ function recordTime(component, event, attr, enable = true) {
   return {
     done() {
       const total = window.performance.now() - start;
-      console.log(`[perf] ${component}/${event} took ${Math.round(total)}ms`, attr || '');
+      console.log(
+        `[perf] ${component}/${event} took ${Math.round(total)}ms`,
+        attr || ''
+      );
     },
   };
 }

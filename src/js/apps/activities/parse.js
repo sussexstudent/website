@@ -25,7 +25,7 @@ function parseAttributes(attrEl) {
   const map = {};
   let currentSetName = null;
 
-  items.forEach((item) => {
+  items.forEach(item => {
     if (item.classList.contains('msl-gl-attributeset')) {
       currentSetName = item.textContent;
     }
@@ -42,7 +42,6 @@ function parseAttributes(attrEl) {
   return map;
 }
 
-
 export default class ActivitiesParser {
   constructor(widgetElement) {
     const listOfElements = [...widgetElement.querySelectorAll('li')];
@@ -54,15 +53,11 @@ export default class ActivitiesParser {
     this.setNames = {
       Category: {
         id: 32,
-        attr: {
-
-        },
+        attr: {},
       },
     };
 
-    this.setMap = [
-      [43, 23],
-    ];
+    this.setMap = [[43, 23]];
 
     this.attrNames = {
       43: 'Indoor',
@@ -115,12 +110,14 @@ export default class ActivitiesParser {
   }
 
   parse() {
-    const listOfElements = [...document.querySelectorAll('.msl_organisation_list li')];
+    const listOfElements = [
+      ...document.querySelectorAll('.msl_organisation_list li'),
+    ];
     const organisationList = {};
 
     let lastImage = null;
 
-    listOfElements.forEach((li) => {
+    listOfElements.forEach(li => {
       if (li.classList.contains('msl-gl-logo')) {
         lastImage = parseLogo(li);
       } else {
@@ -142,7 +139,9 @@ export default class ActivitiesParser {
 
   storeAttrForOrg(id, map) {
     console.log('name m8', map);
-    Object.keys(map).forEach(setName => map[setName].forEach(attrName => this.addOrgToAttr(id, setName, attrName)));
+    Object.keys(map).forEach(setName =>
+      map[setName].forEach(attrName => this.addOrgToAttr(id, setName, attrName))
+    );
   }
 
   parseOrganisation(liElement) {
@@ -151,7 +150,9 @@ export default class ActivitiesParser {
     const description = liElement.querySelector('.msl-gl-description');
     console.log(anchor);
 
-    const attrMap = parseAttributes(liElement.querySelector('.msl-gl-attributes'));
+    const attrMap = parseAttributes(
+      liElement.querySelector('.msl-gl-attributes')
+    );
     const orgAttr = this.storeAttrForOrg(id, attrMap);
 
     return {
@@ -162,5 +163,4 @@ export default class ActivitiesParser {
       description: description ? description.textContent.trim() : null,
     };
   }
-
 }

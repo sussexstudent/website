@@ -33,13 +33,21 @@ function createDate(date, timeMatch) {
     time[4] = 'am';
   }
   const additional = time[4] === 'pm' && timeHour < 12 ? 12 : 0;
-  return new Date(getYear(NOW), date.month, date.day, timeHour + additional, timeMinuets);
+  return new Date(
+    getYear(NOW),
+    date.month,
+    date.day,
+    timeHour + additional,
+    timeMinuets
+  );
 }
 
 function parseDate(dateString) {
-  const timeMatch = dateString.split('-').map(part => part.match(/(([0-9]+):)?([0-9]+)(am|pm)|(?:midnight)/));
+  const timeMatch = dateString
+    .split('-')
+    .map(part => part.match(/(([0-9]+):)?([0-9]+)(am|pm)|(?:midnight)/));
   const dateMatch = /([0-9]+)(?:rd|st|nd|th) (january|febuary|march|april|may|june|july|august|september|october|november|december)/gi;
-//    .map(date => date.match(/(([0-9]+)(rd|st|nd|th)) (january|febuary|march|april|may|june|july|august|september|october|november|december)/));
+  //    .map(date => date.match(/(([0-9]+)(rd|st|nd|th)) (january|febuary|march|april|may|june|july|august|september|october|november|december)/));
   let parsedDate;
   const dateData = [];
   // eslint-disable-next-line
@@ -54,7 +62,10 @@ function parseDate(dateString) {
   // const now = Date.now();
   // const isThisYear =
   const startDate = createDate(dateData[0], timeMatch[0]);
-  const endDate = createDate(isOverMultipleDays ? dateData[1] : dateData[0], timeMatch[1]);
+  const endDate = createDate(
+    isOverMultipleDays ? dateData[1] : dateData[0],
+    timeMatch[1]
+  );
 
   return {
     startDate,
@@ -65,24 +76,28 @@ function parseDate(dateString) {
 
 export default function eventParser(root) {
   const time = perf.recordTime('parseEvents');
-  const results = [...root.querySelectorAll('.event_item')].map((event) => {
+  const results = [...root.querySelectorAll('.event_item')].map(event => {
     // return object
     const organisationId = parseInt(event.dataset.mslOrganisationId, 10);
-    const brands = event.classList.value.split(' ').map((cls) => {
-      const match = cls.match(/msl-brand-([a-z]+)/);
-      if (!match) {
-        return null;
-      }
+    const brands = event.classList.value
+      .split(' ')
+      .map(cls => {
+        const match = cls.match(/msl-brand-([a-z]+)/);
+        if (!match) {
+          return null;
+        }
 
-      return match[1];
-    }).filter(match => match !== null);
+        return match[1];
+      })
+      .filter(match => match !== null);
 
     const anchorEl = event.querySelector('a');
     const imageEl = event.querySelector('.msl_event_image img');
     const title = event.querySelector('.msl_event_name').textContent;
     const timeString = event.querySelector('.msl_event_time').textContent;
     const location = event.querySelector('.msl_event_location').textContent;
-    const description = event.querySelector('.msl_event_description').textContent;
+    const description = event.querySelector('.msl_event_description')
+      .textContent;
     const date = parseDate(timeString);
 
     return {

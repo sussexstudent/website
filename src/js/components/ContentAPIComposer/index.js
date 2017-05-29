@@ -22,15 +22,21 @@ const components = {
 
 function getComponent(component) {
   if (!Object.hasOwnProperty.call(components, component.type)) {
-    console.warn(`Requested component not found! ${component.type} is missing.`);
+    console.warn(
+      `Requested component not found! ${component.type} is missing.`
+    );
     return null;
   }
 
-  return React.createElement(components[component.type], { value: component.value });
+  return React.createElement(components[component.type], {
+    value: component.value,
+  });
 }
 
 const pageComponents = {
-  'content.StaffPage': ({ data: { body } }) => <div>{body.map(component => getComponent(component))}</div>,
+  'content.StaffPage': ({ data: { body } }) => (
+    <div>{body.map(component => getComponent(component))}</div>
+  ),
 };
 
 /* eslint-enable react/prop-types */
@@ -52,8 +58,17 @@ class ContentAPIComposer extends React.Component {
     if (!this.state.isLoading && !this.state.isLoaded) {
       fetch(`${ENDPOINT}/content-api/v2/pages/${this.props.pageId}/`)
         .then(data => data.json())
-        .then(json => this.setState({ isLoaded: true, isLoading: false, data: json }))
-        .catch(error => this.setState({ isLoading: false, isLoaded: false, isError: true, data: error }));
+        .then(json =>
+          this.setState({ isLoaded: true, isLoading: false, data: json })
+        )
+        .catch(error =>
+          this.setState({
+            isLoading: false,
+            isLoaded: false,
+            isError: true,
+            data: error,
+          })
+        );
     }
   }
 
@@ -64,9 +79,7 @@ class ContentAPIComposer extends React.Component {
 
     const Page = pageComponents[this.state.data.meta.type];
 
-    return (
-      <Page data={this.state.data} />
-    );
+    return <Page data={this.state.data} />;
   }
 }
 

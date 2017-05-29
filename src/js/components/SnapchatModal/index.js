@@ -8,5 +8,4 @@ function SnapchatModal() {
   );
 }
 
-
 export default SnapchatModal;

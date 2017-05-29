@@ -13,12 +13,18 @@ class FeedbackButton extends React.Component {
 
   handleFeedbackClicked() {
     this.props.onFeedback();
-    this.setState({ feedbackGivenKeys: [...this.state.feedbackGivenKeys, this.props.feedbackKey] });
+    this.setState({
+      feedbackGivenKeys: [
+        ...this.state.feedbackGivenKeys,
+        this.props.feedbackKey,
+      ],
+    });
   }
 
   render() {
     const { buttonText, givenText, feedbackKey } = this.props;
-    const hasGivenFeedback = this.state.feedbackGivenKeys.indexOf(feedbackKey) >= 0;
+    const hasGivenFeedback =
+      this.state.feedbackGivenKeys.indexOf(feedbackKey) >= 0;
 
     if (hasGivenFeedback) {
       return (
@@ -32,7 +38,12 @@ class FeedbackButton extends React.Component {
 
     return (
       <div className="FeedbackButton">
-        <a className="FeedbackButton__button" onClick={this.handleFeedbackClicked} role="button" tabIndex="0">
+        <a
+          className="FeedbackButton__button"
+          onClick={this.handleFeedbackClicked}
+          role="button"
+          tabIndex="0"
+        >
           {buttonText}
         </a>
       </div>

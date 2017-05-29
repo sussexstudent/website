@@ -41,10 +41,9 @@ function fundraising() {
   };
 }
 
-
 export default (function currentUser() {
   return {
     auth: auth(),
     fundraising: fundraising(),
   };
-}());
+})();

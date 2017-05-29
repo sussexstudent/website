@@ -1,5 +1,7 @@
 function setMenuItemActiveFromPosition(position) {
-  const itemLink = document.querySelector(`.AnodyneMenu__item:nth-child(${position}) .AnodyneMenu__link`);
+  const itemLink = document.querySelector(
+    `.AnodyneMenu__item:nth-child(${position}) .AnodyneMenu__link`
+  );
   if (itemLink) {
     itemLink.classList.add('AnodyneMenu__link--active');
   }

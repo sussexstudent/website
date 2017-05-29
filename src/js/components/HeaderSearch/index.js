@@ -51,9 +51,11 @@ class HeaderSearch extends React.Component {
     this.handleExitClose = this.handleExitClose.bind(this);
     this.handleQueryClear = this.handleQueryClear.bind(this);
     this.handleSubmit = e => e.preventDefault();
-    this.escapeClose = (event) => {
+    this.escapeClose = event => {
       if (event.key === 'Escape') {
-        this.setState({ query: '' }, () => { this.handleHasFocus(false); });
+        this.setState({ query: '' }, () => {
+          this.handleHasFocus(false);
+        });
       }
     };
   }
@@ -131,7 +133,9 @@ class HeaderSearch extends React.Component {
 
   handleExitClose(e) {
     e.preventDefault();
-    this.setState({ query: '' }, () => { this.handleHasFocus(false); });
+    this.setState({ query: '' }, () => {
+      this.handleHasFocus(false);
+    });
   }
 
   handleQueryClear(e) {
@@ -142,40 +146,44 @@ class HeaderSearch extends React.Component {
   renderSearching(isOpen) {
     return (
       <div>
-        {isOpen ? (<div className="InlineSearch__input-container">
-          <form
-            className={cx('InlineSearch__input')}
-            style={this.state.transitionSize}
-            onSubmit={this.handleSubmit}
-          >
-            <button
-              className="InlineSearch__exit"
-              type="button"
-              onClick={this.handleExitClose}
-            >
-              <span className="u-h">Exit search</span>
-            </button>
-            <input
-              className="HeaderSearch HeaderSearch--no-outline"
-              type="text"
-              placeholder="Search"
-              value={this.state.query}
-              onBlur={this.handleBlur}
-              onChange={this.handleInputChange}
-              autoFocus={isOpen}
-              ref={(input) => { this.input = input; }}
-            />
-            {this.state.query ? (
-              <button
-                className="InlineSearch__clear"
-                type="button"
-                onClick={this.handleQueryClear}
+        {isOpen
+          ? <div className="InlineSearch__input-container">
+              <form
+                className={cx('InlineSearch__input')}
+                style={this.state.transitionSize}
+                onSubmit={this.handleSubmit}
               >
-                <span className="u-h">Clear search</span>
-              </button>
-            ) : null}
-          </form>
-        </div>) : null}
+                <button
+                  className="InlineSearch__exit"
+                  type="button"
+                  onClick={this.handleExitClose}
+                >
+                  <span className="u-h">Exit search</span>
+                </button>
+                <input
+                  className="HeaderSearch HeaderSearch--no-outline"
+                  type="text"
+                  placeholder="Search"
+                  value={this.state.query}
+                  onBlur={this.handleBlur}
+                  onChange={this.handleInputChange}
+                  autoFocus={isOpen}
+                  ref={input => {
+                    this.input = input;
+                  }}
+                />
+                {this.state.query
+                  ? <button
+                      className="InlineSearch__clear"
+                      type="button"
+                      onClick={this.handleQueryClear}
+                    >
+                      <span className="u-h">Clear search</span>
+                    </button>
+                  : null}
+              </form>
+            </div>
+          : null}
         <div className="InlineSearch__content">
           <ReactCSSTransitionGroup
             transitionName="test"
@@ -184,11 +192,11 @@ class HeaderSearch extends React.Component {
           >
             {isOpen ? <div className="InlineSearch__header" /> : null}
           </ReactCSSTransitionGroup>
-          { isOpen ? (
-            <div>
-              <SearchPage query={this.state.query} />
-            </div>
-          ) : null }
+          {isOpen
+            ? <div>
+                <SearchPage query={this.state.query} />
+              </div>
+            : null}
         </div>
       </div>
     );
@@ -217,17 +225,19 @@ class HeaderSearch extends React.Component {
               onBlur={this.handleBlur}
               onChange={this.handleInputChange}
               autoFocus={this.state.isOpen}
-              ref={(input) => { this.input = input; }}
+              ref={input => {
+                this.input = input;
+              }}
             />
-            {this.state.query ? (
-              <button
-                className="InlineSearch__clear"
-                type="button"
-                onClick={this.handleQueryClear}
-              >
-                <span className="u-h">Clear search</span>
-              </button>
-            ) : null}
+            {this.state.query
+              ? <button
+                  className="InlineSearch__clear"
+                  type="button"
+                  onClick={this.handleQueryClear}
+                >
+                  <span className="u-h">Clear search</span>
+                </button>
+              : null}
           </form>
           <SearchPage query={this.state.query} />
         </div>
@@ -238,7 +248,9 @@ class HeaderSearch extends React.Component {
   render() {
     const { disabled } = this.props;
     const { isOpen, isMobile } = this.state;
-    const containerClasses = cx('InlineSearch', { 'InlineSearch--isOpen': isOpen });
+    const containerClasses = cx('InlineSearch', {
+      'InlineSearch--isOpen': isOpen,
+    });
 
     return (
       <div className={containerClasses}>
@@ -249,7 +261,9 @@ class HeaderSearch extends React.Component {
           value={this.state.query}
           onChange={this.handleInputChange}
           onFocus={this.handleFocus}
-          ref={(el) => { this.dummyInput = el; }}
+          ref={el => {
+            this.dummyInput = el;
+          }}
           disabled={disabled}
         />
 
@@ -260,8 +274,15 @@ class HeaderSearch extends React.Component {
           transitionEnterTimeout={300}
           transitionLeaveTimeout={300}
         >
-          { // eslint-disable-next-line
-          }{isOpen && !isMobile ? <div className="InlineSearch__backdrop" onClick={this.handleBackdropClose} /> : null}
+          {
+            // eslint-disable-next-line
+          }
+          {isOpen && !isMobile
+            ? <div
+                className="InlineSearch__backdrop"
+                onClick={this.handleBackdropClose}
+              />
+            : null}
         </ReactCSSTransitionGroup>
       </div>
     );

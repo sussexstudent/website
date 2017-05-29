@@ -28,7 +28,7 @@ class FitOverflowChildren extends React.Component {
   }
 
   componentWillMount() {
-    window.emitter.on('imageLoaded', (data) => {
+    window.emitter.on('imageLoaded', data => {
       if (data.area === this.props.area) {
         this.updateSize();
       }
@@ -37,7 +37,10 @@ class FitOverflowChildren extends React.Component {
 
   componentDidMount() {
     this.updateSize();
-    window.addEventListener('resize', debounce(this.updateSize.bind(this), 100));
+    window.addEventListener(
+      'resize',
+      debounce(this.updateSize.bind(this), 100)
+    );
   }
 
   getItems() {
@@ -46,7 +49,7 @@ class FitOverflowChildren extends React.Component {
     let count = 0;
     let currentHeight = 0;
     const containerHeight = this.container.getBoundingClientRect().height;
-    forEach(items, (element) => {
+    forEach(items, element => {
       const elementHeight = element.getBoundingClientRect().height + 10;
       if (currentHeight + elementHeight > containerHeight) {
         return false;
@@ -70,7 +73,10 @@ class FitOverflowChildren extends React.Component {
       const count = this.getItems();
       const needsHeight = count < this.props.minItems;
       console.log({ count, minItems: this.props.minItems });
-      this.setState({ visibleToIndex: needsHeight ? this.props.minItems : count, needsHeight });
+      this.setState({
+        visibleToIndex: needsHeight ? this.props.minItems : count,
+        needsHeight,
+      });
     }
   }
 
@@ -86,18 +92,21 @@ class FitOverflowChildren extends React.Component {
       <div
         style={{
           overflow: 'hidden',
-          [needsHeight ? 'height' : 'flex']: needsHeight ? `${
-            reduce(this.items.slice(0, this.props.minItems), (sum, el) => (
-              sum + el.getBoundingClientRect().height + 10
-            ), 0)}px` : '1 1 0',
+          [needsHeight ? 'height' : 'flex']: needsHeight
+            ? `${reduce(this.items.slice(0, this.props.minItems), (sum, el) => sum + el.getBoundingClientRect().height + 10, 0)}px`
+            : '1 1 0',
         }}
         ref={this.handleContainerRef.bind(this)}
       >
         {children.map((child, index) => (
           <div
             key={index}
-            style={{ visibility: index < visibleToIndex ? 'visible' : 'hidden' }}
-            ref={(ref) => { this.registerItem(ref, index); }}
+            style={{
+              visibility: index < visibleToIndex ? 'visible' : 'hidden',
+            }}
+            ref={ref => {
+              this.registerItem(ref, index);
+            }}
           >
             {child}
           </div>

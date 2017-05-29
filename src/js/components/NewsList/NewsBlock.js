@@ -3,15 +3,20 @@ import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import isToday from 'date-fns/is_today';
 import Logotype from '../../../img/logotype';
 
-const NewsBlock = ({ item: { title, link, publishedDate, led, imageURL = null } }) => (
+const NewsBlock = ({
+  item: { title, link, publishedDate, led, imageURL = null },
+}) => (
   <li className="NewsGrid__item NewsBlock">
     <a className="NewsBlock__link" href={link}>
-      {imageURL && <div className="NewsBlock__image" style={{ backgroundImage: `url(${imageURL})` }} />}
-      {!imageURL && (
+      {imageURL &&
+        <div
+          className="NewsBlock__image"
+          style={{ backgroundImage: `url(${imageURL})` }}
+        />}
+      {!imageURL &&
         <div className="NewsBlock__image NewsBlock__image--default">
           <Logotype />
-        </div>
-      )}
+        </div>}
       <div className="NewsBlock__content">
         <div className="NewsBlock__title-link">
           <h2 className="NewsBlock__title">{title}</h2>
@@ -19,7 +24,9 @@ const NewsBlock = ({ item: { title, link, publishedDate, led, imageURL = null } 
         <p className="NewsBlock__standfirst">{led}</p>
         <div className="NewsBlock__meta">
           <date className="NewsBlock__date">
-            {isToday(publishedDate) ? 'Today' : `${distanceInWordsToNow(publishedDate)} ago`}
+            {isToday(publishedDate)
+              ? 'Today'
+              : `${distanceInWordsToNow(publishedDate)} ago`}
           </date>
         </div>
       </div>

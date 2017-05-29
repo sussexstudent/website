@@ -9,11 +9,17 @@ function parseEvent(eventElement) {
 }
 
 function parseDay(dayElement) {
-  const date = parseInt(dayElement.querySelector('div').firstChild.nodeValue, 10);
+  const date = parseInt(
+    dayElement.querySelector('div').firstChild.nodeValue,
+    10
+  );
   const isCurrentMonth = dayElement.className.indexOf('othermonth') === -1;
-  const isToday = dayElement.className.indexOf('msl_event_calendar_today') === 1;
+  const isToday =
+    dayElement.className.indexOf('msl_event_calendar_today') === 1;
 
-  const eventElements = [...dayElement.querySelectorAll('.msl-cal-hoverbox > a')];
+  const eventElements = [
+    ...dayElement.querySelectorAll('.msl-cal-hoverbox > a'),
+  ];
 
   return {
     date,
@@ -24,7 +30,11 @@ function parseDay(dayElement) {
 }
 
 export default function getEventDataFromDocument(doc) {
-  const days = [...doc.querySelectorAll('.msl_event_calendar td.othermonth, .msl_event_calendar td.month')];
+  const days = [
+    ...doc.querySelectorAll(
+      '.msl_event_calendar td.othermonth, .msl_event_calendar td.month'
+    ),
+  ];
 
   return days.map(parseDay);
 }

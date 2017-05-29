@@ -20,9 +20,17 @@ class ActivitiesApp extends React.Component {
 
   onSearchUpdate(e) {
     const searchValue = e.target.value;
-    this.setState({ searchValue, displayIds: searchValue ? this.fuse.search(searchValue) : this.props.allIds }, () => {
-      forceCheck();
-    });
+    this.setState(
+      {
+        searchValue,
+        displayIds: searchValue
+          ? this.fuse.search(searchValue)
+          : this.props.allIds,
+      },
+      () => {
+        forceCheck();
+      }
+    );
   }
 
   render() {
@@ -40,7 +48,9 @@ class ActivitiesApp extends React.Component {
             value={searchValue}
             onChange={this.onSearchUpdate}
           />
-          <div className="ActivitiesApp__filterStat">Displaying {displayIds.length} clubs & societies</div>
+          <div className="ActivitiesApp__filterStat">
+            Displaying {displayIds.length} clubs & societies
+          </div>
         </div>
         <div className="ActivitiesApp__main">
           <aside className="ActivitiesApp__sidebar">

@@ -13,25 +13,30 @@ function Tweet({ isQuoted, data }) {
   /* eslint-disable */
 
   return React.createElement(
-      isQuoted ? 'div' : 'li',
-      {
-        className: cx('Tweet', { 'Tweet--quoted': isQuoted }),
-      },
-      isRetweet ? (
-        <div className="Tweet__header">
+    isQuoted ? 'div' : 'li',
+    {
+      className: cx('Tweet', { 'Tweet--quoted': isQuoted }),
+    },
+    isRetweet
+      ? <div className="Tweet__header">
           <span className="Tweet__retweeted">{data.user.name} Retweeted</span>
         </div>
-      ) : null,
-      <TweetHeader user={tweet.user} />,
-      <div>
-        <TweetContent tweet={tweet} />
-        <TweetAttachment tweet={tweet} />
-        {hasQuote ? <div className="Tweet__quoted">
-          <Tweet data={tweet.quoted_status} isQuoted />
-        </div> : null}
-        {!isQuoted ? <TweetPermalink tweet={tweet} /> : null}
-      </div>,
-      <a href={`https://twitter.com/${tweet.user.screen_name}/statuses/${tweet.id_str}`} className="Tweet__faux-link" />
+      : null,
+    <TweetHeader user={tweet.user} />,
+    <div>
+      <TweetContent tweet={tweet} />
+      <TweetAttachment tweet={tweet} />
+      {hasQuote
+        ? <div className="Tweet__quoted">
+            <Tweet data={tweet.quoted_status} isQuoted />
+          </div>
+        : null}
+      {!isQuoted ? <TweetPermalink tweet={tweet} /> : null}
+    </div>,
+    <a
+      href={`https://twitter.com/${tweet.user.screen_name}/statuses/${tweet.id_str}`}
+      className="Tweet__faux-link"
+    />
   );
 }
 /* eslint-enable */

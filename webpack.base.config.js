@@ -39,6 +39,9 @@ module.exports = {
       'node_modules',
       './src/images',
     ],
+    alias: {
+      '@ussu/components': path.resolve(path.join(__dirname, 'src/js/components')),
+    },
     extensions: ['.js', '.svg'],
   },
 

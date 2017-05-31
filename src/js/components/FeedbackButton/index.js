@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class FeedbackButton extends React.Component {
   constructor(props) {
@@ -52,10 +53,10 @@ class FeedbackButton extends React.Component {
 }
 
 FeedbackButton.propTypes = {
-  buttonText: React.PropTypes.string.isRequired,
-  givenText: React.PropTypes.string.isRequired,
-  feedbackKey: React.PropTypes.string.isRequired,
-  onFeedback: React.PropTypes.func.isRequired,
+  buttonText: PropTypes.string.isRequired,
+  givenText: PropTypes.string.isRequired,
+  feedbackKey: PropTypes.string.isRequired,
+  onFeedback: PropTypes.func.isRequired,
 };
 
 export default FeedbackButton;

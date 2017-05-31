@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Image from '../Image';
 
 const HeadingHero = ({ imageURL, title, description }) => (
@@ -11,9 +12,9 @@ const HeadingHero = ({ imageURL, title, description }) => (
 );
 
 HeadingHero.propTypes = {
-  imageURL: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-  description: React.PropTypes.string,
+  imageURL: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
 };
 
 HeadingHero.defaultProps = {

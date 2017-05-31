@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /* eslint-disable */
 function ContentModal({ html }) {
@@ -7,7 +8,7 @@ function ContentModal({ html }) {
 /* eslint-enable */
 
 ContentModal.propTypes = {
-  html: React.PropTypes.string.isRequired,
+  html: PropTypes.string.isRequired,
 };
 
 export default ContentModal;

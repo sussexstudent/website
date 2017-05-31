@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NewsBlock from './NewsBlock';
 
 const NewsList = ({ items }) => (
@@ -8,13 +9,13 @@ const NewsList = ({ items }) => (
 );
 
 NewsList.propTypes = {
-  items: React.PropTypes.arrayOf(
-    React.PropTypes.shape({
-      title: React.PropTypes.string.isRequired,
-      link: React.PropTypes.string.isRequired,
-      publishedDate: React.PropTypes.instanceOf(Date).isRequired,
-      led: React.PropTypes.string.isRequired,
-      imageURL: React.PropTypes.string,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+      publishedDate: PropTypes.instanceOf(Date).isRequired,
+      led: PropTypes.string.isRequired,
+      imageURL: PropTypes.string,
     })
   ).isRequired,
 };

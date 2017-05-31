@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LoadLinkedImage from '../LoadLinkedImage';
 
 const TweetAttachment = ({ tweet }) => {
@@ -23,11 +24,11 @@ const TweetAttachment = ({ tweet }) => {
 };
 
 TweetAttachment.propTypes = {
-  tweet: React.PropTypes.shape({
-    entities: React.PropTypes.shape({
-      media: React.PropTypes.arrayOf(
-        React.PropTypes.shape({
-          media_url_https: React.PropTypes.string.isRequired,
+  tweet: PropTypes.shape({
+    entities: PropTypes.shape({
+      media: PropTypes.arrayOf(
+        PropTypes.shape({
+          media_url_https: PropTypes.string.isRequired,
         })
       ),
     }),

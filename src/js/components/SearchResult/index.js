@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function getKicker(link) {
   if (link.indexOf('/organisation') >= 0) {
@@ -50,10 +51,10 @@ function SearchResult(props) {
 }
 
 SearchResult.propTypes = {
-  item: React.PropTypes.shape({
-    link: React.PropTypes.string,
-    title: React.PropTypes.string,
-    snippet: React.PropTypes.string,
+  item: PropTypes.shape({
+    link: PropTypes.string,
+    title: PropTypes.string,
+    snippet: PropTypes.string,
   }).isRequired,
 };
 

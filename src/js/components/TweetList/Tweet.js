@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import TweetHeader from './TweetHeader';
 import TweetPermalink from './TweetPermalink';
@@ -42,10 +43,10 @@ function Tweet({ isQuoted, data }) {
 /* eslint-enable */
 
 Tweet.propTypes = {
-  data: React.PropTypes.shape({
-    id_str: React.PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    id_str: PropTypes.string.isRequired,
   }).isRequired,
-  isQuoted: React.PropTypes.bool.isRequired,
+  isQuoted: PropTypes.bool.isRequired,
 };
 
 Tweet.defaultProps = {

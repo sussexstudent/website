@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const optionShape = React.PropTypes.shape({
-  key: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-  count: React.PropTypes.number.isRequired,
+const optionShape = PropTypes.shape({
+  key: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
 });
 
 function SearchFilterItem({ currentValue, option, onSelect }) {
@@ -24,8 +25,8 @@ function SearchFilterItem({ currentValue, option, onSelect }) {
 }
 
 SearchFilterItem.propTypes = {
-  onSelect: React.PropTypes.func.isRequired,
-  currentValue: React.PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  currentValue: PropTypes.string.isRequired,
   option: optionShape.isRequired,
 };
 
@@ -45,9 +46,9 @@ function SearchFilterNav({ onSelect, value, options }) {
 }
 
 SearchFilterNav.propTypes = {
-  onSelect: React.PropTypes.func.isRequired,
-  value: React.PropTypes.string.isRequired,
-  options: React.PropTypes.arrayOf(optionShape).isRequired,
+  onSelect: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(optionShape).isRequired,
 };
 
 export default SearchFilterNav;

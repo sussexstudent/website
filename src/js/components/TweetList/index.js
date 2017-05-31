@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import each from 'lodash/each';
 import Loader from '@ussu/components/Loader';
 import HydroLeaf from '@ussu/components/HydroLeaf';
@@ -105,8 +106,8 @@ class TweetList extends React.Component {
 }
 
 TweetList.propTypes = {
-  query: React.PropTypes.string.isRequired,
-  signature: React.PropTypes.string.isRequired,
+  query: PropTypes.string.isRequired,
+  signature: PropTypes.string.isRequired,
 };
 
 export default HydroLeaf()(TweetList);

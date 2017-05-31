@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import CalenderListView from '../../components/CalenderListView';
 import getEventDataFromDocument from './parse';
 
@@ -30,7 +31,7 @@ function EventsApp(props) {
 }
 
 EventsApp.propTypes = {
-  events: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
+  events: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 const eventData = getEventDataFromDocument(document);

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Loader from '../Loader';
 
 const LazyLoadApp = ({ children }) => (
@@ -8,7 +9,7 @@ const LazyLoadApp = ({ children }) => (
 );
 
 LazyLoadApp.propTypes = {
-  children: React.PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default LazyLoadApp;

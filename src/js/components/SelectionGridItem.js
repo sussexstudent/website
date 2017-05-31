@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Image from './Image';
 
 const SelectionGridItem = ({ link, imageURL, title }) => (
@@ -14,9 +15,9 @@ const SelectionGridItem = ({ link, imageURL, title }) => (
 );
 
 SelectionGridItem.propTypes = {
-  link: React.PropTypes.node.isRequired,
-  imageURL: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
+  link: PropTypes.node.isRequired,
+  imageURL: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 SelectionGridItem.ui = {};

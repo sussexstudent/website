@@ -1,5 +1,6 @@
-import Fuse from 'fuse.js';
 import React from 'react';
+import PropTypes from 'prop-types';
+import Fuse from 'fuse.js';
 import { forceCheck } from 'react-lazyload';
 import OrgansiationGrid from '../../components/OrgansiationGrid';
 
@@ -68,9 +69,9 @@ class ActivitiesApp extends React.Component {
 }
 
 ActivitiesApp.propTypes = {
-  organsiationMap: React.PropTypes.shape({}).isRequired,
-  organsiationList: React.PropTypes.arrayOf().isRequired,
-  allIds: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+  organsiationMap: PropTypes.shape({}).isRequired,
+  organsiationList: PropTypes.arrayOf().isRequired,
+  allIds: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default ActivitiesApp;

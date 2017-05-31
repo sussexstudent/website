@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import split from 'lodash/split';
 import sortBy from 'lodash/sortBy';
 import unescape from 'lodash/unescape';
@@ -84,8 +85,8 @@ const TweetContent = ({ tweet }) => (
 );
 
 TweetContent.propTypes = {
-  tweet: React.PropTypes.shape({
-    full_text: React.PropTypes.string.isRequired,
+  tweet: PropTypes.shape({
+    full_text: PropTypes.string.isRequired,
   }).isRequired,
 };
 

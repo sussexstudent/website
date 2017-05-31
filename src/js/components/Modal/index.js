@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 function Modal(props) {
   return (
@@ -23,8 +25,8 @@ function Modal(props) {
 }
 
 Modal.propTypes = {
-  children: React.PropTypes.node.isRequired,
-  handleClose: React.PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+  handleClose: PropTypes.func.isRequired,
 };
 /* eslint-enable jsx-a11y/no-static-element-interactions */
 export default Modal;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Portal from 'react-portal';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -290,7 +291,7 @@ class HeaderSearch extends React.Component {
 }
 
 HeaderSearch.propTypes = {
-  disabled: React.PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 HeaderSearch.defaultProps = {

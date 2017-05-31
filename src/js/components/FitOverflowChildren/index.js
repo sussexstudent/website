@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import forEach from 'lodash/forEach';
 import debounce from 'lodash/debounce';
 import reduce from 'lodash/reduce';
@@ -122,9 +123,9 @@ class FitOverflowChildren extends React.Component {
 }
 
 FitOverflowChildren.propTypes = {
-  children: React.PropTypes.arrayOf(React.PropTypes.node).isRequired,
-  area: React.PropTypes.string,
-  minItems: React.PropTypes.number.isRequired,
+  children: PropTypes.arrayOf(PropTypes.node).isRequired,
+  area: PropTypes.string,
+  minItems: PropTypes.number.isRequired,
 };
 
 FitOverflowChildren.defaultProps = {

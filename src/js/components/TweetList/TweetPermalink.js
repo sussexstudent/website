@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 
 const TweetPermalink = ({ tweet }) => (
@@ -11,9 +12,9 @@ const TweetPermalink = ({ tweet }) => (
 );
 
 TweetPermalink.propTypes = {
-  tweet: React.PropTypes.shape({
-    id_str: React.PropTypes.string.isRequired,
-    created_at: React.PropTypes.string.isRequired,
+  tweet: PropTypes.shape({
+    id_str: PropTypes.string.isRequired,
+    created_at: PropTypes.string.isRequired,
   }).isRequired,
 };
 

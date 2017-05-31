@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import isToday from 'date-fns/is_today';
 import Logotype from '../../../img/logotype';
@@ -35,12 +36,12 @@ const NewsBlock = ({
 );
 
 NewsBlock.propTypes = {
-  item: React.PropTypes.shape({
-    title: React.PropTypes.string.isRequired,
-    link: React.PropTypes.string.isRequired,
-    publishedDate: React.PropTypes.instanceOf(Date).isRequired,
-    led: React.PropTypes.string.isRequired,
-    imageURL: React.PropTypes.string,
+  item: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+    publishedDate: PropTypes.instanceOf(Date).isRequired,
+    led: PropTypes.string.isRequired,
+    imageURL: PropTypes.string,
   }).isRequired,
 };
 

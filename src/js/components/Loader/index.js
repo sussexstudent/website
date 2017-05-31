@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Loader({ dark }) {
   return (
@@ -9,7 +10,7 @@ function Loader({ dark }) {
 }
 
 Loader.propTypes = {
-  dark: React.PropTypes.bool.isRequired,
+  dark: PropTypes.bool.isRequired,
 };
 
 Loader.defaultProps = {

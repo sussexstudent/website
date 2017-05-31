@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CalenderListDay from './CalenderListDay';
 
 class CalenderListView extends React.Component {
@@ -20,7 +21,7 @@ class CalenderListView extends React.Component {
 }
 
 CalenderListView.propTypes = {
-  days: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
+  days: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default CalenderListView;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
 
 function OrganisationCard(props) {
@@ -21,12 +22,12 @@ function OrganisationCard(props) {
 }
 
 OrganisationCard.propTypes = {
-  org: React.PropTypes.shape({
-    link: React.PropTypes.string,
-    name: React.PropTypes.string,
-    description: React.PropTypes.string,
-    image: React.PropTypes.shape({
-      src: React.PropTypes.string,
+  org: PropTypes.shape({
+    link: PropTypes.string,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    image: PropTypes.shape({
+      src: PropTypes.string,
     }),
   }).isRequired,
 };

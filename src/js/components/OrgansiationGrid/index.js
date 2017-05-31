@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import OrgansiationCard from '../OrgansiationCard';
 
 export default function OrgansiationGrid(props) {
@@ -10,15 +11,15 @@ export default function OrgansiationGrid(props) {
   );
 }
 
-const orgShape = React.PropTypes.shape({
-  link: React.PropTypes.string,
-  name: React.PropTypes.string,
-  description: React.PropTypes.string,
-  image: React.PropTypes.shape({
-    src: React.PropTypes.string,
+const orgShape = PropTypes.shape({
+  link: PropTypes.string,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  image: PropTypes.shape({
+    src: PropTypes.string,
   }),
 });
 
 OrgansiationGrid.propTypes = {
-  organsiations: React.PropTypes.arrayOf(orgShape).isRequired,
+  organsiations: PropTypes.arrayOf(orgShape).isRequired,
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Modal from '../Modal';
 import classToggle from '../../libs/dom/classToggle';
 
@@ -23,8 +24,8 @@ class ModalControler extends React.Component {
 }
 
 ModalControler.propTypes = {
-  stack: React.PropTypes.arrayOf(React.PropTypes.node).isRequired,
-  onClose: React.PropTypes.func.isRequired,
+  stack: PropTypes.arrayOf(PropTypes.node).isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default ModalControler;

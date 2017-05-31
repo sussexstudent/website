@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function CalenderListDay(props) {
   const { date, events } = props.day;
@@ -24,13 +25,13 @@ function CalenderListDay(props) {
 }
 
 CalenderListDay.propTypes = {
-  day: React.PropTypes.shape({
-    date: React.PropTypes.string,
-    events: React.PropTypes.arrayOf(
-      React.PropTypes.shape({
-        date: React.PropTypes.string,
-        organsiation: React.PropTypes.string,
-        title: React.PropTypes.string,
+  day: PropTypes.shape({
+    date: PropTypes.string,
+    events: PropTypes.arrayOf(
+      PropTypes.shape({
+        date: PropTypes.string,
+        organsiation: PropTypes.string,
+        title: PropTypes.string,
       })
     ),
   }).isRequired,

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TweetHeader = ({ user }) => (
   <div className="Tweet__header">
@@ -8,9 +9,9 @@ const TweetHeader = ({ user }) => (
 );
 
 TweetHeader.propTypes = {
-  user: React.PropTypes.shape({
-    name: React.PropTypes.string.isRequired,
-    screen_name: React.PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    screen_name: PropTypes.string.isRequired,
   }).isRequired,
 };
 

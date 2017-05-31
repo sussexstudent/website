@@ -1,5 +1,8 @@
 {
-"presets": [["es2015", {"modules": "commonjs"}], "react", "stage-2"],
+  "presets": [["es2015", {"modules": "commonjs"}], "react", "stage-2"],
+  "plugins": [
+    [ "babel-plugin-webpack-alias", { "config": "./webpack.base.config.js" } ]
+  ],
   "env": {
     "bundle": {
       "presets": [["env", {

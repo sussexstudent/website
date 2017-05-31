@@ -1,7 +1,8 @@
 import React from 'react';
 import each from 'lodash/each';
+import Loader from '@ussu/components/Loader';
+import HydroLeaf from '@ussu/components/HydroLeaf';
 import Tweet from './Tweet';
-import Loader from '../Loader';
 import FitOverflowChildren from '../FitOverflowChildren';
 import perf from '../../tracking/perf';
 
@@ -108,4 +109,4 @@ TweetList.propTypes = {
   signature: React.PropTypes.string.isRequired,
 };
 
-export default TweetList;
+export default HydroLeaf()(TweetList);

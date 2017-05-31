@@ -45,12 +45,17 @@ module.exports = {
     extensions: ['.js', '.svg'],
   },
 
+  node: {
+    Buffer: false,
+  },
+
   plugins: [
-    // new BundleAnalyzerPlugin({ analyzerPort: 3999 }),
+    new BundleAnalyzerPlugin({ analyzerPort: 3999 }),
     new webpack.DefinePlugin({
       'process.env': {
+        HYDROLEAF_MODE: JSON.stringify("RENDER_COMPONENT"),
         NODE_ENV: JSON.stringify(NODE_ENV),
-        FALMER_ENDPOINT: JSON.stringify(env.production ? 'https://falmer.sussexstudent.com' : 'http://localhost:5000'),
+        FALMER_ENDPOINT: JSON.stringify(env.production ? 'https://falmer.sussexstudent.com' : 'http://localhost:8000'),
       },
       __DEV__: env.development,
       __STAGING__: env.staging,

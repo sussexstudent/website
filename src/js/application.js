@@ -12,6 +12,7 @@ import perf from './tracking/perf';
 import renderSearch from './apps/search';
 import currentUser from './libs/user';
 import smoothscroll from './libs/smoothscroll';
+import hydro from './modules/hydro';
 import eventCards from './modules/event_cards';
 import menu from './modules/menu';
 import userBar from './modules/user_bar';
@@ -138,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   menu();
   userBar();
+  hydro();
 
   // Conditional modules
 
@@ -162,17 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const t = perf.recordTime('import', 'contentAPI');
     import(
       /* webpackChunkName: "contentAPI.module" */ './modules/contentAPI'
-    ).then(module => {
-      module.default();
-      t.done();
-    });
-  }
-
-  // Module: tweetList
-  if (document.querySelector('.js-module--tweetList')) {
-    const t = perf.recordTime('import', 'tweetList');
-    import(
-      /* webpackChunkName: "tweet_list.module" */ './modules/tweet_list'
     ).then(module => {
       module.default();
       t.done();

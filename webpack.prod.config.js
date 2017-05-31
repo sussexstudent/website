@@ -9,7 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const extractCSS = new ExtractTextPlugin({
   filename: 'union.[contenthash].[name].css',
-  allChunks: false,
+  allChunks: true,
 });
 
 
@@ -29,6 +29,7 @@ config.plugins = config.plugins.concat([
     minimize: true,
   }),
   extractCSS,
+  new webpack.optimize.CommonsChunkPlugin({ name: 'common.js', async: false, children: true, minChunks: 2 }),
   new ChunkManifestPlugin({
     filename: 'manifest.json',
     manifestVariable: 'chunkManifest',
@@ -38,7 +39,6 @@ config.plugins = config.plugins.concat([
   ]),
   new webpack.optimize.UglifyJsPlugin({ output: { comments: false }, sourceMap: true }),
   new AssetsWebpackPlugin(),
-  new webpack.optimize.CommonsChunkPlugin({ async: true, children: true, minChunks: 3 }),
 ]);
 
 config.module.rules = config.module.rules.concat([

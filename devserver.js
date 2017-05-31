@@ -1,16 +1,10 @@
-import React from 'react';
-import express from 'express';
-import 'isomorphic-fetch';
-import jsdom from 'jsdom';
-import webpackMiddleware from 'webpack-dev-middleware';
-import webpack from 'webpack';
-import chokidar from 'chokidar';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-import devWebpackConfig from '../webpack.config';
-import { render, renderHtml } from './generator/rendering';
-
-const server = express();
-
+require('isomorphic-fetch');
+const comp = require('@ussu/comp');
+const express = require('express');
+const webpackMiddleware = require('webpack-dev-middleware');
+const webpack = require('webpack');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const devWebpackConfig = require('./webpack.config');
 
 global.mslInject = {
   jsonuserinfo: `<script type="type/javascript">
@@ -96,92 +90,18 @@ var mslUserInfo =
 	<ul id="ctl00_controlpanel_ulControlPanel"><li id="ctl00_controlpanel_organisationadminnews0" class="msl_edit"><a href="/organisation/admin/news/0/">Edit MSL Membership System News</a></li><li id="ctl00_controlpanel_editpagepagename" class="msl_edit"><a href="/edit/page/?page_name=/">Edit Page</a></li><li id="ctl00_controlpanel_editpagesnewpageparent" class="msl_add"><a href="/edit/pages/newpage/?parent=/">Add child page</a></li><li id="ctl00_controlpanel_adminents" class="msl_edit"><a href="/admin/ents/">Edit MSL Membership System events</a></li></ul>
 </div>`,
 };
-
-
-
-const moduleDetectRegEx = /(layout|components|setup).*\.js$/;
-chokidar.watch([
-  './generator/layouts',
-  './generator/components',
-])
-  .on('change', () => {
-    console.log('updated!')
-    Object.keys(require.cache).forEach((module) => {
-      if (moduleDetectRegEx.test(require.cache[module].filename)) {
-        console.log(`deleting ${require.cache[module].filename}`);
-        delete require.cache[module];
-      }
-    });
-  });
-
-const localAssetsStub = {
-  main: {
-    js: '/assets/main.js',
-    css: '/assets/style.main.css',
-  },
-  productionFonts: {
-    css: '/assets/style.productionFonts.css',
-  },
-  vendor: {
-    js: '/assets/vendor.js',
-  },
-};
-
-function handleTemplaing(html) {
-  const { window } = new jsdom.JSDOM(html);
-  const pageContentHTML = window.document.querySelector('main .Container');
-  const Main = require('./layouts/main').default;
-  return renderHtml((
-    <Main assets={localAssetsStub} />
-  ), localAssetsStub, { inject: { Content: pageContentHTML ? pageContentHTML.innerHTML : html } });
-}
-
-function loadFromLocal(req, res) {
-  const pages = require('./setup').default.pages;
-  if (Object.hasOwnProperty.call(pages, req.params.page)) {
-    const Main = require('./layouts/main').default;
-    const page = renderHtml((
-      <Main assets={localAssetsStub} loggedIn={Object.hasOwnProperty.call(req.query, 'auth')} />
-    ), localAssetsStub, { inject: { Content: render(pages[req.params.page]) } });
-    res.send(page);
-  } else {
-    res.status(404);
-    res.send('404 ~ Not found.');
-  }
-}
-
-function loadFromSite(req, res) {
-  fetch(`https://www.sussexstudent.com/${req.originalUrl}`)
-    .then((response) => {
-      const contentType = response.headers.get('Content-Type');
-      if (contentType.startsWith('text')) {
-        response.text()
-          .then((text) => {
-            if (contentType.startsWith('text/html')) {
-              return handleTemplaing(text);
-            }
-
-            return text;
-          })
-          .then(text => res.send(text));
-      } else {
-        response.buffer()
-          .then(buf => res.send(buf));
-      }
-    })
-    .catch(e => console.log(e));
-}
+const server = express();
 
 const compiler = webpack(devWebpackConfig);
-server.use(webpackMiddleware(compiler, {
-  publicPath: '/assets/',
-}));
+
+server.use(
+  webpackMiddleware(compiler, {
+    publicPath: '/assets/',
+  })
+);
 
 server.use(webpackHotMiddleware(compiler));
-
-server.get('/~/:page(*)', loadFromLocal);
-server.get('/*', loadFromSite);
-
+server.use(comp.proxy());
 
 server.listen(3002, () => {
   console.log('Serving on 3002');

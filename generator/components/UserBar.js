@@ -1,20 +1,33 @@
 import React from 'react';
 import MSLTag from './MSLTag';
 
-const mslLogout = MSLTag('LoginButton', { LoginText: 'Log in', LogoutText: 'Log out', GoHomeOnLogout: 'True' });
+const mslLogout = MSLTag('LoginButton', {
+  LoginText: 'Log in',
+  LogoutText: 'Log out',
+  GoHomeOnLogout: 'True',
+});
 
 const loggedInList = (
   <ul className="UserBar__list">
     <li className="UserBar__item UserBar__item--welcome" />
-    <li className="UserBar__item UserBar__item--action" dangerouslySetInnerHTML={{ __html: mslLogout }} />
+    <li
+      className="UserBar__item UserBar__item--action"
+      dangerouslySetInnerHTML={{ __html: mslLogout }}
+    />
 
     <li className="UserBar__item UserBar__item-admin UserBar__item--empty UserBar__admin-menu">
       <span>Admin</span>
-      <div className="UserBar__item-dropdown" dangerouslySetInnerHTML={{ __html: MSLTag('Admin') }} />
+      <div
+        className="UserBar__item-dropdown"
+        dangerouslySetInnerHTML={{ __html: MSLTag('Admin') }}
+      />
     </li>
     <li className="UserBar__item UserBar__item-admin UserBar__item--empty UserBar__admin-control-panel">
       <span>Page</span>
-      <div className="UserBar__item-dropdown" dangerouslySetInnerHTML={{ __html: MSLTag('ControlPanel') }} />
+      <div
+        className="UserBar__item-dropdown"
+        dangerouslySetInnerHTML={{ __html: MSLTag('ControlPanel') }}
+      />
     </li>
 
     <li className="UserBar__item UserBar__item--action UserBar__item--action-highlight">
@@ -34,7 +47,6 @@ const anonymousList = (
     </li>
   </ul>
 );
-
 
 const UserBar = ({ loggedIn }) => (
   <div className="UserBar">

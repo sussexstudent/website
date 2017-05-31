@@ -7,7 +7,11 @@ const MobileFooterTreats = () => (
       <Social />
     </div>
     <div>
-      <a className="Button Button--yellow" href="/newsletter" data-action="newsletter_subscribe">
+      <a
+        className="Button Button--yellow"
+        href="/newsletter"
+        data-action="newsletter_subscribe"
+      >
         Subscribe to our email newsletter
       </a>
     </div>

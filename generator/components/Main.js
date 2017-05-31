@@ -4,14 +4,17 @@ import MSLTag from './MSLTag';
 
 const Main = ({ legacy }) => (
   <main className={cx('Site__content')}>
-    { legacy ? (
-      <div className={cx('Container')}>
-        <div className={cx('Legacy')} dangerouslySetInnerHTML={{ __html: MSLTag('Content') }} />
-      </div>
-      ) : (
-        <div className={cx('Container')} dangerouslySetInnerHTML={{ __html: MSLTag('Content') }} />
-      )
-    }
+    {legacy
+      ? <div className={cx('Container')}>
+          <div
+            className={cx('Legacy')}
+            dangerouslySetInnerHTML={{ __html: MSLTag('Content') }}
+          />
+        </div>
+      : <div
+          className={cx('Container')}
+          dangerouslySetInnerHTML={{ __html: MSLTag('Content') }}
+        />}
   </main>
 );
 

@@ -7,7 +7,6 @@ const branding = `<link rel="apple-touch-icon" sizes="180x180" href="https://du9
 <meta name="application-name" content="Students' Union">
 <meta name="theme-color" content="#ffffff">`;
 
-
 function manifestHandler(assets) {
   if (Object.hasOwnProperty.call(assets, 'manifest')) {
     return `

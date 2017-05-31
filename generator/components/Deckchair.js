@@ -1,6 +1,14 @@
 import React from 'react';
 
-const Deckchair = ({ header, about, buttonTitle, buttonAction, buttonLink, chairKey, color }) => (
+const Deckchair = ({
+  header,
+  about,
+  buttonTitle,
+  buttonAction,
+  buttonLink,
+  chairKey,
+  color,
+}) => (
   <div className={`Deckchair Deckchair--color-${color}`} data-chair={chairKey}>
     {chairKey ? <div className="Deckchair__close" /> : null}
     <div className="Deckchair__info">
@@ -8,7 +16,13 @@ const Deckchair = ({ header, about, buttonTitle, buttonAction, buttonLink, chair
       <p className="Deckchair__about">{about}</p>
     </div>
     <div className="Deckchair__cta">
-      <a className="Deckchair__button" href={buttonLink} data-action={buttonAction}>{buttonTitle}</a>
+      <a
+        className="Deckchair__button"
+        href={buttonLink}
+        data-action={buttonAction}
+      >
+        {buttonTitle}
+      </a>
     </div>
   </div>
 );
@@ -24,4 +38,3 @@ Deckchair.propTypes = {
 };
 
 export default Deckchair;
-

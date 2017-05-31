@@ -25,4 +25,3 @@ ContentCard.examples = {
 ContentCard.level = 'block';
 
 export default ContentCard;
-

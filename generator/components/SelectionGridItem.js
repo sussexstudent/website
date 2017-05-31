@@ -3,7 +3,12 @@ import React from 'react';
 const SelectionGridItem = ({ link, imageURL, title }) => (
   <li className="SelectionGrid__item SelectionGrid--underneath" key={link}>
     <a className="SelectionGrid__link" href={link}>
-      <div className="SelectionGrid__image" style={{ backgroundImage: `url(${imageURL}?thumbnail=true&height=230&width=640&resize_type=CropToFit)` }}>
+      <div
+        className="SelectionGrid__image"
+        style={{
+          backgroundImage: `url(${imageURL}?thumbnail=true&height=230&width=640&resize_type=CropToFit)`,
+        }}
+      >
         <div className="SelectionGrid__image-inside">
           <div className="SelectionGrid__title">{title}</div>
         </div>
@@ -18,8 +23,6 @@ SelectionGridItem.propTypes = {
   title: React.PropTypes.string.isRequired,
 };
 
-SelectionGridItem.ui = {
-
-};
+SelectionGridItem.ui = {};
 
 export default SelectionGridItem;

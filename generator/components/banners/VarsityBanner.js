@@ -18,11 +18,13 @@ const varsityStyle = `
 
 function VarsityBanner() {
   return (
-    <a className="VarsityBanner" href="https://www.sussexstudent.com/ents/event/2694/">
+    <a
+      className="VarsityBanner"
+      href="https://www.sussexstudent.com/ents/event/2694/"
+    >
       <style dangerouslySetInnerHTML={{ __html: varsityStyle }} />
       <span className="u-h">Varsity 2017</span>
     </a>
-
   );
 }
 

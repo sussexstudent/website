@@ -3,6 +3,7 @@ import FigureCollection from '../components/FigureCollection';
 import FigureCollectionFigure from '../components/FigureCollectionFigure';
 import HomepageEventsList from '../components/HomepageEventsList';
 import VoteGE from '../components/banners/VoteGE';
+import TweetList from '@ussu/components/TweetList';
 
 const Homepage = () => (
   <div>
@@ -20,12 +21,12 @@ const Homepage = () => (
           <a className="NewsViewMore" href="/news">Read more news stories</a>
         </div>
         <div className="ContentBlock">
-          <div className="ContentBlock__heading">{'What\'s on'}</div>
+          <div className="ContentBlock__heading">{"What's on"}</div>
           <HomepageEventsList />
         </div>
         <div className="ContentBlock">
           <div className="ContentBlock__heading">Twitter</div>
-          <div className="js-module--tweetList u-container-bleed-1 u-extend-flex" data-query="list/ussu,ussu" data-signature="f1b9176fddbe7114295eb4bfc65070c5a130a94d" />
+          <TweetList query="list/ussu,ussu" signature="f1b9176fddbe7114295eb4bfc65070c5a130a94d" />
         </div>
       </div>
 

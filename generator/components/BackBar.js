@@ -12,5 +12,4 @@ function BackBar({ color, link, children }) {
   );
 }
 
-
 export default BackBar;

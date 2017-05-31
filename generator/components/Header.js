@@ -14,11 +14,18 @@ const Header = () => (
           <a className="HeaderLogo__link" href="/">
             <Logo />
           </a>
-          <script type="text/javascript" dangerouslySetInnerHTML={{ __html: logoChangeJS }} />
+          <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{ __html: logoChangeJS }}
+          />
         </div>
 
         <div className="Header__search">
-          <input className="HeaderSearch HeaderSearch--search-icon" type="search" placeholder="Search" />
+          <input
+            className="HeaderSearch HeaderSearch--search-icon"
+            type="search"
+            placeholder="Search"
+          />
         </div>
         <div className="Header__social">
           <Social />

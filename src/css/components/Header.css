@@ -45,7 +45,7 @@
     }
   }
 
-  &__search
+  &__search,
   &__logo,
   &__social {
     margin-bottom: 1lh;

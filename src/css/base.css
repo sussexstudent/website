@@ -1,6 +1,6 @@
 a {
-  color: var(--color__twitter);
-  text-decoration: none;
+  color: var(--color__brand-blue);
+  text-decoration: underline;
 }
 
 a:focus {
@@ -52,3 +52,4 @@ h5, .h5 {
 h6, .h6 {
   font-size: 12px;
 }
+

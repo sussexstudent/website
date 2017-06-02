@@ -50,7 +50,7 @@ module.exports = {
   },
 
   plugins: [
-    new BundleAnalyzerPlugin({ analyzerPort: 3999 }),
+    //new BundleAnalyzerPlugin({ analyzerPort: 3999 }),
     new webpack.DefinePlugin({
       'process.env': {
         HYDROLEAF_MODE: JSON.stringify("RENDER_COMPONENT"),

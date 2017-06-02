@@ -59,6 +59,7 @@
 @import './components/Modal.css';
 @import './components/HeaderLogo.css';
 @import './components/FigureCollection.css';
+@import './components/BackBar.css';
 @import './components/FeedbackButton.css';
 @import './components/PaginationNavigation.css';
 @import './components/QuoteSlips.css';

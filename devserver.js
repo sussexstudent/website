@@ -90,19 +90,20 @@ var mslUserInfo =
 	<ul id="ctl00_controlpanel_ulControlPanel"><li id="ctl00_controlpanel_organisationadminnews0" class="msl_edit"><a href="/organisation/admin/news/0/">Edit MSL Membership System News</a></li><li id="ctl00_controlpanel_editpagepagename" class="msl_edit"><a href="/edit/page/?page_name=/">Edit Page</a></li><li id="ctl00_controlpanel_editpagesnewpageparent" class="msl_add"><a href="/edit/pages/newpage/?parent=/">Add child page</a></li><li id="ctl00_controlpanel_adminents" class="msl_edit"><a href="/admin/ents/">Edit MSL Membership System events</a></li></ul>
 </div>`,
 };
-const server = express();
+const app = express();
 
 const compiler = webpack(devWebpackConfig);
 
-server.use(
+app.use(
   webpackMiddleware(compiler, {
     publicPath: '/assets/',
   })
 );
 
-server.use(webpackHotMiddleware(compiler));
-server.use(comp.proxy());
+app.use(webpackHotMiddleware(compiler));
+app.use(comp.proxy());
 
-server.listen(3002, () => {
+const server = app.listen(3002, () => {
   console.log('Serving on 3002');
+  server.keepAliveTimeout = 0;
 });

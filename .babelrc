@@ -14,7 +14,8 @@
         "blacklist": [
           "transform-regenerator"
         ]
-      }]]
+      }]],
+      "plugins": ["react-hot-loader/babel"]
     }
   }
 }

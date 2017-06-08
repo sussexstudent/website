@@ -110,6 +110,7 @@
     "react-addons-css-transition-group": "^15.5.2",
     "react-dom": "^15.5.4",
     "react-highlight": "^0.10.0",
+    "react-hot-loader": "next",
     "react-imgix": "^6.0.0",
     "react-lazyload": "^2.2.7",
     "react-portal": "^3.1.0",
@@ -125,7 +126,8 @@
     "docs:serve": "export NODE_ENV=development && node ./docs/devserver.js",
     "docs:prod": "export NODE_ENV=production && webpack --config ./docs/webpack.prod.config.js",
     "format": "prettier --single-quote --print-width 80 --trailing-comma es5 --write \"./src/**/*.js\"",
-    "test": "NODE_ENV=test && jest"
+    "test": "NODE_ENV=test && jest",
+    "testc": "NODE_ENV=test && jest --coverage"
   },
   "jest": {
     "moduleNameMapper": {
@@ -135,6 +137,10 @@
     "testPathIgnorePatterns": [
       "<rootDir>/(build|docs|node_modules)/"
     ],
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "{generator,src}/**/*.{js,jsx}"
+    ]
   }
 }

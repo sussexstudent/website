@@ -8,6 +8,7 @@ config.devServer = {
   https: true,
 };
 
+config.entry.vendor.push('webpack-hot-middleware/client');
 config.entry.main.push('webpack-hot-middleware/client');
 
 config.output = {

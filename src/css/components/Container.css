@@ -65,10 +65,3 @@
   }
 }
 
-.Container, .container {
-  & .Container, .container {
-    padding: 0;
-    margin: 0;
-    width: auto;
-  }
-}

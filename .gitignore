@@ -17,3 +17,4 @@ npm-debug.log
 /webpack-assets.json
 /.s3cfg
 /previous.json
+/compstate.json

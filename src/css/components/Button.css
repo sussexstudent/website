@@ -1,15 +1,17 @@
 @import '../core/colors.css';
 
 .Button {
+  @mixin card standard;
+  
   background-color: var(--color__brand-blue);
   color: #ffffff;
   display: inline-block;
-  padding: 0.2em 0.6em;
+  padding: 0.4em 0.8em;
   text-decoration: none;
   font-weight: bold;
   border: 0;
-  font-size: 0.8rem;
-  line-height: 0.8rem;
+  font-size: 1rem;
+  line-height: 1rem;
 
   &--yellow {
     background: var(--color__brand-yellow);

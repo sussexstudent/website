@@ -11,6 +11,7 @@ import formatDate from 'date-fns/format';
 import Loader from '../Loader';
 import HydroLeaf from '../HydroLeaf';
 import EventsCalenderItem from './EventsCalenderItem';
+import getFalmerEndpoint from '../../libs/getFalmerEndpoint';
 
 const EVENT_PART = {
   CONTAINED: 'SINGLE',
@@ -152,7 +153,7 @@ class EventsContainer extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8000/events/')
+    fetch(`${getFalmerEndpoint()}/events/`)
       .then(data => data.json())
       .then(data => this.setState({ isLoading: false, data }));
   }

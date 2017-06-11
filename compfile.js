@@ -12,7 +12,7 @@ assets.manifest = manifest;
 
 const MainLayoutLegacy = props => <MainLayout {...props} legacy />;
 
-// TODO: NO COMPONENT IMPORTS IN THIS FILE, USE PATHS. IMPORT ON DEMANND IN COMP.
+// TODO: NO COMPONENT IMPORTS IN THIS FILE, USE PATHS. IMPORT ON DEMAND IN COMP.
 
 export default {
   html: Html,
@@ -42,6 +42,7 @@ export default {
   pages: {
     '/': './layouts/homepage.js',
     '/support': './layouts/Support.js',
+    '/whats-on': './layouts/WhatsOn.js',
     '/get-involved': './layouts/GetInvolved.js',
     '/environment-feedback': './layouts/environment/student-feedback.js',
     '/environment': './layouts/environment/environment.js',

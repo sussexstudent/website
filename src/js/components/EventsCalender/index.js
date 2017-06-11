@@ -1,17 +1,26 @@
 import React from 'react';
-import formatDate from 'date-fns/format';
+import sortBy from 'lodash/sortBy';
+import toPairs from 'lodash/toPairs';
+import groupBy from 'lodash/groupBy';
 import isBefore from 'date-fns/is_before';
-import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
-import addHours from 'date-fns/add_hours';
+import getYear from 'date-fns/get_year';
+import getMonth from 'date-fns/get_month';
+import setHours from 'date-fns/set_hours';
+import addDays from 'date-fns/add_days';
+import formatDate from 'date-fns/format';
+import Loader from '../Loader';
+import HydroLeaf from '../HydroLeaf';
+import EventsCalenderItem from './EventsCalenderItem';
 
 const EVENT_PART = {
   CONTAINED: 'SINGLE',
   SPAN_START: 'SPAN_START',
-  SPAN_CONTINUTED: 'SPAN_CONTINUTED',
   SPAN_END: 'SPAN_END',
 };
+const weekFromNow = setHours(addDays(new Date(), 7), 0);
+const now = setHours(new Date(), 0);
 
-function generateEventParts(events) {
+function splitEventsInToParts(events) {
   // for all events
   // if single day, add single day event SINGLE
   // if multi day
@@ -28,6 +37,7 @@ function generateEventParts(events) {
         type: EVENT_PART.CONTAINED,
         eventId: index,
         date: event.startDate,
+        event,
       });
       return;
     }
@@ -36,55 +46,122 @@ function generateEventParts(events) {
       type: EVENT_PART.SPAN_START,
       eventId: index,
       date: event.startDate,
+      event,
     });
-    // get days in between
-    // for each add
-    // parts.push({ type: EVENT_PART.SPAN_CONTINUTED, eventId: event.id, date: continued });
 
     parts.push({
       type: EVENT_PART.SPAN_END,
       eventId: index,
       date: event.endDate,
+      event,
     });
   });
 
   return parts;
 }
 
-function EventsCalender({ events }) {
+function organisePartsForUI(eventParts) {
+  const orderedParts = sortBy(eventParts, part => part.date);
+
+  // next up 7:
+
+  const partsGrouped = groupBy(orderedParts, event => {
+    if (isBefore(event.date, now)) {
+      return -1;
+    }
+    if (isBefore(event.date, weekFromNow)) {
+      return 0;
+    }
+
+    return `${getYear(event.date)}-${getMonth(event.date)}`;
+  });
+
+  const pairs = toPairs(partsGrouped);
+
+  const sorted = sortBy(pairs, pair => pair[0]);
+
+  const asList = sorted.filter(([key]) => key !== '-1').map(([key, value]) => ({
+    sectionTitle: key === '0' ? 'This week' : formatDate(value[0].date, 'MMMM'),
+    parts: value,
+  }));
+
+  return asList;
+}
+
+function getSmartDate(part) {
+  if (isBefore(part.date, weekFromNow)) {
+    if (
+      part.type === EVENT_PART.SPAN_END &&
+      isBefore(part.event.startDate, now)
+    ) {
+      return `until ${formatDate(part.date, 'dddd')}`;
+    }
+    return formatDate(part.date, 'dddd');
+  }
+
+  return formatDate(part.date, 'ddd Do');
+}
+
+function EventsCalender({ data, isLoading }) {
+  if (isLoading) {
+    return <Loader dark />;
+  }
+
+  data.events.forEach(event => {
+    console.log(event.startDate, new Date(event.startDate));
+  });
+
+  const events = data.events.map(event => ({
+    ...event,
+    startDate: new Date(event.startDate),
+    endDate: new Date(event.endDate),
+  }));
   // let previousDay = null;
-  const eventParts = generateEventParts(events);
+  const eventParts = splitEventsInToParts(events);
+  const uiEvents = organisePartsForUI(eventParts);
   // chunk by day
-  const nearDate = addHours(new Date(), 10);
   return (
     <div className="EventsCalender">
-      {eventParts.map(part => {
-        /* eslint-disable jsx-a11y/anchor-has-content */
-        const event = events[part.eventId];
-        return (
-          <div className="EventsCalender__item">
-            <a className="u-faux-link" href={event.link} />
-            <h2>
-              {event.title}
-              {part.type === EVENT_PART.SPAN_START ? '[starts]' : ''}
-              {part.type === EVENT_PART.SPAN_END ? '[ends]' : ''}
-            </h2>
-            <div>
-              {formatDate(event.startDate, 'dddd Mo MMMM [at] h:ssa')}
-              {formatDate(event.endDate, 'dddd Mo MMMM [at] h:ssa')}
-              {isBefore(event.startDate, nearDate)
-                ? <span>
-                    {' '}- Starts in {distanceInWordsToNow(event.startDate)}
-                  </span>
-                : null}
-            </div>
-            <div className="">{event.description}</div>
+      {uiEvents.map(({ sectionTitle, parts }) => (
+        <div className="EventsCalender__section">
+          <h2 className="EventsCalender__section-title">{sectionTitle}</h2>
+          <div className="EventsCalender__section-items">
+            {parts.map(part => (
+              <div>
+                <h3 className="EventsCalender__item-date-kicker">
+                  {getSmartDate(part)}
+                </h3>
+                <EventsCalenderItem part={part} />
+              </div>
+            ))}
           </div>
-        );
-        /* eslint-enable jsx-a11y/anchor-has-content */
-      })};
+        </div>
+      ))}
     </div>
   );
 }
 
-export default EventsCalender;
+class EventsContainer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: true,
+      data: null,
+    };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:8000/events/')
+      .then(data => data.json())
+      .then(data => this.setState({ isLoading: false, data }));
+  }
+
+  render() {
+    const { isLoading, data } = this.state;
+
+    return <EventsCalender {...this.props} isLoading={isLoading} data={data} />;
+  }
+}
+
+export default HydroLeaf()(EventsContainer);

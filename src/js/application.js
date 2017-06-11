@@ -134,23 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
   /* New module style */
 
   // All pages
-  if (process.env.NODE_ENV === 'production') {
-    eventCards();
-  }
+  eventCards();
   menu();
   userBar();
   hydro();
 
   // Conditional modules
-
-  // Module: eventsPage
-  // document.querySelector('.js-module--eventsPage')
-  if (window.location.pathname === '/events') {
-    import(
-      /* webpackChunkName: "eventsPage.module" */ './modules/eventsPage'
-    ).then(module => module.default());
-  }
-
   // Module: homepageNews
   // TODO: update homepage news selector
   if (document.querySelector('.app__news')) {

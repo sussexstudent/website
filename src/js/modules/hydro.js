@@ -6,6 +6,10 @@ export default function() {
     ContentAPIComposer: () => import('@ussu/components/ContentAPIComposer'),
     TweetList: () =>
       import(/* webpackChunkName: "TweetList" */ '@ussu/components/TweetList'),
+    EventsContainer: () =>
+      import(
+        /* webpackChunkName: "EventsPage" */ '@ussu/components/EventsCalender'
+      ),
   };
 
   [...document.querySelectorAll('.Hydro')].forEach(el => {

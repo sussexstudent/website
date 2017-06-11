@@ -1,5 +1,4 @@
 .InlineSearch {
-
   &__content {
     z-index: var(--layer__search);
   }
@@ -11,6 +10,7 @@
     left: 0;
     right: 0;
     z-index: var(--layer__search-header);
+
     @mixin card flat;
   }
 

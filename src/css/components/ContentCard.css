@@ -1,6 +1,7 @@
 .ContentCard {
   @mixin rounded;
   @mixin card flat;
+
   padding: 0.5lh;
   margin-bottom: 0.5lh;
 }

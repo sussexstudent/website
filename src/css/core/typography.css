@@ -1,5 +1,5 @@
 :root {
-  --type__secondary: "Helvetica", "Arial", sans-serif;
+  --type__secondary: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   --type__primary: 'Larsseit', var(--type__secondary);
 
   font: 16px / 1.5 var(--type__secondary);

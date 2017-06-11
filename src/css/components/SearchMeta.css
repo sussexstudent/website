@@ -4,7 +4,9 @@
   position: relative;
   box-sizing: border-box;
   height: 60px;
+
   @mixin card flat;
+
   z-index: var(--layer__search-header-nav--mobile);
   overflow-x: scroll;
   overflow-y: hidden;

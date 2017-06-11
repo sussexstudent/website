@@ -5,6 +5,7 @@
   font-family: var(--type__primary);
   z-index: var(--layer__global-notice);
   position: relative;
+
   @mixin card flat;
 
   &__close {

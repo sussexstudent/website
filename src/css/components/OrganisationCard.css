@@ -5,6 +5,7 @@
 
   &__link {
     @mixin card flat;
+
     display: block;
     height: 100%;
     text-decoration: none;

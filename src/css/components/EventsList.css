@@ -1,5 +1,6 @@
 .EventsList {
   @mixin rounded;
+
   background: var(--color__brand-green);
   font-size: 0.8rem;
   list-style: none;
@@ -45,6 +46,7 @@
     padding: 0.7rem;
     text-decoration: none;
     display: block;
+
     @mixin card standard;
 
     & .event_item {

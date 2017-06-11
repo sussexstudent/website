@@ -1,5 +1,6 @@
 .MobileFooterTreats {
   padding-top: 1lh;
+
   @media (--medium) {
     display: none;
   }

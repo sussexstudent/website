@@ -1,5 +1,6 @@
 .MobileSearch {
   z-index: var(--layer__mobile-search);
+
   /*position: fixed;
   top: 0;
   left: 0;

@@ -26,6 +26,7 @@
 
 .NewsViewMore {
   @mixin rounded;
+
   background: var(--color__brand-yellow);
   color: var(--color__grey-slate);
   font-size: 0.8rem;
@@ -38,4 +39,4 @@
   &:hover {
     text-decoration: none;
   }
-  }
+}

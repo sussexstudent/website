@@ -14,6 +14,7 @@
   &__questions > li {
     @mixin rounded;
     @mixin card standard;
+
     display: inline-block;
     margin-right: 0.5lh;
     margin-bottom: 0.5lh;

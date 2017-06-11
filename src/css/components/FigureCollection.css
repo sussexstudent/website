@@ -33,6 +33,7 @@
     margin-bottom: 1lh;
     color: black;
     text-decoration: none;
+
     @mixin card standard;
   }
 

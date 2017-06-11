@@ -38,17 +38,17 @@
 .AnodyneMenu__item:nth-child(1) .AnodyneMenu__link {
   border-bottom-color: var(--color__brand-blue);
 
-    &:hover,
-    &.AnodyneMenu__link--active {
-      background-color: var(--color__brand-blue);
-    }
+  &:hover,
+  &.AnodyneMenu__link--active {
+    background-color: var(--color__brand-blue);
+  }
 }
 
 .AnodyneMenu__item:nth-child(2) .AnodyneMenu__link {
   border-bottom-color: var(--color__brand-green);
 
-    &:hover,
-    &.AnodyneMenu__link--active {
+  &:hover,
+  &.AnodyneMenu__link--active {
     background-color: var(--color__brand-green);
   }
 }
@@ -56,17 +56,17 @@
 .AnodyneMenu__item:nth-child(3) .AnodyneMenu__link {
   border-bottom-color: var(--color__brand-red);
 
-    &:hover,
-    &.AnodyneMenu__link--active {
-      background-color: var(--color__brand-red);
-    }
+  &:hover,
+  &.AnodyneMenu__link--active {
+    background-color: var(--color__brand-red);
+  }
 }
 
 .AnodyneMenu__item:nth-child(4) .AnodyneMenu__link {
   border-bottom-color: var(--color__grey-slate);
 
-    &:hover,
-    &.AnodyneMenu__link--active {
-      background-color: var(--color__grey-slate);
-    }
+  &:hover,
+  &.AnodyneMenu__link--active {
+    background-color: var(--color__grey-slate);
+  }
 }

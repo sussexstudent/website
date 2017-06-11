@@ -1,5 +1,6 @@
 .TweetList {
   @mixin rounded;
+
   background-color: var(--color__twitter);
   font-size: 0.8rem;
   list-style: none;
@@ -30,6 +31,7 @@
   margin-bottom: 0.5rem;
   padding: 0.5rem 0;
   position: relative;
+
   @mixin card standard;
 
   &__faux-link {
@@ -79,6 +81,7 @@
     color: rgba(155, 155, 155, 1.0);
     font-size: 0.9em;
     margin-bottom: 1em;
+
     &::before {
       content: '';
       margin-right: 0.3em;

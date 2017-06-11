@@ -4,6 +4,7 @@
   padding-top: 1.5lh;
   margin-bottom: 1.5lh;
   font-family: var(--type__primary);
+
   @media(--medium) {
     padding-top: 0;
   }
@@ -36,6 +37,7 @@
   &__social {
     flex: 1;
     display: none;
+
     & .Social {
       justify-content: flex-end;
 

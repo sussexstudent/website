@@ -9,7 +9,9 @@
     margin-bottom: 1.5rem;
     padding: 0.5rem;
     transition: transform 300ms ease;
+
     @mixin card standard-no-transition;
+
     transition: box-shadow 300ms ease, transform 300ms ease;
 
     &:hover {

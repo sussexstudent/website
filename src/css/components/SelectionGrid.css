@@ -19,6 +19,7 @@
 
   &__item {
     @mixin card standard;
+
     margin-bottom: 1rem;
   }
 

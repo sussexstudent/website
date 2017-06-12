@@ -7,6 +7,7 @@ import orderBy from 'lodash/orderBy';
 import perf from '../../tracking/perf';
 import SearchResult from '../../components/SearchResult';
 import SearchFilterNav from '../../components/SearchFilterNav';
+import getFalmerEndpoint from '../../libs/getFalmerEndpoint';
 
 /* eslint-disable */
 
@@ -108,7 +109,7 @@ class SearchPage extends React.Component {
 
     const t = perf.recordTime('Search', 'fetchResults', { query });
     window
-      .fetch(`https://dgv7dbrr4a1ou.cloudfront.net/search/${query}`)
+      .fetch(`${getFalmerEndpoint()}/search/?q=${query}`)
       .then(res => {
         t.done();
         return res.json();

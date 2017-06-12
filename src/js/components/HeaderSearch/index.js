@@ -2,16 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Portal from 'react-portal';
+import HydroLeaf from '@ussu/components/HydroLeaf';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import SearchPage from '../../apps/search';
 import smoothscroll from '../../libs/smoothscroll';
 import classToggle from '../../libs/dom/classToggle';
 
-const header = document.querySelector('.Header');
-const userBarEl = document.querySelector('.UserBar');
-const htmlEl = document.documentElement;
-
-function getDistanceFromUserBar() {
+function getDistanceFromUserBar(userBarEl) {
   const offset = userBarEl.getBoundingClientRect().top;
   return Math.abs(offset);
 }
@@ -61,6 +58,12 @@ class HeaderSearch extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.header = document.querySelector('.Header');
+    this.userBarEl = document.querySelector('.UserBar');
+    this.htmlEl = document.documentElement;
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (this.state.isOpen && !prevState.isOpen) {
       // eslint-disable-next-line react/no-did-update-set-state
@@ -81,19 +84,19 @@ class HeaderSearch extends React.Component {
     const isMobile = window.innerWidth < 800;
 
     this.setState({ isMobile }, () => {
-      classToggle(htmlEl, 'html--search-active', isOpen);
+      classToggle(this.htmlEl, 'html--search-active', isOpen);
 
       if (isOpen) {
         if (isMobile) {
           this.handleOpen();
         } else {
-          const distance = Math.abs(getDistanceFromUserBar());
+          const distance = Math.abs(getDistanceFromUserBar(this.userBarEl));
           if (distance >= 10) {
             const time = Math.round(distance * 3.85);
             setTimeout(this.handleOpen.bind(this), time);
-            smoothscroll(userBarEl, time);
+            smoothscroll(this.userBarEl, time);
           } else {
-            window.scrollTo(0, getCoords(userBarEl).top);
+            window.scrollTo(0, getCoords(this.userBarEl).top);
             this.handleOpen();
           }
         }
@@ -111,7 +114,7 @@ class HeaderSearch extends React.Component {
         width: this.dummyInput.clientWidth,
       },
     });
-    header.classList.add('Header--search-focus');
+    this.header.classList.add('Header--search-focus');
 
     document.addEventListener('keyup', this.escapeClose);
   }
@@ -122,7 +125,7 @@ class HeaderSearch extends React.Component {
       transitionSize: null,
     });
 
-    header.classList.remove('Header--search-focus');
+    this.header.classList.remove('Header--search-focus');
     document.removeEventListener('keyup', this.escapeClose);
   }
 
@@ -298,4 +301,4 @@ HeaderSearch.defaultProps = {
   disabled: false,
 };
 
-export default HeaderSearch;
+export default HydroLeaf()(HeaderSearch);

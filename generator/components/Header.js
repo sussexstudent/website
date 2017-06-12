@@ -1,5 +1,6 @@
 import React from 'react';
 import Social from './Social';
+import HeaderSearch from '@ussu/components/HeaderSearch';
 import AnodyneMenu from './AnodyneMenu';
 import Logo from './LogoInclude';
 
@@ -21,11 +22,7 @@ const Header = () => (
         </div>
 
         <div className="Header__search">
-          <input
-            className="HeaderSearch HeaderSearch--search-icon"
-            type="search"
-            placeholder="Search"
-          />
+          <HeaderSearch hydroId="sitesearch" />
         </div>
         <div className="Header__social">
           <Social />

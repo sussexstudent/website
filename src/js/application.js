@@ -3,13 +3,11 @@ import React from 'react';
 import mitt from 'mitt';
 import ReactDOM from 'react-dom';
 import ModalManager from './bits/modals/manager';
-import HeaderSearch from './components/HeaderSearch';
 import LazyLoadApp from './components/LazyLoadApp';
 // import LoginModal from './components/LoginModal';
 // import NewsletterModal from './components/NewsletterModal';
 // import SnapchatModal from './components/SnapchatModal';
 import perf from './tracking/perf';
-import renderSearch from './apps/search';
 import currentUser from './libs/user';
 import smoothscroll from './libs/smoothscroll';
 import hydro from './modules/hydro';
@@ -74,13 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
   [...document.querySelectorAll('a')].forEach(e => {
     e.addEventListener('click', linkListener);
   });
-
-  if (document.querySelector('.app__search')) {
-    // eslint-disable-next-line
-    renderSearch();
-  }
-
-  ReactDOM.render(<HeaderSearch />, document.querySelector('.Header__search'));
 
   if (document.querySelector('.app__events')) {
     const t = perf.recordTime('import', 'calender');

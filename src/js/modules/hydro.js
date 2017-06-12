@@ -10,6 +10,10 @@ export default function() {
       import(
         /* webpackChunkName: "EventsPage" */ '@ussu/components/EventsCalender'
       ),
+    HeaderSearch: () =>
+      import(
+        /* webpackChunkName: "HeaderSearch" */ '@ussu/components/HeaderSearch'
+      ),
   };
 
   [...document.querySelectorAll('.Hydro')].forEach(el => {

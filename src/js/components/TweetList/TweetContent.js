@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import split from 'lodash/split';
 import sortBy from 'lodash/sortBy';
 import unescape from 'lodash/unescape';
 
@@ -20,7 +19,7 @@ function getEntities(types, tweet) {
 }
 
 function renderTweetContent(tweet) {
-  const fullText = split(tweet.full_text, '');
+  const fullText = [...tweet.full_text];
   const displayText = fullText.slice(0, tweet.display_text_range[1]);
 
   const entities = sortBy(

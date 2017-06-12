@@ -125,12 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(<LazyLoadApp />, activitiesApp);
   }
 
-  if (localStorage.getItem('su_proto') === '1') {
-    import(/* webpackChunkName: "panel.module" */ './bits/panel').then(panel =>
-      panel.default()
-    );
-  }
-
   /* New module style */
 
   // All pages

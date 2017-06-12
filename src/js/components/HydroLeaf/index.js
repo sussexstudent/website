@@ -52,15 +52,15 @@ function HydroLeaf(contextToPropsMap = {}) {
           const dataAc = `window.HYDROSTATE_${hydroId} = ${JSON.stringify(serialProps)};`;
           return (
             <div>
-              <script
-                type="text/javascript"
-                dangerouslySetInnerHTML={{ __html: dataAc }}
-              />
               <div
                 className="Hydro"
                 data-component={Component.name}
                 data-id={hydroId}
                 dangerouslySetInnerHTML={{ __html: componentMarkup }}
+              />
+              <script
+                type="text/javascript"
+                dangerouslySetInnerHTML={{ __html: dataAc }}
               />
             </div>
           );

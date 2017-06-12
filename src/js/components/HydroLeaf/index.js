@@ -44,18 +44,23 @@ function HydroLeaf(contextToPropsMap = {}) {
             ...props,
             ...generatePropsForContext(contextToPropsMap, this.context),
           };
+          let hydroKey = hydroId;
+          if (Object.hasOwnProperty.call(serialProps, 'hydroId')) {
+            hydroKey = serialProps.hydroId;
+            delete serialProps.hydroId;
+          }
 
           const componentMarkup = ReactDOM.renderToString(
             React.createElement(Component, serialProps)
           );
 
-          const dataAc = `window.HYDROSTATE_${hydroId} = ${JSON.stringify(serialProps)};`;
+          const dataAc = `window.HYDROSTATE_${hydroKey} = ${JSON.stringify(serialProps)};`;
           return (
             <div>
               <div
                 className="Hydro"
                 data-component={Component.name}
-                data-id={hydroId}
+                data-id={hydroKey}
                 dangerouslySetInnerHTML={{ __html: componentMarkup }}
               />
               <script

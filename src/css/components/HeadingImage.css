@@ -9,6 +9,11 @@
   margin-bottom: 1.5lh;
   padding-top: 230px;
   font-family: var(--type__primary);
+  
+  &--link {
+    display: block;
+    text-decoration: none;
+  }
 
   &__title {
     box-decoration-break: clone;

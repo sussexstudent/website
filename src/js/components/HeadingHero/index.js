@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Image from '../Image';
+import HydroLeaf from '../HydroLeaf';
 
 const HeadingHero = ({ imageURL, title, description }) => (
   <Image className="HeadingImage" src={imageURL} type="bg">
@@ -22,3 +23,4 @@ HeadingHero.defaultProps = {
 };
 
 export default HeadingHero;
+export const Hydro = HydroLeaf()(HeadingHero);

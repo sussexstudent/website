@@ -14,6 +14,10 @@ export default function() {
       import(
         /* webpackChunkName: "HeaderSearch" */ '@ussu/components/HeaderSearch'
       ),
+    HeadingHero: () =>
+      import(
+        /* webpackChunkName: "HeadingHero" */ '@ussu/components/HeadingHero'
+      ),
   };
 
   [...document.querySelectorAll('.Hydro')].forEach(el => {

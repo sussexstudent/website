@@ -5,7 +5,6 @@ import ContentAPIComposer
 
 class GetInvolved extends React.Component {
   render() {
-
     return (
       <div>
         <div className="Layout">
@@ -16,6 +15,6 @@ class GetInvolved extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default GetInvolved;

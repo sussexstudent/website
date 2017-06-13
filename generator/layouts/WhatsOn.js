@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import BackBar from '@ussu/components/BackBar';
 import ContentAPIComposer
   from '../../src/js/components/ContentAPIComposer/index';
-import EventsContainer from "../../src/js/components/EventsCalender/index";
+import EventsContainer from '../../src/js/components/EventsCalender/index';
 
 class WhatsOn extends React.Component {
   render() {
-
     return (
       <div>
         <div className="PageHeader">
@@ -21,6 +20,6 @@ class WhatsOn extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default WhatsOn;

@@ -4,12 +4,14 @@ import FigureCollectionFigure from '../components/FigureCollectionFigure';
 import HomepageEventsList from '../components/HomepageEventsList';
 import VoteGE from '../components/banners/VoteGE';
 import TweetList from '@ussu/components/TweetList';
+import HeadingHero from '../../src/js/components/HeadingHero/index';
+import NSSBanner from '../components/banners/NSSBanner';
 
 const Homepage = () => (
   <div>
     <div className="Trail">
       <div className="Trail__row  u-container-bleed-2">
-        <VoteGE />
+        <NSSBanner />
       </div>
       <div className="Trail__row Trail__row--211">
         <div className="ContentBlock">
@@ -26,7 +28,10 @@ const Homepage = () => (
         </div>
         <div className="ContentBlock">
           <div className="ContentBlock__heading">Twitter</div>
-          <TweetList query="list/ussu,ussu" signature="f1b9176fddbe7114295eb4bfc65070c5a130a94d" />
+          <TweetList
+            query="list/ussu,ussu"
+            signature="f1b9176fddbe7114295eb4bfc65070c5a130a94d"
+          />
         </div>
       </div>
 

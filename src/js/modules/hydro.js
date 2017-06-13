@@ -22,7 +22,7 @@ export default function() {
 
   [...document.querySelectorAll('.Hydro')].forEach(el => {
     let props = {};
-    if (Object.hasOwnProperty.call(el.dataset, 'id')) {
+    if (el.hasAttribute('data-id')) {
       props = window[`HYDROSTATE_${el.dataset.id}`];
     }
 

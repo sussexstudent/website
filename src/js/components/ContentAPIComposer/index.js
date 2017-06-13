@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import has from 'lodash/has';
 import HydroLeaf from '@ussu/components/HydroLeaf';
 import Loader from '@ussu/components/Loader';
 import StaffList from '@ussu/components/StaffList';
@@ -118,7 +119,15 @@ class ContentAPIComposer extends React.Component {
       return <Loader dark />;
     }
 
+    if (!has(this.state, 'data.meta.type')) {
+      console.warn(
+        `[contentAPI] response did not specific content type. Page ID: ${this.props.pageId}`
+      );
+      return <h2>Sorry! something has gone wrong.</h2>;
+    }
+
     const contentType = this.state.data.meta.type;
+
     if (!Object.hasOwnProperty.call(pageComponents, contentType)) {
       console.warn(
         `[contentAPI] Content type does not exist! Tried to render: ${contentType}`

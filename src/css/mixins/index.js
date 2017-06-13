@@ -39,6 +39,22 @@ module.exports = {
           },
         };
       }
+      case 'standard-force': {
+        return {
+          '&': {
+            'box-shadow': '0 1px 2px 0 rgba(0, 0, 0, 0.15) !important;',
+            'border-radius': '2px !important',
+            overflow: 'hidden !important',
+            transition: 'box-shadow 300ms ease !important',
+          },
+          '&:hover': {
+            'box-shadow': '0 3px 5px 0 rgba(0, 0, 0, 0.15) !important;',
+          },
+          '&:active': {
+            'box-shadow': '0 1px 2px 0 rgba(0,0,0,0.15) !important;',
+          },
+        };
+      }
       case 'standard-no-transition': {
         return {
           '&': {

@@ -29,3 +29,18 @@
     @mixin rounded;
   }
 }
+
+
+.msl_admin_page .button {
+  @mixin card standard;
+  
+  background: var(--color__brand-blue) !important;
+  color: #ffffff !important;
+  display: inline-block !important;
+  padding: 0.4em 0.8em !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  border: 0 !important;
+  font-size: 1rem !important;
+  line-height: 1rem !important;
+}

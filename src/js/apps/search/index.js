@@ -13,6 +13,7 @@ import getFalmerEndpoint from '../../libs/getFalmerEndpoint';
 
 function getPayloadMetadata(payload) {
   const areas = {
+    top: 'Top results',
     groups: 'Sports & Societies',
     news: 'News',
     events: 'Events',
@@ -20,6 +21,10 @@ function getPayloadMetadata(payload) {
   };
 
   const calcWeight = key => {
+    if (key === 'top') {
+      return Infinity;
+    }
+
     if (key === 'news') {
       return -1;
     }
@@ -39,7 +44,7 @@ function getPayloadMetadata(payload) {
   });
 
   const orderedAreas = orderBy(
-    ['groups', 'events', 'pages', 'news'].map(mk),
+    ['top', 'groups', 'events', 'pages', 'news'].map(mk),
     ['weight', 'name'],
     ['desc', 'asc']
   );
@@ -230,7 +235,7 @@ class SearchPage extends React.Component {
                   })}
                 >
                   {results[currentArea].map(item => (
-                    <SearchResult key={item.link} item={item} />
+                    <SearchResult key={item} item={results.results[item]} />
                   ))}
                 </ul>
               : null}

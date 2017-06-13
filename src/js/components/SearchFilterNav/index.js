@@ -8,7 +8,7 @@ const optionShape = PropTypes.shape({
   count: PropTypes.number.isRequired,
 });
 
-function SearchFilterItem({ currentValue, option, onSelect }) {
+function SearchFilterItem({ currentValue, option, onSelect, itemKey }) {
   const handleClick = onSelect.bind(null, option.key);
   return (
     <li
@@ -19,7 +19,7 @@ function SearchFilterItem({ currentValue, option, onSelect }) {
       key={option.key}
       onClick={option.count > 0 ? handleClick : () => {}}
     >
-      {option.title} ({option.count})
+      {option.title}{itemKey !== 'top' ? <span> ({option.count})</span> : null}
     </li>
   );
 }
@@ -36,6 +36,7 @@ function SearchFilterNav({ onSelect, value, options }) {
       {options.map(option => (
         <SearchFilterItem
           key={option.key}
+          itemKey={option.key}
           option={option}
           currentValue={value}
           onSelect={onSelect}

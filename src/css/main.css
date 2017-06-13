@@ -16,6 +16,7 @@
 @import './utils/extend-flex.css';
 @import './utils/responsive-ratio.css';
 @import './utils/faux-link.css';
+@import './utils/position-anchor.css';
 
 /* layouts */
 @import './base.css';

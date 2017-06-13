@@ -6,20 +6,8 @@ import StaffList from '@ussu/components/StaffList';
 import HeadingHero from '@ussu/components/HeadingHero';
 import SelectionGrid from '@ussu/components/SelectionGrid';
 import SelectionGridItem from '@ussu/components/SelectionGridItem';
-
-function getEndpoint(forceProd = false) {
-  if (forceProd) {
-    return 'https://falmer.sussexstudent.com';
-  }
-
-  if (process.env.NODE_ENV === 'production') {
-    return process.env.FALMER_ENDPOINT;
-  }
-
-  return window.location.pathname.startsWith('/~/')
-    ? process.env.FALMER_ENDPOINT
-    : 'https://falmer.sussexstudent.com';
-}
+import getFalmerEndpoint from '../../libs/getFalmerEndpoint';
+import SectionContentPage from './SectionContentPage';
 
 /* eslint-disable react/prop-types */
 const components = {
@@ -68,6 +56,7 @@ const ComponentStreamPage = ({ data: { body }, data }) => (
 const pageComponents = {
   'content.StaffPage': ComponentStreamPage,
   'content.SelectionGridPage': ComponentStreamPage,
+  'content.SectionContentPage': SectionContentPage,
 };
 
 /* eslint-enable react/prop-types */
@@ -104,7 +93,7 @@ class ContentAPIComposer extends React.Component {
         return;
       }
 
-      fetch(`${getEndpoint(true)}/content-api/v2/pages/${this.props.pageId}/`)
+      fetch(`${getFalmerEndpoint()}/content-api/v2/pages/${this.props.pageId}/`)
         .then(data => data.json())
         .then(json =>
           this.setState({ isLoaded: true, isLoading: false, data: json })

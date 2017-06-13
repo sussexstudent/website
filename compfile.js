@@ -44,6 +44,7 @@ export default {
     '/support': './layouts/Support.js',
     '/whats-on': './layouts/WhatsOn.js',
     '/get-involved': './layouts/GetInvolved.js',
+    '/section-page': './layouts/SectionPage.js',
     '/environment-feedback': './layouts/environment/student-feedback.js',
     '/environment': './layouts/environment/environment.js',
     '/staff': './layouts/StaffPage',

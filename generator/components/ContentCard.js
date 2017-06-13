@@ -1,7 +1,10 @@
 import React from 'react';
 
-const ContentCard = ({ children }) => (
+const ContentCard = ({ anchor = null, children }) => (
   <div className="ContentCard">
+    {anchor !== null
+      ? <span className="u-position-anchor" id={anchor} />
+      : null}
     {children}
   </div>
 );

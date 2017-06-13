@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "@ussu/comp": "^0.3.0",
+    "@ussu/comp": "^1.0.0",
     "assets-webpack-plugin": "^3.5.1",
     "autoprefixer": "^7.1.1",
     "babel-core": "^6.24.1",

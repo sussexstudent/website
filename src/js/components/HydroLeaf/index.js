@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import PropTypes from 'prop-types';
+import isEmpty from 'lodash/isEmpty';
 
 let hydroId = 0;
 
@@ -50,6 +51,14 @@ function HydroLeaf(contextToPropsMap = {}) {
             delete serialProps.hydroId;
           }
 
+          let hydroIdSpread = {};
+
+          if (isEmpty(serialProps)) {
+            hydroKey = null;
+          } else {
+            hydroIdSpread = { 'data-id': hydroKey };
+          }
+
           const componentMarkup = ReactDOM.renderToString(
             React.createElement(Component, serialProps)
           );
@@ -61,12 +70,15 @@ function HydroLeaf(contextToPropsMap = {}) {
                 className="Hydro"
                 data-component={Component.name}
                 data-id={hydroKey}
+                {...hydroIdSpread}
                 dangerouslySetInnerHTML={{ __html: componentMarkup }}
               />
-              <script
-                type="text/javascript"
-                dangerouslySetInnerHTML={{ __html: dataAc }}
-              />
+              {hydroKey !== null
+                ? <script
+                    type="text/javascript"
+                    dangerouslySetInnerHTML={{ __html: dataAc }}
+                  />
+                : null}
             </div>
           );
         }

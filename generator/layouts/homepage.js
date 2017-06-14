@@ -3,14 +3,22 @@ import FigureCollection from '../components/FigureCollection';
 import FigureCollectionFigure from '../components/FigureCollectionFigure';
 import HomepageEventsList from '../components/HomepageEventsList';
 import TweetList from '@ussu/components/TweetList';
-import {Hydro as HeadingHero } from '../../src/js/components/HeadingHero/index';
+import {
+  Hydro as HeadingHero,
+} from '../../src/js/components/HeadingHero/index';
 
 const Homepage = () => (
   <div>
     <div className="Trail">
       <div className="Trail__row  u-container-bleed-2">
-        <a className="HeadingImage--link" href="https://www.sussexstudent.com/our-campus-services/">
-          <HeadingHero imageURL="/images/4219b2966c1047dd8fe4bfa2aa922c72.original.jpg" title={'Our holiday opening times'} />
+        <a
+          className="HeadingImage--link"
+          href="https://www.sussexstudent.com/our-campus-services/"
+        >
+          <HeadingHero
+            imageURL="/images/4219b2966c1047dd8fe4bfa2aa922c72.original.jpg"
+            title={'Our holiday opening times'}
+          />
         </a>
       </div>
       <div className="Trail__row Trail__row--211">

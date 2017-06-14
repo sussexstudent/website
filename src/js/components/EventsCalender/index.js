@@ -1,5 +1,6 @@
 import React from 'react';
 import sortBy from 'lodash/sortBy';
+import orderBy from 'lodash/orderBy';
 import toPairs from 'lodash/toPairs';
 import groupBy from 'lodash/groupBy';
 import isBefore from 'date-fns/is_before';
@@ -61,6 +62,23 @@ function splitEventsInToParts(events) {
   return parts;
 }
 
+function poorMonthSort(key) {
+  if (key === '0') {
+    return 0;
+  }
+
+  if (key === 'PAST') {
+    return -1;
+  }
+
+  if (key.startsWith('MONTH')) {
+    const numbers = key.slice(6).split('-').map(parseInt);
+    return numbers[0] + numbers[1];
+  }
+
+  return 2;
+}
+
 function organisePartsForUI(eventParts) {
   const orderedParts = sortBy(eventParts, part => part.date);
 
@@ -68,23 +86,29 @@ function organisePartsForUI(eventParts) {
 
   const partsGrouped = groupBy(orderedParts, event => {
     if (isBefore(event.date, now)) {
-      return -1;
+      return 'PAST';
     }
     if (isBefore(event.date, weekFromNow)) {
       return 0;
     }
 
-    return `${getYear(event.date)}-${getMonth(event.date)}`;
+    return `MONTH:${getYear(event.date)}-${getMonth(event.date)}`;
   });
 
   const pairs = toPairs(partsGrouped);
 
-  const sorted = sortBy(pairs, pair => pair[0]);
+  const sorted = orderBy(pairs, pair => poorMonthSort(pair[0]), 'desc');
 
-  const asList = sorted.filter(([key]) => key !== '-1').map(([key, value]) => ({
-    sectionTitle: key === '0' ? 'This week' : formatDate(value[0].date, 'MMMM'),
-    parts: value,
-  }));
+  console.log(sorted);
+
+  const asList = sorted
+    .filter(([key]) => key !== 'PAST')
+    .map(([key, value]) => ({
+      sectionTitle: key === '0'
+        ? 'This week'
+        : formatDate(value[0].date, 'MMMM'),
+      parts: value,
+    }));
 
   return asList;
 }

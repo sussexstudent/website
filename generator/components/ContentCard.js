@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ContentCard = ({ anchor = null, children }) => (
   <div className="ContentCard">
@@ -10,7 +11,7 @@ const ContentCard = ({ anchor = null, children }) => (
 );
 
 ContentCard.propTypes = {
-  children: React.PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 ContentCard.description = `

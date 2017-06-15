@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const FigureCollectionFigure = ({ imageURL, title, sub, link }) => (
   <li className="FigureCollection__item">
@@ -15,10 +16,10 @@ const FigureCollectionFigure = ({ imageURL, title, sub, link }) => (
 );
 
 FigureCollectionFigure.propTypes = {
-  imageURL: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-  sub: React.PropTypes.string.isRequired,
-  link: React.PropTypes.string.isRequired,
+  imageURL: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  sub: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
 };
 
 FigureCollectionFigure.ui = {

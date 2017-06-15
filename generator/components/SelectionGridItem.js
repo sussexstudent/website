@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SelectionGridItem = ({ link, imageURL, title }) => (
   <li className="SelectionGrid__item SelectionGrid--underneath" key={link}>
@@ -18,9 +19,9 @@ const SelectionGridItem = ({ link, imageURL, title }) => (
 );
 
 SelectionGridItem.propTypes = {
-  link: React.PropTypes.node.isRequired,
-  imageURL: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
+  link: PropTypes.node.isRequired,
+  imageURL: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 SelectionGridItem.ui = {};

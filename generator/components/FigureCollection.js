@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const FigureCollection = ({ children }) => (
   <ul className="FigureCollection">
@@ -7,7 +8,7 @@ const FigureCollection = ({ children }) => (
 );
 
 FigureCollection.propTypes = {
-  children: React.PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 FigureCollection.ui = {

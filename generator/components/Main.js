@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import MSLTag from './MSLTag';
+import PropTypes from 'prop-types';
 
 const Main = ({ legacy }) => (
   <main className={cx('Site__content')}>
@@ -19,7 +20,7 @@ const Main = ({ legacy }) => (
 );
 
 Main.propTypes = {
-  legacy: React.PropTypes.bool.isRequired,
+  legacy: PropTypes.bool.isRequired,
 };
 
 Main.defaultProps = {

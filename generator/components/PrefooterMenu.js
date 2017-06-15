@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Item = ({ name, link }) => (
   <li className="PrefooterMenu__column-item">
@@ -7,8 +8,8 @@ const Item = ({ name, link }) => (
 );
 
 Item.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  link: React.PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
 };
 
 const Column = ({ name, link, children }) => (
@@ -21,9 +22,9 @@ const Column = ({ name, link, children }) => (
 );
 
 Column.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  link: React.PropTypes.string.isRequired,
-  children: React.PropTypes.node.isRequired,
+  name: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 const PrefooterMenu = () => (

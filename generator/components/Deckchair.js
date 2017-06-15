@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Deckchair = ({
   header,
@@ -28,13 +29,13 @@ const Deckchair = ({
 );
 
 Deckchair.propTypes = {
-  header: React.PropTypes.string.isRequired,
-  about: React.PropTypes.string.isRequired,
-  buttonTitle: React.PropTypes.string.isRequired,
-  buttonAction: React.PropTypes.string.isRequired,
-  buttonLink: React.PropTypes.string.isRequired,
-  chairKey: React.PropTypes.string.isRequired,
-  color: React.PropTypes.string.isRequired,
+  header: PropTypes.string.isRequired,
+  about: PropTypes.string.isRequired,
+  buttonTitle: PropTypes.string.isRequired,
+  buttonAction: PropTypes.string.isRequired,
+  buttonLink: PropTypes.string.isRequired,
+  chairKey: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
 };
 
 export default Deckchair;

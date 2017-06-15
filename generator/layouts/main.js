@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import UserBar from '../components/UserBar';
 import Header from '../components/Header';
 import MobileFooterTreats from '../components/MobileFooterTreats';
@@ -41,11 +42,11 @@ const mainLayout = ({ loggedIn, assets, legacy }) => (
 );
 
 mainLayout.propTypes = {
-  legacy: React.PropTypes.bool.isRequired,
-  loggedIn: React.PropTypes.bool.isRequired,
-  assets: React.PropTypes.shape({
-    main: React.PropTypes.shape({
-      js: React.PropTypes.string.isRequired,
+  legacy: PropTypes.bool.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
+  assets: PropTypes.shape({
+    main: PropTypes.shape({
+      js: PropTypes.string.isRequired,
     }),
   }).isRequired,
 };

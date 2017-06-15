@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MSLTag from './MSLTag';
 
 const mslLogout = MSLTag('LoginButton', {
@@ -57,7 +58,7 @@ const UserBar = ({ loggedIn }) => (
 );
 
 UserBar.propTypes = {
-  loggedIn: React.PropTypes.bool.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
 };
 
 export default UserBar;

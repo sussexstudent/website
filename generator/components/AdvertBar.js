@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MSLTag from './MSLTag';
 
@@ -14,8 +15,8 @@ const AdvertBar = ({ position, dark = false }) => (
 );
 
 AdvertBar.propTypes = {
-  position: React.PropTypes.string.isRequired,
-  dark: React.PropTypes.bool,
+  position: PropTypes.string.isRequired,
+  dark: PropTypes.bool,
 };
 
 export default AdvertBar;

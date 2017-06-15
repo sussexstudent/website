@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { headContent } from '../head';
 
 const HTML = ({ children, assets }) => (
@@ -11,8 +12,8 @@ const HTML = ({ children, assets }) => (
 );
 
 HTML.propTypes = {
-  children: React.PropTypes.node.isRequired,
-  assets: React.PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
+  assets: PropTypes.object.isRequired,
 };
 
 export default HTML;

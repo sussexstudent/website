@@ -1,5 +1,6 @@
 import React from 'react';
 import Peekable from '../Peekable';
+import Image from '../Image';
 /* eslint-disable react/no-danger */
 function StaffList({ value: { heading, body } }) {
   return (
@@ -10,9 +11,9 @@ function StaffList({ value: { heading, body } }) {
           <li className="StaffList__item">
             <div className="u-responsive-ratio u-responsive-ratio--square">
               {member.photo
-                ? <img
+                ? <Image
                     className="StaffList__image ResponsiveImage"
-                    src={member.photo.resourceUrl}
+                    src={member.photo.resource}
                     alt=""
                   />
                 : null}

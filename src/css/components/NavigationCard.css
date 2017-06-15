@@ -1,0 +1,29 @@
+.NavigationCard {
+  @mixin card standard-no-action;
+  
+  &__title {
+    padding: 0.3rem 1rem;
+    font-size: 1lh;
+  }
+  
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  &__anchor {
+    display: block;
+    padding: 0.3rem 1rem;
+    border-bottom: 1px solid var(--color__grey-summer);
+    font-family: var(--type__primary);
+    font-weight: 400;
+    text-decoration: none;
+    color: var(--color__grey-slate);
+  }
+  
+  &__item--active &__anchor {
+    background-color: var(--color__grey-summer);
+    color: var(--color__brand-blue);
+  }
+}

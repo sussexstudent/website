@@ -119,6 +119,10 @@ class ContentAPIComposer extends React.Component {
       return <Loader dark />;
     }
 
+    if (this.state.isError) {
+      return <h2>An error happened!</h2>;
+    }
+
     if (!has(this.state, 'data.meta.type')) {
       console.warn(
         `[contentAPI] response did not specific content type. Page ID: ${this.props.pageId}`

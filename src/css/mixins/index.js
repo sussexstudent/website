@@ -39,6 +39,16 @@ module.exports = {
           },
         };
       }
+      case 'standard-no-action': {
+        return {
+          '&': {
+            'background-color': '#ffffff',
+            'box-shadow': '0 1px 2px 0 rgba(0, 0, 0, 0.15);',
+            'border-radius': '2px',
+            overflow: 'hidden',
+          },
+        };
+      }
       case 'standard-force': {
         return {
           '&': {

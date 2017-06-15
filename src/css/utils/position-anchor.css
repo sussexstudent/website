@@ -1,6 +1,7 @@
 .u-position-anchor {
   position: relative;
-  top: -60px;
+  display: block;
+  top: -20px;
   width: 0;
   height: 0;
 }

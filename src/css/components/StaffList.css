@@ -19,12 +19,6 @@
     }
   }
 
-  @media(--large) {
-    & {
-      gg: columns(1/4 1/4 1/4 1/4);
-    }
-  }
-
   &__item {
     margin-bottom: 1lh;
     display: flex;

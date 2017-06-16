@@ -4,6 +4,7 @@ import has from 'lodash/has';
 import HydroLeaf from '@ussu/components/HydroLeaf';
 import Loader from '@ussu/components/Loader';
 import StaffList from '@ussu/components/StaffList';
+import StaffPage from '@ussu/components/StaffPage';
 import HeadingHero from '@ussu/components/HeadingHero';
 import SelectionGrid from '@ussu/components/SelectionGrid';
 import SelectionGridItem from '@ussu/components/SelectionGridItem';
@@ -55,7 +56,7 @@ const ComponentStreamPage = ({ data: { body }, data }) => (
 );
 
 const pageComponents = {
-  'content.StaffPage': ComponentStreamPage,
+  'content.StaffPage': StaffPage,
   'content.SelectionGridPage': ComponentStreamPage,
   'content.SectionContentPage': SectionContentPage,
 };

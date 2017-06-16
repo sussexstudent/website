@@ -31,7 +31,8 @@ class VisibleChildWatcher extends React.Component {
       'scroll',
       throttle(() => {
         const scores = Object.entries(this.childEls).map(([key, el]) => {
-          const score = Math.abs(el.getBoundingClientRect().top);
+          const distance = el.getBoundingClientRect().top;
+          const score = distance < 0 ? Math.abs(distance) * 0.8 : distance;
 
           return [key, score];
         });
@@ -46,10 +47,10 @@ class VisibleChildWatcher extends React.Component {
   render() {
     return (
       <div>
-        {React.Children.map(this.props.children, (item, key) => (
+        {React.Children.map(this.props.children, item => (
           <ChildWrapper
             handleRef={el => {
-              this.childEls[key] = el;
+              this.childEls[item.key] = el;
             }}
           >
             {item}

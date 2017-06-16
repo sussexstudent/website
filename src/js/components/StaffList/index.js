@@ -1,10 +1,11 @@
 import React from 'react';
-import Peekable from '../Peekable';
 import Image from '../Image';
+import slugify from '../../libs/slugify';
 /* eslint-disable react/no-danger */
 function StaffList({ value: { heading, body } }) {
   return (
     <div>
+      <span className="u-position-anchor" id={slugify(heading)} />
       <h2 className="Heading Heading--highlight">{heading}</h2>
       <ul className="StaffList">
         {body.map(member => (
@@ -21,13 +22,11 @@ function StaffList({ value: { heading, body } }) {
             <span className="StaffList__title">{member.name}</span>
             <span className="StaffList__secondary">{member.jobTitle}</span>
             <div className="StaffList__content">
-              <Peekable expandText="Read More">
-                <div
-                  className="Prose"
-                  style={{ fontSize: '0.9rem' }}
-                  dangerouslySetInnerHTML={{ __html: member.jobDescription }}
-                />
-              </Peekable>
+              <div
+                className="Prose"
+                style={{ fontSize: '0.9rem' }}
+                dangerouslySetInnerHTML={{ __html: member.jobDescription }}
+              />
               <ul className="StaffList__contact">
                 {member.email
                   ? <li>

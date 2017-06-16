@@ -18,6 +18,10 @@ export default function() {
       import(
         /* webpackChunkName: "HeadingHero" */ '@ussu/components/HeadingHero'
       ),
+    Falmer: () =>
+      import(
+        /* webpackChunkName: "Falmer" */ '@ussu/components/falmer/FalmerApplication'
+      ),
   };
 
   [...document.querySelectorAll('.Hydro')].forEach(el => {

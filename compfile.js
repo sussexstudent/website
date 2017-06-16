@@ -39,6 +39,7 @@ export default {
   pages: {
     '/': './layouts/homepage.js',
     '/support': './layouts/Support.js',
+    '/falmer': './layouts/Falmer.js',
     '/whats-on': './layouts/WhatsOn.js',
     '/get-involved': './layouts/GetInvolved.js',
     '/section-page': './layouts/SectionPage.js',

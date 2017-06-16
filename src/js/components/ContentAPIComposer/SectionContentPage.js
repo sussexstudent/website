@@ -51,7 +51,7 @@ class SectionContentPage extends React.Component {
 
   render() {
     const {
-      data: { title, sidebarBody, body, contentsInSidebar },
+      data: { title, sidebarBody, body, headingImage, contentsInSidebar },
     } = this.props;
     return (
       <div className="Layout Layout--sidebar-left">
@@ -67,7 +67,7 @@ class SectionContentPage extends React.Component {
           </aside>
         </div>
         <div>
-          <HeadingHero title={title} />
+          <HeadingHero title={title} imageURL={headingImage.resource} />
           <VisibleChildWatcher onChange={this.handleVisibleChildChange}>
             {body.map(block => (
               <ContentCard anchor={slugify(block.value.heading)}>

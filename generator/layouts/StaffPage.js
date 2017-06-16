@@ -1,10 +1,11 @@
 import React from 'react';
+import ContentAPIComposer from '@ussu/components/ContentAPIComposer';
 
 const StaffPage = () => (
   <div>
     <div className="Layout">
       <div>
-        <div className="js-module--contentAPI" data-page-id="3" />
+        <ContentAPIComposer pageId={6} />
       </div>
     </div>
   </div>

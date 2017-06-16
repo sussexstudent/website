@@ -22,6 +22,10 @@
     color: var(--color__grey-slate);
   }
   
+  &__anchor:first-child {
+    border-top: 1px solid var(--color__grey-summer);
+  }
+  
   &__item--active &__anchor {
     background-color: var(--color__grey-summer);
     color: var(--color__brand-blue);

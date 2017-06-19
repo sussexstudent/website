@@ -31,6 +31,14 @@
     margin-bottom: 1rem;
     list-style: none;
     justify-self: flex-end;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  &__contact-item {
+    background: var(--color__grey-spring);
+    padding: 0.2rem;
+    padding-left: 0.8rem;
   }
 
   &__image {

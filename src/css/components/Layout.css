@@ -1,21 +1,40 @@
 .Layout {
+  /* TODO: think about me */
+  margin-bottom: 1rem;
+
   &--sidebar-thin&--sidebar-right {
-    gg: columns(3/4 1/4);
+    @media (--medium) {
+      & {
+        gg: columns(3/4 1/4);
+      }
+    }
   }
 
   &--sidebar-thin&--sidebar-left {
-    gg: columns(1/4 3/4);
+    @media (--medium) {
+      & {
+        gg: columns(1/4 3/4);
+      }
+    }
   }
 
   &--sidebar-left {
-    gg: columns(1/3 2/3);
+    @media (--medium) {
+      & {
+        gg: columns(1/3 2/3);
+      }
+    }
   }
-  
+
   &--sidebar-right {
-    gg: columns(2/3 1/3);
+    @media (--medium) {
+      & {
+        gg: columns(2/3 1/3);
+      }
+    }
   }
-  
-  
+
+
   &--sidebar-right > div > aside, &--sidebar-left > div > aside {
     position: sticky;
     top: 20px;

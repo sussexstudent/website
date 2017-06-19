@@ -4,11 +4,11 @@
 
   font: 16px / 1.5 var(--type__secondary);
 
-  @media (--small) {
+  @media (--large) {
     font: 17px / 1.5 var(--type__secondary);
   }
 
-  @media (--medium) {
+  @media all(--extra-large) {
     font: 18px / 1.5 var(--type__secondary);
   }
 }

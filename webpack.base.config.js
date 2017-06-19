@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 
@@ -14,7 +15,7 @@ const env = {
   test: NODE_ENV === 'test',
   development: NODE_ENV === 'development' || typeof NODE_ENV === 'undefined',
 };
-env.build = (env.production || env.staging);
+env.build = env.production || env.staging;
 
 module.exports = {
   target: 'web',
@@ -34,13 +35,11 @@ module.exports = {
   },
 
   resolve: {
-    modules: [
-      'web_modules',
-      'node_modules',
-      './src/images',
-    ],
+    modules: ['web_modules', 'node_modules', './src/images'],
     alias: {
-      '@ussu/components': path.resolve(path.join(__dirname, 'src/js/components')),
+      '@ussu/components': path.resolve(
+        path.join(__dirname, 'src/js/components')
+      ),
     },
     extensions: ['.js', '.svg'],
   },
@@ -50,25 +49,32 @@ module.exports = {
   },
 
   plugins: [
-    //new BundleAnalyzerPlugin({ analyzerPort: 3999 }),
+    // new BundleAnalyzerPlugin({ analyzerPort: 3999 }),
     new webpack.DefinePlugin({
       'process.env': {
-        HYDROLEAF_MODE: JSON.stringify("RENDER_COMPONENT"),
+        HYDROLEAF_MODE: JSON.stringify('RENDER_COMPONENT'),
         NODE_ENV: JSON.stringify(NODE_ENV),
-        FALMER_ENDPOINT: JSON.stringify(env.production ? 'https://falmer.sussexstudent.com' : 'http://localhost:8000'),
+        FALMER_ENDPOINT: JSON.stringify(
+          env.production
+            ? 'https://falmer.sussexstudent.com'
+            : 'http://localhost:8000'
+        ),
       },
       __DEV__: env.development,
       __STAGING__: env.staging,
       __PRODUCTION__: env.production,
     }),
-    /*new LodashModuleReplacementPlugin({
+    /* new LodashModuleReplacementPlugin({
       collections: true,
       shorthands: true,
       paths: true,
       unicode: true,
     }),*/
     new webpack.NamedChunksPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', minChunks: Infinity }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: Infinity,
+    }),
     new DuplicatePackageCheckerPlugin(),
   ],
   module: {

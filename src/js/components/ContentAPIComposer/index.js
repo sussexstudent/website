@@ -95,7 +95,14 @@ class ContentAPIComposer extends React.Component {
         return;
       }
 
-      fetch(`${getFalmerEndpoint()}/content-api/v2/pages/${this.props.pageId}/`)
+      fetch(
+        `${getFalmerEndpoint()}/content-api/v2/pages/${this.props.pageId}/`,
+        {
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+          },
+        }
+      )
         .then(data => data.json())
         .then(json =>
           this.setState({ isLoaded: true, isLoading: false, data: json })

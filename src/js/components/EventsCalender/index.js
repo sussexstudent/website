@@ -177,7 +177,11 @@ class EventsContainer extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`${getFalmerEndpoint()}/events/`)
+    fetch(`${getFalmerEndpoint()}/events/`, {
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+      },
+    })
       .then(data => data.json())
       .then(data => this.setState({ isLoading: false, data }));
   }

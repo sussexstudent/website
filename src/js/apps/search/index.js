@@ -114,7 +114,11 @@ class SearchPage extends React.Component {
 
     const t = perf.recordTime('Search', 'fetchResults', { query });
     window
-      .fetch(`${getFalmerEndpoint()}/search/?q=${query}`)
+      .fetch(`${getFalmerEndpoint()}/search/?q=${query}`, {
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+        },
+      })
       .then(res => {
         t.done();
         return res.json();

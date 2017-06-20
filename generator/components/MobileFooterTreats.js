@@ -1,7 +1,7 @@
 import React from 'react';
 import Social from './Social';
 
-const MobileFooterTreats = () => (
+const MobileFooterTreats = () =>
   <div className="MobileFooterTreats">
     <div className="MobileFooterTreats__social">
       <Social />
@@ -18,7 +18,6 @@ const MobileFooterTreats = () => (
     <a className="MobileFooterTreats__to-top" href="#top">
       <span>Back to top</span>
     </a>
-  </div>
-);
+  </div>;
 
 export default MobileFooterTreats;

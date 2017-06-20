@@ -20,7 +20,7 @@ const authStyles = loggedIn => `
 .u-${loggedIn ? 'anon' : 'auth'}-hide {display: none}
 `;
 
-const mainLayout = ({ loggedIn, assets, legacy }) => (
+const mainLayout = ({ loggedIn, assets, legacy }) =>
   <body className="Body" id="top">
     <style>{authStyles(loggedIn)}</style>
     <div className="Site">
@@ -38,8 +38,7 @@ const mainLayout = ({ loggedIn, assets, legacy }) => (
     <script src={assets.vendor.js} />
     <script src={assets.main.js} />
     <script type="text/javascript" dangerouslySetInnerHTML={{ __html: ga }} />
-  </body>
-);
+  </body>;
 
 mainLayout.propTypes = {
   legacy: PropTypes.bool.isRequired,

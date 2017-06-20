@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FigureCollectionFigure = ({ imageURL, title, sub, link }) => (
+const FigureCollectionFigure = ({ imageURL, title, sub, link }) =>
   <li className="FigureCollection__item">
     <a href={link} className="FigureCollection__link">
       <img
@@ -12,8 +12,7 @@ const FigureCollectionFigure = ({ imageURL, title, sub, link }) => (
       <span className="FigureCollection__title">{title}</span>
       <span className="FigureCollection__secondary">{sub}</span>
     </a>
-  </li>
-);
+  </li>;
 
 FigureCollectionFigure.propTypes = {
   imageURL: PropTypes.string.isRequired,

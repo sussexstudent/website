@@ -32,7 +32,8 @@ class TweetList extends React.Component {
     const t = perf.recordTime(`TweetList: ${this.props.query}`, 'fetch');
 
     fetch(
-      `${TWITTER_CACHE_RESOURCE}?q=${this.props.query}&s=${this.props.signature}`
+      `${TWITTER_CACHE_RESOURCE}?q=${this.props.query}&s=${this.props
+        .signature}`
     )
       .then(response => {
         t.done();

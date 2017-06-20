@@ -3,11 +3,9 @@ import FigureCollection from '../components/FigureCollection';
 import FigureCollectionFigure from '../components/FigureCollectionFigure';
 import HomepageEventsList from '../components/HomepageEventsList';
 import TweetList from '@ussu/components/TweetList';
-import {
-  Hydro as HeadingHero,
-} from '../../src/js/components/HeadingHero/index';
+import { Hydro as HeadingHero } from '../../src/js/components/HeadingHero/index';
 
-const Homepage = () => (
+const Homepage = () =>
   <div>
     <div className="Trail">
       <div className="Trail__row  u-container-bleed-2">
@@ -85,7 +83,6 @@ const Homepage = () => (
         </FigureCollection>
       </div>
     </div>
-  </div>
-);
+  </div>;
 
 export default Homepage;

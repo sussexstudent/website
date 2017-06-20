@@ -4,7 +4,7 @@ import VoteHero from '../components/VoteHero';
 import FigureCollectionFigure from '../components/FigureCollectionFigure';
 import HomepageEventsList from '../components/HomepageEventsList';
 
-const Homepage = () => (
+const Homepage = () =>
   <div>
     <div className="Trail">
       <div className="Trail__row">
@@ -71,7 +71,6 @@ const Homepage = () => (
         </FigureCollection>
       </div>
     </div>
-  </div>
-);
+  </div>;
 
 export default Homepage;

@@ -9,7 +9,7 @@ const Deckchair = ({
   buttonLink,
   chairKey,
   color,
-}) => (
+}) =>
   <div className={`Deckchair Deckchair--color-${color}`} data-chair={chairKey}>
     {chairKey ? <div className="Deckchair__close" /> : null}
     <div className="Deckchair__info">
@@ -25,8 +25,7 @@ const Deckchair = ({
         {buttonTitle}
       </a>
     </div>
-  </div>
-);
+  </div>;
 
 Deckchair.propTypes = {
   header: PropTypes.string.isRequired,

@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FigureCollection = ({ children }) => (
+const FigureCollection = ({ children }) =>
   <ul className="FigureCollection">
     {children}
-  </ul>
-);
+  </ul>;
 
 FigureCollection.propTypes = {
   children: PropTypes.node.isRequired,

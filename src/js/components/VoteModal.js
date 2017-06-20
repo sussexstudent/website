@@ -54,7 +54,8 @@ function VoteModal() {
         <div>Be part of making change happen.</div>
         <div className="VoteModal__button">{svg}</div>
         <div>
-          Voting for the Union elections and referenda closes Fri 3rd March at 5pm.
+          Voting for the Union elections and referenda closes Fri 3rd March at
+          5pm.
         </div>
       </section>
     </a>

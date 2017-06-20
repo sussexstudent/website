@@ -8,7 +8,7 @@ function StaffList({ value: { heading, body } }) {
       <span className="u-position-anchor" id={slugify(heading)} />
       <h2 className="Heading Heading--highlight">{heading}</h2>
       <ul className="StaffList">
-        {body.map(member => (
+        {body.map(member =>
           <li className="StaffList__item">
             <div className="u-responsive-ratio u-responsive-ratio--square">
               {member.photo
@@ -51,7 +51,7 @@ function StaffList({ value: { heading, body } }) {
                 : null}
             </ul>
           </li>
-        ))}
+        )}
       </ul>
     </div>
   );

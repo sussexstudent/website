@@ -1,9 +1,7 @@
 import React from 'react';
 import HeadingHero from '../HeadingHero';
 import VisibleChildWatcher from '../VisibleChildWatcher';
-import ContentNavigation, {
-  generateTitlesFromStream,
-} from '../ContentNavigation';
+import ContentNavigation, { generateTitlesFromStream } from '../ContentNavigation';
 import ContentCard from '../../../../generator/components/ContentCard';
 import slugify from '../../libs/slugify';
 
@@ -41,19 +39,19 @@ class SectionContentPage extends React.Component {
         <div>
           <HeadingHero title={title} imageURL={headingImage.resource} />
           <VisibleChildWatcher onChange={this.handleVisibleChildChange}>
-            {body.map(block => (
+            {body.map(block =>
               <ContentCard anchor={slugify(block.value.heading)}>
                 <h2 className="Heading Heading--highlight">
                   {block.value.heading}
                 </h2>
-                {block.value.body.map(bodyItem => (
+                {block.value.body.map(bodyItem =>
                   <div
                     className="Prose"
                     dangerouslySetInnerHTML={{ __html: bodyItem.value }}
                   />
-                ))}
+                )}
               </ContentCard>
-            ))}
+            )}
           </VisibleChildWatcher>
         </div>
       </div>

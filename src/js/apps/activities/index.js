@@ -6,12 +6,11 @@ const activitiesParser = new ActivitiesParser(
   document.querySelector('.msl_organisation_list')
 );
 
-const ActivitiesContainer = () => (
+const ActivitiesContainer = () =>
   <ActivitiesApp
     organsiationMap={activitiesParser.getOrgMap()}
     organsiationList={activitiesParser.getAllOrgs()}
     allIds={activitiesParser.getAllOrgIds()}
-  />
-);
+  />;
 
 export default ActivitiesContainer;

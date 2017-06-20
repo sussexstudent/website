@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Social = () => (
+const Social = () =>
   <ul className="Social">
     <li>
       <a
@@ -35,7 +35,6 @@ const Social = () => (
         <span className="u-h">Snapchat</span>
       </a>
     </li>
-  </ul>
-);
+  </ul>;
 
 export default Social;

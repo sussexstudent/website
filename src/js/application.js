@@ -92,7 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
           const content = li.querySelector('.QuoteSlips__item-answer')
             .innerHTML;
           answerContainer.innerHTML = `
-          <h3 class="QuoteSlips__answer-question">${li.firstChild.textContent}</h3>
+          <h3 class="QuoteSlips__answer-question">${li.firstChild
+            .textContent}</h3>
           <div class="QuoteSlips__answer-content">${content}</div>
           `;
         });

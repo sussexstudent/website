@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BackBar from '@ussu/components/BackBar';
-import ContentAPIComposer
-  from '../../src/js/components/ContentAPIComposer/index';
+import ContentAPIComposer from '../../src/js/components/ContentAPIComposer/index';
 import EventsContainer from '../../src/js/components/EventsCalender/index';
 
 class WhatsOn extends React.Component {

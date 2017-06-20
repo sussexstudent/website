@@ -49,13 +49,12 @@ const anonymousList = (
   </ul>
 );
 
-const UserBar = ({ loggedIn }) => (
+const UserBar = ({ loggedIn }) =>
   <div className="UserBar">
     <div className="Container UserBar__container">
       {loggedIn ? loggedInList : anonymousList}
     </div>
-  </div>
-);
+  </div>;
 
 UserBar.propTypes = {
   loggedIn: PropTypes.bool.isRequired,

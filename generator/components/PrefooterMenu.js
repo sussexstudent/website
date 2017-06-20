@@ -1,25 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Item = ({ name, link }) => (
+const Item = ({ name, link }) =>
   <li className="PrefooterMenu__column-item">
     <a href={link}>{name}</a>
-  </li>
-);
+  </li>;
 
 Item.propTypes = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
 };
 
-const Column = ({ name, link, children }) => (
+const Column = ({ name, link, children }) =>
   <ul className="PrefooterMenu__column">
     <li className="PrefooterMenu__column-header">
       <a href={link}>{name}</a>
     </li>
     {children}
-  </ul>
-);
+  </ul>;
 
 Column.propTypes = {
   name: PropTypes.string.isRequired,
@@ -27,7 +25,7 @@ Column.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const PrefooterMenu = () => (
+const PrefooterMenu = () =>
   <div className="PrefooterMenu">
     <div className="Container PrefooterMenu__inner">
       <Column name="Get involved" link="/get-involved">
@@ -49,7 +47,6 @@ const PrefooterMenu = () => (
         <Item name="Complaints" link="/get-involved/cafe" />
       </Column>
     </div>
-  </div>
-);
+  </div>;
 
 export default PrefooterMenu;

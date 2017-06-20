@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const HeadingImage = ({ imageURL, title, description }) => (
+const HeadingImage = ({ imageURL, title, description }) =>
   <div
     className="HeadingImage"
     style={{
@@ -13,8 +13,7 @@ const HeadingImage = ({ imageURL, title, description }) => (
     {description
       ? <div><div className="HeadingImage__desc">{description}</div></div>
       : null}
-  </div>
-);
+  </div>;
 
 HeadingImage.propTypes = {
   imageURL: PropTypes.string.isRequired,

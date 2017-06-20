@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const AnodyneMenuItem = ({ name, link }) => (
+const AnodyneMenuItem = ({ name, link }) =>
   <li className="AnodyneMenu__item">
     <a className="AnodyneMenu__link" href={link}>{name}</a>
-  </li>
-);
+  </li>;
 
 AnodyneMenuItem.propTypes = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
 };
 
-const AnodyneMenu = () => (
+const AnodyneMenu = () =>
   <nav className="AnodyneMenu">
     <ul className="AnodyneMenu__list">
       <AnodyneMenuItem name="Get involved" link="/get-involved" />
@@ -20,7 +19,6 @@ const AnodyneMenu = () => (
       <AnodyneMenuItem name="About us" link="/about-us" />
       <AnodyneMenuItem name="Support" link="/support" />
     </ul>
-  </nav>
-);
+  </nav>;
 
 export default AnodyneMenu;

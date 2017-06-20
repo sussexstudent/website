@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SelectionGrid = ({ children }) => (
+const SelectionGrid = ({ children }) =>
   <ul className="SelectionGrid">
     {children}
-  </ul>
-);
+  </ul>;
 
 SelectionGrid.propTypes = {
   children: PropTypes.node.isRequired,

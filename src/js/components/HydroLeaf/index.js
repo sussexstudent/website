@@ -63,7 +63,9 @@ function HydroLeaf(contextToPropsMap = {}) {
             React.createElement(Component, serialProps)
           );
 
-          const dataAc = `window.HYDROSTATE_${hydroKey} = ${JSON.stringify(serialProps)};`;
+          const dataAc = `window.HYDROSTATE_${hydroKey} = ${JSON.stringify(
+            serialProps
+          )};`;
 
           return (
             <div className="HydroContainer">

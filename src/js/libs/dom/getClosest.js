@@ -2,8 +2,7 @@ function matchesPollyfill(s) {
   const matches = (this.document || this.ownerDocument).querySelectorAll(s);
   let i = matches.length;
   // eslint-disable-next-line
-  while (--i >= 0 && matches.item(i) !== this) {
-  }
+  while (--i >= 0 && matches.item(i) !== this) {}
   return i > -1;
 }
 

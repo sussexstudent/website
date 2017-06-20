@@ -1,10 +1,9 @@
 import React from 'react';
 import Falmer from '@ussu/components/falmer/FalmerApplication';
 
-const FalmerPage = () => (
+const FalmerPage = () =>
   <div>
     <Falmer />
-  </div>
-);
+  </div>;
 
 export default FalmerPage;

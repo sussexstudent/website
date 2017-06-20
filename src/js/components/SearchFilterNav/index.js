@@ -33,7 +33,7 @@ SearchFilterItem.propTypes = {
 function SearchFilterNav({ onSelect, value, options }) {
   return (
     <ul className="SearchFilterNav">
-      {options.map(option => (
+      {options.map(option =>
         <SearchFilterItem
           key={option.key}
           itemKey={option.key}
@@ -41,7 +41,7 @@ function SearchFilterNav({ onSelect, value, options }) {
           currentValue={value}
           onSelect={onSelect}
         />
-      ))}
+      )}
     </ul>
   );
 }

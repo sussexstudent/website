@@ -23,8 +23,10 @@ export const headContent = (assets, ...more) => `
 <meta http-equiv="X-UA-Compatible" content="IE=edge" >
 <link rel="dns-prefetch" href="//falmer.sussexstudent.com">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-${assets.manifest ? `<link href="${assets.productionFonts.css}" rel="stylesheet" />
-<link href="${assets.main.css}" rel="stylesheet" />` : ''}
+${assets.manifest
+  ? `<link href="${assets.productionFonts.css}" rel="stylesheet" />
+<link href="${assets.main.css}" rel="stylesheet" />`
+  : ''}
 ${branding}
 ${more.join('')}
 <MSL:JsonUserInfo />

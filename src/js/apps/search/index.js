@@ -238,9 +238,9 @@ class SearchPage extends React.Component {
                     'ResultsList--stale': isLoading,
                   })}
                 >
-                  {results[currentArea].map(item => (
+                  {results[currentArea].map(item =>
                     <SearchResult key={item} item={results.results[item]} />
-                  ))}
+                  )}
                 </ul>
               : null}
           </div>

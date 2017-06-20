@@ -1,7 +1,7 @@
 import React from 'react';
 import Social from './Social';
 
-const Footer = () => (
+const Footer = () =>
   <footer className="Footer">
     <div className="Footer__container Container">
       <div className="Footer__contact">
@@ -23,11 +23,13 @@ const Footer = () => (
 
         <p>
           <small>
-            University of Sussex Students’ Union - Company No. 07695765. Charity No. 1147242
+            University of Sussex Students’ Union - Company No. 07695765. Charity
+            No. 1147242
           </small>
           <br />
           <small>
-            University of Sussex Students’ Union Trading Ltd - Company No. 02146582
+            University of Sussex Students’ Union Trading Ltd - Company No.
+            02146582
           </small>
         </p>
 
@@ -48,7 +50,6 @@ const Footer = () => (
         </a>
       </div>
     </div>
-  </footer>
-);
+  </footer>;
 
 export default Footer;

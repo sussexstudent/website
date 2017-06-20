@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NewsBlock from './NewsBlock';
 
-const NewsList = ({ items }) => (
+const NewsList = ({ items }) =>
   <ul className="NewsGrid">
     {items.map(item => <NewsBlock item={item} key={item.id} />)}
-  </ul>
-);
+  </ul>;
 
 NewsList.propTypes = {
   items: PropTypes.arrayOf(

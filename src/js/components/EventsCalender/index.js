@@ -147,21 +147,21 @@ function EventsCalender({ data, isLoading }) {
   // chunk by day
   return (
     <div className="EventsCalender">
-      {uiEvents.map(({ sectionTitle, parts }) => (
+      {uiEvents.map(({ sectionTitle, parts }) =>
         <div className="EventsCalender__section">
           <h2 className="EventsCalender__section-title">{sectionTitle}</h2>
           <div className="EventsCalender__section-items">
-            {parts.map(part => (
+            {parts.map(part =>
               <div>
                 <h3 className="EventsCalender__item-date-kicker">
                   {getSmartDate(part)}
                 </h3>
                 <EventsCalenderItem part={part} />
               </div>
-            ))}
+            )}
           </div>
         </div>
-      ))}
+      )}
     </div>
   );
 }

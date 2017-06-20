@@ -6,7 +6,7 @@ import Logotype from '../../../img/logotype';
 
 const NewsBlock = ({
   item: { title, link, publishedDate, led, imageURL = null },
-}) => (
+}) =>
   <li className="NewsGrid__item NewsBlock">
     <a className="NewsBlock__link" href={link}>
       {imageURL &&
@@ -32,8 +32,7 @@ const NewsBlock = ({
         </div>
       </div>
     </a>
-  </li>
-);
+  </li>;
 
 NewsBlock.propTypes = {
   item: PropTypes.shape({

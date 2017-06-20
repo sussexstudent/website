@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ContentAPIComposer
-  from '../../src/js/components/ContentAPIComposer/index';
+import ContentAPIComposer from '../../src/js/components/ContentAPIComposer/index';
 
 class GetInvolved extends React.Component {
   render() {

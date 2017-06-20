@@ -104,7 +104,7 @@ class FitOverflowChildren extends React.Component {
         }}
         ref={this.handleContainerRef.bind(this)}
       >
-        {children.map((child, index) => (
+        {children.map((child, index) =>
           <div
             key={index}
             style={{
@@ -116,7 +116,7 @@ class FitOverflowChildren extends React.Component {
           >
             {child}
           </div>
-        ))}
+        )}
       </div>
     );
   }

@@ -11,6 +11,10 @@
     padding-bottom: 100%;
   }
 
+  &--43 {
+    padding-bottom: 75%;
+  }
+
   & > img {
     width: 100%;
     height: 100%;

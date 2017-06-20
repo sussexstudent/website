@@ -1,4 +1,6 @@
 import get from 'lodash/get';
+import set from 'lodash/set';
+import has from 'lodash/has';
 
 // TODO: this doesn't accept streams, might be confusing, initial called that due to
 // use in Wagtail StreamField handling
@@ -23,7 +25,13 @@ export default function flatStreamToLevels(itemToLevelFunc, flatItemArray) {
       if (path !== '') {
         path += '.';
       }
-      path += `${lastLevel[index] || 0}.children`;
+      path += `[${lastLevel[index] || 0}]`;
+
+      if (!has(result, path)) {
+        set(result, path, { _missingLevel: true, _children: [] });
+      }
+
+      path += '._children';
     }
 
     return get(result, path);
@@ -32,8 +40,7 @@ export default function flatStreamToLevels(itemToLevelFunc, flatItemArray) {
   flatItemArray.forEach(item => {
     const level = itemToLevelFunc(item);
     const resultLevel = getPathForLevel(level);
-
-    resultLevel.push({ value: item, children: [] });
+    resultLevel.push({ ...item, _children: [] });
     lastLevel[level] = resultLevel.length - 1;
 
     // remove any indexes below the current level as their parent is no longer above

@@ -92,6 +92,8 @@
     "webpack-manifest-plugin": "1.1.0"
   },
   "dependencies": {
+    "@storybook/addon-info": "^3.1.4",
+    "@storybook/react": "^3.1.3",
     "chunk-manifest-webpack-plugin": "^1.1.0",
     "classnames": "^2.2.5",
     "date-fns": "^1.28.5",
@@ -127,7 +129,8 @@
     "docs:prod": "export NODE_ENV=production && webpack --config ./docs/webpack.prod.config.js",
     "format": "prettier --single-quote --print-width 80 --trailing-comma es5 --write \"./{src,generator}/**/*.js\"",
     "test": "NODE_ENV=test && jest",
-    "testc": "NODE_ENV=test && jest --coverage"
+    "testc": "NODE_ENV=test && jest --coverage",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "jest": {
     "moduleNameMapper": {

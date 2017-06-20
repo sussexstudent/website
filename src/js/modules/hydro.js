@@ -22,6 +22,10 @@ export default function() {
       import(
         /* webpackChunkName: "Falmer" */ '@ussu/components/falmer/FalmerApplication'
       ),
+    FigureCollection: () =>
+      import(
+        /* webpackChunkName: "FigureCollection" */ '@ussu/components/FigureCollection'
+      ),
   };
 
   [...document.querySelectorAll('.Hydro')].forEach(el => {

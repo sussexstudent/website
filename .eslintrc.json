@@ -13,7 +13,8 @@
     "sourceType": "module"
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
   },
   "rules": {
     "prettier/prettier": ["error", { "singleQuote": true, "bracketSpacing": true, "trailingComma": "es5" }],

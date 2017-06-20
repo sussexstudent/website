@@ -23,11 +23,14 @@ config.devtool = 'inline-source-map';
 config.plugins = config.plugins.concat([
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
-
 ]);
 
 config.module.rules = config.module.rules.concat([
-  { test: /\.js?$/, loaders: ['babel-loader?cacheDirectory&forceEnv=bundle'], exclude: /node_modules/ },
+  {
+    test: /\.js?$/,
+    loaders: ['babel-loader?cacheDirectory&forceEnv=bundle'],
+    exclude: /node_modules/,
+  },
   {
     test: /\.css$/,
     // fallback: 'style-loader',
@@ -42,7 +45,6 @@ config.module.rules = config.module.rules.concat([
       'postcss-loader',
     ],
   },
-
 ]);
 
 module.exports = config;

@@ -120,7 +120,7 @@
     "unfetch": "^2.1.2"
   },
   "scripts": {
-    "prod": "export NODE_ENV=production && `yarn bin`/webpack --config webpack.prod.config.js",
+    "prod": "export NODE_ENV=production && `yarn bin`/webpack --config webpack.prod.config.js --display-optimization-bailout",
     "gen": "`yarn bin`/comp",
     "deploy": "uncommitted && yarn run prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run gen",
     "precommit": "`npm bin`/eslint",

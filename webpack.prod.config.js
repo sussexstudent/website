@@ -39,6 +39,7 @@ config.plugins = config.plugins.concat([
   ]),
   new webpack.optimize.UglifyJsPlugin({ output: { comments: false }, sourceMap: true }),
   new AssetsWebpackPlugin(),
+  new webpack.optimize.ModuleConcatenationPlugin(),
 ]);
 
 config.module.rules = config.module.rules.concat([

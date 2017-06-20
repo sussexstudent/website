@@ -10,10 +10,4 @@ FigureCollection.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-FigureCollection.ui = {
-  children: {
-    allowed: ['FigureCollectionFigure'],
-  },
-};
-
 export default FigureCollection;

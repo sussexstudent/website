@@ -1,19 +1,15 @@
 .BackBar {
-  margin-top: -0.75lh;
   margin-bottom: 0.5lh;
   font-weight: 700;
-
   
   & a {
+    text-decoration: none;
   }
-
   
   &__arrow {
     margin-right: 0.8rem;
     vertical-align: text-top;
   }
-
-  
   
   &--color {
     &-blue {
@@ -26,37 +22,31 @@
         fill: var(--color__brand-blue);
       }
     }
-
     
     &-green {
       & a {
         color: var(--color__brand-green);
       }
-
       
       & .BackBar__arrow-back {
         fill: var(--color__brand-green);
       }
     }
-
     
     &-red {
       & a {
         color: var(--color__brand-red);
       }
-
       
       & .BackBar__arrow-back {
         fill: var(--color__brand-red);
       }
     }
-
     
     &-slate {
       & a {
         color: var(--color__grey-slate);
       }
-
       
       & .BackBar__arrow-back {
         fill: var(--color__grey-slate);

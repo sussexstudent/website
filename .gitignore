@@ -18,3 +18,4 @@ npm-debug.log
 /.s3cfg
 /previous.json
 /compstate.json
+/storybook-public

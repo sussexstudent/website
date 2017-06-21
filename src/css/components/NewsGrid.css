@@ -24,6 +24,18 @@
   }
 }
 
+@media (--medium) {
+  .NewsGrid--full-width {
+    gg: columns(1/3 1/3 1/3)
+  }
+}
+
+@media (--large) {
+  .NewsGrid--full-width {
+    gg: columns(1/4 1/4 1/4 1/4);
+  }
+}
+
 .NewsViewMore {
   @mixin rounded;
 

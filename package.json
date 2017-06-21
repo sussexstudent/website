@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
+    "@storybook/addon-storyshots": "^3.1.4",
     "@ussu/comp": "^1.0.0",
     "assets-webpack-plugin": "^3.5.1",
     "autoprefixer": "^7.1.1",
@@ -130,7 +131,8 @@
     "format": "prettier --single-quote --print-width 80 --trailing-comma es5 --write \"./{src,generator}/**/*.js\"",
     "test": "NODE_ENV=test && jest",
     "testc": "NODE_ENV=test && jest --coverage",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "build-storybook": "build-storybook -c .storybook -o storybook-public"
   },
   "jest": {
     "moduleNameMapper": {

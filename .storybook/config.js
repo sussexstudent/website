@@ -3,9 +3,9 @@ import infoAddon from '@storybook/addon-info';
 import '../src/css/main.css';
 
 setAddon(infoAddon);
-function loadStories() {
-  require('../stories/index.js');
-  // You can require as many stories as you need.
-}
 
-configure(loadStories, module);
+const req = require.context('../src/js', true, /.stories.js$/);
+
+configure(() => {
+  req.keys().forEach(filename => req(filename));
+}, module);

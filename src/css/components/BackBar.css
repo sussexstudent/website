@@ -43,6 +43,13 @@
       }
     }
     
+    &-white {
+      & a {
+        color: #ffffff;
+      }
+      
+    }
+    
     &-slate {
       & a {
         color: var(--color__grey-slate);

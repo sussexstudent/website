@@ -134,6 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ).then(module => module.default());
   }
 
+  if (document.querySelector('.app__news_page')) {
+    import(
+      /* webpackChunkName: "newsPage.module" */ './modules/newsPage'
+    ).then(module => module.default());
+  }
+
   // Module: tweetList
   if (document.querySelector('.js-module--contentAPI')) {
     const t = perf.recordTime('import', 'contentAPI');

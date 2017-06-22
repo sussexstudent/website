@@ -1,5 +1,3 @@
-import React from 'react';
-
 import flatStreamToLevels from '../flatStreamToLevels';
 
 const levelMap = {

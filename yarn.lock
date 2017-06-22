@@ -149,9 +149,9 @@
   version "6.0.73"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.73.tgz#85dc4bb6f125377c75ddd2519a1eeb63f0a4ed70"
 
-"@ussu/comp@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@ussu/comp/-/comp-1.0.0.tgz#e79e6d2d161b341706b0ae8ca0acf3eb4b611bd2"
+"@ussu/comp@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@ussu/comp/-/comp-1.1.0.tgz#39eda75644b11828d28e2c6e062d40d597cc4fb5"
   dependencies:
     babel-register "^6.24.1"
     chalk "^1.1.3"

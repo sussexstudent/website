@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "@storybook/addon-storyshots": "^3.1.4",
-    "@ussu/comp": "^1.0.0",
+    "@ussu/comp": "^1.1.0",
     "assets-webpack-plugin": "^3.5.1",
     "autoprefixer": "^7.1.1",
     "babel-core": "^6.25.0",

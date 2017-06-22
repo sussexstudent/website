@@ -6,7 +6,7 @@
   transition: transform ease 300ms;
 
   &__content {
-    flex: 1;
+    flex: 1 1 auto;
   }
 }
 

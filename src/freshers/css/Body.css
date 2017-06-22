@@ -1,0 +1,25 @@
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: sans-serif;
+  transition: transform ease 300ms;
+  
+  &__content {
+    flex: 1;
+  }
+}
+
+.Body {
+  background-color: var(--freshers__coral_pink);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.html--locked {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}

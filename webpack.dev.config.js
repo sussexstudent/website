@@ -10,6 +10,7 @@ config.devServer = {
 
 config.entry.vendor.push('webpack-hot-middleware/client');
 config.entry.main.push('webpack-hot-middleware/client');
+config.entry.freshers.push('webpack-hot-middleware/client');
 
 config.output = {
   path: path.resolve('./build'),

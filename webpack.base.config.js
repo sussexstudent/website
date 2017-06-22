@@ -23,6 +23,7 @@ module.exports = {
   entry: {
     vendor: ['react', 'react-dom', 'unfetch/polyfill', 'raven-js', 'mitt'],
     main: ['./src/entry.js'],
+    freshers: ['./src/freshers/entry.js'],
     devFonts: './src/env-dev.js',
     productionFonts: './src/env-production.js',
   },

@@ -12,7 +12,6 @@ const extractCSS = new ExtractTextPlugin({
   allChunks: true,
 });
 
-
 config.bail = true;
 config.profile = false;
 config.devtool = 'source-map';
@@ -29,21 +28,31 @@ config.plugins = config.plugins.concat([
     minimize: true,
   }),
   extractCSS,
-  new webpack.optimize.CommonsChunkPlugin({ name: 'common.js', async: false, children: true, minChunks: 2 }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'common.js',
+    async: false,
+    children: true,
+    minChunks: 2,
+  }),
   new ChunkManifestPlugin({
     filename: 'manifest.json',
     manifestVariable: 'chunkManifest',
   }),
-  new CopyWebpackPlugin([
-    { from: './src/img/favicons', to: './branding' },
-  ]),
-  new webpack.optimize.UglifyJsPlugin({ output: { comments: false }, sourceMap: true }),
+  new CopyWebpackPlugin([{ from: './src/img/favicons', to: './branding' }]),
+  new webpack.optimize.UglifyJsPlugin({
+    output: { comments: false },
+    sourceMap: true,
+  }),
   new AssetsWebpackPlugin(),
   new webpack.optimize.ModuleConcatenationPlugin(),
 ]);
 
 config.module.rules = config.module.rules.concat([
-  { test: /\.js?$/, loaders: ['babel-loader?forceEnv=bundle'], exclude: /node_modules/ },
+  {
+    test: /\.js?$/,
+    loaders: ['babel-loader?forceEnv=bundle'],
+    exclude: /node_modules/,
+  },
   {
     test: /\.css$/,
     loader: extractCSS.extract({

@@ -1,5 +1,7 @@
 # sussexstudent.com
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/sussexstudent/website.svg)](https://greenkeeper.io/)
+
 The University of Sussex Students' Union website frontend.
 
 A set of UI components and tools used for building and generating pages.

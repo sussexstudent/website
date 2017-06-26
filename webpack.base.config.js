@@ -21,7 +21,7 @@ module.exports = {
   target: 'web',
 
   entry: {
-    vendor: ['react', 'react-dom', 'unfetch/polyfill', 'raven-js', 'mitt'],
+    vendor: ['react', 'react-dom', 'react-imgix',  'unfetch/polyfill', 'raven-js', 'mitt'],
     main: ['./src/entry.js'],
     freshers: ['./src/freshers/entry.js'],
     devFonts: './src/env-dev.js',

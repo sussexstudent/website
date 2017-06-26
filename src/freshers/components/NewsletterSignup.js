@@ -207,6 +207,7 @@ class NewsletterSignup extends React.Component {
                   {Object.keys(OPTIONS_MERGE.LEVEL).map(key =>
                     <li className="NewsletterSignup__options-item">
                       <button
+                        type="button"
                         className="NewsletterSignup__options-button"
                         onClick={this.handleLevel.bind(this, key)}
                       >
@@ -224,6 +225,7 @@ class NewsletterSignup extends React.Component {
                   {Object.keys(OPTIONS_MERGE.FEE).map(key =>
                     <li className="NewsletterSignup__options-item">
                       <button
+                        type="button"
                         className="NewsletterSignup__options-button"
                         onClick={this.handleFee.bind(this, key)}
                       >

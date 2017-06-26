@@ -10,17 +10,23 @@ function StaffList({ value: { heading, body } }) {
       <ul className="StaffList">
         {body.map(member =>
           <li className="StaffList__item">
-            <div className="u-responsive-ratio u-responsive-ratio--square">
-              {member.photo
-                ? <Image
-                    className="StaffList__image ResponsiveImage"
-                    src={member.photo.resource}
-                    alt=""
-                  />
-                : null}
+            <div className="StaffList__imagecreds">
+              <div className="StaffList__image">
+                <div className="u-responsive-ratio u-responsive-ratio--square">
+                  {member.photo
+                    ? <Image
+                        className="ResponsiveImage"
+                        src={member.photo.resource}
+                        alt=""
+                      />
+                    : null}
+                </div>
+              </div>
+              <div className="StaffList__creds">
+                <span className="StaffList__title">{member.name}</span>
+                <span className="StaffList__secondary">{member.jobTitle}</span>
+              </div>
             </div>
-            <span className="StaffList__title">{member.name}</span>
-            <span className="StaffList__secondary">{member.jobTitle}</span>
             <div className="StaffList__content">
               <div
                 className="Prose"

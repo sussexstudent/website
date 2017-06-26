@@ -4,14 +4,14 @@ import StaffList from '@ussu/components/StaffList';
 import slugify from '../../libs/slugify';
 import flatStreamToLevels from '../../libs/flatStreamToLevels';
 import VisibleChildWatcher from '../VisibleChildWatcher/index';
+import ContentCard from '../../../../generator/components/ContentCard';
 
 const components = {
-  heading: ({ value }) => (
+  heading: ({ value }) =>
     <h1>
       <span className="u-position-anchor" id={slugify(value)} />
       {value}
-    </h1>
-  ),
+    </h1>,
   staff_list: StaffList,
 };
 
@@ -78,6 +78,7 @@ class StaffPage extends React.Component {
             <ContentNavigation
               items={generateTitlesFromStream(levels)}
               activeKey={this.state.visibleKey}
+              onlyShowSubMenuWhenChildActive
             />
           </aside>
         </div>
@@ -85,14 +86,27 @@ class StaffPage extends React.Component {
           <VisibleChildWatcher
             onChange={visibleKey => this.setState({ visibleKey })}
           >
-            {body.map(component =>
-              getComponent(
-                component,
-                data,
-                component.type === 'heading'
-                  ? slugify(component.value)
-                  : slugify(component.value.heading)
-              )
+            {levels.map(({ value, children }) =>
+              <ContentCard>
+                {getComponent(
+                  value,
+                  data,
+                  value.type === 'heading'
+                    ? slugify(value.value)
+                    : slugify(value.value.heading)
+                )}
+                <VisibleChildWatcher
+                  onChange={visibleSubKey => this.setState({ visibleSubKey })}
+                >
+                  {children.map(({ value: childValue }) =>
+                    getComponent(
+                      childValue,
+                      data,
+                      slugify(childValue.value.heading)
+                    )
+                  )}
+                </VisibleChildWatcher>
+              </ContentCard>
             )}
           </VisibleChildWatcher>
         </div>

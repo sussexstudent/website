@@ -1,6 +1,7 @@
 .StaffList {
   font-family: var(--type__primary);
   padding: 0;
+  padding-top: 1rem;
   margin: 0;
   list-style: none;
   gg: columns(1/1);
@@ -42,10 +43,27 @@
   }
 
   &__image {
-    width: 100%;
-    display: block;
+    width: 40%;
+    margin-right: 0.8rem;
+    
+    @media (--medium) {
+      width: 100%;
+    }
+  }
+  
+  &__creds {
+    flex: auto;
+    
+    @media (--medium) {
+      width: 100%;
+    }
   }
 
+  &__imagecreds {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  
   &__title {
     background: var(--color__brand-yellow);
     display: block;

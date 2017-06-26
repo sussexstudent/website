@@ -30,7 +30,10 @@ class VisibleChildWatcher extends React.Component {
     window.addEventListener(
       'scroll',
       throttle(() => {
+        // const viewportHeight = window.innerHeight;
         const scores = Object.entries(this.childEls).map(([key, el]) => {
+          // const rect = el.getBoundingClientRect();
+          // console.log({ taken: viewportHeight - rect.top });
           const distance = el.getBoundingClientRect().top;
           const score = distance < 0 ? Math.abs(distance) * 0.8 : distance;
 

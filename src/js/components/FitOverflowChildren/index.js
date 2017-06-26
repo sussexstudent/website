@@ -73,7 +73,7 @@ class FitOverflowChildren extends React.Component {
     } else {
       const count = this.getItems();
       const needsHeight = count < this.props.minItems;
-      console.log({ count, minItems: this.props.minItems });
+
       this.setState({
         visibleToIndex: needsHeight ? this.props.minItems : count,
         needsHeight,

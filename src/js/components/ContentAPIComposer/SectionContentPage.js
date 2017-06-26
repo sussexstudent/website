@@ -5,6 +5,7 @@ import ContentNavigation, { generateTitlesFromStream } from '../ContentNavigatio
 import ContentCard from '../../../../generator/components/ContentCard';
 import slugify from '../../libs/slugify';
 
+/* eslint-disable react/no-danger */
 class SectionContentPage extends React.Component {
   constructor(props) {
     super(props);
@@ -58,5 +59,6 @@ class SectionContentPage extends React.Component {
     );
   }
 }
+/* eslint-enable react/no-danger */
 
 export default SectionContentPage;

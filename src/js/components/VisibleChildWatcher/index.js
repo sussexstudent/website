@@ -47,7 +47,7 @@ class VisibleChildWatcher extends React.Component {
   render() {
     return (
       <div>
-        {React.Children.map(this.props.children, item => (
+        {React.Children.map(this.props.children, item =>
           <ChildWrapper
             handleRef={el => {
               this.childEls[item.key] = el;
@@ -55,7 +55,7 @@ class VisibleChildWatcher extends React.Component {
           >
             {item}
           </ChildWrapper>
-        ))}
+        )}
       </div>
     );
   }

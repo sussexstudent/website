@@ -532,7 +532,7 @@ exports[`Storyshots NewsBlock with images 1`] = `
         className="NewsBlock__image"
       >
         <div
-          className="u-responsive-ratio u-responsive-ratio--wide"
+          className="u-responsive-ratio u-responsive-ratio--43"
         >
           <img
             alt=""
@@ -587,7 +587,7 @@ exports[`Storyshots NewsBlock without image 1`] = `
         className="NewsBlock__image"
       >
         <div
-          className="u-responsive-ratio u-responsive-ratio--wide"
+          className="u-responsive-ratio u-responsive-ratio--43"
         >
           <div
             className="NewsBlock__image--default"

@@ -9,15 +9,17 @@ const NewsBlock = ({
 }) =>
   <li className="NewsGrid__item NewsBlock">
     <a className="NewsBlock__link" href={link}>
-      {imageURL &&
-        <div
-          className="NewsBlock__image"
-          style={{ backgroundImage: `url(${imageURL})` }}
-        />}
-      {!imageURL &&
-        <div className="NewsBlock__image NewsBlock__image--default">
-          <Logotype />
-        </div>}
+
+      <div className="NewsBlock__image">
+        <div className="u-responsive-ratio u-responsive-ratio--43">
+          {imageURL
+            ? <img src={imageURL} alt="" />
+            : <div className="NewsBlock__image--default">
+                <Logotype />
+              </div>}
+        </div>
+      </div>
+
       <div className="NewsBlock__content">
         <div className="NewsBlock__title-link">
           <h2 className="NewsBlock__title">{title}</h2>

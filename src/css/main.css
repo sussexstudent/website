@@ -2,7 +2,6 @@
 @import './core/typography.css';
 @import './core/layers.css';
 @import './core/colors.css';
-@import './core/utils.css';
 
 /* msl */
 @import './msl/index.css';
@@ -17,6 +16,7 @@
 @import './utils/responsive-ratio.css';
 @import './utils/faux-link.css';
 @import './utils/position-anchor.css';
+@import './utils/hide.css';
 
 /* layouts */
 @import './base.css';

@@ -3,7 +3,6 @@
 @import '../../css/core/layers.css';
 @import '../../css/core/colors.css';
 @import './colors.css';
-@import '../../css/core/utils.css';
 
 /* general */
 @import '../../css/components/Header.css';

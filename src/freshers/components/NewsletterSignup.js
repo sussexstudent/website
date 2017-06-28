@@ -176,6 +176,7 @@ class NewsletterSignup extends React.Component {
                   onChange={this.handleEmailAddress}
                   onFocus={() =>
                     this.setState({ currentState: 'INITIAL_FOCUS' })}
+                  required
                 />
                 <button className="NewsletterSignup__button" type="submit">
                   Subscribe
@@ -194,6 +195,7 @@ class NewsletterSignup extends React.Component {
                   placeholder="Your Name"
                   value={data.name}
                   onChange={this.handleName}
+                  required
                 />
                 <button className="NewsletterSignup__button" type="submit">
                   Next

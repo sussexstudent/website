@@ -258,7 +258,9 @@ exports[`Storyshots EventsCalender standard event card 1`] = `
         <span>
            / 
         </span>
-        Fulton 104
+        <span>
+          Fulton 104
+        </span>
       </div>
     </div>
   </div>

@@ -55,5 +55,5 @@ export default {
     '/environment': './layouts/environment/environment.js',
     // '/staff': './layouts/StaffPage',
   },
-  assets
+  assets,
 };

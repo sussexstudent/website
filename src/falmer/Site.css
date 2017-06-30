@@ -1,0 +1,6 @@
+.FalmerSite {
+  background: var(--color__grey-bg);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

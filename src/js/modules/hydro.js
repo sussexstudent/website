@@ -18,10 +18,6 @@ export default function() {
       import(
         /* webpackChunkName: "HeadingHero" */ '@ussu/components/HeadingHero'
       ),
-    Falmer: () =>
-      import(
-        /* webpackChunkName: "Falmer" */ '@ussu/components/falmer/FalmerApplication'
-      ),
     FigureCollection: () =>
       import(
         /* webpackChunkName: "FigureCollection" */ '@ussu/components/FigureCollection'

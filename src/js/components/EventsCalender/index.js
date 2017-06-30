@@ -121,25 +121,30 @@ function getSmartDate(part) {
     ) {
       return `until ${formatDate(part.date, 'dddd')}`;
     }
+
+    if (part.type === EVENT_PART.SPAN_START) {
+      return `starts ${formatDate(part.date, 'dddd')}`;
+    }
+
     return formatDate(part.date, 'dddd');
   }
 
   return formatDate(part.date, 'ddd Do');
 }
 
-function EventsCalender({ data, isLoading }) {
+function EventsCalender({ eventsList, isLoading }) {
   if (isLoading) {
     return <Loader dark />;
   }
 
-  data.events.forEach(event => {
+  eventsList.forEach(event => {
     console.log(event.startDate, new Date(event.startDate));
   });
 
-  const events = data.events.map(event => ({
+  const events = eventsList.map(event => ({
     ...event,
-    startDate: new Date(event.startDate),
-    endDate: new Date(event.endDate),
+    startDate: new Date(event.startTime),
+    endDate: new Date(event.endTime),
   }));
   // let previousDay = null;
   const eventParts = splitEventsInToParts(events);
@@ -177,19 +182,42 @@ class EventsContainer extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`${getFalmerEndpoint()}/events/`, {
+    fetch(`${getFalmerEndpoint()}/graphql`, {
+      method: 'POST',
       headers: {
         Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        query: `
+query EventsCalender {
+  allEvents {
+    title
+    startTime
+    endTime
+    locationDisplay
+    kicker
+    venue {
+      name
+      websiteLink
+    }
+  }
+}
+       `,
+      }),
     })
       .then(data => data.json())
-      .then(data => this.setState({ isLoading: false, data }));
+      .then(data =>
+        this.setState({ isLoading: false, data: data.data.allEvents })
+      );
   }
 
   render() {
     const { isLoading, data } = this.state;
 
-    return <EventsCalender {...this.props} isLoading={isLoading} data={data} />;
+    return (
+      <EventsCalender {...this.props} isLoading={isLoading} eventsList={data} />
+    );
   }
 }
 

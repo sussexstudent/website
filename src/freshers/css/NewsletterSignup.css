@@ -19,11 +19,17 @@
     font-size: 1.6rem;
     padding: 0.4rem;
     border: 0;
-    flex: 1 0 auto;
+    flex: 1 1 auto;
+    border-radius: 0;
   }
 
   &__form {
     display: flex;
+    flex-direction: column;
+
+    @media (--medium) {
+      flex-direction: row;
+    }
   }
 
   &__button {
@@ -35,6 +41,11 @@
     font-family: var(--type__primary);
     font-weight: 600;
     cursor: pointer;
+    padding: 0.6rem;
+
+    @media (--medium) {
+      padding: 0.2rem;
+    }
   }
 
   &__options {

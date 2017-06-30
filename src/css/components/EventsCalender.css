@@ -1,21 +1,21 @@
 .EventsCalender {
   border-left: 3px solid var(--color__brand-green);
   padding-left: 1lh;
-  
+
   @media (--medium) {
     margin-left: 10px;
   }
-  
+
   &__section {
     margin-bottom: 1lh;
   }
-  
+
   &__section-title {
     color: var(--color__brand-blue);
     font-size: 1.3rem;
     position: relative;
     top: -5px;
-    
+
     &::before {
       content: '';
       display: inline-block;
@@ -27,12 +27,12 @@
       background-color: var(--color__brand-blue);
     }
   }
-  
+
   &__section-items {
     display: flex;
     flex-wrap: wrap;
   }
-  
+
   &__item {
     @mixin card standard;
 
@@ -43,16 +43,23 @@
     width: 320px;
     margin-right: 1.5lh;
   }
-  
+
   &__item-container {
     padding: 0.5rem;
   }
-  
+
+  &__item-kicker {
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    font-weight: 600;
+    font-family: var(--type__secondary);
+  }
+
   &__item-title {
     font-size: 1.15rem;
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
   }
-  
+
   &__item-date-kicker {
     font-size: 1rem;
     font-weight: 500;
@@ -60,11 +67,11 @@
     font-family: var(--type__secondary);
   }
 
-  
+
   &__item-description {
     font-size: 0.8rem;
   }
-  
+
   &__item-meta {
     font-family: var(--type__secondary);
     color: var(--color__grey-slate);
@@ -72,7 +79,7 @@
     font-weight: 500;
     padding-top: 1rem;
   }
-  
+
   &__item-image {
   }
 }

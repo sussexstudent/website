@@ -201,6 +201,9 @@ query EventsCalender {
       name
       websiteLink
     }
+    featuredImage {
+      resource
+    }
   }
 }
        `,

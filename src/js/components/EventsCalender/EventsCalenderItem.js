@@ -26,9 +26,9 @@ function EventsCalenderItem({ part }) {
   return (
     <div className="EventsCalender__item">
       <a className="u-faux-link" href={event.link} />
-      {has(part, 'event.falmer_event.featured_image.resource')
+      {has(part, 'event.featuredImage.resource')
         ? <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
-            <Image src={event.falmer_event.featured_image.resource} />
+            <Image src={event.featuredImage.resource} />
           </div>
         : null}
       <div className="EventsCalender__item-container">

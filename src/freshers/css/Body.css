@@ -4,7 +4,7 @@
   flex-direction: column;
   font-family: sans-serif;
   transition: transform ease 300ms;
-  
+
   &__content {
     flex: 1;
   }

@@ -4,7 +4,8 @@ import HeroSvg from './HeroSVG';
 
 class FrontpageHero extends React.Component {
   componentDidMount() {
-    const items = [...document.querySelectorAll('svg > g > g, circle')];
+    const heroSvg = document.querySelector('.HeroSVG');
+    const items = [...heroSvg.querySelectorAll('svg > g > g, circle')];
     items.map(g => (g.style.opacity = 0));
 
     setTimeout(() => {
@@ -15,23 +16,25 @@ class FrontpageHero extends React.Component {
 
     function createMagneticEffect() {
       const FORCE_RADIUS = 250;
-      const TILT_BOUND = 400;
-      const TILT_DEG = 4;
+      /* const TILT_BOUND = 400;
+      const TILT_DEG = 4; */
       document.addEventListener('DOMContentLoaded', () => {
         /*
-        See below - logo tilt.*/
+        See below - logo tilt.
         const freshersLogoEl = document.querySelector('.FreshersLogo');
         const freshersBounds = freshersLogoEl.getBoundingClientRect();
         const freshersCenter = {
           x: freshersBounds.left + window.scrollX + freshersBounds.width / 2,
           y: freshersBounds.top + window.scrollY + freshersBounds.height / 2,
         };
-
+         */
         const parts = items.map(el => {
           const bounds = el.getBoundingClientRect();
           return {
             originalX: bounds.left + window.scrollX,
             originalY: bounds.top + window.scrollY,
+            currentX: bounds.left + window.scrollX,
+            currentY: bounds.top + window.scrollY,
             rotate: el.getAttribute('transform'),
             el,
           };
@@ -59,14 +62,18 @@ class FrontpageHero extends React.Component {
               const repel = (FORCE_RADIUS - distance) * 0.4;
 
               if (distance < FORCE_RADIUS) {
-                transX = Math.sin(angle) * repel;
-                transY = Math.cos(angle) * repel;
+                transX = Math.round(Math.sin(angle) * repel);
+                transY = Math.round(Math.cos(angle) * repel);
               }
-              // console.log(`translate(${transX}px, ${transY}px) ${item.rotate}`);
-              item.el.style.transform = `translate(${transX}px, ${transY}px)`;
+
+              if (transX !== item.currentState || transY !== item.currentY) {
+                item.el.style.transform = `translate(${transX}px, ${transY}px)`;
+                item.currentX = transX;
+                item.currentY = transY;
+              }
             });
 
-            // Logo Tilt - tad broken; should move out of svg - awaiting v2
+            /* // Logo Tilt - tad broken; should move out of svg - awaiting v2
             const fromX = freshersCenter.x - currentForcePoint.x;
             const fromY = freshersCenter.y - currentForcePoint.y;
 
@@ -79,6 +86,7 @@ class FrontpageHero extends React.Component {
 
             freshersLogoEl.style.transform = `rotateX(${degY *
               TILT_DEG}deg) rotateY(${degX * TILT_DEG}deg)`;
+              */
           }
 
           requestAnimationFrame(animate);
@@ -107,7 +115,14 @@ class FrontpageHero extends React.Component {
 
   render() {
     return (
-      <HeroSvg style={{ width: '100%', height: 'auto', maxHeight: '90vh' }} />
+      <HeroSvg
+        className="HeroSVG"
+        style={{
+          width: '100%',
+          height: 'auto',
+          maxHeight: '90vh',
+        }}
+      />
     );
   }
 }

@@ -95,8 +95,12 @@ query StudentGroups {
     id
     name
     mslGroup {
-      mslDescription
-      mslImageUrl
+      description
+      link
+      logoUrl
+      logo {
+        resource
+      }
     }
   }
 }

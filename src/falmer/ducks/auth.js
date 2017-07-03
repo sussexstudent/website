@@ -16,19 +16,33 @@ function saveToken(token) {
   localStorage.setItem('token', token);
 }
 
-function api(method, path) {
+function apiQuery(query, variables = {}) {
   const token = localStorage.getItem('token');
-  return fetch(path, {
+  return fetch('/graphql', {
+    method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
+    body: JSON.stringify({
+      query,
+      variables,
+    }),
   }).then(res => res.json());
 }
 
 function apiGetClientData() {
-  return api('GET', '/auth/me/');
+  return apiQuery(`
+    query {
+      viewer {
+        name
+        identifier
+        isStaff
+        hasCmsAccess
+      }
+    }
+  `);
 }
 
 // Actions
@@ -78,7 +92,7 @@ function* getClientData() {
     yield put({
       type: CLIENT_DATA_SUCCESS,
       payload: {
-        user: res,
+        user: res.data.viewer,
       },
     });
   } catch (e) {

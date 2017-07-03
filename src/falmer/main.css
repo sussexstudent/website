@@ -18,7 +18,10 @@
 /* layouts */
 @import '../css/base.css';
 @import './Site.css';
+@import './FalmerViewContainer.css';
 @import '../css/components/Layout.css';
 
 /* components */
-@import '../css/components/FalmerHeader.css'
+@import '../css/components/Button.css';
+@import '../css/components/Heading.css';
+@import '../css/components/FalmerHeader.css';

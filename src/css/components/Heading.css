@@ -1,4 +1,6 @@
 .Heading {
+  margin-top: 0;
+
   &--highlight {
     box-decoration-break: clone;
     padding: 0 0.2em;

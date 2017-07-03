@@ -9,13 +9,7 @@ function FalmerHeader({ user }) {
       <nav className="FalmerHeader__nav">
         <ul className="FalmerHeader__nav-list">
           <li className="FalmerHeader__nav-item">
-            <Link to="/content">Content</Link>
-          </li>
-          <li className="FalmerHeader__nav-item">
-            <Link to="/events">Images</Link>
-          </li>
-          <li className="FalmerHeader__nav-item">
-            <Link to="/events">Events</Link>
+            <Link to="/">Dashboard</Link>
           </li>
         </ul>
       </nav>
@@ -26,6 +20,18 @@ function FalmerHeader({ user }) {
     </header>
   );
 }
+
+/*
+ <li className="FalmerHeader__nav-item">
+ <Link to="/content">Content</Link>
+ </li>
+ <li className="FalmerHeader__nav-item">
+ <Link to="/events">Images</Link>
+ </li>
+ <li className="FalmerHeader__nav-item">
+ <Link to="/events">Events</Link>
+ </li>
+*/
 
 export default connect(state => ({
   user: state.auth.user,

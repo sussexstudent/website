@@ -11,7 +11,7 @@
   display: flex;
 
   &__logotype {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin: 0;
   }
 
@@ -25,10 +25,17 @@
     list-style: none;
     display: flex;
     width: 100%;
+    font-size: 1.1rem;
   }
 
   &__nav-item {
     padding-left: 1rem;
     padding-right: 1rem;
+
+    & > a {
+      text-decoration: none;
+      color: var(--color__grey-worst-day-of-winter);
+      font-weight: 500;
+    }
   }
 }

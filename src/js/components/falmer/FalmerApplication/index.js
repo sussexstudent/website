@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
+import { Switch, Route } from 'react-router';
 import { requestAuthToken } from '@ussu/falmer/ducks/auth';
 import FalmerHeader from '../FalmerHeader';
+import FalmerDashboard from '../FalmerDashboard';
 import Loader from '../../Loader';
 
 class FalmerApplication extends React.Component {
@@ -18,7 +21,13 @@ class FalmerApplication extends React.Component {
 
     return (
       <section>
+        <Helmet titleTemplate="%s | Falmer" />
         <FalmerHeader />
+        <main className="FalmerViewContainer">
+          <Switch>
+            <Route path="/" exact component={FalmerDashboard} />
+          </Switch>
+        </main>
       </section>
     );
   }

@@ -4,7 +4,7 @@ const { promisify } = require('util');
 
 const readFileAsync = promisify(fs.readFile);
 
-if (process.env.FALMER_DEPLOY_SECRET === undefined) {
+if (process.env.FALMER_TOKEN === undefined) {
   console.error('Deploy key not set!');
   process.exit(1);
 }
@@ -12,8 +12,10 @@ if (process.env.FALMER_DEPLOY_SECRET === undefined) {
 readFileAsync('./dist-falmer/index.html', {
   encoding: 'utf-8',
 })
-  .then(content =>
-    fetch('https://falmer.sussexstudent.com/frontend/', {
+  .then(content => {
+    console.log(content);
+
+    return fetch('https://falmer.sussexstudent.com/frontend/', {
       method: 'POST',
       headers: {
         Authorization: `Token ${process.env.FALMER_TOKEN}`,
@@ -23,8 +25,8 @@ readFileAsync('./dist-falmer/index.html', {
       body: JSON.stringify({
         contents: content,
       }),
-    })
-  )
+    });
+  })
   .then(res => {
     if (res.status === 200) {
       console.log('Deployed!');

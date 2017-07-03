@@ -14,22 +14,20 @@
   &__header {
     text-align: center;
     margin-bottom: 2rem;
-    font-size: 1.4rem;
   }
 
-  &__searchInput {
-    font-size: 2rem;
+  &__search-input {
     width: 100%;
     max-width: 600px;
     padding: 1rem;
     -moz-appearance:none;
     -webkit-appearance:none;
-    border: 0.1rem solid grey;
     font-size: 1.4rem;
+    margin-bottom: 0.5rem;
   }
 
-  &__filterStat {
-    color: rgb(164, 164, 164);
+  &__filter-stat {
+    color: var(--color__grey-winter);
     font-style: italic;
   }
 }

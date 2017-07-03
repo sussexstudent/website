@@ -44,16 +44,16 @@ class StudentGroupsDiscovery extends React.Component {
     return (
       <div className="ActivitiesApp__">
         <div className="ActivitiesApp__header">
-          <h1>Find sports and societies</h1>
+          <h1 className="Heading Heading--medium">Find sports and societies</h1>
           <input
-            className="ActivitiesApp__searchInput"
+            className="HeaderSearch HeaderSearch--search-icon ActivitiesApp__search-input"
             type="search"
             placeholder="Search"
             value={searchValue}
             onChange={this.onSearchUpdate}
           />
-          <div className="ActivitiesApp__filterStat">
-            Displaying {displayIds.length} clubs & societies
+          <div className="ActivitiesApp__filter-stat">
+            Displaying {displayIds.length} sports & societies
           </div>
         </div>
         <div className="ActivitiesApp__main">

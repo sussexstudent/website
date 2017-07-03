@@ -7,9 +7,14 @@
     list-style: none;
   }
 
+  &__grid {
+    flex: 1 1 auto;
+  }
+
   &__header {
     text-align: center;
     margin-bottom: 2rem;
+    font-size: 1.4rem;
   }
 
   &__searchInput {
@@ -20,7 +25,7 @@
     -moz-appearance:none;
     -webkit-appearance:none;
     border: 0.1rem solid grey;
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
 
   &__filterStat {

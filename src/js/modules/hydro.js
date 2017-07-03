@@ -22,6 +22,10 @@ export default function() {
       import(
         /* webpackChunkName: "FigureCollection" */ '@ussu/components/FigureCollection'
       ),
+    StudentGroupsDiscoveryContainer: () =>
+      import(
+        /* webpackChunkName: "FigureCollection" */ '@ussu/components/StudentGroupsDiscovery'
+      ),
   };
 
   [...document.querySelectorAll('.Hydro')].forEach(el => {

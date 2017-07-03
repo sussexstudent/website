@@ -47,6 +47,7 @@ export default {
     '/support': './layouts/Support.js',
     '/falmer': './layouts/Falmer.js',
     '/whats-on': './layouts/WhatsOn.js',
+    '/discover-groups': './layouts/SportsSocieties.js',
     '/officer': '../src/js/components/OfficerPage/index.js',
     '/get-involved': './layouts/GetInvolved.js',
     '/section-page': './layouts/SectionPage.js',

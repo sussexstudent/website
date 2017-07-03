@@ -1,9 +1,8 @@
 import Raven from 'raven-js';
-import React from 'react';
+// import React from 'react';
 import mitt from 'mitt';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import ModalManager from './bits/modals/manager';
-import LazyLoadApp from './components/LazyLoadApp';
 // import LoginModal from './components/LoginModal';
 // import NewsletterModal from './components/NewsletterModal';
 // import SnapchatModal from './components/SnapchatModal';
@@ -100,23 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-
-  const activitiesApp = document.querySelector('.app__activities');
-  if (activitiesApp) {
-    const t = perf.recordTime('import', 'activities');
-    import(
-      /* webpackChunkName: "discover_orgs.module" */ './apps/activities'
-    ).then(app => {
-      t.done();
-      const ActivitiesApp = app.default;
-      ReactDOM.render(
-        <LazyLoadApp><ActivitiesApp /></LazyLoadApp>,
-        activitiesApp
-      );
-    });
-    ReactDOM.render(<LazyLoadApp />, activitiesApp);
-  }
-
   /* New module style */
 
   // All pages

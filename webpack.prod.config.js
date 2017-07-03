@@ -44,7 +44,6 @@ config.plugins = config.plugins.concat([
     sourceMap: true,
   }),
   new AssetsWebpackPlugin(),
-  new webpack.optimize.ModuleConcatenationPlugin(),
 ]);
 
 config.module.rules = config.module.rules.concat([

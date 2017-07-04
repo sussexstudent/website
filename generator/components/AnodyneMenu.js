@@ -15,7 +15,7 @@ const AnodyneMenu = () =>
   <nav className="AnodyneMenu">
     <ul className="AnodyneMenu__list">
       <AnodyneMenuItem name="Get involved" link="/get-involved" />
-      <AnodyneMenuItem name="What's on" link="/events" />
+      <AnodyneMenuItem name="What's on" link="/whats-on" />
       <AnodyneMenuItem name="About us" link="/about-us" />
       <AnodyneMenuItem name="Support" link="/support" />
     </ul>

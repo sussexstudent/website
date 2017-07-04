@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
 import Image from '../Image/index';
+import PatternPlaceholder from '../PatternPlaceholder/index';
 
 function OrganisationCard(props) {
   const org = props.org;
@@ -16,12 +17,17 @@ function OrganisationCard(props) {
               <div className="OrganisationCard__image-container">
                 <Image
                   className="OrganisationCard__image"
+                  fit="clip"
+                  width={416}
+                  height={234}
                   src={org.mslGroup.logo.resource}
                   alt=""
                 />
               </div>
             </LazyLoad>
-          : <div className="OrganisationCard__image-container" />}
+          : <div className="OrganisationCard__image-container">
+              <PatternPlaceholder />
+            </div>}
         <div className="OrganisationCard__info">
           <h3 className="OrganisationCard__title">{org.name}</h3>
           {org.mslGroup && org.mslGroup.description

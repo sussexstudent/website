@@ -88,9 +88,12 @@ function organisePartsForUI(eventParts) {
     if (isBefore(event.date, now)) {
       return 'PAST';
     }
+
+    /*
     if (isBefore(event.date, weekFromNow)) {
       return 0;
     }
+    */
 
     return `MONTH:${getYear(event.date)}-${getMonth(event.date)}`;
   });
@@ -98,8 +101,6 @@ function organisePartsForUI(eventParts) {
   const pairs = toPairs(partsGrouped);
 
   const sorted = orderBy(pairs, pair => poorMonthSort(pair[0]), 'desc');
-
-  console.log(sorted);
 
   const asList = sorted
     .filter(([key]) => key !== 'PAST')
@@ -136,10 +137,6 @@ function EventsCalender({ eventsList, isLoading }) {
   if (isLoading) {
     return <Loader dark />;
   }
-
-  eventsList.forEach(event => {
-    console.log(event.startDate, new Date(event.startDate));
-  });
 
   const events = eventsList.map(event => ({
     ...event,
@@ -197,6 +194,7 @@ query EventsCalender {
     endTime
     locationDisplay
     kicker
+    url
     venue {
       name
       websiteLink

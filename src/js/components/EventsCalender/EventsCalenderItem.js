@@ -1,7 +1,8 @@
 import React from 'react';
 import has from 'lodash/has';
 import formatDate from 'date-fns/format';
-import Image from '../Image/index';
+import Image from '../Image';
+import FauxLink from '../FauxLink';
 // import PropTypes from 'prop-types';
 
 function renderEventLocation(event) {
@@ -25,7 +26,7 @@ function EventsCalenderItem({ part }) {
   /* eslint-disable jsx-a11y/anchor-has-content */
   return (
     <div className="EventsCalender__item">
-      <a className="u-faux-link" href={event.link} />
+      <FauxLink href={event.url} />
       {has(part, 'event.featuredImage.resource')
         ? <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
             <Image src={event.featuredImage.resource} />

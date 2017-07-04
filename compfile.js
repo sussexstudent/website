@@ -45,7 +45,6 @@ export default {
   pages: {
     '/': './layouts/homepage.js',
     '/support': './layouts/Support.js',
-    '/falmer': './layouts/Falmer.js',
     '/whats-on': './layouts/WhatsOn.js',
     '/discover-groups': './layouts/SportsSocieties.js',
     '/officer': '../src/js/components/OfficerPage/index.js',

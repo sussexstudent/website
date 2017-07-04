@@ -2,6 +2,7 @@ import React from 'react';
 import sortBy from 'lodash/sortBy';
 import orderBy from 'lodash/orderBy';
 import toPairs from 'lodash/toPairs';
+import padStart from 'lodash/padStart';
 import groupBy from 'lodash/groupBy';
 import isBefore from 'date-fns/is_before';
 import getYear from 'date-fns/get_year';
@@ -72,8 +73,10 @@ function poorMonthSort(key) {
   }
 
   if (key.startsWith('MONTH')) {
-    const numbers = key.slice(6).split('-').map(parseInt);
-    return numbers[0] + numbers[1];
+    const numbers = key.slice(6).split('-');
+    const z = parseInt(numbers[0] + padStart(numbers[1], 2, '0'), 10);
+    console.log(key, z);
+    return z;
   }
 
   return 2;
@@ -100,7 +103,7 @@ function organisePartsForUI(eventParts) {
 
   const pairs = toPairs(partsGrouped);
 
-  const sorted = orderBy(pairs, pair => poorMonthSort(pair[0]), 'desc');
+  const sorted = orderBy(pairs, pair => poorMonthSort(pair[0]), 'asc');
 
   const asList = sorted
     .filter(([key]) => key !== 'PAST')

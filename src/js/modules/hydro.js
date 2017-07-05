@@ -24,7 +24,7 @@ export default function() {
       ),
     StudentGroupsDiscoveryContainer: () =>
       import(
-        /* webpackChunkName: "FigureCollection" */ '@ussu/components/StudentGroupsDiscovery'
+        /* webpackChunkName: "StudentGroupsDiscovery" */ '@ussu/components/StudentGroupsDiscovery'
       ),
   };
 

@@ -157,7 +157,7 @@ function EventsCalender({ eventsList, isLoading }) {
           <h2 className="EventsCalender__section-title">{sectionTitle}</h2>
           <div className="EventsCalender__section-items">
             {parts.map(part =>
-              <div>
+              <div className="EventsCalender__part-container">
                 <h3 className="EventsCalender__item-date-kicker">
                   {getSmartDate(part)}
                 </h3>

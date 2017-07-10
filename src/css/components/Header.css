@@ -43,7 +43,7 @@
     -webkit-overflow-scrolling: touch;
 
     &--is-open {
-      transform: translateX(calc(100vw - 260px));
+      transform: translateX(100vw) translateX(-260px);
     }
 
     @media (--medium) {
@@ -127,12 +127,17 @@
   }
 
   &__menu-button-mobile {
+    background: transparent;
+    border: 0;
     @media (--medium) {
       display: none;
     }
   }
 
   &__search-mobile {
+    background: transparent;
+    border: 0;
+
     @media (--medium) {
       display: none;
     }

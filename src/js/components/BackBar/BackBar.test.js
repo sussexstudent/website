@@ -13,7 +13,9 @@ it('renders a snapshot', () => {
 it('accepts colors', () => {
   const tree = renderer
     .create(
-      <BackBar href="https://example.com" color="red">All examples</BackBar>
+      <BackBar href="https://example.com" color="red">
+        All examples
+      </BackBar>
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

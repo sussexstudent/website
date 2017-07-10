@@ -29,7 +29,9 @@ function OrganisationCard(props) {
               <PatternPlaceholder />
             </div>}
         <div className="OrganisationCard__info">
-          <h3 className="OrganisationCard__title">{org.name}</h3>
+          <h3 className="OrganisationCard__title">
+            {org.name}
+          </h3>
           {org.mslGroup && org.mslGroup.description
             ? <p className="OrganisationCard__description">
                 {org.mslGroup.description}

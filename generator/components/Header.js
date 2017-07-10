@@ -111,7 +111,9 @@ class Header extends React.Component {
             <AnodyneMenu />
             {userData !== null
               ? <div className="Header__side-container Header__side-menu-user">
-                  <div>Hi {userData.name}!</div>
+                  <div>
+                    Hi {userData.name}!
+                  </div>
                   <ul>
                     <li>Admin</li>
                     <li>Basket</li>

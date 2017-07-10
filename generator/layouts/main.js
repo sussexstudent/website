@@ -22,7 +22,9 @@ const authStyles = loggedIn => `
 
 const mainLayout = ({ loggedIn, assets, legacy }) =>
   <body className="Body" id="top">
-    <style>{authStyles(loggedIn)}</style>
+    <style>
+      {authStyles(loggedIn)}
+    </style>
     <div className="Site">
       <AdvertBar className="AdvertBar--top" position="TopBanner" />
       <UserBar loggedIn={loggedIn} />

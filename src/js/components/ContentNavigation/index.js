@@ -38,13 +38,13 @@ function ContentNavigation({
               {item.name}
             </a>
             {item.children &&
-              item.children.length > 0 &&
-              (canDisplaySubMenu(
-                onlyShowSubMenuWhenChildActive,
-                item.children,
-                activeKey
-              ) ||
-                item.anchor === activeKey)
+            item.children.length > 0 &&
+            (canDisplaySubMenu(
+              onlyShowSubMenuWhenChildActive,
+              item.children,
+              activeKey
+            ) ||
+              item.anchor === activeKey)
               ? <ul className="NavigationCard__sub-list">
                   {item.children.map(itemInner =>
                     <li

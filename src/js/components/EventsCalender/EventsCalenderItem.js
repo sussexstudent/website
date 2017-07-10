@@ -7,7 +7,11 @@ import FauxLink from '../FauxLink';
 
 function renderEventLocation(event) {
   if (!event.venue) {
-    return <span>{event.locationDisplay}</span>;
+    return (
+      <span>
+        {event.locationDisplay}
+      </span>
+    );
   }
 
   if (event.venue.websiteLink) {
@@ -18,7 +22,11 @@ function renderEventLocation(event) {
     );
   }
 
-  return <span>{event.locationDisplay || event.venue.name}</span>;
+  return (
+    <span>
+      {event.locationDisplay || event.venue.name}
+    </span>
+  );
 }
 
 function EventsCalenderItem({ part }) {
@@ -34,7 +42,9 @@ function EventsCalenderItem({ part }) {
         : null}
       <div className="EventsCalender__item-container">
         {event.kicker
-          ? <div className="EventsCalender__item-kicker">{event.kicker}</div>
+          ? <div className="EventsCalender__item-kicker">
+              {event.kicker}
+            </div>
           : null}
         <h2 className="EventsCalender__item-title">
           {event.title}

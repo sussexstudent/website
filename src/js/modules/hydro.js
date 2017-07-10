@@ -7,29 +7,17 @@ export default function() {
     TweetList: () =>
       import(/* webpackChunkName: "TweetList" */ '@ussu/components/TweetList'),
     EventsContainer: () =>
-      import(
-        /* webpackChunkName: "EventsPage" */ '@ussu/components/EventsCalender'
-      ),
+      import(/* webpackChunkName: "EventsPage" */ '@ussu/components/EventsCalender'),
     HeaderSearch: () =>
-      import(
-        /* webpackChunkName: "HeaderSearch" */ '@ussu/components/HeaderSearch'
-      ),
+      import(/* webpackChunkName: "HeaderSearch" */ '@ussu/components/HeaderSearch'),
     HeadingHero: () =>
-      import(
-        /* webpackChunkName: "HeadingHero" */ '@ussu/components/HeadingHero'
-      ),
+      import(/* webpackChunkName: "HeadingHero" */ '@ussu/components/HeadingHero'),
     FigureCollection: () =>
-      import(
-        /* webpackChunkName: "FigureCollection" */ '@ussu/components/FigureCollection'
-      ),
+      import(/* webpackChunkName: "FigureCollection" */ '@ussu/components/FigureCollection'),
     StudentGroupsDiscoveryContainer: () =>
-      import(
-        /* webpackChunkName: "StudentGroupsDiscovery" */ '@ussu/components/StudentGroupsDiscovery'
-      ),
+      import(/* webpackChunkName: "StudentGroupsDiscovery" */ '@ussu/components/StudentGroupsDiscovery'),
     Header: () =>
-      import(
-        /* webpackChunkName: "Header" */ '../../../generator/components/Header'
-      ),
+      import(/* webpackChunkName: "Header" */ '../../../generator/components/Header'),
   };
 
   [...document.querySelectorAll('.Hydro')].forEach(el => {

@@ -7,7 +7,9 @@ const SelectionGridItem = ({ link, imageURL, title }) =>
     <a className="SelectionGrid__link" href={link}>
       <Image className="SelectionGrid__image" src={imageURL} type="bg">
         <div className="SelectionGrid__image-inside">
-          <div className="SelectionGrid__title">{title}</div>
+          <div className="SelectionGrid__title">
+            {title}
+          </div>
         </div>
       </Image>
     </a>

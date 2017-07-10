@@ -12,7 +12,9 @@ ga('create', 'UA-258929-3', 'auto');
 ga('send', 'pageview');`;
 
 const FreshersHeader = () =>
-  <BackBar href="https://sussexstudent.com/" color="white">Main site</BackBar>;
+  <BackBar href="https://sussexstudent.com/" color="white">
+    Main site
+  </BackBar>;
 
 const mainLayout = ({ assets }) =>
   <body className="Body" id="top">

@@ -19,13 +19,13 @@ const StaffPage = () =>
             <p>01273 67 8152</p>
 
             <p>
-              {"University of Sussex Students' Union"}<br />
+              {"University of Sussex Students' Union"}
+              <br />
               Falmer House<br />
               Falmer<br />
               East Sussex<br />
               BN1 9QF
             </p>
-
           </ContentCard>
           <ContentCard>
             <h2>Specific Enquiries</h2>
@@ -219,7 +219,6 @@ const StaffPage = () =>
               See Falmer House on Google Maps
             </a>
           </p>
-
         </div>
       </div>
     </div>

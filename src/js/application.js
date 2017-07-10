@@ -74,9 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (document.querySelector('.app__events')) {
     const t = perf.recordTime('import', 'calender');
-    import(
-      /* webpackChunkName: "events-calender.module" */ './apps/events-calender'
-    ).then(() => t.done());
+    import(/* webpackChunkName: "events-calender.module" */ './apps/events-calender').then(
+      () => t.done()
+    );
   }
 
   if (document.querySelector('.QuoteSlips')) {
@@ -111,32 +111,32 @@ document.addEventListener('DOMContentLoaded', () => {
   // Module: homepageNews
   // TODO: update homepage news selector
   if (document.querySelector('.app__news')) {
-    import(
-      /* webpackChunkName: "homepageNews.module" */ './modules/homepageNews'
-    ).then(module => module.default());
+    import(/* webpackChunkName: "homepageNews.module" */ './modules/homepageNews').then(
+      module => module.default()
+    );
   }
 
   if (document.querySelector('.app__news_page')) {
-    import(
-      /* webpackChunkName: "newsPage.module" */ './modules/newsPage'
-    ).then(module => module.default());
+    import(/* webpackChunkName: "newsPage.module" */ './modules/newsPage').then(
+      module => module.default()
+    );
   }
 
   // Module: tweetList
   if (document.querySelector('.js-module--contentAPI')) {
     const t = perf.recordTime('import', 'contentAPI');
-    import(
-      /* webpackChunkName: "contentAPI.module" */ './modules/contentAPI'
-    ).then(module => {
-      module.default();
-      t.done();
-    });
+    import(/* webpackChunkName: "contentAPI.module" */ './modules/contentAPI').then(
+      module => {
+        module.default();
+        t.done();
+      }
+    );
   }
 
   // Module: cookie_message
   if (localStorage.getItem('su_cookie') !== '1') {
-    import(
-      /* webpackChunkName: "cookie_message.module" */ './modules/cookie_message'
-    ).then(module => module.default());
+    import(/* webpackChunkName: "cookie_message.module" */ './modules/cookie_message').then(
+      module => module.default()
+    );
   }
 });

@@ -48,7 +48,9 @@ function renderTweetContent(tweet) {
     },
     urls(entity) {
       parts.push(
-        <a href={entity.url} key={(key += 1)}>{entity.display_url}</a>
+        <a href={entity.url} key={(key += 1)}>
+          {entity.display_url}
+        </a>
       );
     },
   };
@@ -80,7 +82,9 @@ function renderTweetContent(tweet) {
 }
 
 const TweetContent = ({ tweet }) =>
-  <div className="Tweet__content">{renderTweetContent(tweet)}</div>;
+  <div className="Tweet__content">
+    {renderTweetContent(tweet)}
+  </div>;
 
 TweetContent.propTypes = {
   tweet: PropTypes.shape({

@@ -1,7 +1,9 @@
 import React from 'react';
 import HeadingHero from '../HeadingHero';
 import VisibleChildWatcher from '../VisibleChildWatcher';
-import ContentNavigation, { generateTitlesFromStream } from '../ContentNavigation';
+import ContentNavigation, {
+  generateTitlesFromStream,
+} from '../ContentNavigation';
 import ContentCard from '../../../../generator/components/ContentCard';
 import slugify from '../../libs/slugify';
 

@@ -14,43 +14,53 @@ function Feedback() {
         What should be a priority for the SU to focus on in regards to
         environmental sustainability?
       </h2>
-      <p><em>Numbers indicate number of students who selected the point</em></p>
+      <p>
+        <em>Numbers indicate number of students who selected the point</em>
+      </p>
       <ul>
-        <li>Supplying ethical produce <em>15</em></li>
         <li>
-          Encouraging and supporting all to take low or non-carbon travel
-          {' '}
+          Supplying ethical produce <em>15</em>
+        </li>
+        <li>
+          Encouraging and supporting all to take low or non-carbon travel{' '}
           <em>8</em>
         </li>
         <li>
-          Reducing the amount of resources (reduce, reuse, repair, recycle)
-          {' '}
+          Reducing the amount of resources (reduce, reuse, repair, recycle){' '}
           <em>12</em>
         </li>
-        <li>Reduce energy consumption <em>13</em></li>
-        <li>Making ethical purchase choices <em>12</em></li>
         <li>
-          Support students run ethical and environmental campaigns and events
-          {' '}
+          Reduce energy consumption <em>13</em>
+        </li>
+        <li>
+          Making ethical purchase choices <em>12</em>
+        </li>
+        <li>
+          Support students run ethical and environmental campaigns and events{' '}
           <em>14</em>
         </li>
-        <li>Measure, record and report on SU’s carbon footprint <em>12</em></li>
         <li>
-          Have a part-time ethical and environmental officer
-          {' '}
+          Measure, record and report on SU’s carbon footprint <em>12</em>
+        </li>
+        <li>
+          Have a part-time ethical and environmental officer{' '}
           <em>12 (full-time suggested in conversations)</em>
         </li>
-        <li>Have ethical and environmental reps <em>8</em></li>
+        <li>
+          Have ethical and environmental reps <em>8</em>
+        </li>
         <li>
           Respecting biodiversity, ecosystems and animal rights <em>15</em>
         </li>
-        <li>Promoting human rights, equality and social justice <em>15</em></li>
-        <li>Boycotting exploitative brands in the Union outlets <em>12</em></li>
+        <li>
+          Promoting human rights, equality and social justice <em>15</em>
+        </li>
+        <li>
+          Boycotting exploitative brands in the Union outlets <em>12</em>
+        </li>
         <li>
           Promoting the Students’ Union values and working with other
-          organisations who share our values
-          {' '}
-          <em>11</em>
+          organisations who share our values <em>11</em>
         </li>
       </ul>
 
@@ -188,8 +198,7 @@ function Feedback() {
                 with Adam Tickell and the decision has been put to tender for
                 June 2017. Some changes were made to the Socially Responsible
                 Investment Policy in order to support the Sussex Fossil Free
-                Campaign. (See
-                {' '}
+                Campaign. (See{' '}
                 <a href="http://www.sussex.ac.uk/internal/bulletin/staff/2015- 2016/150416/socially-responsible-investment-policy">
                   Socially responsible investment policy
                 </a>

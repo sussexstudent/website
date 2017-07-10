@@ -13,7 +13,10 @@ import SectionContentPage from './SectionContentPage';
 
 /* eslint-disable react/prop-types */
 const components = {
-  heading: ({ value }) => <h1>{value}</h1>,
+  heading: ({ value }) =>
+    <h1>
+      {value}
+    </h1>,
   heading_hero: ({ value, document }) =>
     <HeadingHero
       title={value.heading || document.title}

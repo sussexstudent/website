@@ -17,7 +17,7 @@
     "jest": true
   },
   "rules": {
-    "prettier/prettier": ["error", { "singleQuote": true, "bracketSpacing": true, "trailingComma": "es5" }],
+    "prettier/prettier": ["error", { "singleQuote": true, "bracketSpacing": true, "trailingComma": "es5", "printWidth": 80 }],
     "no-console": 0,
     "react/jsx-no-bind": 0,
     "import/no-extraneous-dependencies": 0,

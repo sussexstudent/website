@@ -17,10 +17,14 @@ const Homepage = () =>
             {'{unionnewslist}'}
           </div>
           <div className="app__news" />
-          <a className="NewsViewMore" href="/news">Read more news stories</a>
+          <a className="NewsViewMore" href="/news">
+            Read more news stories
+          </a>
         </div>
         <div className="ContentBlock">
-          <div className="ContentBlock__heading">{"What's on"}</div>
+          <div className="ContentBlock__heading">
+            {"What's on"}
+          </div>
           <HomepageEventsList />
         </div>
         <div className="ContentBlock">

@@ -17,7 +17,8 @@ const Footer = () =>
             View contact details for particular departments, staff and officers
           </a>
           <br />
-          <a href="/about-us/jobs">Jobs</a><br />
+          <a href="/about-us/jobs">Jobs</a>
+          <br />
           <a href="/advertise">Advertise With Us</a>
         </p>
 

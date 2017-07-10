@@ -108,9 +108,8 @@ function organisePartsForUI(eventParts) {
   const asList = sorted
     .filter(([key]) => key !== 'PAST')
     .map(([key, value]) => ({
-      sectionTitle: key === '0'
-        ? 'This week'
-        : formatDate(value[0].date, 'MMMM'),
+      sectionTitle:
+        key === '0' ? 'This week' : formatDate(value[0].date, 'MMMM'),
       parts: value,
     }));
 
@@ -154,7 +153,9 @@ function EventsCalender({ eventsList, isLoading }) {
     <div className="EventsCalender">
       {uiEvents.map(({ sectionTitle, parts }) =>
         <div className="EventsCalender__section">
-          <h2 className="EventsCalender__section-title">{sectionTitle}</h2>
+          <h2 className="EventsCalender__section-title">
+            {sectionTitle}
+          </h2>
           <div className="EventsCalender__section-items">
             {parts.map(part =>
               <div className="EventsCalender__part-container">

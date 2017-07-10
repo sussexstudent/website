@@ -11,7 +11,9 @@ const SelectionGridItem = ({ link, imageURL, title }) =>
         }}
       >
         <div className="SelectionGrid__image-inside">
-          <div className="SelectionGrid__title">{title}</div>
+          <div className="SelectionGrid__title">
+            {title}
+          </div>
         </div>
       </div>
     </a>

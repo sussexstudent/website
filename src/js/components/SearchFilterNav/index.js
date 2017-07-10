@@ -19,7 +19,12 @@ function SearchFilterItem({ currentValue, option, onSelect, itemKey }) {
       key={option.key}
       onClick={option.count > 0 ? handleClick : () => {}}
     >
-      {option.title}{itemKey !== 'top' ? <span> ({option.count})</span> : null}
+      {option.title}
+      {itemKey !== 'top'
+        ? <span>
+            {' '}({option.count})
+          </span>
+        : null}
     </li>
   );
 }

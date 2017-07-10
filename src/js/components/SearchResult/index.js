@@ -43,8 +43,12 @@ function SearchResult(props) {
         <div className="ResultsList__kicker">
           {getKicker(link)}
         </div>
-        <h1 className="ResultsList__title">{formatTitle(title)}</h1>
-        <p className="ResultsList__snippet">{description}</p>
+        <h1 className="ResultsList__title">
+          {formatTitle(title)}
+        </h1>
+        <p className="ResultsList__snippet">
+          {description}
+        </p>
       </a>
     </li>
   );

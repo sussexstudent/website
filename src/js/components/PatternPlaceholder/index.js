@@ -33,19 +33,27 @@ const SWATCHES = [
   ['00a850', '009246'],
 ];
 
-function PatternPlaceholder() {
-  const pattern = sample(PATTERNS);
-  const swatch = sample(SWATCHES);
+class PatternPlaceholder extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div
-      className="PatternPlaceholder"
-      style={{
-        backgroundImage: `url("${pattern(swatch[1])}")`,
-        backgroundColor: `#${swatch[0]}`,
-      }}
-    />
-  );
+    this.state = {
+      pattern: sample(PATTERNS),
+      swatch: sample(SWATCHES),
+    };
+  }
+  render() {
+    const { pattern, swatch } = this.state;
+    return (
+      <div
+        className="PatternPlaceholder"
+        style={{
+          backgroundImage: `url("${pattern(swatch[1])}")`,
+          backgroundColor: `#${swatch[0]}`,
+        }}
+      />
+    );
+  }
 }
 
 export default PatternPlaceholder;

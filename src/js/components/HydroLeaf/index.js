@@ -63,25 +63,25 @@ function HydroLeaf(contextToPropsMap = {}) {
             React.createElement(Component, serialProps)
           );
 
-          const dataAc = `window.HYDROSTATE_${hydroKey} = ${JSON.stringify(
+          let dataAc = `window.HYDROSTATE_${hydroKey} = ${JSON.stringify(
             serialProps
           )};`;
 
+          if (hydroKey === null) {
+            dataAc = '';
+          } else {
+            dataAc = `<script type="text/javascript">${dataAc}</script>`;
+          }
+
           return (
-            <div className="HydroContainer">
-              <div
-                className="Hydro"
-                data-component={Component.name}
-                {...hydroIdSpread}
-                dangerouslySetInnerHTML={{ __html: componentMarkup }}
-              />
-              {hydroKey !== null
-                ? <script
-                    type="text/javascript"
-                    dangerouslySetInnerHTML={{ __html: dataAc }}
-                  />
-                : null}
-            </div>
+            <div
+              className="Hydro"
+              data-component={Component.name}
+              {...hydroIdSpread}
+              dangerouslySetInnerHTML={{
+                __html: `${componentMarkup}${dataAc}`,
+              }}
+            />
           );
         }
       }

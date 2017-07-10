@@ -23,10 +23,10 @@ export default function() {
   [...document.querySelectorAll('.Hydro')].forEach(el => {
     let props = {};
     if (el.hasAttribute('data-id')) {
-      props = window[`HYDROSTATE_${el.dataset.id}`];
+      props = window[`HYDROSTATE_${el.getAttribute('data-id')}`];
     }
 
-    const componentName = el.dataset.component;
+    const componentName = el.getAttribute('data-component');
     const getComponent = componentMap[componentName];
 
     if (!Object.hasOwnProperty.call(componentMap, componentName)) {

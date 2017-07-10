@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Portal from 'react-portal';
-import HydroLeaf from '@ussu/components/HydroLeaf';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import SearchPage from '../../apps/search';
 import smoothscroll from '../../libs/smoothscroll';
@@ -301,4 +300,4 @@ HeaderSearch.defaultProps = {
   disabled: false,
 };
 
-export default HydroLeaf()(HeaderSearch);
+export default HeaderSearch;

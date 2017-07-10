@@ -8,6 +8,10 @@
   font-size: 1.1rem;
   font-family: var(--type__primary);
 
+  @media (--up-to-medium) {
+    display: none;
+  }
+
   &:before {
     content: '';
     display: block;

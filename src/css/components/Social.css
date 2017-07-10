@@ -14,11 +14,45 @@
     }
   }
 
+  &--as-list {
+    flex-direction: column;
+
+    .Social__handle {
+      display: flex;
+      align-items: center;
+    }
+
+    .Social__link {
+      display: flex;
+      color: #000000;
+      font-size: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    & li {
+      padding-left: 0;
+      margin-bottom: 10px;
+    }
+
+    .Social__icon {
+      margin-right: 10px;
+    }
+  }
+
+  &__handle {
+    display: none;
+  }
+
   &__link {
     display: block;
+  }
+
+  &__icon {
     height: 45px;
     width: 45px;
     background-size: contain;
+    display: block;
 
     &--facebook {
       background-image: url('../img/social-facebook.svg');

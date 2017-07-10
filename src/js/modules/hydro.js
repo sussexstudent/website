@@ -26,6 +26,10 @@ export default function() {
       import(
         /* webpackChunkName: "StudentGroupsDiscovery" */ '@ussu/components/StudentGroupsDiscovery'
       ),
+    Header: () =>
+      import(
+        /* webpackChunkName: "Header" */ '../../../generator/components/Header'
+      ),
   };
 
   [...document.querySelectorAll('.Hydro')].forEach(el => {

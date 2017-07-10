@@ -24,7 +24,7 @@ const mainLayout = ({ loggedIn, assets, legacy }) =>
   <body className="Body" id="top">
     <style>{authStyles(loggedIn)}</style>
     <div className="Site">
-      <AdvertBar position="TopBanner" />
+      <AdvertBar className="AdvertBar--top" position="TopBanner" />
       <UserBar loggedIn={loggedIn} />
       <Header />
       <Main legacy={legacy} />

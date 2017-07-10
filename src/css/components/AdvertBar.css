@@ -29,4 +29,10 @@
     width: auto;
     max-width: 100%;
   }
+
+  &--top {
+    @media (--up-to-medium) {
+      display: none;
+    }
+  }
 }

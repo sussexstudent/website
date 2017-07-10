@@ -16,6 +16,11 @@ config.bail = true;
 config.profile = false;
 config.devtool = 'source-map';
 
+config.performance = {
+  hints: 'error',
+  maxEntrypointSize: 400000,
+};
+
 config.output = {
   path: path.resolve(path.join(__dirname, 'dist')),
   publicPath: 'https://du9l8eemj97rm.cloudfront.net/',

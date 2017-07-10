@@ -17,7 +17,7 @@ export default function() {
     StudentGroupsDiscoveryContainer: () =>
       import(/* webpackChunkName: "StudentGroupsDiscovery" */ '@ussu/components/StudentGroupsDiscovery'),
     Header: () =>
-      import(/* webpackChunkName: "Header" */ '../../../generator/components/Header'),
+      import(/* webpackChunkName: "Header" */ '@ussu/components/Header'),
   };
 
   [...document.querySelectorAll('.Hydro')].forEach(el => {

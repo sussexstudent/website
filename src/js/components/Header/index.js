@@ -2,12 +2,13 @@ import React from 'react';
 import cx from 'classnames';
 import HydroLeaf from '@ussu/components/HydroLeaf';
 import HeaderSearch from '@ussu/components/HeaderSearch';
-import AnodyneMenu from './AnodyneMenu';
-import Logo from './LogoInclude';
-import MenuIcon from '../../src/js/components/MenuIcon';
-import SearchIcon from '../../src/js/components/SearchIcon';
-import CrossIcon from '../../src/js/components/CrossIcon';
-import SocialMenu from '../../src/js/components/SocialMenu';
+import AnodyneMenu from '../AnodyneMenu';
+import SideMenu from '../SideMenu';
+import Logo from '../StudentsUnionLogo';
+import MenuIcon from '../MenuIcon';
+import SearchIcon from '../SearchIcon';
+import CrossIcon from '../CrossIcon';
+import SocialMenu from '../SocialMenu';
 
 function getColor() {
   let index;
@@ -37,6 +38,7 @@ class Header extends React.Component {
 
     this.state = {
       isSideMenuOpen: false,
+      isAdminOpen: false,
       userData: null,
       logoColor: null,
     };
@@ -56,6 +58,8 @@ class Header extends React.Component {
         this.handleOpenSideMenu();
       }
     };
+
+    this.handleOpenSearch = () => this.setState({ isSearchOpen: true });
   }
 
   componentWillMount() {
@@ -65,19 +69,27 @@ class Header extends React.Component {
         logoColor: getColor(),
         userData: {
           name: 'Katie',
+          admin: {
+            orgs: [],
+            things: [],
+          },
+          page: [],
         },
       });
     }
   }
 
   render() {
-    const { isSideMenuOpen, userData, logoColor } = this.state;
+    const { isSideMenuOpen, isSearchOpen, userData, logoColor } = this.state;
 
     return (
       <header className="Header">
         <div className="Container">
           <div className="Header__top">
-            <button className="Header__search-mobile">
+            <button
+              className="Header__search-mobile"
+              onClick={this.handleOpenSearch}
+            >
               <SearchIcon />
               <span className="Header__button-label">Search</span>
             </button>
@@ -87,8 +99,8 @@ class Header extends React.Component {
               </a>
             </div>
             <button
-              onClick={this.handleToggleSideMenu}
               className="Header__menu-button-mobile"
+              onClick={this.handleToggleSideMenu}
             >
               {isSideMenuOpen ? <CrossIcon /> : <MenuIcon />}
               <span className="Header__button-label">
@@ -103,30 +115,12 @@ class Header extends React.Component {
             </div>
           </div>
           <AnodyneMenu />
-          <div
-            className={cx('Header__side-menu', {
-              'Header__side-menu--is-open': isSideMenuOpen,
-            })}
-          >
-            <AnodyneMenu />
-            {userData !== null
-              ? <div className="Header__side-container Header__side-menu-user">
-                  <div>
-                    Hi {userData.name}!
-                  </div>
-                  <ul>
-                    <li>Admin</li>
-                    <li>Basket</li>
-                    <li>Log out</li>
-                  </ul>
-                </div>
-              : null}
-            <div className="Header__side-container Header__side-menu-social">
-              <SocialMenu asList />
-            </div>
-          </div>
-          {/* <div className="Header__side-search">*/}
-          {/* </div>*/}
+          <SideMenu isOpen={isSideMenuOpen} userData={userData} />
+          {isSearchOpen
+            ? <div className="Header__side-search">
+                <HeaderSearch />
+              </div>
+            : null}
           <div
             onClick={this.handleCloseSideMenu}
             className={cx('Header__backdrop', {

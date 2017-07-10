@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Header from '@ussu/components/Header';
 import UserBar from '../components/UserBar';
-import Header from '../components/Header';
 import MobileFooterTreats from '../components/MobileFooterTreats';
 // import PrefooterMenu from '../components/PrefooterMenu';
 import Footer from '../components/Footer';

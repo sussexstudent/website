@@ -143,6 +143,15 @@
     }
   }
 
+  &__side-search {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--layer__header-side-search)
+  }
+
   &__search {
     flex: 2;
   }

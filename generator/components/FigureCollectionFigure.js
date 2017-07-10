@@ -18,7 +18,7 @@ const FigureCollectionFigure = ({ imageResource, title, sub, link }) =>
   </li>;
 
 FigureCollectionFigure.propTypes = {
-  imageURL: PropTypes.string.isRequired,
+  imageResource: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   sub: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,

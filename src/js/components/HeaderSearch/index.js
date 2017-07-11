@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Portal from 'react-portal';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import SearchPage from '../../apps/search';
+import SearchPage from '../SearchPage';
 import smoothscroll from '../../libs/smoothscroll';
 import classToggle from '../../libs/dom/classToggle';
 

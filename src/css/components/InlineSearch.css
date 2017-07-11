@@ -102,12 +102,12 @@
   transition: height 300ms ease;
 }
 
-.test-leave {
+.test-exit {
   height: 165px;
   transition: height 300ms ease;
 }
 
-.test-leave.test-leave-active {
+.test-exit.test-exit-active {
   height: 0;
 }
 
@@ -121,11 +121,11 @@
   transition: opacity 300ms ease;
 }
 
-.fade-leave {
+.fade-exit {
   opacity: 1;
   transition: opacity 300ms ease;
 }
 
-.fade-leave.fade-leave-active {
+.fade-exit.fade-exit-active {
   opacity: 0;
 }

@@ -72,13 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
     e.addEventListener('click', linkListener);
   });
 
-  if (document.querySelector('.app__events')) {
-    const t = perf.recordTime('import', 'calender');
-    import(/* webpackChunkName: "events-calender.module" */ './apps/events-calender').then(
-      () => t.done()
-    );
-  }
-
   if (document.querySelector('.QuoteSlips')) {
     [...document.querySelectorAll('.QuoteSlips')].forEach(quoteSlip => {
       [

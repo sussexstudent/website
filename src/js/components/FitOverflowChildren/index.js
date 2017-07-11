@@ -29,11 +29,13 @@ class FitOverflowChildren extends React.Component {
   }
 
   componentWillMount() {
-    window.emitter.on('imageLoaded', data => {
-      if (data.area === this.props.area) {
-        this.updateSize();
-      }
-    });
+    if (Object.hasOwnProperty.call(window, 'emitter')) {
+      window.emitter.on('imageLoaded', data => {
+        if (data.area === this.props.area) {
+          this.updateSize();
+        }
+      });
+    }
   }
 
   componentDidMount() {

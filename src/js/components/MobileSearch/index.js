@@ -105,8 +105,6 @@ class HeaderSearch extends React.Component {
             in={isRendered}
             classNames="MobileSearchInput"
             timeout={300}
-            mountOnEnter
-            unmountOnExit
             onExited={() => this.props.onClose()}
           >
             {

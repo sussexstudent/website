@@ -1,65 +1,148 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import MSLTag from '../../../../generator/components/MSLTag';
+import cx from 'classnames';
+import ClickOutside from 'react-click-outside';
+import Hydroleaf from '../HydroLeaf';
+import currentUser from '../../libs/user';
 
-const mslLogout = MSLTag('LoginButton', {
-  LoginText: 'Log in',
-  LogoutText: 'Log out',
-  GoHomeOnLogout: 'True',
-});
+const PAGE_DROPDOWN = 'page';
+const ADMIN_DROPDOWN = 'admin';
 
-const loggedInList = (
-  <ul className="UserBar__list">
-    <li className="UserBar__item UserBar__item--welcome" />
-    <li
-      className="UserBar__item UserBar__item--action"
-      dangerouslySetInnerHTML={{ __html: mslLogout }}
-    />
+class UserBar extends React.Component {
+  constructor(props) {
+    super(props);
 
-    <li className="UserBar__item UserBar__item-admin UserBar__item--empty UserBar__admin-menu">
-      <span>Admin</span>
-      <div
-        className="UserBar__item-dropdown"
-        dangerouslySetInnerHTML={{ __html: MSLTag('Admin') }}
-      />
-    </li>
-    <li className="UserBar__item UserBar__item-admin UserBar__item--empty UserBar__admin-control-panel">
-      <span>Page</span>
-      <div
-        className="UserBar__item-dropdown"
-        dangerouslySetInnerHTML={{ __html: MSLTag('ControlPanel') }}
-      />
-    </li>
+    this.state = {
+      isLoaded: false,
+      dropdownOpen: null,
+      isPageOpen: false,
+    };
 
-    <li className="UserBar__item UserBar__item--action UserBar__item--action-highlight">
-      <a href="/shop/basket">Basket</a>
-    </li>
-  </ul>
-);
+    this.handleOpenDropdown = dropdown =>
+      this.setState({ dropdownOpen: dropdown });
+    this.handleOpenPageDropdown = this.handleOpenDropdown.bind(
+      this,
+      PAGE_DROPDOWN
+    );
+    this.handleOpenAdminDropdown = this.handleOpenDropdown.bind(
+      this,
+      ADMIN_DROPDOWN
+    );
+    this.handleCloseDropdown = () => this.setState({ dropdownOpen: null });
+  }
 
-const anonymousList = (
-  <ul className="UserBar__list">
-    <li className="UserBar__item">Hi there!</li>
-    <li className="UserBar__item UserBar__item--action">
-      <a href="/login" data-action="login">
-        Log in
-      </a>
-    </li>
-    <li className="UserBar__item UserBar__item--action UserBar__item--action-highlight">
-      <a href="/shop/basket">Basket</a>
-    </li>
-  </ul>
-);
+  componentDidMount() {
+    setTimeout(() => {
+      const { auth } = currentUser;
+      console.log(currentUser);
+      this.setState({
+        isLoaded: true,
+        ...auth,
+      });
+    }, 1);
+  }
 
-const UserBar = ({ loggedIn }) =>
-  <div className="UserBar">
-    <div className="Container UserBar__container">
-      {loggedIn ? loggedInList : anonymousList}
-    </div>
-  </div>;
+  renderLoaded() {
+    const { isLoggedIn, details, admin, page, dropdownOpen } = this.state;
 
-UserBar.propTypes = {
-  loggedIn: PropTypes.bool.isRequired,
-};
+    if (isLoggedIn) {
+      return (
+        <ul className="UserBar__list">
+          <li className="UserBar__item UserBar__item--welcome">
+            Hi {details.firstName}!
+          </li>
+          <li className="UserBar__item UserBar__item--action">[Logout]</li>
 
-export default UserBar;
+          {admin !== null
+            ? <li
+                className={cx(
+                  'UserBar__item UserBar__item-admin UserBar__admin-menu',
+                  {
+                    'UserBar__item--open': dropdownOpen === ADMIN_DROPDOWN,
+                  }
+                )}
+              >
+                <button onClick={this.handleOpenAdminDropdown}>Admin</button>
+                <ClickOutside onClickOutside={this.handleCloseDropdown}>
+                  <div className={cx('UserBar__item-dropdown')}>
+                    <ul>
+                      {admin.admin.map(item =>
+                        <li>
+                          <a href={item.link}>
+                            {item.name}
+                          </a>
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                </ClickOutside>
+              </li>
+            : null}
+          {page !== null
+            ? <li
+                className={cx(
+                  'UserBar__item UserBar__item-admin UserBar__admin-menu',
+                  {
+                    'UserBar__item--open': dropdownOpen === PAGE_DROPDOWN,
+                  }
+                )}
+              >
+                {' '}<button onClick={this.handleOpenPageDropdown}>Page</button>
+                <ClickOutside onClickOutside={this.handleCloseDropdown}>
+                  <div
+                    className={cx('UserBar__item-dropdown', {
+                      'UserBar__item--open': dropdownOpen === PAGE_DROPDOWN,
+                    })}
+                  >
+                    <ul>
+                      {page.items.map(item =>
+                        <li>
+                          <a href={item.link}>
+                            {item.name}
+                          </a>
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                </ClickOutside>
+              </li>
+            : null}
+
+          <li className="UserBar__item UserBar__item--action UserBar__item--action-highlight">
+            <a href="/shop/basket">Basket</a>
+          </li>
+        </ul>
+      );
+    }
+    return (
+      <ul className="UserBar__list">
+        <li className="UserBar__item">Hi there!</li>
+        <li className="UserBar__item UserBar__item--action">
+          <a href="/login" data-action="login">
+            Log in
+          </a>
+        </li>
+        <li className="UserBar__item UserBar__item--action UserBar__item--action-highlight">
+          <a href="/shop/basket">Basket</a>
+        </li>
+      </ul>
+    );
+  }
+
+  render() {
+    const { isLoaded } = this.state;
+
+    return (
+      <div className="UserBar">
+        <div className="Container UserBar__container">
+          {isLoaded
+            ? this.renderLoaded()
+            : <ul className="UserBar__list" style={{ visibility: 'hidden' }}>
+                <li className="UserBar__item UserBar__item">Loading</li>
+              </ul>}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Hydroleaf()(UserBar);

@@ -1,7 +1,5 @@
 @import '../core/typography.css';
 
-/*  */
-
 .UserBar {
   color: #ffffff;
   font-weight: bold;
@@ -47,6 +45,17 @@
     padding-left: 0.75lh;
     background-color: var(--color__brand-blue);
     color: #ffffff;
+
+    & > button {
+      border: 0;
+      font-size: 1em;
+      background: transparent;
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: inherit;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
   }
 
   &__item--empty {
@@ -95,6 +104,11 @@
     z-index: var(--layer__user-bar-dropdown);
 
     @mixin card flat;
+
+    & > ul {
+      padding: 0;
+      marign: 0;
+    }
   }
 
   &__item--open &__item-dropdown {

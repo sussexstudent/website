@@ -18,6 +18,8 @@ export default function() {
       import(/* webpackChunkName: "StudentGroupsDiscovery" */ '@ussu/components/StudentGroupsDiscovery'),
     Header: () =>
       import(/* webpackChunkName: "Header" */ '@ussu/components/Header'),
+    UserBar: () =>
+      import(/* webpackChunkName: "UserBar" */ '@ussu/components/UserBar'),
   };
 
   [...document.querySelectorAll('.Hydro')].forEach(el => {

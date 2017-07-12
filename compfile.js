@@ -10,8 +10,6 @@ import manifest from './dist/manifest.json';
 
 assets.manifest = manifest;
 
-// TODO: NO COMPONENT IMPORTS IN THIS FILE, USE PATHS. IMPORT ON DEMAND IN COMP.
-
 export default {
   html: Html,
   root: path.join(__dirname, 'generator'),

@@ -7,7 +7,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const devWebpackConfig = require('./webpack.config');
 
 global.mslInject = {
-  jsonuserinfo: `<script type="type/javascript">
+  JsonUserInfo: `<script type="text/javascript">
 
 //<![CDATA[
 var mslUserInfo =

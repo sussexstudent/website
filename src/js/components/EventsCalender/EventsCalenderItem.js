@@ -31,13 +31,12 @@ function renderEventLocation(event) {
 
 function EventsCalenderItem({ part }) {
   const event = part.event;
-  /* eslint-disable jsx-a11y/anchor-has-content */
   return (
     <div className="EventsCalender__item">
       <FauxLink href={event.url} />
       {has(part, 'event.featuredImage.resource')
         ? <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
-            <Image src={event.featuredImage.resource} />
+            <Image src={event.featuredImage.resource} lazy />
           </div>
         : null}
       <div className="EventsCalender__item-container">
@@ -62,7 +61,6 @@ function EventsCalenderItem({ part }) {
       </div>
     </div>
   );
-  /* eslint-enable jsx-a11y/anchor-has-content */
 }
 
 // TODO: Add relative date if near or started and not ended

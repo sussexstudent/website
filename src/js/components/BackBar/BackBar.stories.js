@@ -10,7 +10,9 @@ storiesOf('BackBar', module)
   .add('supports brand color', () =>
     <div>
       <BackBar color="red">Support</BackBar>
-      <BackBar color="green">{"What's on"}</BackBar>
+      <BackBar color="green">
+        {"What's on"}
+      </BackBar>
       <BackBar color="blue">Latest news</BackBar>
     </div>
   );

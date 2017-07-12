@@ -8,13 +8,17 @@ const FigureCollectionFigure = ({ imageResource, title, sub, link }) =>
       <div className="u-responsive-ratio u-responsive-ratio--square">
         <Image className="ResponsiveImage" alt="" src={imageResource} />
       </div>
-      <span className="FigureCollection__title">{title}</span>
-      <span className="FigureCollection__secondary">{sub}</span>
+      <span className="FigureCollection__title">
+        {title}
+      </span>
+      <span className="FigureCollection__secondary">
+        {sub}
+      </span>
     </a>
   </li>;
 
 FigureCollectionFigure.propTypes = {
-  imageURL: PropTypes.string.isRequired,
+  imageResource: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   sub: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,

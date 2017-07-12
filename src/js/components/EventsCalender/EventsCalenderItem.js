@@ -7,7 +7,11 @@ import FauxLink from '../FauxLink';
 
 function renderEventLocation(event) {
   if (!event.venue) {
-    return <span>{event.locationDisplay}</span>;
+    return (
+      <span>
+        {event.locationDisplay}
+      </span>
+    );
   }
 
   if (event.venue.websiteLink) {
@@ -18,23 +22,28 @@ function renderEventLocation(event) {
     );
   }
 
-  return <span>{event.locationDisplay || event.venue.name}</span>;
+  return (
+    <span>
+      {event.locationDisplay || event.venue.name}
+    </span>
+  );
 }
 
 function EventsCalenderItem({ part }) {
   const event = part.event;
-  /* eslint-disable jsx-a11y/anchor-has-content */
   return (
     <div className="EventsCalender__item">
       <FauxLink href={event.url} />
       {has(part, 'event.featuredImage.resource')
         ? <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
-            <Image src={event.featuredImage.resource} />
+            <Image src={event.featuredImage.resource} lazy />
           </div>
         : null}
       <div className="EventsCalender__item-container">
         {event.kicker
-          ? <div className="EventsCalender__item-kicker">{event.kicker}</div>
+          ? <div className="EventsCalender__item-kicker">
+              {event.kicker}
+            </div>
           : null}
         <h2 className="EventsCalender__item-title">
           {event.title}
@@ -52,7 +61,6 @@ function EventsCalenderItem({ part }) {
       </div>
     </div>
   );
-  /* eslint-enable jsx-a11y/anchor-has-content */
 }
 
 // TODO: Add relative date if near or started and not ended

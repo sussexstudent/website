@@ -50,7 +50,9 @@ const VoteHero = () =>
     <div className="VoteHero__container">
       <div>Get involved.</div>
       <div>Be part of making change happen.</div>
-      <div className="VoteHero__button">{svg}</div>
+      <div className="VoteHero__button">
+        {svg}
+      </div>
       <div>
         Voting for the Union elections and referenda closes Fri 3rd March at
         5pm.

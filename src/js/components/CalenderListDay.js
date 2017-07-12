@@ -10,13 +10,21 @@ function CalenderListDay(props) {
 
   return (
     <li>
-      <h2>{date}</h2>
+      <h2>
+        {date}
+      </h2>
       <ol>
         {events.map(event =>
           <li>
-            <div>{event.date}</div>
-            <div>{event.organsiation}</div>
-            <h3>{event.title}</h3>
+            <div>
+              {event.date}
+            </div>
+            <div>
+              {event.organsiation}
+            </div>
+            <h3>
+              {event.title}
+            </h3>
           </li>
         )}
       </ol>

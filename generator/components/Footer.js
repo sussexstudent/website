@@ -1,5 +1,5 @@
 import React from 'react';
-import Social from './Social';
+import Social from '@ussu/components/SocialMenu';
 
 const Footer = () =>
   <footer className="Footer">
@@ -17,7 +17,8 @@ const Footer = () =>
             View contact details for particular departments, staff and officers
           </a>
           <br />
-          <a href="/about-us/jobs">Jobs</a><br />
+          <a href="/about-us/jobs">Jobs</a>
+          <br />
           <a href="/advertise">Advertise With Us</a>
         </p>
 

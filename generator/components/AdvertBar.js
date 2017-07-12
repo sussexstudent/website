@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MSLTag from './MSLTag';
 
-const AdvertBar = ({ position, dark = false }) =>
-  <div className={cx('AdvertBar', 'advert', { 'AdvertBar--dark': dark })}>
+const AdvertBar = ({ className = '', position, dark = false }) =>
+  <div
+    className={cx('AdvertBar', 'advert', className, {
+      'AdvertBar--dark': dark,
+    })}
+  >
     <div
       className="AdvertBar__advert"
       dangerouslySetInnerHTML={{

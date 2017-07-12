@@ -5,9 +5,15 @@ import HydroLeaf from '../HydroLeaf';
 
 const HeadingHero = ({ imageURL, title, description }) =>
   <Image className="HeadingImage" src={imageURL} type="bg">
-    <h1 className="HeadingImage__title">{title}</h1>
+    <h1 className="HeadingImage__title">
+      {title}
+    </h1>
     {description
-      ? <div><div className="HeadingImage__desc">{description}</div></div>
+      ? <div>
+          <div className="HeadingImage__desc">
+            {description}
+          </div>
+        </div>
       : null}
   </Image>;
 

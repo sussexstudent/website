@@ -40,12 +40,24 @@
     display: block;
     position: relative;
     margin-bottom: 1rem;
-    width: 320px;
-    margin-right: 1.5lh;
+    width: 100%;
+
+    @media (--medium) {
+      margin-right: 1.5lh;
+      width: 320px;
+    }
   }
 
   &__item-container {
     padding: 0.5rem;
+  }
+
+  &__part-container {
+    width: 100%;
+
+    @media (--medium) {
+      width: auto;
+    }
   }
 
   &__item-kicker {

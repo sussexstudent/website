@@ -29,9 +29,7 @@ class CookieMessage extends React.Component {
           title="Close"
           onClick={this.handleHide}
         >
-          <span className="u-h">
-            Close
-          </span>
+          <span className="u-h">Close</span>
         </button>
       </div>
     );

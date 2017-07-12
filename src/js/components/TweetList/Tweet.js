@@ -20,7 +20,9 @@ function Tweet({ isQuoted, data }) {
     },
     isRetweet
       ? <div className="Tweet__header">
-          <span className="Tweet__retweeted">{data.user.name} Retweeted</span>
+          <span className="Tweet__retweeted">
+            {data.user.name} Retweeted
+          </span>
         </div>
       : null,
     <TweetHeader user={tweet.user} />,

@@ -84,12 +84,13 @@ class TweetList extends React.Component {
     if (!isLoading && !tweets) {
       return (
         <ul className="TweetList">
-          <p>{"Something went wong, we're unable to load the latest tweets"}</p>
+          <p>
+            {"Something went wong, we're unable to load the latest tweets"}
+          </p>
         </ul>
       );
     }
 
-    console.log(tweets);
     return (
       <ul className="TweetList">
         <FitOverflowChildren area="TweetList" minItems={3}>
@@ -111,4 +112,6 @@ TweetList.propTypes = {
   signature: PropTypes.string.isRequired,
 };
 
-export default HydroLeaf()(TweetList);
+export default HydroLeaf({
+  className: 'u-extend-flex',
+})(TweetList);

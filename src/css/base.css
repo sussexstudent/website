@@ -3,9 +3,8 @@ a {
   text-decoration: underline;
 }
 
-a:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
+[data-whatinput="keyboard"] :focus {
+  outline: 4px solid var(--color__brand-yellow);
   outline-offset: -2px;
 }
 

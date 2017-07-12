@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 const AnodyneMenuItem = ({ name, link }) =>
   <li className="AnodyneMenu__item">
-    <a className="AnodyneMenu__link" href={link}>{name}</a>
+    <a className="AnodyneMenu__link" href={link}>
+      {name}
+    </a>
   </li>;
 
 AnodyneMenuItem.propTypes = {

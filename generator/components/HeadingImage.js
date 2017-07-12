@@ -9,9 +9,15 @@ const HeadingImage = ({ imageURL, title, description }) =>
       backgroundImage: `url(${imageURL}?thumbnail=true&height=700&width=2000&resize_type=CropToFit)`,
     }}
   >
-    <h1 className="HeadingImage__title">{title}</h1>
+    <h1 className="HeadingImage__title">
+      {title}
+    </h1>
     {description
-      ? <div><div className="HeadingImage__desc">{description}</div></div>
+      ? <div>
+          <div className="HeadingImage__desc">
+            {description}
+          </div>
+        </div>
       : null}
   </div>;
 

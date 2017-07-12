@@ -10,7 +10,7 @@ storiesOf('EventsCalender', module).add('standard event card', () =>
           title: 'Introduction to the Role Models Project',
           organisationId: 6013,
           organisationName: null,
-          link: '/ents/event/2791/',
+          url: '/ents/event/2791/',
           locationDisplay: 'Fulton 104',
           time: '2nd July 6pm - 8pm',
           description:

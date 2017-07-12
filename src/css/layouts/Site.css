@@ -2,12 +2,20 @@
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  font-family: sans-serif;
+  font-family: var(--type__secondary);
   transition: transform ease 300ms;
 
   &__content {
     flex: 1 1 auto;
+
+    @media (--up-to-medium) {
+      padding-top: 60px;
+    }
   }
+}
+
+html {
+  touch-action: manipulation;
 }
 
 .Body {
@@ -18,9 +26,15 @@
 }
 
 .html--search-active  {
+  @media (--up-to-medium) {
+
+  }
+
   & .Site {
     @media (--up-to-medium) {
-      display: none;
+      position: fixed;
+      top: 0;
+      z-index: -10;
     }
   }
 
@@ -29,6 +43,10 @@
       overflow: hidden;
     }
   }
+}
+
+.html--modal {
+  overflow-y: hidden;
 }
 
 .html--locked {

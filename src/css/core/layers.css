@@ -1,4 +1,9 @@
 :root {
+  --layer__header-side-search: 155;
+  --layer__header-backdrop--is-search: 152;
+  --layer__header--mobile: 150;
+  --layer__header-side-menu: 140;
+  --layer__header-backdrop: 130;
   --layer__search-header-nav--mobile: 125;
   --layer__search-input: 120;
   --layer__mobile-search: 150;

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 const Item = ({ name, link }) =>
   <li className="PrefooterMenu__column-item">
-    <a href={link}>{name}</a>
+    <a href={link}>
+      {name}
+    </a>
   </li>;
 
 Item.propTypes = {
@@ -14,7 +16,9 @@ Item.propTypes = {
 const Column = ({ name, link, children }) =>
   <ul className="PrefooterMenu__column">
     <li className="PrefooterMenu__column-header">
-      <a href={link}>{name}</a>
+      <a href={link}>
+        {name}
+      </a>
     </li>
     {children}
   </ul>;

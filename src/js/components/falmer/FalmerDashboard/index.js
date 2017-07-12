@@ -12,8 +12,16 @@ function FalmerDashboard({ user: { isStaff, hasCmsAccess } }) {
       <h1 className="Heading">Dashboard</h1>
       <h2 className="Heading Heading--highlight">Things you can do:</h2>
       <ul>
-        {isStaff ? <li><Button href="/admin">Open Admin</Button></li> : null}
-        {hasCmsAccess ? <li><Button href="/cms">Open CMS</Button></li> : null}
+        {isStaff
+          ? <li>
+              <Button href="/admin">Open Admin</Button>
+            </li>
+          : null}
+        {hasCmsAccess
+          ? <li>
+              <Button href="/cms">Open CMS</Button>
+            </li>
+          : null}
       </ul>
     </div>
   );

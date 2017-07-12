@@ -6,10 +6,14 @@ const FigureCollectionFigure = ({ imageResource, title, sub, link }) =>
   <li className="FigureCollection__item">
     <a href={link} className="FigureCollection__link">
       <div className="u-responsive-ratio u-responsive-ratio--square">
-        <Image className="ResponsiveImage" alt="" src={imageResource} />
+        <Image className="ResponsiveImage" alt="" src={imageResource} lazy />
       </div>
-      <span className="FigureCollection__title">{title}</span>
-      <span className="FigureCollection__secondary">{sub}</span>
+      <span className="FigureCollection__title">
+        {title}
+      </span>
+      <span className="FigureCollection__secondary">
+        {sub}
+      </span>
     </a>
   </li>;
 

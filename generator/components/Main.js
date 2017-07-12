@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MSLTag from './MSLTag';
-import PropTypes from 'prop-types';
 
 const Main = ({ legacy }) =>
   <main className={cx('Site__content')}>

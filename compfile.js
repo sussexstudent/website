@@ -10,26 +10,21 @@ import manifest from './dist/manifest.json';
 
 assets.manifest = manifest;
 
-// TODO: NO COMPONENT IMPORTS IN THIS FILE, USE PATHS. IMPORT ON DEMAND IN COMP.
-
 export default {
   html: Html,
   root: path.join(__dirname, 'generator'),
   templates: {
     freshersMain: {
       head: freshersHead,
-      templatePublic: './layouts/freshers/main.js',
-      templateLoggedIn: './layouts/freshers/main.js',
+      template: './layouts/freshers/main.js',
     },
     main: {
       head: headContent,
-      templatePublic: './layouts/main.js',
-      templateLoggedIn: './layouts/main.js',
+      template: './layouts/main.js',
     },
     'main-containerless': {
       head: headContent,
-      templatePublic: './layouts/main.js',
-      templateLoggedIn: './layouts/main.js',
+      template: './layouts/main.js',
     },
     legacy: {
       head: headContent,

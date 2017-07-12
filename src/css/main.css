@@ -33,6 +33,7 @@
 @import './components/NavigationCard.css';
 @import './components/NewsBlock.css';
 @import './components/UserBar.css';
+@import './components/ImagePlaceholder.css';
 @import './components/Social.css';
 @import './components/SearchApp.css';
 @import './components/InlineSearch.css';

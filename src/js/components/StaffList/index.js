@@ -6,7 +6,9 @@ function StaffList({ value: { heading, body } }) {
   return (
     <div>
       <span className="u-position-anchor" id={slugify(heading)} />
-      <h2 className="Heading Heading--highlight">{heading}</h2>
+      <h2 className="Heading Heading--highlight">
+        {heading}
+      </h2>
       <ul className="StaffList">
         {body.map(member =>
           <li className="StaffList__item">
@@ -23,8 +25,12 @@ function StaffList({ value: { heading, body } }) {
                 </div>
               </div>
               <div className="StaffList__creds">
-                <span className="StaffList__title">{member.name}</span>
-                <span className="StaffList__secondary">{member.jobTitle}</span>
+                <span className="StaffList__title">
+                  {member.name}
+                </span>
+                <span className="StaffList__secondary">
+                  {member.jobTitle}
+                </span>
               </div>
             </div>
             <div className="StaffList__content">
@@ -37,7 +43,9 @@ function StaffList({ value: { heading, body } }) {
             <ul className="StaffList__contact">
               {member.email
                 ? <li className="StaffList__contact-item StaffList__contact-item--email">
-                    <a href={`mailto:${member.email}`}>{member.email}</a>
+                    <a href={`mailto:${member.email}`}>
+                      {member.email}
+                    </a>
                   </li>
                 : null}
               {member.officePhoneNumber

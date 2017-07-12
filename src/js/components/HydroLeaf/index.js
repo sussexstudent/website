@@ -24,9 +24,13 @@ function generatePropsForContext(contextToPropsMap, context) {
   return props;
 }
 
+const DefaultContainer = props => <div {...props} />;
+
 /* eslint-disable react/no-danger */
 /* eslint-disable no-inner-declarations */
-function HydroLeaf(contextToPropsMap = {}) {
+function HydroLeaf(
+  { contextToProps = {}, className = '', container = DefaultContainer } = {}
+) {
   return function HydroLeafHOC(Component) {
     if (process.env.COMP === '1') {
       // eslint-disable-next-line
@@ -43,7 +47,7 @@ function HydroLeaf(contextToPropsMap = {}) {
 
           const serialProps = {
             ...props,
-            ...generatePropsForContext(contextToPropsMap, this.context),
+            ...generatePropsForContext(contextToProps, this.context),
           };
           let hydroKey = hydroId;
           if (Object.hasOwnProperty.call(serialProps, 'hydroId')) {
@@ -63,30 +67,28 @@ function HydroLeaf(contextToPropsMap = {}) {
             React.createElement(Component, serialProps)
           );
 
-          const dataAc = `window.HYDROSTATE_${hydroKey} = ${JSON.stringify(
+          let dataAc = `window.HYDROSTATE_${hydroKey} = ${JSON.stringify(
             serialProps
           )};`;
 
-          return (
-            <div className="HydroContainer">
-              <div
-                className="Hydro"
-                data-component={Component.name}
-                {...hydroIdSpread}
-                dangerouslySetInnerHTML={{ __html: componentMarkup }}
-              />
-              {hydroKey !== null
-                ? <script
-                    type="text/javascript"
-                    dangerouslySetInnerHTML={{ __html: dataAc }}
-                  />
-                : null}
-            </div>
-          );
+          if (hydroKey === null) {
+            dataAc = '';
+          } else {
+            dataAc = `<script type="text/javascript">${dataAc}</script>`;
+          }
+
+          return container({
+            className: `${className} Hydro`,
+            'data-component': Component.name,
+            ...hydroIdSpread,
+            dangerouslySetInnerHTML: {
+              __html: `${componentMarkup}${dataAc}`,
+            },
+          });
         }
       }
 
-      DeHydro.contextTypes = generateContextTypes(contextToPropsMap);
+      DeHydro.contextTypes = generateContextTypes(contextToProps);
 
       return DeHydro;
     }

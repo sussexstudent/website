@@ -4,9 +4,15 @@
     margin: 0;
     margin-bottom: 1em;
   }
-  
+
   ul, ol {
     padding-left: 0.7rem;
     margin-left: 0.5rem;
+  }
+
+  img {
+    max-width: 100%;
+    width: auto !important;
+    height: auto !important;
   }
 }

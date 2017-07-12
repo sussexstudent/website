@@ -9,7 +9,6 @@ const NewsBlock = ({
 }) =>
   <li className="NewsGrid__item NewsBlock">
     <a className="NewsBlock__link" href={link}>
-
       <div className="NewsBlock__image">
         <div className="u-responsive-ratio u-responsive-ratio--43">
           {imageURL
@@ -22,9 +21,13 @@ const NewsBlock = ({
 
       <div className="NewsBlock__content">
         <div className="NewsBlock__title-link">
-          <h2 className="NewsBlock__title">{title}</h2>
+          <h2 className="NewsBlock__title">
+            {title}
+          </h2>
         </div>
-        <p className="NewsBlock__standfirst">{led}</p>
+        <p className="NewsBlock__standfirst">
+          {led}
+        </p>
         <div className="NewsBlock__meta">
           <date className="NewsBlock__date">
             {isToday(publishedDate)

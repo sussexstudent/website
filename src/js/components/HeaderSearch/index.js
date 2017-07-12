@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Portal from 'react-portal';
-import HydroLeaf from '@ussu/components/HydroLeaf';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import SearchPage from '../../apps/search';
+import CSSTransition from 'react-transition-group/CSSTransition';
+import SearchPage from '../SearchPage';
 import smoothscroll from '../../libs/smoothscroll';
 import classToggle from '../../libs/dom/classToggle';
 
@@ -29,6 +28,14 @@ function getCoords(elem) {
   const left = box.left + (scrollLeft - clientLeft);
 
   return { top: Math.round(top), left: Math.round(left) };
+}
+
+function SearchHeaderAnimated({ children, ...props }) {
+  return (
+    <CSSTransition {...props} classNames="test" timeout={300}>
+      {children}
+    </CSSTransition>
+  );
 }
 
 class HeaderSearch extends React.Component {
@@ -189,13 +196,9 @@ class HeaderSearch extends React.Component {
             </div>
           : null}
         <div className="InlineSearch__content">
-          <ReactCSSTransitionGroup
-            transitionName="test"
-            transitionEnterTimeout={300}
-            transitionLeaveTimeout={300}
-          >
-            {isOpen ? <div className="InlineSearch__header" /> : null}
-          </ReactCSSTransitionGroup>
+          <SearchHeaderAnimated in={isOpen} mountOnEnter unmountOnExit>
+            {<div className="InlineSearch__header" />}
+          </SearchHeaderAnimated>
           {isOpen
             ? <div>
                 <SearchPage query={this.state.query} />
@@ -273,21 +276,20 @@ class HeaderSearch extends React.Component {
 
         {this.renderSearching(isOpen && !isMobile)}
         {isOpen && isMobile ? this.renderMobileSearch() : null}
-        <ReactCSSTransitionGroup
-          transitionName="fade"
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={300}
+        <CSSTransition
+          in={isOpen && !isMobile}
+          classNames="fade"
+          timeout={300}
+          mountOnEnter
+          unmountOnExit
         >
           {
-            // eslint-disable-next-line
+            <div
+              className="InlineSearch__backdrop"
+              onClick={this.handleBackdropClose}
+            />
           }
-          {isOpen && !isMobile
-            ? <div
-                className="InlineSearch__backdrop"
-                onClick={this.handleBackdropClose}
-              />
-            : null}
-        </ReactCSSTransitionGroup>
+        </CSSTransition>
       </div>
     );
   }
@@ -301,4 +303,4 @@ HeaderSearch.defaultProps = {
   disabled: false,
 };
 
-export default HydroLeaf()(HeaderSearch);
+export default HeaderSearch;

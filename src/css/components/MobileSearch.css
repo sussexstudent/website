@@ -15,4 +15,59 @@
   & .Container {
     padding: 0;
   }
+
+  &__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color__grey-summer);
+    opacity: 0.91;
+    transition: opacity 300ms ease;
+
+    &--active {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+}
+
+
+.MobileSearchInput-enter {
+  transform: translateY(-70px);
+  transition: transform 300ms ease;
+}
+
+.MobileSearchInput-enter.MobileSearchInput-enter-active {
+  transform: translateY(0);
+  transition: transform 300ms ease;
+}
+
+.MobileSearchInput-exit {
+  transform: translateY(0);
+  transition: transform 300ms ease;
+}
+
+.MobileSearchInput-exit.MobileSearchInput-exit-active {
+  transform: translateY(-70px);
+}
+
+.SearchFade-enter {
+  opacity: 0;
+  transition: transform 300ms ease;
+}
+
+.SearchFade-enter.SearchFade-enter-active {
+  opacity: 0.91;
+  transition: opacity 300ms ease;
+}
+
+.SearchFade-exit {
+  opacity: 0.91;
+  transition: opacity 300ms ease;
+}
+
+.SearchFade-exit.SearchFade-exit-active {
+  opacity: 0;
 }

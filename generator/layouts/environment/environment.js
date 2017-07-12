@@ -11,15 +11,13 @@ function Environment() {
               If you would like to find out more about the Students' Union's
               ethical and environmental work, or if you have any suggestions or
               information that might be useful please contact our Environmental
-              Assistant at
-              {' '}
+              Assistant at{' '}
               <a href="environment@sussexstudent.com">
                 environment@sussexstudent.com
               </a>
               .
               <p>
-                See what we are doing about feedback:
-                {' '}
+                See what we are doing about feedback:{' '}
                 <a
                   className="Button"
                   href="/about-us/ethics-environment/feedback/"
@@ -82,8 +80,7 @@ function Environment() {
               Union staff and officers are encouraging students to be more
               involved in this process so if you have any opinions, input and/or
               campaign suggestions to include in the process please contact our
-              Environmental Assistant
-              {' '}
+              Environmental Assistant{' '}
               <a href="mailto:sian.w@sussexstudent.com">
                 sian.w@sussexstudent.com
               </a>
@@ -93,19 +90,14 @@ function Environment() {
             <h2 className="Heading Heading--highlight">The Free Shop</h2>
             <p>
               At the end of the summer term when students move out of on-campus
-              University managed accommodation, we work with
-              {' '}
-              <a href="http://www.sussex.ac.uk/sef/">Sussex Estates</a>
-              {' '}
-              and Facilities to collect unwanted items. Some items, including
-              food are distributed to local charities such as
-              {' '}
+              University managed accommodation, we work with{' '}
+              <a href="http://www.sussex.ac.uk/sef/">Sussex Estates</a> and
+              Facilities to collect unwanted items. Some items, including food
+              are distributed to local charities such as{' '}
               <a href="http://faresharesussex.org.uk/about-us/">
                 Farshare Sussex
-              </a>
-              {' '}
-              and
-              {' '}
+              </a>{' '}
+              and{' '}
               <a href="https://www.bht.org.uk/services/first-base-day-centre/">
                 First Base
               </a>
@@ -121,10 +113,9 @@ function Environment() {
               fancy then do drop-by and take a look.
             </p>
             <p>
-              For the year-round Free Shop:
-              Accepted items include books, stationery, household items, clean
-              kitchenware (no sharp knives) and clothing
-              We cannot accept electrical items and food.
+              For the year-round Free Shop: Accepted items include books,
+              stationery, household items, clean kitchenware (no sharp knives)
+              and clothing We cannot accept electrical items and food.
             </p>
           </div>
           <div className="ContentCard">
@@ -138,8 +129,7 @@ function Environment() {
             </p>
             <p>
               The aim of the project is to use food collected from around our
-              campus, and with the help of the
-              {' '}
+              campus, and with the help of the{' '}
               <a href="http://www.realjunkfoodbrighton.co.uk/">
                 Real Junk Food Project
               </a>
@@ -155,26 +145,22 @@ function Environment() {
               there is 15 million tonnes of food waste each year.
             </p>
             <p>
-              Keep updated and get involved on the
-              {' '}
+              Keep updated and get involved on the{' '}
               <a href="https://www.facebook.com/groups/1768297243430232/">
                 Facebook Group
               </a>
             </p>
             <p>
-              You can get directly contact Sarah @
-              {' '}
+              You can get directly contact Sarah @{' '}
               <a href="mailto:soccit@sussexstudent.com">
                 soccit@sussexstudent.com
               </a>
             </p>
             <p>
-              You can also read Sarah’s
-              {' '}
+              You can also read Sarah’s{' '}
               <a href="/about-us/full-time-elected-officers/society-citizenship/">
                 manifesto
-              </a>
-              {' '}
+              </a>{' '}
               to find about her other environmental ideas and initiatives across
               the University.
             </p>

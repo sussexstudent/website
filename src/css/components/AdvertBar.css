@@ -35,4 +35,10 @@
       display: none;
     }
   }
+
+  &--mobile-home {
+    @media (--medium) {
+      display: none;
+    }
+  }
 }

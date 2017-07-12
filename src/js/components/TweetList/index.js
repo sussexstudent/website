@@ -91,7 +91,6 @@ class TweetList extends React.Component {
       );
     }
 
-    console.log(tweets);
     return (
       <ul className="TweetList">
         <FitOverflowChildren area="TweetList" minItems={3}>
@@ -113,4 +112,6 @@ TweetList.propTypes = {
   signature: PropTypes.string.isRequired,
 };
 
-export default HydroLeaf()(TweetList);
+export default HydroLeaf({
+  className: 'u-extend-flex',
+})(TweetList);

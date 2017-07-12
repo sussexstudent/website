@@ -132,17 +132,17 @@ class UserBar extends React.Component {
     const { isLoaded } = this.state;
 
     return (
-      <div className="UserBar">
-        <div className="Container UserBar__container">
-          {isLoaded
-            ? this.renderLoaded()
-            : <ul className="UserBar__list" style={{ visibility: 'hidden' }}>
-                <li className="UserBar__item UserBar__item">Loading</li>
-              </ul>}
-        </div>
+      <div className="Container UserBar__container">
+        {isLoaded
+          ? this.renderLoaded()
+          : <ul className="UserBar__list" style={{ visibility: 'hidden' }}>
+              <li className="UserBar__item UserBar__item">Loading</li>
+            </ul>}
       </div>
     );
   }
 }
 
-export default Hydroleaf()(UserBar);
+export default Hydroleaf({
+  className: 'UserBar',
+})(UserBar);

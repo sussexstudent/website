@@ -103,7 +103,6 @@ app.use(
 app.use(webpackHotMiddleware(compiler));
 app.use(comp.proxy());
 
-const server = app.listen(3002, () => {
+app.listen(3002, () => {
   console.log('Serving on 3002');
-  server.keepAliveTimeout = 0;
 });

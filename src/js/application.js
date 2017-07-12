@@ -1,6 +1,7 @@
 import Raven from 'raven-js';
 // import React from 'react';
 import mitt from 'mitt';
+import 'what-input';
 // import ReactDOM from 'react-dom';
 import ModalManager from './bits/modals/manager';
 // import LoginModal from './components/LoginModal';

@@ -165,5 +165,7 @@ ContentAPIComposer.defaultValues = {
 };
 
 export default HydroLeaf({
-  contentAPI: 'contentAPIStore',
+  contextToProps: {
+    contentAPI: 'contentAPIStore',
+  },
 })(ContentAPIComposer);

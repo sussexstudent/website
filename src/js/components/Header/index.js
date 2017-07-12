@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import HydroLeaf from '@ussu/components/HydroLeaf';
 import HeaderSearch from '@ussu/components/HeaderSearch';
+import MobileSearch from '@ussu/components/MobileSearch';
 import AnodyneMenu from '../AnodyneMenu';
 import SideMenu from '../SideMenu';
 import Logo from '../StudentsUnionLogo';
@@ -39,6 +40,7 @@ class Header extends React.Component {
     this.state = {
       isSideMenuOpen: false,
       isAdminOpen: false,
+      isSearchOpen: false,
       userData: null,
       logoColor: null,
     };
@@ -59,7 +61,19 @@ class Header extends React.Component {
       }
     };
 
+    this.handleBackdropClick = () => {
+      console.log('backdrop clicked');
+      if (this.state.isSideMenuOpen) {
+        this.handleCloseSideMenu();
+      }
+
+      if (this.state.isSearchOpen) {
+        this.handleCloseSearch();
+      }
+    };
+
     this.handleOpenSearch = () => this.setState({ isSearchOpen: true });
+    this.handleCloseSearch = () => this.setState({ isSearchOpen: false });
   }
 
   componentWillMount() {
@@ -116,13 +130,15 @@ class Header extends React.Component {
           </div>
           <AnodyneMenu />
           <SideMenu isOpen={isSideMenuOpen} userData={userData} />
-          {isSearchOpen
-            ? <div className="Header__side-search">
-                <HeaderSearch />
-              </div>
-            : null}
+          <div className="Header__side-search">
+            <MobileSearch
+              isOpen={isSearchOpen}
+              onClose={this.handleCloseSearch}
+            />
+          </div>
           <div
-            onClick={this.handleCloseSideMenu}
+            onClick={this.handleBackdropClick}
+            onTouchMove={e => e.preventDefault()}
             className={cx('Header__backdrop', {
               'Header__backdrop--is-visible': isSideMenuOpen,
             })}

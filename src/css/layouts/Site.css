@@ -26,9 +26,15 @@ html {
 }
 
 .html--search-active  {
+  @media (--up-to-medium) {
+
+  }
+
   & .Site {
     @media (--up-to-medium) {
-      display: none;
+      position: fixed;
+      top: 0;
+      z-index: -10;
     }
   }
 

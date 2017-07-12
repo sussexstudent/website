@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MSLTag from './MSLTag';
+import MSLTag from '../../../../generator/components/MSLTag';
 
 const mslLogout = MSLTag('LoginButton', {
   LoginText: 'Log in',

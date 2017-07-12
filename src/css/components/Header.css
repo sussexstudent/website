@@ -81,16 +81,20 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: color(var(--color__grey-summer));
     z-index: var(--layer__header-backdrop);
     opacity: 0;
     pointer-events: none;
     transition: opacity 200ms ease;
 
     &--is-visible {
-      opacity: 1;
+      opacity: 0.61;
       pointer-events: initial;
+    }
 
+    &--is-search {
+      opacity: 0.91;
+      z-index: var(--layer__header-backdrop--is-search);
     }
   }
 
@@ -129,6 +133,8 @@
   &__menu-button-mobile {
     background: transparent;
     border: 0;
+    min-width: 60px;
+    text-align: right;
     @media (--medium) {
       display: none;
     }
@@ -141,15 +147,6 @@
     @media (--medium) {
       display: none;
     }
-  }
-
-  &__side-search {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: var(--layer__header-side-search)
   }
 
   &__search {

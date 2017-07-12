@@ -97,56 +97,57 @@ class Header extends React.Component {
     const { isSideMenuOpen, isSearchOpen, userData, logoColor } = this.state;
 
     return (
-      <header className="Header">
-        <div className="Container">
-          <div className="Header__top">
-            <button
-              className="Header__search-mobile"
-              onClick={this.handleOpenSearch}
-            >
-              <SearchIcon />
-              <span className="Header__button-label">Search</span>
-            </button>
-            <div className="Header__logo HeaderLogo">
-              <a className="HeaderLogo__link" href="/">
-                <Logo color={logoColor} />
-              </a>
-            </div>
-            <button
-              className="Header__menu-button-mobile"
-              onClick={this.handleToggleSideMenu}
-            >
-              {isSideMenuOpen ? <CrossIcon /> : <MenuIcon />}
-              <span className="Header__button-label">
-                {isSideMenuOpen ? 'Exit' : 'Menu'}
-              </span>
-            </button>
-            <div className="Header__search">
-              <HeaderSearch />
-            </div>
-            <div className="Header__social">
-              <SocialMenu />
-            </div>
+      <div className="Container">
+        <div className="Header__top">
+          <button
+            className="Header__search-mobile"
+            onClick={this.handleOpenSearch}
+          >
+            <SearchIcon />
+            <span className="Header__button-label">Search</span>
+          </button>
+          <div className="Header__logo HeaderLogo">
+            <a className="HeaderLogo__link" href="/">
+              <Logo color={logoColor} />
+            </a>
           </div>
-          <AnodyneMenu />
-          <SideMenu isOpen={isSideMenuOpen} userData={userData} />
-          <div className="Header__side-search">
-            <MobileSearch
-              isOpen={isSearchOpen}
-              onClose={this.handleCloseSearch}
-            />
+          <button
+            className="Header__menu-button-mobile"
+            onClick={this.handleToggleSideMenu}
+          >
+            {isSideMenuOpen ? <CrossIcon /> : <MenuIcon />}
+            <span className="Header__button-label">
+              {isSideMenuOpen ? 'Exit' : 'Menu'}
+            </span>
+          </button>
+          <div className="Header__search">
+            <HeaderSearch />
           </div>
-          <div
-            onClick={this.handleBackdropClick}
-            onTouchMove={e => e.preventDefault()}
-            className={cx('Header__backdrop', {
-              'Header__backdrop--is-visible': isSideMenuOpen,
-            })}
+          <div className="Header__social">
+            <SocialMenu />
+          </div>
+        </div>
+        <AnodyneMenu />
+        <SideMenu isOpen={isSideMenuOpen} userData={userData} />
+        <div className="Header__side-search">
+          <MobileSearch
+            isOpen={isSearchOpen}
+            onClose={this.handleCloseSearch}
           />
         </div>
-      </header>
+        <div
+          onClick={this.handleBackdropClick}
+          onTouchMove={e => e.preventDefault()}
+          className={cx('Header__backdrop', {
+            'Header__backdrop--is-visible': isSideMenuOpen,
+          })}
+        />
+      </div>
     );
   }
 }
 
-export default HydroLeaf()(Header);
+export default HydroLeaf({
+  className: 'Header',
+  container: props => <header {...props} />,
+})(Header);

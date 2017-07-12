@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LazyLoad from 'react-lazyload';
 import Image from '../Image/index';
 import PatternPlaceholder from '../PatternPlaceholder/index';
 
@@ -13,18 +12,17 @@ function OrganisationCard(props) {
         href={org.mslGroup && org.mslGroup.link}
       >
         {org.mslGroup && org.mslGroup.logo !== null
-          ? <LazyLoad height={200} offset={400} once>
-              <div className="OrganisationCard__image-container">
-                <Image
-                  className="OrganisationCard__image"
-                  fit="clip"
-                  width={416}
-                  height={234}
-                  src={org.mslGroup.logo.resource}
-                  alt=""
-                />
-              </div>
-            </LazyLoad>
+          ? <div className="OrganisationCard__image-container">
+              <Image
+                className="OrganisationCard__image"
+                fit="clip"
+                width={416}
+                height={234}
+                src={org.mslGroup.logo.resource}
+                alt=""
+                lazy
+              />
+            </div>
           : <div className="OrganisationCard__image-container">
               <PatternPlaceholder />
             </div>}

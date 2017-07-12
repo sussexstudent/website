@@ -7,6 +7,7 @@ import MobileFooterTreats from '../components/MobileFooterTreats';
 import Footer from '../components/Footer';
 import Main from '../components/Main';
 import AdvertBar from '../components/AdvertBar';
+import MSLTag from '../components/MSLTag';
 
 const ga = `!function(u,s,S,U){u.GoogleAnalyticsObject=S;u[S]||(u[S]=function(){
 (u[S].q=u[S].q||[]).push(arguments)});u[S].l=+new Date;U=s.createElement('script');
@@ -20,14 +21,27 @@ const authStyles = loggedIn => `
 .u-${loggedIn ? 'anon' : 'auth'}-hide {display: none}
 `;
 
+const mslLogout = MSLTag('LoginButton', {
+  LoginText: 'Log in',
+  LogoutText: 'Log out',
+  GoHomeOnLogout: 'True',
+});
+
 const mainLayout = ({ loggedIn, assets, legacy }) =>
   <body className="Body" id="top">
     <style>
       {authStyles(loggedIn)}
     </style>
+    <div
+      style={{ display: 'none' }}
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{
+        __html: `${MSLTag('ControlPanel')}${MSLTag('Admin')}${mslLogout}`,
+      }}
+    />
     <div className="Site">
       <AdvertBar className="AdvertBar--top" position="TopBanner" />
-      <UserBar loggedIn={loggedIn} />
+      <UserBar />
       <Header />
       <Main legacy={legacy} />
       <MobileFooterTreats />

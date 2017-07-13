@@ -42,7 +42,14 @@ class UserBar extends React.Component {
   }
 
   renderLoaded() {
-    const { isLoggedIn, details, admin, page, dropdownOpen } = this.state;
+    const {
+      isLoggedIn,
+      details,
+      admin,
+      page,
+      dropdownOpen,
+      actionBound,
+    } = this.state;
 
     if (isLoggedIn) {
       return (
@@ -50,7 +57,9 @@ class UserBar extends React.Component {
           <li className="UserBar__item UserBar__item--welcome">
             Hi {details.firstName}!
           </li>
-          <li className="UserBar__item UserBar__item--action">[Logout]</li>
+          <li className="UserBar__item UserBar__item--action">
+            <button onClick={actionBound}>Logout</button>
+          </li>
 
           {admin !== null
             ? <li

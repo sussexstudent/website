@@ -49,12 +49,18 @@ function auth() {
     lastName: get(window, 'mslUserInfo.userinfo.LastName', ''),
     uuid: has(window, 'mslUserInfo.userinfo.UniqueId'),
   };
-
+  const button = document.querySelector('.msl-loginbutton');
   return {
     isLoggedIn: hasDetails,
     details,
     admin: getAdminItems(),
     page: getPageItems(),
+    actionBound: () => {
+      if (typeof __doPostBack === 'function') {
+        // eslint-disable-next-line no-undef
+        __doPostBack(button.id.replace(/_/gi, '$'), 0);
+      }
+    },
   };
 }
 

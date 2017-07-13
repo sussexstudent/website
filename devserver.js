@@ -89,6 +89,7 @@ var mslUserInfo =
 	<h3>Control Panel</h3>
 	<ul id="ctl00_controlpanel_ulControlPanel"><li id="ctl00_controlpanel_organisationadminnews0" class="msl_edit"><a href="/organisation/admin/news/0/">Edit MSL Membership System News</a></li><li id="ctl00_controlpanel_editpagepagename" class="msl_edit"><a href="/edit/page/?page_name=/">Edit Page</a></li><li id="ctl00_controlpanel_editpagesnewpageparent" class="msl_add"><a href="/edit/pages/newpage/?parent=/">Add child page</a></li><li id="ctl00_controlpanel_adminents" class="msl_edit"><a href="/admin/ents/">Edit MSL Membership System events</a></li></ul>
 </div>`,
+  LoginButton: `<a id="ctl00_ctl09_btnLogout" class="msl-loginbutton msl-loggedin" href="javascript:__doPostBack('ctl00$ctl09$btnLogout','')">Log out</a>`,
 };
 const app = express();
 

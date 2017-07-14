@@ -71,7 +71,6 @@ class SearchPage extends React.Component {
     );
 
     this.state = {
-      // query: qs.parse(location.search).q || '',
       page: parseInt(qs.parse(location.search).page, 10) || 1,
       results: null,
       isLoading: false,
@@ -102,7 +101,7 @@ class SearchPage extends React.Component {
     // alleviate flash of loading when result is cached and gets returned quickly
     let didFinish = false;
     setTimeout(() => {
-      if (!didFinish) {
+      if (!didFinish && this.props.query === query) {
         this.setState({ isLoading: true });
       }
     }, 60);

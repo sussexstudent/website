@@ -29,7 +29,12 @@ const DefaultContainer = props => <div {...props} />;
 /* eslint-disable react/no-danger */
 /* eslint-disable no-inner-declarations */
 function HydroLeaf(
-  { contextToProps = {}, className = '', container = DefaultContainer } = {}
+  {
+    contextToProps = {},
+    className = '',
+    name = null,
+    container = DefaultContainer,
+  } = {}
 ) {
   return function HydroLeafHOC(Component) {
     if (process.env.COMP === '1') {
@@ -79,7 +84,7 @@ function HydroLeaf(
 
           return container({
             className: `${className} Hydro`,
-            'data-component': Component.name,
+            'data-component': name !== null ? name : Component.name,
             ...hydroIdSpread,
             dangerouslySetInnerHTML: {
               __html: `${componentMarkup}${dataAc}`,

@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import AnodyneMenu from '../AnodyneMenu';
 import SocialMenu from '../SocialMenu';
+import UserBar from '../UserBar/index';
 
 class SideMenu extends React.Component {
   constructor(props) {
@@ -20,8 +21,7 @@ class SideMenu extends React.Component {
   }
 
   render() {
-    const { isOpen, userData } = this.props;
-    const { isAdminOpen, isThisPageOpen } = this.state;
+    const { isOpen } = this.props;
 
     return (
       <div
@@ -30,33 +30,9 @@ class SideMenu extends React.Component {
         })}
       >
         <AnodyneMenu />
-        {userData !== null
-          ? <div className="Header__side-container Header__side-menu-user">
-              <div>
-                Hi {userData.name}!
-              </div>
-              <ul>
-                <li>
-                  <button onClick={this.handleAdminToggle}>Admin</button>
-                  {isAdminOpen
-                    ? <ul>
-                        <li>Admin link</li>
-                      </ul>
-                    : null}
-                </li>
-                <li>
-                  <button onClick={this.handleThisPageToggle}>This Page</button>
-                  {isThisPageOpen
-                    ? <ul>
-                        <li>this page link</li>
-                      </ul>
-                    : null}
-                </li>
-                <li>Basket</li>
-                <li>Log out</li>
-              </ul>
-            </div>
-          : null}
+        <div className="Header__side-container UserBar">
+          <UserBar />
+        </div>
         <div className="Header__side-container Header__side-menu-social">
           <SocialMenu asList />
         </div>

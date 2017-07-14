@@ -19,11 +19,23 @@ class UserBar extends React.Component {
 
     this.handleOpenDropdown = dropdown =>
       this.setState({ dropdownOpen: dropdown });
+    this.handleToggleDropdown = dropdown =>
+      this.setState({
+        dropdownOpen: dropdown === this.state.dropdownOpen ? null : dropdown,
+      });
     this.handleOpenPageDropdown = this.handleOpenDropdown.bind(
       this,
       PAGE_DROPDOWN
     );
     this.handleOpenAdminDropdown = this.handleOpenDropdown.bind(
+      this,
+      ADMIN_DROPDOWN
+    );
+    this.handleTogglePageDropdown = this.handleToggleDropdown.bind(
+      this,
+      PAGE_DROPDOWN
+    );
+    this.handleToggleAdminDropdown = this.handleToggleDropdown.bind(
       this,
       ADMIN_DROPDOWN
     );
@@ -70,10 +82,10 @@ class UserBar extends React.Component {
                   }
                 )}
               >
-                <button onClick={this.handleOpenAdminDropdown}>Admin</button>
+                <button onClick={this.handleToggleAdminDropdown}>Admin</button>
                 <ClickOutside onClickOutside={this.handleCloseDropdown}>
                   <div className={cx('UserBar__item-dropdown')}>
-                    <ul>
+                    <ul className="UserBar__dropdown-list">
                       {admin.admin.map(item =>
                         <li>
                           <a href={item.link}>
@@ -95,14 +107,14 @@ class UserBar extends React.Component {
                   }
                 )}
               >
-                {' '}<button onClick={this.handleOpenPageDropdown}>Page</button>
+                <button onClick={this.handleTogglePageDropdown}>Page</button>
                 <ClickOutside onClickOutside={this.handleCloseDropdown}>
                   <div
                     className={cx('UserBar__item-dropdown', {
                       'UserBar__item--open': dropdownOpen === PAGE_DROPDOWN,
                     })}
                   >
-                    <ul>
+                    <ul className="UserBar__dropdown-list">
                       {page.items.map(item =>
                         <li>
                           <a href={item.link}>
@@ -139,19 +151,29 @@ class UserBar extends React.Component {
 
   render() {
     const { isLoaded } = this.state;
+    if (isLoaded) {
+      return this.renderLoaded();
+    }
 
     return (
-      <div className="Container UserBar__container">
-        {isLoaded
-          ? this.renderLoaded()
-          : <ul className="UserBar__list" style={{ visibility: 'hidden' }}>
-              <li className="UserBar__item UserBar__item">Loading</li>
-            </ul>}
-      </div>
+      <ul className="UserBar__list" style={{ visibility: 'hidden' }}>
+        <li className="UserBar__item UserBar__item">Loading</li>
+      </ul>
     );
   }
 }
 
-export default Hydroleaf({
-  className: 'UserBar',
-})(UserBar);
+export default UserBar;
+
+function DesktopContainer() {
+  return (
+    <div className="Container UserBar__container">
+      <UserBar />
+    </div>
+  );
+}
+
+export const DesktopUserBar = Hydroleaf({
+  className: 'UserBar UserBar--desktop',
+  name: 'UserBar',
+})(DesktopContainer);

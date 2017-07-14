@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import isFunction from 'lodash/isFunction';
 
 export default function() {
   const componentMap = {
@@ -19,7 +20,9 @@ export default function() {
     Header: () =>
       import(/* webpackChunkName: "Header" */ '@ussu/components/Header'),
     UserBar: () =>
-      import(/* webpackChunkName: "UserBar" */ '@ussu/components/UserBar'),
+      import(/* webpackChunkName: "UserBar" */ '@ussu/components/UserBar').then(
+        module => module.DesktopUserBar
+      ),
   };
 
   [...document.querySelectorAll('.Hydro')].forEach(el => {
@@ -38,8 +41,12 @@ export default function() {
       return;
     }
 
-    getComponent().then(component => component.default).then(Component => {
-      ReactDOM.render(<Component {...props} />, el);
-    });
+    getComponent()
+      .then(
+        component => (!isFunction(component) ? component.default : component)
+      )
+      .then(Component => {
+        ReactDOM.render(<Component {...props} />, el);
+      });
   });
 }

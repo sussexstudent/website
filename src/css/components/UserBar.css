@@ -1,14 +1,84 @@
 @import '../core/typography.css';
 
+
 .UserBar {
-  color: #ffffff;
+  font-family: var(--type__primary);
   font-weight: bold;
   font-size: 1.1rem;
-  font-family: var(--type__primary);
 
-  @media (--up-to-medium) {
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__item-dropdown {
     display: none;
   }
+
+
+  &__item--open &__item-dropdown {
+    display: block;
+  }
+}
+
+@media (--up-to-medium) {
+  .UserBar {
+    color: var(--color__grey-slate);
+    margin-top: 1rem;
+
+    &--desktop {
+      display: none;
+    }
+
+    &__list {
+
+    }
+
+    &__item {
+      margin-bottom: 1rem;
+
+      & > a {
+        color: var(--color__grey-slate);
+        text-decoration: none;
+      }
+    }
+
+    &__dropdown-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      a {
+        text-decoration: none;
+        color: var(--color__grey-slate);
+        font-size: 0.9em;
+        padding-left: 1rem;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        display: block;
+      }
+    }
+
+    &__item > & {
+      text-decoration: none;
+      color: #000000;
+    }
+
+    &__item > button {
+      font-family: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+      padding: 0;
+    }
+
+  }
+}
+
+@media (--medium) {
+
+.UserBar {
+  color: #ffffff;
 
   &:before {
     content: '';
@@ -22,12 +92,9 @@
   &__list {
     @mixin rounded;
 
-    padding: 0;
-    margin: 0;
     margin-left: auto;
     margin-top: -3px;
     position: relative;
-    list-style: none;
     justify-content: flex-end;
     display: flex;
     background: var(--color__brand-blue);
@@ -56,10 +123,6 @@
       cursor: pointer;
       box-sizing: border-box;
     }
-  }
-
-  &__item--empty {
-    display: none;
   }
 
   &__item-admin {
@@ -93,7 +156,6 @@
   }
 
   &__item-dropdown {
-    display: none;
     background-color: var(--color__brand-blue);
     color: #ffffff;
     position: absolute;
@@ -109,10 +171,6 @@
       padding: 0;
       marign: 0;
     }
-  }
-
-  &__item--open &__item-dropdown {
-    display: block;
   }
 }
 
@@ -152,4 +210,5 @@
 
 .UserBar__admin-control-panel {
 
+}
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '@ussu/components/Header';
-import UserBar from '@ussu/components/UserBar';
+import { DesktopUserBar as UserBar } from '@ussu/components/UserBar';
 import MobileFooterTreats from '../components/MobileFooterTreats';
 // import PrefooterMenu from '../components/PrefooterMenu';
 import Footer from '../components/Footer';

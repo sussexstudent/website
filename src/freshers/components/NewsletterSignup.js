@@ -9,6 +9,7 @@ const RESPONSE_TEXT = {
   NAME_SUCCESS: () => `Thanks! What will you be?`,
   LEVEL_SUCCESS: () => `Great. Where are you coming from?`,
   FEE_SUCCESS: data => `See you in September, ${data.name}!`,
+  COMPLETE: () => `See you in September!`,
   ERROR: () => `We haven't been able to add you. Please try again later.`,
 };
 
@@ -69,6 +70,10 @@ class NewsletterSignup extends React.Component {
         .then(([res, data]) => {
           console.log(data);
           if (res.status === 200) {
+            if (data.complete) {
+              this.setState({ currentState: 'COMPLETE' });
+              return;
+            }
             this.setState({
               continuationToken: data.continuationToken,
               currentState: 'ADDRESS_SUCCESS',

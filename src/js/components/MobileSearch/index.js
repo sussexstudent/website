@@ -85,8 +85,9 @@ class HeaderSearch extends React.Component {
 
   handleExitClose(e) {
     e.preventDefault();
-    this.setState({ query: '' }, () => {
-      this.handleHasFocus(false);
+    this.setState({
+      isRendered: false,
+      query: '',
     });
   }
 
@@ -115,7 +116,7 @@ class HeaderSearch extends React.Component {
                 <button
                   className="InlineSearch__exit"
                   type="button"
-                  onClick={this.handleBackdropClose}
+                  onClick={this.handleExitClose}
                 >
                   <span className="u-h">Exit search</span>
                 </button>

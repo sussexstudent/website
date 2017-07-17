@@ -102,6 +102,7 @@ class Header extends React.Component {
           <button
             className="Header__search-mobile"
             onClick={this.handleOpenSearch}
+            type="button"
           >
             <SearchIcon />
             <span className="Header__button-label">Search</span>
@@ -114,6 +115,7 @@ class Header extends React.Component {
           <button
             className="Header__menu-button-mobile"
             onClick={this.handleToggleSideMenu}
+            type="button"
           >
             {isSideMenuOpen ? <CrossIcon /> : <MenuIcon />}
             <span className="Header__button-label">

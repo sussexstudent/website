@@ -6,7 +6,7 @@ function imageLoaded(area) {
   });
 }
 
-export default function LoadLinkedImage(props) {
+export default function LoadLinkedImage({ area = 'na', ...props }) {
   // eslint-disable-next-line
-  return <img onLoad={imageLoaded.bind(this, props.area || 'na')} {...props} />;
+  return <img onLoad={imageLoaded.bind(this, area)} {...props} />;
 }

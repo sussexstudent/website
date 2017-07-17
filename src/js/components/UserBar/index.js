@@ -45,7 +45,6 @@ class UserBar extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       const { auth } = currentUser;
-      console.log(currentUser);
       this.setState({
         isLoaded: true,
         ...auth,
@@ -87,7 +86,7 @@ class UserBar extends React.Component {
                   <div className={cx('UserBar__item-dropdown')}>
                     <ul className="UserBar__dropdown-list">
                       {admin.admin.map(item =>
-                        <li>
+                        <li key={item.name}>
                           <a href={item.link}>
                             {item.name}
                           </a>
@@ -116,7 +115,7 @@ class UserBar extends React.Component {
                   >
                     <ul className="UserBar__dropdown-list">
                       {page.items.map(item =>
-                        <li>
+                        <li key={item.name}>
                           <a href={item.link}>
                             {item.name}
                           </a>

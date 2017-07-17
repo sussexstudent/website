@@ -17,21 +17,14 @@ e.parentNode.insertBefore(U,e)}(window,document,'ga');
 ga('create', 'UA-258929-3', 'auto');
 ga('send', 'pageview');`;
 
-const authStyles = loggedIn => `
-.u-${loggedIn ? 'anon' : 'auth'}-hide {display: none}
-`;
-
 const mslLogout = MSLTag('LoginButton', {
   LoginText: 'Log in',
   LogoutText: 'Log out',
   GoHomeOnLogout: 'True',
 });
 
-const mainLayout = ({ loggedIn, assets, legacy }) =>
+const mainLayout = ({ assets, legacy }) =>
   <body className="Body" id="top">
-    <style>
-      {authStyles(loggedIn)}
-    </style>
     <div
       style={{ display: 'none' }}
       // eslint-disable-next-line react/no-danger

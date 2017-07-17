@@ -6,7 +6,7 @@ import { Hydro as HeadingHero } from '../../src/js/components/HeadingHero/index'
 import AdvertBar from '../components/AdvertBar';
 
 const Homepage = () =>
-  <div>
+  <div className="u-container-bleed-top">
     <AdvertBar className="AdvertBar--mobile-home" position="TopBanner" />
     <div className="Trail">
       <div className="Trail__row  u-container-bleed-2">

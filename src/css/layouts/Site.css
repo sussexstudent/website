@@ -9,7 +9,7 @@
     flex: 1 1 auto;
 
     @media (--up-to-medium) {
-      padding-top: 60px;
+      padding-top: calc(60px + 1rem);
     }
   }
 }

@@ -12,7 +12,6 @@ import currentUser from './libs/user';
 import smoothscroll from './libs/smoothscroll';
 import hydro from './modules/hydro';
 import eventCards from './modules/event_cards';
-import menu from './modules/menu';
 
 // Install raven for sentry error  reporting
 if (process.env.NODE_ENV === 'production') {
@@ -96,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // All pages
   eventCards();
-  menu();
   hydro();
 
   // Conditional modules

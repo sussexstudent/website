@@ -33,6 +33,24 @@ function getColor() {
   return `#${pallet[[2, 1, 2, 0, 1, 0, 2, 1, 0][index]]}`;
 }
 
+function getActiveItem() {
+  const pathList = window.location.pathname.slice(1).split('/');
+  const firstPath = pathList[0] || '';
+
+  const pathToMenuPosition = {
+    'get-involved': 'GET_INVOLVED',
+    'whats-on': 'WHATS_ON',
+    'about-us': 'ABOUT_US',
+    support: 'SUPPORT',
+  };
+
+  if (Object.hasOwnProperty.call(pathToMenuPosition, firstPath)) {
+    return pathToMenuPosition[firstPath];
+  }
+
+  return null;
+}
+
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -43,6 +61,7 @@ class Header extends React.Component {
       isSearchOpen: false,
       userData: null,
       logoColor: null,
+      activeItem: null,
     };
 
     this.handleOpenSideMenu = () => {
@@ -89,6 +108,7 @@ class Header extends React.Component {
           },
           page: [],
         },
+        activeItem: getActiveItem(),
       });
     }
   }
@@ -129,7 +149,7 @@ class Header extends React.Component {
             <SocialMenu />
           </div>
         </div>
-        <AnodyneMenu />
+        <AnodyneMenu activeItem={this.state.activeItem} />
         <SideMenu isOpen={isSideMenuOpen} userData={userData} />
         <div className="Header__side-search">
           <MobileSearch

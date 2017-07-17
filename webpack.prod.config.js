@@ -28,13 +28,14 @@ config.output = {
 };
 
 config.plugins = config.plugins.concat([
-  new CleanWebpackPlugin(['dist', 'prototypes/build']),
+  new CleanWebpackPlugin(['dist']),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
   }),
   extractCSS,
   new webpack.optimize.CommonsChunkPlugin({
     name: 'common.js',
+    filename: 'common.js',
     async: false,
     children: true,
     minChunks: 2,

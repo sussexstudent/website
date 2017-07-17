@@ -11,7 +11,6 @@
     .Header__search, .Header__social, & > .Container > .AnodyneMenu {
       display: none;
     }
-
   }
 
   @media (--medium) {
@@ -104,7 +103,7 @@
     align-items: center;
     flex-direction: row;
 
-    padding: 0.6rem 0.5rem;
+    padding: 0;
     margin-bottom: 0;
     position: absolute;
     left: 0;
@@ -113,6 +112,7 @@
 
     @media (--up-to-medium) {
       @mixin card flat;
+      padding: 0.6rem 0.5rem;
       background-color: #ffffff;
       box-sizing: border-box;
       height: 61px;

@@ -69,7 +69,9 @@ class UserBar extends React.Component {
             Hi {details.firstName}!
           </li>
           <li className="UserBar__item UserBar__item--action">
-            <button onClick={actionBound}>Logout</button>
+            <button onClick={actionBound} type="button">
+              Log out
+            </button>
           </li>
 
           {admin !== null
@@ -81,7 +83,9 @@ class UserBar extends React.Component {
                   }
                 )}
               >
-                <button onClick={this.handleToggleAdminDropdown}>Admin</button>
+                <button onClick={this.handleToggleAdminDropdown} type="button">
+                  Admin
+                </button>
                 <ClickOutside onClickOutside={this.handleCloseDropdown}>
                   <div className={cx('UserBar__item-dropdown')}>
                     <ul className="UserBar__dropdown-list">
@@ -106,7 +110,9 @@ class UserBar extends React.Component {
                   }
                 )}
               >
-                <button onClick={this.handleTogglePageDropdown}>Page</button>
+                <button onClick={this.handleTogglePageDropdown} type="button">
+                  Page
+                </button>
                 <ClickOutside onClickOutside={this.handleCloseDropdown}>
                   <div
                     className={cx('UserBar__item-dropdown', {

@@ -108,8 +108,8 @@
 
   &__item {
     padding-top: 3px;
-    padding-right: 0.75lh;
-    padding-left: 0.75lh;
+    padding-right: 0.5lh;
+    padding-left: 0.5lh;
     background-color: var(--color__brand-blue);
     color: #ffffff;
 
@@ -136,8 +136,6 @@
   &__item--action {
     background-color: var(--color__brand-blue);
     color: #ffffff;
-    padding-left: 0;
-    padding-right: 0;
 
     &:hover {
       background-color: var(--color__brand-blue--hover);

@@ -5,7 +5,7 @@ const webpackMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const devWebpackConfig = require('./webpack.config');
-
+process.on('unhandledRejection', r => console.log(r));
 global.mslInject = {
   JsonUserInfo: `<script type="text/javascript">
 
@@ -98,6 +98,9 @@ const compiler = webpack(devWebpackConfig);
 app.use(
   webpackMiddleware(compiler, {
     publicPath: '/assets/',
+    stats: {
+      colors: true,
+    },
   })
 );
 

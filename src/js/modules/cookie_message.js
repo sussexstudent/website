@@ -8,7 +8,7 @@ export default function onReady() {
   ReactDOM.render(<CookieMessage />, el);
 
   try {
-    // localStorage.setItem('su_cookie', '1');
+    localStorage.setItem('su_cookie', '1');
   } catch (e) {
     // props Private Browsing/Safari
   }

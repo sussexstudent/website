@@ -70,7 +70,7 @@
 @import './components/QuoteSlips.css';
 @import './components/Peekable.css';
 @import './components/Prose.css';
-@import './components/GlobalNotice.css';
+@import './components/CookieNotice.css';
 @import './components/SearchFilterNav.css';
 @import './components/SearchMeta.css';
 @import './components/VoteHero.css';

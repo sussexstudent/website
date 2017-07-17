@@ -19,18 +19,23 @@ class CookieMessage extends React.Component {
     }
 
     return (
-      <div className="GlobalNotice">
-        {
-          'This site uses cookies. By continuing to browse, you agree to our use of cookies on the site. '
-        }
-        <a href="/cookie-policy">Learn more</a>.
-        <button
-          className="GlobalNotice__close"
-          title="Close"
-          onClick={this.handleHide}
-        >
-          <span className="u-h">Close</span>
-        </button>
+      <div className="CookieNotice">
+        <div className="CookieNotice__blimp">
+          {
+            'This site uses cookies. By continuing to browse, you agree to our use of cookies on the site. '
+          }
+          <a href="/cookie-policy">Learn more</a>.
+          <div className="CookieNotice__action">
+            <button
+              className="Button"
+              title="Close"
+              onClick={this.handleHide}
+              type="button"
+            >
+              Close
+            </button>
+          </div>
+        </div>
       </div>
     );
   }

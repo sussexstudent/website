@@ -10,6 +10,7 @@ import SelectionGrid from '@ussu/components/SelectionGrid';
 import SelectionGridItem from '@ussu/components/SelectionGridItem';
 import getFalmerEndpoint from '../../libs/getFalmerEndpoint';
 import SectionContentPage from './SectionContentPage';
+import HomePage from './HomePage';
 
 /* eslint-disable react/prop-types */
 const components = {
@@ -59,6 +60,7 @@ const pageComponents = {
   'content.StaffPage': StaffPage,
   'content.SelectionGridPage': ComponentStreamPage,
   'content.SectionContentPage': SectionContentPage,
+  'content.HomePage': HomePage,
 };
 
 /* eslint-enable react/prop-types */

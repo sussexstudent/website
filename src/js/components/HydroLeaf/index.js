@@ -24,7 +24,10 @@ function generatePropsForContext(contextToPropsMap, context) {
   return props;
 }
 
-const DefaultContainer = props => <div {...props} />;
+const DefaultContainer = ({ children = null, ...props }) =>
+  <div {...props}>
+    {children}
+  </div>;
 
 /* eslint-disable react/no-danger */
 /* eslint-disable no-inner-declarations */
@@ -45,7 +48,8 @@ function HydroLeaf(
         }
 
         render() {
-          const props = this.props;
+          const { renderStatic = false, ...props } = this.props;
+
           if (process.env.HYDROLEAF_MODE === 'RENDER_COMPONENT') {
             return <Component {...props} />;
           }
@@ -66,6 +70,14 @@ function HydroLeaf(
             hydroKey = null;
           } else {
             hydroIdSpread = { 'data-id': hydroKey };
+          }
+
+          if (renderStatic) {
+            console.log(serialProps);
+            return container({
+              className,
+              children: <Component {...serialProps} />,
+            });
           }
 
           const componentMarkup = ReactDOM.renderToString(

@@ -1,15 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import FigureCollectionFigure from './FigureCollectionFigure';
 
-const FigureCollection = ({ items }) =>
+const FigureCollection = ({ children, items = null }) =>
   <ul className="FigureCollection">
-    {items.map(item => <FigureCollectionFigure {...item} />)}
+    {items === null
+      ? children
+      : items.map(item => <FigureCollectionFigure {...item} />)}
   </ul>;
 
-FigureCollection.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape(FigureCollection.propTypes))
-    .isRequired,
-};
+FigureCollection.Figure = FigureCollectionFigure;
 
 export default FigureCollection;

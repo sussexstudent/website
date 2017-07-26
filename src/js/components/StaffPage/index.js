@@ -1,9 +1,9 @@
 import React from 'react';
-import ContentNavigation from '@ussu/components/ContentNavigation';
+// import ContentNavigation from '@ussu/components/ContentNavigation';
 import StaffList from '@ussu/components/StaffList';
 import slugify from '../../libs/slugify';
 import flatStreamToLevels from '../../libs/flatStreamToLevels';
-import VisibleChildWatcher from '../VisibleChildWatcher/index';
+// import VisibleChildWatcher from '../VisibleChildWatcher/index';
 import ContentCard from '../../../../generator/components/ContentCard';
 
 const components = {
@@ -75,40 +75,40 @@ class StaffPage extends React.Component {
       <div className="Layout Layout--sidebar-left Layout--sidebar-thin">
         <div>
           <aside>
-            <ContentNavigation
-              items={generateTitlesFromStream(levels)}
-              activeKey={this.state.visibleKey}
-              onlyShowSubMenuWhenChildActive
-            />
+            {/* <ContentNavigation*/}
+            {/* items={generateTitlesFromStream(levels)}*/}
+            {/* activeKey={this.state.visibleKey}*/}
+            {/* onlyShowSubMenuWhenChildActive*/}
+            {/* />*/}
           </aside>
         </div>
         <div>
-          <VisibleChildWatcher
-            onChange={visibleKey => this.setState({ visibleKey })}
-          >
-            {levels.map(({ value, children }) =>
-              <ContentCard>
-                {getComponent(
-                  value,
+          {/* <VisibleChildWatcher*/}
+          {/* onChange={visibleKey => this.setState({ visibleKey })}*/}
+          {/* >*/}
+          {levels.map(({ value, children }) =>
+            <ContentCard>
+              {getComponent(
+                value,
+                data,
+                value.type === 'heading'
+                  ? slugify(value.value)
+                  : slugify(value.value.heading)
+              )}
+              {/* <VisibleChildWatcher*/}
+              {/* onChange={visibleSubKey => this.setState({ visibleSubKey })}*/}
+              {/* >*/}
+              {children.map(({ value: childValue }) =>
+                getComponent(
+                  childValue,
                   data,
-                  value.type === 'heading'
-                    ? slugify(value.value)
-                    : slugify(value.value.heading)
-                )}
-                <VisibleChildWatcher
-                  onChange={visibleSubKey => this.setState({ visibleSubKey })}
-                >
-                  {children.map(({ value: childValue }) =>
-                    getComponent(
-                      childValue,
-                      data,
-                      slugify(childValue.value.heading)
-                    )
-                  )}
-                </VisibleChildWatcher>
-              </ContentCard>
-            )}
-          </VisibleChildWatcher>
+                  slugify(childValue.value.heading)
+                )
+              )}
+              {/* </VisibleChildWatcher>*/}
+            </ContentCard>
+          )}
+          {/* </VisibleChildWatcher>*/}
         </div>
       </div>
     );

@@ -41,8 +41,8 @@ module.exports = {
   resolve: {
     modules: ['web_modules', 'node_modules', './src/images'],
     alias: {
-      '@ussu/components': path.resolve(__dirname, 'src/components/'),
-      '@components': path.resolve(__dirname, 'src/components/'),
+      '~components': path.resolve(__dirname, 'src/components/'),
+      '~libs': path.resolve(__dirname, 'src/libs/'),
     },
     extensions: ['.js', '.svg'],
   },

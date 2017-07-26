@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ContentAPIComposer from '@ussu/components/ContentAPIComposer';
+import ContentAPIComposer from '~components/ContentAPIComposer';
 import perf from '../tracking/perf';
 
 function render(root) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ModalControler from '@ussu/components/ModalControler';
+import ModalControler from '~components/ModalControler';
 
 export default function ModalManager() {
   const stack = [];

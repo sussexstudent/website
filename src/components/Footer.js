@@ -1,5 +1,5 @@
 import React from 'react';
-import Social from '@ussu/components/SocialMenu';
+import Social from '~components/SocialMenu';
 
 const Footer = () =>
   <footer className="Footer">

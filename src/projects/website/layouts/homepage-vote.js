@@ -1,8 +1,8 @@
 import React from 'react';
-import FigureCollection from '@ussu/components/FigureCollection';
-import VoteHero from '@ussu/components/VoteHero';
-import FigureCollectionFigure from '@ussu/components/FigureCollectionFigure';
-import HomepageEventsList from '@ussu/components/HomepageEventsList';
+import FigureCollection from '~components/FigureCollection';
+import VoteHero from '~components/VoteHero';
+import FigureCollectionFigure from '~components/FigureCollectionFigure';
+import HomepageEventsList from '~components/HomepageEventsList';
 
 const Homepage = () =>
   <div>

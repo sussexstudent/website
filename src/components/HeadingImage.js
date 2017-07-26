@@ -1,4 +1,4 @@
-// DEPRECIATED: Use @ussu/components/HeadingHero
+// DEPRECIATED: Use ~components/HeadingHero
 import React from 'react';
 import PropTypes from 'prop-types';
 

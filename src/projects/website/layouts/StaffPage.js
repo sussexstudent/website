@@ -1,6 +1,6 @@
 import React from 'react';
-import ContentCard from '@ussu/components/ContentCard';
-import ContentAPIComposer from '@ussu/components/ContentAPIComposer';
+import ContentCard from '~components/ContentCard';
+import ContentAPIComposer from '~components/ContentAPIComposer';
 
 const StaffPage = () =>
   <div>

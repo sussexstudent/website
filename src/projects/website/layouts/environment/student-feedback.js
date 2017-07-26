@@ -1,6 +1,6 @@
 import React from 'react';
-import Deckchair from '@ussu/components/Deckchair';
-import HeadingImage from '@ussu/components/HeadingImage';
+import Deckchair from '~components/Deckchair';
+import HeadingImage from '~components/HeadingImage';
 
 function Feedback() {
   return (

@@ -3,11 +3,11 @@ import qs from 'query-string';
 import cx from 'classnames';
 import debounce from 'lodash/debounce';
 import orderBy from 'lodash/orderBy';
+import SearchResult from '~components/SearchResult';
+import SearchFilterNav from '~components/SearchFilterNav';
+import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 
 import perf from '../../tracking/perf';
-import SearchResult from '@ussu/components/SearchResult';
-import SearchFilterNav from '@ussu/components/SearchFilterNav';
-import getFalmerEndpoint from '../../libs/getFalmerEndpoint';
 
 /* eslint-disable */
 

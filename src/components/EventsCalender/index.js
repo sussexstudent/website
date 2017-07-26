@@ -10,10 +10,10 @@ import getMonth from 'date-fns/get_month';
 import setHours from 'date-fns/set_hours';
 import addDays from 'date-fns/add_days';
 import formatDate from 'date-fns/format';
-import Loader from '../Loader';
-import HydroLeaf from '../HydroLeaf';
+import Loader from '~components/Loader';
+import HydroLeaf from '~components/HydroLeaf';
+import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import EventsCalenderItem from './EventsCalenderItem';
-import getFalmerEndpoint from '../../libs/getFalmerEndpoint';
 
 const EVENT_PART = {
   CONTAINED: 'SINGLE',

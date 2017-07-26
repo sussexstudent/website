@@ -2,14 +2,14 @@ import Raven from 'raven-js';
 // import React from 'react';
 import mitt from 'mitt';
 import 'what-input';
+import currentUser from '~libs/user';
+import smoothscroll from '~libs/smoothscroll';
 // import ReactDOM from 'react-dom';
 import ModalManager from '../../bits/modals/manager';
 // import LoginModal from './components/LoginModal';
 // import NewsletterModal from './components/NewsletterModal';
 // import SnapchatModal from './components/SnapchatModal';
 import perf from '../../tracking/perf';
-import currentUser from '../../libs/user';
-import smoothscroll from '../../libs/smoothscroll';
 import hydro from '../../modules/hydro';
 import eventCards from '../../modules/event_cards';
 

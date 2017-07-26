@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import slugify from '../../libs/slugify';
+import slugify from '~libs/slugify';
 
 export function generateTitlesFromStream(body) {
   return body.map(block => {

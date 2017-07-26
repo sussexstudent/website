@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import keyBy from 'lodash/keyBy';
 import Fuse from 'fuse.js';
 import { forceCheck } from 'react-lazyload';
-import HydroLeaf from '@ussu/components/HydroLeaf';
-import OrgansiationGrid from '@ussu/components/OrgansiationGrid';
-import getFalmerEndpoint from '../../libs/getFalmerEndpoint';
-import Loader from '../Loader';
+import HydroLeaf from '~components/HydroLeaf';
+import OrgansiationGrid from '~components/OrgansiationGrid';
+import Loader from '~components/Loader';
+import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 
 class StudentGroupsDiscovery extends React.Component {
   constructor(props) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import getFalmerEndpoint from '../../js/libs/getFalmerEndpoint';
+import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 
 const RESPONSE_TEXT = {
   INITIAL: () => `Be the first to hear`,

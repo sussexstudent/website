@@ -1,8 +1,8 @@
 import React from 'react';
-// import ContentNavigation from '@ussu/components/ContentNavigation';
-import StaffList from '@ussu/components/StaffList';
-import slugify from '../../libs/slugify';
-import flatStreamToLevels from '../../libs/flatStreamToLevels';
+// import ContentNavigation from '~components/ContentNavigation';
+import StaffList from '~components/StaffList';
+import slugify from '~libs/slugify';
+import flatStreamToLevels from '~libs/flatStreamToLevels';
 import ContentCard from '../ContentCard';
 // import VisibleChildWatcher from '../VisibleChildWatcher';
 

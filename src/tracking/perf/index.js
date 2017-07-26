@@ -1,5 +1,6 @@
 function recordTime(component, event, attr, enable = true) {
   if (
+    typeof window === 'undefined' ||
     !enable ||
     'performance' in window === false ||
     'now' in window.performance === false

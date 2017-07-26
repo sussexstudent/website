@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Modal from '../Modal';
-import classToggle from '../../libs/dom/classToggle';
+import Modal from '~components/Modal';
+import classToggle from '~libs/dom/classToggle';
 
 const htmlEl = document.documentElement;
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from '@ussu/components/Image';
+import Image from '~components/Image';
 import PropTypes from 'prop-types';
 
 const FigureCollectionFigure = ({ imageResource, title, sub, link }) =>

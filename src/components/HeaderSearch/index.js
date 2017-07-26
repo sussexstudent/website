@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Portal from 'react-portal';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import SearchPage from '../SearchPage';
-import smoothscroll from '../../libs/smoothscroll';
-import classToggle from '../../libs/dom/classToggle';
+import SearchPage from '~components/SearchPage';
+import smoothscroll from '~libs/smoothscroll';
+import classToggle from '~libs/dom/classToggle';
 
 function getDistanceFromUserBar(userBarEl) {
   const offset = userBarEl.getBoundingClientRect().top;

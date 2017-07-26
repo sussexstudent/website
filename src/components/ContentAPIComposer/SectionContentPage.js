@@ -1,11 +1,11 @@
 import React from 'react';
-import HeadingHero from '../HeadingHero';
-import VisibleChildWatcher from '../VisibleChildWatcher';
+import slugify from '~libs/slugify';
+import HeadingHero from '~components/HeadingHero';
+import VisibleChildWatcher from '~components/VisibleChildWatcher';
+import ContentCard from '~components/ContentCard';
 import ContentNavigation, {
   generateTitlesFromStream,
-} from '../ContentNavigation';
-import ContentCard from '../ContentCard';
-import slugify from '../../libs/slugify';
+} from '~components/ContentNavigation';
 
 /* eslint-disable react/no-danger */
 class SectionContentPage extends React.Component {

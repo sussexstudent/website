@@ -1,9 +1,9 @@
 import React from 'react';
-import TweetList from '@ussu/components/TweetList';
-import ContentAPIComposer from '@ussu/components/ContentAPIComposer';
-import HomepageEventsList from '@ussu/components/HomepageEventsList';
-import { Hydro as HeadingHero } from '@ussu/components/HeadingHero';
-import AdvertBar from '@ussu/components/AdvertBar';
+import TweetList from '~components/TweetList';
+import ContentAPIComposer from '~components/ContentAPIComposer';
+import HomepageEventsList from '~components/HomepageEventsList';
+import { Hydro as HeadingHero } from '~components/HeadingHero';
+import AdvertBar from '~components/AdvertBar';
 
 const Homepage = () =>
   <div className="u-container-bleed-top">

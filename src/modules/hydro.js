@@ -4,23 +4,22 @@ import isFunction from 'lodash/isFunction';
 
 export default function() {
   const componentMap = {
-    ContentAPIComposer: () => import('@ussu/components/ContentAPIComposer'),
+    ContentAPIComposer: () => import('~components/ContentAPIComposer'),
     TweetList: () =>
-      import(/* webpackChunkName: "TweetList" */ '@ussu/components/TweetList'),
+      import(/* webpackChunkName: "TweetList" */ '~components/TweetList'),
     EventsContainer: () =>
-      import(/* webpackChunkName: "EventsPage" */ '@ussu/components/EventsCalender'),
+      import(/* webpackChunkName: "EventsPage" */ '~components/EventsCalender'),
     HeaderSearch: () =>
-      import(/* webpackChunkName: "HeaderSearch" */ '@ussu/components/HeaderSearch'),
+      import(/* webpackChunkName: "HeaderSearch" */ '~components/HeaderSearch'),
     HeadingHero: () =>
-      import(/* webpackChunkName: "HeadingHero" */ '@ussu/components/HeadingHero'),
+      import(/* webpackChunkName: "HeadingHero" */ '~components/HeadingHero'),
     FigureCollection: () =>
-      import(/* webpackChunkName: "FigureCollection" */ '@ussu/components/FigureCollection'),
+      import(/* webpackChunkName: "FigureCollection" */ '~components/FigureCollection'),
     StudentGroupsDiscoveryContainer: () =>
-      import(/* webpackChunkName: "StudentGroupsDiscovery" */ '@ussu/components/StudentGroupsDiscovery'),
-    Header: () =>
-      import(/* webpackChunkName: "Header" */ '@ussu/components/Header'),
+      import(/* webpackChunkName: "StudentGroupsDiscovery" */ '~components/StudentGroupsDiscovery'),
+    Header: () => import(/* webpackChunkName: "Header" */ '~components/Header'),
     UserBar: () =>
-      import(/* webpackChunkName: "UserBar" */ '@ussu/components/UserBar').then(
+      import(/* webpackChunkName: "UserBar" */ '~components/UserBar').then(
         module => module.DesktopUserBar
       ),
   };

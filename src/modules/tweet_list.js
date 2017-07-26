@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TweetList from '@ussu/components/TweetList';
+import TweetList from '~components/TweetList';
 import perf from '../tracking/perf';
 
 function render(root) {

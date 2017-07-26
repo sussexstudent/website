@@ -2,8 +2,8 @@ import React from 'react';
 import cx from 'classnames';
 import Portal from 'react-portal';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import SearchPage from '../SearchPage';
-import classToggle from '../../libs/dom/classToggle';
+import classToggle from '~libs/dom/classToggle';
+import SearchPage from '~components/SearchPage';
 
 class HeaderSearch extends React.Component {
   constructor(props) {

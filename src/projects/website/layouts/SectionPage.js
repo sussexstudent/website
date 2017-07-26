@@ -1,5 +1,5 @@
 import React from 'react';
-import ContentAPIComposer from '@ussu/components/ContentAPIComposer';
+import ContentAPIComposer from '~components/ContentAPIComposer';
 
 class SectionPage extends React.Component {
   render() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import HeadingImage from '@ussu/components/HeadingImage';
+import HeadingImage from '~components/HeadingImage';
 
 function Environment() {
   return (

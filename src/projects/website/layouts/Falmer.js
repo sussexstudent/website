@@ -1,5 +1,5 @@
 import React from 'react';
-import Falmer from '@ussu/components/falmer/FalmerApplication';
+import Falmer from '~components/falmer/FalmerApplication';
 
 const FalmerPage = () =>
   <div>

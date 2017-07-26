@@ -1,6 +1,6 @@
 import React from 'react';
-import Image from '../Image';
-import slugify from '../../libs/slugify';
+import slugify from '~libs/slugify';
+import Image from '~components/Image';
 /* eslint-disable react/no-danger */
 function StaffList({ value: { heading, body } }) {
   return (

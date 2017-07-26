@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FalmerApplication from '@ussu/components/falmer/FalmerApplication';
+import FalmerApplication from '~components/falmer/FalmerApplication';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';

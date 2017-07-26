@@ -1,4 +1,4 @@
-import MSLTag from '@ussu/components/MSLTag';
+import MSLTag from '~components/MSLTag';
 
 const branding = `<link rel="apple-touch-icon" sizes="180x180" href="https://du9l8eemj97rm.cloudfront.net/branding/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="https://du9l8eemj97rm.cloudfront.net/branding/favicon-32x32.png" sizes="32x32">

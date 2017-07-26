@@ -1,8 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
 import ClickOutside from 'react-click-outside';
-import Hydroleaf from '../HydroLeaf';
-import currentUser from '../../libs/user';
+import currentUser from '~libs/user';
+import Hydroleaf from '~components/HydroLeaf';
 
 const PAGE_DROPDOWN = 'page';
 const ADMIN_DROPDOWN = 'admin';

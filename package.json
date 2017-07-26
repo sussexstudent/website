@@ -137,7 +137,7 @@
     "serve": "BABEL_ENV=dev-server node --trace-warnings ./devserver.js",
     "docs:serve": "export NODE_ENV=development && node ./docs/devserver.js",
     "docs:prod": "export NODE_ENV=production && webpack --config ./docs/webpack.prod.config.js",
-    "format": "prettier --single-quote --print-width 80 --trailing-comma es5 --write \"./{src,generator}/**/*.js\"",
+    "format": "prettier --single-quote --print-width 80 --trailing-comma es5 --write \"./src/**/*.js\"",
     "test": "NODE_ENV=test && jest",
     "testc": "NODE_ENV=test && jest --coverage",
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -157,7 +157,7 @@
     "testEnvironment": "node",
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
-      "{generator,src}/**/*.{js,jsx}"
+      "src/**/*.{js,jsx}"
     ]
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BackBar from '@ussu/components/BackBar';
-import MSLTag from '@ussu/components/MSLTag';
+import BackBar from '~components/BackBar';
+import MSLTag from '~components/MSLTag';
 
 const ga = `!function(u,s,S,U){u.GoogleAnalyticsObject=S;u[S]||(u[S]=function(){
 (u[S].q=u[S].q||[]).push(arguments)});u[S].l=+new Date;U=s.createElement('script');

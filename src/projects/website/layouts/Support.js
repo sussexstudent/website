@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectionGridItem from '@ussu/components/SelectionGridItem';
+import SelectionGridItem from '~components/SelectionGridItem';
 
 const Support = () =>
   <div className="Container">

@@ -2,25 +2,30 @@
 
 exports[`renders a snapshot 1`] = `
 <div
-  className="GlobalNotice"
+  className="CookieNotice"
 >
-  This site uses cookies. By continuing to browse, you agree to our use of cookies on the site. 
-  <a
-    href="/cookie-policy"
+  <div
+    className="CookieNotice__blimp"
   >
-    Learn more
-  </a>
-  .
-  <button
-    className="GlobalNotice__close"
-    onClick={[Function]}
-    title="Close"
-  >
-    <span
-      className="u-h"
+    This site uses cookies. By continuing to browse, you agree to our use of cookies on the site. 
+    <a
+      href="/cookie-policy"
     >
-      Close
-    </span>
-  </button>
+      Learn more
+    </a>
+    .
+    <div
+      className="CookieNotice__action"
+    >
+      <button
+        className="Button"
+        onClick={[Function]}
+        title="Close"
+        type="button"
+      >
+        Close
+      </button>
+    </div>
+  </div>
 </div>
 `;

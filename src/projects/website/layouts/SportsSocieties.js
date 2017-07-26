@@ -1,5 +1,5 @@
 import React from 'react';
-import StudentGroupsDiscovery from '@ussu/components/StudentGroupsDiscovery';
+import StudentGroupsDiscovery from '~components/StudentGroupsDiscovery';
 
 function SportsSocieties() {
   return (

@@ -130,6 +130,7 @@ class ContentAPIComposer extends React.Component {
     }
 
     if (this.state.isError) {
+      console.log(this.state.data);
       return <h2>An error happened!</h2>;
     }
 
@@ -149,7 +150,6 @@ class ContentAPIComposer extends React.Component {
       );
       return <h2>Sorry! something has gone wrong.</h2>;
     }
-
     const Page = pageComponents[contentType];
 
     return <Page data={this.state.data} />;

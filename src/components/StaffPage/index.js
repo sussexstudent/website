@@ -16,6 +16,7 @@ const components = {
 };
 
 function getComponent(component, data, key) {
+  console.log(component, data);
   if (!Object.hasOwnProperty.call(components, component.type)) {
     console.warn(
       `[contentAPI] Requested component not found! ${component.type} is missing.`
@@ -71,44 +72,23 @@ class StaffPage extends React.Component {
     const { data: { body }, data } = this.props;
 
     const levels = flatStreamToLevels(item => levelMap[item.type], body);
+    console.log(levels);
     return (
       <div className="Layout Layout--sidebar-left Layout--sidebar-thin">
         <div>
-          <aside>
-            {/* <ContentNavigation*/}
-            {/* items={generateTitlesFromStream(levels)}*/}
-            {/* activeKey={this.state.visibleKey}*/}
-            {/* onlyShowSubMenuWhenChildActive*/}
-            {/* />*/}
-          </aside>
+          <aside />
         </div>
         <div>
-          {/* <VisibleChildWatcher*/}
-          {/* onChange={visibleKey => this.setState({ visibleKey })}*/}
-          {/* >*/}
-          {levels.map(({ value, children }) =>
+          {levels.map(({ value, _children = null, ...partData }) =>
             <ContentCard>
-              {getComponent(
-                value,
-                data,
-                value.type === 'heading'
-                  ? slugify(value.value)
-                  : slugify(value.value.heading)
-              )}
-              {/* <VisibleChildWatcher*/}
-              {/* onChange={visibleSubKey => this.setState({ visibleSubKey })}*/}
-              {/* >*/}
-              {children.map(({ value: childValue }) =>
-                getComponent(
-                  childValue,
-                  data,
-                  slugify(childValue.value.heading)
-                )
-              )}
-              {/* </VisibleChildWatcher>*/}
+              {getComponent(value, partData, slugify(value))}
+              {_children !== null
+                ? _children.map(element =>
+                    getComponent(element, data, slugify(element.value.heading))
+                  )
+                : null}
             </ContentCard>
           )}
-          {/* </VisibleChildWatcher>*/}
         </div>
       </div>
     );

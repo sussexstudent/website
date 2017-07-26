@@ -37,6 +37,7 @@
   }
 
   &--mobile-home {
+    display: none;
     @media (--medium) {
       display: none;
     }

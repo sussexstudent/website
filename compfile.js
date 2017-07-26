@@ -48,7 +48,7 @@ export default {
     '/freshers': './layouts/freshers/Page.js',
     '/environment-feedback': './layouts/environment/student-feedback.js',
     '/environment': './layouts/environment/environment.js',
-    // '/staff': './layouts/StaffPage',
+    '/staff': './layouts/StaffPage',
   },
   assets,
 };

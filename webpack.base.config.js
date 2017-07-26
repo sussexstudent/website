@@ -1,13 +1,9 @@
 const webpack = require('webpack');
 
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
-console.log(JSON.stringify(NODE_ENV));
 
 const env = {
   production: NODE_ENV === 'production',
@@ -29,10 +25,10 @@ module.exports = {
       'raven-js',
       'mitt',
     ],
-    main: ['./src/entry.js'],
-    freshers: ['./src/freshers/entry.js'],
-    devFonts: './src/env-dev.js',
-    productionFonts: './src/env-production.js',
+    main: ['./src/projects/website/entry.js'],
+    freshers: ['./src/projects/freshers/entry.js'],
+    devFonts: './src/projects/website/env-dev.js',
+    productionFonts: './src/projects/website/env-production.js',
   },
 
   output: {
@@ -45,9 +41,8 @@ module.exports = {
   resolve: {
     modules: ['web_modules', 'node_modules', './src/images'],
     alias: {
-      '@ussu/components': path.resolve(
-        path.join(__dirname, 'src/js/components')
-      ),
+      '@ussu/components': path.resolve(__dirname, 'src/components/'),
+      '@components': path.resolve(__dirname, 'src/components/'),
     },
     extensions: ['.js', '.svg'],
   },
@@ -57,7 +52,6 @@ module.exports = {
   },
 
   plugins: [
-    // new BundleAnalyzerPlugin({ analyzerPort: 3999 }),
     new webpack.DefinePlugin({
       'process.env': {
         HYDROLEAF_MODE: JSON.stringify('RENDER_COMPONENT'),
@@ -72,12 +66,6 @@ module.exports = {
       __STAGING__: env.staging,
       __PRODUCTION__: env.production,
     }),
-    /* new LodashModuleReplacementPlugin({
-      collections: true,
-      shorthands: true,
-      paths: true,
-      unicode: true,
-    }),*/
     new webpack.NamedChunksPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

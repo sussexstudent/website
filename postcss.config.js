@@ -6,9 +6,9 @@ module.exports = {
     require('postcss-mixins')({
       mixins: mixins,
     }),
+    require('postcss-nested'),
     require('postcss-ant')(),
     require('postcss-lh'),
-    require('postcss-nested'),
     require('postcss-cssnext'),
   ],
 };

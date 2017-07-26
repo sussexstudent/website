@@ -12,7 +12,7 @@ const Homepage = () =>
       <div className="Trail__row  u-container-bleed-2">
         <a
           className="HeadingImage--link"
-          href="https://www.sussexstudent.com/our-campus-services/"
+          href="https://www.sussexstudent.com/ents/event/3110/"
         >
           <HeadingHero
             imageURL="/images/ec00cc188009492f868d14ac9a228b97.original.jpg"

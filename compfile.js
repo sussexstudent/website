@@ -2,9 +2,9 @@ require('isomorphic-fetch');
 
 import path from 'path';
 import React from 'react';
-import { headContent, headContentLegacy } from './generator/head';
-import { headContent as freshersHead } from './generator/layouts/freshers/head';
-import Html from './generator/layouts/Html';
+import { headContent, headContentLegacy } from './src/projects/website/head';
+import { headContent as freshersHead } from './src/projects/website/layouts/freshers/head';
+import Html from './src/projects/website/layouts/Html';
 import assets from './webpack-assets.json';
 import manifest from './dist/manifest.json';
 
@@ -12,7 +12,7 @@ assets.manifest = manifest;
 
 export default {
   html: Html,
-  root: path.join(__dirname, 'generator'),
+  root: path.join(__dirname, 'src/projects/website'),
   templates: {
     freshersMain: {
       head: freshersHead,
@@ -42,7 +42,7 @@ export default {
     '/support': './layouts/Support.js',
     '/whats-on': './layouts/WhatsOn.js',
     '/discover-groups': './layouts/SportsSocieties.js',
-    '/officer': '../src/js/components/OfficerPage/index.js',
+    '/officer': '../../components/OfficerPage/index.js',
     '/get-involved': './layouts/GetInvolved.js',
     '/section-page': './layouts/SectionPage.js',
     '/freshers': './layouts/freshers/Page.js',

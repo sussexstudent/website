@@ -47,6 +47,17 @@ const mainLayout = ({ assets, legacy }) =>
     <script src={assets.vendor.js} />
     <script src={assets.main.js} />
     <script type="text/javascript" dangerouslySetInnerHTML={{ __html: ga }} />
+    <script
+      type="text/javascript"
+      src="https://secure.leadforensics.com/js/110817.js"
+    />
+    <noscript>
+      <img
+        alt=""
+        src="https://secure.leadforensics.com/110817.png"
+        style={{ display: 'none' }}
+      />
+    </noscript>
   </body>;
 
 mainLayout.propTypes = {

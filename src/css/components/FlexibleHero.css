@@ -17,6 +17,10 @@
     }
   }
 
+  &--bleed {
+    padding: 0;
+  }
+
   &__title {
     color: #ffffff;
     text-align: center;

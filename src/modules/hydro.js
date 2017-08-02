@@ -18,6 +18,8 @@ export default function() {
     StudentGroupsDiscoveryContainer: () =>
       import(/* webpackChunkName: "StudentGroupsDiscovery" */ '~components/StudentGroupsDiscovery'),
     Header: () => import(/* webpackChunkName: "Header" */ '~components/Header'),
+    FreshersWeek2017Banner: () =>
+      import(/* webpackChunkName: "FreshersWeek2017Banner" */ '~components/banners/Freshers2017Banner'),
     UserBar: () =>
       import(/* webpackChunkName: "UserBar" */ '~components/UserBar').then(
         module => module.DesktopUserBar

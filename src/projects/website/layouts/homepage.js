@@ -2,7 +2,7 @@ import React from 'react';
 import TweetList from '~components/TweetList';
 import ContentAPIComposer from '~components/ContentAPIComposer';
 import HomepageEventsList from '~components/HomepageEventsList';
-import { Hydro as HeadingHero } from '~components/HeadingHero';
+import { Hydro as FreshersWeek2017Banner } from '~components/banners/Freshers2017Banner';
 import AdvertBar from '~components/AdvertBar';
 
 const Homepage = () =>
@@ -10,15 +10,7 @@ const Homepage = () =>
     <AdvertBar className="AdvertBar--mobile-home" position="TopBanner" />
     <div className="Trail">
       <div className="Trail__row  u-container-bleed-2">
-        <a
-          className="HeadingImage--link"
-          href="https://www.sussexstudent.com/ents/event/3110/"
-        >
-          <HeadingHero
-            imageURL="/images/ec00cc188009492f868d14ac9a228b97.original.jpg"
-            title={'Last chance: The Horrors tickets on sale now'}
-          />
-        </a>
+        <FreshersWeek2017Banner />
       </div>
       <div className="Trail__row Trail__row--211">
         <div className="ContentBlock">

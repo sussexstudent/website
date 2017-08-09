@@ -41,4 +41,8 @@ BackBar.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+BackBar.defaultProps = {
+  color: 'blue',
+};
+
 export default BackBar;

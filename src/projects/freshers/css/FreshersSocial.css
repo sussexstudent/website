@@ -1,0 +1,8 @@
+.FreshersSocial {
+  text-align: center;
+  color: #ffffff;
+
+  & .Social {
+    justify-content: center;
+  }
+}

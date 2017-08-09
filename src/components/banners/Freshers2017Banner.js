@@ -14,5 +14,5 @@ function FreshersWeek2017Banner() {
   );
 }
 
-export const Hydro = HydroLeaf()(FreshersWeek2017Banner);
+export const Hydro = HydroLeaf({ disableSSR: true })(FreshersWeek2017Banner);
 export default FreshersWeek2017Banner;

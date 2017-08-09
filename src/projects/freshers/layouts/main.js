@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BackBar from '~components/BackBar';
 import MSLTag from '~components/MSLTag';
 
 const ga = `!function(u,s,S,U){u.GoogleAnalyticsObject=S;u[S]||(u[S]=function(){
@@ -11,15 +10,9 @@ e.parentNode.insertBefore(U,e)}(window,document,'ga');
 ga('create', 'UA-258929-3', 'auto');
 ga('send', 'pageview');`;
 
-const FreshersHeader = () =>
-  <BackBar href="https://sussexstudent.com/" color="white">
-    Main site
-  </BackBar>;
-
 const mainLayout = ({ assets }) =>
   <body className="Body" id="top">
     <div className="Site">
-      <FreshersHeader />
       <main className="Site__content">
         <div dangerouslySetInnerHTML={{ __html: MSLTag('Content') }} />
       </main>

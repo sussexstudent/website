@@ -11,10 +11,6 @@
   font-family: var(--type__primary);
   margin-top: 2rem;
 
-  @media (--medium) {
-    margin-top: -20vh;
-  }
-
   &__input {
     font-size: 1.6rem;
     padding: 0.4rem;

@@ -4,7 +4,7 @@ import HeroSvg from './FreshersSVG';
 
 class FrontpageHero extends React.Component {
   componentDidMount() {
-    const heroSvg = document.querySelector('.HeroSVG');
+    const heroSvg = document.querySelector('.FlexibleHero svg');
     const items = [...heroSvg.querySelectorAll('svg > g > g, circle')];
     items.map(g => (g.style.opacity = 0));
 

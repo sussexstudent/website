@@ -1,11 +1,11 @@
 /* eslint-disable no-param-reassign */
 import React from 'react';
-import HeroSvg from './HeroSVG';
+import BackgroundSvg from './BackgroundSvg';
 
 class FrontpageHero extends React.Component {
   componentDidMount() {
     const heroSvg = document.querySelector('.HeroSVG');
-    const items = [...heroSvg.querySelectorAll('svg > g > g, circle')];
+    const items = [...heroSvg.querySelectorAll('g > use, circle')];
     items.map(g => (g.style.opacity = 0));
 
     setTimeout(() => {
@@ -14,20 +14,12 @@ class FrontpageHero extends React.Component {
       );
     }, 200);
 
-    function createMagneticEffect() {
+    // eslint-disable-next-line
+    const createMagneticEffect = () => {
       const FORCE_RADIUS = 250;
       /* const TILT_BOUND = 400;
       const TILT_DEG = 4; */
       document.addEventListener('DOMContentLoaded', () => {
-        /*
-        See below - logo tilt.
-        const freshersLogoEl = document.querySelector('.FreshersLogo');
-        const freshersBounds = freshersLogoEl.getBoundingClientRect();
-        const freshersCenter = {
-          x: freshersBounds.left + window.scrollX + freshersBounds.width / 2,
-          y: freshersBounds.top + window.scrollY + freshersBounds.height / 2,
-        };
-         */
         const parts = items.map(el => {
           const bounds = el.getBoundingClientRect();
           return {
@@ -67,62 +59,46 @@ class FrontpageHero extends React.Component {
               }
 
               if (transX !== item.currentState || transY !== item.currentY) {
-                item.el.style.transform = `translate(${transX}px, ${transY}px)`;
+                item.el.style.transform = `translate3d(${transX}px, ${transY}px, 0)`;
                 item.currentX = transX;
                 item.currentY = transY;
               }
             });
-
-            /* // Logo Tilt - tad broken; should move out of svg - awaiting v2
-            const fromX = freshersCenter.x - currentForcePoint.x;
-            const fromY = freshersCenter.y - currentForcePoint.y;
-
-            const degX = fromX > 0
-              ? -(Math.min(TILT_BOUND, fromX) / TILT_BOUND)
-              : Math.max(-TILT_BOUND, fromX) / -TILT_BOUND;
-            const degY = fromY > 0
-              ? Math.min(TILT_BOUND, fromY) / TILT_BOUND
-              : -(Math.max(-TILT_BOUND, fromY) / -TILT_BOUND);
-
-            freshersLogoEl.style.transform = `rotateX(${degY *
-              TILT_DEG}deg) rotateY(${degX * TILT_DEG}deg)`;
-              */
           }
 
           requestAnimationFrame(animate);
         }
 
         animate();
-
-        document.addEventListener('mousemove', e => {
+        console.log(this);
+        this.element.addEventListener('mousemove', e => {
           const { pageX, pageY } = e;
           if (currentForcePoint.x === pageX && currentForcePoint.y === pageY) {
             hasChanged = false;
             return;
           }
-          // console.log('moved');
-          // console.log(currentForcePoint.x)
-          // console.log(e.clientX);
+
           currentForcePoint.x = pageX;
           currentForcePoint.y = pageY;
           hasChanged = true;
         });
       });
-    }
+    };
 
-    createMagneticEffect();
+    // createMagneticEffect();
   }
 
   render() {
     return (
-      <HeroSvg
-        className="HeroSVG"
-        style={{
-          width: '100%',
-          height: 'auto',
-          maxHeight: '90vh',
-        }}
-      />
+      <div className="CoverBackground" ref={ref => (this.element = ref)}>
+        <BackgroundSvg
+          className="HeroSVG"
+          style={{
+            width: '100%',
+            height: '100%',
+          }}
+        />
+      </div>
     );
   }
 }

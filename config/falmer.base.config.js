@@ -19,9 +19,9 @@ module.exports = {
       'raven-js',
       'mitt',
     ],
-    main: ['./src/falmer/entry.js'],
-    devFonts: './src/env-dev.js',
-    productionFonts: './src/env-production.js',
+    main: ['./src/projects/falmer/entry.js'],
+    devFonts: './src/projects/website/env-dev.js',
+    productionFonts: './src/projects/website/env-production.js',
   },
 
   output: {
@@ -34,10 +34,8 @@ module.exports = {
   resolve: {
     modules: ['web_modules', 'node_modules', './src/images'],
     alias: {
-      '@ussu/components': path.resolve(
-        path.join(__dirname, '../src/js/components')
-      ),
-      '@ussu/falmer': path.resolve(path.join(__dirname, '../src/falmer')),
+      '~components': path.resolve(path.join(__dirname, '../src/components')),
+      '~falmer': path.resolve(path.join(__dirname, '../src/projects/falmer')),
     },
     extensions: ['.js', '.svg'],
   },
@@ -66,7 +64,7 @@ module.exports = {
     new DuplicatePackageCheckerPlugin(),
     new HtmlWebpackPlugin({
       alwaysWriteToDisk: true,
-      template: './src/falmer/index.ejs',
+      template: './src/projects/falmer/index.ejs',
     }),
     new HtmlWebpackHardDiskPlugin(),
   ],

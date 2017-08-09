@@ -1,0 +1,12 @@
+.FreshersFooter {
+  background: var(--color__grey-slate);
+  color: #ffffff;
+  padding: 1rem 0;
+  font-family: var(--type__primary);
+  font-weight: 600;
+  margin-top: 2rem;
+
+  & > div > span {
+    padding-right: 1rem;
+  }
+}

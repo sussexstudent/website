@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router';
-import { requestAuthToken } from '@ussu/falmer/ducks/auth';
+import { requestAuthToken } from '~falmer/ducks/auth';
 import FalmerHeader from '../FalmerHeader';
 import FalmerDashboard from '../FalmerDashboard';
 import Loader from '../../Loader';

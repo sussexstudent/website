@@ -1,5 +1,6 @@
 import React from 'react';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
+import HydroLeaf from '~components/HydroLeaf/index';
 
 const RESPONSE_TEXT = {
   INITIAL: () => `Be the first to hear`,
@@ -15,6 +16,10 @@ const RESPONSE_TEXT = {
 
 const LS_KEY = 'newsletter:freshers';
 const NEWSLETTER_ENDPOINT = `${getFalmerEndpoint()}/newsletters/freshers17/members`;
+
+if (typeof localStorage === 'undefined') {
+  global.localStorage = { getItem: () => null, setItem: () => null };
+}
 
 const OPTIONS_MERGE = {
   LEVEL: {
@@ -249,4 +254,7 @@ class NewsletterSignup extends React.Component {
   }
 }
 
+const Hydro = HydroLeaf({ disableSSR: true })(NewsletterSignup);
+
 export default NewsletterSignup;
+export { Hydro };

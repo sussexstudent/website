@@ -37,6 +37,7 @@ function HydroLeaf(
     className = '',
     name = null,
     container = DefaultContainer,
+    disableSSR = false,
   } = {}
 ) {
   return function HydroLeafHOC(Component) {
@@ -73,16 +74,17 @@ function HydroLeaf(
           }
 
           if (renderStatic) {
-            console.log(serialProps);
             return container({
               className,
               children: <Component {...serialProps} />,
             });
           }
 
-          const componentMarkup = ReactDOM.renderToString(
-            React.createElement(Component, serialProps)
-          );
+          const componentMarkup = disableSSR
+            ? ''
+            : ReactDOM.renderToString(
+                React.createElement(Component, serialProps)
+              );
 
           let dataAc = `window.HYDROSTATE_${hydroKey} = ${JSON.stringify(
             serialProps

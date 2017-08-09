@@ -1,0 +1,12 @@
+.FreshersBox {
+  display: block;
+  background: #ffffff;
+  box-sizing: border-box;
+  padding: 1rem;
+
+  & h2 {
+    font-size: 1.3rem;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+}

@@ -3,7 +3,7 @@ if (module.hot) {
   module.hot.accept();
 }
 
-import './css/main.css';
+import '../../css/freshers.css';
 // import '../js/application';
 import './application';
 /* eslint-enable import/first */

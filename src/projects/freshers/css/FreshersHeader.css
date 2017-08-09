@@ -1,0 +1,15 @@
+.FreshersHeader {
+  display: flex;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  flex-direction: column;
+
+  @media (--medium) {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+
+  & .BackBar {
+    flex: 1 1 auto;
+  }
+}

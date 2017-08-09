@@ -3,6 +3,6 @@ if (module.hot) {
   module.hot.accept();
 }
 
-import './main.css';
+import '../../css/main.css';
 import './application';
 /* eslint-enable import/first */

@@ -13,7 +13,7 @@ import FreshersGuidesTopTips from './pages/GuidesTopTips';
 import ScrollToTop from './ScrollToTop';
 
 const history = createBrowserHistory({
-  basename: '/~/freshers/',
+  basename: '/freshers/',
 });
 
 const FreshersApp = () =>

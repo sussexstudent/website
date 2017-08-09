@@ -58,7 +58,7 @@ function FreshersWhatsOn() {
         <div className="FreshersBox">
           <h2>TICKETS</h2>
           <p
-          >{`Be the first in line for our biggest Freshers Week events for a Golden Ticket! Save some money and skip the queues with faster entry to the Sussex Festival, Block Party, Garden Party, Pier Party and Psychedelic Disco.`}</p>
+          >{`Be the first in line for our biggest Freshers Week events for a Golden Ticket! Save some money and skip the queues with faster entry to five of our biggest events.`}</p>
 
           <p
           >{`Wristbands are very limited, so make sure to get yours before they’re gone!`}</p>

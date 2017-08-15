@@ -3,7 +3,8 @@ import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import HydroLeaf from '~components/HydroLeaf/index';
 
 const RESPONSE_TEXT = {
-  INITIAL: () => `Be the first to hear`,
+  INITIAL: () =>
+    `Get exclusive advance access to our events & discount wristbands by signing up below`,
   INITIAL_FOCUS: () => `Enter your email address`,
   ADDRESS_SUCCESS: () =>
     "Check you inbox to confirm! But first, what's your name?",
@@ -175,23 +176,26 @@ class NewsletterSignup extends React.Component {
         </div>
         <div>
           {currentState === 'INITIAL' || currentState === 'INITIAL_FOCUS'
-            ? <form
-                className="NewsletterSignup__form"
-                onSubmit={this.handleFormSubmit}
-              >
-                <input
-                  className="NewsletterSignup__email-input NewsletterSignup__input"
-                  type="email"
-                  value={data.address}
-                  onChange={this.handleEmailAddress}
-                  onFocus={() =>
-                    this.setState({ currentState: 'INITIAL_FOCUS' })}
-                  required
-                />
-                <button className="NewsletterSignup__button" type="submit">
-                  Subscribe
-                </button>
-              </form>
+            ? <div>
+                <form
+                  className="NewsletterSignup__form"
+                  onSubmit={this.handleFormSubmit}
+                >
+                  <input
+                    className="NewsletterSignup__email-input NewsletterSignup__input"
+                    type="email"
+                    value={data.address}
+                    onChange={this.handleEmailAddress}
+                    onFocus={() =>
+                      this.setState({ currentState: 'INITIAL_FOCUS' })}
+                    required
+                  />
+                  <button className="NewsletterSignup__button" type="submit">
+                    Subscribe
+                  </button>
+                </form>
+                <div className="NewsletterSignup__small-print">{`We'll send you freshers week update emails and subscribe you to our newsletter. You can unsubscribe at any time`}</div>
+              </div>
             : null}
 
           {currentState === 'ADDRESS_SUCCESS'

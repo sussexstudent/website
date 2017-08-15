@@ -89,4 +89,11 @@
       }
     }
   }
+
+  &__small-print {
+    font-size: 1rem;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }

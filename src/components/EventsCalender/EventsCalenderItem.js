@@ -49,7 +49,7 @@ function EventsCalenderItem({ part }) {
           {event.title}
         </h2>
         <div className="EventsCalender__item-description">
-          {event.description}
+          {event.shortDescription}
         </div>
         <div className="EventsCalender__item-meta">
           {formatDate(event.startDate, 'h:ssa')}

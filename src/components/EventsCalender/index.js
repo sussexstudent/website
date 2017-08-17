@@ -183,6 +183,8 @@ class EventsContainer extends React.Component {
   }
 
   componentDidMount() {
+    const ignoreEmbargo = window.location.hash === '#ignoreEmbargo';
+
     fetch(`${getFalmerEndpoint()}/graphql`, {
       method: 'POST',
       headers: {
@@ -192,7 +194,7 @@ class EventsContainer extends React.Component {
       body: JSON.stringify({
         query: `
 query EventsCalender {
-  allEvents {
+  allEvents(ignoreEmbargo: ${ignoreEmbargo ? 'true' : 'false'}) {
     title
     startTime
     endTime

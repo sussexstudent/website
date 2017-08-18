@@ -5,4 +5,13 @@
   padding: 0.5lh;
   margin-bottom: 0.5lh;
   background-color: #ffffff;
+
+  &__content {
+    padding: 0.5lh;
+  }
+
+  &--bleed {
+    padding: 0;
+    overflow: hidden;
+  }
 }

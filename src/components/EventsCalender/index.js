@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import sortBy from 'lodash/sortBy';
 import orderBy from 'lodash/orderBy';
 import toPairs from 'lodash/toPairs';
@@ -13,8 +13,10 @@ import addDays from 'date-fns/add_days';
 import formatDate from 'date-fns/format';
 import Loader from '~components/Loader';
 import HydroLeaf from '~components/HydroLeaf';
+import ScrollToTop from '~components/ScrollToTop';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import EventsCalenderItem from './EventsCalenderItem';
+import EventDetailPage from '../EventDetailPage/index';
 
 const EVENT_PART = {
   CONTAINED: 'SINGLE',
@@ -205,6 +207,8 @@ query EventsCalender {
     kicker
     shortDescription
     url
+    cost
+    ticketLevel
     bundle {
       name
     }
@@ -236,8 +240,13 @@ query EventsCalender {
 }
 
 const EventsApplication = () =>
-  <BrowserRouter>
-    <Route path="/" component={EventsContainer} />
+  <BrowserRouter basename="/whats-on">
+    <ScrollToTop>
+      <Switch>
+        <Route path="/" exact component={EventsContainer} />
+        <Route path="/**-:eventId" component={EventDetailPage} />
+      </Switch>
+    </ScrollToTop>
   </BrowserRouter>;
 
 export default HydroLeaf({ disableSSR: true })(EventsApplication);

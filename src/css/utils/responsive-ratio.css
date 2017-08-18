@@ -7,6 +7,10 @@
     padding-bottom: 60%;
   }
 
+  &--ultra-wide {
+    padding-bottom: 45%;
+  }
+
   &--square {
     padding-bottom: 100%;
   }

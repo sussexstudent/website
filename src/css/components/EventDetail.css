@@ -1,0 +1,18 @@
+.EventDetail {
+  &__bundle, &__brand {
+    padding: 0.2rem;
+    text-align: center;
+    font-family: var(--type__primary);
+    font-weight: bold;
+  }
+
+  &__bundle {
+    color: #ffffff;
+    background-color: #fbaa05;
+  }
+
+  &__brand {
+    color: #ffffff;
+    background-color: #ff546a;
+  }
+}

@@ -51,17 +51,24 @@
   &__item-bundle {
     display: block;
     color: white;
-    background-color: gold;
-    font-weight: 600;
+    background-color: #fbaa05;
+    font-weight: bold;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    transform: rotate(35deg);
-    width: 170px;
-    position: absolute;
-    right: -30px;
-    top: 30px;
+    font-size: 0.9rem;
     text-align: center;
     font-family: var(--type__primary);
+  }
+
+  &__item-image-treat {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    padding: 0.1rem 0.3rem;
+    text-shadow: 0 0 4px rgba(50, 50, 50, 0.8);
+    bottom: 0;
+    right: 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
   }
 
   &__item-container {

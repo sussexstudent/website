@@ -2,6 +2,7 @@ import React from 'react';
 import { Router, Switch, Route, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import SocialMenu from '~components/SocialMenu';
+import ScrollToTop from '~components/ScrollToTop';
 import Background from './Background';
 import FreshersHeader from './FreshersHeader';
 import FreshersFooter from './FreshersFooter';
@@ -10,7 +11,6 @@ import FreshersHomepage from './pages/HomePage';
 import FreshersWhatsOn from './pages/WhatsOn';
 import FreshersGuides from './pages/Guides';
 import FreshersGuidesTopTips from './pages/GuidesTopTips';
-import ScrollToTop from './ScrollToTop';
 
 const history = createBrowserHistory({
   basename: '/freshers/',

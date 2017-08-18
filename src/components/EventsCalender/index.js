@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import sortBy from 'lodash/sortBy';
 import orderBy from 'lodash/orderBy';
 import toPairs from 'lodash/toPairs';
@@ -195,6 +196,8 @@ class EventsContainer extends React.Component {
         query: `
 query EventsCalender {
   allEvents(ignoreEmbargo: ${ignoreEmbargo ? 'true' : 'false'}) {
+    id
+    slug
     title
     startTime
     endTime 
@@ -202,6 +205,9 @@ query EventsCalender {
     kicker
     shortDescription
     url
+    bundle {
+      name
+    }
     venue {
       name
       websiteLink
@@ -229,4 +235,9 @@ query EventsCalender {
   }
 }
 
-export default HydroLeaf()(EventsContainer);
+const EventsApplication = () =>
+  <BrowserRouter>
+    <Route path="/" component={EventsContainer} />
+  </BrowserRouter>;
+
+export default HydroLeaf({ disableSSR: true })(EventsApplication);

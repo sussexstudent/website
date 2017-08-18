@@ -48,6 +48,22 @@
     }
   }
 
+  &__item-bundle {
+    display: block;
+    color: white;
+    background-color: gold;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    transform: rotate(35deg);
+    width: 170px;
+    position: absolute;
+    right: -30px;
+    top: 30px;
+    text-align: center;
+    font-family: var(--type__primary);
+  }
+
   &__item-container {
     padding: 0.5rem;
   }

@@ -3,6 +3,7 @@ import has from 'lodash/has';
 import formatDate from 'date-fns/format';
 import Image from '../Image';
 import FauxLink from '../FauxLink';
+import FauxRouterLink from '../FauxRouterLink';
 // import PropTypes from 'prop-types';
 
 function renderEventLocation(event) {
@@ -33,7 +34,14 @@ function EventsCalenderItem({ part }) {
   const event = part.event;
   return (
     <div className="EventsCalender__item">
-      <FauxLink href={event.url} />
+      {event.url !== ''
+        ? <FauxLink href={event.url} />
+        : <FauxRouterLink href={`/${event.slug}-${event.id}`} />}
+      {event.bundle !== null
+        ? <div className="EventsCalender__item-bundle">
+            {event.bundle.name}
+          </div>
+        : null}
       {has(part, 'event.featuredImage.resource')
         ? <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
             <Image src={event.featuredImage.resource} lazy />

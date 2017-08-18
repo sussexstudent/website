@@ -2,7 +2,19 @@
   display: block;
   background: #ffffff;
   box-sizing: border-box;
+  position: relative;
   padding: 1rem;
+
+  &--slimline {
+    padding: 0;
+  }
+
+  &__heading-image {
+  }
+
+  &__content {
+    padding: 1rem;
+  }
 
   & h2 {
     font-size: 1.3rem;

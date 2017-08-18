@@ -73,7 +73,7 @@ function FreshersWhatsOn() {
           >{`Events and tickets will be announced on A level results day (August 17th).`}</p>
 
           <p
-          >{`Once tickets have sold out, we can’t release any more as we have limited space at our events. If there are tickets to events left, you will be able to buy them from Falmer House from September 9. Buy your tickets as soon as possible as they will sell out!`}</p>
+          >{`Once tickets have sold out, we can’t release any more as we have limited space at our events. Buy your tickets as soon as possible to avoid disappointment - as they will sell out!`}</p>
         </div>
       </div>
     </div>

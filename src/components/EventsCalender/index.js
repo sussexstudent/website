@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import sortBy from 'lodash/sortBy';
 import orderBy from 'lodash/orderBy';
@@ -160,14 +161,24 @@ function EventsCalender({ eventsList, isLoading }) {
             {sectionTitle}
           </h2>
           <div className="EventsCalender__section-items">
-            {parts.map(part =>
-              <div className="EventsCalender__part-container">
-                <h3 className="EventsCalender__item-date-kicker">
-                  {getSmartDate(part)}
-                </h3>
-                <EventsCalenderItem part={part} />
-              </div>
-            )}
+            {parts.map((part, index) => {
+              const isFirstOfDate =
+                index < 1 ||
+                getSmartDate(parts[index - 1]) !== getSmartDate(part);
+
+              return (
+                <div className="EventsCalender__part-container">
+                  <h3
+                    className={cx('EventsCalender__item-date-kicker', {
+                      'EventsCalender__item-date-kicker--continuation': !isFirstOfDate,
+                    })}
+                  >
+                    {getSmartDate(part)}
+                  </h3>
+                  <EventsCalenderItem part={part} />
+                </div>
+              );
+            })}
           </div>
         </div>
       )}

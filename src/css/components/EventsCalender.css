@@ -100,6 +100,15 @@
     font-weight: 500;
     color: var(--color__brand-blue);
     font-family: var(--type__secondary);
+
+    &--continuation {
+      opacity: 0;
+      transition: opacity 300ms ease;
+    }
+  }
+
+  &__part-container:hover &__item-date-kicker--continuation {
+    opacity: 1;
   }
 
 

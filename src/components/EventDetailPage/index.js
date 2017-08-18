@@ -1,4 +1,5 @@
 import React from 'react';
+import formatDate from 'date-fns/format';
 import ContentCard from '../ContentCard';
 import getFalmerEndpoint from '../../libs/getFalmerEndpoint';
 import Image from '../Image';
@@ -63,7 +64,8 @@ query EventsCalender {
     }
 
     const event = this.state.data;
-
+    const startDate = new Date(event.startTime);
+    const endDate = new Date(event.endTime);
     return (
       <div className="Layout Layout--sidebar-right EventDetail">
         <div>
@@ -92,8 +94,15 @@ query EventsCalender {
                   {event.title}
                 </h2>
                 <ul>
-                  <li>Date</li>
-                  <li>Time</li>
+                  <li>
+                    {formatDate(startDate, 'dddd D MMMM YYYY')}
+                  </li>
+                  <li>
+                    {`${formatDate(startDate, 'h:mma')} - ${formatDate(
+                      endDate,
+                      'h:mma'
+                    )}`}
+                  </li>
                   <li>
                     {event.locationDisplay}
                   </li>

@@ -18,8 +18,10 @@ function FreshersWhatsOn() {
           <h2>ABOUT FRESHERS’ WEEK EVENTS</h2>
           <p
           >{`We’ve got a whole week of fun festivities, activities and events to help you get to know the Student’s Union, campus, Brighton and the thousands of other students also starting at Sussex with you!`}</p>
-          <p
-          >{`Events will be announced on August 17th, so keep your eyes peeled! To find out about Freshers Week before anyone else, sign up to our newsletter!`}</p>
+          <p>
+            {`Events will be announced on August 21th, so keep your eyes peeled! To find out about Freshers Week before anyone else,`}
+            <Link to="/">sign up to our newsletter!</Link>
+          </p>
 
           <p
           >{`The fun doesn’t end with Freshers’ Week, however, with our sports teams and societies planning lots of great events for the rest of the year!`}</p>
@@ -57,8 +59,12 @@ function FreshersWhatsOn() {
         </div>{' '}
         <div className="FreshersBox">
           <h2>TICKETS</h2>
-          <p
-          >{`Be the first in line for our biggest Freshers Week events for a Golden Ticket! Save some money and skip the queues with faster entry to five of our biggest events.`}</p>
+          <p>
+            Be the first in line for our biggest Freshers Week events for a
+            Golden Ticket, find out how to get yours by{' '}
+            <Link to="/">signing up to our newsletter!</Link> Save some money
+            and skip the queues with faster entry to five of our biggest events.
+          </p>
 
           <p
           >{`Wristbands are very limited, so make sure to get yours before they’re gone!`}</p>
@@ -68,9 +74,6 @@ function FreshersWhatsOn() {
 
           <p
           >{`Although a lot of our events are free to attend, for some events you will need to purchase tickets.`}</p>
-
-          <p
-          >{`Events and tickets will be announced on A level results day (August 17th).`}</p>
 
           <p
           >{`Once tickets have sold out, we can’t release any more as we have limited space at our events. Buy your tickets as soon as possible to avoid disappointment - as they will sell out!`}</p>

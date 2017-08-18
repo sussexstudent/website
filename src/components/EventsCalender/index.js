@@ -197,9 +197,10 @@ query EventsCalender {
   allEvents(ignoreEmbargo: ${ignoreEmbargo ? 'true' : 'false'}) {
     title
     startTime
-    endTime
+    endTime 
     locationDisplay
     kicker
+    shortDescription
     url
     venue {
       name

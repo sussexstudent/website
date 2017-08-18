@@ -19,7 +19,7 @@ function FreshersWhatsOn() {
           <p
           >{`We’ve got a whole week of fun festivities, activities and events to help you get to know the Student’s Union, campus, Brighton and the thousands of other students also starting at Sussex with you!`}</p>
           <p>
-            {`Events will be announced on August 21th, so keep your eyes peeled! To find out about Freshers Week before anyone else,`}
+            {`Events will be announced on August 21th, so keep your eyes peeled! To find out about Freshers Week before anyone else, `}
             <Link to="/">sign up to our newsletter!</Link>
           </p>
 

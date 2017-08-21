@@ -154,34 +154,46 @@ function EventsCalender({ eventsList, isLoading }) {
   const uiEvents = organisePartsForUI(eventParts);
   // chunk by day
   return (
-    <div className="EventsCalender">
-      {uiEvents.map(({ sectionTitle, parts }) =>
-        <div className="EventsCalender__section">
-          <h2 className="EventsCalender__section-title">
-            {sectionTitle}
-          </h2>
-          <div className="EventsCalender__section-items">
-            {parts.map((part, index) => {
-              const isFirstOfDate =
-                index < 1 ||
-                getSmartDate(parts[index - 1]) !== getSmartDate(part);
-
-              return (
-                <div className="EventsCalender__part-container">
-                  <h3
-                    className={cx('EventsCalender__item-date-kicker', {
-                      'EventsCalender__item-date-kicker--continuation': !isFirstOfDate,
-                    })}
-                  >
-                    {getSmartDate(part)}
-                  </h3>
-                  <EventsCalenderItem part={part} />
-                </div>
-              );
-            })}
-          </div>
+    <div>
+      <div className="PageHeader">
+        <h1 className="PageHeader__title">
+          {"What's on"}
+        </h1>
+        <div className="PageHeader__treats">
+          <a className="Button" href="/hold-an-event">
+            Hold your own event
+          </a>
         </div>
-      )}
+      </div>
+      <div className="EventsCalender">
+        {uiEvents.map(({ sectionTitle, parts }) =>
+          <div className="EventsCalender__section">
+            <h2 className="EventsCalender__section-title">
+              {sectionTitle}
+            </h2>
+            <div className="EventsCalender__section-items">
+              {parts.map((part, index) => {
+                const isFirstOfDate =
+                  index < 1 ||
+                  getSmartDate(parts[index - 1]) !== getSmartDate(part);
+
+                return (
+                  <div className="EventsCalender__part-container">
+                    <h3
+                      className={cx('EventsCalender__item-date-kicker', {
+                        'EventsCalender__item-date-kicker--continuation': !isFirstOfDate,
+                      })}
+                    >
+                      {getSmartDate(part)}
+                    </h3>
+                    <EventsCalenderItem part={part} />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -4,6 +4,11 @@ import ContentCard from '../ContentCard';
 import getFalmerEndpoint from '../../libs/getFalmerEndpoint';
 import Image from '../Image';
 import Loader from '../Loader';
+import BackBar from '../BackBar/Link';
+import Button from '../Button';
+import EventsCalenderIcon from '../../img/events-calender.svg';
+import EventsClockIcon from '../../img/events-clock.svg';
+import EventsPinIcon from '../../img/events-pin.svg';
 
 class EventDetailPage extends React.Component {
   constructor(props) {
@@ -36,6 +41,8 @@ query EventsCalender {
     body
     shortDescription
     url
+    ticketType
+    ticketData
     bundle {
       name
     }
@@ -67,56 +74,91 @@ query EventsCalender {
     const startDate = new Date(event.startTime);
     const endDate = new Date(event.endTime);
     return (
-      <div className="Layout Layout--sidebar-right EventDetail">
-        <div>
-          <ContentCard bleed>
-            {event.featuredImage
-              ? <div className="u-responsive-ratio u-responsive-ratio--ultra-wide">
-                  <Image
-                    className="ResponsiveImage"
-                    src={event.featuredImage.resource}
-                  />
-                </div>
-              : null}
-            {event.brand !== null
-              ? <div className="EventDetail__brand">
-                  {event.brand.name}
-                </div>
-              : null}
-            {event.bundle !== null
-              ? <div className="EventDetail__bundle">
-                  {event.bundle.name}
-                </div>
-              : null}
-            <div className="ContentCard__content">
+      <div>
+        <BackBar to="/" useLink color="blue">
+          Events listings
+        </BackBar>
+        <div className="Layout Layout--sidebar-right EventDetail">
+          <div>
+            <ContentCard bleed>
+              {event.featuredImage
+                ? <div className="u-responsive-ratio u-responsive-ratio--ultra-wide">
+                    <Image
+                      className="ResponsiveImage"
+                      src={event.featuredImage.resource}
+                    />
+                  </div>
+                : null}
+              {event.brand !== null
+                ? <div className="EventDetail__brand">
+                    {event.brand.name}
+                  </div>
+                : null}
+              {event.bundle !== null
+                ? <div className="EventDetail__bundle">
+                    {event.bundle.name}
+                  </div>
+                : null}
               <div className="EventDetail__details">
-                <h2 className="EventDetail__title">
-                  {event.title}
-                </h2>
-                <ul>
-                  <li>
-                    {formatDate(startDate, 'dddd D MMMM YYYY')}
-                  </li>
-                  <li>
-                    {`${formatDate(startDate, 'h:mma')} - ${formatDate(
-                      endDate,
-                      'h:mma'
-                    )}`}
-                  </li>
-                  <li>
-                    {event.locationDisplay}
-                  </li>
-                </ul>
+                <div className="ContentCard__content">
+                  <h2 className="EventDetail__title">
+                    {event.title}
+                  </h2>
+                  <ul className="EventDetail__details-list">
+                    <li className="EventDetail__details-list-item">
+                      <img
+                        className="EventDetail__icon"
+                        src={EventsCalenderIcon}
+                        alt=""
+                      />
+                      {formatDate(startDate, 'dddd D MMMM YYYY')}
+                    </li>
+                    <li className="EventDetail__details-list-item">
+                      <img
+                        className="EventDetail__icon"
+                        src={EventsClockIcon}
+                        alt=""
+                      />
+                      {`${formatDate(startDate, 'h:mma')} - ${formatDate(
+                        endDate,
+                        'h:mma'
+                      )}`}
+                    </li>
+                    {event.locationDisplay !== ''
+                      ? <li className="EventDetail__details-list-item">
+                          <img
+                            className="EventDetail__icon"
+                            src={EventsPinIcon}
+                            alt=""
+                          />
+                          {event.locationDisplay}
+                        </li>
+                      : null}
+                  </ul>
+                </div>
               </div>
-              <div className="Prose EventDetail__body">
-                {event.body}
+              <div className="ContentCard__content">
+                <div className="Prose EventDetail__body">
+                  <div dangerouslySetInnerHTML={{ __html: event.body }} />
+                </div>
               </div>
-            </div>
-          </ContentCard>
+            </ContentCard>
+          </div>
+          <aside>
+            {event.ticketType !== 'NA'
+              ? <ContentCard>
+                  <h3>Tickets</h3>
+                  <Button href={event.ticketData}>Buy tickets on Native</Button>
+                </ContentCard>
+              : null}
+            <ContentCard>
+              For access requirements please contact{' '}
+              <a href="mailto:access@sussexstudent.com">
+                access@sussexstudent.com
+              </a>
+            </ContentCard>
+          </aside>
         </div>
-        <aside>
-          <ContentCard>Sidebar go to radar</ContentCard>
-        </aside>
       </div>
     );
   }

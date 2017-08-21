@@ -15,4 +15,28 @@
     color: #ffffff;
     background-color: #ff546a;
   }
+
+  &__details {
+    border-bottom: 1px solid var(--color__grey-spring);
+  }
+
+  &__details-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9em;
+    font-weight: 600;
+    font-family: var(--type__primary);
+  }
+
+  &__details-list-item {
+    margin-bottom: 0.5rem;
+  }
+
+  &__icon {
+    margin-right: 0.5rem;
+    width: 16px;
+    position: relative;
+    top: 3px;
+  }
 }

@@ -139,7 +139,12 @@ function getSmartDate(part) {
   return formatDate(part.date, 'ddd Do');
 }
 
-function EventsCalender({ eventsList, isLoading }) {
+function EventsCalender({
+  eventsList,
+  isLoading,
+  disableHeader = false,
+  useAnchors = false,
+}) {
   if (isLoading) {
     return <Loader dark />;
   }
@@ -155,16 +160,18 @@ function EventsCalender({ eventsList, isLoading }) {
   // chunk by day
   return (
     <div>
-      <div className="PageHeader">
-        <h1 className="PageHeader__title">
-          {"What's on"}
-        </h1>
-        <div className="PageHeader__treats">
-          <a className="Button" href="/hold-an-event">
-            Hold your own event
-          </a>
-        </div>
-      </div>
+      {disableHeader !== true
+        ? <div className="PageHeader">
+            <h1 className="PageHeader__title">
+              {"What's on"}
+            </h1>
+            <div className="PageHeader__treats">
+              <a className="Button" href="/hold-an-event">
+                Hold your own event
+              </a>
+            </div>
+          </div>
+        : null}
       <div className="EventsCalender">
         {uiEvents.map(({ sectionTitle, parts }) =>
           <div className="EventsCalender__section">
@@ -186,7 +193,7 @@ function EventsCalender({ eventsList, isLoading }) {
                     >
                       {getSmartDate(part)}
                     </h3>
-                    <EventsCalenderItem part={part} />
+                    <EventsCalenderItem part={part} useAnchors={useAnchors} />
                   </div>
                 );
               })}
@@ -198,7 +205,7 @@ function EventsCalender({ eventsList, isLoading }) {
   );
 }
 
-class EventsContainer extends React.Component {
+export class EventsContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -209,8 +216,6 @@ class EventsContainer extends React.Component {
   }
 
   componentDidMount() {
-    const ignoreEmbargo = window.location.hash === '#ignoreEmbargo';
-
     fetch(`${getFalmerEndpoint()}/graphql`, {
       method: 'POST',
       headers: {
@@ -220,7 +225,9 @@ class EventsContainer extends React.Component {
       body: JSON.stringify({
         query: `
 query EventsCalender {
-  allEvents(ignoreEmbargo: ${ignoreEmbargo ? 'true' : 'false'}) {
+  allEvents(ignoreEmbargo: true ${this.props.limitToFreshers === true
+    ? ', brandId: 2'
+    : ''}) {
     id
     slug
     title

@@ -42,14 +42,22 @@ function getTreat(event) {
   return null;
 }
 
-function EventsCalenderItem({ part }) {
+function EventsCalenderItem({ part, useAnchors }) {
   const event = part.event;
   const treat = getTreat(event);
+  const FauxFalmerLink = useAnchors ? FauxLink : FauxRouterLink;
+
   return (
     <div className="EventsCalender__item">
       {event.url !== ''
         ? <FauxLink href={event.url} />
-        : <FauxRouterLink href={`/${event.slug}-${event.id}`} />}
+        : <FauxFalmerLink
+            href={
+              useAnchors
+                ? `/whats-on/${event.slug}-${event.id}`
+                : `/${event.slug}-${event.id}`
+            }
+          />}
       {has(part, 'event.featuredImage.resource')
         ? <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
             <Image src={event.featuredImage.resource} lazy />

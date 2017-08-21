@@ -27,6 +27,7 @@
 @import './components/BackBar.css';
 @import './components/Prose.css';
 @import './components/Social.css';
+@import './components/ImagePlaceholder.css';
 @import '../projects/freshers/css/NewsletterSignup.css';
 @import '../projects/freshers/css/FrontpageHero.css';
 @import '../projects/freshers/css/FreshersHeader.css';
@@ -34,6 +35,7 @@
 @import '../projects/freshers/css/FreshersNav.css';
 @import '../projects/freshers/css/CoverBackground.css';
 @import '../projects/freshers/css/FreshersAppContent.css';
+@import '../projects/freshers/css/FreshersEvents.css';
 @import '../projects/freshers/css/FreshersSocial.css';
 @import '../projects/freshers/css/FreshersLogoHeader.css';
 @import '../projects/freshers/css/FreshersGrid.css';

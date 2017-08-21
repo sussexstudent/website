@@ -6,9 +6,6 @@ import Image from '../Image';
 import Loader from '../Loader';
 import BackBar from '../BackBar/Link';
 import Button from '../Button';
-import EventsCalenderIcon from '../../img/events-calender.svg';
-import EventsClockIcon from '../../img/events-clock.svg';
-import EventsPinIcon from '../../img/events-pin.svg';
 
 class EventDetailPage extends React.Component {
   constructor(props) {
@@ -108,7 +105,7 @@ query EventsCalender {
                     <li className="EventDetail__details-list-item">
                       <img
                         className="EventDetail__icon"
-                        src={EventsCalenderIcon}
+                        src="https://du9l8eemj97rm.cloudfront.net/events-calender.svg"
                         alt=""
                       />
                       {formatDate(startDate, 'dddd D MMMM YYYY')}
@@ -116,7 +113,7 @@ query EventsCalender {
                     <li className="EventDetail__details-list-item">
                       <img
                         className="EventDetail__icon"
-                        src={EventsClockIcon}
+                        src="https://du9l8eemj97rm.cloudfront.net/events-clock.svg"
                         alt=""
                       />
                       {`${formatDate(startDate, 'h:mma')} - ${formatDate(
@@ -128,7 +125,7 @@ query EventsCalender {
                       ? <li className="EventDetail__details-list-item">
                           <img
                             className="EventDetail__icon"
-                            src={EventsPinIcon}
+                            src="https://du9l8eemj97rm.cloudfront.net/events-pin.svg"
                             alt=""
                           />
                           {event.locationDisplay}

@@ -35,7 +35,7 @@ query EventsCalender {
     endTime 
     locationDisplay
     kicker
-    body
+    bodyHtml
     shortDescription
     url
     ticketType
@@ -136,7 +136,7 @@ query EventsCalender {
               </div>
               <div className="ContentCard__content">
                 <div className="Prose EventDetail__body">
-                  <div dangerouslySetInnerHTML={{ __html: event.body }} />
+                  <div dangerouslySetInnerHTML={{ __html: event.bodyHtml }} />
                 </div>
               </div>
             </ContentCard>

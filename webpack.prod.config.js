@@ -17,7 +17,7 @@ config.profile = false;
 config.devtool = 'source-map';
 
 config.performance = {
-  hints: 'error',
+  hints: false,
   maxEntrypointSize: 500000,
 };
 

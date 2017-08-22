@@ -3,7 +3,8 @@ import Imgix from 'react-imgix';
 import LazyLoad from 'react-lazyload';
 import ImagePlaceholder from '../ImagePlaceholder';
 
-const ENDPOINT = 'https://su.imgix.net/';
+const FALMER_ENDPOINT = 'https://su.imgix.net/';
+const MSL_ENDPOINT = 'https://ussu.imgix.net/';
 
 function Image(props) {
   if (process.env.NODE_ENV === 'test') {
@@ -19,7 +20,11 @@ function Image(props) {
   }
 
   const img = (
-    <Imgix precision={20} {...props} src={`${ENDPOINT}/${props.src}`} />
+    <Imgix
+      precision={20}
+      {...props}
+      src={`${props.mslResource ? MSL_ENDPOINT : FALMER_ENDPOINT}/${props.src}`}
+    />
   );
 
   if (props.lazy) {
@@ -35,6 +40,7 @@ function Image(props) {
 
 Image.defaultProps = {
   lazy: false,
+  mslResource: false,
 };
 
 export default Image;

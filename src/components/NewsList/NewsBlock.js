@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import parse from 'url-parse';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import isToday from 'date-fns/is_today';
 import Logotype from '../../img/logotype';
+import Image from '../Image';
 
 const NewsBlock = ({
   item: { title, link, publishedDate, led, imageURL = null },
@@ -12,7 +14,12 @@ const NewsBlock = ({
       <div className="NewsBlock__image">
         <div className="u-responsive-ratio u-responsive-ratio--43">
           {imageURL
-            ? <img src={imageURL} alt="" />
+            ? <Image
+                className="ResponsiveImage"
+                src={parse(imageURL).pathname}
+                mslResource
+                lazy
+              />
             : <div className="NewsBlock__image--default">
                 <Logotype />
               </div>}

@@ -4,7 +4,7 @@ import HydroLeaf from '~components/HydroLeaf/index';
 
 const RESPONSE_TEXT = {
   INITIAL: () =>
-    `Get exclusive advance access to our events & discount wristbands by signing up below`,
+    `Sign up to our newsletter for exclusive freshers news and tips`,
   INITIAL_FOCUS: () => `Enter your email address`,
   ADDRESS_SUCCESS: () =>
     "Check you inbox to confirm! But first, what's your name?",

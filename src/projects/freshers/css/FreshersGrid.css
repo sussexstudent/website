@@ -19,3 +19,10 @@
 
   gg: columns(1/1);
 }
+
+.FreshersGrid--2 {
+  margin: 0;
+  padding: 0;
+
+  gg: columns(1/2 1/2);
+}

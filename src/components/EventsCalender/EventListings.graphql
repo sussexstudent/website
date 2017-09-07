@@ -1,0 +1,29 @@
+query EventsListings($filter: EventFilter) {
+  allEvents(filter: $filter) {
+    edges {
+      node {
+        eventId
+        slug
+        title
+        startTime
+        endTime
+        locationDisplay
+        kicker
+        shortDescription
+        url
+        cost
+        ticketLevel
+        bundle {
+          name
+        }
+        venue {
+          name
+          websiteLink
+        }
+        featuredImage {
+          resource
+        }
+      }
+    }
+  }
+}

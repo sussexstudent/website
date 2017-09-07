@@ -1,77 +1,52 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import formatDate from 'date-fns/format';
+import { graphql } from 'react-apollo';
 import ContentCard from '../ContentCard';
-import getFalmerEndpoint from '../../libs/getFalmerEndpoint';
 import Image from '../Image';
+import JsonLd from '../JsonLd';
 import Loader from '../Loader';
 import BackBar from '../BackBar/Link';
 import Button from '../Button';
+import DetailPageQuery from './EventsDetailPage.graphql';
 
+/* eslint-disable */
 class EventDetailPage extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      data: null,
-      isLoading: true,
-    };
-  }
-
-  componentDidMount() {
-    fetch(`${getFalmerEndpoint()}/graphql`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `
-query EventsCalender {
-  event(eventId: ${this.props.match.params.eventId}) {
-    id
-    slug
-    title
-    startTime
-    endTime 
-    locationDisplay
-    kicker
-    bodyHtml
-    shortDescription
-    url
-    ticketType
-    ticketData
-    bundle {
-      name
-    }
-    brand {
-      name
-    }
-    venue {
-      name
-      websiteLink
-    }
-    featuredImage {
-      resource
-    }
-  }
-}
-       `,
-      }),
-    })
-      .then(data => data.json())
-      .then(data => this.setState({ isLoading: false, data: data.data.event }));
-  }
 
   render() {
-    if (this.state.isLoading) {
+    if (this.props.data.loading) {
       return <Loader />;
     }
 
-    const event = this.state.data;
+    const event = this.props.data.event;
     const startDate = new Date(event.startTime);
     const endDate = new Date(event.endTime);
     return (
       <div>
+        <Helmet>
+          <title>{event.title} | What's on | Sussex Student's Union</title>
+          <meta name="description" content={event.shortDescription} />
+          {event.featuredImage ? <meta property="og:image" content={`https://su.imgix.net/${event.featuredImage.resource}?h=1260&w=2400&fit=crop&crop=focal&auto=format`} /> : null}
+          <meta property="og:description" content={event.shortDescription} />
+
+          <meta name="twitter:card" content={event.featuredImage ? 'summary_large_image' : 'summary'} />
+          <meta name="twitter:site" content="@ussu" />
+          <meta name="twitter:title" content={event.title} />
+          <meta name="twitter:description" content={event.shortDescription} />
+          {event.featuredImage ? <meta name="twitter:image" content={`https://su.imgix.net/${event.featuredImage.resource}?h=1200&w=2400&fit=crop&crop=focal&auto=format`} /> : null}
+
+        </Helmet>
+        <JsonLd data={{
+          "@context": "http://schema.org",
+          "@type": "Event",
+          "location": {
+            "@type": "Place",
+            "name": event.venue === null ? event.locationDisplay :  event.venue.name,
+          },
+          "name": event.title,
+          "startDate": event.startTime,
+          "endDate": event.endTime,
+        }}/>
         <BackBar to="/" useLink color="blue">
           Events listings
         </BackBar>
@@ -163,4 +138,6 @@ query EventsCalender {
 
 EventDetailPage.propTypes = {};
 
-export default EventDetailPage;
+export default graphql(DetailPageQuery, {
+  options: ({ match }) => ({ variables: { eventId: match.params.eventId, }})
+})(EventDetailPage);

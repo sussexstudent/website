@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { ApolloProvider, graphql } from 'react-apollo';
 import sortBy from 'lodash/sortBy';
 import orderBy from 'lodash/orderBy';
 import toPairs from 'lodash/toPairs';
@@ -8,16 +9,19 @@ import padStart from 'lodash/padStart';
 import groupBy from 'lodash/groupBy';
 import isBefore from 'date-fns/is_before';
 import getYear from 'date-fns/get_year';
+import startOfDay from 'date-fns/start_of_day';
 import getMonth from 'date-fns/get_month';
+import addMonths from 'date-fns/add_months';
 import setHours from 'date-fns/set_hours';
 import addDays from 'date-fns/add_days';
 import formatDate from 'date-fns/format';
 import Loader from '~components/Loader';
 import HydroLeaf from '~components/HydroLeaf';
 import ScrollToTop from '~components/ScrollToTop';
-import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import EventsCalenderItem from './EventsCalenderItem';
 import EventDetailPage from '../EventDetailPage/index';
+import getApolloClientForFalmer from '../../libs/getApolloClientForFalmer';
+import EventListingsQuery from './EventListings.graphql';
 
 const EVENT_PART = {
   CONTAINED: 'SINGLE',
@@ -79,7 +83,6 @@ function poorMonthSort(key) {
   if (key.startsWith('MONTH')) {
     const numbers = key.slice(6).split('-');
     const z = parseInt(numbers[0] + padStart(numbers[1], 2, '0'), 10);
-    console.log(key, z);
     return z;
   }
 
@@ -140,19 +143,18 @@ function getSmartDate(part) {
 }
 
 function EventsCalender({
-  eventsList,
-  isLoading,
+  data: { loading, allEvents },
   disableHeader = false,
   useAnchors = false,
 }) {
-  if (isLoading) {
+  if (loading) {
     return <Loader dark />;
   }
 
-  const events = eventsList.map(event => ({
-    ...event,
-    startDate: new Date(event.startTime),
-    endDate: new Date(event.endTime),
+  const events = allEvents.edges.map(({ node }) => ({
+    ...node,
+    startDate: new Date(node.startTime),
+    endDate: new Date(node.endTime),
   }));
   // let previousDay = null;
   const eventParts = splitEventsInToParts(events);
@@ -174,7 +176,8 @@ function EventsCalender({
         : null}
       <div className="EventsCalender">
         {uiEvents.map(({ sectionTitle, parts }) =>
-          <div className="EventsCalender__section">
+          // sectionTitle might not be unique in the future
+          <div className="EventsCalender__section" key={sectionTitle}>
             <h2 className="EventsCalender__section-title">
               {sectionTitle}
             </h2>
@@ -183,9 +186,8 @@ function EventsCalender({
                 const isFirstOfDate =
                   index < 1 ||
                   getSmartDate(parts[index - 1]) !== getSmartDate(part);
-
                 return (
-                  <div className="EventsCalender__part-container">
+                  <div className="EventsCalender__part-container" key={index}>
                     <h3
                       className={cx('EventsCalender__item-date-kicker', {
                         'EventsCalender__item-date-kicker--continuation': !isFirstOfDate,
@@ -205,78 +207,27 @@ function EventsCalender({
   );
 }
 
-export class EventsContainer extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isLoading: true,
-      data: null,
-    };
-  }
-
-  componentDidMount() {
-    fetch(`${getFalmerEndpoint()}/graphql`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
+export const EventsContainer = graphql(EventListingsQuery, {
+  options: props => ({
+    variables: {
+      filter: props.filter || {
+        fromTime: startOfDay(new Date()).toISOString(),
+        toTime: addMonths(startOfDay(new Date()), 3).toISOString(),
       },
-      body: JSON.stringify({
-        query: `
-query EventsCalender {
-  allEvents(ignoreEmbargo: true ${this.props.limitToFreshers === true
-    ? ', brandId: 2'
-    : ''}) {
-    id
-    slug
-    title
-    startTime
-    endTime 
-    locationDisplay
-    kicker
-    shortDescription
-    url
-    cost
-    ticketLevel
-    bundle {
-      name
-    }
-    venue {
-      name
-      websiteLink
-    }
-    featuredImage {
-      resource
-    }
-  }
-}
-       `,
-      }),
-    })
-      .then(data => data.json())
-      .then(data =>
-        this.setState({ isLoading: false, data: data.data.allEvents })
-      );
-  }
-
-  render() {
-    const { isLoading, data } = this.state;
-
-    return (
-      <EventsCalender {...this.props} isLoading={isLoading} eventsList={data} />
-    );
-  }
-}
+    },
+  }),
+})(EventsCalender);
 
 const EventsApplication = () =>
-  <BrowserRouter basename="/whats-on">
-    <ScrollToTop>
-      <Switch>
-        <Route path="/" exact component={EventsContainer} />
-        <Route path="/**-:eventId" component={EventDetailPage} />
-      </Switch>
-    </ScrollToTop>
-  </BrowserRouter>;
+  <ApolloProvider client={getApolloClientForFalmer}>
+    <BrowserRouter basename="/whats-on">
+      <ScrollToTop>
+        <Switch>
+          <Route path="/" exact component={EventsContainer} />
+          <Route path="/**-:eventId" component={EventDetailPage} />
+        </Switch>
+      </ScrollToTop>
+    </BrowserRouter>
+  </ApolloProvider>;
 
 export default HydroLeaf({ disableSSR: true })(EventsApplication);

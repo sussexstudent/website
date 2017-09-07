@@ -54,8 +54,8 @@ function EventsCalenderItem({ part, useAnchors }) {
         : <FauxFalmerLink
             href={
               useAnchors
-                ? `/whats-on/${event.slug}-${event.id}`
-                : `/${event.slug}-${event.id}`
+                ? `/whats-on/${event.slug}-${event.eventId}`
+                : `/${event.slug}-${event.eventId}`
             }
           />}
       {has(part, 'event.featuredImage.resource')

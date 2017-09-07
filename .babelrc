@@ -4,6 +4,9 @@
     [ "babel-plugin-webpack-alias", { "config": "./webpack.base.config.js" } ]
   ],
   "env": {
+    "dev-server": {
+      "plugins": ["babel-plugin-inline-import-graphql-ast"]
+    },
     "bundle": {
       "presets": [["env", {
         "targets": {

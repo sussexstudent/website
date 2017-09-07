@@ -82,6 +82,11 @@ module.exports = {
         enforce: 'pre',
       },
       {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        use: 'graphql-tag/loader',
+      },
+      {
         test: /\.svg|\.png|\.woff|\.json/,
         use: 'url-loader?limit=10000',
       },

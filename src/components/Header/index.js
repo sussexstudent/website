@@ -95,8 +95,10 @@ class Header extends React.Component {
     this.handleCloseSearch = () => this.setState({ isSearchOpen: false });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (typeof window !== 'undefined') {
+      // stops the ssr markup mis-match
+      // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({
         ...this.state,
         logoColor: getColor(),

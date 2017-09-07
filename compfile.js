@@ -41,6 +41,7 @@ export default {
     '/': './website/layouts/homepage.js',
     '/support': './website/layouts/Support.js',
     '/whats-on': './website/layouts/WhatsOn.js',
+    '/about-us': './website/layouts/AboutUs.js',
     '/discover-groups': './website/layouts/SportsSocieties.js',
     '/officer': '../components/OfficerPage/index.js',
     '/get-involved': './website/layouts/GetInvolved.js',

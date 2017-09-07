@@ -1,0 +1,29 @@
+query EventsDetailPage($eventId: Int) {
+  event(eventId: $eventId) {
+    eventId
+    slug
+    title
+    startTime
+    endTime
+    locationDisplay
+    kicker
+    bodyHtml
+    shortDescription
+    url
+    ticketType
+    ticketData
+    bundle {
+      name
+    }
+    brand {
+      name
+    }
+    venue {
+      name
+      websiteLink
+    }
+    featuredImage {
+      resource
+    }
+  }
+}

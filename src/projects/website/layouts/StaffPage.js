@@ -12,7 +12,7 @@ const StaffPage = () =>
 
             <p>
               <a href="mailto:reception@sussexstudent.com">
-                reception@sussexstudent.com
+                info@sussexstudent.com
               </a>
             </p>
 

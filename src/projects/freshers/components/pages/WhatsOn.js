@@ -91,7 +91,7 @@ function FreshersWhatsOn() {
               though we have many free events.
             </p>
             <p>
-              <Button href="https://www.native.fm/all-events?category=8">
+              <Button href="https://www.native.fm/event/sussex-students-union-freshers-week">
                 Buy tickets on Native
               </Button>
             </p>

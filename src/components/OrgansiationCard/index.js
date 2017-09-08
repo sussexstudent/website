@@ -7,18 +7,15 @@ function OrganisationCard(props) {
   const org = props.org;
   return (
     <li className="OrganisationCard">
-      <a
-        className="OrganisationCard__link"
-        href={org.mslGroup && org.mslGroup.link}
-      >
-        {org.mslGroup && org.mslGroup.logo !== null
+      <a className="OrganisationCard__link" href={org.link}>
+        {org.logo !== null
           ? <div className="OrganisationCard__image-container">
               <Image
                 className="OrganisationCard__image"
                 fit="clip"
                 width={416}
                 height={234}
-                src={org.mslGroup.logo.resource}
+                src={org.logo.resource}
                 alt=""
                 lazy
               />
@@ -30,9 +27,9 @@ function OrganisationCard(props) {
           <h3 className="OrganisationCard__title">
             {org.name}
           </h3>
-          {org.mslGroup && org.mslGroup.description
+          {org.description
             ? <p className="OrganisationCard__description">
-                {org.mslGroup.description}
+                {org.description}
               </p>
             : null}
         </div>

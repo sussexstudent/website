@@ -1,0 +1,15 @@
+query StudentGroups {
+  allGroups {
+    edges {
+      node {
+        groupId
+        name
+        description
+        link
+        logo {
+          resource
+        }
+      }
+    }
+  }
+}

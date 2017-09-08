@@ -5,19 +5,21 @@ import Fuse from 'fuse.js';
 import { forceCheck } from 'react-lazyload';
 import HydroLeaf from '~components/HydroLeaf';
 import OrgansiationGrid from '~components/OrgansiationGrid';
-import Loader from '~components/Loader';
-import getFalmerEndpoint from '~libs/getFalmerEndpoint';
+import { ApolloProvider, graphql } from 'react-apollo';
+import getApolloClientForFalmer from '../../libs/getApolloClientForFalmer';
+import StudentGroupListingsQuery from './StudentGroupListings.graphql';
+import Loader from '../Loader/index';
 
 class StudentGroupsDiscovery extends React.Component {
   constructor(props) {
     super(props);
 
-    this.fuse = new Fuse(props.groupsList, { keys: ['name'], id: 'id' });
+    this.fuse = new Fuse(props.groupsList, { keys: ['name'], id: 'groupId' });
 
     this.state = {
       filter: null,
       searchValue: '',
-      displayIds: props.groupsList.map(group => group.id),
+      displayIds: props.groupsList.map(group => group.groupId),
     };
 
     this.onSearchUpdate = this.onSearchUpdate.bind(this);
@@ -30,7 +32,7 @@ class StudentGroupsDiscovery extends React.Component {
         searchValue,
         displayIds: searchValue
           ? this.fuse.search(searchValue)
-          : this.props.groupsList.map(group => group.id),
+          : this.props.groupsList.map(group => group.groupId),
       },
       () => {
         forceCheck();
@@ -39,7 +41,7 @@ class StudentGroupsDiscovery extends React.Component {
   }
 
   render() {
-    const map = keyBy(this.props.groupsList, 'id');
+    const map = keyBy(this.props.groupsList, 'groupId');
     const { searchValue, displayIds } = this.state;
     return (
       <div className="ActivitiesApp__">
@@ -72,64 +74,18 @@ StudentGroupsDiscovery.propTypes = {
   groupsList: PropTypes.arrayOf().isRequired,
 };
 
-// eslint-disable-next-line
-class StudentGroupsDiscoveryContainer extends React.Component {
-  constructor(props) {
-    super(props);
+const StudentGroupListings = graphql(StudentGroupListingsQuery)(
+  props =>
+    props.data.loading
+      ? <Loader />
+      : <StudentGroupsDiscovery
+          groupsList={props.data.allGroups.edges.map(edge => edge.node)}
+        />
+);
 
-    this.state = {
-      isLoading: true,
-      data: null,
-    };
-  }
+const StudentGroupsApplication = () =>
+  <ApolloProvider client={getApolloClientForFalmer}>
+    <StudentGroupListings />
+  </ApolloProvider>;
 
-  componentDidMount() {
-    fetch(`${getFalmerEndpoint()}/graphql`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `
-query StudentGroups {
-  allGroups {
-    id
-    name
-    mslGroup {
-      description
-      link
-      logoUrl
-      logo {
-        resource
-      }
-    }
-  }
-}
-       `,
-      }),
-    })
-      .then(data => data.json())
-      .then(data =>
-        this.setState({ isLoading: false, data: data.data.allGroups })
-      );
-  }
-
-  render() {
-    const { isLoading, data } = this.state;
-
-    if (isLoading) {
-      return <Loader dark />;
-    }
-
-    return (
-      <StudentGroupsDiscovery
-        {...this.props}
-        isLoading={isLoading}
-        groupsList={data}
-      />
-    );
-  }
-}
-
-export default HydroLeaf()(StudentGroupsDiscoveryContainer);
+export default HydroLeaf()(StudentGroupsApplication);

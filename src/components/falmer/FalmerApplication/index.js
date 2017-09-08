@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { Switch, Route } from 'react-router';
+import { withRouter } from 'react-router';
+import { Switch, Route } from 'react-router-dom';
 import { requestAuthToken } from '~falmer/ducks/auth';
 import FalmerHeader from '../FalmerHeader';
 import FalmerDashboard from '../FalmerDashboard';
+import FalmerEvents from '../FalmerEvents';
 import Loader from '../../Loader';
 
 class FalmerApplication extends React.Component {
@@ -26,6 +28,7 @@ class FalmerApplication extends React.Component {
         <main className="FalmerViewContainer">
           <Switch>
             <Route path="/" exact component={FalmerDashboard} />
+            <Route path="/events" component={FalmerEvents} />
           </Switch>
         </main>
       </section>
@@ -33,6 +36,8 @@ class FalmerApplication extends React.Component {
   }
 }
 
-export default connect(state => ({
-  isAuthenticated: state.auth.user !== null,
-}))(FalmerApplication);
+export default withRouter(
+  connect(state => ({
+    isAuthenticated: state.auth.user !== null,
+  }))(FalmerApplication)
+);

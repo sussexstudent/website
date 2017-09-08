@@ -1,0 +1,16 @@
+query {
+  allEvents {
+    edges {
+      node {
+        eventId
+        title
+        featuredImage {
+          resource
+        }
+        shortDescription
+        startTime
+        endTime
+      }
+    }
+  }
+}

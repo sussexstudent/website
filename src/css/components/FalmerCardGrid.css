@@ -1,0 +1,14 @@
+.FalmerCardGrid {
+  &--single {
+
+  }
+
+  &--fill {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > div {
+      margin-right: 1lh;
+    }
+  }
+}

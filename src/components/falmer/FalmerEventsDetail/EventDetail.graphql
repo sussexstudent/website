@@ -1,0 +1,12 @@
+query EventDetail($eventId: Int) {
+  event(eventId: $eventId) {
+    eventId
+    title
+    featuredImage {
+      resource
+    }
+    shortDescription
+    startTime
+    endTime
+  }
+}

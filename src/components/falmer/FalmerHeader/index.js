@@ -11,6 +11,9 @@ function FalmerHeader({ user }) {
           <li className="FalmerHeader__nav-item">
             <Link to="/">Dashboard</Link>
           </li>
+          <li className="FalmerHeader__nav-item">
+            <Link to="/events">Events</Link>
+          </li>
         </ul>
       </nav>
 

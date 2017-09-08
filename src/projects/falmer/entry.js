@@ -3,6 +3,6 @@ if (module.hot) {
   module.hot.accept();
 }
 
-import '../../css/main.css';
+import '../../css/falmer.css';
 import './application';
 /* eslint-enable import/first */

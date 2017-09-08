@@ -1,0 +1,14 @@
+.FalmerCard {
+  margin-bottom: 1lh;
+  padding: 0.5lh;
+  background: #ffffff;
+  overflow: hidden;
+  position: relative;
+
+  @mixin card standard;
+
+  &--standard {
+    max-width: 200px;
+    width: 100%;
+  }
+}

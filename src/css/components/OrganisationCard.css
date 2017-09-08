@@ -44,4 +44,11 @@
   &__info {
     padding: 0.5lh;
   }
+
+  &__banner {
+    background-color: var(--color__brand-green);
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+  }
 }

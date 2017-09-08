@@ -7,7 +7,7 @@ function OrganisationCard(props) {
   const org = props.org;
   return (
     <li className="OrganisationCard">
-      <a className="OrganisationCard__link" href={org.link}>
+      <a className="OrganisationCard__link" href={org.link || '#'}>
         {org.logo !== null
           ? <div className="OrganisationCard__image-container">
               <Image
@@ -23,6 +23,11 @@ function OrganisationCard(props) {
           : <div className="OrganisationCard__image-container">
               <PatternPlaceholder />
             </div>}
+        {org.isProspective
+          ? <div className="OrganisationCard__banner">
+              Application in progress
+            </div>
+          : null}
         <div className="OrganisationCard__info">
           <h3 className="OrganisationCard__title">
             {org.name}

@@ -6,6 +6,7 @@ query StudentGroups {
         name
         description
         link
+        isProspective
         logo {
           resource
         }

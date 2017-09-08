@@ -148,7 +148,7 @@
     "build-storybook": "build-storybook -c .storybook -o storybook-public",
     "falmer:serve": "webpack-dev-server --config webpack.config.falmer.js",
     "falmer:_deploy": "node ./config/deployToFalmer.js",
-    "falmer:deploy": "uncommitted && yarn run falmer:prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist-falmer/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run falmer:_deploy"
+    "falmer:deploy": "yarn run falmer:prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist-falmer/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run falmer:_deploy"
   },
   "jest": {
     "moduleNameMapper": {

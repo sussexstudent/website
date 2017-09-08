@@ -10,16 +10,7 @@ module.exports = {
   target: 'web',
 
   entry: {
-    vendor: [
-      'babel-polyfill',
-      'react',
-      'react-dom',
-      'react-imgix',
-      'unfetch/polyfill',
-      'raven-js',
-      'mitt',
-    ],
-    main: ['./src/projects/falmer/entry.js'],
+    main: ['babel-polyfill', './src/projects/falmer/entry.js'],
     devFonts: './src/projects/website/env-dev.js',
     productionFonts: './src/projects/website/env-production.js',
   },
@@ -57,14 +48,12 @@ module.exports = {
       },
     }),
     new webpack.NamedChunksPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity,
-    }),
     new DuplicatePackageCheckerPlugin(),
     new HtmlWebpackPlugin({
       alwaysWriteToDisk: true,
       template: './src/projects/falmer/index.ejs',
+      chunks: ['main', 'productionFonts'],
+      inject: false,
     }),
     new HtmlWebpackHardDiskPlugin(),
   ],

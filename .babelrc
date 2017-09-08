@@ -7,6 +7,9 @@
     "dev-server": {
       "plugins": ["babel-plugin-inline-import-graphql-ast"]
     },
+    "comp": {
+      "plugins": ["babel-plugin-inline-import-graphql-ast"]
+    },
     "bundle": {
       "presets": [["env", {
         "targets": {

@@ -24,7 +24,7 @@ const mslLogout = MSLTag('LoginButton', {
 });
 
 const mainLayout = ({ assets, legacy }) =>
-  <body className="Body" id="top">
+  <div className="Body" id="top">
     <div
       style={{ display: 'none' }}
       // eslint-disable-next-line react/no-danger
@@ -58,7 +58,7 @@ const mainLayout = ({ assets, legacy }) =>
         style={{ display: 'none' }}
       />
     </noscript>
-  </body>;
+  </div>;
 
 mainLayout.propTypes = {
   legacy: PropTypes.bool.isRequired,

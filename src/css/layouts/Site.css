@@ -18,7 +18,7 @@ html {
   touch-action: manipulation;
 }
 
-.Body {
+body {
   background-color: var(--color__grey-bg);
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -38,7 +38,7 @@ html {
     }
   }
 
-  & .Body {
+  & body {
     @media (--medium) {
       overflow: hidden;
     }

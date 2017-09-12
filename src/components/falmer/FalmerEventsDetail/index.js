@@ -1,13 +1,21 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
+import { Helmet } from 'react-helmet';
 import EventDetailQuery from './EventDetail.graphql';
 import Loader from '../../Loader';
 import CopyToClipboardButton from '../../CopyToClipboardButton/index';
+import ImageTreatmentPreview from '../ImageTreatmentPreview';
 
 function FalmerEventsDetail({ data: { loading, event } }) {
   return (
     <div>
-      <h1>Events</h1>
+      <Helmet>
+        <title>
+          {`${!loading && event.title} | Events`}
+        </title>
+      </Helmet>
+      <h1 className="Heading">Events</h1>
+
       {loading
         ? <Loader />
         : <div>
@@ -19,6 +27,12 @@ function FalmerEventsDetail({ data: { loading, event } }) {
             >
               Copy sharing link
             </CopyToClipboardButton>
+            <div>
+              <h2 className="Heading--medium">Images</h2>
+              {event.featuredImage
+                ? <ImageTreatmentPreview image={event.featuredImage} />
+                : <em>No image attached to this event</em>}
+            </div>
           </div>}
     </div>
   );

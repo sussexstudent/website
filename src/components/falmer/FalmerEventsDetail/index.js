@@ -14,8 +14,6 @@ function FalmerEventsDetail({ data: { loading, event } }) {
           {`${!loading && event.title} | Events`}
         </title>
       </Helmet>
-      <h1 className="Heading">Events</h1>
-
       {loading
         ? <Loader />
         : <div>

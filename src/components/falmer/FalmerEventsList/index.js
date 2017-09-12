@@ -21,7 +21,6 @@ function FalmerEvents({ data: { loading, allEvents } }) {
       <Helmet>
         <title>Events</title>
       </Helmet>
-      <h1 className="Heading">Events</h1>
       {loading
         ? <Loader />
         : <FalmerDataList

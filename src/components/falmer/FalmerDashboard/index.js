@@ -1,28 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import Button from '../../Button';
+import getHours from 'date-fns/get_hours';
 
-function FalmerDashboard({ user: { isStaff, hasCmsAccess } }) {
+function getGreeting() {
+  const hour = getHours(new Date());
+
+  if (hour <= 3) {
+    return 'Early morning!';
+  }
+  if (hour <= 10) {
+    return 'Morning!';
+  }
+  if (hour <= 11) {
+    return 'Morning (although basically lunch time)!';
+  }
+  if (hour <= 17) {
+    return 'Afternoon!';
+  }
+
+  return 'Evening!';
+}
+
+function FalmerDashboard() {
   return (
     <div>
       <Helmet>
         <title>Dashboard</title>
       </Helmet>
-      <h1 className="Heading">Dashboard</h1>
-      <h2 className="Heading Heading--highlight">Things you can do:</h2>
-      <ul>
-        {isStaff
-          ? <li>
-              <Button href="/admin">Open Admin</Button>
-            </li>
-          : null}
-        {hasCmsAccess
-          ? <li>
-              <Button href="/cms">Open CMS</Button>
-            </li>
-          : null}
-      </ul>
+      <h1 className="Heading">
+        {getGreeting()}
+      </h1>
+      <em>{`One day we'll put interesting information here!`}</em>
     </div>
   );
 }

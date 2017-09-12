@@ -9,6 +9,7 @@ query {
           resource
         }
         description
+        isProspective
       }
     }
   }

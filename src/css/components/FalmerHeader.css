@@ -38,6 +38,9 @@
       font-weight: 500;
     }
   }
+  &__nav-item--secondary {
+    margin-left: auto;
+  }
 
   &__nav-link--active {
     color: var(--color__brand-blue) !important;

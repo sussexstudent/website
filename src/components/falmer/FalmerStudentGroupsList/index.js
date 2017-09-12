@@ -1,28 +1,36 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
+import { Link } from 'react-router-dom';
+import FalmerDataList, { Cell, Row, HeaderCell } from '../FalmerDataList/index';
 import AllGroupsQuery from './AllGroups.graphql';
 import Loader from '../../Loader';
-import FauxRouterLink from '../../FauxRouterLink';
-
-const FalmerStudentGroupsCard = ({ group }) =>
-  <div className="FalmerCard FalmerCard--standard">
-    <FauxRouterLink href={`/groups/${group.groupId}`} />
-    <h2>
-      {group.name}
-    </h2>
-  </div>;
 
 function FalmerStudentGroupsList({ data: { loading, allGroups } }) {
   return (
     <div>
-      <h1>Student Groups</h1>
       {loading
         ? <Loader />
-        : <div className="FalmerCardGrid FalmerCardGrid--fill">
-            {allGroups.edges.map(edge =>
-              <FalmerStudentGroupsCard group={edge.node} />
-            )}
-          </div>}
+        : <FalmerDataList
+            items={allGroups.edges.map(edge => edge.node)}
+            header={rowState =>
+              <Row {...rowState}>
+                <HeaderCell>Name</HeaderCell>
+                <HeaderCell>Prospective</HeaderCell>
+              </Row>}
+            selectable
+          >
+            {(item, rowState) =>
+              <Row {...rowState} id={item.id}>
+                <Cell>
+                  <Link to={`/groups/${item.groupId}`}>
+                    {item.name}
+                  </Link>
+                </Cell>
+                <Cell>
+                  {item.isProspective ? 'yes' : 'no'}
+                </Cell>
+              </Row>}
+          </FalmerDataList>}
     </div>
   );
 }

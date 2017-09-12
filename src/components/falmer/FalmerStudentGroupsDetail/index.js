@@ -7,7 +7,6 @@ import CopyToClipboardButton from '../../CopyToClipboardButton/index';
 function FalmerStudentGroupsDetail({ data: { loading, group } }) {
   return (
     <div>
-      <h1>Student Groups</h1>
       {loading
         ? <Loader />
         : <div>

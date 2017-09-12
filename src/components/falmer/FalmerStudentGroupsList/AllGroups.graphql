@@ -1,0 +1,15 @@
+query {
+  allGroups {
+    edges {
+      node {
+        id
+        groupId
+        name
+        logo {
+          resource
+        }
+        description
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+query EventDetail($groupId: Int) {
+  group(groupId: $groupId) {
+    groupId
+    name
+    logo {
+      resource
+    }
+    description
+  }
+}

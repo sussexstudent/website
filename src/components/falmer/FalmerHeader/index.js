@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 
 function FalmerHeader({ user }) {
   return (
@@ -9,10 +9,29 @@ function FalmerHeader({ user }) {
       <nav className="FalmerHeader__nav">
         <ul className="FalmerHeader__nav-list">
           <li className="FalmerHeader__nav-item">
-            <Link to="/">Dashboard</Link>
+            <NavLink
+              to="/"
+              exact
+              activeClassName="FalmerHeader__nav-link--active"
+            >
+              Dashboard
+            </NavLink>
           </li>
           <li className="FalmerHeader__nav-item">
-            <Link to="/events">Events</Link>
+            <NavLink
+              to="/events"
+              activeClassName="FalmerHeader__nav-link--active"
+            >
+              Events
+            </NavLink>
+          </li>
+          <li className="FalmerHeader__nav-item">
+            <NavLink
+              to="/groups"
+              activeClassName="FalmerHeader__nav-link--active"
+            >
+              Groups
+            </NavLink>
           </li>
         </ul>
       </nav>
@@ -36,6 +55,8 @@ function FalmerHeader({ user }) {
  </li>
 */
 
-export default connect(state => ({
-  user: state.auth.user,
-}))(FalmerHeader);
+export default withRouter(
+  connect(state => ({
+    user: state.auth.user,
+  }))(FalmerHeader)
+);

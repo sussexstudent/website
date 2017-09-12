@@ -29,13 +29,26 @@
   }
 
   &__nav-item {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
 
     & > a {
       text-decoration: none;
       color: var(--color__grey-worst-day-of-winter);
       font-weight: 500;
+    }
+  }
+
+  &__nav-link--active {
+    color: var(--color__brand-blue) !important;
+    &:after {
+      content: '';
+      width: 100%;
+      display: block;
+      border-bottom: 2px solid #677aae;
+      margin: 0 auto;
+      position: relative;
+      top: 0.3rem;
     }
   }
 }

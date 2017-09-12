@@ -5,10 +5,12 @@ import FalmerEventsDetail from '../FalmerEventsDetail';
 
 function FalmerEvents() {
   return (
-    <Switch>
-      <Route path="/events" exact component={FalmerEventsList} />
-      <Route path="/events/:eventId" component={FalmerEventsDetail} />
-    </Switch>
+    <div>
+      <Switch>
+        <Route path="/events" exact component={FalmerEventsList} />
+        <Route path="/events/:eventId" component={FalmerEventsDetail} />
+      </Switch>
+    </div>
   );
 }
 

@@ -7,6 +7,7 @@ import { requestAuthToken } from '~falmer/ducks/auth';
 import FalmerHeader from '../FalmerHeader';
 import FalmerDashboard from '../FalmerDashboard';
 import FalmerEvents from '../FalmerEvents';
+import FalmerStudentGroups from '../FalmerStudentGroups';
 import Loader from '../../Loader';
 
 class FalmerApplication extends React.Component {
@@ -29,6 +30,7 @@ class FalmerApplication extends React.Component {
           <Switch>
             <Route path="/" exact component={FalmerDashboard} />
             <Route path="/events" component={FalmerEvents} />
+            <Route path="/groups" component={FalmerStudentGroups} />
           </Switch>
         </main>
       </section>

@@ -47,16 +47,22 @@
       width: 320px;
     }
   }
-
-  &__item-bundle {
+  &__item-banner {
     display: block;
-    color: white;
-    background-color: #fbaa05;
+    color: #ffffff;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 0.9rem;
     text-align: center;
     font-family: var(--type__primary);
+  }
+
+  &__item-banner--bundle {
+    background-color: #fbaa05;
+  }
+
+  &__item-banner--tickets {
+    background-color: var(--color__brand-green);
   }
 
   &__item-image-treat {

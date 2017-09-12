@@ -13,6 +13,7 @@ query EventsListings($filter: EventFilter) {
         url
         cost
         ticketLevel
+        ticketType
         bundle {
           name
         }

@@ -69,8 +69,13 @@ function EventsCalenderItem({ part, useAnchors }) {
           </div>
         : null}
       {event.bundle !== null
-        ? <div className="EventsCalender__item-bundle">
+        ? <div className="EventsCalender__item-banner EventsCalender__item-banner--bundle">
             {event.bundle.name}
+          </div>
+        : null}
+      {event.ticketType !== 'NA' && event.ticketLevel !== 'SO'
+        ? <div className="EventsCalender__item-banner EventsCalender__item-banner--tickets">
+            Buy Tickets
           </div>
         : null}
       <div className="EventsCalender__item-container">

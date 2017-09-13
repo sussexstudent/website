@@ -1,4 +1,4 @@
-query EventDetail($groupId: Int) {
+query GroupDetail($groupId: Int) {
   group(groupId: $groupId) {
     groupId
     name
@@ -6,5 +6,9 @@ query EventDetail($groupId: Int) {
       resource
     }
     description
+    mslGroup {
+      id
+      lastSync
+    }
   }
 }

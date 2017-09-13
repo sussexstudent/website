@@ -15,6 +15,12 @@
     margin: 0;
   }
 
+  &__user {
+    font-size: 1.1rem;
+    color: var(--color__grey-winter);
+    font-weight: 500;
+  }
+
   &__nav {
     flex: 1 1 auto;
   }

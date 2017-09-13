@@ -17,7 +17,7 @@ function FalmerEventsDetail({ data: { loading, event } }) {
       {loading
         ? <Loader />
         : <div>
-            <h2>
+            <h2 className="Heading Heading--medium">
               {event.title}
             </h2>
             <CopyToClipboardButton
@@ -26,7 +26,7 @@ function FalmerEventsDetail({ data: { loading, event } }) {
               Copy sharing link
             </CopyToClipboardButton>
             <div>
-              <h2 className="Heading--medium">Images</h2>
+              <h2 className="Heading Heading--standard">Images</h2>
               {event.featuredImage
                 ? <ImageTreatmentPreview image={event.featuredImage} />
                 : <em>No image attached to this event</em>}

@@ -33,6 +33,14 @@ function FalmerHeader({ user }) {
               Groups
             </NavLink>
           </li>
+          <li className="FalmerHeader__nav-item">
+            <NavLink
+              to="/media"
+              activeClassName="FalmerHeader__nav-link--active"
+            >
+              Images
+            </NavLink>
+          </li>
           {user.hasCmsAccess
             ? <li className="FalmerHeader__nav-item">
                 <a href="/cms">
@@ -48,7 +56,7 @@ function FalmerHeader({ user }) {
         </ul>
       </nav>
 
-      <div>
+      <div className="FalmerHeader__user">
         {user.name || user.identifier}
       </div>
     </header>

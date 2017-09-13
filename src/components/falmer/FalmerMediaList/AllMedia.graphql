@@ -1,0 +1,15 @@
+query {
+  allImages(last: 45) {
+    edges {
+      node {
+        id
+        mediaId
+        file
+        width
+        height
+        title
+        resource
+      }
+    }
+  }
+}

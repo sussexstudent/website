@@ -1,0 +1,11 @@
+query MediaDetail($mediaId: Int) {
+  image(mediaId: $mediaId) {
+    id
+    mediaId
+    file
+    width
+    height
+    title
+    resource
+  }
+}

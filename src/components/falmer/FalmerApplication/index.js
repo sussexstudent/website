@@ -8,6 +8,7 @@ import FalmerHeader from '../FalmerHeader';
 import FalmerDashboard from '../FalmerDashboard';
 import FalmerEvents from '../FalmerEvents';
 import FalmerStudentGroups from '../FalmerStudentGroups';
+import FalmerMedia from '../FalmerMedia';
 import Loader from '../../Loader';
 
 class FalmerApplication extends React.Component {
@@ -31,6 +32,7 @@ class FalmerApplication extends React.Component {
             <Route path="/" exact component={FalmerDashboard} />
             <Route path="/events" component={FalmerEvents} />
             <Route path="/groups" component={FalmerStudentGroups} />
+            <Route path="/media" component={FalmerMedia} />
           </Switch>
         </main>
       </section>

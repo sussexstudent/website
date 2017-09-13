@@ -1,0 +1,12 @@
+.FalmerMediaGrid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+  }
+}

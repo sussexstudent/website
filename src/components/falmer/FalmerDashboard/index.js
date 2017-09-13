@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { graphql } from 'react-apollo';
 import { Helmet } from 'react-helmet';
 import getHours from 'date-fns/get_hours';
+import DashboardQuery from './Dashboard.graphql';
+import ContentCard from '../../ContentCard';
 
 function getGreeting() {
   const hour = getHours(new Date());
@@ -22,7 +25,22 @@ function getGreeting() {
   return 'Evening!';
 }
 
-function FalmerDashboard() {
+function StatsCard({ stat, subtitle }) {
+  return (
+    <ContentCard>
+      <div className="Heading Heading--big">
+        {stat}
+      </div>
+      <div>
+        {subtitle}
+      </div>
+    </ContentCard>
+  );
+}
+
+function FalmerDashboard({
+  data: { loading, allEvents, allGroups, allImages },
+}) {
   return (
     <div>
       <Helmet>
@@ -31,11 +49,26 @@ function FalmerDashboard() {
       <h1 className="Heading">
         {getGreeting()}
       </h1>
-      <em>{`One day we'll put interesting information here!`}</em>
+
+      {loading
+        ? null
+        : <div
+            style={{
+              display: 'flex',
+              textAlign: 'center',
+              justifyContent: 'space-around',
+            }}
+          >
+            <StatsCard stat={allEvents.totalCount} subtitle="Events" />
+            <StatsCard stat={allGroups.totalCount} subtitle="Student Groups" />
+            <StatsCard stat={allImages.totalCount} subtitle="Images" />
+          </div>}
     </div>
   );
 }
 
-export default connect(state => ({
-  user: state.auth.user,
-}))(FalmerDashboard);
+export default graphql(DashboardQuery)(
+  connect(state => ({
+    user: state.auth.user,
+  }))(FalmerDashboard)
+);

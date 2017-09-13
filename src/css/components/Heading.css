@@ -13,6 +13,10 @@
     font-family: var(--type__primary);
   }
 
+  &--standard {
+    font-size: 1.8rem;
+  }
+
   &--medium {
     font-size: 2.2rem;
   }

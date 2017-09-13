@@ -8,6 +8,8 @@
   top: 0;
   padding: 0.3rem;
 
+  z-index: 200;
+
   display: flex;
 
   &__logotype {

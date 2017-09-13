@@ -7,5 +7,13 @@ query MediaDetail($mediaId: Int) {
     height
     title
     resource
+    labels(first: 5) {
+      edges {
+        node {
+          name
+          confidence
+        }
+      }
+    }
   }
 }

@@ -1,5 +1,9 @@
-query {
-  allImages(last: 45) {
+query AllMedia($cursor: String) {
+  allImages(first: 45, after: $cursor) {
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
     edges {
       node {
         id

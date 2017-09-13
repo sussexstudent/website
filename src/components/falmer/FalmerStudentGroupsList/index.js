@@ -27,7 +27,7 @@ function FalmerStudentGroupsList({ data: { loading, allGroups } }) {
                   </Link>
                 </Cell>
                 <Cell>
-                  {item.isProspective ? 'yes' : 'no'}
+                  {item.isProspective ? 'yes' : ''}
                 </Cell>
               </Row>}
           </FalmerDataList>}

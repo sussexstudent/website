@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ApolloProvider, graphql } from 'react-apollo';
+import { Helmet } from 'react-helmet';
 import sortBy from 'lodash/sortBy';
 import orderBy from 'lodash/orderBy';
 import toPairs from 'lodash/toPairs';
@@ -162,6 +163,13 @@ function EventsCalender({
   // chunk by day
   return (
     <div>
+      {disableHeader
+        ? null
+        : <Helmet>
+            <title>
+              {`What's on | Sussex Students' Union`}
+            </title>
+          </Helmet>}
       {disableHeader !== true
         ? <div className="PageHeader">
             <h1 className="PageHeader__title">

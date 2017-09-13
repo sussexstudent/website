@@ -24,7 +24,7 @@ class EventDetailPage extends React.Component {
     return (
       <div>
         <Helmet>
-          <title>{event.title} | What's on | Sussex Student's Union</title>
+          <title>{`${event.title} | What's on | Sussex Students' Union`}</title>
           <meta name="description" content={event.shortDescription} />
           {event.featuredImage ? <meta property="og:image" content={`https://su.imgix.net/${event.featuredImage.resource}?h=1260&w=2400&fit=crop&crop=focal&auto=format`} /> : null}
           <meta property="og:description" content={event.shortDescription} />
@@ -34,7 +34,6 @@ class EventDetailPage extends React.Component {
           <meta name="twitter:title" content={event.title} />
           <meta name="twitter:description" content={event.shortDescription} />
           {event.featuredImage ? <meta name="twitter:image" content={`https://su.imgix.net/${event.featuredImage.resource}?h=1200&w=2400&fit=crop&crop=focal&auto=format`} /> : null}
-
         </Helmet>
         <JsonLd data={{
           "@context": "http://schema.org",

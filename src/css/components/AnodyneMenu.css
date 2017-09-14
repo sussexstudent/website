@@ -1,7 +1,6 @@
 @import '../core/mq.css';
 
 .AnodyneMenu {
-
   @media (--medium) {
     padding-top: 1.5lh;
   }
@@ -44,8 +43,6 @@
   }
 }
 
-
-
 .AnodyneMenu__item:nth-child(1) .AnodyneMenu__link {
   background-color: var(--color__brand-blue);
 
@@ -68,7 +65,6 @@
     border-bottom-color: var(--color__brand-green);
   }
 
-
   &:hover,
   &.AnodyneMenu__link--active {
     background-color: var(--color__brand-green);
@@ -83,7 +79,6 @@
     border-bottom-color: var(--color__brand-red);
   }
 
-
   &:hover,
   &.AnodyneMenu__link--active {
     background-color: var(--color__brand-red);
@@ -97,7 +92,6 @@
     background-color: transparent;
     border-bottom-color: var(--color__grey-slate);
   }
-
 
   &:hover,
   &.AnodyneMenu__link--active {

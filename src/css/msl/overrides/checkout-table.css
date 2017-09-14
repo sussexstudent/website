@@ -3,14 +3,13 @@
   color: #000000;
 }
 
-
 .checkoutpage .msl_table tr.footer td {
   background: transparent;
   color: #000000;
 }
 
-
-.msl_save, .msl_delete {
+.msl_save,
+.msl_delete {
   background-size: contain;
 }
 

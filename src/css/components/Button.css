@@ -2,7 +2,7 @@
 
 .Button {
   @mixin card standard;
-  
+
   background-color: var(--color__brand-blue);
   color: #ffffff;
   display: inline-block;
@@ -30,10 +30,9 @@
   }
 }
 
-
 .msl_admin_page .button {
   @mixin card standard;
-  
+
   background: var(--color__brand-blue) !important;
   color: #ffffff !important;
   display: inline-block !important;

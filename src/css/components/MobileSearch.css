@@ -33,7 +33,6 @@
   }
 }
 
-
 .MobileSearchInput-enter {
   transform: translateY(-70px);
   transition: transform 300ms ease;

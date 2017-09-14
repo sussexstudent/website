@@ -6,7 +6,7 @@
   margin-left: -0.5lh;
   margin-right: -0.5lh;
 
-  @media(--small) {
+  @media (--small) {
     margin-left: 0;
     margin-right: 0;
   }
@@ -16,23 +16,22 @@
   margin-left: -0.5lh;
   margin-right: -0.5lh;
 
-  @media(--medium) {
+  @media (--medium) {
     margin-left: 0;
     margin-right: 0;
   }
 }
 
-
 .u-container-bleed-top {
   margin-top: -1rem;
 
-  @media(--medium) {
+  @media (--medium) {
     margin-top: 0;
   }
 }
 
-
-.Container, .container {
+.Container,
+.container {
   max-width: 1200px;
   margin: 0 auto;
   padding-left: 0.5lh;
@@ -73,4 +72,3 @@
     }
   }
 }
-

@@ -25,7 +25,7 @@
     }
   }
 
-  &:hover &__button  {
+  &:hover &__button {
     color: var(--color__brand-yellow);
     background-color: var(--color__brand-blue);
   }

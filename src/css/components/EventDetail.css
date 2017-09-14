@@ -1,5 +1,6 @@
 .EventDetail {
-  &__bundle, &__brand {
+  &__bundle,
+  &__brand {
     padding: 0.2rem;
     text-align: center;
     font-family: var(--type__primary);

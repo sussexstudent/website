@@ -25,9 +25,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.html--search-active  {
+.html--search-active {
   @media (--up-to-medium) {
-
   }
 
   & .Site {

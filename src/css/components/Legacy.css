@@ -14,11 +14,25 @@
   height: auto !important;
 }
 
-.Legacy article, .Legacy aside, .Legacy details, .Legacy figcaption, .Legacy figure, .Legacy footer, .Legacy header, .Legacy hgroup, .Legacy main, .Legacy nav, .Legacy section, .Legacy summary {
+.Legacy article,
+.Legacy aside,
+.Legacy details,
+.Legacy figcaption,
+.Legacy figure,
+.Legacy footer,
+.Legacy header,
+.Legacy hgroup,
+.Legacy main,
+.Legacy nav,
+.Legacy section,
+.Legacy summary {
   display: block;
 }
 
-.Legacy audio, .Legacy canvas, .Legacy progress, .Legacy video {
+.Legacy audio,
+.Legacy canvas,
+.Legacy progress,
+.Legacy video {
   display: inline-block;
   vertical-align: baseline;
 }
@@ -28,11 +42,13 @@
   height: 0;
 }
 
-.Legacy [hidden], .Legacy template {
+.Legacy [hidden],
+.Legacy template {
   display: none;
 }
 
-.Legacy a:active, .Legacy a:hover {
+.Legacy a:active,
+.Legacy a:hover {
   outline: 0;
 }
 
@@ -40,7 +56,8 @@
   border-bottom: 1px dotted;
 }
 
-.Legacy b, .Legacy strong {
+.Legacy b,
+.Legacy strong {
   font-weight: 700;
 }
 
@@ -49,7 +66,7 @@
 }
 
 .Legacy h1 {
-  margin: .67em 0;
+  margin: 0.67em 0;
   font-size: 2em;
 }
 
@@ -62,7 +79,8 @@
   font-size: 80%;
 }
 
-.Legacy sub, .Legacy sup {
+.Legacy sub,
+.Legacy sup {
   position: relative;
   font-size: 75%;
   line-height: 0;
@@ -100,7 +118,11 @@
   overflow: auto;
 }
 
-.Legacy button, .Legacy input, .Legacy optgroup, .Legacy select, .Legacy textarea {
+.Legacy button,
+.Legacy input,
+.Legacy optgroup,
+.Legacy select,
+.Legacy textarea {
   margin: 0;
   font: inherit;
   color: inherit;
@@ -110,20 +132,26 @@
   overflow: visible;
 }
 
-.Legacy button, .Legacy select {
+.Legacy button,
+.Legacy select {
   text-transform: none;
 }
 
-.Legacy button, .Legacy html input[type=button], .Legacy input[type=reset], .Legacy input[type=submit] {
+.Legacy button,
+.Legacy html input[type='button'],
+.Legacy input[type='reset'],
+.Legacy input[type='submit'] {
   -webkit-appearance: button;
   cursor: pointer;
 }
 
-.Legacy button[disabled], .Legacy html input[disabled] {
+.Legacy button[disabled],
+.Legacy html input[disabled] {
   cursor: default;
 }
 
-.Legacy button::-moz-focus-inner, .Legacy input::-moz-focus-inner {
+.Legacy button::-moz-focus-inner,
+.Legacy input::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
@@ -132,30 +160,33 @@
   line-height: normal;
 }
 
-.Legacy input[type=checkbox], .Legacy input[type=radio] {
+.Legacy input[type='checkbox'],
+.Legacy input[type='radio'] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0;
 }
 
-.Legacy input[type=number]::-webkit-inner-spin-button, .Legacy input[type=number]::-webkit-outer-spin-button {
+.Legacy input[type='number']::-webkit-inner-spin-button,
+.Legacy input[type='number']::-webkit-outer-spin-button {
   height: auto;
 }
 
-.Legacy input[type=search] {
+.Legacy input[type='search'] {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   -webkit-appearance: textfield;
 }
 
-.Legacy input[type=search]::-webkit-search-cancel-button, .Legacy input[type=search]::-webkit-search-decoration {
+.Legacy input[type='search']::-webkit-search-cancel-button,
+.Legacy input[type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
 .Legacy fieldset {
-  padding: .35em .625em .75em;
+  padding: 0.35em 0.625em 0.75em;
   margin: 0 2px;
   border: 1px solid silver;
 }
@@ -178,7 +209,8 @@
   border-collapse: collapse;
 }
 
-.Legacy td, .Legacy th {
+.Legacy td,
+.Legacy th {
   padding: 0;
 }
 
@@ -188,13 +220,17 @@
   box-sizing: border-box;
 }
 
-.Legacy :before, .Legacy :after {
+.Legacy :before,
+.Legacy :after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-.Legacy input, .Legacy button, .Legacy select, .Legacy textarea {
+.Legacy input,
+.Legacy button,
+.Legacy select,
+.Legacy textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
@@ -208,7 +244,11 @@
   vertical-align: middle;
 }
 
-.Legacy .img-responsive, .Legacy .thumbnail > img, .Legacy .thumbnail a > img, .Legacy .carousel-inner > .item > img, .Legacy .carousel-inner > .item > a > img {
+.Legacy .img-responsive,
+.Legacy .thumbnail > img,
+.Legacy .thumbnail a > img,
+.Legacy .carousel-inner > .item > img,
+.Legacy .carousel-inner > .item > a > img {
   display: block;
   width: 100% \9;
   max-width: 100%;
@@ -222,7 +262,8 @@
   border-top: 1px solid #eee;
 }
 
-.Legacy .sr-only-focusable:active, .Legacy .sr-only-focusable:focus {
+.Legacy .sr-only-focusable:active,
+.Legacy .sr-only-focusable:focus {
   position: static;
   width: auto;
   height: auto;
@@ -248,7 +289,8 @@
   }
 }
 
-.Legacy small, .Legacy .small {
+.Legacy small,
+.Legacy .small {
   font-size: 85%;
 }
 
@@ -256,8 +298,9 @@
   font-style: normal;
 }
 
-.Legacy mark, .Legacy .mark {
-  padding: .2em;
+.Legacy mark,
+.Legacy .mark {
+  padding: 0.2em;
   background-color: #fcf8e3;
 }
 
@@ -267,12 +310,16 @@
   border-bottom: 1px solid #eee;
 }
 
-.Legacy ul, .Legacy ol {
+.Legacy ul,
+.Legacy ol {
   margin-top: 0;
   margin-bottom: 10px;
 }
 
-.Legacy ul ul, .Legacy ol ul, .Legacy ul ol, .Legacy ol ol {
+.Legacy ul ul,
+.Legacy ol ul,
+.Legacy ul ol,
+.Legacy ol ol {
   margin-bottom: 0;
 }
 
@@ -298,7 +345,8 @@
   margin-bottom: 20px;
 }
 
-.Legacy dt, .Legacy dd {
+.Legacy dt,
+.Legacy dd {
   line-height: 1.42857143;
 }
 
@@ -315,19 +363,88 @@
   margin-left: -15px;
 }
 
-.Legacy .col-xs-1, .Legacy .col-sm-1, .Legacy .col-md-1, .Legacy .col-lg-1, .Legacy .col-xs-2, .Legacy .col-sm-2, .Legacy .col-md-2, .Legacy .col-lg-2, .Legacy .col-xs-3, .Legacy .col-sm-3, .Legacy .col-md-3, .Legacy .col-lg-3, .Legacy .col-xs-4, .Legacy .col-sm-4, .Legacy .col-md-4, .Legacy .col-lg-4, .Legacy .col-xs-5, .Legacy .col-sm-5, .Legacy .col-md-5, .Legacy .col-lg-5, .Legacy .col-xs-6, .Legacy .col-sm-6, .Legacy .col-md-6, .Legacy .col-lg-6, .Legacy .col-xs-7, .Legacy .col-sm-7, .Legacy .col-md-7, .Legacy .col-lg-7, .Legacy .col-xs-8, .Legacy .col-sm-8, .Legacy .col-md-8, .Legacy .col-lg-8, .Legacy .col-xs-9, .Legacy .col-sm-9, .Legacy .col-md-9, .Legacy .col-lg-9, .Legacy .col-xs-10, .Legacy .col-sm-10, .Legacy .col-md-10, .Legacy .col-lg-10, .Legacy .col-xs-11, .Legacy .col-sm-11, .Legacy .col-md-11, .Legacy .col-lg-11, .Legacy .col-xs-12, .Legacy .col-sm-12, .Legacy .col-md-12, .Legacy .col-lg-12 {
+.Legacy .col-xs-1,
+.Legacy .col-sm-1,
+.Legacy .col-md-1,
+.Legacy .col-lg-1,
+.Legacy .col-xs-2,
+.Legacy .col-sm-2,
+.Legacy .col-md-2,
+.Legacy .col-lg-2,
+.Legacy .col-xs-3,
+.Legacy .col-sm-3,
+.Legacy .col-md-3,
+.Legacy .col-lg-3,
+.Legacy .col-xs-4,
+.Legacy .col-sm-4,
+.Legacy .col-md-4,
+.Legacy .col-lg-4,
+.Legacy .col-xs-5,
+.Legacy .col-sm-5,
+.Legacy .col-md-5,
+.Legacy .col-lg-5,
+.Legacy .col-xs-6,
+.Legacy .col-sm-6,
+.Legacy .col-md-6,
+.Legacy .col-lg-6,
+.Legacy .col-xs-7,
+.Legacy .col-sm-7,
+.Legacy .col-md-7,
+.Legacy .col-lg-7,
+.Legacy .col-xs-8,
+.Legacy .col-sm-8,
+.Legacy .col-md-8,
+.Legacy .col-lg-8,
+.Legacy .col-xs-9,
+.Legacy .col-sm-9,
+.Legacy .col-md-9,
+.Legacy .col-lg-9,
+.Legacy .col-xs-10,
+.Legacy .col-sm-10,
+.Legacy .col-md-10,
+.Legacy .col-lg-10,
+.Legacy .col-xs-11,
+.Legacy .col-sm-11,
+.Legacy .col-md-11,
+.Legacy .col-lg-11,
+.Legacy .col-xs-12,
+.Legacy .col-sm-12,
+.Legacy .col-md-12,
+.Legacy .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
 }
 
-.Legacy .col-xs-1, .Legacy .col-xs-2, .Legacy .col-xs-3, .Legacy .col-xs-4, .Legacy .col-xs-5, .Legacy .col-xs-6, .Legacy .col-xs-7, .Legacy .col-xs-8, .Legacy .col-xs-9, .Legacy .col-xs-10, .Legacy .col-xs-11, .Legacy .col-xs-12 {
+.Legacy .col-xs-1,
+.Legacy .col-xs-2,
+.Legacy .col-xs-3,
+.Legacy .col-xs-4,
+.Legacy .col-xs-5,
+.Legacy .col-xs-6,
+.Legacy .col-xs-7,
+.Legacy .col-xs-8,
+.Legacy .col-xs-9,
+.Legacy .col-xs-10,
+.Legacy .col-xs-11,
+.Legacy .col-xs-12 {
   float: left;
 }
 
 @media (min-width: 768px) {
-  .Legacy .col-sm-1, .Legacy .col-sm-2, .Legacy .col-sm-3, .Legacy .col-sm-4, .Legacy .col-sm-5, .Legacy .col-sm-6, .Legacy .col-sm-7, .Legacy .col-sm-8, .Legacy .col-sm-9, .Legacy .col-sm-10, .Legacy .col-sm-11, .Legacy .col-sm-12 {
+  .Legacy .col-sm-1,
+  .Legacy .col-sm-2,
+  .Legacy .col-sm-3,
+  .Legacy .col-sm-4,
+  .Legacy .col-sm-5,
+  .Legacy .col-sm-6,
+  .Legacy .col-sm-7,
+  .Legacy .col-sm-8,
+  .Legacy .col-sm-9,
+  .Legacy .col-sm-10,
+  .Legacy .col-sm-11,
+  .Legacy .col-sm-12 {
     float: left;
   }
 
@@ -537,7 +654,18 @@
 }
 
 @media (min-width: 992px) {
-  .Legacy .col-md-1, .Legacy .col-md-2, .Legacy .col-md-3, .Legacy .col-md-4, .Legacy .col-md-5, .Legacy .col-md-6, .Legacy .col-md-7, .Legacy .col-md-8, .Legacy .col-md-9, .Legacy .col-md-10, .Legacy .col-md-11, .Legacy .col-md-12 {
+  .Legacy .col-md-1,
+  .Legacy .col-md-2,
+  .Legacy .col-md-3,
+  .Legacy .col-md-4,
+  .Legacy .col-md-5,
+  .Legacy .col-md-6,
+  .Legacy .col-md-7,
+  .Legacy .col-md-8,
+  .Legacy .col-md-9,
+  .Legacy .col-md-10,
+  .Legacy .col-md-11,
+  .Legacy .col-md-12 {
     float: left;
   }
 
@@ -747,7 +875,18 @@
 }
 
 @media (min-width: 1200px) {
-  .Legacy .col-lg-1, .Legacy .col-lg-2, .Legacy .col-lg-3, .Legacy .col-lg-4, .Legacy .col-lg-5, .Legacy .col-lg-6, .Legacy .col-lg-7, .Legacy .col-lg-8, .Legacy .col-lg-9, .Legacy .col-lg-10, .Legacy .col-lg-11, .Legacy .col-lg-12 {
+  .Legacy .col-lg-1,
+  .Legacy .col-lg-2,
+  .Legacy .col-lg-3,
+  .Legacy .col-lg-4,
+  .Legacy .col-lg-5,
+  .Legacy .col-lg-6,
+  .Legacy .col-lg-7,
+  .Legacy .col-lg-8,
+  .Legacy .col-lg-9,
+  .Legacy .col-lg-10,
+  .Legacy .col-lg-11,
+  .Legacy .col-lg-12 {
     float: left;
   }
 
@@ -980,29 +1119,35 @@
   text-decoration: none;
 }
 
-.Legacy .btn:focus, .Legacy .btn:active:focus, .Legacy .btn.active:focus {
+.Legacy .btn:focus,
+.Legacy .btn:active:focus,
+.Legacy .btn.active:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
 
-.Legacy .btn:hover, .Legacy .btn:focus {
+.Legacy .btn:hover,
+.Legacy .btn:focus {
   color: #333;
   text-decoration: none;
 }
 
-.Legacy .btn:active, .Legacy .btn.active {
+.Legacy .btn:active,
+.Legacy .btn.active {
   background-image: none;
   outline: 0;
 }
 
-.Legacy .btn.disabled, .Legacy .btn[disabled], .Legacy fieldset[disabled] .btn {
+.Legacy .btn.disabled,
+.Legacy .btn[disabled],
+.Legacy fieldset[disabled] .btn {
   pointer-events: none;
   cursor: not-allowed;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
   box-shadow: none;
-  opacity: .65;
+  opacity: 0.65;
 }
 
 .Legacy .btn-default {
@@ -1010,15 +1155,35 @@
   background-color: var(--color__brand-green);
 }
 
-.Legacy .btn-default:hover, .Legacy .btn-default:focus, .Legacy .btn-default:active, .Legacy .btn-default.active, .Legacy .open > .dropdown-toggle.btn-default {
+.Legacy .btn-default:hover,
+.Legacy .btn-default:focus,
+.Legacy .btn-default:active,
+.Legacy .btn-default.active,
+.Legacy .open > .dropdown-toggle.btn-default {
   color: #ffffff;
 }
 
-.Legacy .btn-default:active, .Legacy .btn-default.active, .Legacy .open > .dropdown-toggle.btn-default {
+.Legacy .btn-default:active,
+.Legacy .btn-default.active,
+.Legacy .open > .dropdown-toggle.btn-default {
   background-image: none;
 }
 
-.Legacy .btn-default.disabled, .Legacy .btn-default[disabled], .Legacy fieldset[disabled] .btn-default, .Legacy .btn-default.disabled:hover, .Legacy .btn-default[disabled]:hover, .Legacy fieldset[disabled] .btn-default:hover, .Legacy .btn-default.disabled:focus, .Legacy .btn-default[disabled]:focus, .Legacy fieldset[disabled] .btn-default:focus, .Legacy .btn-default.disabled:active, .Legacy .btn-default[disabled]:active, .Legacy fieldset[disabled] .btn-default:active, .Legacy .btn-default.disabled.active, .Legacy .btn-default[disabled].active, .Legacy fieldset[disabled] .btn-default.active {
+.Legacy .btn-default.disabled,
+.Legacy .btn-default[disabled],
+.Legacy fieldset[disabled] .btn-default,
+.Legacy .btn-default.disabled:hover,
+.Legacy .btn-default[disabled]:hover,
+.Legacy fieldset[disabled] .btn-default:hover,
+.Legacy .btn-default.disabled:focus,
+.Legacy .btn-default[disabled]:focus,
+.Legacy fieldset[disabled] .btn-default:focus,
+.Legacy .btn-default.disabled:active,
+.Legacy .btn-default[disabled]:active,
+.Legacy fieldset[disabled] .btn-default:active,
+.Legacy .btn-default.disabled.active,
+.Legacy .btn-default[disabled].active,
+.Legacy fieldset[disabled] .btn-default.active {
   background-color: #fff;
   border-color: #ccc;
 }
@@ -1034,17 +1199,37 @@
   border-color: #357ebd;
 }
 
-.Legacy .btn-primary:hover, .Legacy .btn-primary:focus, .Legacy .btn-primary:active, .Legacy .btn-primary.active, .Legacy .open > .dropdown-toggle.btn-primary {
+.Legacy .btn-primary:hover,
+.Legacy .btn-primary:focus,
+.Legacy .btn-primary:active,
+.Legacy .btn-primary.active,
+.Legacy .open > .dropdown-toggle.btn-primary {
   color: #fff;
   background-color: #3071a9;
   border-color: #285e8e;
 }
 
-.Legacy .btn-primary:active, .Legacy .btn-primary.active, .Legacy .open > .dropdown-toggle.btn-primary {
+.Legacy .btn-primary:active,
+.Legacy .btn-primary.active,
+.Legacy .open > .dropdown-toggle.btn-primary {
   background-image: none;
 }
 
-.Legacy .btn-primary.disabled, .Legacy .btn-primary[disabled], .Legacy fieldset[disabled] .btn-primary, .Legacy .btn-primary.disabled:hover, .Legacy .btn-primary[disabled]:hover, .Legacy fieldset[disabled] .btn-primary:hover, .Legacy .btn-primary.disabled:focus, .Legacy .btn-primary[disabled]:focus, .Legacy fieldset[disabled] .btn-primary:focus, .Legacy .btn-primary.disabled:active, .Legacy .btn-primary[disabled]:active, .Legacy fieldset[disabled] .btn-primary:active, .Legacy .btn-primary.disabled.active, .Legacy .btn-primary[disabled].active, .Legacy fieldset[disabled] .btn-primary.active {
+.Legacy .btn-primary.disabled,
+.Legacy .btn-primary[disabled],
+.Legacy fieldset[disabled] .btn-primary,
+.Legacy .btn-primary.disabled:hover,
+.Legacy .btn-primary[disabled]:hover,
+.Legacy fieldset[disabled] .btn-primary:hover,
+.Legacy .btn-primary.disabled:focus,
+.Legacy .btn-primary[disabled]:focus,
+.Legacy fieldset[disabled] .btn-primary:focus,
+.Legacy .btn-primary.disabled:active,
+.Legacy .btn-primary[disabled]:active,
+.Legacy fieldset[disabled] .btn-primary:active,
+.Legacy .btn-primary.disabled.active,
+.Legacy .btn-primary[disabled].active,
+.Legacy fieldset[disabled] .btn-primary.active {
   background-color: #428bca;
   border-color: #357ebd;
 }
@@ -1060,17 +1245,37 @@
   border-color: #4cae4c;
 }
 
-.Legacy .btn-success:hover, .Legacy .btn-success:focus, .Legacy .btn-success:active, .Legacy .btn-success.active, .Legacy .open > .dropdown-toggle.btn-success {
+.Legacy .btn-success:hover,
+.Legacy .btn-success:focus,
+.Legacy .btn-success:active,
+.Legacy .btn-success.active,
+.Legacy .open > .dropdown-toggle.btn-success {
   color: #fff;
   background-color: #449d44;
   border-color: #398439;
 }
 
-.Legacy .btn-success:active, .Legacy .btn-success.active, .Legacy .open > .dropdown-toggle.btn-success {
+.Legacy .btn-success:active,
+.Legacy .btn-success.active,
+.Legacy .open > .dropdown-toggle.btn-success {
   background-image: none;
 }
 
-.Legacy .btn-success.disabled, .Legacy .btn-success[disabled], .Legacy fieldset[disabled] .btn-success, .Legacy .btn-success.disabled:hover, .Legacy .btn-success[disabled]:hover, .Legacy fieldset[disabled] .btn-success:hover, .Legacy .btn-success.disabled:focus, .Legacy .btn-success[disabled]:focus, .Legacy fieldset[disabled] .btn-success:focus, .Legacy .btn-success.disabled:active, .Legacy .btn-success[disabled]:active, .Legacy fieldset[disabled] .btn-success:active, .Legacy .btn-success.disabled.active, .Legacy .btn-success[disabled].active, .Legacy fieldset[disabled] .btn-success.active {
+.Legacy .btn-success.disabled,
+.Legacy .btn-success[disabled],
+.Legacy fieldset[disabled] .btn-success,
+.Legacy .btn-success.disabled:hover,
+.Legacy .btn-success[disabled]:hover,
+.Legacy fieldset[disabled] .btn-success:hover,
+.Legacy .btn-success.disabled:focus,
+.Legacy .btn-success[disabled]:focus,
+.Legacy fieldset[disabled] .btn-success:focus,
+.Legacy .btn-success.disabled:active,
+.Legacy .btn-success[disabled]:active,
+.Legacy fieldset[disabled] .btn-success:active,
+.Legacy .btn-success.disabled.active,
+.Legacy .btn-success[disabled].active,
+.Legacy fieldset[disabled] .btn-success.active {
   background-color: #5cb85c;
   border-color: #4cae4c;
 }
@@ -1086,17 +1291,37 @@
   border-color: #46b8da;
 }
 
-.Legacy .btn-info:hover, .Legacy .btn-info:focus, .Legacy .btn-info:active, .Legacy .btn-info.active, .Legacy .open > .dropdown-toggle.btn-info {
+.Legacy .btn-info:hover,
+.Legacy .btn-info:focus,
+.Legacy .btn-info:active,
+.Legacy .btn-info.active,
+.Legacy .open > .dropdown-toggle.btn-info {
   color: #fff;
   background-color: #31b0d5;
   border-color: #269abc;
 }
 
-.Legacy .btn-info:active, .Legacy .btn-info.active, .Legacy .open > .dropdown-toggle.btn-info {
+.Legacy .btn-info:active,
+.Legacy .btn-info.active,
+.Legacy .open > .dropdown-toggle.btn-info {
   background-image: none;
 }
 
-.Legacy .btn-info.disabled, .Legacy .btn-info[disabled], .Legacy fieldset[disabled] .btn-info, .Legacy .btn-info.disabled:hover, .Legacy .btn-info[disabled]:hover, .Legacy fieldset[disabled] .btn-info:hover, .Legacy .btn-info.disabled:focus, .Legacy .btn-info[disabled]:focus, .Legacy fieldset[disabled] .btn-info:focus, .Legacy .btn-info.disabled:active, .Legacy .btn-info[disabled]:active, .Legacy fieldset[disabled] .btn-info:active, .Legacy .btn-info.disabled.active, .Legacy .btn-info[disabled].active, .Legacy fieldset[disabled] .btn-info.active {
+.Legacy .btn-info.disabled,
+.Legacy .btn-info[disabled],
+.Legacy fieldset[disabled] .btn-info,
+.Legacy .btn-info.disabled:hover,
+.Legacy .btn-info[disabled]:hover,
+.Legacy fieldset[disabled] .btn-info:hover,
+.Legacy .btn-info.disabled:focus,
+.Legacy .btn-info[disabled]:focus,
+.Legacy fieldset[disabled] .btn-info:focus,
+.Legacy .btn-info.disabled:active,
+.Legacy .btn-info[disabled]:active,
+.Legacy fieldset[disabled] .btn-info:active,
+.Legacy .btn-info.disabled.active,
+.Legacy .btn-info[disabled].active,
+.Legacy fieldset[disabled] .btn-info.active {
   background-color: #5bc0de;
   border-color: #46b8da;
 }
@@ -1112,17 +1337,37 @@
   border-color: #eea236;
 }
 
-.Legacy .btn-warning:hover, .Legacy .btn-warning:focus, .Legacy .btn-warning:active, .Legacy .btn-warning.active, .Legacy .open > .dropdown-toggle.btn-warning {
+.Legacy .btn-warning:hover,
+.Legacy .btn-warning:focus,
+.Legacy .btn-warning:active,
+.Legacy .btn-warning.active,
+.Legacy .open > .dropdown-toggle.btn-warning {
   color: #fff;
   background-color: #ec971f;
   border-color: #d58512;
 }
 
-.Legacy .btn-warning:active, .Legacy .btn-warning.active, .Legacy .open > .dropdown-toggle.btn-warning {
+.Legacy .btn-warning:active,
+.Legacy .btn-warning.active,
+.Legacy .open > .dropdown-toggle.btn-warning {
   background-image: none;
 }
 
-.Legacy .btn-warning.disabled, .Legacy .btn-warning[disabled], .Legacy fieldset[disabled] .btn-warning, .Legacy .btn-warning.disabled:hover, .Legacy .btn-warning[disabled]:hover, .Legacy fieldset[disabled] .btn-warning:hover, .Legacy .btn-warning.disabled:focus, .Legacy .btn-warning[disabled]:focus, .Legacy fieldset[disabled] .btn-warning:focus, .Legacy .btn-warning.disabled:active, .Legacy .btn-warning[disabled]:active, .Legacy fieldset[disabled] .btn-warning:active, .Legacy .btn-warning.disabled.active, .Legacy .btn-warning[disabled].active, .Legacy fieldset[disabled] .btn-warning.active {
+.Legacy .btn-warning.disabled,
+.Legacy .btn-warning[disabled],
+.Legacy fieldset[disabled] .btn-warning,
+.Legacy .btn-warning.disabled:hover,
+.Legacy .btn-warning[disabled]:hover,
+.Legacy fieldset[disabled] .btn-warning:hover,
+.Legacy .btn-warning.disabled:focus,
+.Legacy .btn-warning[disabled]:focus,
+.Legacy fieldset[disabled] .btn-warning:focus,
+.Legacy .btn-warning.disabled:active,
+.Legacy .btn-warning[disabled]:active,
+.Legacy fieldset[disabled] .btn-warning:active,
+.Legacy .btn-warning.disabled.active,
+.Legacy .btn-warning[disabled].active,
+.Legacy fieldset[disabled] .btn-warning.active {
   background-color: #f0ad4e;
   border-color: #eea236;
 }
@@ -1138,17 +1383,37 @@
   border-color: #d43f3a;
 }
 
-.Legacy .btn-danger:hover, .Legacy .btn-danger:focus, .Legacy .btn-danger:active, .Legacy .btn-danger.active, .Legacy .open > .dropdown-toggle.btn-danger {
+.Legacy .btn-danger:hover,
+.Legacy .btn-danger:focus,
+.Legacy .btn-danger:active,
+.Legacy .btn-danger.active,
+.Legacy .open > .dropdown-toggle.btn-danger {
   color: #fff;
   background-color: #c9302c;
   border-color: #ac2925;
 }
 
-.Legacy .btn-danger:active, .Legacy .btn-danger.active, .Legacy .open > .dropdown-toggle.btn-danger {
+.Legacy .btn-danger:active,
+.Legacy .btn-danger.active,
+.Legacy .open > .dropdown-toggle.btn-danger {
   background-image: none;
 }
 
-.Legacy .btn-danger.disabled, .Legacy .btn-danger[disabled], .Legacy fieldset[disabled] .btn-danger, .Legacy .btn-danger.disabled:hover, .Legacy .btn-danger[disabled]:hover, .Legacy fieldset[disabled] .btn-danger:hover, .Legacy .btn-danger.disabled:focus, .Legacy .btn-danger[disabled]:focus, .Legacy fieldset[disabled] .btn-danger:focus, .Legacy .btn-danger.disabled:active, .Legacy .btn-danger[disabled]:active, .Legacy fieldset[disabled] .btn-danger:active, .Legacy .btn-danger.disabled.active, .Legacy .btn-danger[disabled].active, .Legacy fieldset[disabled] .btn-danger.active {
+.Legacy .btn-danger.disabled,
+.Legacy .btn-danger[disabled],
+.Legacy fieldset[disabled] .btn-danger,
+.Legacy .btn-danger.disabled:hover,
+.Legacy .btn-danger[disabled]:hover,
+.Legacy fieldset[disabled] .btn-danger:hover,
+.Legacy .btn-danger.disabled:focus,
+.Legacy .btn-danger[disabled]:focus,
+.Legacy fieldset[disabled] .btn-danger:focus,
+.Legacy .btn-danger.disabled:active,
+.Legacy .btn-danger[disabled]:active,
+.Legacy fieldset[disabled] .btn-danger:active,
+.Legacy .btn-danger.disabled.active,
+.Legacy .btn-danger[disabled].active,
+.Legacy fieldset[disabled] .btn-danger.active {
   background-color: #d9534f;
   border-color: #d43f3a;
 }
@@ -1165,42 +1430,55 @@
   border-radius: 0;
 }
 
-.Legacy .btn-link, .Legacy .btn-link:active, .Legacy .btn-link[disabled], .Legacy fieldset[disabled] .btn-link {
+.Legacy .btn-link,
+.Legacy .btn-link:active,
+.Legacy .btn-link[disabled],
+.Legacy fieldset[disabled] .btn-link {
   background-color: transparent;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
-.Legacy .btn-link, .Legacy .btn-link:hover, .Legacy .btn-link:focus, .Legacy .btn-link:active {
+.Legacy .btn-link,
+.Legacy .btn-link:hover,
+.Legacy .btn-link:focus,
+.Legacy .btn-link:active {
   border-color: transparent;
 }
 
-.Legacy .btn-link:hover, .Legacy .btn-link:focus {
+.Legacy .btn-link:hover,
+.Legacy .btn-link:focus {
   color: #2a6496;
   text-decoration: underline;
   background-color: transparent;
 }
 
-.Legacy .btn-link[disabled]:hover, .Legacy fieldset[disabled] .btn-link:hover, .Legacy .btn-link[disabled]:focus, .Legacy fieldset[disabled] .btn-link:focus {
+.Legacy .btn-link[disabled]:hover,
+.Legacy fieldset[disabled] .btn-link:hover,
+.Legacy .btn-link[disabled]:focus,
+.Legacy fieldset[disabled] .btn-link:focus {
   color: #777;
   text-decoration: none;
 }
 
-.Legacy .btn-lg, .Legacy .btn-group-lg > .btn {
+.Legacy .btn-lg,
+.Legacy .btn-group-lg > .btn {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
 }
 
-.Legacy .btn-sm, .Legacy .btn-group-sm > .btn {
+.Legacy .btn-sm,
+.Legacy .btn-group-sm > .btn {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
 }
 
-.Legacy .btn-xs, .Legacy .btn-group-xs > .btn {
+.Legacy .btn-xs,
+.Legacy .btn-group-xs > .btn {
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
@@ -1216,7 +1494,9 @@
   margin-top: 5px;
 }
 
-.Legacy input[type=submit].btn-block, .Legacy input[type=reset].btn-block, .Legacy input[type=button].btn-block {
+.Legacy input[type='submit'].btn-block,
+.Legacy input[type='reset'].btn-block,
+.Legacy input[type='button'].btn-block {
   width: 100%;
 }
 
@@ -1240,31 +1520,44 @@
   position: relative;
   height: 0;
   overflow: hidden;
-  -webkit-transition: height .35s ease;
-  -o-transition: height .35s ease;
-  transition: height .35s ease;
+  -webkit-transition: height 0.35s ease;
+  -o-transition: height 0.35s ease;
+  transition: height 0.35s ease;
 }
 
-.Legacy .btn-group, .Legacy .btn-group-vertical {
+.Legacy .btn-group,
+.Legacy .btn-group-vertical {
   position: relative;
   display: inline-block;
   vertical-align: middle;
 }
 
-.Legacy .btn-group > .btn, .Legacy .btn-group-vertical > .btn {
+.Legacy .btn-group > .btn,
+.Legacy .btn-group-vertical > .btn {
   position: relative;
   float: left;
 }
 
-.Legacy .btn-group > .btn:hover, .Legacy .btn-group-vertical > .btn:hover, .Legacy .btn-group > .btn:focus, .Legacy .btn-group-vertical > .btn:focus, .Legacy .btn-group > .btn:active, .Legacy .btn-group-vertical > .btn:active, .Legacy .btn-group > .btn.active, .Legacy .btn-group-vertical > .btn.active {
+.Legacy .btn-group > .btn:hover,
+.Legacy .btn-group-vertical > .btn:hover,
+.Legacy .btn-group > .btn:focus,
+.Legacy .btn-group-vertical > .btn:focus,
+.Legacy .btn-group > .btn:active,
+.Legacy .btn-group-vertical > .btn:active,
+.Legacy .btn-group > .btn.active,
+.Legacy .btn-group-vertical > .btn.active {
   z-index: 2;
 }
 
-.Legacy .btn-group > .btn:focus, .Legacy .btn-group-vertical > .btn:focus {
+.Legacy .btn-group > .btn:focus,
+.Legacy .btn-group-vertical > .btn:focus {
   outline: 0;
 }
 
-.Legacy .btn-group .btn + .btn, .Legacy .btn-group .btn + .btn-group, .Legacy .btn-group .btn-group + .btn, .Legacy .btn-group .btn-group + .btn-group {
+.Legacy .btn-group .btn + .btn,
+.Legacy .btn-group .btn + .btn-group,
+.Legacy .btn-group .btn-group + .btn,
+.Legacy .btn-group .btn-group + .btn-group {
   margin-left: -1px;
 }
 
@@ -1272,15 +1565,20 @@
   margin-left: -5px;
 }
 
-.Legacy .btn-toolbar .btn-group, .Legacy .btn-toolbar .input-group {
+.Legacy .btn-toolbar .btn-group,
+.Legacy .btn-toolbar .input-group {
   float: left;
 }
 
-.Legacy .btn-toolbar > .btn, .Legacy .btn-toolbar > .btn-group, .Legacy .btn-toolbar > .input-group {
+.Legacy .btn-toolbar > .btn,
+.Legacy .btn-toolbar > .btn-group,
+.Legacy .btn-toolbar > .input-group {
   margin-left: 5px;
 }
 
-.Legacy .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+.Legacy
+  .btn-group
+  > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0;
 }
 
@@ -1293,7 +1591,8 @@
   border-bottom-right-radius: 0;
 }
 
-.Legacy .btn-group > .btn:last-child:not(:first-child), .Legacy .btn-group > .dropdown-toggle:not(:first-child) {
+.Legacy .btn-group > .btn:last-child:not(:first-child),
+.Legacy .btn-group > .dropdown-toggle:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -1306,7 +1605,8 @@
   border-radius: 0;
 }
 
-.Legacy .btn-group > .btn-group:first-child > .btn:last-child, .Legacy .btn-group > .btn-group:first-child > .dropdown-toggle {
+.Legacy .btn-group > .btn-group:first-child > .btn:last-child,
+.Legacy .btn-group > .btn-group:first-child > .dropdown-toggle {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -1316,7 +1616,8 @@
   border-bottom-left-radius: 0;
 }
 
-.Legacy .btn-group .dropdown-toggle:active, .Legacy .btn-group.open .dropdown-toggle {
+.Legacy .btn-group .dropdown-toggle:active,
+.Legacy .btn-group.open .dropdown-toggle {
   outline: 0;
 }
 
@@ -1353,7 +1654,9 @@
   border-width: 0 5px 5px;
 }
 
-.Legacy .btn-group-vertical > .btn, .Legacy .btn-group-vertical > .btn-group, .Legacy .btn-group-vertical > .btn-group > .btn {
+.Legacy .btn-group-vertical > .btn,
+.Legacy .btn-group-vertical > .btn-group,
+.Legacy .btn-group-vertical > .btn-group > .btn {
   display: block;
   float: none;
   width: 100%;
@@ -1364,7 +1667,10 @@
   float: none;
 }
 
-.Legacy .btn-group-vertical > .btn + .btn, .Legacy .btn-group-vertical > .btn + .btn-group, .Legacy .btn-group-vertical > .btn-group + .btn, .Legacy .btn-group-vertical > .btn-group + .btn-group {
+.Legacy .btn-group-vertical > .btn + .btn,
+.Legacy .btn-group-vertical > .btn + .btn-group,
+.Legacy .btn-group-vertical > .btn-group + .btn,
+.Legacy .btn-group-vertical > .btn-group + .btn-group {
   margin-top: -1px;
   margin-left: 0;
 }
@@ -1385,16 +1691,29 @@
   border-bottom-left-radius: 4px;
 }
 
-.Legacy .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
+.Legacy
+  .btn-group-vertical
+  > .btn-group:not(:first-child):not(:last-child)
+  > .btn {
   border-radius: 0;
 }
 
-.Legacy .btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child, .Legacy .btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
+.Legacy
+  .btn-group-vertical
+  > .btn-group:first-child:not(:last-child)
+  > .btn:last-child,
+.Legacy
+  .btn-group-vertical
+  > .btn-group:first-child:not(:last-child)
+  > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.Legacy .btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
+.Legacy
+  .btn-group-vertical
+  > .btn-group:last-child:not(:first-child)
+  > .btn:first-child {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -1406,7 +1725,8 @@
   border-collapse: separate;
 }
 
-.Legacy .btn-group-justified > .btn, .Legacy .btn-group-justified > .btn-group {
+.Legacy .btn-group-justified > .btn,
+.Legacy .btn-group-justified > .btn-group {
   display: table-cell;
   float: none;
   width: 1%;
@@ -1420,7 +1740,8 @@
   left: auto;
 }
 
-.Legacy [data-toggle=buttons] > .btn > input[type=radio], .Legacy [data-toggle=buttons] > .btn > input[type=checkbox] {
+.Legacy [data-toggle='buttons'] > .btn > input[type='radio'],
+.Legacy [data-toggle='buttons'] > .btn > input[type='checkbox'] {
   position: absolute;
   z-index: -1;
   filter: alpha(opacity=0);
@@ -1433,7 +1754,7 @@
   border-collapse: separate;
 }
 
-.Legacy .input-group[class*=col-] {
+.Legacy .input-group[class*='col-'] {
   float: none;
   padding-right: 0;
   padding-left: 0;
@@ -1447,7 +1768,9 @@
   margin-bottom: 0;
 }
 
-.Legacy .input-group-lg > .form-control, .Legacy .input-group-lg > .input-group-addon, .Legacy .input-group-lg > .input-group-btn > .btn {
+.Legacy .input-group-lg > .form-control,
+.Legacy .input-group-lg > .input-group-addon,
+.Legacy .input-group-lg > .input-group-btn > .btn {
   height: 46px;
   padding: 10px 16px;
   font-size: 18px;
@@ -1455,16 +1778,25 @@
   border-radius: 6px;
 }
 
-.Legacy select.input-group-lg > .form-control, .Legacy select.input-group-lg > .input-group-addon, .Legacy select.input-group-lg > .input-group-btn > .btn {
+.Legacy select.input-group-lg > .form-control,
+.Legacy select.input-group-lg > .input-group-addon,
+.Legacy select.input-group-lg > .input-group-btn > .btn {
   height: 46px;
   line-height: 46px;
 }
 
-.Legacy textarea.input-group-lg > .form-control, .Legacy textarea.input-group-lg > .input-group-addon, .Legacy textarea.input-group-lg > .input-group-btn > .btn, .Legacy select[multiple].input-group-lg > .form-control, .Legacy select[multiple].input-group-lg > .input-group-addon, .Legacy select[multiple].input-group-lg > .input-group-btn > .btn {
+.Legacy textarea.input-group-lg > .form-control,
+.Legacy textarea.input-group-lg > .input-group-addon,
+.Legacy textarea.input-group-lg > .input-group-btn > .btn,
+.Legacy select[multiple].input-group-lg > .form-control,
+.Legacy select[multiple].input-group-lg > .input-group-addon,
+.Legacy select[multiple].input-group-lg > .input-group-btn > .btn {
   height: auto;
 }
 
-.Legacy .input-group-sm > .form-control, .Legacy .input-group-sm > .input-group-addon, .Legacy .input-group-sm > .input-group-btn > .btn {
+.Legacy .input-group-sm > .form-control,
+.Legacy .input-group-sm > .input-group-addon,
+.Legacy .input-group-sm > .input-group-btn > .btn {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
@@ -1472,24 +1804,36 @@
   border-radius: 3px;
 }
 
-.Legacy select.input-group-sm > .form-control, .Legacy select.input-group-sm > .input-group-addon, .Legacy select.input-group-sm > .input-group-btn > .btn {
+.Legacy select.input-group-sm > .form-control,
+.Legacy select.input-group-sm > .input-group-addon,
+.Legacy select.input-group-sm > .input-group-btn > .btn {
   height: 30px;
   line-height: 30px;
 }
 
-.Legacy textarea.input-group-sm > .form-control, .Legacy textarea.input-group-sm > .input-group-addon, .Legacy textarea.input-group-sm > .input-group-btn > .btn, .Legacy select[multiple].input-group-sm > .form-control, .Legacy select[multiple].input-group-sm > .input-group-addon, .Legacy select[multiple].input-group-sm > .input-group-btn > .btn {
+.Legacy textarea.input-group-sm > .form-control,
+.Legacy textarea.input-group-sm > .input-group-addon,
+.Legacy textarea.input-group-sm > .input-group-btn > .btn,
+.Legacy select[multiple].input-group-sm > .form-control,
+.Legacy select[multiple].input-group-sm > .input-group-addon,
+.Legacy select[multiple].input-group-sm > .input-group-btn > .btn {
   height: auto;
 }
 
-.Legacy .input-group-addon, .Legacy .input-group-btn, .Legacy .input-group .form-control {
+.Legacy .input-group-addon,
+.Legacy .input-group-btn,
+.Legacy .input-group .form-control {
   display: table-cell;
 }
 
-.Legacy .input-group-addon:not(:first-child):not(:last-child), .Legacy .input-group-btn:not(:first-child):not(:last-child), .Legacy .input-group .form-control:not(:first-child):not(:last-child) {
+.Legacy .input-group-addon:not(:first-child):not(:last-child),
+.Legacy .input-group-btn:not(:first-child):not(:last-child),
+.Legacy .input-group .form-control:not(:first-child):not(:last-child) {
   border-radius: 0;
 }
 
-.Legacy .input-group-addon, .Legacy .input-group-btn {
+.Legacy .input-group-addon,
+.Legacy .input-group-btn {
   width: 1%;
   white-space: nowrap;
   vertical-align: middle;
@@ -1519,11 +1863,20 @@
   border-radius: 6px;
 }
 
-.Legacy .input-group-addon input[type=radio], .Legacy .input-group-addon input[type=checkbox] {
+.Legacy .input-group-addon input[type='radio'],
+.Legacy .input-group-addon input[type='checkbox'] {
   margin-top: 0;
 }
 
-.Legacy .input-group .form-control:first-child, .Legacy .input-group-addon:first-child, .Legacy .input-group-btn:first-child > .btn, .Legacy .input-group-btn:first-child > .btn-group > .btn, .Legacy .input-group-btn:first-child > .dropdown-toggle, .Legacy .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle), .Legacy .input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+.Legacy .input-group .form-control:first-child,
+.Legacy .input-group-addon:first-child,
+.Legacy .input-group-btn:first-child > .btn,
+.Legacy .input-group-btn:first-child > .btn-group > .btn,
+.Legacy .input-group-btn:first-child > .dropdown-toggle,
+.Legacy
+  .input-group-btn:last-child
+  > .btn:not(:last-child):not(.dropdown-toggle),
+.Legacy .input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -1532,7 +1885,13 @@
   border-right: 0;
 }
 
-.Legacy .input-group .form-control:last-child, .Legacy .input-group-addon:last-child, .Legacy .input-group-btn:last-child > .btn, .Legacy .input-group-btn:last-child > .btn-group > .btn, .Legacy .input-group-btn:last-child > .dropdown-toggle, .Legacy .input-group-btn:first-child > .btn:not(:first-child), .Legacy .input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+.Legacy .input-group .form-control:last-child,
+.Legacy .input-group-addon:last-child,
+.Legacy .input-group-btn:last-child > .btn,
+.Legacy .input-group-btn:last-child > .btn-group > .btn,
+.Legacy .input-group-btn:last-child > .dropdown-toggle,
+.Legacy .input-group-btn:first-child > .btn:not(:first-child),
+.Legacy .input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -1555,15 +1914,19 @@
   margin-left: -1px;
 }
 
-.Legacy .input-group-btn > .btn:hover, .Legacy .input-group-btn > .btn:focus, .Legacy .input-group-btn > .btn:active {
+.Legacy .input-group-btn > .btn:hover,
+.Legacy .input-group-btn > .btn:focus,
+.Legacy .input-group-btn > .btn:active {
   z-index: 2;
 }
 
-.Legacy .input-group-btn:first-child > .btn, .Legacy .input-group-btn:first-child > .btn-group {
+.Legacy .input-group-btn:first-child > .btn,
+.Legacy .input-group-btn:first-child > .btn-group {
   margin-right: -1px;
 }
 
-.Legacy .input-group-btn:last-child > .btn, .Legacy .input-group-btn:last-child > .btn-group {
+.Legacy .input-group-btn:last-child > .btn,
+.Legacy .input-group-btn:last-child > .btn-group {
   margin-left: -1px;
 }
 
@@ -1575,17 +1938,20 @@
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
-  -webkit-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
-.Legacy .thumbnail > img, .Legacy .thumbnail a > img {
+.Legacy .thumbnail > img,
+.Legacy .thumbnail a > img {
   margin-right: auto;
   margin-left: auto;
 }
 
-.Legacy a.thumbnail:hover, .Legacy a.thumbnail:focus, .Legacy a.thumbnail.active {
+.Legacy a.thumbnail:hover,
+.Legacy a.thumbnail:focus,
+.Legacy a.thumbnail.active {
   border-color: #428bca;
 }
 
@@ -1594,12 +1960,14 @@
   color: #333;
 }
 
-.Legacy .media, .Legacy .media-body {
+.Legacy .media,
+.Legacy .media-body {
   overflow: hidden;
   zoom: 1;
 }
 
-.Legacy .media, .Legacy .media .media {
+.Legacy .media,
+.Legacy .media .media {
   margin-top: 15px;
 }
 
@@ -1669,37 +2037,56 @@
   color: #333;
 }
 
-.Legacy a.list-group-item:hover, .Legacy a.list-group-item:focus {
+.Legacy a.list-group-item:hover,
+.Legacy a.list-group-item:focus {
   color: #555;
   text-decoration: none;
   background-color: #f5f5f5;
 }
 
-.Legacy .list-group-item.disabled, .Legacy .list-group-item.disabled:hover, .Legacy .list-group-item.disabled:focus {
+.Legacy .list-group-item.disabled,
+.Legacy .list-group-item.disabled:hover,
+.Legacy .list-group-item.disabled:focus {
   color: #777;
   background-color: #eee;
 }
 
-.Legacy .list-group-item.disabled .list-group-item-heading, .Legacy .list-group-item.disabled:hover .list-group-item-heading, .Legacy .list-group-item.disabled:focus .list-group-item-heading {
+.Legacy .list-group-item.disabled .list-group-item-heading,
+.Legacy .list-group-item.disabled:hover .list-group-item-heading,
+.Legacy .list-group-item.disabled:focus .list-group-item-heading {
   color: inherit;
 }
 
-.Legacy .list-group-item.disabled .list-group-item-text, .Legacy .list-group-item.disabled:hover .list-group-item-text, .Legacy .list-group-item.disabled:focus .list-group-item-text {
+.Legacy .list-group-item.disabled .list-group-item-text,
+.Legacy .list-group-item.disabled:hover .list-group-item-text,
+.Legacy .list-group-item.disabled:focus .list-group-item-text {
   color: #777;
 }
 
-.Legacy .list-group-item.active, .Legacy .list-group-item.active:hover, .Legacy .list-group-item.active:focus {
+.Legacy .list-group-item.active,
+.Legacy .list-group-item.active:hover,
+.Legacy .list-group-item.active:focus {
   z-index: 2;
   color: #fff;
   background-color: #428bca;
   border-color: #428bca;
 }
 
-.Legacy .list-group-item.active .list-group-item-heading, .Legacy .list-group-item.active:hover .list-group-item-heading, .Legacy .list-group-item.active:focus .list-group-item-heading, .Legacy .list-group-item.active .list-group-item-heading > small, .Legacy .list-group-item.active:hover .list-group-item-heading > small, .Legacy .list-group-item.active:focus .list-group-item-heading > small, .Legacy .list-group-item.active .list-group-item-heading > .small, .Legacy .list-group-item.active:hover .list-group-item-heading > .small, .Legacy .list-group-item.active:focus .list-group-item-heading > .small {
+.Legacy .list-group-item.active .list-group-item-heading,
+.Legacy .list-group-item.active:hover .list-group-item-heading,
+.Legacy .list-group-item.active:focus .list-group-item-heading,
+.Legacy .list-group-item.active .list-group-item-heading > small,
+.Legacy .list-group-item.active:hover .list-group-item-heading > small,
+.Legacy .list-group-item.active:focus .list-group-item-heading > small,
+.Legacy .list-group-item.active .list-group-item-heading > .small,
+.Legacy .list-group-item.active:hover .list-group-item-heading > .small,
+.Legacy .list-group-item.active:focus .list-group-item-heading > .small {
   color: inherit;
 }
 
-.Legacy .list-group-item.active .list-group-item-text, .Legacy .list-group-item.active:hover .list-group-item-text, .Legacy .list-group-item.active:focus .list-group-item-text {
+.Legacy .list-group-item.active .list-group-item-text,
+.Legacy .list-group-item.active:hover .list-group-item-text,
+.Legacy .list-group-item.active:focus .list-group-item-text {
   color: #e1edf7;
 }
 
@@ -1716,12 +2103,15 @@
   color: inherit;
 }
 
-.Legacy a.list-group-item-success:hover, .Legacy a.list-group-item-success:focus {
+.Legacy a.list-group-item-success:hover,
+.Legacy a.list-group-item-success:focus {
   color: #3c763d;
   background-color: #d0e9c6;
 }
 
-.Legacy a.list-group-item-success.active, .Legacy a.list-group-item-success.active:hover, .Legacy a.list-group-item-success.active:focus {
+.Legacy a.list-group-item-success.active,
+.Legacy a.list-group-item-success.active:hover,
+.Legacy a.list-group-item-success.active:focus {
   color: #fff;
   background-color: #3c763d;
   border-color: #3c763d;
@@ -1740,12 +2130,15 @@
   color: inherit;
 }
 
-.Legacy a.list-group-item-info:hover, .Legacy a.list-group-item-info:focus {
+.Legacy a.list-group-item-info:hover,
+.Legacy a.list-group-item-info:focus {
   color: #31708f;
   background-color: #c4e3f3;
 }
 
-.Legacy a.list-group-item-info.active, .Legacy a.list-group-item-info.active:hover, .Legacy a.list-group-item-info.active:focus {
+.Legacy a.list-group-item-info.active,
+.Legacy a.list-group-item-info.active:hover,
+.Legacy a.list-group-item-info.active:focus {
   color: #fff;
   background-color: #31708f;
   border-color: #31708f;
@@ -1764,12 +2157,15 @@
   color: inherit;
 }
 
-.Legacy a.list-group-item-warning:hover, .Legacy a.list-group-item-warning:focus {
+.Legacy a.list-group-item-warning:hover,
+.Legacy a.list-group-item-warning:focus {
   color: #8a6d3b;
   background-color: #faf2cc;
 }
 
-.Legacy a.list-group-item-warning.active, .Legacy a.list-group-item-warning.active:hover, .Legacy a.list-group-item-warning.active:focus {
+.Legacy a.list-group-item-warning.active,
+.Legacy a.list-group-item-warning.active:hover,
+.Legacy a.list-group-item-warning.active:focus {
   color: #fff;
   background-color: #8a6d3b;
   border-color: #8a6d3b;
@@ -1788,12 +2184,15 @@
   color: inherit;
 }
 
-.Legacy a.list-group-item-danger:hover, .Legacy a.list-group-item-danger:focus {
+.Legacy a.list-group-item-danger:hover,
+.Legacy a.list-group-item-danger:focus {
   color: #a94442;
   background-color: #ebcccc;
 }
 
-.Legacy a.list-group-item-danger.active, .Legacy a.list-group-item-danger.active:hover, .Legacy a.list-group-item-danger.active:focus {
+.Legacy a.list-group-item-danger.active,
+.Legacy a.list-group-item-danger.active:hover,
+.Legacy a.list-group-item-danger.active:focus {
   color: #fff;
   background-color: #a94442;
   border-color: #a94442;
@@ -1817,7 +2216,10 @@
   overflow: hidden;
 }
 
-.Legacy .embed-responsive .embed-responsive-item, .Legacy .embed-responsive iframe, .Legacy .embed-responsive embed, .Legacy .embed-responsive object {
+.Legacy .embed-responsive .embed-responsive-item,
+.Legacy .embed-responsive iframe,
+.Legacy .embed-responsive embed,
+.Legacy .embed-responsive object {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -1869,15 +2271,16 @@
   color: #000;
   text-shadow: 0 1px 0 #fff;
   filter: alpha(opacity=20);
-  opacity: .2;
+  opacity: 0.2;
 }
 
-.Legacy .close:hover, .Legacy .close:focus {
+.Legacy .close:hover,
+.Legacy .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
   filter: alpha(opacity=50);
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .Legacy button.close {
@@ -1888,12 +2291,55 @@
   border: 0;
 }
 
-.Legacy .clearfix:before, .Legacy .clearfix:after, .Legacy .dl-horizontal dd:before, .Legacy .dl-horizontal dd:after, .Legacy .container:before, .Legacy .container:after, .Legacy .container-fluid:before, .Legacy .container-fluid:after, .Legacy .row:before, .Legacy .row:after, .Legacy .form-horizontal .form-group:before, .Legacy .form-horizontal .form-group:after, .Legacy .btn-toolbar:before, .Legacy .btn-toolbar:after, .Legacy .btn-group-vertical > .btn-group:before, .Legacy .btn-group-vertical > .btn-group:after, .Legacy .nav:before, .Legacy .nav:after, .Legacy .navbar:before, .Legacy .navbar:after, .Legacy .navbar-header:before, .Legacy .navbar-header:after, .Legacy .navbar-collapse:before, .Legacy .navbar-collapse:after, .Legacy .pager:before, .Legacy .pager:after, .Legacy .panel-body:before, .Legacy .panel-body:after, .Legacy .modal-footer:before, .Legacy .modal-footer:after {
+.Legacy .clearfix:before,
+.Legacy .clearfix:after,
+.Legacy .dl-horizontal dd:before,
+.Legacy .dl-horizontal dd:after,
+.Legacy .container:before,
+.Legacy .container:after,
+.Legacy .container-fluid:before,
+.Legacy .container-fluid:after,
+.Legacy .row:before,
+.Legacy .row:after,
+.Legacy .form-horizontal .form-group:before,
+.Legacy .form-horizontal .form-group:after,
+.Legacy .btn-toolbar:before,
+.Legacy .btn-toolbar:after,
+.Legacy .btn-group-vertical > .btn-group:before,
+.Legacy .btn-group-vertical > .btn-group:after,
+.Legacy .nav:before,
+.Legacy .nav:after,
+.Legacy .navbar:before,
+.Legacy .navbar:after,
+.Legacy .navbar-header:before,
+.Legacy .navbar-header:after,
+.Legacy .navbar-collapse:before,
+.Legacy .navbar-collapse:after,
+.Legacy .pager:before,
+.Legacy .pager:after,
+.Legacy .panel-body:before,
+.Legacy .panel-body:after,
+.Legacy .modal-footer:before,
+.Legacy .modal-footer:after {
   display: table;
-  content: " ";
+  content: ' ';
 }
 
-.Legacy .clearfix:after, .Legacy .dl-horizontal dd:after, .Legacy .container:after, .Legacy .container-fluid:after, .Legacy .row:after, .Legacy .form-horizontal .form-group:after, .Legacy .btn-toolbar:after, .Legacy .btn-group-vertical > .btn-group:after, .Legacy .nav:after, .Legacy .navbar:after, .Legacy .navbar-header:after, .Legacy .navbar-collapse:after, .Legacy .pager:after, .Legacy .panel-body:after, .Legacy .modal-footer:after {
+.Legacy .clearfix:after,
+.Legacy .dl-horizontal dd:after,
+.Legacy .container:after,
+.Legacy .container-fluid:after,
+.Legacy .row:after,
+.Legacy .form-horizontal .form-group:after,
+.Legacy .btn-toolbar:after,
+.Legacy .btn-group-vertical > .btn-group:after,
+.Legacy .nav:after,
+.Legacy .navbar:after,
+.Legacy .navbar-header:after,
+.Legacy .navbar-collapse:after,
+.Legacy .pager:after,
+.Legacy .panel-body:after,
+.Legacy .modal-footer:after {
   clear: both;
 }
 
@@ -1942,7 +2388,6 @@
   -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-
 
 /* 2016.css */
 .Legacy {

@@ -1,14 +1,13 @@
 @import '../core/typography.css';
 
-
 .Header {
   font-family: var(--type__primary);
   margin-bottom: 0;
 
-
   @media (--up-to-medium) {
-
-    .Header__search, .Header__social, & > .Container > .AnodyneMenu {
+    .Header__search,
+    .Header__social,
+    & > .Container > .AnodyneMenu {
       display: none;
     }
   }
@@ -97,7 +96,6 @@
     }
   }
 
-
   &__top {
     display: flex;
     align-items: center;
@@ -119,7 +117,7 @@
       z-index: var(--layer__header--mobile);
     }
 
-    @media (--up-to-medium) /* and (min-height: 500px) */ {
+    @media (--up-to-medium) {
       position: fixed;
     }
 
@@ -157,7 +155,7 @@
     flex: 1;
     margin: 0;
 
-    @media(--medium) {
+    @media (--medium) {
       margin-bottom: 0;
     }
   }

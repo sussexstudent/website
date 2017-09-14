@@ -1,6 +1,5 @@
 @import '../core/typography.css';
 
-
 .UserBar {
   font-family: var(--type__primary);
   font-weight: bold;
@@ -15,7 +14,6 @@
   &__item-dropdown {
     display: none;
   }
-
 
   &__item--open &__item-dropdown {
     display: block;
@@ -32,7 +30,6 @@
     }
 
     &__list {
-
     }
 
     &__item {
@@ -73,142 +70,137 @@
       border: 0;
       background: transparent;
     }
-
   }
 }
 
 @media (--medium) {
-
-.UserBar {
-  color: #ffffff;
-
-  &:before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 3px;
-    background: var(--color__brand-blue);
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.15);
-  }
-
-  &__list {
-    @mixin rounded;
-
-    margin-left: auto;
-    margin-top: -3px;
-    position: relative;
-    justify-content: flex-end;
-    display: flex;
-    background: var(--color__brand-blue);
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.15);
-    overflow: visible;
-  }
-
-  &__container {
-    display: flex;
-  }
-
-  &__item {
-    padding-top: 3px;
-    padding-right: 0.5lh;
-    padding-left: 0.5lh;
-    background-color: var(--color__brand-blue);
+  .UserBar {
     color: #ffffff;
 
-    & > button {
-      border: 0;
-      font-size: 1em;
-      background: transparent;
-      color: #ffffff;
-      font-family: inherit;
-      font-weight: inherit;
-      cursor: pointer;
-      box-sizing: border-box;
-    }
-  }
-
-  &__item-admin {
-    position: relative;
-
-    &:last-child {
-      margin-right: auto;
-    }
-  }
-
-  &__item--action {
-    background-color: var(--color__brand-blue);
-    color: #ffffff;
-
-    &:hover {
-      background-color: var(--color__brand-blue--hover);
-    }
-
-    & > a {
-      padding: 0 0.75lh;
-      color: #ffffff;
-      text-decoration: none;
+    &:before {
+      content: '';
       display: block;
+      width: 100%;
+      height: 3px;
+      background: var(--color__brand-blue);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    &__list {
+      @mixin rounded;
+
+      margin-left: auto;
+      margin-top: -3px;
+      position: relative;
+      justify-content: flex-end;
+      display: flex;
+      background: var(--color__brand-blue);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+      overflow: visible;
+    }
+
+    &__container {
+      display: flex;
+    }
+
+    &__item {
+      padding-top: 3px;
+      padding-right: 0.5lh;
+      padding-left: 0.5lh;
+      background-color: var(--color__brand-blue);
+      color: #ffffff;
+
+      & > button {
+        border: 0;
+        font-size: 1em;
+        background: transparent;
+        color: #ffffff;
+        font-family: inherit;
+        font-weight: inherit;
+        cursor: pointer;
+        box-sizing: border-box;
+      }
+    }
+
+    &__item-admin {
+      position: relative;
+
+      &:last-child {
+        margin-right: auto;
+      }
+    }
+
+    &__item--action {
+      background-color: var(--color__brand-blue);
+      color: #ffffff;
+
+      &:hover {
+        background-color: var(--color__brand-blue--hover);
+      }
+
+      & > a {
+        padding: 0 0.75lh;
+        color: #ffffff;
+        text-decoration: none;
+        display: block;
+      }
+    }
+
+    &__item--welcome {
+      margin-left: auto;
+    }
+
+    &__item-dropdown {
+      background-color: var(--color__brand-blue);
+      color: #ffffff;
+      position: absolute;
+      top: 29px;
+      right: -101px;
+      min-width: 220px;
+      padding: 1rem;
+      z-index: var(--layer__user-bar-dropdown);
+
+      @mixin card flat;
+
+      & > ul {
+        padding: 0;
+        marign: 0;
+      }
     }
   }
 
-  &__item--welcome {
-    margin-left: auto;
-  }
+  .UserBar__item-admin {
+    & > span {
+      cursor: pointer;
+    }
 
-  &__item-dropdown {
-    background-color: var(--color__brand-blue);
-    color: #ffffff;
-    position: absolute;
-    top: 29px;
-    right: -101px;
-    min-width: 220px;
-    padding: 1rem;
-    z-index: var(--layer__user-bar-dropdown);
+    & h3 {
+      display: none;
+    }
 
-    @mixin card flat;
+    & li,
+    & .msl_admin {
+      font-size: 0.9rem;
+      display: block !important;
+      border: none !important;
+      background: none !important;
+      padding: 0 !important;
+      margin-bottom: 0.5rem !important;
+    }
 
-    & > ul {
-      padding: 0;
-      marign: 0;
+    & a {
+      text-decoration: none;
+      color: #ffffff;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
-}
 
-.UserBar__item-admin {
-  & > span {
-    cursor: pointer;
+  .UserBar__admin-menu {
   }
 
-  & h3 {
-    display: none;
+  .UserBar__admin-control-panel {
   }
-
-  & li, & .msl_admin {
-    font-size: 0.9rem;
-    display: block !important;
-    border: none !important;
-    background: none !important;
-    padding: 0 !important;
-    margin-bottom: 0.5rem !important;
-  }
-
-  & a {
-    text-decoration: none;
-    color: #ffffff;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-.UserBar__admin-menu {
-
-
-}
-
-
-.UserBar__admin-control-panel {
-
-}
 }

@@ -15,12 +15,11 @@
     border: 0;
     background: #1db8a4;
 
-
     & a {
       color: #ffffff;
 
       &:after {
-        content: "!";
+        content: '!';
       }
     }
   }

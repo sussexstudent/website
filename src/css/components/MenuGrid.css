@@ -2,18 +2,15 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  
+
   gg: columns(1/1);
 
-  
   @media (--medium) {
     & {
       gg: columns(1/2 1/2);
     }
   }
 
-  
   &__item {
-    
   }
 }

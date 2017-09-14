@@ -1,3 +1,4 @@
-.HeroSVG > g > g, .HeroSVG circle{
+.HeroSVG > g > g,
+.HeroSVG circle {
   will-change: transform;
 }

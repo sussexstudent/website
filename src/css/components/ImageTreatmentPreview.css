@@ -1,5 +1,4 @@
 .ImageTreatmentPreview {
-
   &__list {
     margin: 0;
     padding: 0;
@@ -9,7 +8,6 @@
   }
 
   &__list li {
-
   }
 
   &__figure {

@@ -2,11 +2,9 @@ query Dashboard {
   allEvents {
     totalCount
   }
-
   allGroups {
     totalCount
   }
-
   allImages {
     totalCount
   }

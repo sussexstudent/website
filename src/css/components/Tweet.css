@@ -69,7 +69,6 @@
     }
   }
 
-
   &__header,
   &__content,
   &__permalink {
@@ -78,7 +77,7 @@
   }
 
   &__retweeted {
-    color: rgba(155, 155, 155, 1.0);
+    color: rgba(155, 155, 155, 1);
     font-size: 0.9em;
     margin-bottom: 1em;
 
@@ -102,7 +101,7 @@
   }
 
   &__screen-name {
-    color: rgba(155, 155, 155, 1.0);
+    color: rgba(155, 155, 155, 1);
     display: inline-block;
   }
 
@@ -128,13 +127,12 @@
   &__permalink {
     display: block;
     padding-top: 0.5lh;
-    color: rgba(155, 155, 155, 1.0) !important; /* TODO: don't do this */
+    color: rgba(155, 155, 155, 1) !important; /* TODO: don't do this */
     text-decoration: none;
 
     &:hover {
       text-decoration: none !important;
     }
-
   }
 
   &__quoted {

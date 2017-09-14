@@ -10,7 +10,7 @@
   }
 
   100% {
-    opacity: 0.0;
+    opacity: 0;
   }
 }
 
@@ -22,6 +22,7 @@
     border-radius: 100%;
     margin: 1lh auto;
     border: 2px solid #fff;
-    animation: ball-scale-ripple 1s 0s infinite cubic-bezier(.21,.53,.56,.8);
+    animation: ball-scale-ripple 1s 0s infinite
+      cubic-bezier(0.21, 0.53, 0.56, 0.8);
   }
 }

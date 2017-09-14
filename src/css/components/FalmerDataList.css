@@ -1,8 +1,7 @@
 .FalmerDataList {
-
   &__row {
     &:hover {
-      background-color: #EEEEEE;
+      background-color: #eeeeee;
     }
   }
 }

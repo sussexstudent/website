@@ -1,6 +1,5 @@
 @import '../core/mq.css';
 
-
 .app__news {
   display: flex;
   flex: auto;
@@ -14,7 +13,6 @@
   align-content: stretch;
 
   &__item {
-
   }
 }
 
@@ -30,7 +28,7 @@
 
 @media (--medium) {
   .NewsGrid--full-width {
-    gg: columns(1/3 1/3 1/3)
+    gg: columns(1/3 1/3 1/3);
   }
 }
 

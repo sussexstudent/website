@@ -5,7 +5,8 @@
     margin-bottom: 1em;
   }
 
-  ul, ol {
+  ul,
+  ol {
     padding-left: 0.7rem;
     margin-left: 0.5rem;
   }

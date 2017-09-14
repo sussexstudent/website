@@ -19,7 +19,8 @@
     padding-bottom: 75%;
   }
 
-  & > img, .ImagePlaceholder {
+  & > img,
+  .ImagePlaceholder {
     width: 100% !important;
     height: 100% !important;
     position: absolute !important;
@@ -32,7 +33,8 @@
   position: relative;
   overflow: hidden;
 
-  & > img, .ImagePlaceholder {
+  & > img,
+  .ImagePlaceholder {
     width: 100% !important;
     height: 100% !important;
     position: absolute !important;

@@ -1,13 +1,12 @@
 .PageHeader {
   margin-bottom: 1.5lh;
   display: flex;
-  
+
   &__title {
     margin-top: 0;
     flex: 1 1 auto;
   }
 
-  
   &__treats {
   }
 }

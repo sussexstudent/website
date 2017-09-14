@@ -52,7 +52,6 @@
  * © 2015 MyFonts Inc
 */
 
-
 /* @import must be at top of file, otherwise CSS will not work */
 @import url("//hello.myfonts.net/count/2e6b7c");
 
@@ -80,20 +79,28 @@
   font-family: 'Larsseit';
   font-weight: normal;
   src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_8_0.eot');
-  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_8_0.eot?#iefix') format('embedded-opentype'),
-    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_8_0.woff2') format('woff2'),
-    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_8_0.woff') format('woff'),
-    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_8_0.ttf') format('truetype');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_8_0.eot?#iefix')
+      format('embedded-opentype'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_8_0.woff2')
+      format('woff2'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_8_0.woff')
+      format('woff'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_8_0.ttf')
+      format('truetype');
 }
 
 @font-face {
   font-family: 'Larsseit';
   font-weight: bold;
   src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_2_0.eot');
-  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_2_0.eot?#iefix') format('embedded-opentype'),
-    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_2_0.woff2') format('woff2'),
-    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_2_0.woff') format('woff'),
-    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_2_0.ttf') format('truetype');
+  src: url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_2_0.eot?#iefix')
+      format('embedded-opentype'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_2_0.woff2')
+      format('woff2'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_2_0.woff')
+      format('woff'),
+    url('https://www.sussexstudent.com/assets/site_resources/2E6B7C_2_0.ttf')
+      format('truetype');
 }
 
 /*

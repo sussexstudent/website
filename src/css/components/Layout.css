@@ -34,8 +34,8 @@
     }
   }
 
-
-  &--sidebar-right > div > aside, &--sidebar-left > div > aside {
+  &--sidebar-right > div > aside,
+  &--sidebar-left > div > aside {
     position: sticky;
     top: 20px;
   }

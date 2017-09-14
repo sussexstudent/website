@@ -21,6 +21,9 @@ storiesOf('EventsCalender', module).add('standard event card', () => (
           featuredImage: {
             resource: 'original_images/67e36f330356451daed64e4011d25616',
           },
+          bundle: {
+            name: 'Golden Wristband',
+          },
         },
       }}
     />

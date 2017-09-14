@@ -235,6 +235,16 @@ exports[`Storyshots EventsCalender standard event card 1`] = `
       />
     </div>
     <div
+      className="EventsCalender__item-banner EventsCalender__item-banner--bundle"
+    >
+      Golden Wristband
+    </div>
+    <div
+      className="EventsCalender__item-banner EventsCalender__item-banner--tickets"
+    >
+      Buy Tickets
+    </div>
+    <div
       className="EventsCalender__item-container"
     >
       <h2
@@ -244,9 +254,7 @@ exports[`Storyshots EventsCalender standard event card 1`] = `
       </h2>
       <div
         className="EventsCalender__item-description"
-      >
-        Join us to find out more about volunteering with the Role Models Project! We will be giving an introduction to what the project is all about and what to expect as a new volunteer.
-      </div>
+      />
       <div
         className="EventsCalender__item-meta"
       >
@@ -536,9 +544,9 @@ exports[`Storyshots NewsBlock with images 1`] = `
         <div
           className="u-responsive-ratio u-responsive-ratio--43"
         >
-          <img
-            alt=""
-            src="https://www.sussexstudent.com/asset/News/6013/Lucy.jpg"
+          <div
+            className="TEST_IMAGE"
+            data-props="/asset/News/6013/Lucy.jpg"
           />
         </div>
       </div>

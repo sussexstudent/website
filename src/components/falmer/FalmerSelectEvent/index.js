@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql } from 'react-apollo';
 import { Helmet } from 'react-helmet';
 import formatDate from 'date-fns/format';
-import { Link } from 'react-router-dom';
 import AllEventsQuery from './AllEvents.graphql';
 import Loader from '../../Loader';
 import FalmerDataList, { Cell, Row, HeaderCell } from '../FalmerDataList/index';
@@ -14,15 +13,8 @@ import FalmerDataList, { Cell, Row, HeaderCell } from '../FalmerDataList/index';
 //       {event.title}
 //     </h2>
 //   </div>;
-function plural(length, single, pluralWord = null) {
-  if (Math.abs(length) === 1) {
-    return single;
-  }
 
-  return pluralWord || `${single}s`;
-}
-
-function FalmerEvents({ data: { loading, allEvents } }) {
+function FalmerEvents({ data: { loading, allEvents }, onSelect }) {
   return (
     <div>
       <Helmet>
@@ -38,6 +30,7 @@ function FalmerEvents({ data: { loading, allEvents } }) {
               <HeaderCell>Title</HeaderCell>
               <HeaderCell>Start time</HeaderCell>
               <HeaderCell>End time</HeaderCell>
+              <HeaderCell />
             </Row>
           )}
           selectable
@@ -45,21 +38,24 @@ function FalmerEvents({ data: { loading, allEvents } }) {
           {(item, rowState) => (
             <Row {...rowState} id={item.id}>
               <Cell>
-                <Link to={`/events/${item.eventId}`}>
-                  {item.title}
-                  {item.children.length > 0 ? (
-                    <small>
-                      {' '}
-                      ({item.children.length} sub-{plural(item.children.length, 'event')})
-                    </small>
-                  ) : null}
-                </Link>
+                {item.title}
+                {item.children.length > 0 ? (
+                  <span>({item.children.length} children)</span>
+                ) : null}
               </Cell>
               <Cell>
                 {formatDate(new Date(item.startTime), 'ddd Do MMM, HH:mm')}
               </Cell>
               <Cell>
                 {formatDate(new Date(item.endTime), 'ddd Do MMM, HH:mm')}
+              </Cell>
+              <Cell>
+                <button
+                  className="Button"
+                  onClick={() => onSelect(item.eventId)}
+                >
+                  Move
+                </button>
               </Cell>
             </Row>
           )}

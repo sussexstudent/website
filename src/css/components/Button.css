@@ -18,15 +18,18 @@
     color: #000000;
   }
 
-  &--external {
-    &:after {
-      content: '🔥';
-    }
-  }
-
   &--above {
     @mixin card flat;
     @mixin rounded;
+  }
+
+  &[disabled] {
+    background-color: var(--color__grey-winter);
+    color: var(--color__grey-summer);
+
+    &:hover {
+      @mixin card flat;
+    }
   }
 }
 

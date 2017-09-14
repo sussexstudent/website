@@ -1,0 +1,22 @@
+mutation ($eventId: Int, $destinationEventId: Int){
+  moveEvent(eventId: $eventId, destinationEventId: $destinationEventId) {
+    event {
+      id
+      parent {
+        id
+        eventId
+        title
+        children {
+          id
+        }
+        parent {
+          id
+          children {
+            id
+          }
+        }
+      }
+    }
+    ok
+  }
+}

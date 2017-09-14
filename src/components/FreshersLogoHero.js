@@ -6,11 +6,15 @@ class FrontpageHero extends React.Component {
   componentDidMount() {
     const heroSvg = document.querySelector('.FlexibleHero svg');
     const items = [...heroSvg.querySelectorAll('svg > g > g, circle')];
-    items.map(g => (g.style.opacity = 0));
+    items.forEach(g => {
+      g.style.opacity = 0;
+    });
 
     setTimeout(() => {
       items.map(g =>
-        setTimeout(() => (g.style.opacity = 1), Math.random() * 1800)
+        setTimeout(() => {
+          g.style.opacity = 1;
+        }, Math.random() * 1800)
       );
     }, 200);
   }

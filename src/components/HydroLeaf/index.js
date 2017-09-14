@@ -7,9 +7,9 @@ let hydroId = 0;
 
 function generateContextTypes(contextToPropsMap) {
   const contextTypes = {};
-  Object.keys(contextToPropsMap).forEach(
-    contextName => (contextTypes[contextName] = PropTypes.object)
-  );
+  Object.keys(contextToPropsMap).forEach(contextName => {
+    contextTypes[contextName] = PropTypes.object;
+  });
 
   return contextTypes;
 }

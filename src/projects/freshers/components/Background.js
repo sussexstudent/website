@@ -6,11 +6,15 @@ class FrontpageHero extends React.Component {
   componentDidMount() {
     const heroSvg = document.querySelector('.HeroSVG');
     const items = [...heroSvg.querySelectorAll('g > use, circle')];
-    items.map(g => (g.style.opacity = 0));
+    items.forEach(g => {
+      g.style.opacity = 0;
+    });
 
     setTimeout(() => {
       items.map(g =>
-        setTimeout(() => (g.style.opacity = 1), Math.random() * 1800)
+        setTimeout(() => {
+          g.style.opacity = 1;
+        }, Math.random() * 1800)
       );
     }, 200);
 
@@ -90,7 +94,12 @@ class FrontpageHero extends React.Component {
 
   render() {
     return (
-      <div className="CoverBackground" ref={ref => (this.element = ref)}>
+      <div
+        className="CoverBackground"
+        ref={ref => {
+          this.element = ref;
+        }}
+      >
         <BackgroundSvg
           className="HeroSVG"
           style={{

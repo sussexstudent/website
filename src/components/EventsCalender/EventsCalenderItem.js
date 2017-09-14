@@ -81,9 +81,9 @@ function EventsCalenderItem({ part, useAnchors }) {
           {event.shortDescription}
         </div>
         <div className="EventsCalender__item-meta">
-          {formatDate(event.startDate, 'h:ssa')}
+          {formatDate(new Date(event.startTime), 'h:ssa')}
           <span> - </span>
-          {formatDate(event.endDate, 'h:ssa')}
+          {formatDate(new Date(event.endTime), 'h:ssa')}
           <span> / </span>
           {renderEventLocation(event)}
         </div>

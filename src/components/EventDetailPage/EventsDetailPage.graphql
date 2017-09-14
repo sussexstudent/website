@@ -25,5 +25,37 @@ query EventsDetailPage($eventId: Int) {
     featuredImage {
       resource
     }
+    parent {
+      ...EventCard
+    }
+    children {
+      ...EventCard
+    }
+  }
+}
+
+
+fragment EventCard on Event {
+  eventId
+  slug
+  title
+  startTime
+  endTime
+  locationDisplay
+  kicker
+  shortDescription
+  url
+  cost
+  ticketLevel
+  ticketType
+  bundle {
+    name
+  }
+  venue {
+    name
+    websiteLink
+  }
+  featuredImage {
+    resource
   }
 }

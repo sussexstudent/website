@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 import formatDate from 'date-fns/format';
 import { graphql } from 'react-apollo';
 import ContentCard from '../ContentCard';
@@ -9,6 +10,7 @@ import Loader from '../Loader';
 import BackBar from '../BackBar/Link';
 import Button from '../Button';
 import DetailPageQuery from './EventsDetailPage.graphql';
+import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
 
 /* eslint-disable */
 class EventDetailPage extends React.Component {
@@ -87,6 +89,16 @@ class EventDetailPage extends React.Component {
                 <div className="ContentCard__content">
                   <h2 className="EventDetail__title">{event.title}</h2>
                   <ul className="EventDetail__details-list">
+                    {event.parent ? (
+                      <li className="EventDetail__details-list-item">
+                        <img
+                          className="EventDetail__icon"
+                          src="https://du9l8eemj97rm.cloudfront.net/events-collection-parent.svg"
+                          alt=""
+                        />
+                        Part of <Link to={`/whats-on/${event.parent.slug}-${event.parent.eventId}`}>{event.parent.title}</Link>
+                      </li>
+                    ) : null}
                     <li className="EventDetail__details-list-item">
                       <img
                         className="EventDetail__icon"
@@ -116,6 +128,16 @@ class EventDetailPage extends React.Component {
                         {event.locationDisplay}
                       </li>
                     ) : null}
+                    {event.children.length > 0 ? (
+                      <li className="EventDetail__details-list-item">
+                        <img
+                          className="EventDetail__icon"
+                          src="https://du9l8eemj97rm.cloudfront.net/events-collection.svg"
+                          alt=""
+                        />
+                        <a href="#sub-events">{event.children.length} sub-events</a>
+                      </li>
+                    ) : null}
                   </ul>
                 </div>
               </div>
@@ -141,6 +163,15 @@ class EventDetailPage extends React.Component {
             </ContentCard>
           </aside>
         </div>
+        {event.children.length > 0 ? (
+          <div>
+            <span className="u-position-anchor" id="sub-events" />
+            <h2 className="Heading Heading--tight">Part of this event</h2>
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+              {event.children.map(childEvent => <div><EventsCalenderItem part={{ event: childEvent }}/></div>)}
+            </div>
+          </div>
+        ) : null}
       </div>
     );
   }

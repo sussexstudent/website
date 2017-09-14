@@ -23,7 +23,9 @@ config.output = {
 };
 
 config.plugins = config.plugins.concat([
-  new CleanWebpackPlugin(['../dist-falmer']),
+  new CleanWebpackPlugin(['./dist-falmer'], {
+    root: path.join(__dirname, '/..'),
+  }),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
   }),
@@ -35,7 +37,7 @@ config.plugins = config.plugins.concat([
     minChunks: 2,
   }),
   new ChunkManifestPlugin({
-    filename: 'manifest.json',
+    filename: 'falmer-manifest.json',
     manifestVariable: 'chunkManifest',
   }),
   new webpack.optimize.UglifyJsPlugin({

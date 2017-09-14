@@ -38,6 +38,11 @@ function FalmerEvents({ data: { loading, allEvents } }) {
                 <Cell>
                   <Link to={`/events/${item.eventId}`}>
                     {item.title}
+                    {item.children.length > 0
+                      ? <span>
+                          ({item.children.length} children)
+                        </span>
+                      : null}
                   </Link>
                 </Cell>
                 <Cell>

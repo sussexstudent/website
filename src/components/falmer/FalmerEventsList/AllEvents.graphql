@@ -2,17 +2,24 @@ query {
   allEvents {
     edges {
       node {
-        id
-        eventId
-        title
-        featuredImage {
-          resource
+        ...EventStuff
+        children {
+          ...EventStuff
         }
-        shortDescription
-        startTime
-        endTime
-        ticketType
       }
     }
   }
+}
+
+fragment EventStuff on Event {
+  id
+  eventId
+  title
+  featuredImage {
+    resource
+  }
+  shortDescription
+  startTime
+  endTime
+  ticketType
 }

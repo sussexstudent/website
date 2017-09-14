@@ -8,5 +8,13 @@ query EventDetail($eventId: Int) {
     shortDescription
     startTime
     endTime
+    parent {
+      title
+      eventId
+    }
+    children {
+      title
+      eventId
+    }
   }
 }

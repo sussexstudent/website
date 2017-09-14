@@ -8,34 +8,38 @@ import FauxRouterLink from '../../FauxRouterLink';
 function FalmerMediaList({ data: { loading, loadMoreEntries, allImages } }) {
   return (
     <div>
-      {loading
-        ? <Loader />
-        : <div>
-            <ul className="FalmerMediaGrid">
-              {allImages.edges.map(edge =>
-                <li className="FalmerMediaGrid__item">
-                  <div
-                    className="u-responsive-fit"
-                    alt=""
-                    style={{
-                      height: '110px',
-                      width: `${Math.round(
-                        110 * (edge.node.width / edge.node.height)
-                      )}px`,
-                    }}
-                  >
-                    <FauxRouterLink href={`/media/${edge.node.mediaId}`} />
-                    <Image src={edge.node.resource} lazy />
-                  </div>
-                </li>
-              )}
-            </ul>
-            {allImages.pageInfo.hasNextPage
-              ? <button className="Button" onClick={loadMoreEntries}>
-                  Load more
-                </button>
-              : <em>{`That's your lot!`}</em>}
-          </div>}
+      {loading ? (
+        <Loader />
+      ) : (
+        <div>
+          <ul className="FalmerMediaGrid">
+            {allImages.edges.map(edge => (
+              <li className="FalmerMediaGrid__item">
+                <div
+                  className="u-responsive-fit"
+                  alt=""
+                  style={{
+                    height: '110px',
+                    width: `${Math.round(
+                      110 * (edge.node.width / edge.node.height)
+                    )}px`,
+                  }}
+                >
+                  <FauxRouterLink href={`/media/${edge.node.mediaId}`} />
+                  <Image src={edge.node.resource} lazy />
+                </div>
+              </li>
+            ))}
+          </ul>
+          {allImages.pageInfo.hasNextPage ? (
+            <button className="Button" onClick={loadMoreEntries}>
+              Load more
+            </button>
+          ) : (
+            <em>{`That's your lot!`}</em>
+          )}
+        </div>
+      )}
     </div>
   );
 }

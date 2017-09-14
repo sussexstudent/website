@@ -4,7 +4,7 @@ import VoteHero from '~components/VoteHero';
 import FigureCollectionFigure from '~components/FigureCollectionFigure';
 import HomepageEventsList from '~components/HomepageEventsList';
 
-const Homepage = () =>
+const Homepage = () => (
   <div>
     <div className="Trail">
       <div className="Trail__row">
@@ -13,18 +13,14 @@ const Homepage = () =>
       <div className="Trail__row Trail__row--211">
         <div className="ContentBlock">
           <div className="ContentBlock__heading">News</div>
-          <div className="u-h">
-            {'{unionnewslist}'}
-          </div>
+          <div className="u-h">{'{unionnewslist}'}</div>
           <div className="app__news" />
           <a className="NewsViewMore" href="/news">
             Read more news stories
           </a>
         </div>
         <div className="ContentBlock">
-          <div className="ContentBlock__heading">
-            {"What's on"}
-          </div>
+          <div className="ContentBlock__heading">{"What's on"}</div>
           <HomepageEventsList />
         </div>
         <div className="ContentBlock">
@@ -75,6 +71,7 @@ const Homepage = () =>
         </FigureCollection>
       </div>
     </div>
-  </div>;
+  </div>
+);
 
 export default Homepage;

@@ -2,7 +2,7 @@ import React from 'react';
 import ContentCard from '~components/ContentCard';
 import ContentAPIComposer from '~components/ContentAPIComposer';
 
-const StaffPage = () =>
+const StaffPage = () => (
   <div>
     <div className="Legacy">
       <div className="row">
@@ -227,6 +227,7 @@ const StaffPage = () =>
         <ContentAPIComposer pageId={6} />
       </div>
     </div>
-  </div>;
+  </div>
+);
 
 export default StaffPage;

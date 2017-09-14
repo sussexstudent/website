@@ -6,11 +6,7 @@ import orderBy from 'lodash/orderBy';
 class ChildWrapper extends React.Component {
   render() {
     const { handleRef } = this.props;
-    return (
-      <div ref={handleRef}>
-        {this.props.children}
-      </div>
-    );
+    return <div ref={handleRef}>{this.props.children}</div>;
   }
 }
 
@@ -50,7 +46,7 @@ class VisibleChildWatcher extends React.Component {
   render() {
     return (
       <div>
-        {React.Children.map(this.props.children, item =>
+        {React.Children.map(this.props.children, item => (
           <ChildWrapper
             handleRef={el => {
               this.childEls[item.key] = el;
@@ -58,7 +54,7 @@ class VisibleChildWatcher extends React.Component {
           >
             {item}
           </ChildWrapper>
-        )}
+        ))}
       </div>
     );
   }

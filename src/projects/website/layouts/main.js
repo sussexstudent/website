@@ -23,7 +23,7 @@ const mslLogout = MSLTag('LoginButton', {
   GoHomeOnLogout: 'True',
 });
 
-const mainLayout = ({ assets, legacy }) =>
+const mainLayout = ({ assets, legacy }) => (
   <div className="Body" id="top">
     <div
       style={{ display: 'none' }}
@@ -58,7 +58,8 @@ const mainLayout = ({ assets, legacy }) =>
         style={{ display: 'none' }}
       />
     </noscript>
-  </div>;
+  </div>
+);
 
 mainLayout.propTypes = {
   legacy: PropTypes.bool.isRequired,

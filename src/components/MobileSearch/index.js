@@ -132,15 +132,15 @@ class HeaderSearch extends React.Component {
                     this.input = input;
                   }}
                 />
-                {this.state.query
-                  ? <button
-                      className="InlineSearch__clear"
-                      type="button"
-                      onClick={this.handleQueryClear}
-                    >
-                      <span className="u-h">Clear search</span>
-                    </button>
-                  : null}
+                {this.state.query ? (
+                  <button
+                    className="InlineSearch__clear"
+                    type="button"
+                    onClick={this.handleQueryClear}
+                  >
+                    <span className="u-h">Clear search</span>
+                  </button>
+                ) : null}
               </form>
             }
           </CSSTransition>
@@ -172,11 +172,7 @@ class HeaderSearch extends React.Component {
       'InlineSearch--isOpen': isOpen,
     });
 
-    return (
-      <div className={containerClasses}>
-        {this.renderMobileSearch()}
-      </div>
-    );
+    return <div className={containerClasses}>{this.renderMobileSearch()}</div>;
   }
 }
 

@@ -23,7 +23,7 @@ function ImageTreatmentPreview({ image }) {
   return (
     <div className="ImageTreatmentPreview">
       <ul className="ImageTreatmentPreview__list">
-        {treatments.map(treatment =>
+        {treatments.map(treatment => (
           <li>
             <figure className="ImageTreatmentPreview__figure">
               <div
@@ -40,7 +40,7 @@ function ImageTreatmentPreview({ image }) {
               </figcaption>
             </figure>
           </li>
-        )}
+        ))}
       </ul>
     </div>
   );

@@ -163,32 +163,26 @@ function EventsCalender({
   // chunk by day
   return (
     <div>
-      {disableHeader
-        ? null
-        : <Helmet>
-            <title>
-              {`What's on | Sussex Students' Union`}
-            </title>
-          </Helmet>}
-      {disableHeader !== true
-        ? <div className="PageHeader">
-            <h1 className="PageHeader__title">
-              {"What's on"}
-            </h1>
-            <div className="PageHeader__treats">
-              <a className="Button" href="/hold-an-event">
-                Hold your own event
-              </a>
-            </div>
+      {disableHeader ? null : (
+        <Helmet>
+          <title>{`What's on | Sussex Students' Union`}</title>
+        </Helmet>
+      )}
+      {disableHeader !== true ? (
+        <div className="PageHeader">
+          <h1 className="PageHeader__title">{"What's on"}</h1>
+          <div className="PageHeader__treats">
+            <a className="Button" href="/hold-an-event">
+              Hold your own event
+            </a>
           </div>
-        : null}
+        </div>
+      ) : null}
       <div className="EventsCalender">
-        {uiEvents.map(({ sectionTitle, parts }) =>
+        {uiEvents.map(({ sectionTitle, parts }) => (
           // sectionTitle might not be unique in the future
           <div className="EventsCalender__section" key={sectionTitle}>
-            <h2 className="EventsCalender__section-title">
-              {sectionTitle}
-            </h2>
+            <h2 className="EventsCalender__section-title">{sectionTitle}</h2>
             <div className="EventsCalender__section-items">
               {parts.map((part, index) => {
                 const isFirstOfDate =
@@ -209,7 +203,7 @@ function EventsCalender({
               })}
             </div>
           </div>
-        )}
+        ))}
       </div>
     </div>
   );
@@ -226,7 +220,7 @@ export const EventsContainer = graphql(EventListingsQuery, {
   }),
 })(EventsCalender);
 
-const EventsApplication = () =>
+const EventsApplication = () => (
   <ApolloProvider client={getApolloClientForFalmer}>
     <BrowserRouter basename="/whats-on">
       <ScrollToTop>
@@ -236,6 +230,7 @@ const EventsApplication = () =>
         </Switch>
       </ScrollToTop>
     </BrowserRouter>
-  </ApolloProvider>;
+  </ApolloProvider>
+);
 
 export default HydroLeaf({ disableSSR: true })(EventsApplication);

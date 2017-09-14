@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SelectionGridItem = ({ link, imageURL, title }) =>
+const SelectionGridItem = ({ link, imageURL, title }) => (
   <li className="SelectionGrid__item SelectionGrid--underneath" key={link}>
     <a className="SelectionGrid__link" href={link}>
       <div
@@ -11,13 +11,12 @@ const SelectionGridItem = ({ link, imageURL, title }) =>
         }}
       >
         <div className="SelectionGrid__image-inside">
-          <div className="SelectionGrid__title">
-            {title}
-          </div>
+          <div className="SelectionGrid__title">{title}</div>
         </div>
       </div>
     </a>
-  </li>;
+  </li>
+);
 
 SelectionGridItem.propTypes = {
   link: PropTypes.node.isRequired,

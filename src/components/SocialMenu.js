@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-const SocialMenu = ({ asList = false }) =>
+const SocialMenu = ({ asList = false }) => (
   <ul className={cx('Social', { 'Social--as-list': asList })}>
     <li>
       <a
@@ -45,6 +45,7 @@ const SocialMenu = ({ asList = false }) =>
         <span className="Social__handle">sussexstudent</span>
       </a>
     </li>
-  </ul>;
+  </ul>
+);
 
 export default SocialMenu;

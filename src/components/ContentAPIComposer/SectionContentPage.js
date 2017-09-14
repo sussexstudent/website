@@ -30,31 +30,31 @@ class SectionContentPage extends React.Component {
       <div className="Layout Layout--sidebar-left">
         <div>
           <aside>
-            {contentsInSidebar
-              ? <ContentNavigation
-                  items={generateTitlesFromStream(body)}
-                  activeKey={this.state.visibleKey}
-                />
-              : null}
+            {contentsInSidebar ? (
+              <ContentNavigation
+                items={generateTitlesFromStream(body)}
+                activeKey={this.state.visibleKey}
+              />
+            ) : null}
             {sidebarBody.map(() => <h2>block</h2>)}
           </aside>
         </div>
         <div>
           <HeadingHero title={title} imageURL={headingImage.resource} />
           <VisibleChildWatcher onChange={this.handleVisibleChildChange}>
-            {body.map(block =>
+            {body.map(block => (
               <ContentCard anchor={slugify(block.value.heading)}>
                 <h2 className="Heading Heading--highlight">
                   {block.value.heading}
                 </h2>
-                {block.value.body.map(bodyItem =>
+                {block.value.body.map(bodyItem => (
                   <div
                     className="Prose"
                     dangerouslySetInnerHTML={{ __html: bodyItem.value }}
                   />
-                )}
+                ))}
               </ContentCard>
-            )}
+            ))}
           </VisibleChildWatcher>
         </div>
       </div>

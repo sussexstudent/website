@@ -74,64 +74,60 @@ class UserBar extends React.Component {
             </button>
           </li>
 
-          {admin !== null
-            ? <li
-                className={cx(
-                  'UserBar__item UserBar__item-admin UserBar__admin-menu',
-                  {
-                    'UserBar__item--open': dropdownOpen === ADMIN_DROPDOWN,
-                  }
-                )}
-              >
-                <button onClick={this.handleToggleAdminDropdown} type="button">
-                  Admin
-                </button>
-                <ClickOutside onClickOutside={this.handleCloseDropdown}>
-                  <div className={cx('UserBar__item-dropdown')}>
-                    <ul className="UserBar__dropdown-list">
-                      {admin.admin.map(item =>
-                        <li key={item.name}>
-                          <a href={item.link}>
-                            {item.name}
-                          </a>
-                        </li>
-                      )}
-                    </ul>
-                  </div>
-                </ClickOutside>
-              </li>
-            : null}
-          {page !== null
-            ? <li
-                className={cx(
-                  'UserBar__item UserBar__item-admin UserBar__admin-menu',
-                  {
+          {admin !== null ? (
+            <li
+              className={cx(
+                'UserBar__item UserBar__item-admin UserBar__admin-menu',
+                {
+                  'UserBar__item--open': dropdownOpen === ADMIN_DROPDOWN,
+                }
+              )}
+            >
+              <button onClick={this.handleToggleAdminDropdown} type="button">
+                Admin
+              </button>
+              <ClickOutside onClickOutside={this.handleCloseDropdown}>
+                <div className={cx('UserBar__item-dropdown')}>
+                  <ul className="UserBar__dropdown-list">
+                    {admin.admin.map(item => (
+                      <li key={item.name}>
+                        <a href={item.link}>{item.name}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </ClickOutside>
+            </li>
+          ) : null}
+          {page !== null ? (
+            <li
+              className={cx(
+                'UserBar__item UserBar__item-admin UserBar__admin-menu',
+                {
+                  'UserBar__item--open': dropdownOpen === PAGE_DROPDOWN,
+                }
+              )}
+            >
+              <button onClick={this.handleTogglePageDropdown} type="button">
+                Page
+              </button>
+              <ClickOutside onClickOutside={this.handleCloseDropdown}>
+                <div
+                  className={cx('UserBar__item-dropdown', {
                     'UserBar__item--open': dropdownOpen === PAGE_DROPDOWN,
-                  }
-                )}
-              >
-                <button onClick={this.handleTogglePageDropdown} type="button">
-                  Page
-                </button>
-                <ClickOutside onClickOutside={this.handleCloseDropdown}>
-                  <div
-                    className={cx('UserBar__item-dropdown', {
-                      'UserBar__item--open': dropdownOpen === PAGE_DROPDOWN,
-                    })}
-                  >
-                    <ul className="UserBar__dropdown-list">
-                      {page.items.map(item =>
-                        <li key={item.name}>
-                          <a href={item.link}>
-                            {item.name}
-                          </a>
-                        </li>
-                      )}
-                    </ul>
-                  </div>
-                </ClickOutside>
-              </li>
-            : null}
+                  })}
+                >
+                  <ul className="UserBar__dropdown-list">
+                    {page.items.map(item => (
+                      <li key={item.name}>
+                        <a href={item.link}>{item.name}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </ClickOutside>
+            </li>
+          ) : null}
 
           <li className="UserBar__item UserBar__item--action UserBar__item--action-highlight">
             <a href="/shop/basket">Basket</a>

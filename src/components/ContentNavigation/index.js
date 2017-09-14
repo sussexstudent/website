@@ -28,7 +28,7 @@ function ContentNavigation({
     <div className="NavigationCard">
       <h3 className="NavigationCard__title">Navigation</h3>
       <ul className="NavigationCard__list">
-        {items.map(item =>
+        {items.map(item => (
           <li
             className={cx('NavigationCard__item', {
               'NavigationCard__item--active': item.anchor === activeKey,
@@ -44,27 +44,27 @@ function ContentNavigation({
               item.children,
               activeKey
             ) ||
-              item.anchor === activeKey)
-              ? <ul className="NavigationCard__sub-list">
-                  {item.children.map(itemInner =>
-                    <li
-                      className={cx('NavigationCard__item', {
-                        'NavigationCard__item--active':
-                          itemInner.anchor === activeKey,
-                      })}
+              item.anchor === activeKey) ? (
+              <ul className="NavigationCard__sub-list">
+                {item.children.map(itemInner => (
+                  <li
+                    className={cx('NavigationCard__item', {
+                      'NavigationCard__item--active':
+                        itemInner.anchor === activeKey,
+                    })}
+                  >
+                    <a
+                      className="NavigationCard__anchor"
+                      href={`#${itemInner.anchor}`}
                     >
-                      <a
-                        className="NavigationCard__anchor"
-                        href={`#${itemInner.anchor}`}
-                      >
-                        {itemInner.name}
-                      </a>
-                    </li>
-                  )}
-                </ul>
-              : null}
+                      {itemInner.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </li>
-        )}
+        ))}
       </ul>
     </div>
   );

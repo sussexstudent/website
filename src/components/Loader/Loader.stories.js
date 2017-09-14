@@ -4,7 +4,7 @@ import Loader from './index';
 
 storiesOf('Loader', module)
   .add('light', () => <Loader dark />)
-  .add('dark', () =>
+  .add('dark', () => (
     <div
       style={{
         height: '100%',
@@ -14,4 +14,4 @@ storiesOf('Loader', module)
     >
       <Loader />
     </div>
-  );
+  ));

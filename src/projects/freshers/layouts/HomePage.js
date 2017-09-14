@@ -1,5 +1,5 @@
 import React from 'react';
-import { Hydro as NewsletterSignup} from '../components/NewsletterSignup';
+import { Hydro as NewsletterSignup } from '../components/NewsletterSignup';
 import FreshersLogo from '../components/FreshersLogo.svg.react';
 
 function FreshersPage() {
@@ -38,9 +38,7 @@ function FreshersPage() {
           </a>
         </li>
         <li>
-          <h1>
-            {"What does the Students' Union do?"}
-          </h1>
+          <h1>{"What does the Students' Union do?"}</h1>
           <p>
             {
               "The Students' Union is run for and by students, and provides students with an opportunity to get involved in a variety of activities."

@@ -20,11 +20,7 @@ function SearchFilterItem({ currentValue, option, onSelect, itemKey }) {
       onClick={option.count > 0 ? handleClick : () => {}}
     >
       {option.title}
-      {itemKey !== 'top'
-        ? <span>
-            {' '}({option.count})
-          </span>
-        : null}
+      {itemKey !== 'top' ? <span> ({option.count})</span> : null}
     </li>
   );
 }
@@ -38,7 +34,7 @@ SearchFilterItem.propTypes = {
 function SearchFilterNav({ onSelect, value, options }) {
   return (
     <ul className="SearchFilterNav">
-      {options.map(option =>
+      {options.map(option => (
         <SearchFilterItem
           key={option.key}
           itemKey={option.key}
@@ -46,7 +42,7 @@ function SearchFilterNav({ onSelect, value, options }) {
           currentValue={value}
           onSelect={onSelect}
         />
-      )}
+      ))}
     </ul>
   );
 }

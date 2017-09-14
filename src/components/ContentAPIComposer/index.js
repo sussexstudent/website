@@ -14,26 +14,25 @@ import HomePage from './HomePage';
 
 /* eslint-disable react/prop-types */
 const components = {
-  heading: ({ value }) =>
-    <h1>
-      {value}
-    </h1>,
-  heading_hero: ({ value, document }) =>
+  heading: ({ value }) => <h1>{value}</h1>,
+  heading_hero: ({ value, document }) => (
     <HeadingHero
       title={value.heading || document.title}
       imageURL={value.image.resource}
-    />,
+    />
+  ),
   staff_list: StaffList,
-  selection_grid: ({ value }) =>
+  selection_grid: ({ value }) => (
     <SelectionGrid>
-      {value.map(item =>
+      {value.map(item => (
         <SelectionGridItem
           title={item.title}
           link={item.link}
           imageURL={item.image.resource}
         />
-      )}
-    </SelectionGrid>,
+      ))}
+    </SelectionGrid>
+  ),
 };
 
 function getComponent(component, data, key) {
@@ -51,10 +50,11 @@ function getComponent(component, data, key) {
   });
 }
 
-const ComponentStreamPage = ({ data: { body }, data }) =>
+const ComponentStreamPage = ({ data: { body }, data }) => (
   <div>
     {body.map((component, index) => getComponent(component, data, index))}
-  </div>;
+  </div>
+);
 
 const pageComponents = {
   'content.StaffPage': StaffPage,

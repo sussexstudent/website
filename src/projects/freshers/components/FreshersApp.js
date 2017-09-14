@@ -16,7 +16,7 @@ const history = createBrowserHistory({
   basename: '/freshers/',
 });
 
-const FreshersApp = () =>
+const FreshersApp = () => (
   <Router history={history}>
     <ScrollToTop>
       <div className="FreshersAppContent">
@@ -47,6 +47,7 @@ const FreshersApp = () =>
         <Background />
       </div>
     </ScrollToTop>
-  </Router>;
+  </Router>
+);
 
 export default FreshersApp;

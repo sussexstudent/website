@@ -5,9 +5,7 @@ function SelectionGridPage({ data }) {
   return (
     <div>
       {data.showHeadingHero ? <HeadingHero title={data.title} /> : null}
-      <SelectionGrid>
-        {}
-      </SelectionGrid>
+      <SelectionGrid>{}</SelectionGrid>
     </div>
   );
 }

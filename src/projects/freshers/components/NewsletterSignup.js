@@ -175,83 +175,83 @@ class NewsletterSignup extends React.Component {
           {currentState ? RESPONSE_TEXT[currentState](data) : null}
         </div>
         <div>
-          {currentState === 'INITIAL' || currentState === 'INITIAL_FOCUS'
-            ? <div>
-                <form
-                  className="NewsletterSignup__form"
-                  onSubmit={this.handleFormSubmit}
-                >
-                  <input
-                    className="NewsletterSignup__email-input NewsletterSignup__input"
-                    type="email"
-                    value={data.address}
-                    onChange={this.handleEmailAddress}
-                    onFocus={() =>
-                      this.setState({ currentState: 'INITIAL_FOCUS' })}
-                    required
-                  />
-                  <button className="NewsletterSignup__button" type="submit">
-                    Subscribe
-                  </button>
-                </form>
-                <div className="NewsletterSignup__small-print">{`We'll send you freshers week update emails and subscribe you to our newsletter. You can unsubscribe at any time`}</div>
-              </div>
-            : null}
-
-          {currentState === 'ADDRESS_SUCCESS'
-            ? <form
+          {currentState === 'INITIAL' || currentState === 'INITIAL_FOCUS' ? (
+            <div>
+              <form
                 className="NewsletterSignup__form"
                 onSubmit={this.handleFormSubmit}
               >
                 <input
-                  className="NewsletterSignup__input"
-                  type="text"
-                  placeholder="Your Name"
-                  value={data.name}
-                  onChange={this.handleName}
+                  className="NewsletterSignup__email-input NewsletterSignup__input"
+                  type="email"
+                  value={data.address}
+                  onChange={this.handleEmailAddress}
+                  onFocus={() =>
+                    this.setState({ currentState: 'INITIAL_FOCUS' })}
                   required
                 />
                 <button className="NewsletterSignup__button" type="submit">
-                  Next
+                  Subscribe
                 </button>
               </form>
-            : null}
+              <div className="NewsletterSignup__small-print">{`We'll send you freshers week update emails and subscribe you to our newsletter. You can unsubscribe at any time`}</div>
+            </div>
+          ) : null}
 
-          {currentState === 'NAME_SUCCESS'
-            ? <div className="NewsletterSignup__form">
-                <ul className="NewsletterSignup__options">
-                  {Object.keys(OPTIONS_MERGE.LEVEL).map(key =>
-                    <li className="NewsletterSignup__options-item">
-                      <button
-                        type="button"
-                        className="NewsletterSignup__options-button"
-                        onClick={this.handleLevel.bind(this, key)}
-                      >
-                        {OPTIONS_MERGE.LEVEL[key]}
-                      </button>
-                    </li>
-                  )}
-                </ul>
-              </div>
-            : null}
+          {currentState === 'ADDRESS_SUCCESS' ? (
+            <form
+              className="NewsletterSignup__form"
+              onSubmit={this.handleFormSubmit}
+            >
+              <input
+                className="NewsletterSignup__input"
+                type="text"
+                placeholder="Your Name"
+                value={data.name}
+                onChange={this.handleName}
+                required
+              />
+              <button className="NewsletterSignup__button" type="submit">
+                Next
+              </button>
+            </form>
+          ) : null}
 
-          {currentState === 'LEVEL_SUCCESS'
-            ? <div className="NewsletterSignup__form">
-                <ul className="NewsletterSignup__options">
-                  {Object.keys(OPTIONS_MERGE.FEE).map(key =>
-                    <li className="NewsletterSignup__options-item">
-                      <button
-                        type="button"
-                        className="NewsletterSignup__options-button"
-                        onClick={this.handleFee.bind(this, key)}
-                      >
-                        {OPTIONS_MERGE.FEE[key]}
-                      </button>
-                    </li>
-                  )}
-                </ul>
-              </div>
-            : null}
+          {currentState === 'NAME_SUCCESS' ? (
+            <div className="NewsletterSignup__form">
+              <ul className="NewsletterSignup__options">
+                {Object.keys(OPTIONS_MERGE.LEVEL).map(key => (
+                  <li className="NewsletterSignup__options-item">
+                    <button
+                      type="button"
+                      className="NewsletterSignup__options-button"
+                      onClick={this.handleLevel.bind(this, key)}
+                    >
+                      {OPTIONS_MERGE.LEVEL[key]}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          {currentState === 'LEVEL_SUCCESS' ? (
+            <div className="NewsletterSignup__form">
+              <ul className="NewsletterSignup__options">
+                {Object.keys(OPTIONS_MERGE.FEE).map(key => (
+                  <li className="NewsletterSignup__options-item">
+                    <button
+                      type="button"
+                      className="NewsletterSignup__options-button"
+                      onClick={this.handleFee.bind(this, key)}
+                    >
+                      {OPTIONS_MERGE.FEE[key]}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </div>
       </div>
     );

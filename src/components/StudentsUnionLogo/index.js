@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Logo = ({ color = null }) =>
+const Logo = ({ color = null }) => (
   <svg
     className="HeaderLogo__svg"
     width="202px"
@@ -33,6 +33,7 @@ const Logo = ({ color = null }) =>
         />
       </g>
     </g>
-  </svg>;
+  </svg>
+);
 
 export default Logo;

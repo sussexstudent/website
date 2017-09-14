@@ -1,7 +1,7 @@
 import React from 'react';
 import Social from '~components/SocialMenu';
 
-const Footer = () =>
+const Footer = () => (
   <footer className="Footer">
     <div className="Footer__container Container">
       <div className="Footer__contact">
@@ -51,6 +51,7 @@ const Footer = () =>
         </a>
       </div>
     </div>
-  </footer>;
+  </footer>
+);
 
 export default Footer;

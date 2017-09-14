@@ -12,11 +12,7 @@ class CalenderListView extends React.Component {
   }
 
   render() {
-    return (
-      <ul>
-        {this.props.days.map(day => <CalenderListDay day={day} />)}
-      </ul>
-    );
+    return <ul>{this.props.days.map(day => <CalenderListDay day={day} />)}</ul>;
   }
 }
 

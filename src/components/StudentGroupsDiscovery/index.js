@@ -76,16 +76,19 @@ StudentGroupsDiscovery.propTypes = {
 
 const StudentGroupListings = graphql(StudentGroupListingsQuery)(
   props =>
-    props.data.loading
-      ? <Loader />
-      : <StudentGroupsDiscovery
-          groupsList={props.data.allGroups.edges.map(edge => edge.node)}
-        />
+    props.data.loading ? (
+      <Loader />
+    ) : (
+      <StudentGroupsDiscovery
+        groupsList={props.data.allGroups.edges.map(edge => edge.node)}
+      />
+    )
 );
 
-const StudentGroupsApplication = () =>
+const StudentGroupsApplication = () => (
   <ApolloProvider client={getApolloClientForFalmer}>
     <StudentGroupListings />
-  </ApolloProvider>;
+  </ApolloProvider>
+);
 
 export default HydroLeaf()(StudentGroupsApplication);

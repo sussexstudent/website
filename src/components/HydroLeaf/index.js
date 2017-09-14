@@ -24,10 +24,9 @@ function generatePropsForContext(contextToPropsMap, context) {
   return props;
 }
 
-const DefaultContainer = ({ children = null, ...props }) =>
-  <div {...props}>
-    {children}
-  </div>;
+const DefaultContainer = ({ children = null, ...props }) => (
+  <div {...props}>{children}</div>
+);
 
 /* eslint-disable react/no-danger */
 /* eslint-disable no-inner-declarations */

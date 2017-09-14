@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import FigureCollection from './index';
 
-storiesOf('FigureCollection', module).add('default', () =>
+storiesOf('FigureCollection', module).add('default', () => (
   <div className="Container">
     <FigureCollection
       items={[
@@ -45,4 +45,4 @@ storiesOf('FigureCollection', module).add('default', () =>
       ]}
     />
   </div>
-);
+));

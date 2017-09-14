@@ -81,10 +81,9 @@ function renderTweetContent(tweet) {
   return parts;
 }
 
-const TweetContent = ({ tweet }) =>
-  <div className="Tweet__content">
-    {renderTweetContent(tweet)}
-  </div>;
+const TweetContent = ({ tweet }) => (
+  <div className="Tweet__content">{renderTweetContent(tweet)}</div>
+);
 
 TweetContent.propTypes = {
   tweet: PropTypes.shape({

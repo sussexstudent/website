@@ -41,24 +41,22 @@ function FalmerHeader({ user }) {
               Images
             </NavLink>
           </li>
-          {user.hasCmsAccess
-            ? <li className="FalmerHeader__nav-item">
-                <a href="/cms">
-                  Content <small>(Wagtail)</small>
-                </a>
-              </li>
-            : null}
-          {user.isStaff
-            ? <li className="FalmerHeader__nav-item FalmerHeader__nav-item--secondary">
-                <a href="/admin">dj-admin</a>
-              </li>
-            : null}
+          {user.hasCmsAccess ? (
+            <li className="FalmerHeader__nav-item">
+              <a href="/cms">
+                Content <small>(Wagtail)</small>
+              </a>
+            </li>
+          ) : null}
+          {user.isStaff ? (
+            <li className="FalmerHeader__nav-item FalmerHeader__nav-item--secondary">
+              <a href="/admin">dj-admin</a>
+            </li>
+          ) : null}
         </ul>
       </nav>
 
-      <div className="FalmerHeader__user">
-        {user.name || user.identifier}
-      </div>
+      <div className="FalmerHeader__user">{user.name || user.identifier}</div>
     </header>
   );
 }

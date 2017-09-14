@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TweetHeader = ({ user }) =>
+const TweetHeader = ({ user }) => (
   <div className="Tweet__header">
-    <span className="Tweet__name">
-      {user.name}
-    </span>
-    <span className="Tweet__screen-name">
-      @{user.screen_name}
-    </span>
-  </div>;
+    <span className="Tweet__name">{user.name}</span>
+    <span className="Tweet__screen-name">@{user.screen_name}</span>
+  </div>
+);
 
 TweetHeader.propTypes = {
   user: PropTypes.shape({

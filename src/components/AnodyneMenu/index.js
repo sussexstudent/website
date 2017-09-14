@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const AnodyneMenuItem = ({ name, link, active }) =>
+const AnodyneMenuItem = ({ name, link, active }) => (
   <li className="AnodyneMenu__item">
     <a
       className={cx('AnodyneMenu__link', {
@@ -12,14 +12,15 @@ const AnodyneMenuItem = ({ name, link, active }) =>
     >
       {name}
     </a>
-  </li>;
+  </li>
+);
 
 AnodyneMenuItem.propTypes = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
 };
 
-const AnodyneMenu = ({ activeItem }) =>
+const AnodyneMenu = ({ activeItem }) => (
   <nav className="AnodyneMenu">
     <ul className="AnodyneMenu__list">
       <AnodyneMenuItem
@@ -43,6 +44,7 @@ const AnodyneMenu = ({ activeItem }) =>
         active={activeItem === 'SUPPORT'}
       />
     </ul>
-  </nav>;
+  </nav>
+);
 
 export default AnodyneMenu;

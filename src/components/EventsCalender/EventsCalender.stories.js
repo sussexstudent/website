@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import EventsCalenderItem from './EventsCalenderItem';
 
-storiesOf('EventsCalender', module).add('standard event card', () =>
+storiesOf('EventsCalender', module).add('standard event card', () => (
   <div className="Container">
     <EventsCalenderItem
       part={{
@@ -25,4 +25,4 @@ storiesOf('EventsCalender', module).add('standard event card', () =>
       }}
     />
   </div>
-);
+));

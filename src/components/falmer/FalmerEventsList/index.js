@@ -21,38 +21,40 @@ function FalmerEvents({ data: { loading, allEvents } }) {
       <Helmet>
         <title>Events</title>
       </Helmet>
-      {loading
-        ? <Loader />
-        : <FalmerDataList
-            items={allEvents.edges.map(edge => edge.node)}
-            header={rowState =>
-              <Row {...rowState}>
-                <HeaderCell>Title</HeaderCell>
-                <HeaderCell>Start time</HeaderCell>
-                <HeaderCell>End time</HeaderCell>
-              </Row>}
-            selectable
-          >
-            {(item, rowState) =>
-              <Row {...rowState} id={item.id}>
-                <Cell>
-                  <Link to={`/events/${item.eventId}`}>
-                    {item.title}
-                    {item.children.length > 0
-                      ? <span>
-                          ({item.children.length} children)
-                        </span>
-                      : null}
-                  </Link>
-                </Cell>
-                <Cell>
-                  {formatDate(new Date(item.startTime), 'ddd Do MMM, HH:mm')}
-                </Cell>
-                <Cell>
-                  {formatDate(new Date(item.endTime), 'ddd Do MMM, HH:mm')}
-                </Cell>
-              </Row>}
-          </FalmerDataList>}
+      {loading ? (
+        <Loader />
+      ) : (
+        <FalmerDataList
+          items={allEvents.edges.map(edge => edge.node)}
+          header={rowState => (
+            <Row {...rowState}>
+              <HeaderCell>Title</HeaderCell>
+              <HeaderCell>Start time</HeaderCell>
+              <HeaderCell>End time</HeaderCell>
+            </Row>
+          )}
+          selectable
+        >
+          {(item, rowState) => (
+            <Row {...rowState} id={item.id}>
+              <Cell>
+                <Link to={`/events/${item.eventId}`}>
+                  {item.title}
+                  {item.children.length > 0 ? (
+                    <span>({item.children.length} children)</span>
+                  ) : null}
+                </Link>
+              </Cell>
+              <Cell>
+                {formatDate(new Date(item.startTime), 'ddd Do MMM, HH:mm')}
+              </Cell>
+              <Cell>
+                {formatDate(new Date(item.endTime), 'ddd Do MMM, HH:mm')}
+              </Cell>
+            </Row>
+          )}
+        </FalmerDataList>
+      )}
     </div>
   );
 }

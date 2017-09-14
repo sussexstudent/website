@@ -7,8 +7,9 @@ import LogoContentPage from '../LogoContentPage.svg';
 import WhatsOnFAQ from './WhatsOnFAQ';
 import getApolloClientForFalmer from '../../../../libs/getApolloClientForFalmer';
 
-const EventsPage = () =>
-  <EventsContainer filter={{ brandId: 2 }} disableHeader useAnchors />;
+const EventsPage = () => (
+  <EventsContainer filter={{ brandId: 2 }} disableHeader useAnchors />
+);
 
 function FreshersWhatsOn() {
   return (
@@ -21,9 +22,7 @@ function FreshersWhatsOn() {
             alt="Freshers Week 2017"
           />
         </Link>
-        <h1 className="FreshersHeading">
-          {`What's on`}
-        </h1>
+        <h1 className="FreshersHeading">{`What's on`}</h1>
         <div className="FreshersGrid--2 FreshersShell">
           <div>
             <h2>About</h2>

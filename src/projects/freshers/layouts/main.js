@@ -10,7 +10,7 @@ e.parentNode.insertBefore(U,e)}(window,document,'ga');
 ga('create', 'UA-258929-3', 'auto');
 ga('send', 'pageview');`;
 
-const mainLayout = ({ assets }) =>
+const mainLayout = ({ assets }) => (
   <body className="Body" id="top">
     <div className="Site">
       <main className="Site__content">
@@ -33,7 +33,8 @@ const mainLayout = ({ assets }) =>
         style={{ display: 'none' }}
       />
     </noscript>
-  </body>;
+  </body>
+);
 
 mainLayout.propTypes = {
   assets: PropTypes.shape({

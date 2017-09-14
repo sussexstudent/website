@@ -5,7 +5,7 @@ import HomepageEventsList from '~components/HomepageEventsList';
 import { Hydro as FreshersWeek2017Banner } from '~components/banners/Freshers2017Banner';
 import AdvertBar from '~components/AdvertBar';
 
-const Homepage = () =>
+const Homepage = () => (
   <div className="u-container-bleed-top">
     <AdvertBar className="AdvertBar--mobile-home" position="TopBanner" />
     <div className="Trail">
@@ -15,18 +15,14 @@ const Homepage = () =>
       <div className="Trail__row Trail__row--211">
         <div className="ContentBlock">
           <div className="ContentBlock__heading">News</div>
-          <div className="u-h">
-            {'{unionnewslist}'}
-          </div>
+          <div className="u-h">{'{unionnewslist}'}</div>
           <div className="app__news" />
           <a className="NewsViewMore" href="/news">
             Read more news stories
           </a>
         </div>
         <div className="ContentBlock">
-          <div className="ContentBlock__heading">
-            {"What's on"}
-          </div>
+          <div className="ContentBlock__heading">{"What's on"}</div>
           <HomepageEventsList />
         </div>
         <div className="ContentBlock">
@@ -40,6 +36,7 @@ const Homepage = () =>
 
       <ContentAPIComposer pageId={12} />
     </div>
-  </div>;
+  </div>
+);
 
 export default Homepage;

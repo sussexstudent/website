@@ -43,36 +43,28 @@ class FalmerDataList extends React.Component {
 }
 
 export function HeaderCell(props) {
-  return (
-    <th>
-      {props.children}
-    </th>
-  );
+  return <th>{props.children}</th>;
 }
 
 export function Row(props) {
   return (
     <tr className="FalmerDataList__row" key={props.id}>
-      {props.selectable
-        ? <td>
-            <input
-              type="checkbox"
-              checked={props.isSelected}
-              onChange={props.onChange.bind(null, props.id)}
-            />
-          </td>
-        : null}
+      {props.selectable ? (
+        <td>
+          <input
+            type="checkbox"
+            checked={props.isSelected}
+            onChange={props.onChange.bind(null, props.id)}
+          />
+        </td>
+      ) : null}
       {props.children}
     </tr>
   );
 }
 
 export function Cell(props) {
-  return (
-    <td>
-      {props.children}
-    </td>
-  );
+  return <td>{props.children}</td>;
 }
 
 export default FalmerDataList;

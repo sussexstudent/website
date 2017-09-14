@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import NewsGrid from './index';
 
 storiesOf('NewsBlock', module)
-  .add('with images', () =>
+  .add('with images', () => (
     <NewsGrid
       items={[
         {
@@ -16,8 +16,8 @@ storiesOf('NewsBlock', module)
       ]}
       fullWidth
     />
-  )
-  .add('without image', () =>
+  ))
+  .add('without image', () => (
     <NewsGrid
       items={[
         {
@@ -29,4 +29,4 @@ storiesOf('NewsBlock', module)
       ]}
       fullWidth
     />
-  );
+  ));

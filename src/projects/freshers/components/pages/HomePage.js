@@ -65,9 +65,7 @@ function FreshersHomepage() {
             />
           </div>
           <div className="FreshersBox__content">
-            <h2>
-              {"What does the Students' Union do?"}
-            </h2>
+            <h2>{"What does the Students' Union do?"}</h2>
             <p>
               {
                 "The Students' Union is run for and by students, and provides students with an opportunity to get involved in a variety of activities."

@@ -8,11 +8,7 @@ import FauxRouterLink from '../FauxRouterLink';
 
 function renderEventLocation(event) {
   if (!event.venue) {
-    return (
-      <span>
-        {event.locationDisplay}
-      </span>
-    );
+    return <span>{event.locationDisplay}</span>;
   }
 
   if (event.venue.websiteLink) {
@@ -23,11 +19,7 @@ function renderEventLocation(event) {
     );
   }
 
-  return (
-    <span>
-      {event.locationDisplay || event.venue.name}
-    </span>
-  );
+  return <span>{event.locationDisplay || event.venue.name}</span>;
 }
 
 function getTreat(event) {
@@ -49,44 +41,42 @@ function EventsCalenderItem({ part, useAnchors }) {
 
   return (
     <div className="EventsCalender__item">
-      {event.url !== ''
-        ? <FauxLink href={event.url} />
-        : <FauxFalmerLink
-            href={
-              useAnchors
-                ? `/whats-on/${event.slug}-${event.eventId}`
-                : `/${event.slug}-${event.eventId}`
-            }
-          />}
-      {has(part, 'event.featuredImage.resource')
-        ? <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
-            <Image src={event.featuredImage.resource} lazy />
-            {treat !== null
-              ? <div className="EventsCalender__item-image-treat">
-                  {treat}
-                </div>
-              : null}
-          </div>
-        : null}
-      {event.bundle !== null
-        ? <div className="EventsCalender__item-banner EventsCalender__item-banner--bundle">
-            {event.bundle.name}
-          </div>
-        : null}
-      {event.ticketType !== 'NA' && event.ticketLevel !== 'SO'
-        ? <div className="EventsCalender__item-banner EventsCalender__item-banner--tickets">
-            Buy Tickets
-          </div>
-        : null}
+      {event.url !== '' ? (
+        <FauxLink href={event.url} />
+      ) : (
+        <FauxFalmerLink
+          href={
+            useAnchors ? (
+              `/whats-on/${event.slug}-${event.eventId}`
+            ) : (
+              `/${event.slug}-${event.eventId}`
+            )
+          }
+        />
+      )}
+      {has(part, 'event.featuredImage.resource') ? (
+        <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
+          <Image src={event.featuredImage.resource} lazy />
+          {treat !== null ? (
+            <div className="EventsCalender__item-image-treat">{treat}</div>
+          ) : null}
+        </div>
+      ) : null}
+      {event.bundle !== null ? (
+        <div className="EventsCalender__item-banner EventsCalender__item-banner--bundle">
+          {event.bundle.name}
+        </div>
+      ) : null}
+      {event.ticketType !== 'NA' && event.ticketLevel !== 'SO' ? (
+        <div className="EventsCalender__item-banner EventsCalender__item-banner--tickets">
+          Buy Tickets
+        </div>
+      ) : null}
       <div className="EventsCalender__item-container">
-        {event.kicker
-          ? <div className="EventsCalender__item-kicker">
-              {event.kicker}
-            </div>
-          : null}
-        <h2 className="EventsCalender__item-title">
-          {event.title}
-        </h2>
+        {event.kicker ? (
+          <div className="EventsCalender__item-kicker">{event.kicker}</div>
+        ) : null}
+        <h2 className="EventsCalender__item-title">{event.title}</h2>
         <div className="EventsCalender__item-description">
           {event.shortDescription}
         </div>

@@ -28,12 +28,8 @@ function getGreeting() {
 function StatsCard({ stat, subtitle }) {
   return (
     <ContentCard>
-      <div className="Heading Heading--big">
-        {stat}
-      </div>
-      <div>
-        {subtitle}
-      </div>
+      <div className="Heading Heading--big">{stat}</div>
+      <div>{subtitle}</div>
     </ContentCard>
   );
 }
@@ -46,23 +42,21 @@ function FalmerDashboard({
       <Helmet>
         <title>Dashboard</title>
       </Helmet>
-      <h1 className="Heading">
-        {getGreeting()}
-      </h1>
+      <h1 className="Heading">{getGreeting()}</h1>
 
-      {loading
-        ? null
-        : <div
-            style={{
-              display: 'flex',
-              textAlign: 'center',
-              justifyContent: 'space-around',
-            }}
-          >
-            <StatsCard stat={allEvents.totalCount} subtitle="Events" />
-            <StatsCard stat={allGroups.totalCount} subtitle="Student Groups" />
-            <StatsCard stat={allImages.totalCount} subtitle="Images" />
-          </div>}
+      {loading ? null : (
+        <div
+          style={{
+            display: 'flex',
+            textAlign: 'center',
+            justifyContent: 'space-around',
+          }}
+        >
+          <StatsCard stat={allEvents.totalCount} subtitle="Events" />
+          <StatsCard stat={allGroups.totalCount} subtitle="Student Groups" />
+          <StatsCard stat={allImages.totalCount} subtitle="Images" />
+        </div>
+      )}
     </div>
   );
 }

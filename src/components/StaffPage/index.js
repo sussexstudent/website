@@ -7,11 +7,12 @@ import ContentCard from '../ContentCard';
 // import VisibleChildWatcher from '../VisibleChildWatcher';
 
 const components = {
-  heading: ({ value }) =>
+  heading: ({ value }) => (
     <h1>
       <span className="u-position-anchor" id={slugify(value)} />
       {value}
-    </h1>,
+    </h1>
+  ),
   staff_list: StaffList,
 };
 
@@ -79,16 +80,16 @@ class StaffPage extends React.Component {
           <aside />
         </div>
         <div>
-          {levels.map(({ value, _children = null, ...partData }) =>
+          {levels.map(({ value, _children = null, ...partData }) => (
             <ContentCard>
               {getComponent(value, partData, slugify(value))}
-              {_children !== null
-                ? _children.map(element =>
-                    getComponent(element, data, slugify(element.value.heading))
-                  )
-                : null}
+              {_children !== null ? (
+                _children.map(element =>
+                  getComponent(element, data, slugify(element.value.heading))
+                )
+              ) : null}
             </ContentCard>
-          )}
+          ))}
         </div>
       </div>
     );

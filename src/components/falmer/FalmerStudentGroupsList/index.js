@@ -8,29 +8,29 @@ import Loader from '../../Loader';
 function FalmerStudentGroupsList({ data: { loading, allGroups } }) {
   return (
     <div>
-      {loading
-        ? <Loader />
-        : <FalmerDataList
-            items={allGroups.edges.map(edge => edge.node)}
-            header={rowState =>
-              <Row {...rowState}>
-                <HeaderCell>Name</HeaderCell>
-                <HeaderCell>Prospective</HeaderCell>
-              </Row>}
-            selectable
-          >
-            {(item, rowState) =>
-              <Row {...rowState} id={item.id}>
-                <Cell>
-                  <Link to={`/groups/${item.groupId}`}>
-                    {item.name}
-                  </Link>
-                </Cell>
-                <Cell>
-                  {item.isProspective ? 'yes' : ''}
-                </Cell>
-              </Row>}
-          </FalmerDataList>}
+      {loading ? (
+        <Loader />
+      ) : (
+        <FalmerDataList
+          items={allGroups.edges.map(edge => edge.node)}
+          header={rowState => (
+            <Row {...rowState}>
+              <HeaderCell>Name</HeaderCell>
+              <HeaderCell>Prospective</HeaderCell>
+            </Row>
+          )}
+          selectable
+        >
+          {(item, rowState) => (
+            <Row {...rowState} id={item.id}>
+              <Cell>
+                <Link to={`/groups/${item.groupId}`}>{item.name}</Link>
+              </Cell>
+              <Cell>{item.isProspective ? 'yes' : ''}</Cell>
+            </Row>
+          )}
+        </FalmerDataList>
+      )}
     </div>
   );
 }

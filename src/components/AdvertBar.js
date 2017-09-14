@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MSLTag from './MSLTag';
 
-const AdvertBar = ({ className = '', position, dark = false }) =>
+const AdvertBar = ({ className = '', position, dark = false }) => (
   <div
     className={cx('AdvertBar', 'advert', className, {
       'AdvertBar--dark': dark,
@@ -15,7 +15,8 @@ const AdvertBar = ({ className = '', position, dark = false }) =>
         __html: MSLTag('Advert', { Position: position }),
       }}
     />
-  </div>;
+  </div>
+);
 
 AdvertBar.propTypes = {
   position: PropTypes.string.isRequired,

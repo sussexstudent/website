@@ -1,7 +1,7 @@
 import React from 'react';
 import SelectionGridItem from '~components/SelectionGridItem';
 
-const Support = () =>
+const Support = () => (
   <div className="Container">
     <ul className="SelectionGrid">
       <SelectionGridItem
@@ -35,6 +35,7 @@ const Support = () =>
         imageURL="/pageassets/support/support2.jpg"
       />
     </ul>
-  </div>;
+  </div>
+);
 
 export default Support;

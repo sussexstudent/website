@@ -208,9 +208,7 @@ class SearchPage extends React.Component {
 
     return (
       <div className="SearchMeta">
-        <div className="Container">
-          {content}
-        </div>
+        <div className="Container">{content}</div>
       </div>
     );
   }
@@ -231,17 +229,17 @@ class SearchPage extends React.Component {
           ref={ref => (this.searchContainerRef = ref)}
         >
           <div className="Container">
-            {results !== null && results[currentArea].length > 0
-              ? <ul
-                  className={cx('ResultsList', {
-                    'ResultsList--stale': isLoading,
-                  })}
-                >
-                  {results[currentArea].map(item =>
-                    <SearchResult key={item} item={results.results[item]} />
-                  )}
-                </ul>
-              : null}
+            {results !== null && results[currentArea].length > 0 ? (
+              <ul
+                className={cx('ResultsList', {
+                  'ResultsList--stale': isLoading,
+                })}
+              >
+                {results[currentArea].map(item => (
+                  <SearchResult key={item} item={results.results[item]} />
+                ))}
+              </ul>
+            ) : null}
           </div>
         </div>
       </div>

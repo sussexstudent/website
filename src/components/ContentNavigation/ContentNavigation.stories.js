@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import ContentNavigation from './index';
 
-storiesOf('ContentNavigation', module).add('default', () =>
+storiesOf('ContentNavigation', module).add('default', () => (
   <ContentNavigation
     activeKey="boats"
     items={[
@@ -11,4 +11,4 @@ storiesOf('ContentNavigation', module).add('default', () =>
       { anchor: 'cars', name: 'Cars' },
     ]}
   />
-);
+));

@@ -12,42 +12,42 @@ function FalmerEventsDetail({ data: { loading, event } }) {
   return (
     <div>
       <Helmet>
-        <title>
-          {`${!loading && event.title} | Events`}
-        </title>
+        <title>{`${!loading && event.title} | Events`}</title>
       </Helmet>
-      {loading
-        ? <Loader />
-        : <div>
-            <h2 className="Heading Heading--medium">
-              {event.title}
-            </h2>
-            <CopyToClipboardButton
-              value={`https://falmer.sussexstudent.com/o/e/${event.eventId}`}
-            >
-              Copy sharing link
-            </CopyToClipboardButton>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div>
+          <h2 className="Heading Heading--medium">{event.title}</h2>
+          <CopyToClipboardButton
+            value={`https://falmer.sussexstudent.com/o/e/${event.eventId}`}
+          >
+            Copy sharing link
+          </CopyToClipboardButton>
+          <div>
+            <h2 className="Heading Heading--standard">Images</h2>
+            {event.featuredImage ? (
+              <ImageTreatmentPreview image={event.featuredImage} />
+            ) : (
+              <em>No image attached to this event</em>
+            )}
+          </div>
+          {event.children.length > 0 ? (
             <div>
-              <h2 className="Heading Heading--standard">Images</h2>
-              {event.featuredImage
-                ? <ImageTreatmentPreview image={event.featuredImage} />
-                : <em>No image attached to this event</em>}
+              <h2 className="Heading Heading--standard">Sub-events</h2>
+              <ul>
+                {event.children.map(subEvent => (
+                  <li>
+                    <Link to={`/events/${subEvent.eventId}`}>
+                      {subEvent.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            {event.children.length > 0
-              ? <div>
-                  <h2 className="Heading Heading--standard">Sub-events</h2>
-                  <ul>
-                    {event.children.map(subEvent =>
-                      <li>
-                        <Link to={`/events/${subEvent.eventId}`}>
-                          {subEvent.title}
-                        </Link>
-                      </li>
-                    )}
-                  </ul>
-                </div>
-              : null}
-          </div>}
+          ) : null}
+        </div>
+      )}
 
       <Modal
         isOpen

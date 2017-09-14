@@ -18,22 +18,20 @@ function Tweet({ isQuoted, data }) {
     {
       className: cx('Tweet', { 'Tweet--quoted': isQuoted }),
     },
-    isRetweet
-      ? <div className="Tweet__header">
-          <span className="Tweet__retweeted">
-            {data.user.name} Retweeted
-          </span>
-        </div>
-      : null,
+    isRetweet ? (
+      <div className="Tweet__header">
+        <span className="Tweet__retweeted">{data.user.name} Retweeted</span>
+      </div>
+    ) : null,
     <TweetHeader user={tweet.user} />,
     <div>
       <TweetContent tweet={tweet} />
       <TweetAttachment tweet={tweet} />
-      {hasQuote
-        ? <div className="Tweet__quoted">
-            <Tweet data={tweet.quoted_status} isQuoted />
-          </div>
-        : null}
+      {hasQuote ? (
+        <div className="Tweet__quoted">
+          <Tweet data={tweet.quoted_status} isQuoted />
+        </div>
+      ) : null}
       {!isQuoted ? <TweetPermalink tweet={tweet} /> : null}
     </div>,
     <a

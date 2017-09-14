@@ -30,9 +30,7 @@ class FeedbackButton extends React.Component {
     if (hasGivenFeedback) {
       return (
         <div className="FeedbackButton">
-          <div className="FeedbackButton__feedbackGiven">
-            {givenText}
-          </div>
+          <div className="FeedbackButton__feedbackGiven">{givenText}</div>
         </div>
       );
     }

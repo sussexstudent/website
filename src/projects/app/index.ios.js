@@ -2,6 +2,7 @@ import { Platform } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { registerScreens, registerScreenVisibilityListener } from './screens';
 import getApolloClientForFalmer from './getApolloClientForFalmer';
+import { colors } from './vars';
 
 // screen related book keeping
 registerScreens({}, getApolloClientForFalmer);
@@ -17,7 +18,7 @@ const tabs = [
   {
     label: 'Groups',
     screen: 'ussu.Groups',
-    icon: require('./img/TabBalloon.png'),
+    icon: require('./img/TabGroups.png'),
     title: 'Student Groups',
   },
 ];
@@ -36,15 +37,15 @@ Navigation.startTabBasedApp({
   tabs,
   animationType: Platform.OS === 'ios' ? 'slide-down' : 'fade',
   tabsStyle: {
-    tabBarBackgroundColor: '#003a66',
+    tabBarBackgroundColor: colors.brandRed,
     navBarButtonColor: '#ffffff',
     tabBarButtonColor: '#ffffff',
     navBarTextColor: '#ffffff',
-    tabBarSelectedButtonColor: '#ff505c',
-    navigationBarColor: '#003a66',
-    navBarBackgroundColor: '#003a66',
+    tabBarSelectedButtonColor: '#ffffff',
+    navigationBarColor: colors.brandRed,
+    navBarBackgroundColor: colors.brandRed,
     statusBarColor: '#002b4c',
-    tabFontFamily: 'BioRhyme-Bold',
+    tabFontFamily: 'San Francisco, Roboto',
   },
   appStyle: {
     tabBarBackgroundColor: '#1db8a4',
@@ -52,10 +53,10 @@ Navigation.startTabBasedApp({
     tabBarButtonColor: '#ffffff',
     navBarTextColor: '#ffffff',
     tabBarSelectedButtonColor: '#ff505c',
-    navigationBarColor: '#1db8a4',
-    navBarBackgroundColor: '#1db8a4',
-    statusBarColor: '#1db8a4',
-    tabFontFamily: 'BioRhyme-Bold',
+    navigationBarColor: colors.brandGreen,
+    navBarBackgroundColor: colors.brandGreen,
+    statusBarColor: colors.brandGreen,
+    tabFontFamily: 'San Francisco, Roboto',
   },
   // drawer: {
   //   left: {

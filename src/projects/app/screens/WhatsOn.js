@@ -3,11 +3,19 @@ import {
   StyleSheet,
   View,
   Text,
-  FlatList,
+  SectionList,
   Image,
   TouchableOpacity,
 } from 'react-native';
 import { graphql, gql } from 'react-apollo';
+import format from 'date-fns/format';
+import CardDescription from '../components/CardDescription';
+import Card from '../components/Card';
+import CardContent from '../components/CardContent';
+import CardImage from '../components/CardImage';
+import CardTitle from '../components/CardTitle';
+import CardBanner from '../components/CardBanner';
+import { colors } from '../vars';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,26 +42,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  eventCard: {
-    marginBottom: 20,
-    shadowColor: '#555',
-    shadowOpacity: 0.15,
-    shadowRadius: 2,
-    shadowOffset: { width: 0, height: 1 },
-    borderRadius: 2,
-    backgroundColor: '#fff',
-    marginLeft: 20,
-    marginRight: 20,
-  },
-  eventImage: {
-    width: 200,
-    height: 80,
-  },
-  eventImageContainer: {
-    borderTopLeftRadius: 2,
-    borderTopRightRadius: 2,
-    overflow: 'hidden',
-  },
 });
 
 function TabWhatsOn({ data: { allEvents, loading }, navigator }) {
@@ -62,11 +50,12 @@ function TabWhatsOn({ data: { allEvents, loading }, navigator }) {
       {loading ? (
         <Text>Loading</Text>
       ) : (
-        <FlatList
+        <SectionList
           data={allEvents.edges}
           keyExtractor={item => item.node.id}
+          renderSectionHeader={() => <Text>{}</Text>}
           renderItem={({ item }) => (
-            <View style={styles.eventCard}>
+            <Card>
               <TouchableOpacity
                 onPress={() =>
                   navigator.push({
@@ -77,21 +66,35 @@ function TabWhatsOn({ data: { allEvents, loading }, navigator }) {
                   })}
               >
                 {item.node.featuredImage !== null ? (
-                  <View style={styles.eventImageContainer}>
-                    <Image
-                      style={styles.eventImage}
-                      source={{
-                        uri: `https://su.imgix.net/${item.node.featuredImage
-                          .resource}?w=400&h=160`,
-                      }}
-                    />
-                  </View>
+                  <CardImage image={item.node.featuredImage} />
                 ) : null}
-                <Text>
-                  {item.node.title} @ {item.node.locationDisplay}
-                </Text>
+                {item.node.bundle ? (
+                  <CardBanner color="#fbaa05">
+                    {item.node.bundle.name}
+                  </CardBanner>
+                ) : null}
+                {item.node.ticketType !== 'NA' && item.node.ticketLevel !== 'SO' ? (
+                  <CardBanner color={colors.brandGreen}>
+                    {'Buy tickets'}
+                  </CardBanner>
+                ) : null}
+                <CardContent>
+                  <CardTitle>{item.node.title}</CardTitle>
+
+                  <CardDescription>
+                    {item.node.shortDescription}
+                  </CardDescription>
+
+                  <Text>
+                    {`${format(
+                      new Date(item.node.startTime),
+                      'h:mma'
+                    )}-${format(new Date(item.node.endTime), 'h:mma')}`}{' '}
+                    / {item.node.locationDisplay}
+                  </Text>
+                </CardContent>
               </TouchableOpacity>
-            </View>
+            </Card>
           )}
         />
       )}
@@ -108,6 +111,18 @@ export default graphql(gql`
           eventId
           title
           locationDisplay
+          shortDescription
+          startTime
+          endTime
+          ticketLevel
+          ticketType
+          bundle {
+            name
+          }
+          venue {
+            name
+          }
+          kicker
           featuredImage {
             resource
           }

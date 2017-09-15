@@ -1,6 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text, FlatList, Image } from 'react-native';
 import { graphql, gql } from 'react-apollo';
+import CardDescription from '../components/CardDescription';
+import Card from '../components/Card';
+import CardContent from '../components/CardContent';
+import CardTitle from '../components/CardTitle';
+import CardImage from '../components/CardImage';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,18 +27,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  eventCard: {
-    padding: 20,
-    marginBottom: 20,
-    shadowColor: '#555',
-    shadowOpacity: 0.15,
-    shadowRadius: 2,
-    shadowOffset: { width: 0, height: 1 },
-    borderRadius: 2,
-    backgroundColor: '#fff',
-    marginLeft: 20,
-    marginRight: 20,
-  },
   title: {
     fontSize: 20,
   },
@@ -53,19 +46,15 @@ function TabStudentGroup({ data: { allGroups, loading } }) {
           data={allGroups.edges}
           keyExtractor={item => item.node.id}
           renderItem={({ item }) => (
-            <View style={styles.eventCard}>
+            <Card>
               {item.node.logo !== null ? (
-                <Image
-                  style={{ width: 200, height: 80 }}
-                  source={{
-                    uri: `https://su.imgix.net/${item.node.logo
-                      .resource}?w=400&h=160`,
-                  }}
-                />
+                <CardImage image={item.node.logo} />
               ) : null}
-              <Text style={styles.title}>{item.node.name}</Text>
-              <Text style={styles.description}>{item.node.description}</Text>
-            </View>
+              <CardContent>
+                <CardTitle>{item.node.name}</CardTitle>
+                <CardDescription>{item.node.description}</CardDescription>
+              </CardContent>
+            </Card>
           )}
         />
       )}

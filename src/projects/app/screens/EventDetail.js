@@ -4,6 +4,8 @@ import Dimensions from 'Dimensions';
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
 import { graphql, gql } from 'react-apollo';
 import format from 'date-fns/format';
+import HTMLContentRenderer from '../components/HTMLContentRenderer';
+import DetailContent from "../components/DetailContent";
 
 const styles = StyleSheet.create({
   container: {
@@ -42,20 +44,22 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
+    fontWeight: '700',
   },
   location: {
     fontSize: 18,
+    fontWeight: '700',
   },
   infoContainer: {
     paddingTop: 170,
   },
   infoContainerInner: {
-    paddingTop: 20,
     backgroundColor: '#fff',
     shadowColor: '#555',
     shadowOpacity: 0.35,
     shadowRadius: 4,
     shadowOffset: { width: 0, height: -1 },
+    flex: 1,
   },
 });
 
@@ -64,6 +68,16 @@ function getSize() {
     width: Dimensions.get('window').width,
   };
 }
+
+const EventDetailItem = ({ image, children }) => (
+  <View>
+    <Text>
+      <Image source={image} />
+      {children}
+    </Text>
+  </View>
+);
+
 function TabWhatsOn({ data: { event, loading } }) {
   return (
     <View style={styles.tabContent}>
@@ -91,12 +105,19 @@ function TabWhatsOn({ data: { event, loading } }) {
 
           <ScrollView style={styles.infoContainer}>
             <View style={styles.infoContainerInner}>
-              <Text style={styles.title}>{event.title}</Text>
-              <Text style={styles.location}>{event.locationDisplay}</Text>
-              <Text style={styles.time}>
-                {format(new Date(event.startTime), 'dddd Do hh:mma')}
-              </Text>
-              <Text style={styles.description}>{event.shortDescription}</Text>
+              <DetailContent>
+                <Text style={styles.title}>{event.title}</Text>
+                <EventDetailItem image={require('../img/EventsCalender.png')}>
+                  {format(new Date(event.startTime), 'dddd Do MMMM')}
+                </EventDetailItem>
+                <EventDetailItem image={require('../img/EventsClock.png')}>
+                  {`${format(new Date(event.startTime), 'h:mma')}-${format(new Date(event.endTime), 'h:mma')}`}
+                </EventDetailItem>
+                <EventDetailItem image={require('../img/EventsPin.png')}>
+                  {event.locationDisplay}
+                </EventDetailItem>
+                <HTMLContentRenderer content={event.bodyHtml} />
+              </DetailContent>
             </View>
           </ScrollView>
         </View>

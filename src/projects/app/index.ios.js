@@ -1,98 +1,65 @@
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  TabBarIOS,
-} from 'react-native';
-import { ApolloProvider } from 'react-apollo';
-import ApolloClientForFalmer from './getApolloClientForFalmer';
-import TabWhatsOn from './WhatsOn';
-import StudentGroupList from './StudentGroupList';
+import { Platform } from 'react-native';
+import { Navigation } from 'react-native-navigation';
+import { registerScreens, registerScreenVisibilityListener } from './screens';
+import getApolloClientForFalmer from './getApolloClientForFalmer';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#fbfbfb',
+// screen related book keeping
+registerScreens({}, getApolloClientForFalmer);
+registerScreenVisibilityListener();
+
+const tabs = [
+  {
+    label: `What's on`,
+    screen: 'ussu.WhatsOn',
+    icon: require('./img/TabBalloon.png'),
+    title: "What's on",
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  {
+    label: 'Groups',
+    screen: 'ussu.Groups',
+    icon: require('./img/TabBalloon.png'),
+    title: 'Student Groups',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+];
+//
+// if (Platform.OS === 'android') {
+//   tabs.push({
+//     label: 'Transitions',
+//     screen: 'example.Transitions',
+//     icon: require('../img/transform.png'),
+//     title: 'Navigation Transitions',
+//   });
+// }
+
+// this will start our app
+Navigation.startTabBasedApp({
+  tabs,
+  animationType: Platform.OS === 'ios' ? 'slide-down' : 'fade',
+  tabsStyle: {
+    tabBarBackgroundColor: '#003a66',
+    navBarButtonColor: '#ffffff',
+    tabBarButtonColor: '#ffffff',
+    navBarTextColor: '#ffffff',
+    tabBarSelectedButtonColor: '#ff505c',
+    navigationBarColor: '#003a66',
+    navBarBackgroundColor: '#003a66',
+    statusBarColor: '#002b4c',
+    tabFontFamily: 'BioRhyme-Bold',
   },
-  tabContent: {
-    flex: 1,
-    alignItems: 'center',
+  appStyle: {
+    tabBarBackgroundColor: '#1db8a4',
+    navBarButtonColor: '#ffffff',
+    tabBarButtonColor: '#ffffff',
+    navBarTextColor: '#ffffff',
+    tabBarSelectedButtonColor: '#ff505c',
+    navigationBarColor: '#1db8a4',
+    navBarBackgroundColor: '#1db8a4',
+    statusBarColor: '#1db8a4',
+    tabFontFamily: 'BioRhyme-Bold',
   },
-  tabText: {
-    margin: 50,
-    fontSize: 40,
-  },
+  // drawer: {
+  //   left: {
+  //     screen: 'example.Types.Drawer',
+  //   },
+  // },
 });
-
-const TabGroups = () => (
-  <View style={styles.tabContent}>
-    <Text style={styles.tabText}>Student Groups</Text>
-  </View>
-);
-
-const TabFeedback = () => (
-  <View style={styles.tabContent}>
-    <Text style={styles.tabText}>Feedback</Text>
-  </View>
-);
-
-export default class app extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { selectedTab: 'tabFavorites' };
-  }
-
-  setTab(tabId) {
-    this.setState({ selectedTab: tabId });
-  }
-
-  render() {
-    return (
-      <ApolloProvider client={ApolloClientForFalmer}>
-        <View style={styles.container}>
-          <TabBarIOS>
-            <TabBarIOS.Item
-              title="What's on"
-              icon={require('./img/TabBalloon.png')}
-              selected={this.state.selectedTab === 'tabFavorites'}
-              onPress={() => this.setTab('tabFavorites')}
-            >
-              <TabWhatsOn />
-            </TabBarIOS.Item>
-
-            <TabBarIOS.Item
-              title="Groups"
-              selected={this.state.selectedTab === 'tabDownloads'}
-              onPress={() => this.setTab('tabDownloads')}
-            >
-              <StudentGroupList />
-            </TabBarIOS.Item>
-
-            <TabBarIOS.Item
-              title="Feedback"
-              selected={this.state.selectedTab === 'tabMore'}
-              onPress={() => this.setTab('tabMore')}
-            >
-              <TabFeedback />
-            </TabBarIOS.Item>
-          </TabBarIOS>
-        </View>
-      </ApolloProvider>
-    );
-  }
-}
-
-AppRegistry.registerComponent('app', () => app);

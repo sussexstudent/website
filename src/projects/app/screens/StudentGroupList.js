@@ -22,10 +22,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  tabText: {
-    margin: 50,
-    fontSize: 40,
-  },
   eventCard: {
     padding: 20,
     marginBottom: 20,
@@ -35,6 +31,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     borderRadius: 2,
     backgroundColor: '#fff',
+    marginLeft: 20,
+    marginRight: 20,
   },
   title: {
     fontSize: 20,
@@ -48,7 +46,6 @@ const styles = StyleSheet.create({
 function TabStudentGroup({ data: { allGroups, loading } }) {
   return (
     <View style={styles.tabContent}>
-      <Text style={styles.tabText}>{`Student Groups`}</Text>
       {loading ? (
         <Text>Loading</Text>
       ) : (

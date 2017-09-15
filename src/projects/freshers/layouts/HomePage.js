@@ -54,8 +54,7 @@ function FreshersPage() {
         <li>
           <h1>Work for us</h1>
           <p>
-            {`Applications to work in the Students' Union's shops and bars will be
-            opening very soon. Sign up for our vacancy notification service for
+            {`Sign up for our vacancy notification service for
             updates on vacancies!`}
           </p>
           <a href="http://sussexstudent.com/about-us/jobs/">

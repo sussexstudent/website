@@ -15,6 +15,9 @@ import getMonth from 'date-fns/get_month';
 import addMonths from 'date-fns/add_months';
 import setHours from 'date-fns/set_hours';
 import addDays from 'date-fns/add_days';
+import getDayOfYear from 'date-fns/get_day_of_year';
+import isToday from 'date-fns/is_today';
+import isTomorrow from 'date-fns/is_tomorrow';
 import formatDate from 'date-fns/format';
 import Loader from '~components/Loader';
 import HydroLeaf from '~components/HydroLeaf';
@@ -31,7 +34,7 @@ const EVENT_PART = {
 };
 const weekFromNow = setHours(addDays(new Date(), 7), 0);
 const now = setHours(new Date(), 0);
-
+/* eslint-disable no-nested-ternary */
 function splitEventsInToParts(events) {
   // for all events
   // if single day, add single day event SINGLE
@@ -90,6 +93,24 @@ function poorMonthSort(key) {
   return 2;
 }
 
+function chunkEventsToRows(events) {
+  const eventNest = [];
+  const keysMap = {};
+
+  events.forEach(event => {
+    const dayIndex = getDayOfYear(event.date);
+    if (Object.hasOwnProperty.call(keysMap, dayIndex)) {
+      eventNest[keysMap[dayIndex]].push(event);
+    } else {
+      keysMap[dayIndex] = eventNest.push([event]) - 1;
+    }
+  });
+
+  console.log(eventNest);
+
+  return eventNest;
+}
+
 function organisePartsForUI(eventParts) {
   const orderedParts = sortBy(eventParts, part => part.date);
 
@@ -118,24 +139,32 @@ function organisePartsForUI(eventParts) {
     .map(([key, value]) => ({
       sectionTitle:
         key === '0' ? 'This week' : formatDate(value[0].date, 'MMMM'),
-      parts: value,
+      parts: chunkEventsToRows(value),
     }));
 
   return asList;
 }
 
 function getSmartDate(part) {
-  if (isBefore(part.date, weekFromNow)) {
-    if (
-      part.type === EVENT_PART.SPAN_END &&
-      isBefore(part.event.startDate, now)
-    ) {
-      return `until ${formatDate(part.date, 'dddd')}`;
-    }
+  if (isToday(part.date)) {
+    return 'Today';
+  }
 
-    if (part.type === EVENT_PART.SPAN_START) {
-      return `starts ${formatDate(part.date, 'dddd')}`;
-    }
+  if (isTomorrow(part.date)) {
+    return 'Tomorrow';
+  }
+
+  if (isBefore(part.date, weekFromNow)) {
+    // if (
+    //   part.type === EVENT_PART.SPAN_END &&
+    //   isBefore(part.event.startDate, now)
+    // ) {
+    //   return `until ${formatDate(part.date, 'dddd')}`;
+    // }
+    //
+    // if (part.type === EVENT_PART.SPAN_START) {
+    //   return `starts ${formatDate(part.date, 'dddd')}`;
+    // }
 
     return formatDate(part.date, 'dddd');
   }
@@ -161,6 +190,8 @@ function EventsCalender({
   const eventParts = splitEventsInToParts(events);
   const uiEvents = organisePartsForUI(eventParts);
   // chunk by day
+
+  console.log(uiEvents);
   return (
     <div>
       {disableHeader ? null : (
@@ -183,25 +214,41 @@ function EventsCalender({
           // sectionTitle might not be unique in the future
           <div className="EventsCalender__section" key={sectionTitle}>
             <h2 className="EventsCalender__section-title">{sectionTitle}</h2>
-            <div className="EventsCalender__section-items">
-              {parts.map((part, index) => {
-                const isFirstOfDate =
-                  index < 1 ||
-                  getSmartDate(parts[index - 1]) !== getSmartDate(part);
-                return (
-                  <div className="EventsCalender__part-container" key={index}>
-                    <h3
-                      className={cx('EventsCalender__item-date-kicker', {
-                        'EventsCalender__item-date-kicker--continuation': !isFirstOfDate,
-                      })}
-                    >
-                      {getSmartDate(part)}
-                    </h3>
-                    <EventsCalenderItem part={part} useAnchors={useAnchors} />
-                  </div>
-                );
-              })}
-            </div>
+            {parts.map(chunk => (
+              <div className="EventsCalender__section-items">
+                {chunk.map((part, index) => {
+                  const isFirstOfDate =
+                    index < 1 ||
+                    getSmartDate(chunk[index - 1]) !== getSmartDate(part);
+                  return (
+                    <div className="EventsCalender__part-container" key={index}>
+                      {isFirstOfDate ? (
+                        <h3 className={cx('EventsCalender__item-date-kicker')}>
+                          {getSmartDate(part)}{' '}
+                          <span className="EventsCalender__item-date-kicker--continuation">
+                            {formatDate(
+                              part.date,
+                              isToday(part.date) || isTomorrow(part.date)
+                                ? ' - Do MMMM'
+                                : isBefore(weekFromNow) ? 'Do MMMM' : 'MMMM'
+                            )}
+                          </span>
+                        </h3>
+                      ) : (
+                        <h3
+                          className={cx(
+                            'EventsCalender__item-date-kicker EventsCalender__item-date-kicker--continuation'
+                          )}
+                        >
+                          {formatDate(part.date, 'dddd Do MMMM')}
+                        </h3>
+                      )}
+                      <EventsCalenderItem part={part} useAnchors={useAnchors} />
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
           </div>
         ))}
       </div>

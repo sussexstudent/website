@@ -29,8 +29,13 @@
   }
 
   &__section-items {
+    margin-bottom: 2rem;
     display: flex;
     flex-wrap: wrap;
+
+    & .EventsCalender__part-container:first-child .EventsCalender__item-date-kicker {
+      font-size: 1.3rem;
+    }
   }
 
   &__item {
@@ -83,6 +88,7 @@
 
   &__part-container {
     width: 100%;
+    margin-bottom: 0.5rem;
 
     @media (--medium) {
       width: auto;
@@ -106,6 +112,7 @@
     font-weight: 500;
     color: var(--color__brand-blue);
     font-family: var(--type__secondary);
+    margin-top: 0;
 
     &--continuation {
       opacity: 0;

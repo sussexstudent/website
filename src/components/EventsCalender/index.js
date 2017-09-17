@@ -34,6 +34,7 @@ const EVENT_PART = {
 };
 const weekFromNow = setHours(addDays(new Date(), 7), 0);
 const now = setHours(new Date(), 0);
+const rightNow = new Date();
 /* eslint-disable no-nested-ternary */
 function splitEventsInToParts(events) {
   // for all events
@@ -48,12 +49,17 @@ function splitEventsInToParts(events) {
     // if event.startDate is same day as endDate
     // TODO: Ease nightlife events, keep contained when event only spans to < 6:30am
     if (!event.isOverMultipleDays) {
+      if (isBefore(event.endDate, rightNow)) {
+        return;
+      }
+
       parts.push({
         type: EVENT_PART.CONTAINED,
         eventId: index,
         date: event.startDate,
         event,
       });
+
       return;
     }
 

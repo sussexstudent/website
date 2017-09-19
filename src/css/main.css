@@ -71,6 +71,7 @@
 @import './components/Peekable.css';
 @import './components/Prose.css';
 @import './components/CookieNotice.css';
+@import './components/List.css';
 @import './components/EventDetail.css';
 @import './components/SearchFilterNav.css';
 @import './components/SearchMeta.css';

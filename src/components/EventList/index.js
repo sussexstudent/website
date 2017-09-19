@@ -1,0 +1,59 @@
+import React from 'react';
+import isBefore from 'date-fns/is_before';
+import startOfDay from 'date-fns/start_of_day';
+import subDays from 'date-fns/sub_days';
+import { ApolloProvider, graphql } from 'react-apollo';
+import HydroLeaf from '~components/HydroLeaf';
+import apolloClient from '../../libs/getApolloClientForFalmer';
+import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
+import Loader from '../Loader/index';
+import EventListQuery from './EventList.graphql';
+
+function EventList({ data: { loading, allEvents } }) {
+  if (loading) {
+    return <Loader />;
+  }
+
+  return (
+    <ul className="List List--reset">
+      <li>
+        {allEvents.edges
+          .filter(
+            edge =>
+              !isBefore(
+                new Date(edge.node.startTime),
+                startOfDay(subDays(new Date(), 1))
+              )
+          )
+          .map(edge => (
+            <EventsCalenderItem
+              part={{ event: edge.node }}
+              inline
+              useAnchors
+              showDay
+              relative
+            />
+          ))}
+      </li>
+    </ul>
+  );
+}
+
+const EventListContainer = graphql(EventListQuery, {
+  options: {
+    variables: {
+      fromTime: new Date(),
+    },
+  },
+})(EventList);
+
+function EventsListWrapper() {
+  return (
+    <ApolloProvider client={apolloClient}>
+      <EventListContainer />
+    </ApolloProvider>
+  );
+}
+export default HydroLeaf({ disableSSR: true, name: 'EventList' })(
+  EventsListWrapper
+);

@@ -7,6 +7,8 @@ export default function() {
     ContentAPIComposer: () => import('~components/ContentAPIComposer'),
     TweetList: () =>
       import(/* webpackChunkName: "TweetList" */ '~components/TweetList'),
+    EventList: () =>
+      import(/* webpackChunkName: "EventList" */ '~components/EventList'),
     EventsContainer: () =>
       import(/* webpackChunkName: "EventsPage" */ '~components/EventsCalender'),
     HeaderSearch: () =>

@@ -1,0 +1,21 @@
+query EventList($fromTime: String) {
+  allEvents(filter: { fromTime: $fromTime, toTime: "2017-12-19T00:00:00.000Z" }, first: 6) {
+    edges {
+      node {
+        title
+        slug
+        eventId
+        featuredImage {
+          resource
+        }
+        shortDescription
+        startTime
+        endTime
+        locationDisplay
+        venue {
+          name
+        }
+      }
+    }
+  }
+}

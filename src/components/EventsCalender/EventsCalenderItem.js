@@ -1,6 +1,10 @@
 import React from 'react';
+import cx from 'classnames';
 import has from 'lodash/has';
 import formatDate from 'date-fns/format';
+import isWithinRange from 'date-fns/is_within_range';
+import distanceInWords from 'date-fns/distance_in_words_to_now';
+import subMinutes from 'date-fns/sub_minutes';
 import Image from '../Image';
 import FauxLink from '../FauxLink';
 import FauxRouterLink from '../FauxRouterLink';
@@ -34,14 +38,24 @@ function getTreat(event) {
   return null;
 }
 
-function EventsCalenderItem({ part, useAnchors }) {
+function EventsCalenderItem({
+  part,
+  useAnchors,
+  inline = false,
+  showDay = false,
+  relative = false,
+}) {
   const event = part.event;
   const treat = getTreat(event);
   const FauxFalmerLink = useAnchors ? FauxLink : FauxRouterLink;
 
   return (
-    <div className="EventsCalender__item">
-      {event.url !== '' ? (
+    <div
+      className={cx('EventsCalender__item', {
+        'EventsCalender--inline': inline,
+      })}
+    >
+      {event.url !== undefined && event.url !== '' ? (
         <FauxLink href={event.url} />
       ) : (
         <FauxFalmerLink
@@ -62,12 +76,14 @@ function EventsCalenderItem({ part, useAnchors }) {
           ) : null}
         </div>
       ) : null}
-      {event.bundle !== null ? (
+      {event.bundle !== null && event.bundle !== undefined ? (
         <div className="EventsCalender__item-banner EventsCalender__item-banner--bundle">
           {event.bundle.name}
         </div>
       ) : null}
-      {event.ticketType !== 'NA' && event.ticketLevel !== 'SO' ? (
+      {event.ticketType !== undefined &&
+      event.ticketType !== 'NA' &&
+      event.ticketLevel !== 'SO' ? (
         <div className="EventsCalender__item-banner EventsCalender__item-banner--tickets">
           Buy Tickets
         </div>
@@ -80,7 +96,30 @@ function EventsCalenderItem({ part, useAnchors }) {
         <div className="EventsCalender__item-description">
           {event.shortDescription}
         </div>
+        {relative ? (
+          <div className="EventsCalender__item-meta">
+            {isWithinRange(
+              new Date(),
+              subMinutes(new Date(event.startTime), 90),
+              new Date(event.startTime)
+            ) ? (
+              `Starts in ${distanceInWords(new Date(event.startTime))}`
+            ) : (
+              ''
+            )}
+            {isWithinRange(
+              new Date(),
+              new Date(event.startTime),
+              new Date(event.endTime)
+            ) ? (
+              'On now'
+            ) : (
+              ''
+            )}
+          </div>
+        ) : null}
         <div className="EventsCalender__item-meta">
+          {showDay ? formatDate(new Date(event.startTime), 'ddd ') : ''}
           {formatDate(new Date(event.startTime), 'h:ssa')}
           <span> - </span>
           {formatDate(new Date(event.endTime), 'h:ssa')}

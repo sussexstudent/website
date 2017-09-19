@@ -61,6 +61,12 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: -1 },
     flex: 1,
   },
+  detailItem: {
+    marginBottom: 5,
+  },
+  detailItemImage: {
+    marginRight: 5,
+  },
 });
 
 function getSize() {
@@ -70,9 +76,9 @@ function getSize() {
 }
 
 const EventDetailItem = ({ image, children }) => (
-  <View>
+  <View style={styles.detailItem}>
     <Text>
-      <Image source={image} />
+      <Image style={styles.detailItemImage} source={image} />
       {children}
     </Text>
   </View>

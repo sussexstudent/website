@@ -1,11 +1,17 @@
 import { Platform } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import { registerScreens, registerScreenVisibilityListener } from './screens';
-import getApolloClientForFalmer from './getApolloClientForFalmer';
+import apolloClientForFalmer from './getApolloClientForFalmer';
 import { colors } from './vars';
 
 // screen related book keeping
-registerScreens({}, getApolloClientForFalmer);
+const store = createStore(
+  combineReducers({ apollo: apolloClientForFalmer.reducer() }),
+  {},
+  compose(applyMiddleware(apolloClientForFalmer.middleware()))
+);
+registerScreens(store, apolloClientForFalmer);
 registerScreenVisibilityListener();
 
 const tabs = [

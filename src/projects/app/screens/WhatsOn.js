@@ -3,14 +3,13 @@ import {
   StyleSheet,
   View,
   Text,
-  SectionList,
-  Image,
+  FlatList,
   TouchableOpacity,
 } from 'react-native';
 import { graphql, gql } from 'react-apollo';
 import format from 'date-fns/format';
-import CardDescription from '../components/CardDescription';
 import Card from '../components/Card';
+import CardDescription from '../components/CardDescription';
 import CardContent from '../components/CardContent';
 import CardImage from '../components/CardImage';
 import CardTitle from '../components/CardTitle';
@@ -50,10 +49,10 @@ function TabWhatsOn({ data: { allEvents, loading }, navigator }) {
       {loading ? (
         <Text>Loading</Text>
       ) : (
-        <SectionList
+        <FlatList
           data={allEvents.edges}
           keyExtractor={item => item.node.id}
-          renderSectionHeader={() => <Text>{}</Text>}
+          // renderSectionHeader={() => <Text>{}</Text>}
           renderItem={({ item }) => (
             <Card>
               <TouchableOpacity
@@ -73,7 +72,8 @@ function TabWhatsOn({ data: { allEvents, loading }, navigator }) {
                     {item.node.bundle.name}
                   </CardBanner>
                 ) : null}
-                {item.node.ticketType !== 'NA' && item.node.ticketLevel !== 'SO' ? (
+                {item.node.ticketType !== 'NA' &&
+                item.node.ticketLevel !== 'SO' ? (
                   <CardBanner color={colors.brandGreen}>
                     {'Buy tickets'}
                   </CardBanner>
@@ -102,32 +102,41 @@ function TabWhatsOn({ data: { allEvents, loading }, navigator }) {
   );
 }
 
-export default graphql(gql`
-  query AllEvents {
-    allEvents {
-      edges {
-        node {
-          id
-          eventId
-          title
-          locationDisplay
-          shortDescription
-          startTime
-          endTime
-          ticketLevel
-          ticketType
-          bundle {
-            name
-          }
-          venue {
-            name
-          }
-          kicker
-          featuredImage {
-            resource
+export default graphql(
+  gql`
+    query AllEvents($fromTime: String) {
+      allEvents(filter: { fromTime: $fromTime }) {
+        edges {
+          node {
+            id
+            eventId
+            title
+            locationDisplay
+            shortDescription
+            startTime
+            endTime
+            ticketLevel
+            ticketType
+            bundle {
+              name
+            }
+            venue {
+              name
+            }
+            kicker
+            featuredImage {
+              resource
+            }
           }
         }
       }
     }
+  `,
+  {
+    options: {
+      variables: {
+        fromTime: new Date(),
+      },
+    },
   }
-`)(TabWhatsOn);
+)(TabWhatsOn);

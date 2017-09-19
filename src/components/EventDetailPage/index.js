@@ -118,14 +118,14 @@ class EventDetailPage extends React.Component {
                         'h:mma'
                       )}`}
                     </li>
-                    {event.locationDisplay !== '' ? (
+                    {event.locationDisplay !== '' || event.venue !== null ? (
                       <li className="EventDetail__details-list-item">
                         <img
                           className="EventDetail__icon"
                           src="https://du9l8eemj97rm.cloudfront.net/events-pin.svg"
                           alt=""
                         />
-                        {event.locationDisplay}
+                        {event.locationDisplay || event.venue.name}
                       </li>
                     ) : null}
                     {event.children.length > 0 ? (

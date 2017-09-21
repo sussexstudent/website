@@ -2,28 +2,35 @@ import React from 'react';
 import cx from 'classnames';
 import has from 'lodash/has';
 import formatDate from 'date-fns/format';
-import isWithinRange from 'date-fns/is_within_range';
-import distanceInWords from 'date-fns/distance_in_words_to_now';
-import subMinutes from 'date-fns/sub_minutes';
 import Image from '../Image';
 import FauxLink from '../FauxLink';
 import FauxRouterLink from '../FauxRouterLink';
+import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
+import EventRelativeTime from './EventRelativeTime';
 // import PropTypes from 'prop-types';
 
 function renderEventLocation(event) {
   if (!event.venue) {
-    return <span>{event.locationDisplay}</span>;
+    if (event.locationDisplay === '') {
+      return null;
+    }
+
+    return <span> / {event.locationDisplay}</span>;
   }
 
   if (event.venue.websiteLink) {
     return (
-      <a href={event.venue.websiteLink}>
-        {event.locationDisplay || event.venue.name}
-      </a>
+      <span>
+        {' '}
+        /{' '}
+        <a href={event.venue.websiteLink}>
+          {event.locationDisplay || event.venue.name}
+        </a>
+      </span>
     );
   }
 
-  return <span>{event.locationDisplay || event.venue.name}</span>;
+  return <span> / {event.locationDisplay || event.venue.name}</span>;
 }
 
 function getTreat(event) {
@@ -58,15 +65,7 @@ function EventsCalenderItem({
       {event.url !== undefined && event.url !== '' ? (
         <FauxLink href={event.url} />
       ) : (
-        <FauxFalmerLink
-          href={
-            useAnchors ? (
-              `/whats-on/${event.slug}-${event.eventId}`
-            ) : (
-              `/${event.slug}-${event.eventId}`
-            )
-          }
-        />
+        <FauxFalmerLink href={`/whats-on/${event.slug}-${event.eventId}`} />
       )}
       {has(part, 'event.featuredImage.resource') ? (
         <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
@@ -92,38 +91,18 @@ function EventsCalenderItem({
         {event.kicker ? (
           <div className="EventsCalender__item-kicker">{event.kicker}</div>
         ) : null}
-        <h2 className="EventsCalender__item-title">{event.title}</h2>
+        <h2 className="EventsCalender__item-title">
+          {event.title}
+          {relative ? <EventRelativeTime /> : null}
+        </h2>
         <div className="EventsCalender__item-description">
           {event.shortDescription}
         </div>
-        {relative ? (
-          <div className="EventsCalender__item-meta">
-            {isWithinRange(
-              new Date(),
-              subMinutes(new Date(event.startTime), 90),
-              new Date(event.startTime)
-            ) ? (
-              `Starts in ${distanceInWords(new Date(event.startTime))}`
-            ) : (
-              ''
-            )}
-            {isWithinRange(
-              new Date(),
-              new Date(event.startTime),
-              new Date(event.endTime)
-            ) ? (
-              'On now'
-            ) : (
-              ''
-            )}
-          </div>
-        ) : null}
         <div className="EventsCalender__item-meta">
           {showDay ? formatDate(new Date(event.startTime), 'ddd ') : ''}
-          {formatDate(new Date(event.startTime), 'h:ssa')}
-          <span> - </span>
-          {formatDate(new Date(event.endTime), 'h:ssa')}
-          <span> / </span>
+          {minimalisticTimeRenderer(new Date(event.startTime))}
+          <span> – </span>
+          {minimalisticTimeRenderer(new Date(event.endTime))}
           {renderEventLocation(event)}
         </div>
       </div>

@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import isFunction from 'lodash/isFunction';
+import { ApolloProvider } from 'react-apollo';
+import { BrowserRouter } from 'react-router-dom';
+import getApolloClientForFalmer from '../libs/getApolloClientForFalmer';
+import ScrollToTop from '../components/ScrollToTop';
 
 export default function() {
   const componentMap = {
@@ -49,7 +53,16 @@ export default function() {
         component => (!isFunction(component) ? component.default : component)
       )
       .then(Component => {
-        ReactDOM.render(<Component {...props} />, el);
+        ReactDOM.render(
+          <ApolloProvider client={getApolloClientForFalmer}>
+            <BrowserRouter>
+              <ScrollToTop>
+                <Component {...props} />
+              </ScrollToTop>
+            </BrowserRouter>
+          </ApolloProvider>,
+          el
+        );
       });
   });
 }

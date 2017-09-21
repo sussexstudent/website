@@ -1,7 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { ApolloProvider, graphql } from 'react-apollo';
+import { compose } from 'recompose';
+import { Route, Switch } from 'react-router-dom';
+import { graphql } from 'react-apollo';
 import { Helmet } from 'react-helmet';
 import sortBy from 'lodash/sortBy';
 import orderBy from 'lodash/orderBy';
@@ -19,13 +20,11 @@ import getDayOfYear from 'date-fns/get_day_of_year';
 import isToday from 'date-fns/is_today';
 import isTomorrow from 'date-fns/is_tomorrow';
 import formatDate from 'date-fns/format';
-import Loader from '~components/Loader';
 import HydroLeaf from '~components/HydroLeaf';
-import ScrollToTop from '~components/ScrollToTop';
 import EventsCalenderItem from './EventsCalenderItem';
 import EventDetailPage from '../EventDetailPage/index';
-import getApolloClientForFalmer from '../../libs/getApolloClientForFalmer';
 import EventListingsQuery from './EventListings.graphql';
+import apolloHandler from '../apolloHandler';
 
 const EVENT_PART = {
   CONTAINED: 'SINGLE',
@@ -179,14 +178,10 @@ function getSmartDate(part) {
 }
 
 function EventsCalender({
-  data: { loading, allEvents },
+  data: { allEvents },
   disableHeader = false,
   useAnchors = false,
 }) {
-  if (loading) {
-    return <Loader dark />;
-  }
-
   const events = allEvents.edges.map(({ node }) => ({
     ...node,
     startDate: new Date(node.startTime),
@@ -262,28 +257,25 @@ function EventsCalender({
   );
 }
 
-export const EventsContainer = graphql(EventListingsQuery, {
-  options: props => ({
-    variables: {
-      filter: props.filter || {
-        fromTime: startOfDay(new Date()).toISOString(),
-        toTime: addMonths(startOfDay(new Date()), 3).toISOString(),
+const EventsContainer = compose(
+  graphql(EventListingsQuery, {
+    options: props => ({
+      variables: {
+        filter: props.filter || {
+          fromTime: startOfDay(new Date()).toISOString(),
+          toTime: addMonths(startOfDay(new Date()), 3).toISOString(),
+        },
       },
-    },
+    }),
   }),
-})(EventsCalender);
+  apolloHandler()
+)(EventsCalender);
 
 const EventsApplication = () => (
-  <ApolloProvider client={getApolloClientForFalmer}>
-    <BrowserRouter basename="/whats-on">
-      <ScrollToTop>
-        <Switch>
-          <Route path="/" exact component={EventsContainer} />
-          <Route path="/**-:eventId" component={EventDetailPage} />
-        </Switch>
-      </ScrollToTop>
-    </BrowserRouter>
-  </ApolloProvider>
+  <Switch>
+    <Route path="/whats-on/" exact component={EventsContainer} />
+    <Route path="/whats-on/**-:eventId" component={EventDetailPage} />
+  </Switch>
 );
 
-export default HydroLeaf({ disableSSR: true })(EventsApplication);
+export default compose(HydroLeaf({ disableSSR: true }))(EventsApplication);

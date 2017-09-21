@@ -11,6 +11,7 @@ import BackBar from '../BackBar/Link';
 import Button from '../Button';
 import DetailPageQuery from './EventsDetailPage.graphql';
 import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
+import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
 
 /* eslint-disable */
 class EventDetailPage extends React.Component {
@@ -65,7 +66,7 @@ class EventDetailPage extends React.Component {
             endDate: event.endTime,
           }}
         />
-        <BackBar to="/" useLink color="blue">
+        <BackBar to="/whats-on" useLink color="blue">
           Events listings
         </BackBar>
         <div className="Layout Layout--sidebar-right EventDetail">
@@ -113,10 +114,8 @@ class EventDetailPage extends React.Component {
                         src="https://du9l8eemj97rm.cloudfront.net/events-clock.svg"
                         alt=""
                       />
-                      {`${formatDate(startDate, 'h:mma')} - ${formatDate(
-                        endDate,
-                        'h:mma'
-                      )}`}
+                      {`${minimalisticTimeRenderer(startDate)} – ${minimalisticTimeRenderer(
+                        endDate)}`}
                     </li>
                     {event.locationDisplay !== '' || event.venue !== null ? (
                       <li className="EventDetail__details-list-item">

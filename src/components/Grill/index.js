@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Grill() {
-
   return (
     <div>
       <div>

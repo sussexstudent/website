@@ -151,7 +151,11 @@ class EventDetailPage extends React.Component {
               </div>
               <div className="ContentCard__content">
                 <div className="Prose EventDetail__body">
-                  {event.bodyHtml !== '' ? <div dangerouslySetInnerHTML={{ __html: event.bodyHtml }} /> : <div>{event.shortDescription}</div>}
+                  {event.bodyHtml !== '' ? (
+                    <div dangerouslySetInnerHTML={{ __html: event.bodyHtml }} />
+                  ) : (
+                    <div>{event.shortDescription}</div>
+                  )}
                 </div>
               </div>
             </ContentCard>

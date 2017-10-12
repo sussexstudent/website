@@ -81,11 +81,11 @@ class StaffPage extends React.Component {
           {levels.map(({ value, _children = null, ...partData }) => (
             <ContentCard>
               {getComponent(value, partData, slugify(value))}
-              {_children !== null ? (
-                _children.map(element =>
-                  getComponent(element, data, slugify(element.value.heading))
-                )
-              ) : null}
+              {_children !== null
+                ? _children.map(element =>
+                    getComponent(element, data, slugify(element.value.heading))
+                  )
+                : null}
             </ContentCard>
           ))}
         </div>

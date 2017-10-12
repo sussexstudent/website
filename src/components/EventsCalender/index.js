@@ -24,6 +24,7 @@ import EventsCalenderItem from './EventsCalenderItem';
 import EventDetailPage from '../EventDetailPage/index';
 import EventListingsQuery from './EventListings.graphql';
 import apolloHandler from '../apolloHandler';
+
 const DATE_TODAY = new Date();
 const DATE_TOMORROW = addDays(DATE_TODAY, 1);
 

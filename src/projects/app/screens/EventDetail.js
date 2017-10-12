@@ -5,7 +5,7 @@ import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
 import { graphql, gql } from 'react-apollo';
 import format from 'date-fns/format';
 import HTMLContentRenderer from '../components/HTMLContentRenderer';
-import DetailContent from "../components/DetailContent";
+import DetailContent from '../components/DetailContent';
 
 const styles = StyleSheet.create({
   container: {
@@ -117,7 +117,10 @@ function TabWhatsOn({ data: { event, loading } }) {
                   {format(new Date(event.startTime), 'dddd Do MMMM')}
                 </EventDetailItem>
                 <EventDetailItem image={require('../img/EventsClock.png')}>
-                  {`${format(new Date(event.startTime), 'h:mma')}-${format(new Date(event.endTime), 'h:mma')}`}
+                  {`${format(new Date(event.startTime), 'h:mma')}-${format(
+                    new Date(event.endTime),
+                    'h:mma'
+                  )}`}
                 </EventDetailItem>
                 <EventDetailItem image={require('../img/EventsPin.png')}>
                   {event.locationDisplay}

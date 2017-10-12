@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import parse from 'url-parse';
-import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
-import isToday from 'date-fns/is_today';
+import formatDistance from 'date-fns/formatDistance';
+import isSameDay from 'date-fns/isSameDay';
 import Logotype from '../../img/logotype';
 import Image from '../Image';
 
@@ -35,11 +35,9 @@ const NewsBlock = ({
         <p className="NewsBlock__standfirst">{led}</p>
         <div className="NewsBlock__meta">
           <date className="NewsBlock__date">
-            {isToday(publishedDate) ? (
-              'Today'
-            ) : (
-              `${distanceInWordsToNow(publishedDate)} ago`
-            )}
+            {isSameDay(publishedDate, new Date())
+              ? 'Today'
+              : `${formatDistance(publishedDate, new Date())} ago`}
           </date>
         </div>
       </div>

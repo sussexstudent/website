@@ -5,7 +5,9 @@ function ColoursPage() {
   return (
     <div>
       <h1>Typography</h1>
-      <p>Core colours are located in <Path location="css/core/colors.css" />.</p>
+      <p>
+        Core colours are located in <Path location="css/core/colors.css" />.
+      </p>
     </div>
   );
 }

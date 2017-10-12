@@ -18,14 +18,15 @@ const externalMarkup = `
 </a>
 `;
 
-
 function ButtonComponentPage() {
   return (
     <div className="App__content-container">
       <h1>Button</h1>
       <p>Buttons are used for actions. For example</p>
 
-      <a href="" className="Button" role="button">Take the survey</a>
+      <a href="" className="Button" role="button">
+        Take the survey
+      </a>
 
       <h2>Modifiers</h2>
 
@@ -37,7 +38,9 @@ function ButtonComponentPage() {
 
       <h2>Accessibility</h2>
       <ul>
-        <li><code>{'role="button"'}</code> should be required for the button.</li>
+        <li>
+          <code>{'role="button"'}</code> should be required for the button.
+        </li>
       </ul>
     </div>
   );

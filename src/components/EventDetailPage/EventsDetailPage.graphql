@@ -34,7 +34,6 @@ query EventsDetailPage($eventId: Int) {
   }
 }
 
-
 fragment EventCard on Event {
   eventId
   slug

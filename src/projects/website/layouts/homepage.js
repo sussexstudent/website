@@ -2,15 +2,15 @@ import React from 'react';
 import TweetList from '~components/TweetList';
 import ContentAPIComposer from '~components/ContentAPIComposer';
 import HomepageEventsList from '~components/HomepageEventsList';
-import { Hydro as FreshersWeek2017Banner } from '~components/banners/Freshers2017Banner';
 import AdvertBar from '~components/AdvertBar';
+import Grill from '../../../components/Grill';
 
 const Homepage = () => (
   <div className="u-container-bleed-top">
     <AdvertBar className="AdvertBar--mobile-home" position="TopBanner" />
     <div className="Trail">
       <div className="Trail__row  u-container-bleed-2">
-        <FreshersWeek2017Banner />
+        <Grill />
       </div>
       <div className="Trail__row Trail__row--211">
         <div className="ContentBlock">

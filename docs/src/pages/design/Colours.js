@@ -13,7 +13,9 @@ function ColoursPage() {
         <Color color="#1db8a4" name="" cssVar="color__green" />
         <Color color="#ffdb7a" name="" cssVar="color__yellow" />
       </div>
-      <p>Core colours are located in <Path location="css/core/colors.css" />.</p>
+      <p>
+        Core colours are located in <Path location="css/core/colors.css" />.
+      </p>
     </div>
   );
 }

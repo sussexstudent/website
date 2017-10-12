@@ -1,29 +1,25 @@
 import React from 'react';
-import isWithinRange from 'date-fns/is_within_range';
-import distanceInWords from 'date-fns/distance_in_words_to_now';
-import subMinutes from 'date-fns/sub_minutes';
+import isWithinInterval from 'date-fns/isWithinInterval';
+import formatDistance from 'date-fns/formatDistance';
+import subMinutes from 'date-fns/subMinutes';
 
-export default function EventRelativeTime() {
+export default function EventRelativeTime({ event }) {
   return (
     <div className="EventsCalender__item-meta">
-      {isWithinRange(
+      {isWithinInterval(
         new Date(),
         subMinutes(new Date(event.startTime), 90),
         new Date(event.startTime)
-      ) ? (
-        `Starts in ${distanceInWords(new Date(event.startTime))}`
-      ) : (
-        ''
-      )}
-      {isWithinRange(
+      )
+        ? `Starts in ${formatDistance(new Date(event.startTime), new Date())}`
+        : ''}
+      {isWithinInterval(
         new Date(),
         new Date(event.startTime),
         new Date(event.endTime)
-      ) ? (
-        'On now'
-      ) : (
-        ''
-      )}
+      )
+        ? 'On now'
+        : ''}
     </div>
   );
 }

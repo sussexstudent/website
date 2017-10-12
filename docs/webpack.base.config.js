@@ -3,7 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
 const path = require('path');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -15,10 +15,10 @@ const env = {
   test: NODE_ENV === 'test',
   development: NODE_ENV === 'development' || typeof NODE_ENV === 'undefined',
 };
-env['build'] = (env.production || env.staging)
+env['build'] = env.production || env.staging;
 let extractCSS = new ExtractTextPlugin({
   filename: `style{isProduction ? '.[contenthash]' : ''}.css`,
-  allChunks: true
+  allChunks: true,
 });
 
 module.exports = {
@@ -36,11 +36,7 @@ module.exports = {
   },
 
   resolve: {
-    modules: [
-      'web_modules',
-      'node_modules',
-      './src/images',
-    ],
+    modules: ['web_modules', 'node_modules', './src/images'],
     moduleExtensions: ['js', 'svg'],
   },
 
@@ -54,15 +50,15 @@ module.exports = {
       __PRODUCTION__: env.production,
     }),
     new HtmlWebpackPlugin({
-      title: 'Sussex Student\'s Union Website Docs',
+      title: "Sussex Student's Union Website Docs",
       filename: 'index.html',
       template: './docs/public/template.html',
       alwaysWriteToDisk: true,
     }),
     new HtmlWebpackHarddiskPlugin(),
-//    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
+    //    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
     //new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', }),
-  //  extractCSS,
+    //  extractCSS,
   ],
 
   module: {
@@ -74,10 +70,13 @@ module.exports = {
         enforce: 'pre',
       },
       { test: /\.json$/, use: 'json-loader', enforce: 'pre' },
-      { test: /\.css$/, use: ['style-loader', 'css-loader?importLoaders=1!postcss-loader'] },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader?importLoaders=1!postcss-loader'],
+      },
       { test: /\.svg|\.png|\.jpg|\.woff/, use: 'url-loader?limit=10000' },
     ],
 
     noParse: /\.min\.js/,
-  }
+  },
 };

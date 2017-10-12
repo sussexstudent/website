@@ -13,7 +13,9 @@ function SidebarMenu() {
       <Link to="/">
         <img src={logo} className="SidebarMenu__logo" alt="Students' Union" />
       </Link>
-      <span className="SidebarMenu__tag">Style Guidelines & Pattern Library</span>
+      <span className="SidebarMenu__tag">
+        Style Guidelines & Pattern Library
+      </span>
 
       <ol className="Menu">
         {sections.map(section => (
@@ -36,7 +38,9 @@ function SidebarMenu() {
         ))}
       </ol>
       <div className="SidebarMenu__fix-bottom">
-        <Link className="Button" to="/editor">Create a page</Link>
+        <Link className="Button" to="/editor">
+          Create a page
+        </Link>
       </div>
     </div>
   );

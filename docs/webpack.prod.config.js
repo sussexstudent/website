@@ -16,9 +16,7 @@ config.output = {
 
 config.plugins = config.plugins.concat([
   new CleanWebpackPlugin(['dist']),
-  new CopyWebpackPlugin([
-    { from: './docs/src/root', to: './' },
-  ]),
+  new CopyWebpackPlugin([{ from: './docs/src/root', to: './' }]),
   new webpack.optimize.UglifyJsPlugin({ output: { comments: false } }),
 ]);
 

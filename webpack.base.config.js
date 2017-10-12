@@ -91,6 +91,5 @@ module.exports = {
         use: 'url-loader?limit=10000',
       },
     ],
-    noParse: /\.min\.js/,
   },
 };

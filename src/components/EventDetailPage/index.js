@@ -97,7 +97,13 @@ class EventDetailPage extends React.Component {
                           src="https://du9l8eemj97rm.cloudfront.net/events-collection-parent.svg"
                           alt=""
                         />
-                        Part of <Link to={`/whats-on/${event.parent.slug}-${event.parent.eventId}`}>{event.parent.title}</Link>
+                        Part of{' '}
+                        <Link
+                          to={`/whats-on/${event.parent.slug}-${event.parent
+                            .eventId}`}
+                        >
+                          {event.parent.title}
+                        </Link>
                       </li>
                     ) : null}
                     <li className="EventDetail__details-list-item">
@@ -114,8 +120,9 @@ class EventDetailPage extends React.Component {
                         src="https://du9l8eemj97rm.cloudfront.net/events-clock.svg"
                         alt=""
                       />
-                      {`${minimalisticTimeRenderer(startDate)} – ${minimalisticTimeRenderer(
-                        endDate)}`}
+                      {`${minimalisticTimeRenderer(
+                        startDate
+                      )} – ${minimalisticTimeRenderer(endDate)}`}
                     </li>
                     {event.locationDisplay !== '' || event.venue !== null ? (
                       <li className="EventDetail__details-list-item">
@@ -134,7 +141,9 @@ class EventDetailPage extends React.Component {
                           src="https://du9l8eemj97rm.cloudfront.net/events-collection.svg"
                           alt=""
                         />
-                        <a href="#sub-events">{event.children.length} sub-events</a>
+                        <a href="#sub-events">
+                          {event.children.length} sub-events
+                        </a>
                       </li>
                     ) : null}
                   </ul>
@@ -142,7 +151,7 @@ class EventDetailPage extends React.Component {
               </div>
               <div className="ContentCard__content">
                 <div className="Prose EventDetail__body">
-                  <div dangerouslySetInnerHTML={{ __html: event.bodyHtml }} />
+                  {event.bodyHtml !== '' ? <div dangerouslySetInnerHTML={{ __html: event.bodyHtml }} /> : <div>{event.shortDescription}</div>}
                 </div>
               </div>
             </ContentCard>
@@ -167,7 +176,11 @@ class EventDetailPage extends React.Component {
             <span className="u-position-anchor" id="sub-events" />
             <h2 className="Heading Heading--tight">Part of this event</h2>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              {event.children.map(childEvent => <div><EventsCalenderItem part={{ event: childEvent }}/></div>)}
+              {event.children.map(childEvent => (
+                <div>
+                  <EventsCalenderItem part={{ event: childEvent }} />
+                </div>
+              ))}
             </div>
           </div>
         ) : null}

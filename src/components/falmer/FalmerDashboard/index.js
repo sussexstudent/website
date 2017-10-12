@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import { Helmet } from 'react-helmet';
-import getHours from 'date-fns/get_hours';
+import getHours from 'date-fns/getHours';
 import DashboardQuery from './Dashboard.graphql';
 import ContentCard from '../../ContentCard';
 

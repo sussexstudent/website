@@ -3,11 +3,9 @@ import FigureCollectionFigure from './FigureCollectionFigure';
 
 const FigureCollection = ({ children, items = null }) => (
   <ul className="FigureCollection">
-    {items === null ? (
-      children
-    ) : (
-      items.map(item => <FigureCollectionFigure {...item} />)
-    )}
+    {items === null
+      ? children
+      : items.map(item => <FigureCollectionFigure {...item} />)}
   </ul>
 );
 

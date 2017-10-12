@@ -93,7 +93,7 @@ function EventsCalenderItem({
         ) : null}
         <h2 className="EventsCalender__item-title">
           {event.title}
-          {relative ? <EventRelativeTime /> : null}
+          {relative ? <EventRelativeTime event={event} /> : null}
         </h2>
         <div className="EventsCalender__item-description">
           {event.shortDescription}

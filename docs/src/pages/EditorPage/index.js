@@ -25,7 +25,6 @@ const components = {
   Deckchair,
 };
 
-
 function createDefaultForComponent(componentsList, key) {
   const component = componentsList[key];
 
@@ -35,11 +34,12 @@ function createDefaultForComponent(componentsList, key) {
 
   if (component.propTypes) {
     const props = {};
-    Object.keys(component.propTypes).forEach((propKey) => {
+    Object.keys(component.propTypes).forEach(propKey => {
       if (propKey === 'children') {
         dict.children = [];
       } else if (propKey === 'imageURL') {
-        props[propKey] = 'https://www.sussexstudent.com/pageassets/get-involved/get-involved.jpg';
+        props[propKey] =
+          'https://www.sussexstudent.com/pageassets/get-involved/get-involved.jpg';
       } else {
         props[propKey] = '';
       }
@@ -58,20 +58,36 @@ class EditorPage extends React.Component {
       document: Immutable.List([]),
     };
 
-    this.handleDocumentChange = (change) => {
+    this.handleDocumentChange = change => {
       const path = change.path;
       const index = path.pop();
       let document;
 
       if (change.type === 'CHANGE') {
-        document = this.state.document.setIn([...flatMap(path, part => [part, 'children']), index, 'props', change.name], change.value);
+        document = this.state.document.setIn(
+          [
+            ...flatMap(path, part => [part, 'children']),
+            index,
+            'props',
+            change.name,
+          ],
+          change.value
+        );
       } else if (change.type === 'INSERT') {
-        const created = Immutable.fromJS(createDefaultForComponent(components, change.component));
-        document = this.state.document.updateIn(flatMap(path, part => [part, 'children']), point => point.insert(index, created));
+        const created = Immutable.fromJS(
+          createDefaultForComponent(components, change.component)
+        );
+        document = this.state.document.updateIn(
+          flatMap(path, part => [part, 'children']),
+          point => point.insert(index, created)
+        );
       } else if (change.type === 'MOVE') {
         throw new Error('not implemented move yet. soz');
       } else if (change.type === 'DELETE') {
-        document = this.state.document.deleteIn([...flatMap(path, part => [part, 'children']), index]);
+        document = this.state.document.deleteIn([
+          ...flatMap(path, part => [part, 'children']),
+          index,
+        ]);
       }
 
       this.setState({ document });
@@ -86,7 +102,12 @@ class EditorPage extends React.Component {
           <Renderer components={components} document={document} />
         </div>
         <div className="Editor__tree">
-          <TreeEditor components={components} document={document} onInsert={this.handleInsert} onChange={this.handleDocumentChange} />
+          <TreeEditor
+            components={components}
+            document={document}
+            onInsert={this.handleInsert}
+            onChange={this.handleDocumentChange}
+          />
         </div>
       </div>
     );

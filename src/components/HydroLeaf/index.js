@@ -50,7 +50,7 @@ function HydroLeaf(
         render() {
           const { renderStatic = false, ...props } = this.props;
 
-          if (process.env.HYDROLEAF_MODE === 'RENDER_COMPONENT') {
+          if (process.env.HYDROLEAF_MODE === 'RENDER_TO_COMPONENT') {
             return <Component {...props} />;
           }
 

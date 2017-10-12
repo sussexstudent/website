@@ -1,4 +1,4 @@
-import getMinutes from 'date-fns/get_minutes';
+import getMinutes from 'date-fns/getMinutes';
 import formatDate from 'date-fns/format';
 
 export default function minimalisticTimeRenderer(date) {

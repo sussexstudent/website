@@ -51,10 +51,7 @@ const VoteHero = () => (
       <div>Get involved.</div>
       <div>Be part of making change happen.</div>
       <div className="VoteHero__button">{svg}</div>
-      <div>
-        Voting for the Union elections and referenda closes Fri 3rd March at
-        5pm.
-      </div>
+      <div>Voting closes Thursday 5th at 5pm.</div>
     </div>
   </a>
 );

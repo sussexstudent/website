@@ -53,7 +53,7 @@ export default function() {
         component => (!isFunction(component) ? component.default : component)
       )
       .then(Component => {
-        ReactDOM.render(
+        ReactDOM.hydrate(
           <ApolloProvider client={getApolloClientForFalmer}>
             <BrowserRouter>
               <ScrollToTop>

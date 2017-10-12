@@ -17,7 +17,6 @@ const components = {
 };
 
 function getComponent(component, data, key) {
-  console.log(component, data);
   if (!Object.hasOwnProperty.call(components, component.type)) {
     console.warn(
       `[contentAPI] Requested component not found! ${component.type} is missing.`
@@ -73,7 +72,6 @@ class StaffPage extends React.Component {
     const { data: { body }, data } = this.props;
 
     const levels = flatStreamToLevels(item => levelMap[item.type], body);
-    console.log(levels);
     return (
       <div className="Layout Layout--sidebar-left Layout--sidebar-thin">
         <div>

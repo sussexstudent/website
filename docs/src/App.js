@@ -10,10 +10,17 @@ import FourOhFour from './pages/404';
 const dynamicRoutes = () => {
   const routes = [];
   routes.push(<Route path="/" exact component={HomePage} />);
-  pages.forEach((section) => {
+  pages.forEach(section => {
     routes.push(<Route exact path={`/${section.slug}`} key={section.slug} />);
-    section.pages.forEach((page) => {
-      routes.push(<Route exact path={`/${section.slug}/${page.slug}`} component={page} key={page.slug} />);
+    section.pages.forEach(page => {
+      routes.push(
+        <Route
+          exact
+          path={`/${section.slug}/${page.slug}`}
+          component={page}
+          key={page.slug}
+        />
+      );
     });
   });
 
@@ -31,9 +38,7 @@ function App() {
           <SidebarMenu />
         </div>
         <div className="App__content">
-          <Switch>
-            {dynamicRoutes()}
-          </Switch>
+          <Switch>{dynamicRoutes()}</Switch>
         </div>
       </div>
     </div>

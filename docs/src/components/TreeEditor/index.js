@@ -12,20 +12,22 @@ class TreeEditor extends React.Component {
       change: null,
     };
 
-    this.onAddComponent = (position) => this.setState({ isAdding: true, position });
-    this.handleCloseAdd = () => this.setState({ isAdding: false, position: null });
-    this.handleAdd = (componentKey) => {
+    this.onAddComponent = position =>
+      this.setState({ isAdding: true, position });
+    this.handleCloseAdd = () =>
+      this.setState({ isAdding: false, position: null });
+    this.handleAdd = componentKey => {
       this.props.onChange({ ...this.state.change, component: componentKey });
       this.setState({ isAdding: false, change: null });
     };
 
-    this.handleChange = (change) => {
+    this.handleChange = change => {
       console.log(change);
       if (change.type === 'INSERT' && !change.component) {
         this.setState({
           isAdding: true,
-          change
-        })
+          change,
+        });
       } else {
         this.props.onChange(change);
       }
@@ -44,7 +46,10 @@ class TreeEditor extends React.Component {
             {Object.keys(components).map(componentKey => {
               const component = components[componentKey];
               return (
-                <li onClick={this.handleAdd.bind(this, componentKey)} key={componentKey}>
+                <li
+                  onClick={this.handleAdd.bind(this, componentKey)}
+                  key={componentKey}
+                >
                   {componentKey}
                 </li>
               );
@@ -56,7 +61,12 @@ class TreeEditor extends React.Component {
 
     return (
       <div className="TreeEditor">
-        <Tree tree={document.toJS()} onChange={this.handleChange} components={components} path={[]} />
+        <Tree
+          tree={document.toJS()}
+          onChange={this.handleChange}
+          components={components}
+          path={[]}
+        />
       </div>
     );
   }

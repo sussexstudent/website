@@ -10,16 +10,14 @@ const server = new WebpackDevServer(compiler, {
   hot: true,
   compress: true,
   // pass [static options](http://expressjs.com/en/4x/api.html#express.static) to inner express server
-  staticOptions: {
-  },
+  staticOptions: {},
   historyApiFallback: true,
-
 
   clientLogLevel: 'info',
   publicPath: '/',
 
   // webpack-dev-middleware options
-/*  quiet: false,
+  /*  quiet: false,
   noInfo: false,
   lazy: true,
   filename: 'bundle.js',

@@ -4,7 +4,9 @@ import './Path.css';
 
 function Path(props) {
   return (
-    <a className="Path" href="http://github.com/ussu/site/master/src/">{props.location}</a>
+    <a className="Path" href="http://github.com/ussu/site/master/src/">
+      {props.location}
+    </a>
   );
 }
 

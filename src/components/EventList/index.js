@@ -1,7 +1,7 @@
 import React from 'react';
-import isBefore from 'date-fns/is_before';
-import startOfDay from 'date-fns/start_of_day';
-import subDays from 'date-fns/sub_days';
+import isBefore from 'date-fns/isBefore';
+import startOfDay from 'date-fns/startOfDay';
+import subDays from 'date-fns/subDays';
 import { ApolloProvider, graphql } from 'react-apollo';
 import HydroLeaf from '~components/HydroLeaf';
 import apolloClient from '../../libs/getApolloClientForFalmer';

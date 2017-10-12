@@ -9,22 +9,23 @@ import orderBy from 'lodash/orderBy';
 import toPairs from 'lodash/toPairs';
 import padStart from 'lodash/padStart';
 import groupBy from 'lodash/groupBy';
-import isBefore from 'date-fns/is_before';
-import getYear from 'date-fns/get_year';
-import startOfDay from 'date-fns/start_of_day';
-import getMonth from 'date-fns/get_month';
-import addMonths from 'date-fns/add_months';
-import setHours from 'date-fns/set_hours';
-import addDays from 'date-fns/add_days';
-import getDayOfYear from 'date-fns/get_day_of_year';
-import isToday from 'date-fns/is_today';
-import isTomorrow from 'date-fns/is_tomorrow';
+import isBefore from 'date-fns/isBefore';
+import getYear from 'date-fns/getYear';
+import startOfDay from 'date-fns/startOfDay';
+import getMonth from 'date-fns/getMonth';
+import addMonths from 'date-fns/addMonths';
+import setHours from 'date-fns/setHours';
+import addDays from 'date-fns/addDays';
+import getDayOfYear from 'date-fns/getDayOfYear';
+import isSameDay from 'date-fns/isSameDay';
 import formatDate from 'date-fns/format';
 import HydroLeaf from '~components/HydroLeaf';
 import EventsCalenderItem from './EventsCalenderItem';
 import EventDetailPage from '../EventDetailPage/index';
 import EventListingsQuery from './EventListings.graphql';
 import apolloHandler from '../apolloHandler';
+const DATE_TODAY = new Date();
+const DATE_TOMORROW = addDays(DATE_TODAY, 1);
 
 const EVENT_PART = {
   CONTAINED: 'SINGLE',
@@ -151,11 +152,11 @@ function organisePartsForUI(eventParts) {
 }
 
 function getSmartDate(part) {
-  if (isToday(part.date)) {
+  if (isSameDay(new Date(), part.date)) {
     return 'Today';
   }
 
-  if (isTomorrow(part.date)) {
+  if (isSameDay(part.date, addDays(new Date(), 1))) {
     return 'Tomorrow';
   }
 
@@ -229,9 +230,12 @@ function EventsCalender({
                           <span className="EventsCalender__item-date-kicker--continuation">
                             {formatDate(
                               part.date,
-                              isToday(part.date) || isTomorrow(part.date)
+                              isSameDay(part.date, DATE_TODAY) ||
+                              isSameDay(part.date, DATE_TOMORROW)
                                 ? ' - Do MMMM'
-                                : isBefore(weekFromNow) ? 'Do MMMM' : 'MMMM'
+                                : isBefore(part.date, weekFromNow)
+                                  ? 'Do MMMM'
+                                  : 'MMMM'
                             )}
                           </span>
                         </h3>

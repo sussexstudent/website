@@ -18,12 +18,14 @@ const externalMarkup = `
 </a>
 `;
 
-
 function TrailComponentPage() {
   return (
     <div className="App__content-container">
       <h1>Trail Grid</h1>
-      <p>Trail is our simple fraction based grid. Usually we will have have unique layouts for anything more complex.</p>
+      <p>
+        Trail is our simple fraction based grid. Usually we will have have
+        unique layouts for anything more complex.
+      </p>
       <div className="Trail">
         <div className="Trail__row Trail__row--11">
           <div>Hello there</div>
@@ -38,7 +40,6 @@ function TrailComponentPage() {
         <PlaygroundState name="Warning" markup={warningMarkup} />
         <PlaygroundState name="External" markup={externalMarkup} />
       </Playground>
-
     </div>
   );
 }

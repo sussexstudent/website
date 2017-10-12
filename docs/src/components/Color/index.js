@@ -6,7 +6,10 @@ function Color(props) {
   return (
     <div className="Color">
       <div className="Color__display">
-        <div className="Color__display-color" style={{ backgroundColor: `${props.color}` }} />
+        <div
+          className="Color__display-color"
+          style={{ backgroundColor: `${props.color}` }}
+        />
       </div>
       <p>{props.color}</p>
       <p>--{props.cssVar}</p>

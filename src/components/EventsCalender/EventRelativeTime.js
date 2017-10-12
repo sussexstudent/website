@@ -6,18 +6,16 @@ import subMinutes from 'date-fns/subMinutes';
 export default function EventRelativeTime({ event }) {
   return (
     <div className="EventsCalender__item-meta">
-      {isWithinInterval(
-        new Date(),
-        subMinutes(new Date(event.startTime), 90),
-        new Date(event.startTime)
-      )
+      {isWithinInterval(new Date(), {
+        start: subMinutes(new Date(event.startTime), 90),
+        end: new Date(event.startTime),
+      })
         ? `Starts in ${formatDistance(new Date(event.startTime), new Date())}`
         : ''}
-      {isWithinInterval(
-        new Date(),
-        new Date(event.startTime),
-        new Date(event.endTime)
-      )
+      {isWithinInterval(new Date(), {
+        start: new Date(event.startTime),
+        end: new Date(event.endTime),
+      })
         ? 'On now'
         : ''}
     </div>

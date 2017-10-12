@@ -10,7 +10,9 @@ import toPairs from 'lodash/toPairs';
 import padStart from 'lodash/padStart';
 import groupBy from 'lodash/groupBy';
 import isBefore from 'date-fns/isBefore';
+import isAfter from 'date-fns/isAfter';
 import getYear from 'date-fns/getYear';
+import subHours from 'date-fns/subHours';
 import startOfDay from 'date-fns/startOfDay';
 import getMonth from 'date-fns/getMonth';
 import addMonths from 'date-fns/addMonths';
@@ -49,7 +51,10 @@ function splitEventsInToParts(events) {
   events.forEach((event, index) => {
     // if event.startDate is same day as endDate
     // TODO: Ease nightlife events, keep contained when event only spans to < 6:30am
-    if (!event.isOverMultipleDays) {
+    if (
+      isSameDay(event.startDate, event.endDate) ||
+      isSameDay(event.startDate, subHours(event.endDate, 6))
+    ) {
       if (isBefore(event.endDate, rightNow)) {
         return;
       }
@@ -64,19 +69,29 @@ function splitEventsInToParts(events) {
       return;
     }
 
-    parts.push({
-      type: EVENT_PART.SPAN_START,
-      eventId: index,
-      date: event.startDate,
-      event,
-    });
-
-    parts.push({
-      type: EVENT_PART.SPAN_END,
-      eventId: index,
-      date: event.endDate,
-      event,
-    });
+    if (!isAfter(event.startDate, rightNow)) {
+      console.log(event.title, event.startDate, rightNow);
+      parts.push({
+        type: EVENT_PART.SPAN_START,
+        eventId: index,
+        date: new Date(),
+        event,
+      });
+    } else {
+      parts.push({
+        type: EVENT_PART.SPAN_START,
+        eventId: index,
+        date: event.startDate,
+        event,
+      });
+    }
+    //
+    // parts.push({
+    //   type: EVENT_PART.SPAN_END,
+    //   eventId: index,
+    //   date: event.endDate,
+    //   event,
+    // });
   });
 
   return parts;

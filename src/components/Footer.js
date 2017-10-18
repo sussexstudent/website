@@ -8,7 +8,7 @@ const Footer = () => (
         <h2>Contact us</h2>
         <p>
           01273 678152<br />
-          reception@sussexstudent.com<br />
+          info@sussexstudent.com<br />
           Falmer House, Falmer, East Sussex, BN1 9QF
         </p>
 

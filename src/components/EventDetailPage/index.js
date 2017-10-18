@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import formatDate from 'date-fns/format';
+import isSameDay from 'date-fns/isSameDay';
 import { graphql } from 'react-apollo';
 import ContentCard from '../ContentCard';
 import Image from '../Image';
@@ -113,6 +114,7 @@ class EventDetailPage extends React.Component {
                         alt=""
                       />
                       {formatDate(startDate, 'dddd D MMMM YYYY')}
+                      {!isSameDay(startDate, endDate) ? ` - ${formatDate(endDate, 'dddd D MMMM YYYY')}` : ''}
                     </li>
                     <li className="EventDetail__details-list-item">
                       <img

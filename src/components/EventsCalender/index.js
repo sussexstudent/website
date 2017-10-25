@@ -39,7 +39,7 @@ const weekFromNow = setHours(addDays(new Date(), 7), 0);
 const now = setHours(new Date(), 0);
 const rightNow = new Date();
 /* eslint-disable no-nested-ternary */
-function splitEventsInToParts(events) {
+function splitEventsInToParts(events, removePast = true) {
   // for all events
   // if single day, add single day event SINGLE
   // if multi day
@@ -55,7 +55,7 @@ function splitEventsInToParts(events) {
       isSameDay(event.startDate, event.endDate) ||
       isSameDay(event.startDate, subHours(event.endDate, 6))
     ) {
-      if (isBefore(event.endDate, rightNow)) {
+      if (isBefore(event.endDate, rightNow) && removePast) {
         return;
       }
 
@@ -69,8 +69,7 @@ function splitEventsInToParts(events) {
       return;
     }
 
-    if (!isAfter(event.startDate, rightNow)) {
-      console.log(event.title, event.startDate, rightNow);
+    if (!isAfter(event.startDate, rightNow) && removePast) {
       parts.push({
         type: EVENT_PART.SPAN_START,
         eventId: index,
@@ -128,18 +127,16 @@ function chunkEventsToRows(events) {
     }
   });
 
-  console.log(eventNest);
-
   return eventNest;
 }
 
-function organisePartsForUI(eventParts) {
+function organisePartsForUI(eventParts, removePast = true) {
   const orderedParts = sortBy(eventParts, part => part.date);
 
   // next up 7:
 
   const partsGrouped = groupBy(orderedParts, event => {
-    if (isBefore(event.date, now)) {
+    if (isBefore(event.date, now) && removePast) {
       return 'PAST';
     }
 
@@ -198,6 +195,7 @@ function EventsCalender({
   data: { allEvents },
   disableHeader = false,
   useAnchors = false,
+  match,
 }) {
   const events = allEvents.edges.map(({ node }) => ({
     ...node,
@@ -205,11 +203,10 @@ function EventsCalender({
     endDate: new Date(node.endTime),
   }));
   // let previousDay = null;
-  const eventParts = splitEventsInToParts(events);
-  const uiEvents = organisePartsForUI(eventParts);
+  const eventParts = splitEventsInToParts(events, !match.params.brandSlug);
+  const uiEvents = organisePartsForUI(eventParts, !match.params.brandSlug);
   // chunk by day
 
-  console.log(uiEvents);
   return (
     <div>
       {disableHeader ? null : (
@@ -279,14 +276,26 @@ function EventsCalender({
 
 const EventsContainer = compose(
   graphql(EventListingsQuery, {
-    options: props => ({
-      variables: {
-        filter: props.filter || {
-          fromTime: startOfDay(new Date()).toISOString(),
-          toTime: addMonths(startOfDay(new Date()), 3).toISOString(),
+    options: props => {
+      const brandSlug = props.match.params.brandSlug;
+      if (brandSlug) {
+        return {
+          variables: {
+            filter: {
+              brandSlug,
+            },
+          },
+        };
+      }
+      return {
+        variables: {
+          filter: props.filter || {
+            fromTime: startOfDay(new Date()).toISOString(),
+            toTime: addMonths(startOfDay(new Date()), 3).toISOString(),
+          },
         },
-      },
-    }),
+      };
+    },
   }),
   apolloHandler()
 )(EventsCalender);
@@ -294,6 +303,11 @@ const EventsContainer = compose(
 const EventsApplication = () => (
   <Switch>
     <Route path="/whats-on/" exact component={EventsContainer} />
+    <Route
+      path="/whats-on/period/:brandSlug"
+      exact
+      component={EventsContainer}
+    />
     <Route path="/whats-on/**-:eventId" component={EventDetailPage} />
   </Switch>
 );

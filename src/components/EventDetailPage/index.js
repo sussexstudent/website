@@ -2,7 +2,9 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import formatDate from 'date-fns/format';
+import addDays from 'date-fns/addDays';
 import isSameDay from 'date-fns/isSameDay';
+import getHours from 'date-fns/getHours';
 import { graphql } from 'react-apollo';
 import ContentCard from '../ContentCard';
 import Image from '../Image';
@@ -13,6 +15,18 @@ import Button from '../Button';
 import DetailPageQuery from './EventsDetailPage.graphql';
 import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
 import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
+
+function isSameLogicalSleepDay(startDate, endDate) {
+  if (isSameDay(startDate, endDate)) {
+    return true;
+  }
+
+  if (isSameDay(addDays(startDate, 1), endDate) && getHours(endDate) < 7) {
+    return true;
+  }
+
+  return false;
+}
 
 /* eslint-disable */
 class EventDetailPage extends React.Component {
@@ -127,7 +141,7 @@ class EventDetailPage extends React.Component {
                         alt=""
                       />
                       {formatDate(startDate, 'dddd D MMMM YYYY')}
-                      {!isSameDay(startDate, endDate)
+                      {!isSameLogicalSleepDay(startDate, endDate)
                         ? ` - ${formatDate(endDate, 'dddd D MMMM YYYY')}`
                         : ''}
                     </li>

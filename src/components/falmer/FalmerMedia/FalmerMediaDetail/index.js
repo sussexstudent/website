@@ -1,8 +1,8 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import MediaDetailQuery from './MediaDetail.graphql';
-import Loader from '../../Loader';
-import ImageTreatmentPreview from '../ImageTreatmentPreview';
+import Loader from '../../../Loader';
+import ImageTreatmentPreview from '../../ImageTreatmentPreview';
 
 function FalmerMediaDetail({ data: { loading, image } }) {
   return (

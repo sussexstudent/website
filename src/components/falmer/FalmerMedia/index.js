@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import FalmerMediaList from '../FalmerMediaList';
-import FalmerMediaDetail from '../FalmerMediaDetail';
+import FalmerMediaList from './FalmerMediaList';
+import FalmerMediaDetail from './FalmerMediaDetail';
 
 function FalmerMedia() {
   return (

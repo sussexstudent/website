@@ -1,9 +1,9 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import AllMediaQuery from './AllMedia.graphql';
-import Loader from '../../Loader';
-import Image from '../../Image';
-import FauxRouterLink from '../../FauxRouterLink';
+import Loader from '../../../Loader';
+import Image from '../../../Image';
+import FauxRouterLink from '../../../FauxRouterLink';
 
 function FalmerMediaList({ data: { loading, loadMoreEntries, allImages } }) {
   return (

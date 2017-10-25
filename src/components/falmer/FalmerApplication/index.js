@@ -3,13 +3,39 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { withRouter } from 'react-router';
 import { Switch, Route } from 'react-router-dom';
+import Loadable from 'react-loadable';
 import { requestAuthToken } from '~falmer/ducks/auth';
 import FalmerHeader from '../FalmerHeader';
-import FalmerDashboard from '../FalmerDashboard';
-import FalmerEvents from '../FalmerEvents';
-import FalmerStudentGroups from '../FalmerStudentGroups';
-import FalmerMedia from '../FalmerMedia';
 import Loader from '../../Loader';
+import LoadableLoading from '../../LoadableLoading';
+
+const LoadableMedia = Loadable({
+  loader: () => import(/* webpackChunkName: "Media" */ '../FalmerMedia'),
+  loading: LoadableLoading,
+});
+
+const LoadableBookMarket = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: "BookMarket" */ '../FalmerBookMarket'),
+  loading: LoadableLoading,
+});
+
+const LoadableStudentGroups = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: "StudentGroups" */ '../FalmerStudentGroups'),
+  loading: LoadableLoading,
+});
+
+const LoadableEvents = Loadable({
+  loader: () => import(/* webpackChunkName: "Events" */ '../FalmerEvents'),
+  loading: LoadableLoading,
+});
+
+const LoadableDashboard = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: "Dashboard" */ '../FalmerDashboard'),
+  loading: LoadableLoading,
+});
 
 class FalmerApplication extends React.Component {
   componentDidMount() {
@@ -29,10 +55,11 @@ class FalmerApplication extends React.Component {
         <FalmerHeader />
         <main className="FalmerViewContainer">
           <Switch>
-            <Route path="/" exact component={FalmerDashboard} />
-            <Route path="/events" component={FalmerEvents} />
-            <Route path="/groups" component={FalmerStudentGroups} />
-            <Route path="/media" component={FalmerMedia} />
+            <Route path="/" exact component={LoadableDashboard} />
+            <Route path="/events" component={LoadableEvents} />
+            <Route path="/groups" component={LoadableStudentGroups} />
+            <Route path="/media" component={LoadableMedia} />
+            <Route path="/book-market" component={LoadableBookMarket} />
           </Switch>
         </main>
       </section>

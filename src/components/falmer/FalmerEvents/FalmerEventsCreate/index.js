@@ -3,16 +3,11 @@ import { graphql } from 'react-apollo';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { compose, withState } from 'recompose';
-import Loader from '../../Loader';
-import CopyToClipboardButton from '../../CopyToClipboardButton/index';
-import ImageTreatmentPreview from '../ImageTreatmentPreview';
-import FalmerModal from '../FalmerModal';
-import FalmerSelectEvent from '../FalmerSelectEvent';
+import Loader from '../../../Loader';
+import CopyToClipboardButton from '../../../CopyToClipboardButton/index';
+import ImageTreatmentPreview from '../../ImageTreatmentPreview';
 
-import EventDetailQuery from './EventDetail.graphql';
-import MoveEventMutation from './MoveEvent.graphql';
-
-function FalmerEventsDetail({
+function FalmerEventsCreate({
   data: { loading, event },
   handleMoveModal,
   isMoveModalOpen,
@@ -28,7 +23,7 @@ function FalmerEventsDetail({
       ) : (
         <div>
           <h2 className="Heading Heading--medium">
-            {event.title}
+            Create new event
             <button
               className="Button"
               onClick={() => handleMoveModal(true)}
@@ -74,45 +69,8 @@ function FalmerEventsDetail({
           ) : null}
         </div>
       )}
-
-      <FalmerModal
-        isOpen={isMoveModalOpen}
-        // onAfterOpen={afterOpenFn}
-        onRequestClose={() => handleMoveModal(false)}
-        // closeTimeoutMS={n}
-        // style={customStyle}
-        contentLabel="Modal"
-      >
-        <h1>Move event</h1>
-        <FalmerSelectEvent
-          onSelect={selectedId => {
-            moveEventMutation({
-              variables: {
-                eventId: event.eventId,
-                destinationEventId: selectedId,
-              },
-            });
-            handleMoveModal(false);
-          }}
-        />
-      </FalmerModal>
     </div>
   );
 }
 
-export default compose(
-  withState('isMoveModalOpen', 'handleMoveModal', false),
-  graphql(MoveEventMutation, {
-    name: 'moveEventMutation',
-    options: {
-      refetchQueries: ['AllEvents', 'EventDetail'],
-    },
-  }),
-  graphql(EventDetailQuery, {
-    options: props => ({
-      variables: {
-        eventId: props.match.params.eventId,
-      },
-    }),
-  })
-)(FalmerEventsDetail);
+export default compose()(FalmerEventsCreate);

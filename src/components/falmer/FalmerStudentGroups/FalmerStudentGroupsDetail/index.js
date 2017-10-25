@@ -1,9 +1,9 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
-import formatRelative from 'date-fns/distance_in_words_to_now';
+import formatDistance from 'date-fns/formatDistance';
 import GroupDetailQuery from './GroupDetail.graphql';
-import Loader from '../../Loader';
-import CopyToClipboardButton from '../../CopyToClipboardButton/index';
+import Loader from '../../../Loader';
+import CopyToClipboardButton from '../../../CopyToClipboardButton/index';
 
 function FalmerStudentGroupsDetail({ data: { loading, group } }) {
   return (
@@ -24,7 +24,11 @@ function FalmerStudentGroupsDetail({ data: { loading, group } }) {
               {group.mslGroup ? (
                 <li>
                   MSL linked, last sync:{' '}
-                  {formatRelative(new Date(group.mslGroup.lastSync))} ago
+                  {formatDistance(
+                    new Date(),
+                    new Date(group.mslGroup.lastSync)
+                  )}{' '}
+                  ago
                 </li>
               ) : null}
             </ul>

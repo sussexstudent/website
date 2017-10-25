@@ -41,6 +41,14 @@ function FalmerHeader({ user }) {
               Images
             </NavLink>
           </li>
+          <li className="FalmerHeader__nav-item">
+            <NavLink
+              to="/book-market"
+              activeClassName="FalmerHeader__nav-link--active"
+            >
+              Book Market
+            </NavLink>
+          </li>
           {user.hasCmsAccess ? (
             <li className="FalmerHeader__nav-item">
               <a href="/cms">

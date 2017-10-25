@@ -114,7 +114,9 @@ class EventDetailPage extends React.Component {
                         alt=""
                       />
                       {formatDate(startDate, 'dddd D MMMM YYYY')}
-                      {!isSameDay(startDate, endDate) ? ` - ${formatDate(endDate, 'dddd D MMMM YYYY')}` : ''}
+                      {!isSameDay(startDate, endDate)
+                        ? ` - ${formatDate(endDate, 'dddd D MMMM YYYY')}`
+                        : ''}
                     </li>
                     <li className="EventDetail__details-list-item">
                       <img

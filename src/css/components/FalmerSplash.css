@@ -1,0 +1,17 @@
+.FalmerSplash {
+  margin: 0 auto;
+  max-width: 660px;
+
+  &__image {
+    opacity: 0.6;
+    display: block;
+    width: 80%;
+    max-width: 300px;
+    margin: 12vh auto 2rem;
+  }
+
+  &__text {
+    text-align: center;
+    font-size: 1.3rem;
+  }
+}

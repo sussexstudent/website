@@ -10,7 +10,7 @@ config.devServer = {
 
 config.output = {
   path: path.resolve('./build-falmer'),
-  publicPath: '/',
+  publicPath: 'http://localhost:8080/',
   filename: '[name].js',
   chunkFilename: '[id].chunk.js',
 };

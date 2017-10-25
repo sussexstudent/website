@@ -12,11 +12,8 @@ function getGreeting() {
   if (hour <= 3) {
     return 'Early morning!';
   }
-  if (hour <= 10) {
-    return 'Morning!';
-  }
   if (hour <= 11) {
-    return 'Morning (although basically lunch time)!';
+    return 'Morning!';
   }
   if (hour <= 17) {
     return 'Afternoon!';

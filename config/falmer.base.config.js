@@ -10,16 +10,7 @@ module.exports = {
   target: 'web',
 
   entry: {
-    vendor: [
-      'babel-polyfill',
-      'react',
-      'react-dom',
-      'react-imgix',
-      'unfetch/polyfill',
-      'raven-js',
-      'mitt',
-    ],
-    main: './src/projects/falmer/entry.js',
+    main: ['babel-polyfill', './src/projects/falmer/entry.js'],
     devFonts: './src/projects/website/env-dev.js',
     productionFonts: './src/projects/website/env-production.js',
   },
@@ -55,10 +46,6 @@ module.exports = {
             : 'http://localhost:8000'
         ),
       },
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity,
     }),
     new webpack.NamedChunksPlugin(),
     new DuplicatePackageCheckerPlugin(),

@@ -36,10 +36,10 @@ config.plugins = config.plugins.concat([
     children: true,
     minChunks: 2,
   }),
-  new ChunkManifestPlugin({
-    filename: 'falmer-manifest.json',
-    manifestVariable: 'chunkManifest',
-  }),
+  // new ChunkManifestPlugin({
+  //   filename: 'falmer-manifest.json',
+  //   manifestVariable: 'chunkManifest',
+  // }),
   new webpack.optimize.UglifyJsPlugin({
     output: { comments: false },
     sourceMap: true,

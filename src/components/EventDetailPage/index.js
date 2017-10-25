@@ -16,6 +16,18 @@ import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
 
 /* eslint-disable */
 class EventDetailPage extends React.Component {
+  componentDidUpdate() {
+    if (!this.props.data.event) {
+      console.log(this.props);
+      return;
+    }
+
+    const event = this.props.data.event;
+    if (this.props.match.params[0] !== event.slug) {
+      this.props.history.replace(`/whats-on/${event.slug}-${event.eventId}`);
+    }
+  }
+
   render() {
     if (this.props.data.loading) {
       return <Loader />;
@@ -24,6 +36,7 @@ class EventDetailPage extends React.Component {
     const event = this.props.data.event;
     const startDate = new Date(event.startTime);
     const endDate = new Date(event.endTime);
+
     return (
       <div>
         <Helmet>

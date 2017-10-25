@@ -309,6 +309,7 @@ const EventsApplication = () => (
       component={EventsContainer}
     />
     <Route path="/whats-on/**-:eventId" component={EventDetailPage} />
+    <Route path="/whats-on/:eventId" component={EventDetailPage} />
   </Switch>
 );
 

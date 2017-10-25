@@ -68,7 +68,7 @@ class EventDetailPage extends React.Component {
           }}
         />
         <BackBar to="/whats-on" useLink color="blue">
-          Events listings
+          {`What's on`}
         </BackBar>
         <div className="Layout Layout--sidebar-right EventDetail">
           <div>

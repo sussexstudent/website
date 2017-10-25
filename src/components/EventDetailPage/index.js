@@ -138,6 +138,18 @@ class EventDetailPage extends React.Component {
                         {event.locationDisplay || event.venue.name}
                       </li>
                     ) : null}
+                    {event.studentGroup !== null ? (
+                      <li className="EventDetail__details-list-item">
+                        <img
+                          className="EventDetail__icon"
+                          src="https://du9l8eemj97rm.cloudfront.net/events-society.svg"
+                          alt=""
+                        />
+                        Organised by <a href={event.studentGroup.link}>
+                          {event.studentGroup.name}
+                        </a>
+                      </li>
+                    ) : null}
                     {event.children.length > 0 ? (
                       <li className="EventDetail__details-list-item">
                         <img

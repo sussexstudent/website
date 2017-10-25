@@ -25,6 +25,10 @@ query EventsDetailPage($eventId: Int) {
     featuredImage {
       resource
     }
+    studentGroup {
+      name
+      link
+    }
     parent {
       ...EventCard
     }

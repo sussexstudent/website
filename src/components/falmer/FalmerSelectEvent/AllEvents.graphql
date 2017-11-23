@@ -1,3 +1,5 @@
+#import "../FalmerEvents/EventStuff.graphql"
+
 query AllEvents {
   allEvents {
     edges {
@@ -11,15 +13,3 @@ query AllEvents {
   }
 }
 
-fragment EventStuff on Event {
-  id
-  eventId
-  title
-  featuredImage {
-    resource
-  }
-  shortDescription
-  startTime
-  endTime
-  ticketType
-}

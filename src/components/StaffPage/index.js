@@ -19,7 +19,9 @@ const components = {
 function getComponent(component, data, key) {
   if (!Object.hasOwnProperty.call(components, component.type)) {
     console.warn(
-      `[contentAPI] Requested component not found! ${component.type} is missing.`
+      `[contentAPI] Requested component not found! ${
+        component.type
+      } is missing.`
     );
     return null;
   }

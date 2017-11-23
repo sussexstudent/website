@@ -1,8 +1,8 @@
-import { ApolloClient, createNetworkInterface } from 'react-apollo';
+import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-client-preset';
 
 const serverSide = typeof localStorage === 'undefined';
 
-const networkInterface = createNetworkInterface({
+const link = new HttpLink({
   uri:
     serverSide ||
     !Object.hasOwnProperty.call(window.localStorage, 'falmerEndpoint')
@@ -11,7 +11,8 @@ const networkInterface = createNetworkInterface({
 });
 
 const client = new ApolloClient({
-  networkInterface,
+  link,
+  cache: new InMemoryCache(),
 });
 
 export default client;

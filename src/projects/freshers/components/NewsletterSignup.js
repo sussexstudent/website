@@ -187,7 +187,8 @@ class NewsletterSignup extends React.Component {
                   value={data.address}
                   onChange={this.handleEmailAddress}
                   onFocus={() =>
-                    this.setState({ currentState: 'INITIAL_FOCUS' })}
+                    this.setState({ currentState: 'INITIAL_FOCUS' })
+                  }
                   required
                 />
                 <button className="NewsletterSignup__button" type="submit">

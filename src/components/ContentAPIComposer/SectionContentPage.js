@@ -6,6 +6,7 @@ import ContentCard from '~components/ContentCard';
 import ContentNavigation, {
   generateTitlesFromStream,
 } from '~components/ContentNavigation';
+import getComponent from './getComponent';
 
 /* eslint-disable react/no-danger */
 class SectionContentPage extends React.Component {
@@ -36,7 +37,7 @@ class SectionContentPage extends React.Component {
                 activeKey={this.state.visibleKey}
               />
             ) : null}
-            {sidebarBody.map(() => <h2>block</h2>)}
+            {sidebarBody.map(getComponent)}
           </aside>
         </div>
         <div>

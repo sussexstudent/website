@@ -1,7 +1,19 @@
 .FalmerDataList {
+
+  &__list {
+    border-collapse: collapse;
+    display: block;
+  }
+
   &__row {
+    border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+
     &:hover {
       background-color: #eeeeee;
+    }
+
+    & > td {
+      padding: 0.3rem;
     }
   }
 }

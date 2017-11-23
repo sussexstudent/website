@@ -94,6 +94,11 @@ class UserBar extends React.Component {
                         <a href={item.link}>{item.name}</a>
                       </li>
                     ))}
+                    {admin.orgs.map(item => (
+                      <li key={item.name}>
+                        <a href={item.link}>{item.name}</a>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </ClickOutside>

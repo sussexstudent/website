@@ -64,9 +64,7 @@ function FreshersWhatsOn() {
           <p>
             Before you come down with the dreaded{` Freshers’ flu`}, it’s a good
             idea to sign up at{' '}
-            <a href="http://www.unisussexhc.nhs.uk/">
-              on-campus Health Centre
-            </a>{' '}
+            <a href="http://www.unisussexhc.nhs.uk/">on-campus Health Centre</a>{' '}
             near East Slope Bar as soon as possible. You can{' '}
             <a href="https://www-unisussexhc-nhs-uk.cgi-data.com/webform/6271453.cgi">
               register online

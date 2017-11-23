@@ -3,67 +3,8 @@ import PropTypes from 'prop-types';
 import has from 'lodash/has';
 import HydroLeaf from '~components/HydroLeaf';
 import Loader from '~components/Loader';
-import StaffList from '~components/StaffList';
-import StaffPage from '~components/StaffPage';
-import HeadingHero from '~components/HeadingHero';
-import SelectionGrid from '~components/SelectionGrid';
-import SelectionGridItem from '~components/SelectionGridItem';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
-import SectionContentPage from './SectionContentPage';
-import HomePage from './HomePage';
-
-/* eslint-disable react/prop-types */
-const components = {
-  heading: ({ value }) => <h1>{value}</h1>,
-  heading_hero: ({ value, document }) => (
-    <HeadingHero
-      title={value.heading || document.title}
-      imageURL={value.image.resource}
-    />
-  ),
-  staff_list: StaffList,
-  selection_grid: ({ value }) => (
-    <SelectionGrid>
-      {value.map(item => (
-        <SelectionGridItem
-          title={item.title}
-          link={item.link}
-          imageURL={item.image.resource}
-        />
-      ))}
-    </SelectionGrid>
-  ),
-};
-
-function getComponent(component, data, key) {
-  if (!Object.hasOwnProperty.call(components, component.type)) {
-    console.warn(
-      `[contentAPI] Requested component not found! ${component.type} is missing.`
-    );
-    return null;
-  }
-
-  return React.createElement(components[component.type], {
-    value: component.value,
-    document: data,
-    key,
-  });
-}
-
-const ComponentStreamPage = ({ data: { body }, data }) => (
-  <div>
-    {body.map((component, index) => getComponent(component, data, index))}
-  </div>
-);
-
-const pageComponents = {
-  'content.StaffPage': StaffPage,
-  'content.SelectionGridPage': ComponentStreamPage,
-  'content.SectionContentPage': SectionContentPage,
-  'content.HomePage': HomePage,
-};
-
-/* eslint-enable react/prop-types */
+import pageComponents from './pageMap';
 
 class ContentAPIComposer extends React.Component {
   constructor(props, c) {
@@ -136,8 +77,9 @@ class ContentAPIComposer extends React.Component {
 
     if (!has(this.state, 'data.meta.type')) {
       console.warn(
-        `[contentAPI] response did not specific content type. Page ID: ${this
-          .props.pageId}`
+        `[contentAPI] response did not specific content type. Page ID: ${
+          this.props.pageId
+        }`
       );
       return <h2>Sorry! something has gone wrong.</h2>;
     }
@@ -146,7 +88,9 @@ class ContentAPIComposer extends React.Component {
 
     if (!Object.hasOwnProperty.call(pageComponents, contentType)) {
       console.warn(
-        `[contentAPI] Content type does not exist! Tried to render: ${contentType}`
+        `[contentAPI] Content type does not exist! Tried to render: ${
+          contentType
+        }`
       );
       return <h2>Sorry! something has gone wrong.</h2>;
     }
@@ -170,4 +114,11 @@ export default HydroLeaf({
   contextToProps: {
     contentAPI: 'contentAPIStore',
   },
+})(ContentAPIComposer);
+
+export const WithoutSSR = HydroLeaf({
+  contextToProps: {
+    contentAPI: 'contentAPIStore',
+  },
+  disableSSR: true,
 })(ContentAPIComposer);

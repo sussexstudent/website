@@ -3,22 +3,14 @@ import TweetList from '~components/TweetList';
 import ContentAPIComposer from '~components/ContentAPIComposer';
 import HomepageEventsList from '~components/HomepageEventsList';
 import AdvertBar from '~components/AdvertBar';
-import { Hydro as HeadingHero } from '../../../components/HeadingHero/index';
+import Grill from '../../../components/Grill';
 
 const Homepage = () => (
   <div className="u-container-bleed-top">
     <AdvertBar className="AdvertBar--mobile-home" position="TopBanner" />
     <div className="Trail">
       <div className="Trail__row  u-container-bleed-2">
-        <a
-          className="HeadingImage--link"
-          href="https://www.sussexstudent.com/news/article/ussu/you-have-the-power-to-change-things/"
-        >
-          <HeadingHero
-            imageURL="original_images/4219b2966c1047dd8fe4bfa2aa922c72"
-            title="Submit an idea for referendum"
-          />
-        </a>
+        <Grill />
       </div>
       <div className="Trail__row Trail__row--211">
         <div className="ContentBlock">

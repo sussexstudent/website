@@ -1,5 +1,7 @@
-query AllEvents {
-  allEvents {
+#import "../EventStuff.graphql"
+
+query AllEvents($filter: EventFilter) {
+  allEvents(filter: $filter) {
     edges {
       node {
         ...EventStuff
@@ -9,17 +11,4 @@ query AllEvents {
       }
     }
   }
-}
-
-fragment EventStuff on Event {
-  id
-  eventId
-  title
-  featuredImage {
-    resource
-  }
-  shortDescription
-  startTime
-  endTime
-  ticketType
 }

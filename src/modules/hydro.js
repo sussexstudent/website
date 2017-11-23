@@ -43,7 +43,9 @@ export default function() {
 
     if (!Object.hasOwnProperty.call(componentMap, componentName)) {
       console.warn(
-        `[hydro] ${componentName} should have been rendered, but isn't in the component map!`
+        `[hydro] ${
+          componentName
+        } should have been rendered, but isn't in the component map!`
       );
       return;
     }

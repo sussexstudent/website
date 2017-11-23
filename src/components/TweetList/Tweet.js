@@ -35,8 +35,9 @@ function Tweet({ isQuoted, data }) {
       {!isQuoted ? <TweetPermalink tweet={tweet} /> : null}
     </div>,
     <a
-      href={`https://twitter.com/${tweet.user
-        .screen_name}/statuses/${tweet.id_str}`}
+      href={`https://twitter.com/${tweet.user.screen_name}/statuses/${
+        tweet.id_str
+      }`}
       className="Tweet__faux-link"
     />
   );

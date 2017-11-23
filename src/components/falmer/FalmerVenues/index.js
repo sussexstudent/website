@@ -1,14 +1,14 @@
 import React from 'react';
-import FalmerSplash from '../FalmerSplash';
-
-import venueImage from './venue.svg';
+import { Switch, Route } from 'react-router-dom';
+import FalmerVenueList from './FalmerVenuesList';
 
 function FalmerVenues() {
   return (
-    <FalmerSplash
-      image={venueImage}
-      text="Venue management within Falmer is coming soon."
-    />
+    <div>
+      <Switch>
+        <Route path="" exact component={FalmerVenueList} />
+      </Switch>
+    </div>
   );
 }
 

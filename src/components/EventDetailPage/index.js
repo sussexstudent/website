@@ -59,8 +59,9 @@ class EventDetailPage extends React.Component {
           {event.featuredImage ? (
             <meta
               property="og:image"
-              content={`https://su.imgix.net/${event.featuredImage
-                .resource}?h=1260&w=2400&fit=crop&crop=focal&auto=format`}
+              content={`https://su.imgix.net/${
+                event.featuredImage.resource
+              }?h=1260&w=2400&fit=crop&crop=focal&auto=format`}
             />
           ) : null}
           <meta property="og:description" content={event.shortDescription} />
@@ -75,8 +76,9 @@ class EventDetailPage extends React.Component {
           {event.featuredImage ? (
             <meta
               name="twitter:image"
-              content={`https://su.imgix.net/${event.featuredImage
-                .resource}?h=1200&w=2400&fit=crop&crop=focal&auto=format`}
+              content={`https://su.imgix.net/${
+                event.featuredImage.resource
+              }?h=1200&w=2400&fit=crop&crop=focal&auto=format`}
             />
           ) : null}
         </Helmet>
@@ -127,8 +129,9 @@ class EventDetailPage extends React.Component {
                         />
                         Part of{' '}
                         <Link
-                          to={`/whats-on/${event.parent.slug}-${event.parent
-                            .eventId}`}
+                          to={`/whats-on/${event.parent.slug}-${
+                            event.parent.eventId
+                          }`}
                         >
                           {event.parent.title}
                         </Link>
@@ -172,7 +175,8 @@ class EventDetailPage extends React.Component {
                           src="https://du9l8eemj97rm.cloudfront.net/events-society.svg"
                           alt=""
                         />
-                        Organised by <a href={event.studentGroup.link}>
+                        Organised by{' '}
+                        <a href={event.studentGroup.link}>
                           {event.studentGroup.name}
                         </a>
                       </li>

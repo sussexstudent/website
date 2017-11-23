@@ -1,0 +1,16 @@
+fragment EventStuff on Event {
+  id
+  eventId
+  title
+  featuredImage {
+    resource
+  }
+  shortDescription
+  startTime
+  endTime
+  ticketType
+  studentGroup {
+    name
+    groupId
+  }
+}

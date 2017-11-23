@@ -73,22 +73,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (document.querySelector('.QuoteSlips')) {
     [...document.querySelectorAll('.QuoteSlips')].forEach(quoteSlip => {
-      [
-        ...quoteSlip.querySelector('.QuoteSlips__questions').children,
-      ].forEach(li => {
-        li.addEventListener('click', () => {
-          const answerContainer = quoteSlip.querySelector(
-            '.QuoteSlips__answer-container'
-          );
-          const content = li.querySelector('.QuoteSlips__item-answer')
-            .innerHTML;
-          answerContainer.innerHTML = `
-          <h3 class="QuoteSlips__answer-question">${li.firstChild
-            .textContent}</h3>
+      [...quoteSlip.querySelector('.QuoteSlips__questions').children].forEach(
+        li => {
+          li.addEventListener('click', () => {
+            const answerContainer = quoteSlip.querySelector(
+              '.QuoteSlips__answer-container'
+            );
+            const content = li.querySelector('.QuoteSlips__item-answer')
+              .innerHTML;
+            answerContainer.innerHTML = `
+          <h3 class="QuoteSlips__answer-question">${
+            li.firstChild.textContent
+          }</h3>
           <div class="QuoteSlips__answer-content">${content}</div>
           `;
-        });
-      });
+          });
+        }
+      );
     });
   }
   /* New module style */

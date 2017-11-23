@@ -26,6 +26,8 @@
 @import './components/Heading.css';
 @import './components/FalmerHeader.css';
 @import './components/FalmerSplash.css';
+@import './components/FalmerListView.css';
+@import './components/FalmerSidebar.css';
 @import './components/FalmerSubSections.css';
 @import './components/FalmerCard.css';
 @import './components/FalmerCardGrid.css';

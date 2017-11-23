@@ -27,7 +27,9 @@ function ImageTreatmentPreview({ image }) {
           <li>
             <figure className="ImageTreatmentPreview__figure">
               <div
-                className={`u-responsive-ratio u-responsive-ratio--${treatment.size}`}
+                className={`u-responsive-ratio u-responsive-ratio--${
+                  treatment.size
+                }`}
               >
                 <Image
                   className="ResponsiveImage"

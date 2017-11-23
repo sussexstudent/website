@@ -63,7 +63,9 @@ class FrontpageHero extends React.Component {
               }
 
               if (transX !== item.currentState || transY !== item.currentY) {
-                item.el.style.transform = `translate3d(${transX}px, ${transY}px, 0)`;
+                item.el.style.transform = `translate3d(${transX}px, ${
+                  transY
+                }px, 0)`;
                 item.currentX = transX;
                 item.currentY = transY;
               }

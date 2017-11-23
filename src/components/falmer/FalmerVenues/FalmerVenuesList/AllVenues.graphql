@@ -1,0 +1,15 @@
+query AllVenues {
+  allVenues {
+    edges {
+      node {
+        ...VenueStuff
+      }
+    }
+  }
+}
+
+fragment VenueStuff on Venue {
+  id
+  venueId
+  name
+}

@@ -64,6 +64,12 @@
       font-size: 0.9rem;
       font-weight: inherit;
       text-transform: uppercase;
+      border: 0;
+      background: transparent;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     & p {

@@ -38,7 +38,10 @@ class OfficerPlan extends React.Component {
                 <h2 style={{ color: props.accent }}>
                   {pointPair[0]}
 
-                  <button onClick={this.handleOpen.bind(this, index)}>
+                  <button
+                    onClick={this.handleOpen.bind(this, index)}
+                    type="button"
+                  >
                     More
                   </button>
                 </h2>
@@ -82,7 +85,11 @@ class OfficerPlan extends React.Component {
             </h2>
             {props.points[this.state.point][1].map(p => <p>{p}</p>)}
 
-            <button className="Button" onClick={this.handleClose.bind(this)}>
+            <button
+              className="Button"
+              onClick={this.handleClose.bind(this)}
+              type="button"
+            >
               Close
             </button>
           </Modal>
@@ -132,7 +139,7 @@ function AnnualPlan() {
         />
         <OfficerPlan
           name="Sarah"
-          position="Posgraduate Ed."
+          position="Posgraduate Education Officer"
           points={[
             [
               'Protestival',
@@ -162,7 +169,7 @@ function AnnualPlan() {
         />
         <OfficerPlan
           name="Lulah"
-          position="Undergraduate Ed."
+          position="Undergraduate Education Officer"
           points={[
             [
               'Equality',
@@ -192,7 +199,7 @@ function AnnualPlan() {
         />
         <OfficerPlan
           name="Aisling"
-          position="Undergraduate Ed."
+          position="Society and Citizenship Officer"
           points={[
             [
               "Brighton Tenant's Union",
@@ -222,7 +229,7 @@ function AnnualPlan() {
         />
         <OfficerPlan
           name="Lucy"
-          position="Actives"
+          position="Activities Officer"
           points={[
             [
               'Sports',
@@ -254,7 +261,7 @@ function AnnualPlan() {
         />
         <OfficerPlan
           name="Grainne"
-          position="Welfare officer"
+          position="Welfare Officer"
           points={[
             [
               'Welfare',

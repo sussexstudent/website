@@ -173,6 +173,13 @@ export default UserBar;
 function DesktopContainer() {
   return (
     <div className="Container UserBar__container">
+      <button
+        className="UserBar__a11y"
+        type="button"
+        onClick={() => window.loadRecite()}
+      >
+        Accessibility
+      </button>
       <UserBar />
     </div>
   );

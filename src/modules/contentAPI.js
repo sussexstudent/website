@@ -5,7 +5,7 @@ import perf from '../tracking/perf';
 
 function render(root) {
   const t = perf.recordTime('ContentAPI', 'render');
-  const pageId = root.dataset.pageId;
+  const { pageId } = root.dataset;
   ReactDOM.render(<ContentAPIComposer pageId={pageId} />, root);
   t.done();
 }

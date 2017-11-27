@@ -26,7 +26,6 @@ module.exports = {
       'mitt',
     ],
     main: ['./src/projects/website/entry.js'],
-    freshers: ['./src/projects/freshers/entry.js'],
     devFonts: './src/projects/website/env-dev.js',
     productionFonts: './src/projects/website/env-production.js',
   },
@@ -75,12 +74,12 @@ module.exports = {
   ],
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        use: 'eslint-loader',
-        exclude: /node_modules/,
-        enforce: 'pre',
-      },
+      // {
+      //   test: /\.js$/,
+      //   use: 'eslint-loader',
+      //   exclude: /node_modules/,
+      //   enforce: 'pre',
+      // },
       {
         test: /\.(graphql|gql)$/,
         exclude: /node_modules/,

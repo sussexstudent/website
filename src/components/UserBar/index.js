@@ -14,7 +14,6 @@ class UserBar extends React.Component {
     this.state = {
       isLoaded: false,
       dropdownOpen: null,
-      isPageOpen: false,
     };
 
     this.handleOpenDropdown = dropdown =>

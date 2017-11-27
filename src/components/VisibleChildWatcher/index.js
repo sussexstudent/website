@@ -15,10 +15,6 @@ class VisibleChildWatcher extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      currentChild: null,
-    };
-
     this.childEls = {};
   }
 

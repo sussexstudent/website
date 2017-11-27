@@ -85,7 +85,7 @@ class TweetList extends React.Component {
     if (!isLoading && !tweets) {
       return (
         <ul className="TweetList">
-          <p>{"Something went wong, we're unable to load the latest tweets"}</p>
+          <p>{`Something went wong, we're unable to load the latest tweets`}</p>
         </ul>
       );
     }

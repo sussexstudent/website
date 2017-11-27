@@ -12,11 +12,11 @@ const Homepage = () => (
       <div className="Trail__row  u-container-bleed-2">
         <a
           className="HeadingImage--link"
-          href="https://www.sussexstudent.com/news/article/ussu/you-have-the-power-to-change-things/"
+          href="https://www.sussexstudent.com/referenda/"
         >
           <HeadingHero
             imageURL="original_images/4219b2966c1047dd8fe4bfa2aa922c72"
-            title="Submit an idea for referendum"
+            title="Vote now in our Autumn referenda"
           />
         </a>
       </div>

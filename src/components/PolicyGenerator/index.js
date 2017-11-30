@@ -4,17 +4,18 @@ import Hydro from '~components/HydroLeaf';
 import { gs, createGeneration } from '@drafty/generation-game';
 import { starters, enders } from './data';
 
+let openSocial = () => '';
+let sharing = { twitter: () => '' };
+
 if (typeof window === 'undefined') {
-
-
 } else {
-  function openSocial(url) {
+  openSocial = url => {
     window.open(
       url,
       '',
       'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=522,width=556'
     );
-  }
+  };
 
   window.fbAsyncInit = function() {
     FB.init({
@@ -37,7 +38,7 @@ if (typeof window === 'undefined') {
     fjs.parentNode.insertBefore(js, fjs);
   })(document, 'script', 'facebook-jssdk');
 
-  const sharing = {
+  sharing = {
     facebook(link) {
       if (link == null) {
         link = window.location.href;
@@ -63,12 +64,7 @@ if (typeof window === 'undefined') {
   };
 }
 
-const degrees = [
-  'English',
-  'Mathematics',
-  'Media Studies',
-  'Computer Science',
-];
+const degrees = ['English', 'Mathematics', 'Media Studies', 'Computer Science'];
 
 const generation = createGeneration([
   gs`${starters} should be ${enders}`,

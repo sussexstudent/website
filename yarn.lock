@@ -54,6 +54,12 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@drafty/generation-game@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@drafty/generation-game/-/generation-game-2.0.0.tgz#1b8ba11820a1d03bc35c7a6bea85a92809018367"
+  dependencies:
+    lodash "^4.17.4"
+
 "@hypnosphi/fuse.js@^3.0.9":
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/@hypnosphi/fuse.js/-/fuse.js-3.0.9.tgz#ea99f6121b4a8f065b4c71f85595db2714498807"

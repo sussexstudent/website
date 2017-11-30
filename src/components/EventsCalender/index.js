@@ -308,6 +308,11 @@ const EventsApplication = () => (
       exact
       component={EventsContainer}
     />
+    <Route
+      path="/whats-on/collection/:brandSlug"
+      exact
+      component={EventsContainer}
+    />
     <Route path="/whats-on/**-:eventId" component={EventDetailPage} />
     <Route path="/whats-on/:eventId" component={EventDetailPage} />
   </Switch>

@@ -1,0 +1,27 @@
+.PolicyGenerator {
+  text-align: center;
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  &__idea-box {
+    padding: 1rem;
+    background: #ffffff;
+    box-shadow: 0 1px 6px rgba(40, 40, 40, 0.1);
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__kicker {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+
+  &__idea-line {
+    margin: auto 0;
+  }
+}

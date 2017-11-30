@@ -30,6 +30,8 @@ export default function() {
       ),
     AnnualPlan: () =>
       import(/* webpackChunkName: "AnnualPlan" */ '~components/AnnualPlan'),
+    PolicyGenerator: () =>
+      import(/* webpackChunkName: "PolicyGenerator" */ '~components/PolicyGenerator'),
   };
 
   [...document.querySelectorAll('.Hydro')].forEach(el => {

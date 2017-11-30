@@ -14,6 +14,33 @@
     }
   }
 
+  &--as-action {
+    justify-content: center;
+    margin-top: 1rem;
+
+    .Social__link {
+      display: flex;
+      border-radius: 2px;
+      font-size: inherit;
+      color: #ffffff;
+      font-weight: bold;
+      font-family: inherit;
+
+      &--facebook {
+        background: #3853a1;
+      }
+
+      &--twitter {
+        background: #4baaf4;
+      }
+    }
+
+    .Social__handle {
+      display: block;
+      align-self: center;
+    }
+  }
+
   &--as-list {
     flex-direction: column;
 
@@ -46,6 +73,8 @@
 
   &__link {
     display: block;
+    border: 0;
+    background: transparent;
   }
 
   &__icon {

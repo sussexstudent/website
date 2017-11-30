@@ -36,6 +36,7 @@ export default {
     '/': './website/layouts/homepage.js',
     '/support': './website/layouts/Support.js',
     '/whats-on': './website/layouts/WhatsOn.js',
+    '/policy-generator': './website/layouts/PolicyIdeaGenerator.js',
     '/about-us': './website/layouts/AboutUs.js',
     '/plan': './website/layouts/AnnualPlan.js',
     '/soc-events': './website/layouts/SocEvents.js',

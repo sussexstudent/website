@@ -25,7 +25,7 @@ export const starters = [
   `this year’s graduation ceremonies`,
   `Northfield`,
   `Park Village`,
-  `bteing placed in a hotel in Lewes`,
+  `being placed in a hotel in Lewes`,
   `East Slope`,
   `Lewes Court`,
   `Stanmer Court`,

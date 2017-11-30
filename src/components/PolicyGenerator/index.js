@@ -77,8 +77,7 @@ const generation = createGeneration([
   gs`${starters} should be replaced with ${starters}`,
   gs`${starters} should made to experience ${starters}`,
   gs`${starters} should be funded instead of ${starters}`,
-  gs`${starters} valued more than ${starters}`,
-  gs`${starters}, better for you than ${starters}`,
+  gs`${starters} should valued more than ${starters}`,
 ]);
 
 console.log(

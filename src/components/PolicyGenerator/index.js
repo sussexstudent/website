@@ -4,6 +4,65 @@ import Hydro from '~components/HydroLeaf';
 import { gs, createGeneration } from '@drafty/generation-game';
 import { starters, enders } from './data';
 
+if (typeof window === 'undefined') {
+
+
+} else {
+  function openSocial(url) {
+    window.open(
+      url,
+      '',
+      'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=522,width=556'
+    );
+  }
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: '131048754247134',
+      autoLogAppEvents: true,
+      xfbml: false,
+      version: 'v2.11',
+    });
+  };
+
+  (function(d, s, id) {
+    let js,
+      fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+      return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = 'https://connect.facebook.net/en_US/sdk.js';
+    fjs.parentNode.insertBefore(js, fjs);
+  })(document, 'script', 'facebook-jssdk');
+
+  const sharing = {
+    facebook(link) {
+      if (link == null) {
+        link = window.location.href;
+      }
+      const url = `https://www.facebook.com/v2.8/dialog/share?href=${encodeURIComponent(
+        link
+      )}&app_id=696155863910264`;
+      return url;
+    },
+    twitter(text, link) {
+      const hashtags = 'sussexelections';
+
+      if (link === null) {
+        link = window.location.href;
+      }
+      const url =
+        `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+          link
+        )}&text=${encodeURIComponent(text)}` + `&hashtags=${hashtags}`;
+
+      return url;
+    },
+  };
+}
+
 const degrees = [
   'English',
   'Mathematics',
@@ -19,67 +78,12 @@ const generation = createGeneration([
   gs`${starters} should made to experience ${starters}`,
   gs`${starters} should be funded instead of ${starters}`,
   gs`${starters} valued more than ${starters}`,
-  gs`${starters} better for you than ${starters}`,
+  gs`${starters}, better for you than ${starters}`,
 ]);
 
 console.log(
   `[generation-game] total combinations: ${generation.totalCombinations}`
 );
-
-export function openSocial(url) {
-  window.open(
-    url,
-    '',
-    'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=522,width=556'
-  );
-}
-
-window.fbAsyncInit = function() {
-  FB.init({
-    appId: '131048754247134',
-    autoLogAppEvents: true,
-    xfbml: false,
-    version: 'v2.11',
-  });
-};
-
-(function(d, s, id) {
-  let js,
-    fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {
-    return;
-  }
-  js = d.createElement(s);
-  js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js';
-  fjs.parentNode.insertBefore(js, fjs);
-})(document, 'script', 'facebook-jssdk');
-
-const sharing = {
-  facebook(link) {
-    if (link == null) {
-      link = window.location.href;
-    }
-    const url = `https://www.facebook.com/v2.8/dialog/share?href=${encodeURIComponent(
-      link
-    )}&app_id=696155863910264`;
-    return url;
-  },
-  twitter(text, link) {
-    const hashtags = 'sussexelections';
-
-    if (link === null) {
-      link = window.location.href;
-    }
-    const url =
-      `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-        link
-      )}&text=${encodeURIComponent(text)}` +
-      `&hashtags=${hashtags}`;
-
-    return url;
-  },
-};
 
 function capitaliseLine(line) {
   return `${line.charAt(0).toUpperCase()}${line.slice(1)}`;

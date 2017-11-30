@@ -270,7 +270,6 @@ export const enders = [
   `adopted as the new Sussex Uni mascot`,
   `condemned`,
   `part of a bushtucker trial`,
-  `made to defend [noun from list]`,
   `broadcast on URF`,
   `better`,
   `worse`,

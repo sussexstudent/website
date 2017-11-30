@@ -67,13 +67,13 @@ const degrees = [
   'English',
   'Mathematics',
   'Media Studies',
-  'Computer Sceience',
+  'Computer Science',
 ];
 
 const generation = createGeneration([
   gs`${starters} should be ${enders}`,
   gs`${starters} shouldn't be ${enders}`,
-  gs`${starters} compulsory if you study ${degrees}`,
+  gs`${starters} should be compulsory if you study ${degrees}`,
   gs`${starters} should be replaced with ${starters}`,
   gs`${starters} should made to experience ${starters}`,
   gs`${starters} should be funded instead of ${starters}`,

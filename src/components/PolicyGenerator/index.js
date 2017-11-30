@@ -75,9 +75,9 @@ const generation = createGeneration([
   gs`${starters} shouldn't be ${enders}`,
   gs`${starters} should be compulsory if you study ${degrees}`,
   gs`${starters} should be replaced with ${starters}`,
-  gs`${starters} should made to experience ${starters}`,
+  gs`${starters} should be made to experience ${starters}`,
   gs`${starters} should be funded instead of ${starters}`,
-  gs`${starters} should valued more than ${starters}`,
+  gs`${starters} should be valued more than ${starters}`,
 ]);
 
 console.log(

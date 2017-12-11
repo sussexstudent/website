@@ -291,7 +291,7 @@ const EventsContainer = compose(
         variables: {
           filter: props.filter || {
             fromTime: startOfDay(new Date()).toISOString(),
-            toTime: addMonths(startOfDay(new Date()), 3).toISOString(),
+            toTime: addMonths(startOfDay(new Date()), 6).toISOString(),
           },
         },
       };

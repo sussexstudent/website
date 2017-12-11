@@ -5,8 +5,6 @@ import 'what-input';
 import currentUser from '~libs/user';
 import smoothscroll from '~libs/smoothscroll';
 // import ReactDOM from 'react-dom';
-import ModalManager from '../../bits/modals/manager';
-// import LoginModal from './components/LoginModal';
 // import NewsletterModal from './components/NewsletterModal';
 // import SnapchatModal from './components/SnapchatModal';
 import perf from '../../tracking/perf';
@@ -30,8 +28,6 @@ window.LinkshimAsyncLink = {
   referrer_log() {},
   swap() {},
 };
-
-const modals = ModalManager();
 
 const actions = {
   login() {
@@ -66,7 +62,6 @@ if (currentUser.fundraising.blocking) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  modals.init();
   [...document.querySelectorAll('a')].forEach(e => {
     e.addEventListener('click', linkListener);
   });

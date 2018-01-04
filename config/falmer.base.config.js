@@ -60,12 +60,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: 'eslint-loader',
-        exclude: /node_modules/,
-        enforce: 'pre',
-      },
-      {
         test: /\.(graphql|gql)$/,
         exclude: /node_modules/,
         use: 'graphql-tag/loader',

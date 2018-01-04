@@ -1,15 +1,6 @@
 {
-  "presets": [["es2015", {"modules": "commonjs"}], "react", "stage-2"],
-  "plugins": [
-    [ "babel-plugin-webpack-alias", { "config": "./webpack.base.config.js" } ]
-  ],
+  "presets": ["react", "stage-2"],
   "env": {
-    "dev-server": {
-      "plugins": ["babel-plugin-inline-import-graphql-ast"]
-    },
-    "comp": {
-      "plugins": ["babel-plugin-inline-import-graphql-ast"]
-    },
     "bundle": {
       "presets": [["env", {
         "targets": {
@@ -22,6 +13,18 @@
         ]
       }]],
       "plugins": ["react-hot-loader/babel"]
+    },
+    "comp": {
+      "presets": [["env", {
+        "targets": {
+          "node": ["8"]
+        },
+        "useBuiltIns": false,
+        "modules": false,
+        "blacklist": [
+          "transform-regenerator"
+        ]
+      }]]
     }
   }
 }

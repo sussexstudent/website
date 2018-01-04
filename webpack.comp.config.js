@@ -1,11 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const { generateConfig } = require('./webpack.base.config.js');
 const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = generateConfig();
 
@@ -24,40 +22,19 @@ config.performance = {
 };
 
 config.output = {
-  path: path.resolve(path.join(__dirname, 'dist')),
+  path: path.resolve(path.join(__dirname, 'comp-dist')),
   publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
-  filename: 'union.[name].[chunkhash].js',
+  filename: 'union.[name].js',
 };
 
-config.plugins = config.plugins.concat([
-  new CleanWebpackPlugin(['dist']),
-  new webpack.LoaderOptionsPlugin({
-    minimize: true,
-  }),
+config.plugins = [
   extractCSS,
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'common.js',
-    filename: 'common.js',
-    async: false,
-    children: true,
-    minChunks: 2,
-  }),
-  new ChunkManifestPlugin({
-    filename: 'manifest.json',
-    manifestVariable: 'chunkManifest',
-  }),
-  new CopyWebpackPlugin([{ from: './src/img/favicons', to: './branding' }]),
-  new webpack.optimize.UglifyJsPlugin({
-    output: { comments: false },
-    sourceMap: true,
-  }),
-  new AssetsWebpackPlugin(),
-]);
+];
 
 config.module.rules = config.module.rules.concat([
   {
     test: /\.js?$/,
-    loaders: ['babel-loader?forceEnv=bundle'],
+    loaders: ['babel-loader?forceEnv=comp'],
     exclude: /node_modules/,
   },
   {

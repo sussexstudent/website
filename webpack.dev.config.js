@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const config = require('./webpack.base.config.js');
+const { generateConfig } = require('./webpack.base.config.js');
+
+const config = generateConfig();
 
 config.devServer = {
   historyApiFallback: true,

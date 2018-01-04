@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "@storybook/addon-storyshots": "^3.2.16",
-    "@ussu/comp": "^1.4.0",
+    "@ussu/comp": "2.0.0",
     "assets-webpack-plugin": "^3.5.1",
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
@@ -141,7 +141,7 @@
     "gen": "BABEL_ENV=comp `yarn bin`/comp",
     "deploy": "uncommitted && yarn run prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run gen",
     "precommit": "`npm bin`/eslint",
-    "serve": "BABEL_ENV=dev-server node --trace-warnings ./devserver.js",
+    "serve": "node --trace-warnings ./devserver.js",
     "docs:serve": "export NODE_ENV=development && node ./docs/devserver.js",
     "docs:prod": "export NODE_ENV=production && webpack --config ./docs/webpack.prod.config.js",
     "format": "find ./src -name '*.js' | grep -v app | xargs prettier --single-quote --print-width 80 --trailing-comma es5 --write",

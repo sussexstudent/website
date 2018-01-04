@@ -44,7 +44,7 @@ function generateConfig() {
         '~components': path.resolve(__dirname, 'src/components/'),
         '~libs': path.resolve(__dirname, 'src/libs/'),
       },
-      extensions: ['.js', '.svg'],
+      extensions: ['.ts', '.tsx', '.js', '.svg'],
     },
 
     node: {
@@ -85,6 +85,10 @@ function generateConfig() {
           test: /\.(graphql|gql)$/,
           exclude: /node_modules/,
           use: 'graphql-tag/loader',
+        },
+        {
+          test: /\.tsx?$/,
+          loader: 'awesome-typescript-loader?useBabel',
         },
         {
           test: /\.svg|\.png|\.woff/,

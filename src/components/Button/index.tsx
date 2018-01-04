@@ -1,7 +1,12 @@
 import React from 'react';
 import cx from 'classnames';
 
-function Button({ href, children }) {
+interface IProps {
+  href: string;
+  children: any;
+}
+
+function Button({ href, children }: IProps) {
   return (
     <a className={cx('Button')} href={href}>
       {children}

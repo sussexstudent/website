@@ -1,8 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const AnodyneMenuItem = ({ name, link, active }) => (
+interface IPropsItem {
+  name: string;
+  link: string;
+  active: boolean;
+}
+
+const AnodyneMenuItem = ({ name, link, active }: IPropsItem) => (
   <li className="AnodyneMenu__item">
     <a
       className={cx('AnodyneMenu__link', {
@@ -15,12 +20,11 @@ const AnodyneMenuItem = ({ name, link, active }) => (
   </li>
 );
 
-AnodyneMenuItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-};
+interface IProps {
+  activeItem: string; // todo: should use enums now in TypeScript
+}
 
-const AnodyneMenu = ({ activeItem }) => (
+const AnodyneMenu = ({ activeItem }: IProps) => (
   <nav className="AnodyneMenu">
     <ul className="AnodyneMenu__list">
       <AnodyneMenuItem

@@ -9,7 +9,7 @@
     ],
     "jsx": "preserve",
     "target": "es2015",
-    "module": "es2015",
+    "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
     "noImplicitAny": true,
@@ -20,6 +20,10 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "skipLibCheck": true,
-    "allowJs": true
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "~components/*": ["./src/components/*"]
+    }
   }
 }

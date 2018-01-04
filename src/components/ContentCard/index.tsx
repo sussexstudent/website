@@ -1,17 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const ContentCard = ({ anchor = null, children }) => (
+interface IProps {
+  anchor?: string;
+  children: any;
+}
+
+const ContentCard = ({ anchor, children }: IProps) => (
   <div className="ContentCard">
-    {anchor !== null ? (
+    {anchor !== undefined ? (
       <span className="u-position-anchor" id={anchor} />
     ) : null}
     {children}
   </div>
 );
-
-ContentCard.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default ContentCard;

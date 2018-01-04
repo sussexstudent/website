@@ -1,9 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MSLTag from './MSLTag';
 
-const AdvertBar = ({ className = '', position, dark = false }) => (
+interface IProps {
+  className?: string;
+  position: string;
+  dark: boolean;
+}
+
+const AdvertBar = ({ className = '', position, dark = false }: IProps) => (
   <div
     className={cx('AdvertBar', 'advert', className, {
       'AdvertBar--dark': dark,
@@ -17,10 +22,5 @@ const AdvertBar = ({ className = '', position, dark = false }) => (
     />
   </div>
 );
-
-AdvertBar.propTypes = {
-  position: PropTypes.string.isRequired,
-  dark: PropTypes.bool,
-};
 
 export default AdvertBar;

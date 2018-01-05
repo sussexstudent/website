@@ -1,8 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-function BackBar({ color = 'blue', href, children }) {
+interface IProps {
+  color: 'red' | 'blue' | 'green' | 'slate';
+  href: string;
+  children: any;
+}
+
+function BackBar({ color = 'blue', href, children }: IProps) {
   return (
     <div className={cx('BackBar', `BackBar--color-${color}`)}>
       <a href={href}>
@@ -34,15 +39,5 @@ function BackBar({ color = 'blue', href, children }) {
     </div>
   );
 }
-
-BackBar.propTypes = {
-  color: PropTypes.oneOf(['red', 'blue', 'green', 'slate']),
-  href: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-};
-
-BackBar.defaultProps = {
-  color: 'blue',
-};
 
 export default BackBar;

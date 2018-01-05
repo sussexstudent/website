@@ -131,7 +131,7 @@ class Header extends React.Component<IProps, IState> {
   }
 
   render() {
-    const { isSideMenuOpen, isSearchOpen, userData, logoColor } = this.state;
+    const { isSideMenuOpen, isSearchOpen, logoColor } = this.state;
 
     return (
       <div className="Container">

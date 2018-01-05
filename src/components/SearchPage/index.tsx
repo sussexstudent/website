@@ -3,32 +3,48 @@ import qs from 'query-string';
 import cx from 'classnames';
 import debounce from 'lodash/debounce';
 import orderBy from 'lodash/orderBy';
-import SearchResult from '~components/SearchResult';
+import SearchResult, {SearchResult as ISearchResult} from '~components/SearchResult';
 import SearchFilterNav from '~components/SearchFilterNav';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 
 import perf from '../../tracking/perf';
 
+enum SearchAreas {
+  Top,
+  Groups,
+  News,
+  Events,
+  Pages
+}
+
 /* eslint-disable */
 
-function getPayloadMetadata(payload) {
-  const areas = {
-    top: 'Top results',
-    groups: 'Sports & Societies',
-    news: 'News',
-    events: 'Events',
-    pages: 'Content',
+function getPayloadMetadata(payload: { [key: string]: Array<Object> }) {
+  const areaTitlesMap = {
+    [SearchAreas.Top]: 'Top results',
+    [SearchAreas.Groups]: 'Sports & Societies',
+    [SearchAreas.News]: 'News',
+    [SearchAreas.Events]: 'Events',
+    [SearchAreas.Pages]: 'Content',
   };
 
-  const calcWeight = key => {
-    if (key === 'top') {
+  const areaApiMap = {
+    [SearchAreas.Top]: 'top',
+    [SearchAreas.Groups]: 'groups',
+    [SearchAreas.News]: 'news',
+    [SearchAreas.Events]: 'events',
+    [SearchAreas.Pages]: 'pages',
+  };
+
+  const calcWeight = (area: SearchAreas) => {
+    if (area === SearchAreas.Top) {
       return Infinity;
     }
 
-    if (key === 'news') {
+    if (area === SearchAreas.News) {
       return -1;
     }
-    const count = payload[key].length;
+    const count = payload[areaApiMap[area]].length;
     if (count <= 0) {
       return -Infinity;
     } else {
@@ -36,29 +52,54 @@ function getPayloadMetadata(payload) {
     }
   };
 
-  const mk = key => ({
+  const mk = (key: SearchAreas) => ({
     weight: calcWeight(key),
     count: payload[key].length,
     key,
-    title: areas[key],
+    title: areaTitlesMap[key],
   });
 
   const orderedAreas = orderBy(
-    ['top', 'groups', 'events', 'pages', 'news'].map(mk),
+    [SearchAreas.Top, SearchAreas.Groups, SearchAreas.News, SearchAreas.Events, SearchAreas.Pages].map(mk),
     ['weight', 'name'],
     ['desc', 'asc']
   );
 
   const hasResults =
-    Object.keys(areas).reduce((acc, key) => payload[key].length + acc, 0) > 0;
+    Object.keys(areaTitlesMap).reduce((acc, key) => payload[key].length + acc, 0) > 0;
   return {
     orderedAreas,
     hasResults,
   };
 }
 
-class SearchPage extends React.Component {
-  constructor(props) {
+interface IProps {
+  query: string;
+}
+
+interface IState {
+  page: number;
+  results: {
+    [area: number]: Array<number>;
+    results: Array<ISearchResult>
+  } | null;
+  isLoading: boolean;
+  currentArea: SearchAreas;
+  orderedAreas: Array<{
+    weight: number;
+    count: number;
+    key: SearchAreas;
+    title: string;
+  }>; // todo
+  hasResults: boolean;
+}
+
+class SearchPage extends React.Component<IProps, IState> {
+  private loadQueryResultsDebounced: (query: string) => void;
+  private searchContainerRef: HTMLDivElement | null;
+  private containerRef: HTMLDivElement | null;
+
+  constructor(props: IProps) {
     super(props);
 
     this.handleSearch = this.handleSearch.bind(this);
@@ -74,17 +115,19 @@ class SearchPage extends React.Component {
       page: parseInt(qs.parse(location.search).page, 10) || 1,
       results: null,
       isLoading: false,
-      currentArea: null,
+      currentArea: SearchAreas.Top,
+      hasResults: false,
+      orderedAreas: [],
     };
   }
 
   componentWillMount() {
     if (this.props.query) {
-      this.loadQueryResults();
+      this.loadQueryResults(this.props.query);
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: IProps) {
     if (nextProps.query !== this.props.query) {
       this.handleUpdate(nextProps.query);
     }
@@ -95,9 +138,7 @@ class SearchPage extends React.Component {
     ga('send', 'event', 'Search', 'emptyresults', this.props.query);
   }
 
-  loadQueryResults(query) {
-    const { page } = this.state;
-
+  loadQueryResults(query: string) {
     // alleviate flash of loading when result is cached and gets returned quickly
     let didFinish = false;
     setTimeout(() => {
@@ -142,50 +183,44 @@ class SearchPage extends React.Component {
     ga('send', 'event', 'Search', 'nothappy', this.props.query);
   }
 
-  handleSearch(e) {
+  handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     this.setState({ page: 1 }, () => this.handleUpdate());
   }
 
-  handleUpdate(forceSearchTerm = null) {
+  handleUpdate(forceSearchTerm: string | null  = null) {
     const query = forceSearchTerm === null ? this.props.query : forceSearchTerm;
 
     if (query !== '') {
       this.loadQueryResultsDebounced(query);
     } else {
-      this.setState({
+      this.setState(state => ({
+        ...state,
         results: null,
         isLoading: false,
-        hasResults: null,
-        orderedAreas: null,
-      });
+        orderedAreas: [],
+        hasResults: false,
+      }));
     }
-
-    const search = qs.parse(location.search);
-    search.q = query;
-    search.page = this.props.page;
   }
 
-  handlePageChange(nextNumber) {
+  handlePageChange(nextNumber: number) {
     this.setState({ page: nextNumber }, () => this.handleUpdate());
-    this.containerRef.scrollIntoView(true);
+    this.containerRef && this.containerRef.scrollIntoView(true);
   }
 
   handleMoveToContainerTop() {
-    this.containerRef.scrollIntoView(true);
+    this.containerRef && this.containerRef.scrollIntoView(true);
   }
 
-  handleAreaChange(area) {
+  handleAreaChange(area: SearchAreas) {
     this.setState({ currentArea: area });
   }
 
   renderMeta() {
     const {
-      results,
       isLoading,
       hasResults,
-      searchArea,
-      page,
       orderedAreas,
       currentArea,
     } = this.state;
@@ -214,8 +249,7 @@ class SearchPage extends React.Component {
   }
 
   renderResults() {
-    const { query } = this.props;
-    const { results, isLoading, searchArea, page, currentArea } = this.state;
+    const { results, isLoading, currentArea } = this.state;
 
     const containerclassNamees = cx('SearchApp__container', {
       'SearchApp__container--is-loading': isLoading === true,
@@ -247,9 +281,6 @@ class SearchPage extends React.Component {
   }
 
   render() {
-    const { query } = this.props;
-    const { searchArea } = this.state;
-
     return (
       <div
         ref={ref => {

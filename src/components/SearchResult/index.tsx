@@ -33,7 +33,7 @@ function formatTitle(title: string) {
   return title.replace(pageTitleEnding, '');
 }
 
-interface SearchResult {
+export interface SearchResult {
   link: string;
   title: string;
   description: string;

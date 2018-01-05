@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "@storybook/addon-storyshots": "^3.2.16",
     "@types/classnames": "^2.2.3",
     "@types/lodash": "^4.14.91",
     "@types/prop-types": "^15.5.2",
@@ -102,8 +101,6 @@
   },
   "dependencies": {
     "@drafty/generation-game": "^2.0.0",
-    "@storybook/addon-info": "^3.2.16",
-    "@storybook/react": "^3.2.16",
     "apollo-client-preset": "^1.0.3",
     "chunk-manifest-webpack-plugin": "^1.1.2",
     "classnames": "^2.2.5",
@@ -158,8 +155,6 @@
     "format": "find ./src -name '*.js' | grep -v app | xargs prettier --single-quote --print-width 80 --trailing-comma es5 --write",
     "test": "NODE_ENV=test && jest",
     "testc": "NODE_ENV=test && jest --coverage",
-    "storybook": "start-storybook -p 9001 -c .storybook",
-    "build-storybook": "build-storybook -c .storybook -o storybook-public",
     "falmer:serve": "webpack-dev-server --config webpack.config.falmer.js",
     "falmer:_deploy": "node ./config/deployToFalmer.js",
     "falmer:deploy": "yarn run falmer:prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist-falmer/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run falmer:_deploy"

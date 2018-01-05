@@ -2,17 +2,27 @@ import get from 'lodash/get';
 import set from 'lodash/set';
 import has from 'lodash/has';
 
+interface ItemLevelVistor {
+  (item: any): number;
+}
+
+interface ResultTree {
+  value: any;
+  _missingLevel?: boolean;
+  _children?: ResultTree[]
+}
+
 // TODO: this doesn't accept streams, might be confusing, initial called that due to
 // use in Wagtail StreamField handling
-export default function flatStreamToLevels(itemToLevelFunc, flatItemArray) {
+export default function flatStreamToLevels(itemToLevelFunc: ItemLevelVistor, flatItemArray: Array<Object>) {
   // holds our index pointer for each level
-  let lastLevel = [];
+  let lastLevel: number[] = [];
 
   // the multi dimensional array we'll return
-  const result = [];
+  const result: ResultTree[] = [];
 
   // gets the current children array for a given level
-  function getPathForLevel(level) {
+  function getPathForLevel(level: number) {
     // if we are on level 0, no path management is needed.
     if (level === 0) {
       return result;
@@ -37,7 +47,7 @@ export default function flatStreamToLevels(itemToLevelFunc, flatItemArray) {
     return get(result, path);
   }
 
-  flatItemArray.forEach(item => {
+  flatItemArray.forEach((item: Object) => {
     const level = itemToLevelFunc(item);
     const resultLevel = getPathForLevel(level);
     resultLevel.push({ ...item, _children: [] });

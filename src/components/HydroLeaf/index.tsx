@@ -5,8 +5,26 @@ import isEmpty from 'lodash/isEmpty';
 
 let hydroId = 0;
 
-function generateContextTypes(contextToPropsMap) {
-  const contextTypes = {};
+interface ContextToPropsMap {
+  [contextName: string]: string;
+}
+
+interface ContextTypesMap {
+  [contextName: string]: PropTypes.Requireable<any>;
+}
+
+
+interface HydroLeafOptions {
+  contextToProps?: ContextToPropsMap;
+  className?: string;
+  name?: string;
+  container?(props: any): any;
+  disableSSR?: boolean;
+}
+
+
+function generateContextTypes(contextToPropsMap: ContextToPropsMap) {
+  const contextTypes: ContextTypesMap = {};
   Object.keys(contextToPropsMap).forEach(contextName => {
     contextTypes[contextName] = PropTypes.object;
   });
@@ -14,8 +32,10 @@ function generateContextTypes(contextToPropsMap) {
   return contextTypes;
 }
 
-function generatePropsForContext(contextToPropsMap, context) {
-  const props = {};
+function generatePropsForContext(contextToPropsMap: ContextToPropsMap, context: { [contextName: string]: any; }) {
+  const props: {
+    [propName: string]: any;
+  } = {};
 
   Object.keys(contextToPropsMap).forEach(contextName => {
     props[contextToPropsMap[contextName]] = context[contextName];
@@ -28,6 +48,15 @@ const DefaultContainer = ({ children = null, ...props }) => (
   <div {...props}>{children}</div>
 );
 
+interface IDeHydroProps {
+  renderStatic?: boolean;
+}
+
+interface ISerialProps {
+  hydroId?: number;
+  children?: any;
+}
+
 /* eslint-disable react/no-danger */
 /* eslint-disable no-inner-declarations */
 function HydroLeaf(
@@ -37,12 +66,14 @@ function HydroLeaf(
     name = null,
     container = DefaultContainer,
     disableSSR = false,
-  } = {}
+  }: HydroLeafOptions = {}
 ) {
-  return function HydroLeafHOC(Component) {
+  return function HydroLeafHOC(Component: any) {
     if (process.env.COMP === '1') {
       // eslint-disable-next-line
-      class DeHydro extends React.Component {
+      class DeHydro extends React.Component<IDeHydroProps> {
+        static contextTypes = generateContextTypes(contextToProps);;
+
         componentWillMount() {
           hydroId += 1;
         }
@@ -54,11 +85,11 @@ function HydroLeaf(
             return <Component {...props} />;
           }
 
-          const serialProps = {
+          const serialProps: ISerialProps = {
             ...props,
             ...generatePropsForContext(contextToProps, this.context),
           };
-          let hydroKey = hydroId;
+          let hydroKey: number | undefined = hydroId;
           if (Object.hasOwnProperty.call(serialProps, 'hydroId')) {
             hydroKey = serialProps.hydroId;
             delete serialProps.hydroId;
@@ -67,7 +98,7 @@ function HydroLeaf(
           let hydroIdSpread = {};
 
           if (isEmpty(serialProps)) {
-            hydroKey = null;
+            hydroKey = undefined;
           } else {
             hydroIdSpread = { 'data-id': hydroKey };
           }
@@ -105,8 +136,6 @@ function HydroLeaf(
           });
         }
       }
-
-      DeHydro.contextTypes = generateContextTypes(contextToProps);
 
       return DeHydro;
     }

@@ -1,8 +1,13 @@
 import React from 'react';
 import cx from 'classnames';
-import PropTypes from 'prop-types';
 
-const ContentCard = ({ anchor = null, children, bleed = false }) => (
+interface IProps {
+  anchor?: string;
+  children?: any;
+  bleed: boolean;
+}
+
+const ContentCard = ({ anchor = null, children, bleed = false }: IProps) => (
   <div className={cx('ContentCard', { 'ContentCard--bleed': bleed })}>
     {anchor !== null ? (
       <span className="u-position-anchor" id={anchor} />
@@ -10,9 +15,5 @@ const ContentCard = ({ anchor = null, children, bleed = false }) => (
     {children}
   </div>
 );
-
-ContentCard.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default ContentCard;

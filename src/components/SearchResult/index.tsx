@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-function getKicker(link) {
+function getKicker(link: string) {
   if (link.indexOf('/organisation') >= 0) {
     return 'Sports & Societies';
   }
@@ -29,12 +28,22 @@ function getKicker(link) {
   return 'Page';
 }
 
-function formatTitle(title) {
+function formatTitle(title: string) {
   const pageTitleEnding = /\| Sussex Students' Union$/;
   return title.replace(pageTitleEnding, '');
 }
 
-function SearchResult(props) {
+interface SearchResult {
+  link: string;
+  title: string;
+  description: string;
+}
+
+interface IProps {
+  item: SearchResult
+}
+
+function SearchResult(props: IProps) {
   const { link, title, description } = props.item;
 
   return (
@@ -47,13 +56,5 @@ function SearchResult(props) {
     </li>
   );
 }
-
-SearchResult.propTypes = {
-  item: PropTypes.shape({
-    link: PropTypes.string,
-    title: PropTypes.string,
-    snippet: PropTypes.string,
-  }).isRequired,
-};
 
 export default SearchResult;

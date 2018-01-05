@@ -1,9 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MSLTag from './MSLTag';
 
-const Main = ({ legacy }) => (
+interface IProps {
+  legacy: boolean;
+}
+
+const Main: React.SFC<IProps> = ({ legacy }) => (
   <main className={cx('Site__content')}>
     {legacy ? (
       <div className={cx('Container')}>
@@ -20,10 +23,6 @@ const Main = ({ legacy }) => (
     )}
   </main>
 );
-
-Main.propTypes = {
-  legacy: PropTypes.bool.isRequired,
-};
 
 Main.defaultProps = {
   legacy: false,

@@ -1,15 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import forEach from 'lodash/forEach';
 import debounce from 'lodash/debounce';
 import reduce from 'lodash/reduce';
+
+interface IProps {
+  children: any;
+  area: string;
+  minItems: number;
+}
+
+interface IState {
+  visibleToIndex: number;
+  needsHeight: boolean;
+}
 
 /*
   refactor me!
   this is all quite horrible
 */
-class FitOverflowChildren extends React.Component {
-  constructor(props) {
+class FitOverflowChildren extends React.Component<IProps, IState> {
+  private items: Array<any>;
+  private container: any;
+  static defaultProps = {
+    area: '',
+  };
+
+  constructor(props: IProps) {
     super(props);
 
     this.items = [];
@@ -20,7 +36,7 @@ class FitOverflowChildren extends React.Component {
   }
 
   // eslint-disable-next-line
-  registerItem(element, index) {
+  registerItem(element: HTMLElement, index: number) {
     if (element == null) {
       return;
     }
@@ -30,7 +46,7 @@ class FitOverflowChildren extends React.Component {
 
   componentWillMount() {
     if (Object.hasOwnProperty.call(window, 'emitter')) {
-      window.emitter.on('imageLoaded', data => {
+      (window as any).emitter.on('imageLoaded', (data: { area: string }) => {
         if (data.area === this.props.area) {
           this.updateSize();
         }
@@ -70,6 +86,7 @@ class FitOverflowChildren extends React.Component {
     if (!this.container) {
       return;
     }
+
     if (this.state.needsHeight) {
       this.setState({ needsHeight: false }, () => this.updateSize());
     } else {
@@ -83,7 +100,7 @@ class FitOverflowChildren extends React.Component {
     }
   }
 
-  handleContainerRef(ref) {
+  handleContainerRef(ref: any) {
     this.container = ref;
   }
 
@@ -106,14 +123,16 @@ class FitOverflowChildren extends React.Component {
         }}
         ref={this.handleContainerRef.bind(this)}
       >
-        {children.map((child, index) => (
+        {children.map((child: any, index: number) => (
           <div
             key={index}
             style={{
               visibility: index < visibleToIndex ? 'visible' : 'hidden',
             }}
-            ref={ref => {
-              this.registerItem(ref, index);
+            ref={(ref: HTMLElement | null) => {
+              if (ref) {
+                this.registerItem(ref, index);
+              }
             }}
           >
             {child}
@@ -123,15 +142,5 @@ class FitOverflowChildren extends React.Component {
     );
   }
 }
-
-FitOverflowChildren.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.node).isRequired,
-  area: PropTypes.string,
-  minItems: PropTypes.number.isRequired,
-};
-
-FitOverflowChildren.defaultProps = {
-  area: '',
-};
 
 export default FitOverflowChildren;

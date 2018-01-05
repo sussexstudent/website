@@ -1,8 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Image from './Image';
 
-const SelectionGridItem = ({ link, imageURL, title }) => (
+interface IProps {
+  link: string;
+  imageURL: string;
+  title: string;
+}
+
+const SelectionGridItem = ({ link, imageURL, title }: IProps) => (
   <li className="SelectionGrid__item SelectionGrid--underneath" key={link}>
     <a className="SelectionGrid__link" href={link}>
       <Image className="SelectionGrid__image" src={imageURL} type="bg">
@@ -13,13 +18,5 @@ const SelectionGridItem = ({ link, imageURL, title }) => (
     </a>
   </li>
 );
-
-SelectionGridItem.propTypes = {
-  link: PropTypes.node.isRequired,
-  imageURL: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
-
-SelectionGridItem.ui = {};
 
 export default SelectionGridItem;

@@ -8,7 +8,7 @@
       "es2016"
     ],
     "jsx": "preserve",
-    "target": "es2015",
+    "target": "es2016",
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
@@ -23,7 +23,8 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "~components/*": ["./src/components/*"]
+      "~components/*": ["./src/components/*"],
+      "~libs/*": ["./src/libs/*"]
     }
   }
 }

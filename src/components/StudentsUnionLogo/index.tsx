@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Logo = ({ color = null }) => (
+interface IProps {
+  color: string | null;
+}
+
+const Logo = ({ color = null }: IProps) => (
   <svg
     className="HeaderLogo__svg"
     width="202px"

@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { compose } from 'recompose';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, match } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import { Helmet } from 'react-helmet';
 import sortBy from 'lodash/sortBy';
@@ -26,27 +26,36 @@ import EventsCalenderItem from './EventsCalenderItem';
 import EventDetailPage from '../EventDetailPage/index';
 import EventListingsQuery from './EventListings.graphql';
 import apolloHandler from '../apolloHandler';
+import {Event} from "~components/EventsCalender/types";
 
 const DATE_TODAY = new Date();
 const DATE_TOMORROW = addDays(DATE_TODAY, 1);
 
-const EVENT_PART = {
-  CONTAINED: 'SINGLE',
-  SPAN_START: 'SPAN_START',
-  SPAN_END: 'SPAN_END',
-};
+enum EventPartType {
+  Contained,
+  SpanStart,
+  SpanEnd,
+}
+
+interface EventPart {
+  type: EventPartType;
+  eventId: number;
+  date: Date;
+  event: Event;
+}
+
 const weekFromNow = setHours(addDays(new Date(), 7), 0);
 const now = setHours(new Date(), 0);
 const rightNow = new Date();
 /* eslint-disable no-nested-ternary */
-function splitEventsInToParts(events, removePast = true) {
+function splitEventsInToParts(events: Event[], removePast = true) {
   // for all events
   // if single day, add single day event SINGLE
   // if multi day
   // add start MULTI_START
   // each days continuation MULTI_CONT
   // add end MULTI_END
-  const parts = [];
+  const parts: EventPart[] = [];
 
   events.forEach((event, index) => {
     // if event.startDate is same day as endDate
@@ -60,7 +69,7 @@ function splitEventsInToParts(events, removePast = true) {
       }
 
       parts.push({
-        type: EVENT_PART.CONTAINED,
+        type: EventPartType.Contained,
         eventId: index,
         date: event.startDate,
         event,
@@ -71,14 +80,14 @@ function splitEventsInToParts(events, removePast = true) {
 
     if (!isAfter(event.startDate, rightNow) && removePast) {
       parts.push({
-        type: EVENT_PART.SPAN_START,
+        type: EventPartType.SpanStart,
         eventId: index,
         date: new Date(),
         event,
       });
     } else {
       parts.push({
-        type: EVENT_PART.SPAN_START,
+        type: EventPartType.SpanStart,
         eventId: index,
         date: event.startDate,
         event,
@@ -96,7 +105,7 @@ function splitEventsInToParts(events, removePast = true) {
   return parts;
 }
 
-function poorMonthSort(key) {
+function poorMonthSort(key: string) {
   if (key === '0') {
     return 0;
   }
@@ -114,7 +123,7 @@ function poorMonthSort(key) {
   return 2;
 }
 
-function chunkEventsToRows(events) {
+function chunkEventsToRows(events: EventPart[]) {
   const eventNest = [];
   const keysMap = {};
 
@@ -164,7 +173,7 @@ function organisePartsForUI(eventParts, removePast = true) {
   return asList;
 }
 
-function getSmartDate(part) {
+function getSmartDate(part: EventPart) {
   if (isSameDay(new Date(), part.date)) {
     return 'Today';
   }
@@ -191,12 +200,22 @@ function getSmartDate(part) {
   return formatDate(part.date, 'ddd Do');
 }
 
+interface RouterParams {
+  brandSlug?: string
+}
+
+interface IProps {
+  disableHeader: boolean;
+  useAnchors: boolean;
+  match: match<RouterParams>;
+}
+
 function EventsCalender({
   data: { allEvents },
   disableHeader = false,
   useAnchors = false,
   match,
-}) {
+}: IProps) {
   const events = allEvents.edges.map(({ node }) => ({
     ...node,
     startDate: new Date(node.startTime),
@@ -231,7 +250,7 @@ function EventsCalender({
             <h2 className="EventsCalender__section-title">{sectionTitle}</h2>
             {parts.map(chunk => (
               <div className="EventsCalender__section-items">
-                {chunk.map((part, index) => {
+                {chunk.map((part: EventPart, index: number) => {
                   const isFirstOfDate =
                     index < 1 ||
                     getSmartDate(chunk[index - 1]) !== getSmartDate(part);

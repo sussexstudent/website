@@ -10,6 +10,7 @@ import MenuIcon from '../MenuIcon';
 import SearchIcon from '../SearchIcon';
 import CrossIcon from '../CrossIcon';
 import SocialMenu from '../SocialMenu';
+import {MenuItem} from "../../types/skeleton";
 
 function getColor() {
   let index;
@@ -24,7 +25,7 @@ function getColor() {
         index = 0;
       }
     }
-    localStorage.setItem('su_cc', index + 1);
+    localStorage.setItem('su_cc', (index + 1).toString());
   } catch (e) {
     index = 0;
   }
@@ -37,11 +38,13 @@ function getActiveItem() {
   const pathList = window.location.pathname.slice(1).split('/');
   const firstPath = pathList[0] || '';
 
-  const pathToMenuPosition = {
-    'get-involved': 'GET_INVOLVED',
-    'whats-on': 'WHATS_ON',
-    'about-us': 'ABOUT_US',
-    support: 'SUPPORT',
+  const pathToMenuPosition: {
+    [path: string]: MenuItem;
+  } = {
+    'get-involved': MenuItem.GetInvolved,
+    'whats-on': MenuItem.WhatsOn,
+    'about-us': MenuItem.AboutUs,
+    support: MenuItem.AboutUs,
   };
 
   if (Object.hasOwnProperty.call(pathToMenuPosition, firstPath)) {
@@ -51,8 +54,27 @@ function getActiveItem() {
   return null;
 }
 
-class Header extends React.Component {
-  constructor(props) {
+interface IProps {
+
+}
+
+interface IState {
+  isSideMenuOpen: boolean,
+  isAdminOpen: boolean,
+  isSearchOpen: boolean,
+  userData: null,
+  logoColor: string | null,
+  activeItem: MenuItem | null,
+}
+
+class Header extends React.Component<IProps, IState> {
+  private handleOpenSideMenu: () => void;
+  private handleCloseSideMenu: () => void;
+  private handleToggleSideMenu: () => void;
+  private handleBackdropClick: () => void;
+  private handleOpenSearch: () => void;
+  private handleCloseSearch: () => void;
+  constructor(props: IProps) {
     super(props);
 
     this.state = {
@@ -102,14 +124,7 @@ class Header extends React.Component {
       this.setState({
         ...this.state,
         logoColor: getColor(),
-        userData: {
-          name: 'Katie',
-          admin: {
-            orgs: [],
-            things: [],
-          },
-          page: [],
-        },
+        userData: null,
         activeItem: getActiveItem(),
       });
     }
@@ -152,7 +167,7 @@ class Header extends React.Component {
           </div>
         </div>
         <AnodyneMenu activeItem={this.state.activeItem} />
-        <SideMenu isOpen={isSideMenuOpen} userData={userData} />
+        <SideMenu isOpen={isSideMenuOpen} />
         <div className="Header__side-search">
           <MobileSearch
             isOpen={isSearchOpen}

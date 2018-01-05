@@ -5,8 +5,31 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 import classToggle from '~libs/dom/classToggle';
 import SearchPage from '~components/SearchPage';
 
-class HeaderSearch extends React.Component {
-  constructor(props) {
+interface IProps {
+  isOpen: boolean;
+  onClose(): void;
+}
+
+interface IState {
+  query: string;
+  isOpen: boolean;
+  hasFocus: boolean;
+  isMobile: boolean | null;
+  isRendered: boolean;
+}
+
+class HeaderSearch extends React.Component<IProps, IState> {
+  private handleBlur: () => void;
+  private handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  private handlePortalOpened: () => void;
+  private handleTouch: (e: any) => void; // todo
+
+  private input: HTMLInputElement | null;
+  private header: HTMLDivElement;
+  private htmlEl: HTMLElement;
+  // private handleFocus: () => void;
+
+  constructor(props: IProps) {
     super(props);
 
     this.state = {
@@ -18,7 +41,7 @@ class HeaderSearch extends React.Component {
     };
 
     this.handleBlur = this.handleHasFocus.bind(this, false);
-    this.handleFocus = this.handleHasFocus.bind(this, true);
+    // this.handleFocus = this.handleHasFocus.bind(this, true);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBackdropClose = this.handleBackdropClose.bind(this);
     this.handleExitClose = this.handleExitClose.bind(this);
@@ -36,13 +59,12 @@ class HeaderSearch extends React.Component {
   }
 
   componentDidMount() {
-    this.header = document.querySelector('.Header');
-    this.userBarEl = document.querySelector('.UserBar');
-    this.htmlEl = document.documentElement;
+    this.header = document.querySelector('.Header') as HTMLDivElement;
+    this.htmlEl = document.documentElement as HTMLDivElement;
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.isOpen !== this.props.isOpen) {
+  componentWillReceiveProps(nextProps: IProps) {
+    if (nextProps.isOpen !== this.props.isOpen  && this.htmlEl !== null) {
       if (nextProps.isOpen) {
         classToggle(this.htmlEl, 'html--search-active', nextProps.isOpen);
       } else {
@@ -51,7 +73,7 @@ class HeaderSearch extends React.Component {
     }
   }
 
-  handleInputChange(e) {
+  handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({ query: e.target.value });
   }
 
@@ -83,7 +105,7 @@ class HeaderSearch extends React.Component {
     }
   }
 
-  handleExitClose(e) {
+  handleExitClose(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     this.setState({
       isRendered: false,
@@ -91,9 +113,9 @@ class HeaderSearch extends React.Component {
     });
   }
 
-  handleQueryClear(e) {
+  handleQueryClear(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
-    this.setState({ query: '' }, () => this.input.focus());
+    this.setState({ query: '' }, () => this.input && this.input.focus());
   }
 
   renderMobileSearch() {
@@ -175,9 +197,5 @@ class HeaderSearch extends React.Component {
     return <div className={containerClasses}>{this.renderMobileSearch()}</div>;
   }
 }
-
-HeaderSearch.propTypes = {};
-
-HeaderSearch.defaultProps = {};
 
 export default HeaderSearch;

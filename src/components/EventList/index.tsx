@@ -2,14 +2,27 @@ import React from 'react';
 import isBefore from 'date-fns/isBefore';
 import startOfDay from 'date-fns/startOfDay';
 import subDays from 'date-fns/subDays';
-import { ApolloProvider, graphql } from 'react-apollo';
+import { ApolloProvider, graphql, QueryProps, MutationFunc } from 'react-apollo';
 import HydroLeaf from '~components/HydroLeaf';
 import apolloClient from '../../libs/getApolloClientForFalmer';
 import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
 import Loader from '../Loader/index';
 import EventListQuery from './EventList.graphql';
 
-function EventList({ data: { loading, allEvents } }) {
+interface Result {
+  allEvents: {
+    edges: Array<{
+      node: any;
+    }>;
+  }
+}
+
+interface IProps {
+  data?: QueryProps<any> & Result;
+  mutate: MutationFunc<Result>;
+}
+
+function EventList({ data: { loading, allEvents } }: IProps) {
   if (loading) {
     return <Loader />;
   }

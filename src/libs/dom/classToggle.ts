@@ -1,4 +1,4 @@
-function classToggle(element, className, force) {
+function classToggle(element: HTMLElement, className: string, force: boolean) {
   if (force === undefined) {
     element.classList.toggle(className);
   } else if (force === true) {

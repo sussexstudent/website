@@ -4,8 +4,21 @@ import AnodyneMenu from '../AnodyneMenu';
 import SocialMenu from '../SocialMenu';
 import UserBar from '../UserBar';
 
-class SideMenu extends React.Component {
-  constructor(props) {
+interface IProps {
+  isOpen: boolean;
+}
+
+interface IState {
+  isAdminOpen: boolean;
+  isThisPageOpen: boolean;
+}
+
+class SideMenu extends React.Component<IProps, IState> {
+  // todo: support admin & page menus
+  // private handleAdminToggle: () => void;
+  // private handleThisPageToggle: () => void;
+
+  constructor(props: IProps) {
     super(props);
 
     this.state = {
@@ -13,11 +26,11 @@ class SideMenu extends React.Component {
       isAdminOpen: false,
     };
 
-    this.handleAdminToggle = () =>
-      this.setState(state => ({ isAdminOpen: !state.isAdminOpen }));
-
-    this.handleThisPageToggle = () =>
-      this.setState(state => ({ isThisPageOpen: !state.isThisPageOpen }));
+    // this.handleAdminToggle = () =>
+    //   this.setState(state => ({ isAdminOpen: !state.isAdminOpen }));
+    //
+    // this.handleThisPageToggle = () =>
+    //   this.setState(state => ({ isThisPageOpen: !state.isThisPageOpen }));
   }
 
   render() {

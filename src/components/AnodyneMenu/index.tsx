@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import {MenuItem} from "../../types/skeleton";
 
 interface IPropsItem {
   name: string;
@@ -21,7 +22,7 @@ const AnodyneMenuItem = ({ name, link, active }: IPropsItem) => (
 );
 
 interface IProps {
-  activeItem: string; // todo: should use enums now in TypeScript
+  activeItem?: MenuItem | null;
 }
 
 const AnodyneMenu = ({ activeItem }: IProps) => (
@@ -30,22 +31,22 @@ const AnodyneMenu = ({ activeItem }: IProps) => (
       <AnodyneMenuItem
         name="Get involved"
         link="/get-involved"
-        active={activeItem === 'GET_INVOLVED'}
+        active={activeItem === MenuItem.GetInvolved}
       />
       <AnodyneMenuItem
         name="What's on"
         link="/whats-on"
-        active={activeItem === 'WHATS_ON'}
+        active={activeItem === MenuItem.WhatsOn}
       />
       <AnodyneMenuItem
         name="About us"
         link="/about-us"
-        active={activeItem === 'ABOUT_US'}
+        active={activeItem === MenuItem.AboutUs}
       />
       <AnodyneMenuItem
         name="Support"
         link="/support"
-        active={activeItem === 'SUPPORT'}
+        active={activeItem === MenuItem.Support}
       />
     </ul>
   </nav>

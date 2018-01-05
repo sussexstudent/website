@@ -1,71 +1,88 @@
 import React from 'react';
 import cx from 'classnames';
-import ClickOutside from 'react-click-outside';
-import currentUser from '~libs/user';
+import ClickOutside from 'react-onclickout';
+import client, {ClientAuth} from '~libs/user';
 import Hydroleaf from '~components/HydroLeaf';
 
-const PAGE_DROPDOWN = 'page';
-const ADMIN_DROPDOWN = 'admin';
+enum DropdownState {
+  Page,
+  Admin
+}
 
-class UserBar extends React.Component {
-  constructor(props) {
+interface IProps {
+
+}
+
+interface IState {
+  isLoaded: boolean;
+  dropdownOpen: DropdownState | null;
+  auth: ClientAuth | null;
+}
+
+class UserBar extends React.Component<IProps, IState> {
+  private handleToggleDropdown: (dropdown: DropdownState) => void;
+  private handleTogglePageDropdown: () => void;
+  private handleToggleAdminDropdown: () => void;
+  private handleCloseDropdown: () => void;
+
+  constructor(props: IProps) {
     super(props);
 
     this.state = {
       isLoaded: false,
       dropdownOpen: null,
+      auth: null
     };
 
-    this.handleOpenDropdown = dropdown =>
-      this.setState({ dropdownOpen: dropdown });
     this.handleToggleDropdown = dropdown =>
       this.setState({
         dropdownOpen: dropdown === this.state.dropdownOpen ? null : dropdown,
       });
-    this.handleOpenPageDropdown = this.handleOpenDropdown.bind(
-      this,
-      PAGE_DROPDOWN
-    );
-    this.handleOpenAdminDropdown = this.handleOpenDropdown.bind(
-      this,
-      ADMIN_DROPDOWN
-    );
     this.handleTogglePageDropdown = this.handleToggleDropdown.bind(
       this,
-      PAGE_DROPDOWN
+      DropdownState.Page
     );
     this.handleToggleAdminDropdown = this.handleToggleDropdown.bind(
       this,
-      ADMIN_DROPDOWN
+      DropdownState.Admin
     );
     this.handleCloseDropdown = () => this.setState({ dropdownOpen: null });
   }
 
   componentDidMount() {
     setTimeout(() => {
-      const { auth } = currentUser;
-      this.setState({
+      const { auth } = client || { auth: null };
+      this.setState(state => ({
+        ...state,
         isLoaded: true,
         ...auth,
-      });
+      }));
     }, 1);
   }
 
   renderLoaded() {
     const {
+      auth,
+      dropdownOpen,
+    } = this.state;
+
+    if (!auth) {
+      return null;
+    }
+
+    const {
       isLoggedIn,
-      details,
+      profile,
       admin,
       page,
-      dropdownOpen,
       actionBound,
-    } = this.state;
+    } = auth;
 
     if (isLoggedIn) {
       return (
         <ul className="UserBar__list">
           <li className="UserBar__item UserBar__item--welcome">
-            Hi {details.firstName}!
+            Hi {profile.firstName}!
           </li>
           <li className="UserBar__item UserBar__item--action">
             <button onClick={actionBound} type="button">
@@ -78,14 +95,14 @@ class UserBar extends React.Component {
               className={cx(
                 'UserBar__item UserBar__item-admin UserBar__admin-menu',
                 {
-                  'UserBar__item--open': dropdownOpen === ADMIN_DROPDOWN,
+                  'UserBar__item--open': dropdownOpen === DropdownState.Admin,
                 }
               )}
             >
               <button onClick={this.handleToggleAdminDropdown} type="button">
                 Admin
               </button>
-              <ClickOutside onClickOutside={this.handleCloseDropdown}>
+              <ClickOutside onClickOut={this.handleCloseDropdown}>
                 <div className={cx('UserBar__item-dropdown')}>
                   <ul className="UserBar__dropdown-list">
                     {admin.admin.map(item => (
@@ -108,17 +125,17 @@ class UserBar extends React.Component {
               className={cx(
                 'UserBar__item UserBar__item-admin UserBar__admin-menu',
                 {
-                  'UserBar__item--open': dropdownOpen === PAGE_DROPDOWN,
+                  'UserBar__item--open': dropdownOpen === DropdownState.Page,
                 }
               )}
             >
               <button onClick={this.handleTogglePageDropdown} type="button">
                 Page
               </button>
-              <ClickOutside onClickOutside={this.handleCloseDropdown}>
+              <ClickOutside onClickOut={this.handleCloseDropdown}>
                 <div
                   className={cx('UserBar__item-dropdown', {
-                    'UserBar__item--open': dropdownOpen === PAGE_DROPDOWN,
+                    'UserBar__item--open': dropdownOpen === DropdownState.Page,
                   })}
                 >
                   <ul className="UserBar__dropdown-list">

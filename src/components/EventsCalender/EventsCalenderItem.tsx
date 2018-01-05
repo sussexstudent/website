@@ -7,9 +7,10 @@ import FauxLink from '../FauxLink';
 import FauxRouterLink from '../FauxRouterLink';
 import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
 import EventRelativeTime from './EventRelativeTime';
+import {Event} from "~components/EventsCalender/types";
 // import PropTypes from 'prop-types';
 
-function renderEventLocation(event) {
+function renderEventLocation(event: Event) {
   if (!event.venue) {
     if (event.locationDisplay === '') {
       return null;
@@ -33,7 +34,7 @@ function renderEventLocation(event) {
   return <span> / {event.locationDisplay || event.venue.name}</span>;
 }
 
-function getTreat(event) {
+function getTreat(event: Event) {
   if (event.cost === 'FREE') {
     return 'Free';
   }
@@ -45,13 +46,23 @@ function getTreat(event) {
   return null;
 }
 
+interface IProps {
+  useAnchors: boolean;
+  relative?: boolean;
+  showDay?: boolean;
+  inline?: boolean;
+  part: {
+    event: Event
+  }
+}
+
 function EventsCalenderItem({
   part,
   useAnchors,
   inline = false,
   showDay = false,
   relative = false,
-}) {
+}: IProps) {
   const event = part.event;
   const treat = getTreat(event);
   const FauxFalmerLink = useAnchors ? FauxLink : FauxRouterLink;
@@ -117,7 +128,5 @@ function EventsCalenderItem({
 //               {' '}- Starts in {distanceInWordsToNow(event.startDate)}
 //             </span>
 //   : null}
-
-EventsCalenderItem.PropTypes = {};
 
 export default EventsCalenderItem;

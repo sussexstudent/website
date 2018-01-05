@@ -1,7 +1,15 @@
 import React from 'react';
 
-class CookieMessage extends React.Component {
-  constructor(props) {
+interface IProps {
+
+}
+
+interface IState {
+  hidden: boolean;
+}
+
+class CookieMessage extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
 
     this.state = { hidden: false };

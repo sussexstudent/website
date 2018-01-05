@@ -1,9 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Image from '../Image';
 import PatternPlaceholder from '../PatternPlaceholder';
+import {StudentGroup} from "~components/OrganisationGrid";
 
-function OrganisationCard(props) {
+interface IProps {
+  org: StudentGroup;
+}
+
+function OrganisationCard(props: IProps) {
   const org = props.org;
   return (
     <li className="OrganisationCard">
@@ -40,16 +44,5 @@ function OrganisationCard(props) {
     </li>
   );
 }
-
-OrganisationCard.propTypes = {
-  org: PropTypes.shape({
-    link: PropTypes.string,
-    name: PropTypes.string,
-    description: PropTypes.string,
-    image: PropTypes.shape({
-      src: PropTypes.string,
-    }),
-  }).isRequired,
-};
 
 export default OrganisationCard;

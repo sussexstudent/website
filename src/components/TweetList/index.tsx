@@ -1,19 +1,32 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import each from 'lodash/each';
 import Loader from '~components/Loader';
 import HydroLeaf from '~components/HydroLeaf';
 import Tweet from './Tweet';
 import FitOverflowChildren from '../FitOverflowChildren';
 import perf from '../../tracking/perf';
+import {TweetData} from "~components/TweetList/types";
 
 const ATTACHMENT_TWEET_HEIGHT = 375;
 const TWEET_HEIGHT = 175;
 const MIN_TWEET_COUNT = 3;
 const TWITTER_CACHE_RESOURCE = 'https://dxziiu0wrgyxg.cloudfront.net/tweets';
 
-class TweetList extends React.Component {
-  constructor(props) {
+interface IProps {
+  query: string
+  signature: string,
+}
+
+interface IState {
+  height: null | number;
+  isLoading: boolean;
+  tweets: any; // todo
+}
+
+class TweetList extends React.Component<IProps, IState> {
+  private listEL: any;
+
+  constructor(props: IProps) {
     super(props);
 
     this.state = {
@@ -47,9 +60,9 @@ class TweetList extends React.Component {
   getTweetQuantityForHeight() {
     let count = 0;
     let currentHeight = 0;
-    // eslint-disable-next-line
+
     each(this.state.tweets, tweet => {
-      if (currentHeight > this.state.height) {
+      if (this.state.height && currentHeight > this.state.height) {
         count -= 1;
         return false;
       }
@@ -93,7 +106,7 @@ class TweetList extends React.Component {
     return (
       <ul className="TweetList">
         <FitOverflowChildren area="TweetList" minItems={3}>
-          {tweets.map(tweet => <Tweet data={tweet} key={tweet.id_str} />)}
+          {tweets.map((tweet: TweetData) => <Tweet data={tweet} key={tweet.id_str} />)}
         </FitOverflowChildren>
         <a
           className="TweetList__view-more"
@@ -105,11 +118,6 @@ class TweetList extends React.Component {
     );
   }
 }
-
-TweetList.propTypes = {
-  query: PropTypes.string.isRequired,
-  signature: PropTypes.string.isRequired,
-};
 
 export default HydroLeaf({
   className: 'u-extend-flex',

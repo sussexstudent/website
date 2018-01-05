@@ -1,15 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import TweetHeader from './TweetHeader';
 import TweetPermalink from './TweetPermalink';
 import TweetContent from './TweetContent';
 import TweetAttachment from './TweetAttachment';
+import {TweetData} from "~components/TweetList/types";
 
-function Tweet({ isQuoted, data }) {
+interface IProps {
+  isQuoted?: boolean;
+  data: TweetData;
+}
+
+const Tweet: React.SFC<IProps> = ({ isQuoted = false, data }) => {
   const isRetweet = Object.hasOwnProperty.call(data, 'retweeted_status');
-  const hasQuote = Object.hasOwnProperty.call(data, 'quoted_status');
-  const tweet = isRetweet ? data.retweeted_status : data;
+  const tweet: TweetData = data.retweeted_status !== undefined ? data.retweeted_status : data;
 
   /* eslint-disable */
 
@@ -23,11 +27,11 @@ function Tweet({ isQuoted, data }) {
         <span className="Tweet__retweeted">{data.user.name} Retweeted</span>
       </div>
     ) : null,
-    <TweetHeader user={tweet.user} />,
+    <TweetHeader name={tweet.user.name} screenName={tweet.user.screen_name} />,
     <div>
       <TweetContent tweet={tweet} />
       <TweetAttachment tweet={tweet} />
-      {hasQuote ? (
+      {tweet.quoted_status ? (
         <div className="Tweet__quoted">
           <Tweet data={tweet.quoted_status} isQuoted />
         </div>
@@ -41,15 +45,8 @@ function Tweet({ isQuoted, data }) {
       className="Tweet__faux-link"
     />
   );
-}
-/* eslint-enable */
-
-Tweet.propTypes = {
-  data: PropTypes.shape({
-    id_str: PropTypes.string.isRequired,
-  }).isRequired,
-  isQuoted: PropTypes.bool.isRequired,
 };
+/* eslint-enable */
 
 Tweet.defaultProps = {
   isQuoted: false,

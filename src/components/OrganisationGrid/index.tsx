@@ -1,6 +1,6 @@
 import React from 'react';
 import OrganisationCard from '../OrganisationCard';
-import {FalmerImage} from "~components/EventsCalender/types";
+import {FalmerImage} from "../../types/events";
 
 export interface StudentGroup {
   link: string;

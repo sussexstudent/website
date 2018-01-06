@@ -2,7 +2,7 @@ import React from 'react';
 import isWithinInterval from 'date-fns/isWithinInterval';
 import formatDistance from 'date-fns/formatDistance';
 import subMinutes from 'date-fns/subMinutes';
-import {Event} from "~components/EventsCalender/types";
+import {Event} from "../../types/events";
 
 interface IProps {
   event: Event;

@@ -2,7 +2,7 @@ import React from 'react';
 import isBefore from 'date-fns/isBefore';
 import startOfDay from 'date-fns/startOfDay';
 import subDays from 'date-fns/subDays';
-import { ApolloProvider, graphql, QueryProps, MutationFunc } from 'react-apollo';
+import { ApolloProvider, graphql, ChildProps } from 'react-apollo';
 import HydroLeaf from '~components/HydroLeaf';
 import apolloClient from '../../libs/getApolloClientForFalmer';
 import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
@@ -17,20 +17,24 @@ interface Result {
   }
 }
 
-interface IProps {
-  data?: QueryProps<any> & Result;
-  mutate: MutationFunc<Result>;
+interface OwnProps {
+
 }
 
-function EventList({ data: { loading, allEvents } }: IProps) {
-  if (loading) {
+type IProps = ChildProps<OwnProps, Result>;
+
+function EventList(props: IProps) {
+  const { data } = props;
+  if (!data || data.loading) {
     return <Loader />;
   }
+
+  const { allEvents } = data;
 
   return (
     <ul className="List List--reset">
       <li>
-        {allEvents.edges
+        {allEvents && allEvents.edges
           .filter(
             edge =>
               !isBefore(
@@ -52,7 +56,7 @@ function EventList({ data: { loading, allEvents } }: IProps) {
   );
 }
 
-const EventListContainer = graphql(EventListQuery, {
+const EventListContainer = graphql<Result, OwnProps>(EventListQuery, {
   options: {
     variables: {
       fromTime: new Date(),

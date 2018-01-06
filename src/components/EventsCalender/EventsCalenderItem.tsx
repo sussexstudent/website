@@ -7,7 +7,7 @@ import FauxLink from '../FauxLink';
 import FauxRouterLink from '../FauxRouterLink';
 import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
 import EventRelativeTime from './EventRelativeTime';
-import {Event} from "~components/EventsCalender/types";
+import {Event} from "../../types/events";
 // import PropTypes from 'prop-types';
 
 function renderEventLocation(event: Event) {

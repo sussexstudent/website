@@ -1,9 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
-function BackBar({ color = 'blue', to, children }) {
+interface IProps {
+  color: 'red' | 'blue' | 'green' | 'slate';
+  to: string;
+  children: any;
+}
+
+function BackBar({ color = 'blue', to, children }: IProps) {
   return (
     <div className={cx('BackBar', `BackBar--color-${color}`)}>
       <Link to={to}>
@@ -35,15 +40,5 @@ function BackBar({ color = 'blue', to, children }) {
     </div>
   );
 }
-
-BackBar.propTypes = {
-  color: PropTypes.oneOf(['red', 'blue', 'green', 'slate']),
-  to: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-};
-
-BackBar.defaultProps = {
-  color: 'blue',
-};
 
 export default BackBar;

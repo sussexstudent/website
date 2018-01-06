@@ -1,3 +1,9 @@
+export enum EventPartType {
+  Contained,
+  SpanStart,
+  SpanEnd,
+}
+
 
 export enum TicketType {
   Native = 'NA',
@@ -47,4 +53,12 @@ export interface Event {
   bundle: null | {
     name: string;
   }
+}
+
+
+export interface EventPart {
+  type: EventPartType;
+  eventId: number;
+  date: Date;
+  event: Event;
 }

@@ -1,14 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import has from 'lodash/has';
 import HydroLeaf from '~components/HydroLeaf';
 import Loader from '~components/Loader';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import pageComponents from './pageMap';
 
-class ContentAPIComposer extends React.Component {
-  constructor(props, c) {
-    super(props, c);
+interface IProps {
+  contentAPIStore: any; // todo
+  pageId: number;
+}
+
+interface IState {
+  isLoading: boolean;
+  isLoaded: boolean;
+  data: any; // todo
+  isError: boolean;
+  error: Error | null;
+}
+
+class ContentAPIComposer extends React.Component<IProps, IState> {
+  static defaultValues = {
+    contentAPIStore: {},
+  };
+
+  constructor(props: IProps) {
+    super(props);
 
     this.state = {
       isLoading: false,
@@ -99,16 +115,6 @@ class ContentAPIComposer extends React.Component {
     return <Page data={this.state.data} />;
   }
 }
-
-ContentAPIComposer.propTypes = {
-  pageId: PropTypes.number.isRequired,
-  // eslint-disable-next-line
-  contentAPIStore: PropTypes.object,
-};
-
-ContentAPIComposer.defaultValues = {
-  contentAPIStore: {},
-};
 
 export default HydroLeaf({
   contextToProps: {

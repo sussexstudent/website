@@ -1,15 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
+interface IProps {
+  header: string;
+  about: string;
+  buttonTitle: string;
+  buttonAction?: string;
+  buttonLink: string;
+  chairKey?: string;
+  color: string;
+}
 
 const Deckchair = ({
   header,
   about,
   buttonTitle,
-  buttonAction,
   buttonLink,
   chairKey,
   color,
-}) => (
+}: IProps) => (
   <div className={`Deckchair Deckchair--color-${color}`} data-chair={chairKey}>
     {chairKey ? <div className="Deckchair__close" /> : null}
     <div className="Deckchair__info">
@@ -17,25 +25,11 @@ const Deckchair = ({
       <p className="Deckchair__about">{about}</p>
     </div>
     <div className="Deckchair__cta">
-      <a
-        className="Deckchair__button"
-        href={buttonLink}
-        data-action={buttonAction}
-      >
+      <a className="Deckchair__button" href={buttonLink}>
         {buttonTitle}
       </a>
     </div>
   </div>
 );
-
-Deckchair.propTypes = {
-  header: PropTypes.string.isRequired,
-  about: PropTypes.string.isRequired,
-  buttonTitle: PropTypes.string.isRequired,
-  buttonAction: PropTypes.string.isRequired,
-  buttonLink: PropTypes.string.isRequired,
-  chairKey: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-};
 
 export default Deckchair;

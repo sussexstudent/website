@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ContentAPIComposer from '~components/ContentAPIComposer';
 
 class GetInvolved extends React.Component {

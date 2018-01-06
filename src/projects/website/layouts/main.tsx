@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Header from '~components/Header';
 import { DesktopUserBar as UserBar } from '~components/UserBar';
 import MobileFooterTreats from '~components/MobileFooterTreats';
@@ -23,7 +22,20 @@ const mslLogout = MSLTag('LoginButton', {
   GoHomeOnLogout: 'True',
 });
 
-const mainLayout = ({ assets, legacy }) => (
+interface IProps {
+  legacy: boolean;
+  loggedIn: boolean;
+  assets: {
+    main: {
+      js: string;
+    }
+    vendor: {
+      js: string;
+    }
+  }
+}
+
+const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => (
   <div className="Body" id="top">
     <div
       style={{ display: 'none' }}
@@ -60,16 +72,6 @@ const mainLayout = ({ assets, legacy }) => (
     </noscript>
   </div>
 );
-
-mainLayout.propTypes = {
-  legacy: PropTypes.bool.isRequired,
-  loggedIn: PropTypes.bool.isRequired,
-  assets: PropTypes.shape({
-    main: PropTypes.shape({
-      js: PropTypes.string.isRequired,
-    }),
-  }).isRequired,
-};
 
 mainLayout.defaultProps = {
   legacy: false,

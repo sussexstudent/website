@@ -3,7 +3,7 @@ import TweetList from '~components/TweetList';
 import ContentAPIComposer from '~components/ContentAPIComposer';
 import HomepageEventsList from '~components/HomepageEventsList';
 import AdvertBar from '~components/AdvertBar';
-import { Hydro as HeadingHero } from '../../../components/HeadingHero/index';
+import { Hydro as HeadingHero } from '~components/HeadingHero';
 
 const Homepage = () => (
   <div className="u-container-bleed-top">

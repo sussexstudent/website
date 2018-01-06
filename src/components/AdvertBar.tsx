@@ -5,7 +5,7 @@ import MSLTag from './MSLTag';
 interface IProps {
   className?: string;
   position: string;
-  dark: boolean;
+  dark?: boolean;
 }
 
 const AdvertBar = ({ className = '', position, dark = false }: IProps) => (

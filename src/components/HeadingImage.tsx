@@ -1,8 +1,13 @@
 // DEPRECIATED: Use ~components/HeadingHero
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const HeadingImage = ({ imageURL, title, description }) => (
+interface IProps {
+  imageURL: string;
+  title: string;
+  description?: string;
+}
+
+const HeadingImage = ({ imageURL, title, description }: IProps) => (
   <div
     className="HeadingImage"
     style={{
@@ -19,15 +24,5 @@ const HeadingImage = ({ imageURL, title, description }) => (
     ) : null}
   </div>
 );
-
-HeadingImage.propTypes = {
-  imageURL: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string,
-};
-
-HeadingImage.defaultProps = {
-  description: null,
-};
 
 export default HeadingImage;

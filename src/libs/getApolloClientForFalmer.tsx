@@ -2,12 +2,12 @@ import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-client-preset';
 
 const serverSide = typeof localStorage === 'undefined';
 
+const clientEndpoint = serverSide ? null : window.localStorage.getItem('falmerEndpoint');
 const link = new HttpLink({
   uri:
-    serverSide ||
-    !Object.hasOwnProperty.call(window.localStorage, 'falmerEndpoint')
+    (clientEndpoint === null)
       ? 'https://falmer.sussexstudent.com/graphql'
-      : window.localStorage.getItem('falmerEndpoint'),
+      : clientEndpoint,
 });
 
 const client = new ApolloClient({

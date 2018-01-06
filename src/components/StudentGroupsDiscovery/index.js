@@ -4,7 +4,7 @@ import keyBy from 'lodash/keyBy';
 import Fuse from 'fuse.js';
 import { forceCheck } from 'react-lazyload';
 import HydroLeaf from '~components/HydroLeaf';
-import OrgansiationGrid from '~components/OrgansiationGrid';
+import OrgansiationGrid from '~components/OrganisationGrid';
 import { ApolloProvider, graphql } from 'react-apollo';
 import getApolloClientForFalmer from '../../libs/getApolloClientForFalmer';
 import StudentGroupListingsQuery from './StudentGroupListings.graphql';

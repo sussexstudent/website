@@ -1,14 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const optionShape = PropTypes.shape({
-  key: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  count: PropTypes.number.isRequired,
-});
+interface Option {
+  key: any;
+  title: string;
+  count: number;
+}
 
-function SearchFilterItem({ currentValue, option, onSelect, itemKey }) {
+interface IItemProps {
+  onSelect(key: any): void;
+  currentValue: any;
+  itemKey: any;
+  option: Option;
+}
+
+function SearchFilterItem({ currentValue, option, onSelect, itemKey }: IItemProps) {
   const handleClick = onSelect.bind(null, option.key);
   return (
     <li
@@ -20,18 +26,18 @@ function SearchFilterItem({ currentValue, option, onSelect, itemKey }) {
       onClick={option.count > 0 ? handleClick : () => {}}
     >
       {option.title}
-      {itemKey !== 'top' ? <span> ({option.count})</span> : null}
+      {itemKey !== 'top' ? (<span> ({option.count})</span>) : null}
     </li>
   );
 }
 
-SearchFilterItem.propTypes = {
-  onSelect: PropTypes.func.isRequired,
-  currentValue: PropTypes.string.isRequired,
-  option: optionShape.isRequired,
-};
+interface IProps {
+  onSelect(key: any): void;
+  value: any;
+  options: Array<Option>
+}
 
-function SearchFilterNav({ onSelect, value, options }) {
+function SearchFilterNav({ onSelect, value, options }: IProps) {
   return (
     <ul className="SearchFilterNav">
       {options.map(option => (
@@ -46,11 +52,5 @@ function SearchFilterNav({ onSelect, value, options }) {
     </ul>
   );
 }
-
-SearchFilterNav.propTypes = {
-  onSelect: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(optionShape).isRequired,
-};
 
 export default SearchFilterNav;

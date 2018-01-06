@@ -1,17 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { headContent } from '../head';
 
-const HTML = ({ children, assets }) => (
+interface IProps {
+  assets: any; // todo
+  children: any;
+}
+
+const HTML = ({ children, assets }: IProps) => (
   <html lang="en">
     <head dangerouslySetInnerHTML={{ __html: headContent(assets) }} />
     {children}
   </html>
 );
-
-HTML.propTypes = {
-  children: PropTypes.node.isRequired,
-  assets: PropTypes.object.isRequired,
-};
 
 export default HTML;

@@ -4,7 +4,7 @@ import cx from 'classnames';
 interface IProps {
   anchor?: string;
   children?: any;
-  bleed: boolean;
+  bleed?: boolean;
 }
 
 const ContentCard = ({ anchor = null, children, bleed = false }: IProps) => (

@@ -1,8 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import BackBar from '~components/BackBar';
-import ContentAPIComposer from '~components/ContentAPIComposer';
-import EventsContainer from '~components/EventsCalender';
+import EventsApplication from '~components/EventsApplication';
 
 class WhatsOn extends React.Component {
   render() {
@@ -17,7 +14,7 @@ class WhatsOn extends React.Component {
           </div>
         </div>
 
-        <EventsContainer />
+        <EventsApplication />
       </div>
     );
   }

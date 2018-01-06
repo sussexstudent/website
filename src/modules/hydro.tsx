@@ -6,8 +6,12 @@ import { BrowserRouter } from 'react-router-dom';
 import getApolloClientForFalmer from '../libs/getApolloClientForFalmer';
 import ScrollToTop from '../components/ScrollToTop';
 
+interface ComponentMap {
+  [componentName: string]: () => Promise<any>;
+}
+
 export default function() {
-  const componentMap = {
+  const componentMap: ComponentMap = {
     ContentAPIComposer: () => import('~components/ContentAPIComposer'),
     TweetList: () =>
       import(/* webpackChunkName: "TweetList" */ '~components/TweetList'),
@@ -34,14 +38,17 @@ export default function() {
       import(/* webpackChunkName: "PolicyGenerator" */ '~components/PolicyGenerator'),
   };
 
-  [...document.querySelectorAll('.Hydro')].forEach(el => {
+  Array.from(document.querySelectorAll('.Hydro')).forEach(el => {
     let props = {};
     if (el.hasAttribute('data-id')) {
-      props = window[`HYDROSTATE_${el.getAttribute('data-id')}`];
+      props = (window as any)[`HYDROSTATE_${el.getAttribute('data-id')}`];
     }
 
     const componentName = el.getAttribute('data-component');
-    const getComponent = componentMap[componentName];
+
+    if (componentName === null) {
+      return;
+    }
 
     if (!Object.hasOwnProperty.call(componentMap, componentName)) {
       console.warn(
@@ -52,11 +59,13 @@ export default function() {
       return;
     }
 
+    const getComponent = componentMap[componentName];
+
     getComponent()
       .then(
-        component => (!isFunction(component) ? component.default : component)
+        (component: any) => (!isFunction(component) ? component.default : component)
       )
-      .then(Component => {
+      .then((Component: React.SFC) => {
         ReactDOM.hydrate(
           <ApolloProvider client={getApolloClientForFalmer}>
             <BrowserRouter>

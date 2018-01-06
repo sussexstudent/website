@@ -8,7 +8,7 @@
   &__blimp {
     text-align: center;
     padding: 0.3em;
-    font-size: 0.9rem;
+    @mixin type long-primer;
     font-family: var(--type__primary);
     background-color: #ffffff;
     max-width: 300px;

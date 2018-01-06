@@ -3,12 +3,4 @@
   --type__primary: 'Larsseit', var(--type__secondary);
 
   font: 16px / 1.5 var(--type__secondary);
-
-  @media (--large) {
-    font: 17px / 1.5 var(--type__secondary);
-  }
-
-  @media all(--extra-large) {
-    font: 18px / 1.5 var(--type__secondary);
-  }
 }

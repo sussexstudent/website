@@ -2,7 +2,6 @@
   @mixin rounded;
 
   background-color: var(--color__twitter);
-  font-size: 0.8rem;
   list-style: none;
   margin: 0;
   padding: 0.5rem;
@@ -98,17 +97,19 @@
     font-weight: bold;
     margin-right: 0.4em;
     display: inline-block;
+    @mixin type pica;
   }
 
   &__screen-name {
     color: rgba(155, 155, 155, 1);
     display: inline-block;
+    @mixin type long-primer;
   }
 
   &__content {
     white-space: pre-wrap;
     word-wrap: break-word;
-    font-size: 1.1em;
+    @mixin type long-primer;
     margin: 0.3em 0;
 
     & a {
@@ -129,6 +130,7 @@
     padding-top: 0.5lh;
     color: rgba(155, 155, 155, 1) !important; /* TODO: don't do this */
     text-decoration: none;
+    @mixin type brevier;
 
     &:hover {
       text-decoration: none !important;

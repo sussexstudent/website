@@ -31,13 +31,13 @@
     color: #000000;
     margin: 0 0 0.6rem;
     text-align: center;
-    font-size: 1.1rem;
+    @mixin type great-primer;
     font-family: var(--type__primary);
   }
 
   &__description {
     text-align: center;
-    font-size: 0.8rem;
+    @mixin type
     color: grey;
   }
 

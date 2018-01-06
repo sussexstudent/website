@@ -22,7 +22,7 @@
     font-weight: bold;
     color: #000000;
     display: inline;
-    font-size: 2lh;
+    @mixin type canon;
     position: relative;
     line-height: 1;
     clear: right;

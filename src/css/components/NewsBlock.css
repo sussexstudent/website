@@ -22,10 +22,9 @@
     background-color: var(--color__brand-yellow);
     color: #000000;
     display: inline;
-    font-size: 2lh;
     position: relative;
-    line-height: 1.5rem;
-    font-size: 1.5rem;
+    @mixin type double-pica;
+    line-height: 1.3rem;
     margin: 0;
     font-family: var(--type__primary);
   }
@@ -63,7 +62,7 @@
   }
 
   &__meta {
-    font-size: 0.6rem;
+    @mixin type brevier;
     padding: 0.2rem 0;
     margin: 0.2rem 0;
     margin-top: auto;
@@ -83,7 +82,7 @@
   &__standfirst {
     display: block;
     color: #000000;
-    font-size: 0.8rem;
+    @mixin type long-primer;
     overflow: hidden;
     text-overflow: ellipsis;
     font-family: var(--type__primary);

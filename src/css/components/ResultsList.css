@@ -25,7 +25,7 @@
   }
 
   &__title {
-    font-size: 1.2rem;
+    @mixin type great-primer;
     margin-top: 0;
     margin-bottom: 0.5rem;
   }
@@ -37,12 +37,12 @@
 
   &__snippet {
     max-width: 600px;
-    font-size: 0.85rem;
+    @mixin type long-brevier;
     margin: 0;
   }
 
   &__kicker {
-    font-size: 0.9em;
+    @mixin type long-primer;
     color: var(--color__brand-green);
     font-weight: bold;
   }

@@ -107,30 +107,22 @@ h6 .small,
 
 h1,
 .h1 {
-  font-size: 36px;
+  @mixin type trafalgar;
 }
 
 h2,
 .h2 {
-  font-size: 30px;
+  @mixin type double-pica;
 }
 
 h3,
 .h3 {
-  font-size: 24px;
+  @mixin type great-primer;
 }
 
 h4,
 .h4 {
-  font-size: 18px;
+  @mixin type pica;
 }
 
-h5,
-.h5 {
-  font-size: 14px;
-}
-
-h6,
-.h6 {
-  font-size: 12px;
-}
+@mixin outputTypeClassNames;

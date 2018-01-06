@@ -25,7 +25,7 @@
 
   &__title {
     font-weight: bold;
-    font-size: 1.6rem;
+    @mixin type double-pica without-line-height;
     background: var(--color__brand-yellow);
     padding: 0 0.2rem;
     display: inline-block;

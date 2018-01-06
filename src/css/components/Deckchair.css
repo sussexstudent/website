@@ -41,12 +41,12 @@
 
   &__header {
     margin: 0;
-    font-size: 1.6rem;
+    @mixin type double-pica;
   }
 
   &__about {
     margin: 0;
-    font-size: 0.9rem;
+    @mixin type long-primer;
   }
 
   &__button {

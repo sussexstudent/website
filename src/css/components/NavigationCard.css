@@ -3,7 +3,7 @@
 
   &__title {
     padding: 0.3rem 1rem;
-    font-size: 1.3rem;
+    @mixin type great-primer;
   }
 
   &__list {

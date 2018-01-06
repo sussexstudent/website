@@ -25,9 +25,10 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    font-size: 0.9em;
     font-weight: 600;
     font-family: var(--type__primary);
+
+    @mixin type long-primer;
   }
 
   &__details-list-item {

@@ -36,7 +36,7 @@ interface IProps {
 }
 
 const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => (
-  <div className="Body" id="top">
+  <div className="Body no-touch" id="top">
     <div
       style={{ display: 'none' }}
       // eslint-disable-next-line react/no-danger

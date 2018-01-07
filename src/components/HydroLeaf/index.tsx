@@ -120,10 +120,10 @@ function HydroLeaf(
             serialProps
           )};`;
 
-          if (hydroKey === null) {
+          if (hydroKey === undefined) {
             dataAc = '';
           } else {
-            dataAc = `<script type="text/javascript">${dataAc}</script>`;
+            dataAc = `<script type="text/javascript" id="hydroscript-${hydroKey}">${dataAc}</script>`;
           }
 
           return container({

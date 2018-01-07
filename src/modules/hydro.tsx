@@ -17,8 +17,8 @@ export default function() {
       import(/* webpackChunkName: "TweetList" */ '~components/TweetList'),
     EventList: () =>
       import(/* webpackChunkName: "EventList" */ '~components/EventList'),
-    EventsContainer: () =>
-      import(/* webpackChunkName: "EventsPage" */ '~components/EventsCalender'),
+    EventsApplication: () =>
+      import(/* webpackChunkName: "EventsPage" */ '~components/EventsApplication'),
     HeaderSearch: () =>
       import(/* webpackChunkName: "HeaderSearch" */ '~components/HeaderSearch'),
     HeadingHero: () =>
@@ -41,8 +41,15 @@ export default function() {
   Array.from(document.querySelectorAll('.Hydro')).forEach(el => {
     let props = {};
     if (el.hasAttribute('data-id')) {
-      props = (window as any)[`HYDROSTATE_${el.getAttribute('data-id')}`];
+      const hydroKey = el.getAttribute('data-id');
+      props = (window as any)[`HYDROSTATE_${hydroKey}`];
+      const scriptElement = document.querySelector(`#hydroscript-${hydroKey}`);
+      if (scriptElement) {
+        scriptElement.remove();
+      }
     }
+
+    console.log(el);
 
     const componentName = el.getAttribute('data-component');
 
@@ -54,7 +61,7 @@ export default function() {
       console.warn(
         `[hydro] ${
           componentName
-        } should have been rendered, but isn't in the component map!`
+          } should have been rendered, but isn't in the component map!`
       );
       return;
     }
@@ -66,16 +73,31 @@ export default function() {
         (component: any) => (!isFunction(component) ? component.default : component)
       )
       .then((Component: React.SFC) => {
-        ReactDOM.hydrate(
+        if (!Component) {
+          console.warn(
+            `[hydro] ${
+              componentName
+              } should have been rendered, but it is "${Component}"`
+          );
+          return;
+        }
+        const shouldHydrate = el.children.length > 0;
+
+        const renderRoot = (
           <ApolloProvider client={getApolloClientForFalmer}>
-            <BrowserRouter>
+            <BrowserRouter basename={window.location.pathname.startsWith('/~/') ? '/~/' : undefined}>
               <ScrollToTop>
                 <Component {...props} />
               </ScrollToTop>
             </BrowserRouter>
-          </ApolloProvider>,
-          el
+          </ApolloProvider>
         );
+
+        if (shouldHydrate) {
+          ReactDOM.hydrate(renderRoot, el);
+        } else {
+          ReactDOM.render(renderRoot, el);
+        }
       });
   });
 }

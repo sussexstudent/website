@@ -116,6 +116,7 @@ class UserBar extends React.Component<IProps, IState> {
                         <a href={item.link}>{item.name}</a>
                       </li>
                     ))}
+                    <hr />
                     {admin.orgs.map(item => (
                       <li key={item.name}>
                         <a href={item.link}>{item.name}</a>

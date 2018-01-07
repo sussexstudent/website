@@ -23,7 +23,7 @@ class UserBar extends React.Component<IProps, IState> {
   private handleToggleDropdown: (dropdown: DropdownState) => void;
   private handleTogglePageDropdown: () => void;
   private handleToggleAdminDropdown: () => void;
-  private handleCloseDropdown: () => void;
+  private handleCloseDropdown: (e: React.MouseEvent<HTMLElement>) => void;
 
   constructor(props: IProps) {
     super(props);
@@ -46,7 +46,13 @@ class UserBar extends React.Component<IProps, IState> {
       this,
       DropdownState.Admin
     );
-    this.handleCloseDropdown = () => this.setState({ dropdownOpen: null });
+    this.handleCloseDropdown = (e: React.MouseEvent<HTMLElement | Document>) => {
+      if (e.currentTarget.parentElement && e.currentTarget.parentElement.classList.contains('UserBar__item')) {
+        return;
+      }
+
+      this.setState({ dropdownOpen: null })
+    };
   }
 
   componentDidMount() {
@@ -55,7 +61,7 @@ class UserBar extends React.Component<IProps, IState> {
       this.setState(state => ({
         ...state,
         isLoaded: true,
-        ...auth,
+        auth,
       }));
     }, 1);
   }
@@ -95,14 +101,14 @@ class UserBar extends React.Component<IProps, IState> {
               className={cx(
                 'UserBar__item UserBar__item-admin UserBar__admin-menu',
                 {
-                  'UserBar__item--open': dropdownOpen === DropdownState.Admin,
+                  'UserBar__item--open': true,
                 }
               )}
             >
               <button onClick={this.handleToggleAdminDropdown} type="button">
                 Admin
               </button>
-              <ClickOutside onClickOut={this.handleCloseDropdown}>
+              {dropdownOpen === DropdownState.Admin ? <ClickOutside onClickOut={this.handleCloseDropdown}>
                 <div className={cx('UserBar__item-dropdown')}>
                   <ul className="UserBar__dropdown-list">
                     {admin.admin.map(item => (
@@ -117,7 +123,7 @@ class UserBar extends React.Component<IProps, IState> {
                     ))}
                   </ul>
                 </div>
-              </ClickOutside>
+              </ClickOutside>: null}
             </li>
           ) : null}
           {page !== null ? (
@@ -125,14 +131,14 @@ class UserBar extends React.Component<IProps, IState> {
               className={cx(
                 'UserBar__item UserBar__item-admin UserBar__admin-menu',
                 {
-                  'UserBar__item--open': dropdownOpen === DropdownState.Page,
+                  'UserBar__item--open': true,
                 }
               )}
             >
               <button onClick={this.handleTogglePageDropdown} type="button">
                 Page
               </button>
-              <ClickOutside onClickOut={this.handleCloseDropdown}>
+              {dropdownOpen === DropdownState.Page ? <ClickOutside onClickOut={this.handleCloseDropdown}>
                 <div
                   className={cx('UserBar__item-dropdown', {
                     'UserBar__item--open': dropdownOpen === DropdownState.Page,
@@ -146,7 +152,7 @@ class UserBar extends React.Component<IProps, IState> {
                     ))}
                   </ul>
                 </div>
-              </ClickOutside>
+              </ClickOutside> : null}
             </li>
           ) : null}
 

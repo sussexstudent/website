@@ -1,6 +1,6 @@
 declare module "react-onclickout" {
   class ClickOut extends React.Component<{
-    onClickOut(): void;
+    onClickOut(e: React.MouseEvent<HTMLElement>): void;
     children: any;
   }> {}
 

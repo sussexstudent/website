@@ -114,6 +114,12 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-lazyload@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@types/react-lazyload/-/react-lazyload-2.2.4.tgz#adaae55b8f8b54d6c8ecfe779b0ea5b397c9ef3f"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-portal@^3.0.3":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/react-portal/-/react-portal-3.0.3.tgz#4c682540edbe185d5c86e307cbe0638f95923a02"

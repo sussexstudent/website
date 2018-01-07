@@ -1,17 +1,36 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import keyBy from 'lodash/keyBy';
 import Fuse from 'fuse.js';
 import { forceCheck } from 'react-lazyload';
 import HydroLeaf from '~components/HydroLeaf';
-import OrgansiationGrid from '~components/OrganisationGrid';
-import { ApolloProvider, graphql } from 'react-apollo';
-import getApolloClientForFalmer from '../../libs/getApolloClientForFalmer';
+import OrgansiationGrid, {StudentGroup} from '~components/OrganisationGrid';
+import { graphql, ChildProps } from 'react-apollo';
 import StudentGroupListingsQuery from './StudentGroupListings.graphql';
 import Loader from '../Loader/index';
 
-class StudentGroupsDiscovery extends React.Component {
-  constructor(props) {
+interface OwnProps {
+  groupsList: Array<StudentGroup>
+}
+
+interface Result {
+  allGroups: {
+    edges: Array<{
+      node: StudentGroup;
+    }>
+  }
+}
+
+interface IState {
+  filter: null;
+  searchValue: string;
+  displayIds: Array<number>;
+}
+
+type IProps = OwnProps & ChildProps<OwnProps, Result>
+
+class StudentGroupsDiscovery extends React.Component<IProps, IState> {
+  private fuse: Fuse;
+  constructor(props: IProps) {
     super(props);
 
     this.fuse = new Fuse(props.groupsList, { keys: ['name'], id: 'groupId' });
@@ -25,7 +44,7 @@ class StudentGroupsDiscovery extends React.Component {
     this.onSearchUpdate = this.onSearchUpdate.bind(this);
   }
 
-  onSearchUpdate(e) {
+  onSearchUpdate(e: React.ChangeEvent<HTMLInputElement>) {
     const searchValue = e.target.value;
     this.setState(
       {
@@ -57,12 +76,12 @@ class StudentGroupsDiscovery extends React.Component {
             onChange={this.onSearchUpdate}
           />
           <div className="ActivitiesApp__filter-stat">
-            Displaying {displayIds.length} sports & societies
+            Displaying {displayIds.length} sports {'&'} societies
           </div>
         </div>
         <div className="ActivitiesApp__main">
           <div className="ActivitiesApp__grid">
-            <OrgansiationGrid organsiations={displayIds.map(id => map[id])} />
+            <OrgansiationGrid organisations={displayIds.map(id => map[id])} />
           </div>
         </div>
       </div>
@@ -70,25 +89,19 @@ class StudentGroupsDiscovery extends React.Component {
   }
 }
 
-StudentGroupsDiscovery.propTypes = {
-  groupsList: PropTypes.arrayOf().isRequired,
-};
-
-const StudentGroupListings = graphql(StudentGroupListingsQuery)(
+const StudentGroupListings = graphql<Result>(StudentGroupListingsQuery)(
   props =>
-    props.data.loading ? (
+    !props.data || props.data.loading ? (
       <Loader />
     ) : (
       <StudentGroupsDiscovery
-        groupsList={props.data.allGroups.edges.map(edge => edge.node)}
+        groupsList={props.data.allGroups ? props.data.allGroups.edges.map(edge => edge.node) : []}
       />
     )
 );
 
 const StudentGroupsApplication = () => (
-  <ApolloProvider client={getApolloClientForFalmer}>
-    <StudentGroupListings />
-  </ApolloProvider>
+  <StudentGroupListings />
 );
 
 export default HydroLeaf()(StudentGroupsApplication);

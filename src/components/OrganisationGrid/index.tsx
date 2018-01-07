@@ -12,6 +12,7 @@ export interface StudentGroup {
   logo: FalmerImage;
   isProspective: boolean;
   id: number;
+  groupId: number;
 }
 
 interface IProps {

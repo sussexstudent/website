@@ -11,6 +11,7 @@
     "@types/react": "^16.0.34",
     "@types/react-dom": "^16.0.3",
     "@types/react-helmet": "^5.0.3",
+    "@types/react-lazyload": "^2.2.4",
     "@types/react-portal": "^3.0.3",
     "@types/react-router-dom": "^4.2.3",
     "@types/react-transition-group": "^2.0.6",

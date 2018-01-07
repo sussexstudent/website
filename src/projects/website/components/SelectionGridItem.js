@@ -7,9 +7,7 @@ const SelectionGridItem = ({ link, imageURL, title }) => (
       <div
         className="SelectionGrid__image"
         style={{
-          backgroundImage: `url(${
-            imageURL
-          }?thumbnail=true&height=230&width=640&resize_type=CropToFit)`,
+          backgroundImage: `url(${imageURL}?thumbnail=true&height=230&width=640&resize_type=CropToFit)`,
         }}
       >
         <div className="SelectionGrid__image-inside">

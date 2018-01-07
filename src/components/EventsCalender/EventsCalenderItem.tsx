@@ -47,7 +47,7 @@ function getTreat(event: Event) {
 }
 
 interface IProps {
-  useAnchors: boolean;
+  useAnchors?: boolean;
   relative?: boolean;
   showDay?: boolean;
   inline?: boolean;
@@ -58,7 +58,7 @@ interface IProps {
 
 function EventsCalenderItem({
   part,
-  useAnchors,
+  useAnchors = false,
   inline = false,
   showDay = false,
   relative = false,

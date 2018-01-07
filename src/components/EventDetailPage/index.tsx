@@ -1,11 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 import formatDate from 'date-fns/format';
 import addDays from 'date-fns/addDays';
 import isSameDay from 'date-fns/isSameDay';
 import getHours from 'date-fns/getHours';
-import { graphql } from 'react-apollo';
+import { graphql, ChildProps } from 'react-apollo';
 import ContentCard from '../ContentCard';
 import Image from '../Image';
 import JsonLd from '../JsonLd';
@@ -15,8 +15,9 @@ import Button from '../Button';
 import DetailPageQuery from './EventsDetailPage.graphql';
 import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
 import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
+import {Event, TicketType} from "../../types/events";
 
-function isSameLogicalSleepDay(startDate, endDate) {
+function isSameLogicalSleepDay(startDate: Date, endDate: Date) {
   if (isSameDay(startDate, endDate)) {
     return true;
   }
@@ -28,10 +29,21 @@ function isSameLogicalSleepDay(startDate, endDate) {
   return false;
 }
 
+interface RouteParams {
+  [0]: string;
+  eventId: number;
+}
+
+interface OwnProps extends RouteComponentProps<RouteParams> {
+
+}
+
+type IProps = OwnProps & ChildProps<OwnProps, any>;
+
 /* eslint-disable */
-class EventDetailPage extends React.Component {
+class EventDetailPage extends React.Component<IProps> {
   componentDidUpdate() {
-    if (!this.props.data.event) {
+    if (!this.props.data || !this.props.data.event) {
       console.log(this.props);
       return;
     }
@@ -43,7 +55,7 @@ class EventDetailPage extends React.Component {
   }
 
   render() {
-    if (this.props.data.loading) {
+    if (!this.props.data || this.props.data.loading) {
       return <Loader />;
     }
 
@@ -96,7 +108,7 @@ class EventDetailPage extends React.Component {
             endDate: event.endTime,
           }}
         />
-        <BackBar to="/whats-on" useLink color="blue">
+        <BackBar to="/whats-on" color="blue">
           {`What's on`}
         </BackBar>
         <div className="Layout Layout--sidebar-right EventDetail">
@@ -208,7 +220,7 @@ class EventDetailPage extends React.Component {
             </ContentCard>
           </div>
           <aside>
-            {event.ticketType !== 'NA' ? (
+            {event.ticketType !== TicketType.Native ? (
               <ContentCard>
                 <h3>Tickets</h3>
                 <Button href={event.ticketData}>Buy tickets on Native</Button>
@@ -227,7 +239,7 @@ class EventDetailPage extends React.Component {
             <span className="u-position-anchor" id="sub-events" />
             <h2 className="Heading Heading--tight">Part of this event</h2>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              {event.children.map(childEvent => (
+              {event.children.map((childEvent: Event) => (
                 <div>
                   <EventsCalenderItem part={{ event: childEvent }} />
                 </div>
@@ -240,8 +252,6 @@ class EventDetailPage extends React.Component {
   }
 }
 
-EventDetailPage.propTypes = {};
-
-export default graphql(DetailPageQuery, {
+export default graphql<any, OwnProps>(DetailPageQuery, {
   options: ({ match }) => ({ variables: { eventId: match.params.eventId } }),
 })(EventDetailPage);

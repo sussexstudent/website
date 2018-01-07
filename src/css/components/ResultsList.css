@@ -37,7 +37,7 @@
 
   &__snippet {
     max-width: 600px;
-    @mixin type brevier;
+    @mixin type long-primer;
     margin: 0;
   }
 

@@ -10,30 +10,22 @@ import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import perf from '../../tracking/perf';
 
 enum SearchAreas {
-  Top,
-  Groups,
-  News,
-  Events,
-  Pages
+  Top = 'top',
+  Groups = 'groups',
+  News = 'news',
+  Events = 'events',
+  Pages = 'pages',
 }
 
 /* eslint-disable */
 
 function getPayloadMetadata(payload: { [key: string]: Array<Object> }) {
-  const areaTitlesMap = {
+  const areaTitlesMap: {[key: string]: string} = {
     [SearchAreas.Top]: 'Top results',
     [SearchAreas.Groups]: 'Sports & Societies',
     [SearchAreas.News]: 'News',
     [SearchAreas.Events]: 'Events',
     [SearchAreas.Pages]: 'Content',
-  };
-
-  const areaApiMap = {
-    [SearchAreas.Top]: 'top',
-    [SearchAreas.Groups]: 'groups',
-    [SearchAreas.News]: 'news',
-    [SearchAreas.Events]: 'events',
-    [SearchAreas.Pages]: 'pages',
   };
 
   const calcWeight = (area: SearchAreas) => {
@@ -44,7 +36,7 @@ function getPayloadMetadata(payload: { [key: string]: Array<Object> }) {
     if (area === SearchAreas.News) {
       return -1;
     }
-    const count = payload[areaApiMap[area]].length;
+    const count = payload[area].length;
     if (count <= 0) {
       return -Infinity;
     } else {
@@ -80,9 +72,9 @@ interface IProps {
 interface IState {
   page: number;
   results: {
-    [area: number]: Array<number>;
-    results: Array<ISearchResult>
+    [area: string]: Array<number>;
   } | null;
+  resultItems: Array<ISearchResult>;
   isLoading: boolean;
   currentArea: SearchAreas;
   orderedAreas: Array<{
@@ -114,6 +106,7 @@ class SearchPage extends React.Component<IProps, IState> {
     this.state = {
       page: parseInt(qs.parse(location.search).page, 10) || 1,
       results: null,
+      resultItems: [],
       isLoading: false,
       currentArea: SearchAreas.Top,
       hasResults: false,
@@ -169,6 +162,7 @@ class SearchPage extends React.Component<IProps, IState> {
           const { orderedAreas, hasResults } = getPayloadMetadata(payload);
           this.setState({
             results: payload,
+            resultItems: payload.results,
             orderedAreas,
             hasResults,
             currentArea: orderedAreas[0].key,
@@ -228,8 +222,8 @@ class SearchPage extends React.Component<IProps, IState> {
     if (isLoading) {
       content = <span className="SearchMeta__note">Loading…</span>;
     } else if (hasResults === false) {
-      content = <span className="SearchMeta__note">No results found.</span>;
-    } else if (orderedAreas) {
+      return null;
+    } else if (orderedAreas.length > 0) {
       content = (
         <SearchFilterNav
           value={currentArea}
@@ -238,7 +232,7 @@ class SearchPage extends React.Component<IProps, IState> {
         />
       );
     } else {
-      return null;
+      content = <span className="SearchMeta__note">No results found.</span>;
     }
 
     return (
@@ -249,7 +243,7 @@ class SearchPage extends React.Component<IProps, IState> {
   }
 
   renderResults() {
-    const { results, isLoading, currentArea } = this.state;
+    const { results, resultItems, isLoading, currentArea } = this.state;
 
     const containerclassNamees = cx('SearchApp__container', {
       'SearchApp__container--is-loading': isLoading === true,
@@ -270,7 +264,7 @@ class SearchPage extends React.Component<IProps, IState> {
                 })}
               >
                 {results[currentArea].map(item => (
-                  <SearchResult key={item} item={results.results[item]} />
+                  <SearchResult key={item} item={resultItems[item]} />
                 ))}
               </ul>
             ) : null}

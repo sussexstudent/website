@@ -97,6 +97,7 @@ function generateConfig() {
         },
         {
           test: /\.svg$/,
+          exclude: /img/,
           use: [
             'babel-loader',
             {

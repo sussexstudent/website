@@ -93,6 +93,19 @@ function generateConfig() {
         {
           test: /\.svg|\.png|\.woff/,
           use: 'url-loader?limit=10000',
+          exclude: /icons/,
+        },
+        {
+          test: /\.svg$/,
+          use: [
+            'babel-loader',
+            {
+              loader: 'svgr/webpack',
+              options: {
+                svgo: false,
+              },
+            },
+          ],
         },
       ],
     },

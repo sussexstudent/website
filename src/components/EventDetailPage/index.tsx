@@ -17,6 +17,13 @@ import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
 import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
 import {Event, TicketType} from "../../types/events";
 
+import CalendarIcon from '../../icons/events-calender.svg';
+import ClockIcon from '../../icons/events-clock.svg';
+import CollectionIcon from '../../icons/events-collection.svg';
+import CollectionParentIcon from '../../icons/events-collection-parent.svg';
+import PinIcon from '../../icons/events-pin.svg';
+import SocietyIcon from '../../icons/events-society.svg';
+
 function isSameLogicalSleepDay(startDate: Date, endDate: Date) {
   if (isSameDay(startDate, endDate)) {
     return true;
@@ -134,10 +141,8 @@ class EventDetailPage extends React.Component<IProps> {
                   <ul className="EventDetail__details-list">
                     {event.parent ? (
                       <li className="EventDetail__details-list-item">
-                        <img
+                        <CollectionParentIcon
                           className="EventDetail__icon"
-                          src="https://du9l8eemj97rm.cloudfront.net/events-collection-parent.svg"
-                          alt=""
                         />
                         Part of{' '}
                         <Link
@@ -150,10 +155,8 @@ class EventDetailPage extends React.Component<IProps> {
                       </li>
                     ) : null}
                     <li className="EventDetail__details-list-item">
-                      <img
+                      <CalendarIcon
                         className="EventDetail__icon"
-                        src="https://du9l8eemj97rm.cloudfront.net/events-calender.svg"
-                        alt=""
                       />
                       {formatDate(startDate, 'dddd D MMMM YYYY')}
                       {!isSameLogicalSleepDay(startDate, endDate)
@@ -161,10 +164,8 @@ class EventDetailPage extends React.Component<IProps> {
                         : ''}
                     </li>
                     <li className="EventDetail__details-list-item">
-                      <img
+                      <ClockIcon
                         className="EventDetail__icon"
-                        src="https://du9l8eemj97rm.cloudfront.net/events-clock.svg"
-                        alt=""
                       />
                       {`${minimalisticTimeRenderer(
                         startDate
@@ -172,20 +173,16 @@ class EventDetailPage extends React.Component<IProps> {
                     </li>
                     {event.locationDisplay !== '' || event.venue !== null ? (
                       <li className="EventDetail__details-list-item">
-                        <img
+                        <PinIcon
                           className="EventDetail__icon"
-                          src="https://du9l8eemj97rm.cloudfront.net/events-pin.svg"
-                          alt=""
                         />
                         {event.locationDisplay || event.venue.name}
                       </li>
                     ) : null}
                     {event.studentGroup !== null ? (
                       <li className="EventDetail__details-list-item">
-                        <img
+                        <SocietyIcon
                           className="EventDetail__icon"
-                          src="https://du9l8eemj97rm.cloudfront.net/events-society.svg"
-                          alt=""
                         />
                         Organised by{' '}
                         <a href={event.studentGroup.link}>
@@ -195,10 +192,8 @@ class EventDetailPage extends React.Component<IProps> {
                     ) : null}
                     {event.children.length > 0 ? (
                       <li className="EventDetail__details-list-item">
-                        <img
+                        <CollectionIcon
                           className="EventDetail__icon"
-                          src="https://du9l8eemj97rm.cloudfront.net/events-collection.svg"
-                          alt=""
                         />
                         <a href="#sub-events">
                           {event.children.length} sub-events

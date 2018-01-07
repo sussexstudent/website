@@ -1,8 +1,14 @@
 import React from 'react';
 import Image from '~components/Image';
-import PropTypes from 'prop-types';
 
-const FigureCollectionFigure = ({ imageResource, title, sub, link }) => (
+interface IProps {
+  imageResource: string;
+  title: string;
+  sub: string;
+  link: string;
+}
+
+const FigureCollectionFigure = ({ imageResource, title, sub, link }: IProps) => (
   <li className="FigureCollection__item">
     <a href={link} className="FigureCollection__link">
       <div className="u-responsive-ratio u-responsive-ratio--square">
@@ -13,16 +19,5 @@ const FigureCollectionFigure = ({ imageResource, title, sub, link }) => (
     </a>
   </li>
 );
-
-FigureCollectionFigure.propTypes = {
-  imageResource: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  sub: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-};
-
-FigureCollectionFigure.ui = {
-  displayName: 'item',
-};
 
 export default FigureCollectionFigure;

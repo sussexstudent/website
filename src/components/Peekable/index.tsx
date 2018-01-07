@@ -1,8 +1,16 @@
 import React from 'react';
 import cx from 'classnames';
 
-class Peekable extends React.Component {
-  constructor(props) {
+interface IProps {
+  expandText: string;
+}
+
+interface IState {
+  open: boolean;
+}
+
+class Peekable extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
 
     this.state = {

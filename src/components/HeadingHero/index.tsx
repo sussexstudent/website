@@ -1,9 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Image from '../Image';
 import HydroLeaf from '../HydroLeaf';
 
-const HeadingHero = ({ imageURL, title, description }) => (
+interface IProps {
+  imageURL: string;
+  title: string;
+  description: string;
+}
+
+const HeadingHero = ({ imageURL, title, description = '' }: IProps) => (
   <Image className="HeadingImage" src={imageURL} type="bg">
     <h1 className="HeadingImage__title">{title}</h1>
     {description ? (
@@ -13,16 +18,6 @@ const HeadingHero = ({ imageURL, title, description }) => (
     ) : null}
   </Image>
 );
-
-HeadingHero.propTypes = {
-  imageURL: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string,
-};
-
-HeadingHero.defaultProps = {
-  description: null,
-};
 
 export default HeadingHero;
 export const Hydro = HydroLeaf()(HeadingHero);

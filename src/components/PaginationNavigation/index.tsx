@@ -1,13 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-function PaginationNavigation({ currentPage, totalPages, onPageChange }) {
+interface IProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange(pageNumber: number): void;
+}
+
+function PaginationNavigation({ currentPage, totalPages, onPageChange }: IProps) {
   return (
     <div className="PaginationNavigation">
       <button
         className="PaginationNavigation__button"
         type="button"
-        tabIndex="-1"
+        tabIndex={-1}
         onClick={onPageChange.bind(null, currentPage - 1)}
         disabled={currentPage <= 1}
       >
@@ -19,7 +24,7 @@ function PaginationNavigation({ currentPage, totalPages, onPageChange }) {
       <button
         className="PaginationNavigation__button"
         type="button"
-        tabIndex="-1"
+        tabIndex={-1}
         onClick={onPageChange.bind(null, currentPage + 1)}
         disabled={currentPage >= totalPages}
       >
@@ -28,11 +33,5 @@ function PaginationNavigation({ currentPage, totalPages, onPageChange }) {
     </div>
   );
 }
-
-PaginationNavigation.propTypes = {
-  currentPage: PropTypes.number.isRequired,
-  totalPages: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired,
-};
 
 export default PaginationNavigation;

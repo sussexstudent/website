@@ -1,8 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-class FeedbackButton extends React.Component {
-  constructor(props) {
+interface IProps {
+  buttonText: string;
+  givenText: string;
+  feedbackKey: string;
+  onFeedback(): void;
+}
+
+interface IState {
+  feedbackGivenKeys: Array<string>
+}
+
+class FeedbackButton extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
 
     this.handleFeedbackClicked = this.handleFeedbackClicked.bind(this);
@@ -41,7 +51,7 @@ class FeedbackButton extends React.Component {
           className="FeedbackButton__button"
           onClick={this.handleFeedbackClicked}
           role="button"
-          tabIndex="0"
+          tabIndex={0}
         >
           {buttonText}
         </a>
@@ -49,12 +59,5 @@ class FeedbackButton extends React.Component {
     );
   }
 }
-
-FeedbackButton.propTypes = {
-  buttonText: PropTypes.string.isRequired,
-  givenText: PropTypes.string.isRequired,
-  feedbackKey: PropTypes.string.isRequired,
-  onFeedback: PropTypes.func.isRequired,
-};
 
 export default FeedbackButton;

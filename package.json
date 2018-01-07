@@ -157,8 +157,6 @@
     "deploy": "uncommitted && yarn run prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run gen",
     "precommit": "`npm bin`/eslint",
     "serve": "node --trace-warnings ./devserver.js",
-    "docs:serve": "export NODE_ENV=development && node ./docs/devserver.js",
-    "docs:prod": "export NODE_ENV=production && webpack --config ./docs/webpack.prod.config.js",
     "format": "find ./src -name '*.js' | grep -v app | xargs prettier --single-quote --print-width 80 --trailing-comma es5 --write",
     "test": "NODE_ENV=test && jest",
     "testc": "NODE_ENV=test && jest --coverage",

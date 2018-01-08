@@ -1,8 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
+import {FalmerUser, RootState} from "~components/falmer/types";
+import {compose} from 'recompose';
 
-function FalmerHeader({ user }) {
+interface IProps {
+  user: FalmerUser
+}
+
+const FalmerHeader: React.SFC<IProps> = ({ user }) => {
   return (
     <header className="FalmerHeader">
       <h1 className="FalmerHeader__logotype">Falmer</h1>
@@ -81,8 +87,9 @@ function FalmerHeader({ user }) {
  </li>
 */
 
-export default withRouter(
-  connect(state => ({
+export default compose<IProps, {}>(
+  connect((state: RootState) => ({
     user: state.auth.user,
-  }))(FalmerHeader)
-);
+  })),
+  withRouter
+)(FalmerHeader)

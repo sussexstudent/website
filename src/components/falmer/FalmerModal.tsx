@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-export default props => (
+export default (props: any) => (
   <Modal
     {...props}
     style={{

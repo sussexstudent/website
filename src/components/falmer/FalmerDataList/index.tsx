@@ -1,7 +1,32 @@
 import React from 'react';
 
-class FalmerDataList extends React.Component {
-  constructor(props) {
+interface IRowProps {
+  id?: number;
+  key?: number;
+  selectable: boolean,
+  isSelected: boolean,
+  onChange(id: number, event: React.KeyboardEvent<HTMLInputElement>): void;
+}
+
+interface Item {
+  id: number;
+}
+
+interface IProps {
+  header(args: IRowProps): any;
+  selectable: boolean;
+  items: Array<Item>;
+  children(item: Item, props: IRowProps): any;
+}
+
+interface IState {
+  checked: {
+    [id: number]: boolean
+  }
+}
+
+class FalmerDataList extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
 
     this.state = {
@@ -9,9 +34,9 @@ class FalmerDataList extends React.Component {
     };
   }
 
-  handleRowSelect(id, event) {
+  handleRowSelect(id: number, event: React.KeyboardEvent<HTMLInputElement>) {
     this.setState({
-      checked: { ...this.state.checked, [id]: event.target.checked },
+      checked: { ...this.state.checked, [id]: event.currentTarget.checked },
     });
   }
 
@@ -42,11 +67,11 @@ class FalmerDataList extends React.Component {
   }
 }
 
-export function HeaderCell(props) {
+export const HeaderCell: React.SFC<{}> = (props) => {
   return <th>{props.children}</th>;
 }
 
-export function Row(props) {
+export const Row: React.SFC<IRowProps> = (props) => {
   return (
     <tr className="FalmerDataList__row" key={props.id}>
       {props.selectable ? (
@@ -63,7 +88,7 @@ export function Row(props) {
   );
 }
 
-export function Cell(props) {
+export const Cell: React.SFC<{}> = (props) => {
   return <td>{props.children}</td>;
 }
 

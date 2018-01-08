@@ -1,7 +1,12 @@
 import React from 'react';
 import Image from '../../Image';
+import {FalmerImage} from "../../../types/events";
 
-function ImageTreatmentPreview({ image }) {
+interface IProps {
+  image: FalmerImage
+}
+
+function ImageTreatmentPreview({ image }: IProps) {
   const treatments = [
     {
       size: 'square',

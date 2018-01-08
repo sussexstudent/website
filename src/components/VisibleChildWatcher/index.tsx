@@ -2,21 +2,25 @@ import React from 'react';
 import throttle from 'lodash/throttle';
 import orderBy from 'lodash/orderBy';
 
+interface IChildWrapperProps {
+  handleRef(el: HTMLDivElement): void;
+}
+
 // eslint-disable-next-line
-class ChildWrapper extends React.Component {
+class ChildWrapper extends React.Component<IChildWrapperProps> {
   render() {
     const { handleRef } = this.props;
     return <div ref={handleRef}>{this.props.children}</div>;
   }
 }
 
-// eslint-disable-next-line
-class VisibleChildWatcher extends React.Component {
-  constructor(props) {
-    super(props);
+interface IProps {
+  onChange(key: string): void;
+}
 
-    this.childEls = {};
-  }
+// eslint-disable-next-line
+class VisibleChildWatcher extends React.Component<IProps> {
+  private childEls: { [key: string]: HTMLElement } = {};
 
   componentDidMount() {
     window.addEventListener(
@@ -34,7 +38,7 @@ class VisibleChildWatcher extends React.Component {
 
         const scoresRanked = orderBy(scores, score => score[1]);
 
-        this.props.onChange(scoresRanked[0][0]);
+        this.props.onChange(`${scoresRanked[0][0]}`);
       }, 300)
     );
   }
@@ -45,7 +49,7 @@ class VisibleChildWatcher extends React.Component {
         {React.Children.map(this.props.children, item => (
           <ChildWrapper
             handleRef={el => {
-              this.childEls[item.key] = el;
+              this.childEls[(item as any).key] = el;
             }}
           >
             {item}

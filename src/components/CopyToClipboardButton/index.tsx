@@ -1,8 +1,16 @@
 import React from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
-class CopyToClipboardButton extends React.Component {
-  constructor(props) {
+interface IProps {
+  value: string;
+}
+
+interface IState {
+  hasCopied: boolean;
+}
+
+class CopyToClipboardButton extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
 
     this.state = {

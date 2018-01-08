@@ -3,9 +3,10 @@ import StaffList from '~components/StaffList';
 import HeadingHero from '~components/HeadingHero';
 import SelectionGrid from '~components/SelectionGrid';
 import SelectionGridItem from '~components/SelectionGridItem';
+import {CMSDocument, ComponentBlock, ComponentMap} from "../../types/content";
 
 /* eslint-disable react/prop-types */
-const components = {
+const components: ComponentMap = {
   heading: ({ value }) => <h1>{value}</h1>,
   heading_hero: ({ value, document }) => (
     <HeadingHero
@@ -16,7 +17,7 @@ const components = {
   staff_list: StaffList,
   selection_grid: ({ value }) => (
     <SelectionGrid>
-      {value.map(item => (
+      {value.map((item: any) => ( // todo
         <SelectionGridItem
           title={item.title}
           link={item.link}
@@ -30,7 +31,7 @@ const components = {
   ),
 };
 
-export default function getComponent(component, data, key) {
+export default function getComponent(component: ComponentBlock, data: CMSDocument, key: number) {
   if (!Object.hasOwnProperty.call(components, component.type)) {
     console.warn(
       `[contentAPI] Requested component not found! ${

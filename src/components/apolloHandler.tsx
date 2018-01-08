@@ -11,11 +11,11 @@ function ErrorHandler() {
   );
 }
 
-export default (
+const ApolloHandler = (
   Loader = LoaderComponent,
   Error = ErrorHandler
-) => WrappedComponent =>
-  compose(hoistStatics)(props => {
+) => (WrappedComponent: any) =>
+  compose(hoistStatics)((props: any) => {
     const propertyName = 'data';
     if (props[propertyName].loading) {
       return <Loader dark />;
@@ -26,3 +26,6 @@ export default (
 
     return <WrappedComponent {...props} />;
   });
+
+
+export default ApolloHandler;

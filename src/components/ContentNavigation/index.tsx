@@ -2,14 +2,27 @@ import React from 'react';
 import cx from 'classnames';
 import slugify from '~libs/slugify';
 
-export function generateTitlesFromStream(body) {
-  return body.map(block => {
+
+interface Section {
+  anchor: string;
+  name: string;
+  children: Array<Section>
+}
+
+interface IProps {
+  items: Array<Section>;
+  activeKey?: string;
+  onlyShowSubMenuWhenChildActive?: boolean;
+}
+
+export function generateTitlesFromStream(body: any): Array<Section> {
+  return body.map((block: any) => {// todo
     const heading = block.value.heading;
     return { name: heading, anchor: slugify(heading) };
   });
 }
 
-function canDisplaySubMenu(onlyShowSubMenuWhenChildActive, children, key) {
+function canDisplaySubMenu(onlyShowSubMenuWhenChildActive: boolean, children: Array<Section>, key: string) {
   if (!onlyShowSubMenuWhenChildActive) {
     return true;
   }
@@ -19,11 +32,11 @@ function canDisplaySubMenu(onlyShowSubMenuWhenChildActive, children, key) {
 
 // TODO: Tidy this up. Should technically support unlimited levels
 // TODO: this component's name doesn't match the css component
-function ContentNavigation({
+const ContentNavigation: React.SFC<IProps> = ({
   items,
-  activeKey,
+  activeKey = '',
   onlyShowSubMenuWhenChildActive = false,
-}) {
+}) => {
   return (
     <div className="NavigationCard">
       <h3 className="NavigationCard__title">Navigation</h3>
@@ -68,6 +81,6 @@ function ContentNavigation({
       </ul>
     </div>
   );
-}
+};
 
 export default ContentNavigation;

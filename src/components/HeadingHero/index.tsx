@@ -5,7 +5,7 @@ import HydroLeaf from '../HydroLeaf';
 interface IProps {
   imageURL: string;
   title: string;
-  description: string;
+  description?: string;
 }
 
 const HeadingHero = ({ imageURL, title, description = '' }: IProps) => (

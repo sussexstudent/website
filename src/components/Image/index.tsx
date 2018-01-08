@@ -6,7 +6,15 @@ import ImagePlaceholder from '../ImagePlaceholder';
 const FALMER_ENDPOINT = 'https://su.imgix.net/';
 const MSL_ENDPOINT = 'https://ussu.imgix.net/';
 
-function Image(props) {
+interface OwnProps {
+  src: string;
+  lazy?: boolean;
+  mslResource?: boolean;
+}
+
+type IProps = OwnProps & any;
+
+const Image: React.SFC<IProps> = (props) => {
   if (process.env.NODE_ENV === 'test') {
     /*
       TODO: hacky and probally makes tests a bit useless

@@ -1,14 +1,33 @@
 import React from 'react';
 import FigureCollection from '../FigureCollection';
+import FigureCollectionFigure from '../FigureCollectionFigure';
+import {FalmerImage} from "../../types/events";
 
-function HomePage({ data: { fullTimeOfficers, partTimeOfficers } }) {
+interface FigureCollectionBlock {
+  id: string;
+  value: {
+    title: string;
+    subtitle: string;
+    link: string;
+    image: FalmerImage;
+  }
+}
+
+interface HomepageData {
+  data: {
+    fullTimeOfficers: FigureCollectionBlock[],
+    partTimeOfficers: FigureCollectionBlock[]
+  }
+}
+
+function HomePage({ data: { fullTimeOfficers, partTimeOfficers } }: HomepageData) {
   return (
     <div>
       <div className="ContentBlock">
         <div className="ContentBlock__heading">Your full-time officers</div>
         <FigureCollection>
           {fullTimeOfficers.map(item => (
-            <FigureCollection.Figure
+            <FigureCollectionFigure
               key={item.id}
               title={item.value.title}
               sub={item.value.subtitle}
@@ -22,7 +41,7 @@ function HomePage({ data: { fullTimeOfficers, partTimeOfficers } }) {
         <div className="ContentBlock__heading">Your part-time officers</div>
         <FigureCollection>
           {partTimeOfficers.map(item => (
-            <FigureCollection.Figure
+            <FigureCollectionFigure
               key={item.id}
               title={item.value.title}
               sub={item.value.subtitle}

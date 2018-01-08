@@ -8,9 +8,17 @@ import ContentNavigation, {
 } from '~components/ContentNavigation';
 import getComponent from './getComponent';
 
+interface IProps {
+  data: any; // todo
+}
+
+interface IState {
+  visibleKey: null | string;
+}
+
 /* eslint-disable react/no-danger */
-class SectionContentPage extends React.Component {
-  constructor(props) {
+class SectionContentPage extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
 
     this.handleVisibleChildChange = this.handleVisibleChildChange.bind(this);
@@ -19,7 +27,7 @@ class SectionContentPage extends React.Component {
     };
   }
 
-  handleVisibleChildChange(key) {
+  handleVisibleChildChange(key: string) {
     this.setState({ visibleKey: key });
   }
 
@@ -34,7 +42,7 @@ class SectionContentPage extends React.Component {
             {contentsInSidebar ? (
               <ContentNavigation
                 items={generateTitlesFromStream(body)}
-                activeKey={this.state.visibleKey}
+                activeKey={this.state.visibleKey || undefined}
               />
             ) : null}
             {sidebarBody.map(getComponent)}
@@ -43,12 +51,12 @@ class SectionContentPage extends React.Component {
         <div>
           <HeadingHero title={title} imageURL={headingImage.resource} />
           <VisibleChildWatcher onChange={this.handleVisibleChildChange}>
-            {body.map(block => (
+            {body.map((block: any) => ( // todo
               <ContentCard anchor={slugify(block.value.heading)}>
                 <h2 className="Heading Heading--highlight">
                   {block.value.heading}
                 </h2>
-                {block.value.body.map(bodyItem => (
+                {block.value.body.map((bodyItem: any) => ( // todo
                   <div
                     className="Prose"
                     dangerouslySetInnerHTML={{ __html: bodyItem.value }}

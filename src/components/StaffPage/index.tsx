@@ -1,13 +1,14 @@
 import React from 'react';
-// import ContentNavigation from '~components/ContentNavigation';
 import StaffList from '~components/StaffList';
 import slugify from '~libs/slugify';
 import flatStreamToLevels from '~libs/flatStreamToLevels';
 import ContentCard from '../ContentCard';
-// import VisibleChildWatcher from '../VisibleChildWatcher';
+import {CMSDocument, ComponentBlock, ComponentMap} from "../../types/content";
 
-const components = {
-  heading: ({ value }) => (
+// TODO: this page (an
+
+const components: ComponentMap = {
+  heading: ({ value }: { value: string }) => (
     <h1>
       <span className="u-position-anchor" id={slugify(value)} />
       {value}
@@ -16,12 +17,12 @@ const components = {
   staff_list: StaffList,
 };
 
-function getComponent(component, data, key) {
+function getComponent(component: ComponentBlock, data: CMSDocument, key: string) {
   if (!Object.hasOwnProperty.call(components, component.type)) {
     console.warn(
       `[contentAPI] Requested component not found! ${
         component.type
-      } is missing.`
+        } is missing.`
     );
     return null;
   }
@@ -33,10 +34,10 @@ function getComponent(component, data, key) {
   });
 }
 
-const fromText = text => ({ name: text, anchor: slugify(text) });
+const fromText = (text: string) => ({ name: text, anchor: slugify(text) });
 
-export function generateTitlesFromStream(list) {
-  const headings = list.map(block => {
+export function generateTitlesFromStream(list: Array<any>) { // todo
+  const headings: Array<any | null> = list.map(block => {
     switch (block.value.type) {
       case 'heading':
         return {
@@ -61,8 +62,16 @@ const levelMap = {
   staff_list: 1,
 };
 
-class StaffPage extends React.Component {
-  constructor(props) {
+interface IProps {
+  data: CMSDocument
+}
+
+interface IState {
+  visibleKey: string | null;
+}
+
+class StaffPage extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
 
     this.state = {
@@ -73,18 +82,18 @@ class StaffPage extends React.Component {
   render() {
     const { data: { body }, data } = this.props;
 
-    const levels = flatStreamToLevels(item => levelMap[item.type], body);
+    const levels = flatStreamToLevels(item => (levelMap as any)[item.type], body);
     return (
       <div className="Layout Layout--sidebar-left Layout--sidebar-thin">
         <div>
           <aside />
         </div>
         <div>
-          {levels.map(({ value, _children = null, ...partData }) => (
+          {levels.map(({ value, _children = null, ...partData }: { value: any, _children?: any }) => ( // todo
             <ContentCard>
-              {getComponent(value, partData, slugify(value))}
+              {getComponent(value, (partData as any), slugify(value))}
               {_children !== null
-                ? _children.map(element =>
+                ? _children.map((element: any) =>
                     getComponent(element, data, slugify(element.value.heading))
                   )
                 : null}

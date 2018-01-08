@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Portal from 'react-portal';
 import CSSTransition from 'react-transition-group/CSSTransition';
@@ -7,12 +6,12 @@ import SearchPage from '~components/SearchPage';
 import smoothscroll from '~libs/smoothscroll';
 import classToggle from '~libs/dom/classToggle';
 
-function getDistanceFromUserBar(userBarEl) {
+function getDistanceFromUserBar(userBarEl: HTMLDivElement) {
   const offset = userBarEl.getBoundingClientRect().top;
   return Math.abs(offset);
 }
 
-function getCoords(elem) {
+function getCoords(elem: HTMLElement) {
   const box = elem.getBoundingClientRect();
 
   const body = document.body;
@@ -30,16 +29,46 @@ function getCoords(elem) {
   return { top: Math.round(top), left: Math.round(left) };
 }
 
-function SearchHeaderAnimated({ children, ...props }) {
+const SearchHeaderAnimated: React.SFC<any> = ({ children, ...props }) => {
   return (
     <CSSTransition {...props} classNames="test" timeout={300}>
       {children}
     </CSSTransition>
   );
+};
+
+interface IProps {
+  disabled?: boolean;
 }
 
-class HeaderSearch extends React.Component {
-  constructor(props) {
+interface IState {
+  query: string,
+  isOpen: boolean,
+  hasFocus: boolean,
+  isMobile: boolean | null,
+  transitionSize: null | {
+    paddingRight: number;
+    width: number;
+  }
+}
+
+class HeaderSearch extends React.Component<IProps, IState> {
+  private handleBlur: () => void;
+  private handleFocus: () => void;
+  private handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  private escapeClose: (e: KeyboardEvent) => void;
+
+  private header: HTMLDivElement | null;
+  private userBarEl: HTMLDivElement | null;
+  private htmlEl: HTMLElement | null;
+  private input: HTMLInputElement | null;
+  private dummyInput: HTMLInputElement | null;
+
+  static defaultProps = {
+    disabled: false,
+  };
+
+  constructor(props: IProps) {
     super(props);
 
     this.state = {
@@ -47,6 +76,7 @@ class HeaderSearch extends React.Component {
       isOpen: false,
       hasFocus: false,
       isMobile: null,
+      transitionSize: null,
     };
 
     this.handleBlur = this.handleHasFocus.bind(this, false);
@@ -71,18 +101,18 @@ class HeaderSearch extends React.Component {
     this.htmlEl = document.documentElement;
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_prevProps: IProps, prevState: IState) {
     if (this.state.isOpen && !prevState.isOpen) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ transitionSize: null });
     }
   }
 
-  handleInputChange(e) {
+  handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({ query: e.target.value });
   }
 
-  handleHasFocus(hasFocus) {
+  handleHasFocus(hasFocus: boolean) {
     const isOpen = hasFocus || this.state.query !== '';
 
     if (isOpen === this.state.isOpen) {
@@ -91,39 +121,43 @@ class HeaderSearch extends React.Component {
     const isMobile = window.innerWidth < 800;
 
     this.setState({ isMobile }, () => {
-      classToggle(this.htmlEl, 'html--search-active', isOpen);
+      if (this.htmlEl && this.userBarEl) {
+        classToggle(this.htmlEl, 'html--search-active', isOpen);
 
-      if (isOpen) {
-        if (isMobile) {
-          this.handleOpen();
-        } else {
-          const distance = Math.abs(getDistanceFromUserBar(this.userBarEl));
-          if (distance >= 10) {
-            const time = Math.round(distance * 3.85);
-            setTimeout(this.handleOpen.bind(this), time);
-            smoothscroll(this.userBarEl, time);
-          } else {
-            window.scrollTo(0, getCoords(this.userBarEl).top);
+        if (isOpen) {
+          if (isMobile) {
             this.handleOpen();
+          } else {
+            const distance = Math.abs(getDistanceFromUserBar(this.userBarEl));
+            if (distance >= 10) {
+              const time = Math.round(distance * 3.85);
+              setTimeout(this.handleOpen.bind(this), time);
+              (smoothscroll as any)(this.userBarEl, time); // todo
+            } else {
+              window.scrollTo(0, getCoords(this.userBarEl).top);
+              this.handleOpen();
+            }
           }
+        } else {
+          this.handleClose();
         }
-      } else {
-        this.handleClose();
       }
     });
   }
 
   handleOpen() {
-    this.setState({
-      isOpen: true,
-      transitionSize: {
-        paddingRight: this.dummyInput.offsetLeft,
-        width: this.dummyInput.clientWidth,
-      },
-    });
-    this.header.classList.add('Header--search-focus');
+    if (this.dummyInput && this.header) {
+      this.setState({
+        isOpen: true,
+        transitionSize: {
+          paddingRight: this.dummyInput.offsetLeft,
+          width: this.dummyInput.clientWidth,
+        },
+      });
+      this.header.classList.add('Header--search-focus');
 
-    document.addEventListener('keyup', this.escapeClose);
+      document.addEventListener('keyup', this.escapeClose);
+    }
   }
 
   handleClose() {
@@ -132,7 +166,7 @@ class HeaderSearch extends React.Component {
       transitionSize: null,
     });
 
-    this.header.classList.remove('Header--search-focus');
+    this.header && this.header.classList.remove('Header--search-focus');
     document.removeEventListener('keyup', this.escapeClose);
   }
 
@@ -142,26 +176,26 @@ class HeaderSearch extends React.Component {
     }
   }
 
-  handleExitClose(e) {
+  handleExitClose(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     this.setState({ query: '' }, () => {
       this.handleHasFocus(false);
     });
   }
 
-  handleQueryClear(e) {
+  handleQueryClear(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
-    this.setState({ query: '' }, () => this.input.focus());
+    this.setState({ query: '' }, () => this.input && this.input.focus());
   }
 
-  renderSearching(isOpen) {
+  renderSearching(isOpen: boolean) {
     return (
       <div>
         {isOpen ? (
           <div className="InlineSearch__input-container">
             <form
               className={cx('InlineSearch__input')}
-              style={this.state.transitionSize}
+              style={this.state.transitionSize || {}}
               onSubmit={this.handleSubmit}
             >
               <button
@@ -294,13 +328,5 @@ class HeaderSearch extends React.Component {
     );
   }
 }
-
-HeaderSearch.propTypes = {
-  disabled: PropTypes.bool,
-};
-
-HeaderSearch.defaultProps = {
-  disabled: false,
-};
 
 export default HeaderSearch;

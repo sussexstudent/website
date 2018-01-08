@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 
 interface IProps {
-  color: 'red' | 'blue' | 'green' | 'slate';
+  color?: 'red' | 'blue' | 'green' | 'slate';
   href: string;
   children: any;
 }

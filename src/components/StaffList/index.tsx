@@ -1,8 +1,26 @@
 import React from 'react';
 import slugify from '~libs/slugify';
 import Image from '~components/Image';
+import {FalmerImage} from "../../types/events";
 /* eslint-disable react/no-danger */
-function StaffList({ value: { heading, body } }) {
+
+interface StaffMemberData {
+  photo?: FalmerImage;
+  name: string;
+  jobTitle: string;
+  jobDescription: string;
+  email?: string;
+  officePhoneNumber?: string;
+  mobilePhoneNumber: string;
+  officeLocation?: string;
+}
+
+interface StaffListData {
+  heading: string;
+  body: Array<StaffMemberData>
+}
+
+function StaffList({ value: { heading, body } }: { value: StaffListData }) {
   return (
     <div>
       <span className="u-position-anchor" id={slugify(heading)} />

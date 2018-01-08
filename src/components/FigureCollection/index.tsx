@@ -2,7 +2,7 @@ import React from 'react';
 import FigureCollectionFigure, {FigureData} from './FigureCollectionFigure';
 
 interface IProps {
-  items: Array<FigureData>
+  items?: Array<FigureData>
 }
 
 const FigureCollection: React.SFC<IProps> = ({ children, items = null }) => (

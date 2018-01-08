@@ -1,8 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
+interface IProps {
+  handleClose(): void;
+}
 
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-function Modal(props) {
+const Modal: React.SFC<IProps> = (props) => {
   return (
     <div className="ModalContainer">
       <div className="ModalContainer__modal Modal">
@@ -22,11 +25,7 @@ function Modal(props) {
       />
     </div>
   );
-}
-
-Modal.propTypes = {
-  children: PropTypes.node.isRequired,
-  handleClose: PropTypes.func.isRequired,
 };
+
 /* eslint-enable jsx-a11y/no-static-element-interactions */
 export default Modal;

@@ -130,7 +130,7 @@ class EventDetailPage extends React.Component<IProps> {
                 </div>
               ) : null}
               {event.brand !== null ? (
-                <div className="EventDetail__brand">{event.brand.name}</div>
+                <Link to={`/whats-on/collection/${event.brand.slug}`} className="EventDetail__brand">{event.brand.name}</Link>
               ) : null}
               {event.bundle !== null ? (
                 <div className="EventDetail__bundle">{event.bundle.name}</div>
@@ -210,6 +210,9 @@ class EventDetailPage extends React.Component<IProps> {
                   ) : (
                     <div>{event.shortDescription}</div>
                   )}
+                  {event.brand && event.brand.eventAppend ? <div>
+                    <div dangerouslySetInnerHTML={{ __html: event.brand.eventAppend }} />
+                  </div> : null}
                 </div>
               </div>
             </ContentCard>

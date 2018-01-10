@@ -12,6 +12,7 @@ import isSameDay from 'date-fns/isSameDay';
 import formatDate from 'date-fns/format';
 import EventsCalenderItem from './EventsCalenderItem';
 import EventListingsQuery from './EventListings.graphql';
+import EventListingsBrandingPeriodQuery from './EventListingsBrandingPeriod.graphql';
 import apolloHandler from '../apolloHandler';
 import {Event, EventPart} from "../../types/events";
 import {
@@ -40,7 +41,7 @@ interface OwnProps {
 type IProps = OwnProps;
 
 function EventsCalender({
-  data: { allEvents },
+  data: { allEvents, brandingPeriod },
   disableHeader = false,
   useAnchors = false,
   match,
@@ -59,10 +60,10 @@ function EventsCalender({
     <div>
       {disableHeader ? null : (
         <Helmet>
-          <title>{`What's on | Sussex Students' Union`}</title>
+          <title>{`${brandingPeriod ? `${brandingPeriod.name} | ` : ''}What's on | Sussex Students' Union`}</title>
         </Helmet>
       )}
-      {disableHeader !== true ? (
+      {!brandingPeriod ? (
         <div className="PageHeader">
           <h1 className="PageHeader__title">{"What's on"}</h1>
           <div className="PageHeader__treats">
@@ -72,6 +73,10 @@ function EventsCalender({
           </div>
         </div>
       ) : null}
+      {brandingPeriod ? <div>
+        {brandingPeriod.logoVector ? <img src={brandingPeriod.logoVector.resource} height="160" /> : <h1>{brandingPeriod.name}</h1>}
+        <div className="type-body-copy" dangerouslySetInnerHTML={{ __html: brandingPeriod.description }} />
+      </div> : null}
       <div className="EventsCalender">
         {uiEvents.map(({ sectionTitle, parts }) => (
           // sectionTitle might not be unique in the future
@@ -122,19 +127,9 @@ function EventsCalender({
   );
 }
 
-const EventsContainer = compose<OwnProps, OwnProps>(
+const EventsList = compose<OwnProps, OwnProps>(
   graphql<any, OwnProps>(EventListingsQuery, {
     options: props => {
-      const brandSlug = props.match.params.brandSlug;
-      if (brandSlug) {
-        return {
-          variables: {
-            filter: {
-              brandSlug,
-            },
-          },
-        };
-      }
       return {
         variables: {
           filter: props.filter || {
@@ -148,4 +143,23 @@ const EventsContainer = compose<OwnProps, OwnProps>(
   apolloHandler()
 )(EventsCalender);
 
-export { EventsContainer }
+const EventsBrandingPeriod = compose<OwnProps, OwnProps>(
+  graphql<any, OwnProps>(EventListingsBrandingPeriodQuery, {
+    options: props => {
+      const brandSlug = props.match.params.brandSlug;
+      return {
+        variables: {
+          brandSlug,
+          filter: {
+            brandSlug,
+            fromTime: startOfDay(new Date()).toISOString(),
+            toTime: addMonths(startOfDay(new Date()), 6).toISOString(),
+          },
+        },
+      };
+    },
+  }),
+  apolloHandler()
+)(EventsCalender);
+
+export { EventsList, EventsBrandingPeriod }

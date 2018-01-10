@@ -13,6 +13,7 @@
   }
 
   &__brand {
+    display: block;
     color: #ffffff;
     background-color: #ff546a;
   }

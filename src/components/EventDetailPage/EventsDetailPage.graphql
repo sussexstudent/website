@@ -17,6 +17,8 @@ query EventsDetailPage($eventId: Int) {
     }
     brand {
       name
+      slug
+      eventAppend
     }
     venue {
       name

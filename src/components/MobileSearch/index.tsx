@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import Portal from 'react-portal';
+import { Portal } from 'react-portal';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import classToggle from '~libs/dom/classToggle';
 import SearchPage from '~components/SearchPage';
@@ -21,7 +21,6 @@ interface IState {
 class HeaderSearch extends React.Component<IProps, IState> {
   private handleBlur: () => void;
   private handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  private handlePortalOpened: () => void;
   private handleTouch: (e: any) => void; // todo
 
   private input: HTMLInputElement | null;
@@ -47,9 +46,6 @@ class HeaderSearch extends React.Component<IProps, IState> {
     this.handleExitClose = this.handleExitClose.bind(this);
     this.handleQueryClear = this.handleQueryClear.bind(this);
     this.handleSubmit = e => e.preventDefault();
-    this.handlePortalOpened = () => {
-      this.setState({ isRendered: true });
-    };
 
     this.handleTouch = e => {
       if (this.state.query === '') {
@@ -67,6 +63,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
     if (nextProps.isOpen !== this.props.isOpen  && this.htmlEl !== null) {
       if (nextProps.isOpen) {
         classToggle(this.htmlEl, 'html--search-active', nextProps.isOpen);
+        setTimeout(() => this.setState({ isRendered: true }), 80);
       } else {
         classToggle(this.htmlEl, 'html--search-active', nextProps.isOpen);
       }
@@ -121,8 +118,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
   renderMobileSearch() {
     const { isOpen } = this.props;
     const { isRendered } = this.state;
-    return (
-      <Portal isOpened={isOpen} onOpen={this.handlePortalOpened}>
+    return isOpen ? <Portal>
         <div className="MobileSearch" onTouchMove={this.handleTouch}>
           <CSSTransition
             in={isRendered}
@@ -184,8 +180,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
             }
           </CSSTransition>
         </div>
-      </Portal>
-    );
+      </Portal> : null;
   }
 
   render() {

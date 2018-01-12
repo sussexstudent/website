@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import Portal from 'react-portal';
+import { Portal } from 'react-portal';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import SearchPage from '~components/SearchPage';
 import smoothscroll from '~libs/smoothscroll';
@@ -245,7 +245,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
 
   renderMobileSearch() {
     return (
-      <Portal isOpened>
+      <Portal>
         <div className="MobileSearch">
           <form
             className={cx('InlineSearch__input')}

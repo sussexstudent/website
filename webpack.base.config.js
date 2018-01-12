@@ -14,6 +14,7 @@ const env = {
 env.build = env.production || env.staging;
 
 function generateConfig() {
+  console.log()
   return {
     target: 'web',
 
@@ -54,7 +55,6 @@ function generateConfig() {
     plugins: [
       new webpack.DefinePlugin({
         'process.env': {
-          HYDROLEAF_MODE: JSON.stringify('RENDER_COMPONENT'),
           NODE_ENV: JSON.stringify(NODE_ENV),
           FALMER_ENDPOINT: JSON.stringify(
             env.production

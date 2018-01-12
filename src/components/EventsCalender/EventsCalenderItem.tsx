@@ -7,7 +7,7 @@ import FauxLink from '../FauxLink';
 import FauxRouterLink from '../FauxRouterLink';
 import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
 import EventRelativeTime from './EventRelativeTime';
-import {Event} from "../../types/events";
+import {Event, TicketType} from "../../types/events";
 // import PropTypes from 'prop-types';
 
 function renderEventLocation(event: Event) {
@@ -92,7 +92,7 @@ function EventsCalenderItem({
         </div>
       ) : null}
       {event.ticketType !== undefined &&
-      event.ticketType !== 'NA' &&
+      event.ticketType !== TicketType.NA &&
       event.ticketLevel !== 'SO' ? (
         <div className="EventsCalender__item-banner EventsCalender__item-banner--tickets">
           Buy Tickets

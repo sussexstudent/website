@@ -6,7 +6,9 @@ export enum EventPartType {
 
 
 export enum TicketType {
-  Native = 'NA',
+  NA = 'NA',
+  Native = 'NT',
+  MSL = 'MSL',
 }
 
 export enum TicketLevel {

@@ -6,7 +6,8 @@ import HydroLeaf from '~components/HydroLeaf';
 import OrgansiationGrid, {StudentGroup} from '~components/OrganisationGrid';
 import { graphql, ChildProps } from 'react-apollo';
 import StudentGroupListingsQuery from './StudentGroupListings.graphql';
-import Loader from '../Loader/index';
+import {compose} from 'recompose';
+import apolloHandler from "~components/apolloHandler";
 
 interface OwnProps {
   groupsList: Array<StudentGroup>
@@ -38,7 +39,7 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
     this.state = {
       filter: null,
       searchValue: '',
-      displayIds: props.groupsList.map(group => group.groupId),
+      displayIds: props.data && props.data.allGroups ? props.data.allGroups.edges.map((edge) => edge.node.groupId) : []
     };
 
     this.onSearchUpdate = this.onSearchUpdate.bind(this);
@@ -60,7 +61,7 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
   }
 
   render() {
-    const map = keyBy(this.props.groupsList, 'groupId');
+    const map = keyBy(this.props.data && this.props.data.allGroups ? this.props.data.allGroups.edges.map((edge: { node: StudentGroup }) => edge.node) : [], 'groupId');
     const { searchValue, displayIds } = this.state;
     return (
       <div className="ActivitiesApp__">
@@ -89,19 +90,9 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
   }
 }
 
-const StudentGroupListings = graphql<Result>(StudentGroupListingsQuery)(
-  props =>
-    !props.data || props.data.loading ? (
-      <Loader />
-    ) : (
-      <StudentGroupsDiscovery
-        groupsList={props.data.allGroups ? props.data.allGroups.edges.map(edge => edge.node) : []}
-      />
-    )
-);
+const StudentGroupListings = compose<OwnProps, {}>(
+  graphql<Result>(StudentGroupListingsQuery),
+  apolloHandler(),
+)(StudentGroupsDiscovery);
 
-const StudentGroupsApplication = () => (
-  <StudentGroupListings />
-);
-
-export default HydroLeaf()(StudentGroupsApplication);
+export default HydroLeaf()(StudentGroupListings);

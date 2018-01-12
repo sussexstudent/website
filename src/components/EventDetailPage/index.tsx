@@ -218,10 +218,16 @@ class EventDetailPage extends React.Component<IProps> {
             </ContentCard>
           </div>
           <aside>
-            {event.ticketType !== TicketType.Native ? (
+            {event.ticketType === TicketType.Native ? (
               <ContentCard>
                 <h3>Tickets</h3>
                 <Button href={event.ticketData}>Buy tickets on Native</Button>
+              </ContentCard>
+            ) : null}
+            {event.ticketType === TicketType.MSL ? (
+              <ContentCard>
+                <h3>Tickets</h3>
+                <Button href={`${event.ticketData}#tickets`}>Buy tickets</Button>
               </ContentCard>
             ) : null}
             <ContentCard>

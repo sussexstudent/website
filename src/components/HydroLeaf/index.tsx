@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
+import {HydroRootServer} from "~components/HydroRootServer";
 
 let hydroId = 0;
 
@@ -69,7 +70,7 @@ function HydroLeaf(
   }: HydroLeafOptions = {}
 ) {
   return function HydroLeafHOC(Component: any) {
-    if (process.env.COMP === '1') {
+    if (process.env.COMP_NODE) {
       // eslint-disable-next-line
       class DeHydro extends React.Component<IDeHydroProps> {
         static contextTypes = generateContextTypes(contextToProps);;
@@ -82,6 +83,7 @@ function HydroLeaf(
           const { renderStatic = false, ...props } = this.props;
 
           if (process.env.HYDROLEAF_MODE === 'RENDER_TO_COMPONENT') {
+            console.log('component pass through');
             return <Component {...props} />;
           }
 
@@ -104,6 +106,7 @@ function HydroLeaf(
           }
 
           if (renderStatic) {
+            console.log('rendering static');
             return container({
               className,
               children: <Component {...serialProps} />,
@@ -112,9 +115,7 @@ function HydroLeaf(
 
           const componentMarkup = disableSSR
             ? ''
-            : ReactDOM.renderToString(
-                React.createElement(Component, serialProps)
-              );
+            : ReactDOM.renderToString(<HydroRootServer><Component {...serialProps} /></HydroRootServer>);
 
           let dataAc = `window.HYDROSTATE_${hydroKey} = ${JSON.stringify(
             serialProps

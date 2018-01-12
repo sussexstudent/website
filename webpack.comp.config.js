@@ -14,7 +14,7 @@ const extractCSS = new ExtractTextPlugin({
 
 config.bail = true;
 config.profile = false;
-config.devtool = 'source-map';
+config.devtool = 'none';
 
 config.performance = {
   hints: false,

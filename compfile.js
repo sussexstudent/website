@@ -1,5 +1,4 @@
 require('isomorphic-fetch');
-
 import path from 'path';
 import React from 'react';
 import { headContent, headContentLegacy } from './src/projects/website/head';
@@ -39,6 +38,7 @@ export default {
     '/policy-generator': require('./src/projects/website/layouts/PolicyIdeaGenerator'),
     '/about-us': require('./src/projects/website/layouts/AboutUs'),
     '/plan': require('./src/projects/website/layouts/AnnualPlan'),
+    '/freshers': require('./src/projects/website/layouts/Freshers'),
     '/soc-events': require('./src/projects/website/layouts/SocEvents'),
     '/discover-groups': require('./src/projects/website/layouts/SportsSocieties'),
     // '/officer': require('./src/projects/components/OfficerPage/index'),

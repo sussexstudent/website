@@ -6,12 +6,12 @@ import LoaderComponent from '~components/Loader';
 function ErrorHandler() {
   return (
     <div>
-      <h1>failed to load</h1>
+      <h1>Failed to load</h1>
     </div>
   );
 }
 
-const ApolloHandler = (
+const apolloHandler = (
   Loader = LoaderComponent,
   Error = ErrorHandler
 ) => (WrappedComponent: any) =>
@@ -28,4 +28,5 @@ const ApolloHandler = (
   });
 
 
-export default ApolloHandler;
+export default apolloHandler;
+export { apolloHandler }

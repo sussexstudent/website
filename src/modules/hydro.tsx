@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import isFunction from 'lodash/isFunction';
-import { ApolloProvider } from 'react-apollo';
-import { BrowserRouter } from 'react-router-dom';
-import getApolloClientForFalmer from '../libs/getApolloClientForFalmer';
-import ScrollToTop from '../components/ScrollToTop';
+import {HydroRoot} from "~components/HydroRoot";
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any>;
@@ -36,6 +33,8 @@ export default function() {
       import(/* webpackChunkName: "AnnualPlan" */ '~components/AnnualPlan'),
     PolicyGenerator: () =>
       import(/* webpackChunkName: "PolicyGenerator" */ '~components/PolicyGenerator'),
+    FreshersApp: () =>
+      import(/* webpackChunkName: "Freshers" */ '~components/Freshers/FreshersApp'),
   };
 
   Array.from(document.querySelectorAll('.Hydro')).forEach(el => {
@@ -83,20 +82,10 @@ export default function() {
         }
         const shouldHydrate = el.children.length > 0;
 
-        const renderRoot = (
-          <ApolloProvider client={getApolloClientForFalmer}>
-            <BrowserRouter basename={window.location.pathname.startsWith('/~/') ? '/~/' : undefined}>
-              <ScrollToTop>
-                <Component {...props} />
-              </ScrollToTop>
-            </BrowserRouter>
-          </ApolloProvider>
-        );
-
         if (shouldHydrate) {
-          ReactDOM.hydrate(renderRoot, el);
+          ReactDOM.hydrate(<HydroRoot><Component {...props} /></HydroRoot>, el);
         } else {
-          ReactDOM.render(renderRoot, el);
+          ReactDOM.render(<HydroRoot><Component {...props} /></HydroRoot>, el);
         }
       });
   });

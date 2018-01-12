@@ -14,6 +14,17 @@
     background-color: var(--color__grey-sad-slate);
   }
 
+  &--donatello {
+    background: #a42928;
+    box-shadow: inset -4px 3px 5px rgba(30, 30, 30, 0.4);
+    padding-top: 8px;
+
+    & svg {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
   & a {
     display: block;
   }

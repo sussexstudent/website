@@ -30,6 +30,12 @@ config.output = {
 };
 
 config.plugins = config.plugins.concat([
+  new webpack.DefinePlugin({
+    'process.env': {
+      HYDROLEAF_MODE: JSON.stringify('RENDER_COMPONENT'),
+      COMP_NODE: '0',
+    },
+  }),
   new CleanWebpackPlugin(['dist']),
   new webpack.LoaderOptionsPlugin({
     minimize: true,

@@ -25,6 +25,7 @@ interface IState {
   filter: null;
   searchValue: string;
   displayIds: Array<number>;
+  groups: Array<StudentGroup>;
 }
 
 type IProps = OwnProps & ChildProps<OwnProps, Result>
@@ -34,12 +35,15 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
 
-    this.fuse = new Fuse(props.groupsList, { keys: ['name'], id: 'groupId' });
+    const groups = props.data && props.data.allGroups ? props.data.allGroups.edges.map(edge => edge.node) : [];
+
+    this.fuse = new Fuse(groups, { keys: ['name'], id: 'groupId' });
 
     this.state = {
       filter: null,
       searchValue: '',
-      displayIds: props.data && props.data.allGroups ? props.data.allGroups.edges.map((edge) => edge.node.groupId) : []
+      displayIds: groups.map((group) => group.groupId),
+      groups
     };
 
     this.onSearchUpdate = this.onSearchUpdate.bind(this);
@@ -52,7 +56,7 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
         searchValue,
         displayIds: searchValue
           ? this.fuse.search(searchValue)
-          : this.props.groupsList.map(group => group.groupId),
+          : this.state.groups.map(group => group.groupId),
       },
       () => {
         forceCheck();

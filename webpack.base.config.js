@@ -88,7 +88,7 @@ function generateConfig() {
         },
         {
           test: /\.tsx?$/,
-          loader: 'awesome-typescript-loader?useBabel',
+          loader: 'awesome-typescript-loader?useBabel=true',
         },
         {
           test: /\.svg|\.png|\.woff/,

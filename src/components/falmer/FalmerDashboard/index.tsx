@@ -5,6 +5,9 @@ import { Helmet } from 'react-helmet';
 import getHours from 'date-fns/getHours';
 import DashboardQuery from './Dashboard.graphql';
 import ContentCard from '../../ContentCard';
+import {RootState} from "~components/falmer/types";
+import {ApolloHandlerChildProps} from "~components/apolloHandler";
+import {compose} from 'recompose';
 
 function getGreeting() {
   const hour = getHours(new Date());
@@ -22,7 +25,12 @@ function getGreeting() {
   return 'Evening!';
 }
 
-function StatsCard({ stat, subtitle }) {
+interface IStatsCardProps {
+  stat: number | string;
+  subtitle: string;
+}
+
+function StatsCard({ stat, subtitle }: IStatsCardProps) {
   return (
     <ContentCard>
       <div className="Heading Heading--big">{stat}</div>
@@ -31,9 +39,25 @@ function StatsCard({ stat, subtitle }) {
   );
 }
 
+interface OwnProps {}
+
+interface Result {
+  allGroups: {
+    totalCount: number;
+  }
+  allEvents: {
+    totalCount: number;
+  }
+  allImages: {
+    totalCount: number;
+  }
+}
+
+type IProps = ApolloHandlerChildProps<OwnProps, Result>
+
 function FalmerDashboard({
   data: { loading, allEvents, allGroups, allImages },
-}) {
+}: IProps) {
   return (
     <div>
       <Helmet>
@@ -58,8 +82,9 @@ function FalmerDashboard({
   );
 }
 
-export default graphql(DashboardQuery)(
-  connect(state => ({
+export default compose<IProps, OwnProps>(
+  graphql(DashboardQuery),
+  connect((state: RootState) => ({
     user: state.auth.user,
-  }))(FalmerDashboard)
-);
+  }))
+)(FalmerDashboard);

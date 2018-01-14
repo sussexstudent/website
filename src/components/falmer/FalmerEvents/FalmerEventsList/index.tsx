@@ -12,7 +12,11 @@ import FalmerDataList, {
 } from '../../FalmerDataList/index';
 import FalmerSidebar from '../../FalmerSidebar';
 import FalmerListView from '../../FalmerListView';
-import FalmerSubSections from '../../FalmerSubSections';
+import FalmerSubSections, { SubSection } from '../../FalmerSubSections';
+import {Event} from "../../../../types/events";
+import {ApolloHandlerChildProps} from "~components/apolloHandler";
+import {Connection} from "~components/falmer/types";
+import {compose} from 'recompose';
 // import FauxRouterLink from '../../FauxRouterLink';
 // const FalmerEventCard = ({ event }) =>
 //   <div className="FalmerCard FalmerCard--standard">
@@ -21,7 +25,7 @@ import FalmerSubSections from '../../FalmerSubSections';
 //       {event.title}
 //     </h2>
 //   </div>;
-function plural(length, single, pluralWord = null) {
+function plural(length: number, single: string, pluralWord: string | null = null) {
   if (Math.abs(length) === 1) {
     return single;
   }
@@ -29,7 +33,17 @@ function plural(length, single, pluralWord = null) {
   return pluralWord || `${single}s`;
 }
 
-function FalmerEvents({ data: { loading, allEvents } }) {
+interface OwnProps {
+
+}
+
+interface Result {
+  allEvents: Connection<Event>
+}
+
+type IProps = ApolloHandlerChildProps<OwnProps, Result>
+
+function FalmerEvents({ data: { loading, allEvents } }: IProps) {
   return (
     <div>
       <Helmet>
@@ -41,12 +55,12 @@ function FalmerEvents({ data: { loading, allEvents } }) {
         <FalmerListView>
           <div className="FalmerListView__main">
             <FalmerSubSections>
-              <FalmerSubSections.Section to="/events/venues/">
+              <SubSection to="/events/venues/">
                 Venues
-              </FalmerSubSections.Section>
-              <FalmerSubSections.Section to="/events/periods/">
+              </SubSection>
+              <SubSection to="/events/periods/">
                 Branding Periods
-              </FalmerSubSections.Section>
+              </SubSection>
             </FalmerSubSections>
             <FalmerDataList
               items={allEvents.edges.map(edge => edge.node)}
@@ -60,7 +74,7 @@ function FalmerEvents({ data: { loading, allEvents } }) {
               )}
               selectable
             >
-              {(item, rowState) => (
+              {(item: Event, rowState) => (
                 <Row {...rowState} id={item.id}>
                   <Cell>
                     <Link to={`/events/${item.eventId}`}>
@@ -104,15 +118,17 @@ function FalmerEvents({ data: { loading, allEvents } }) {
   );
 }
 
-export default graphql(AllEventsQuery, {
-  options: () => {
-    const today = new Date();
-    return {
-      variables: {
-        filter: {
-          fromTime: today,
+export default compose<IProps, OwnProps>(
+  graphql(AllEventsQuery, {
+    options: () => {
+      const today = new Date();
+      return {
+        variables: {
+          filter: {
+            fromTime: today,
+          },
         },
-      },
-    };
-  },
-})(FalmerEvents);
+      };
+    },
+  })
+)(FalmerEvents);

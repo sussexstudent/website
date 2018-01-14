@@ -5,6 +5,10 @@ import formatDate from 'date-fns/format';
 import AllEventsQuery from './AllEvents.graphql';
 import Loader from '../../Loader';
 import FalmerDataList, { Cell, Row, HeaderCell } from '../FalmerDataList/index';
+import {ApolloHandlerChildProps} from "~components/apolloHandler";
+import {Connection} from "~components/falmer/types";
+import {Event} from "../../../types/events";
+import {compose} from 'recompose';
 // import FauxRouterLink from '../../FauxRouterLink';
 // const FalmerEventCard = ({ event }) =>
 //   <div className="FalmerCard FalmerCard--standard">
@@ -14,7 +18,17 @@ import FalmerDataList, { Cell, Row, HeaderCell } from '../FalmerDataList/index';
 //     </h2>
 //   </div>;
 
-function FalmerEvents({ data: { loading, allEvents }, onSelect }) {
+interface OwnProps {
+  onSelect(eventId: number): void;
+}
+
+interface Result {
+  allEvents: Connection<Event>
+}
+
+type IProps = ApolloHandlerChildProps<OwnProps, Result>
+
+function FalmerEvents({ data: { loading, allEvents }, onSelect }: IProps) {
   return (
     <div>
       <Helmet>
@@ -35,12 +49,12 @@ function FalmerEvents({ data: { loading, allEvents }, onSelect }) {
           )}
           selectable
         >
-          {(item, rowState) => (
-            <Row {...rowState} id={item.id}>
+          {(item: Event, rowState) => (
+            <Row {...rowState} id={item.eventId}>
               <Cell>
                 {item.title}
                 {item.children.length > 0 ? (
-                  <span>({item.children.length} children)</span>
+                  <span>{`(${item.children.length} children)`}</span>
                 ) : null}
               </Cell>
               <Cell>
@@ -65,4 +79,6 @@ function FalmerEvents({ data: { loading, allEvents }, onSelect }) {
   );
 }
 
-export default graphql(AllEventsQuery)(FalmerEvents);
+export default compose<IProps, OwnProps>(
+  graphql(AllEventsQuery)
+)(FalmerEvents);

@@ -1,7 +1,7 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
+import { graphql, MutationFunc } from 'react-apollo';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 import { compose, withState } from 'recompose';
 import Loader from '../../../Loader';
 import CopyToClipboardButton from '../../../CopyToClipboardButton/index';
@@ -11,13 +11,32 @@ import FalmerSelectEvent from '../../FalmerSelectEvent';
 
 import EventDetailQuery from './EventDetail.graphql';
 import MoveEventMutation from './MoveEvent.graphql';
+import {ApolloHandlerChildProps} from "~components/apolloHandler";
+import {Event} from "../../../../types/events";
+
+interface RouteParams {
+  eventId: number;
+}
+
+interface OwnProps extends RouteComponentProps<RouteParams> {
+  isMoveModalOpen: boolean;
+  handleMoveModal(bool: boolean): void;
+}
+
+interface Result {
+  event: Event;
+}
+
+type IProps = ApolloHandlerChildProps<OwnProps, Result> & {
+  moveEventMutation: MutationFunc<Result>
+};
 
 function FalmerEventsDetail({
   data: { loading, event },
   handleMoveModal,
   isMoveModalOpen,
   moveEventMutation,
-}) {
+}: IProps) {
   return (
     <div>
       <Helmet>
@@ -100,7 +119,7 @@ function FalmerEventsDetail({
   );
 }
 
-export default compose(
+export default compose<IProps, OwnProps>(
   withState('isMoveModalOpen', 'handleMoveModal', false),
   graphql(MoveEventMutation, {
     name: 'moveEventMutation',
@@ -108,7 +127,7 @@ export default compose(
       refetchQueries: ['AllEvents', 'EventDetail'],
     },
   }),
-  graphql(EventDetailQuery, {
+  graphql<Result, OwnProps>(EventDetailQuery, {
     options: props => ({
       variables: {
         eventId: props.match.params.eventId,

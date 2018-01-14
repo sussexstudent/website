@@ -13,6 +13,9 @@ export interface StudentGroup {
   isProspective: boolean;
   id: number;
   groupId: number;
+  mslGroup?: {
+    lastSync: string;
+  }
 }
 
 interface IProps {

@@ -129,6 +129,12 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-loadable@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@types/react-loadable/-/react-loadable-5.3.1.tgz#88b94edb8c418a0b3b85d1b66ebae8490b3bbc47"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-modal@^3.1.1":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@types/react-modal/-/react-modal-3.1.1.tgz#cba50fc253560bbefdbc2cbd5dda9ed6aadd1917"
@@ -8179,6 +8185,10 @@ type-is@~1.6.15:
   dependencies:
     media-typer "0.3.0"
     mime-types "~2.1.15"
+
+type-zoo@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/type-zoo/-/type-zoo-1.0.1.tgz#220254819d6cc5bb8e8583ca5b537b9bcf3d0699"
 
 typedarray@^0.0.6:
   version "0.0.6"

@@ -25,7 +25,8 @@
     "baseUrl": ".",
     "paths": {
       "~components/*": ["./src/components/*"],
-      "~libs/*": ["./src/libs/*"]
+      "~libs/*": ["./src/libs/*"],
+      "~falmer/*": ["./src/projects/falmer/*"]
     }
   }
 }

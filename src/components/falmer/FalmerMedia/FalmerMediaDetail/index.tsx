@@ -3,8 +3,26 @@ import { graphql } from 'react-apollo';
 import MediaDetailQuery from './MediaDetail.graphql';
 import Loader from '../../../Loader';
 import ImageTreatmentPreview from '../../ImageTreatmentPreview';
+import {ApolloHandlerChildProps} from "~components/apolloHandler";
+import {FalmerImage} from "../../../../types/events";
+import {compose} from 'recompose';
+import {RouteComponentProps} from 'react-router-dom';
 
-function FalmerMediaDetail({ data: { loading, image } }) {
+interface RouteParams {
+  mediaId: number;
+}
+
+interface OwnProps extends RouteComponentProps<RouteParams> {
+
+}
+
+interface Result {
+  image: FalmerImage;
+}
+
+type IProps = ApolloHandlerChildProps<OwnProps, Result>
+
+function FalmerMediaDetail({ data: { loading, image } }: IProps) {
   return (
     <div>
       {loading ? (
@@ -37,10 +55,12 @@ function FalmerMediaDetail({ data: { loading, image } }) {
   );
 }
 
-export default graphql(MediaDetailQuery, {
-  options: props => ({
-    variables: {
-      mediaId: props.match.params.mediaId,
-    },
-  }),
-})(FalmerMediaDetail);
+export default compose<IProps, OwnProps>(
+  graphql<Result, OwnProps>(MediaDetailQuery, {
+    options: props => ({
+      variables: {
+        mediaId: props.match.params.mediaId,
+      },
+    }),
+  })
+)(FalmerMediaDetail);

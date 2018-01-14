@@ -1,18 +1,27 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import { compose, withState } from 'recompose';
+import { compose } from 'recompose';
 import Loader from '../../../Loader';
 import CopyToClipboardButton from '../../../CopyToClipboardButton/index';
 import ImageTreatmentPreview from '../../ImageTreatmentPreview';
+import {ApolloHandlerChildProps} from "~components/apolloHandler";
+import {Event} from "../../../../types/events";
+
+interface OwnProps {
+  handleMoveModal(bool: boolean): void;
+}
+
+interface Result {
+  event: Event;
+}
+
+type IProps = ApolloHandlerChildProps<OwnProps, Result>;
 
 function FalmerEventsCreate({
   data: { loading, event },
   handleMoveModal,
-  isMoveModalOpen,
-  moveEventMutation,
-}) {
+}: IProps) {
   return (
     <div>
       <Helmet>
@@ -73,4 +82,4 @@ function FalmerEventsCreate({
   );
 }
 
-export default compose()(FalmerEventsCreate);
+export default compose<IProps, OwnProps>()(FalmerEventsCreate);

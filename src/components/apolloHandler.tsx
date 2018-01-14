@@ -1,5 +1,6 @@
 import { compose, hoistStatics } from 'recompose';
 import React from 'react';
+import { QueryProps, MutationFunc } from 'react-apollo'
 
 import LoaderComponent from '~components/Loader';
 
@@ -30,3 +31,9 @@ const apolloHandler = (
 
 export default apolloHandler;
 export { apolloHandler }
+
+
+export declare type ApolloHandlerChildProps<P, R> = P & {
+  data: QueryProps & R;
+  mutate?: MutationFunc<R>;
+};

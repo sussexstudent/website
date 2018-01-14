@@ -12,3 +12,16 @@ export interface AuthState {
 export interface RootState {
   auth: AuthState;
 }
+
+export interface Node<T> {
+  node: T
+}
+
+export interface Connection<T> {
+  edges: Array<Node<T>>;
+  pageInfo: {
+    hasNextPage: boolean;
+    endCursor: string;
+  }
+}
+

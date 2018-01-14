@@ -1,3 +1,6 @@
+import {StudentGroup} from "~components/OrganisationGrid";
+import {Connection} from "~components/falmer/types";
+
 export enum EventPartType {
   Contained,
   SpanStart,
@@ -20,16 +23,29 @@ export enum TicketCost {
   Free = 'FREE',
 }
 
+export interface ImageLabel {
+  confidence: number;
+  name: string;
+}
+
 export interface FalmerImage { // todo place higher
   resource: string;
+  title: string;
+  labels: Connection<ImageLabel>;
+  mediaId: number;
+  width: number;
+  height: number;
 }
 
 export interface Venue {
   websiteLink: null | string;
   name: string;
+  venueId: number;
+  id: number;
 }
 
 export interface Event {
+  id: number;
   startTime: string;
   endTime: string;
 
@@ -55,6 +71,11 @@ export interface Event {
   bundle: null | {
     name: string;
   }
+
+  studentGroup?: StudentGroup;
+
+  children: Array<Event>;
+  parent: Event;
 }
 
 

@@ -4,9 +4,24 @@ import { Link } from 'react-router-dom';
 import FalmerDataList, { Cell, Row, HeaderCell } from '../../FalmerDataList';
 import AllGroupsQuery from './AllGroups.graphql';
 import Loader from '../../../Loader';
-import FalmerSubSections from '../../FalmerSubSections';
+import FalmerSubSections, { SubSection } from '../../FalmerSubSections';
+import {ApolloHandlerChildProps} from "~components/apolloHandler";
+import {StudentGroup} from "~components/OrganisationGrid";
+import {compose} from 'recompose';
 
-function FalmerStudentGroupsList({ data: { loading, allGroups } }) {
+interface OwnProps {
+
+}
+
+interface Result {
+  allGroups: {
+    edges: Array<{ node: StudentGroup }>;
+  }
+}
+
+type IProps = ApolloHandlerChildProps<OwnProps, Result>
+
+function FalmerStudentGroupsList({ data: { loading, allGroups } }: IProps) {
   return (
     <div>
       {loading ? (
@@ -14,9 +29,9 @@ function FalmerStudentGroupsList({ data: { loading, allGroups } }) {
       ) : (
         <div>
           <FalmerSubSections>
-            <FalmerSubSections.Section to="/groups/awards/">
+            <SubSection to="/groups/awards/">
               Awards
-            </FalmerSubSections.Section>
+            </SubSection>
           </FalmerSubSections>
           <FalmerDataList
             items={allGroups.edges.map(edge => edge.node)}
@@ -28,7 +43,7 @@ function FalmerStudentGroupsList({ data: { loading, allGroups } }) {
             )}
             selectable
           >
-            {(item, rowState) => (
+            {(item: StudentGroup, rowState) => (
               <Row {...rowState} id={item.id}>
                 <Cell>
                   <Link to={`/groups/${item.groupId}`}>{item.name}</Link>
@@ -43,4 +58,6 @@ function FalmerStudentGroupsList({ data: { loading, allGroups } }) {
   );
 }
 
-export default graphql(AllGroupsQuery)(FalmerStudentGroupsList);
+export default compose<IProps, OwnProps>(
+  graphql(AllGroupsQuery),
+)(FalmerStudentGroupsList);

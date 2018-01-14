@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function FalmerSubSections(props) {
+const FalmerSubSections: React.SFC<{}> = (props) => {
   return <ul className="FalmerSubSections">{props.children}</ul>;
-}
+};
 
-function FalmerSubSection(props) {
+const FalmerSubSection: React.SFC<{ to: string, back?: boolean }> = (props) => {
   return (
     <li className="FalmerSubSections__item">
       <Link to={props.to}>{props.children} »</Link>
     </li>
   );
-}
+};
 
-FalmerSubSections.Section = FalmerSubSection;
+export { FalmerSubSection as SubSection } ;
 
 export default FalmerSubSections;

@@ -10,10 +10,24 @@ import FalmerDataList, {
   HeaderCell,
 } from '../../FalmerDataList/index';
 import FalmerSidebar from '../../FalmerSidebar';
-import FalmerSubSections from '../../FalmerSubSections';
+import FalmerSubSections, { SubSection } from '../../FalmerSubSections';
 import FalmerListView from '../../FalmerListView';
+import {ApolloHandlerChildProps} from "~components/apolloHandler";
+import {Connection} from "~components/falmer/types";
+import {Venue} from "../../../../types/events";
+import {compose} from 'recompose';
 
-function FalmerVenuesList({ data: { loading, allVenues } }) {
+interface OwnProps {
+
+}
+
+interface Result {
+  allVenues: Connection<Venue>
+}
+
+type IProps = ApolloHandlerChildProps<OwnProps, Result>;
+
+function FalmerVenuesList({ data: { loading, allVenues } }: IProps) {
   return (
     <div>
       <Helmet>
@@ -25,12 +39,12 @@ function FalmerVenuesList({ data: { loading, allVenues } }) {
         <FalmerListView>
           <div className="FalmerListView__main">
             <FalmerSubSections>
-              <FalmerSubSections.Section to="/events/" back>
+              <SubSection to="/events/" back>
                 Events
-              </FalmerSubSections.Section>
-              <FalmerSubSections.Section to="/events/periods/">
+              </SubSection>
+              <SubSection to="/events/periods/">
                 Branding Periods
-              </FalmerSubSections.Section>
+              </SubSection>
             </FalmerSubSections>
             <FalmerDataList
               items={allVenues.edges.map(edge => edge.node)}
@@ -41,7 +55,7 @@ function FalmerVenuesList({ data: { loading, allVenues } }) {
               )}
               selectable
             >
-              {(item, rowState) => (
+              {(item: Venue, rowState) => (
                 <Row {...rowState} id={item.venueId}>
                   <Cell>
                     <Link to={`/events/venues/${item.venueId}`}>
@@ -63,4 +77,6 @@ function FalmerVenuesList({ data: { loading, allVenues } }) {
   );
 }
 
-export default graphql(AllVenuesQuery)(FalmerVenuesList);
+export default compose<IProps, OwnProps>(
+  graphql(AllVenuesQuery)
+)(FalmerVenuesList);

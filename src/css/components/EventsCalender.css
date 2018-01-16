@@ -17,7 +17,7 @@
     position: sticky;
     z-index: 10000;
     background: #fbfbfbdd;
-    top: 0;
+    top: -1px;
 
     &::before {
       content: '';

@@ -23,7 +23,7 @@
     color: #000000;
     display: inline;
     position: relative;
-    @mixin type double-pica;
+    @mixin type double-pica highlight;
     line-height: 1.3rem;
     margin: 0;
     font-family: var(--type__primary);

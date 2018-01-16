@@ -8,31 +8,45 @@ function type(mixin, args) {
     console.warn(`[css] "${name}" isn't a font size.`);
     return { color: 'red !important' };
   }
+
+  const withoutLineHeight = options.indexOf('without-line-height') > -1;
+  const isHighlight = options.indexOf('highlight') > -1;
+
   const keysToRemove = [];
-  if (options.indexOf('without-line-height') > -1) {
+
+  if (withoutLineHeight) {
     keysToRemove.push('line-height');
   }
 
+  const process = map => {
+    let processedMap = map;
+    processedMap = omit(processedMap, keysToRemove);
+
+    if (isHighlight && Object.hasOwnProperty.call(processedMap, 'font-size')) {
+      processedMap['line-height'] = processedMap['font-size'];
+    }
+
+    return processedMap;
+  };
+
   const size = standardType[name];
 
-  const fontMap = omit(standardType[name]['group-a'], keysToRemove);
+  const fontMap = process(standardType[name]['group-a']);
 
   if (size.hasOwnProperty('group-b')) {
-    fontMap['@media screen and (min-width: 320px)'] = omit(
-      standardType[name]['group-b'],
-      keysToRemove
+    fontMap['@media screen and (min-width: 320px)'] = process(
+      standardType[name]['group-b']
     );
   }
 
   if (size.hasOwnProperty('group-c')) {
-    fontMap['@media screen and (min-width: 600px)'] = omit(
-      standardType[name]['group-c'],
-      keysToRemove
+    fontMap['@media screen and (min-width: 600px)'] = process(
+      standardType[name]['group-c']
     );
   }
 
   if (size.hasOwnProperty('group-d')) {
-    fontMap['.no-touch &'] = omit(standardType[name]['group-d'], keysToRemove);
+    fontMap['.no-touch &'] = process(standardType[name]['group-d']);
   }
 
   return fontMap;

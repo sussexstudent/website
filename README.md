@@ -2,32 +2,39 @@
 
 The University of Sussex Students' Union website frontend.
 
-A set of UI components and tools used for building and generating pages.
-
 ### Components & assets
 `/src` contains frontend assets. Generally focused around a component based architecture.
 
 #### Stying
-* Post-processed via PostCSS (largely using cssnext plugins)
-* Written in a style of BEM
+* Post-processed via PostCSS, (largely using cssnext plugins and some custom mixins)
+* BEMish
 * No linting yet! :O
 
 
 #### JavaScript
-* ES6/7 (plus a few other stage-x features) via Babel
+* TypeScript
+
+
+### Comp - [sussexstudent/comp](https://github.com/sussexstudent/comp)
+We've written a helper library for managing our workflow.
+
+Comp aids in a) developing our site locally, b) deploying our site.
+
+## Projects
+
+### website `src/projects/website`
+Our main website, sussexstudent.com.
+
+* Entire site is built as a statically rendered React application, any component can opt in to be 'hydrated' on the client for interactivity.
 * Coding splitting of 'modules' where possible
-* React is first-class citizen for more complex interactivity
-* Follows Airbnb's JavaScript styleguide
 * Polyfilling via the FT's Polyfill.io service
 
-### Generator
-See `/generator`
+### falmer `src/projects/falmer`
+Admin management single page application for Falmer our services api ([sussexstudent/falmer](https://github.com/sussexstudent/falmer)).
 
-To ease the use of components, they are pre-built as React components are rendered to static markup in a number of ways. The generator can be used to build full pages and kept inside of git, for example the Homepage. Our docs also include a Composer to create pages of components visually on the fly without any need of writing markup, handy for societies to use in their micro-sites.
+### app `src/projects/app`
+Toy, experiment mobile application consuming falmer's api. Uses React Native.
 
-
-### Styleguide
-A styleguide & documentation lives in `/docs`. It is automatically published to [style.sussexstudent.com](https://style.sussexstudent.com).
 
 ## Getting started
 

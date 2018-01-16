@@ -10,27 +10,12 @@ interface ContextToPropsMap {
   [contextName: string]: string;
 }
 
-interface ContextTypesMap {
-  [contextName: string]: PropTypes.Requireable<any>;
-}
-
-
 interface HydroLeafOptions {
   contextToProps?: ContextToPropsMap;
   className?: string;
   name?: string;
   container?(props: any): any;
   disableSSR?: boolean;
-}
-
-
-function generateContextTypes(contextToPropsMap: ContextToPropsMap) {
-  const contextTypes: ContextTypesMap = {};
-  Object.keys(contextToPropsMap).forEach(contextName => {
-    contextTypes[contextName] = PropTypes.object;
-  });
-
-  return contextTypes;
 }
 
 function generatePropsForContext(contextToPropsMap: ContextToPropsMap, context: { [contextName: string]: any; }) {
@@ -51,11 +36,13 @@ const DefaultContainer = ({ children = null, ...props }) => (
 
 interface IDeHydroProps {
   renderStatic?: boolean;
+  client?: any;
 }
 
 interface ISerialProps {
   hydroId?: number;
   children?: any;
+  client?: any;
 }
 
 /* eslint-disable react/no-danger */
@@ -73,7 +60,9 @@ function HydroLeaf(
     if (process.env.COMP_NODE) {
       // eslint-disable-next-line
       class DeHydro extends React.Component<IDeHydroProps> {
-        static contextTypes = generateContextTypes(contextToProps);;
+        static contextTypes = {
+          client: PropTypes.object,
+        };
 
         componentWillMount() {
           hydroId += 1;
@@ -83,7 +72,6 @@ function HydroLeaf(
           const { renderStatic = false, ...props } = this.props;
 
           if (process.env.HYDROLEAF_MODE === 'RENDER_TO_COMPONENT') {
-            console.log('component pass through');
             return <Component {...props} />;
           }
 
@@ -112,19 +100,18 @@ function HydroLeaf(
               children: <Component {...serialProps} />,
             });
           }
-
           const componentMarkup = disableSSR
             ? ''
-            : ReactDOM.renderToString(<HydroRootServer><Component {...serialProps} /></HydroRootServer>);
+            : ReactDOM.renderToString(<HydroRootServer apolloClient={this.context.client}><Component {...serialProps} /></HydroRootServer>);
 
           let dataAc = `window.HYDROSTATE_${hydroKey} = ${JSON.stringify(
-            serialProps
+            serialProps,
           )};`;
 
           if (hydroKey === undefined) {
             dataAc = '';
           } else {
-            dataAc = `<script type="text/javascript" id="hydroscript-${hydroKey}">${dataAc}</script>`;
+            dataAc = `<script type="text/javascript" id="hydroscript-${hydroKey}">${dataAc}${this.context.client ? `window.apolloPartials.push(${JSON.stringify(this.context.client.extract())})` : ''}</script>`;
           }
 
           return container({

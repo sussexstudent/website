@@ -33,21 +33,31 @@ export default {
   },
   pages: {
     '/': require('./src/projects/website/layouts/homepage'),
-    '/support': require('./src/projects/website/layouts/Support'),
     '/whats-on': require('./src/projects/website/layouts/WhatsOn'),
     '/policy-generator': require('./src/projects/website/layouts/PolicyIdeaGenerator'),
-    '/about-us': require('./src/projects/website/layouts/AboutUs'),
-    '/plan': require('./src/projects/website/layouts/AnnualPlan'),
     '/freshers': require('./src/projects/website/layouts/Freshers'),
-    '/soc-events': require('./src/projects/website/layouts/SocEvents'),
     '/discover-groups': require('./src/projects/website/layouts/SportsSocieties'),
     // '/officer': require('./src/projects/components/OfficerPage/index'),
-    '/get-involved': require('./src/projects/website/layouts/GetInvolved'),
+
+    // ONE DAY REMOVED WITH CONTENT INTEGRATION
+    '/staff': require('./src/projects/website/layouts/StaffPage'),
+
+    // REMOVED WITH CONTENT INTEGRATION
+    '/soc-events': require('./src/projects/website/layouts/SocEvents'),
     '/section-page': require('./src/projects/website/layouts/SectionPage'),
+    '/support': require('./src/projects/website/layouts/Support'),
+    '/about-us': require('./src/projects/website/layouts/AboutUs'),
+    '/plan': require('./src/projects/website/layouts/AnnualPlan'),
     '/environment-feedback':
       require('./src/projects/website/layouts/environment/student-feedback'),
     '/environment': require('./src/projects/website/layouts/environment/environment'),
-    '/staff': require('./src/projects/website/layouts/StaffPage'),
+    '/get-involved': require('./src/projects/website/layouts/GetInvolved'),
+    '/content-explorer': require('./src/projects/website/layouts/ContentExplorer'),
   },
   assets,
+  contentApi: {
+    endpoint: 'http://localhost:8000/graphql',
+    template: require('./src/projects/website/layouts/ContentPage').default,
+    skipPaths: ['/'],
+  },
 };

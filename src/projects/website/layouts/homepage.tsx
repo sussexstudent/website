@@ -1,9 +1,9 @@
 import React from 'react';
 import TweetList from '~components/TweetList';
-import ContentAPIComposer from '~components/ContentAPIComposer';
 import HomepageEventsList from '~components/HomepageEventsList';
 import AdvertBar from '~components/AdvertBar';
 import VoteHero from "~components/VoteHero";
+import {ContentPage} from "~components/content/ContentPage";
 
 const Homepage = () => (
   <div className="u-container-bleed-top">
@@ -32,7 +32,7 @@ const Homepage = () => (
         </div>
       </div>
 
-      <ContentAPIComposer pageId={12} />
+      <ContentPage path={'/homepage'} />
     </div>
   </div>
 );

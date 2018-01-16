@@ -9,10 +9,17 @@ const link = new HttpLink({
       ? 'https://falmer.sussexstudent.com/graphql'
       : clientEndpoint,
 });
+const cache = new InMemoryCache();
+
+if (typeof window !== "undefined") {
+  const fullState = Object.assign({}, ...(window as any).apolloPartials);
+  fullState.ROOT_QUERY = Object.assign({}, ...(window as any).apolloPartials.map((state: any) => state.ROOT_QUERY));
+  cache.restore(fullState);
+}
 
 const client = new ApolloClient({
   link,
-  cache: new InMemoryCache(),
+  cache
 });
 
 export default client;

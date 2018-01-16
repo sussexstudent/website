@@ -47,6 +47,7 @@
 @import './components/PatternPlaceholder.css';
 @import './components/AnnualPlan.css';
 @import './components/EventsList.css';
+@import './components/CompOptionsPanel.css';
 @import './components/EventsCalender.css';
 @import './components/SelectionGrid.css';
 @import './components/OrgansiationGrid.css';

@@ -1,0 +1,8 @@
+query ContentPage($path: String) {
+  page(path: $path) {
+    title
+    slug
+    type
+    data
+  }
+}

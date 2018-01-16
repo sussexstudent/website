@@ -148,6 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
   eventCards();
   hydro();
 
+  // todo dev detection
+  if (window.location.hostname === 'localhost') {
+    import(/* webpackChunkName: "compoptions.module" */ '../../modules/compconfig').then(
+      module => module.default()
+    );
+  }
+
   // Conditional modules
   // Module: homepageNews
   // TODO: update homepage news selector

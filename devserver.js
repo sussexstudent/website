@@ -104,7 +104,7 @@ app.use(
   })
 );
 
-app.use(webpackHotMiddleware(compiler));
+// app.use(webpackHotMiddleware(compiler));
 app.use(comp.proxy());
 
 app.listen(3002, () => {

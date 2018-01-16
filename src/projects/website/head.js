@@ -51,6 +51,8 @@ ${MSLTag('JsonUserInfo')}
       document.head.appendChild(style);
     }
   } catch (e) {}
+  
+  window.apolloPartials = [];
 </script>
 `;
 

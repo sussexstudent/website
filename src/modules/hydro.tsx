@@ -35,6 +35,10 @@ export default function() {
       import(/* webpackChunkName: "PolicyGenerator" */ '~components/PolicyGenerator'),
     FreshersApp: () =>
       import(/* webpackChunkName: "Freshers" */ '~components/Freshers/FreshersApp'),
+    ContentExplorer: () =>
+      import(/* webpackChunkName: "ContentExplorer" */ '../projects/website/layouts/ContentExplorer'),
+    ContentPageContainer: () =>
+      import(/* webpackChunkName: "ContentPageContainer" */ '../projects/website/layouts/ContentPage'),
   };
 
   Array.from(document.querySelectorAll('.Hydro')).forEach(el => {

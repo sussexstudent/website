@@ -29,7 +29,6 @@ class ContentPageComponent extends React.Component<IProps> {
       return <Component page={page} />;
     }
 
-    console.log('page map', pageMap);
     return (
       <div className="Layout">
         <h1>Page type can't be found: "{page.type}"</h1>

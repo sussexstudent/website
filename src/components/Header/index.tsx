@@ -44,7 +44,7 @@ function getActiveItem() {
     'get-involved': MenuItem.GetInvolved,
     'whats-on': MenuItem.WhatsOn,
     'about-us': MenuItem.AboutUs,
-    support: MenuItem.AboutUs,
+    support: MenuItem.Support,
   };
 
   if (Object.hasOwnProperty.call(pathToMenuPosition, firstPath)) {

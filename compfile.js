@@ -56,7 +56,7 @@ export default {
   },
   assets,
   contentApi: {
-    endpoint: 'http://localhost:8000/graphql',
+    endpoint: 'https://falmer.sussexstudent.com/graphql',
     template: require('./src/projects/website/layouts/ContentPage').default,
     skipPaths: ['/'],
   },

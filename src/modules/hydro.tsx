@@ -9,7 +9,7 @@ interface ComponentMap {
 
 export default function() {
   const componentMap: ComponentMap = {
-    ContentAPIComposer: () => import('~components/ContentAPIComposer'),
+    ContentAPIComposer: () => import(/* webpackChunkName: "ContentAPIComposer" */ '~components/ContentAPIComposer'),
     TweetList: () =>
       import(/* webpackChunkName: "TweetList" */ '~components/TweetList'),
     EventList: () =>

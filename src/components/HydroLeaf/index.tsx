@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom/server';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import {HydroRootServer} from "~components/HydroRootServer";
@@ -100,6 +99,9 @@ function HydroLeaf(
               children: <Component {...serialProps} />,
             });
           }
+
+          const ReactDOM = require('react-dom/server');
+
           const componentMarkup = disableSSR
             ? ''
             : ReactDOM.renderToString(<HydroRootServer apolloClient={this.context.client}><Component {...serialProps} /></HydroRootServer>);

@@ -170,17 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  // Module: tweetList
-  if (document.querySelector('.js-module--contentAPI')) {
-    const t = perf.recordTime('import', 'contentAPI');
-    import(/* webpackChunkName: "contentAPI.module" */ '../../modules/contentAPI').then(
-      module => {
-        module.default();
-        t.done();
-      }
-    );
-  }
-
   // Module: cookie_message
   if (localStorage.getItem('su_cookie') !== '1') {
     import(/* webpackChunkName: "cookie_message.module" */ '../../modules/cookie_message').then(

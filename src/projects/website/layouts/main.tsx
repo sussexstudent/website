@@ -7,6 +7,7 @@ import Footer from '~components/Footer';
 import Main from '~components/Main';
 import AdvertBar from '~components/AdvertBar';
 import MSLTag from '~components/MSLTag';
+import DonatelloBanner from '../../../icons/donatello.svg';
 
 const ga = `!function(u,s,S,U){u.GoogleAnalyticsObject=S;u[S]||(u[S]=function(){
 (u[S].q=u[S].q||[]).push(arguments)});u[S].l=+new Date;U=s.createElement('script');
@@ -52,7 +53,11 @@ const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => (
       <MobileFooterTreats />
       {/* <PrefooterMenu /> */}
       <Footer />
-      <AdvertBar position="lozenge1" dark />
+      <div className="AdvertBar AdvertBar--donatello">
+        <a className="AdvertBar__advert" href="http://www.donatello.co.uk/?utm_source=ussu&utm_medium=footer">
+          <DonatelloBanner />
+        </a>
+      </div>
     </div>
     <div className="js__modal" />
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?rum=0&features=es6,es7,default-3.6,performance.now,Object.entries&flags=gated&callback=hasPolyfilled&unknown=polyfill" />

@@ -19,9 +19,13 @@
     box-shadow: inset -4px 3px 5px rgba(30, 30, 30, 0.4);
     padding-top: 8px;
 
+    & a {
+      width: 100%;
+      max-width: 600px;
+    }
+
     & svg {
-      max-width: 100%;
-      height: auto;
+      width: 100%;
     }
   }
 

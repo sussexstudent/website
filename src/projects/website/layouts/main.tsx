@@ -59,10 +59,6 @@ const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => (
     <script src={assets.vendor.js} />
     <script src={assets.main.js} />
     <script type="text/javascript" dangerouslySetInnerHTML={{ __html: ga }} />
-    <script
-      type="text/javascript"
-      src="https://secure.leadforensics.com/js/110817.js"
-    />
     <noscript>
       <img
         alt=""

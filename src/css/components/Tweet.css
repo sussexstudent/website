@@ -77,7 +77,6 @@
 
   &__retweeted {
     color: rgba(155, 155, 155, 1);
-    font-size: 0.9em;
     margin-bottom: 1em;
 
     &::before {
@@ -93,17 +92,19 @@
     }
   }
 
+  &__header {
+    @mixin type long-primer;
+  }
+
   &__name {
     font-weight: bold;
     margin-right: 0.4em;
     display: inline-block;
-    @mixin type pica;
   }
 
   &__screen-name {
     color: rgba(155, 155, 155, 1);
     display: inline-block;
-    @mixin type long-primer;
   }
 
   &__content {

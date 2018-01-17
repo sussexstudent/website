@@ -12,7 +12,7 @@
           "transform-regenerator"
         ]
       }]],
-      "plugins": ["react-hot-loader/babel"]
+      "plugins": ["lodash"]
     },
     "comp": {
       "presets": [["env", {
@@ -23,7 +23,8 @@
         "modules": false,
         "blacklist": [
           "transform-regenerator"
-        ]
+        ],
+        "plugins": ["lodash"]
       }]]
     }
   }

@@ -1,8 +1,7 @@
 import React from 'react';
 import qs from 'query-string';
 import cx from 'classnames';
-import debounce from 'lodash/debounce';
-import orderBy from 'lodash/orderBy';
+import {debounce, orderBy} from 'lodash';
 import SearchResult, {SearchResult as ISearchResult} from '~components/SearchResult';
 import SearchFilterNav from '~components/SearchFilterNav';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
@@ -53,7 +52,7 @@ function getPayloadMetadata(payload: { [key: string]: Array<Object> }) {
 
   const orderedAreas = orderBy(
     [SearchAreas.Top, SearchAreas.Groups, SearchAreas.News, SearchAreas.Events, SearchAreas.Pages].map(mk),
-    ['weight', 'name'],
+    [i => i.weight, i => i.title],
     ['desc', 'asc']
   );
 

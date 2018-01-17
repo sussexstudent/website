@@ -1,6 +1,4 @@
-import get from 'lodash/get';
-import set from 'lodash/set';
-import has from 'lodash/has';
+import {get, set, has} from 'lodash';
 
 interface ItemLevelVistor {
   (item: any): number;

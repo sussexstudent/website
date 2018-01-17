@@ -1,6 +1,5 @@
 import React from 'react';
-import sortBy from 'lodash/sortBy';
-import unescape from 'lodash/unescape';
+import {sortBy, unescape} from 'lodash';
 import {
   Entities,
   HashtagEntity, TweetData, URLEntity,
@@ -29,7 +28,7 @@ function renderTweetContent(tweet: TweetData) {
 
   const entities = sortBy(
     getEntities(tweet),
-    e => e.indices[0]
+    [((e: Entities) => e.indices[0])] // todo
   );
 
   const parts: any[] = [];

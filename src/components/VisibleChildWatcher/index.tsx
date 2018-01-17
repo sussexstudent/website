@@ -1,6 +1,5 @@
 import React from 'react';
-import throttle from 'lodash/throttle';
-import orderBy from 'lodash/orderBy';
+import {throttle, orderBy} from 'lodash';
 
 interface IChildWrapperProps {
   handleRef(el: HTMLDivElement): void;
@@ -36,7 +35,7 @@ class VisibleChildWatcher extends React.Component<IProps> {
           return [key, score];
         });
 
-        const scoresRanked = orderBy(scores, score => score[1]);
+        const scoresRanked = orderBy(scores, [score => score[1]]);
 
         this.props.onChange(`${scoresRanked[0][0]}`);
       }, 300)

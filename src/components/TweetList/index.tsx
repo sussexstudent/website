@@ -1,5 +1,5 @@
 import React from 'react';
-import each from 'lodash/each';
+import {each} from 'lodash';
 import Loader from '~components/Loader';
 import HydroLeaf from '~components/HydroLeaf';
 import Tweet from './Tweet';

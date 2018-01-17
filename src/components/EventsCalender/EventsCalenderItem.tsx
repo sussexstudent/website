@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import has from 'lodash/has';
+import {has} from 'lodash';
 import formatDate from 'date-fns/format';
 import Image from '../Image';
 import FauxLink from '../FauxLink';

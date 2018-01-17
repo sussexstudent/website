@@ -1,8 +1,10 @@
-import sortBy from 'lodash/sortBy';
-import orderBy from 'lodash/orderBy';
-import toPairs from 'lodash/toPairs';
-import padStart from 'lodash/padStart';
-import groupBy from 'lodash/groupBy';
+import {
+  sortBy,
+  orderBy,
+  toPairs,
+  padStart,
+  groupBy,
+} from 'lodash';
 import isAfter from 'date-fns/isAfter';
 import getYear from 'date-fns/getYear';
 import setHours from 'date-fns/setHours';
@@ -116,7 +118,7 @@ function chunkEventsToRows(events: EventPart[]) {
 }
 
 export function organisePartsForUI(eventParts: EventPart[], removePast = true) {
-  const orderedParts = sortBy(eventParts, part => part.date);
+  const orderedParts = sortBy(eventParts, [((part: EventPart) => part.date)]);
 
   // next up 7:
 

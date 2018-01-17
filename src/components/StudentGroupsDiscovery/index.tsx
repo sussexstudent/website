@@ -1,5 +1,5 @@
 import React from 'react';
-import keyBy from 'lodash/keyBy';
+import {keyBy} from 'lodash';
 import Fuse from 'fuse.js';
 import { forceCheck } from 'react-lazyload';
 import HydroLeaf from '~components/HydroLeaf';
@@ -65,7 +65,7 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
   }
 
   render() {
-    const map = keyBy(this.props.data && this.props.data.allGroups ? this.props.data.allGroups.edges.map((edge: { node: StudentGroup }) => edge.node) : [], 'groupId');
+    const map = keyBy(this.props.data && this.props.data.allGroups ? this.props.data.allGroups.edges.map((edge: { node: StudentGroup }) => edge.node) : [], i => i.groupId);
     const { searchValue, displayIds } = this.state;
     return (
       <div className="ActivitiesApp__">

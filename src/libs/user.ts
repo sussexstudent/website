@@ -1,5 +1,4 @@
-import has from 'lodash/has';
-import get from 'lodash/get';
+import {has, get} from 'lodash';
 
 interface MenuItem {
   name: string;

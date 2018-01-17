@@ -1,5 +1,5 @@
 import React from 'react';
-import sample from 'lodash/sample';
+import {sample} from 'lodash';
 
 type patternMethod = (color: string) => string;
 // Taken from http://www.heropatterns.com/

@@ -5,7 +5,7 @@ interface IStore {
   set(key: string, value: any): void;
 }
 
-if (process.env.COMP_NODE === 1) {
+if (process.env.COMP_NODE === '1') {
   Store = {
     get(): any {
       return ''

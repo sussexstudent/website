@@ -6,6 +6,9 @@ const { generateConfig } = require('./webpack.base.config.js');
 const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
+
 
 const config = generateConfig();
 
@@ -30,6 +33,7 @@ config.output = {
 };
 
 config.plugins = config.plugins.concat([
+  // new BundleAnalyzerPlugin(),
   new webpack.DefinePlugin({
     'process.env': {
       HYDROLEAF_MODE: JSON.stringify('RENDER_COMPONENT'),

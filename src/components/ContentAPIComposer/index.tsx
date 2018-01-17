@@ -1,5 +1,5 @@
 import React from 'react';
-import has from 'lodash/has';
+import { has } from 'lodash';
 import HydroLeaf from '~components/HydroLeaf';
 import Loader from '~components/Loader';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';

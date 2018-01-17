@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import isFunction from 'lodash/isFunction';
+import {isFunction} from 'lodash';
 import {HydroRoot} from "~components/HydroRoot";
 
 interface ComponentMap {

@@ -1,7 +1,5 @@
 import React from 'react';
-import forEach from 'lodash/forEach';
-import debounce from 'lodash/debounce';
-import reduce from 'lodash/reduce';
+import {forEach, debounce,reduce} from 'lodash';
 
 interface IProps {
   children: any;

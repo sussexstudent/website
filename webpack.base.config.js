@@ -2,7 +2,7 @@ const webpack = require('webpack');
 
 const path = require('path');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
-
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 const env = {
@@ -14,7 +14,6 @@ const env = {
 env.build = env.production || env.staging;
 
 function generateConfig() {
-  console.log()
   return {
     target: 'web',
 
@@ -53,6 +52,9 @@ function generateConfig() {
     },
 
     plugins: [
+      new LodashModuleReplacementPlugin({
+        // unicode: true,
+      }),
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify(NODE_ENV),

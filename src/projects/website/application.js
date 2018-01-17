@@ -176,4 +176,17 @@ document.addEventListener('DOMContentLoaded', () => {
       module => module.default()
     );
   }
+
+  function hasTouch() {
+    return 'ontouchstart' in window ||
+      (window.DocumentTouch && document instanceof DocumentTouch) ||
+      (window.hasOwnProperty &&
+        (window.hasOwnProperty('ontouchstart') ||
+          (window.DocumentTouch && document instanceof DocumentTouch) ||
+          navigator.msMaxTouchPoints))
+      ? !0
+      : 'ontouchstart' in window ? !0 : !1;
+  }
+
+  document.body.classList.add(`feature-${hasTouch() ? '' : 'no-'}touch`);
 });

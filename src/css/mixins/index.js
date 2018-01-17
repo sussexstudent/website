@@ -46,7 +46,7 @@ function type(mixin, args) {
   }
 
   if (size.hasOwnProperty('group-d')) {
-    fontMap['.no-touch &'] = process(standardType[name]['group-d']);
+    fontMap['.feature-no-touch &'] = process(standardType[name]['group-d']);
   }
 
   return fontMap;

@@ -10,5 +10,6 @@ module.exports = {
     require('postcss-ant')(),
     require('postcss-lh'),
     require('postcss-cssnext'),
+    require('postcss-pxtorem'),
   ],
 };

@@ -1,15 +1,9 @@
 import Raven from 'raven-js';
-// import React from 'react';
 import mitt from 'mitt';
 import 'what-input';
 import currentUser from '~libs/user';
 import smoothscroll from '~libs/smoothscroll';
-// import ReactDOM from 'react-dom';
-// import NewsletterModal from './components/NewsletterModal';
-// import SnapchatModal from './components/SnapchatModal';
-import perf from '../../tracking/perf';
 import hydro from '../../modules/hydro';
-import eventCards from '../../modules/event_cards';
 
 // Install raven for sentry error  reporting
 if (process.env.NODE_ENV === 'production') {
@@ -89,63 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   /* New module style */
 
-  function A11yRecite() {
-    const serviceUrl = '//api.reciteme.com/asset/js?key=';
-    const serviceKey = 'ecfd7078070968e702b46720f3f7bb4420de0154';
-    const options = {};
-    const autoLoad = false;
-    const enableFragment = '#reciteEnable';
-
-    const loaded = [];
-    let frag = !1;
-    window.location.hash === enableFragment && (frag = !0);
-    function loadScript(c, b) {
-      const a = document.createElement('script');
-      a.type = 'text/javascript';
-      a.readyState
-        ? (a.onreadystatechange = function() {
-            if (a.readyState == 'loaded' || a.readyState == 'complete')
-              (a.onreadystatechange = null), void 0 != b && b();
-          })
-        : void 0 != b &&
-          (a.onload = function() {
-            b();
-          });
-      a.src = c;
-      document.getElementsByTagName('head')[0].appendChild(a);
-    }
-    function _rc(c) {
-      c += '=';
-      for (let b = document.cookie.split(';'), a = 0; a < b.length; a++) {
-        for (var d = b[a]; d.charAt(0) == ' '; ) d = d.substring(1, d.length);
-        if (d.indexOf(c) == 0) return d.substring(c.length, d.length);
-      }
-      return null;
-    }
-    function loadService(c) {
-      for (var b = serviceUrl + serviceKey, a = 0; a < loaded.length; a++)
-        if (loaded[a] == b) return;
-      loaded.push(b);
-      loadScript(serviceUrl + serviceKey, () => {
-        typeof _reciteLoaded === 'function' && _reciteLoaded();
-        typeof c === 'function' && c();
-        Recite.load(options);
-        Recite.Event.subscribe('Recite:load', () => {
-          Recite.enable();
-        });
-      });
-    }
-
-    _rc('Recite.Persist') == 'true' && loadService();
-    ((autoLoad && _rc('Recite.Persist') != 'false') || frag) && loadService();
-
-    return loadService;
-  }
-
-  window.loadRecite = A11yRecite();
-
   // All pages
-  eventCards();
   hydro();
 
   // todo dev detection

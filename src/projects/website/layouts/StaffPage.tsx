@@ -1,6 +1,9 @@
 import React from 'react';
 import ContentCard from '~components/ContentCard';
-import ContentAPIComposer from '~components/ContentAPIComposer';
+import {ContentPage} from "~components/content/ContentPage";
+import HydroLeaf from "~components/HydroLeaf";
+
+const ContentPageLive = HydroLeaf({ disableSSR: true, name: 'ContentPage' })(ContentPage);
 
 const StaffPage = () => (
   <div>
@@ -224,7 +227,7 @@ const StaffPage = () => (
     </div>
     <div className="Layout">
       <div>
-        <ContentAPIComposer pageId={6} />
+        <ContentPageLive path="/staff-contact-details" />
       </div>
     </div>
   </div>

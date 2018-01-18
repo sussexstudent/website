@@ -15,19 +15,19 @@ interface FigureCollectionBlock {
 }
 
 interface IProps {
-  page: Page<{ full_time_officers: FigureCollectionBlock[], part_time_officers: FigureCollectionBlock[] }>; // todo
+  page: Page<{ fullTimeOfficers: FigureCollectionBlock[], partTimeOfficers: FigureCollectionBlock[] }>; // todo
 }
 
 
 function HomePage(props: IProps) {
-  const { page: { data: { full_time_officers, part_time_officers } } } = props;
+  const { page: { data: { fullTimeOfficers, partTimeOfficers } } } = props;
 
   return (
     <div>
       <div className="ContentBlock">
         <div className="ContentBlock__heading">Your full-time officers</div>
         <FigureCollection>
-          {full_time_officers.map(item => (
+          {fullTimeOfficers.map(item => (
             <FigureCollectionFigure
               key={item.id}
               title={item.value.title}
@@ -41,7 +41,7 @@ function HomePage(props: IProps) {
       <div className="ContentBlock">
         <div className="ContentBlock__heading">Your part-time officers</div>
         <FigureCollection>
-          {part_time_officers.map(item => (
+          {partTimeOfficers.map(item => (
             <FigureCollectionFigure
               key={item.id}
               title={item.value.title}

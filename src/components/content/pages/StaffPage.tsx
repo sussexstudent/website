@@ -1,38 +1,9 @@
 import React from 'react';
-import StaffList from '~components/StaffList';
 import slugify from '~libs/slugify';
 import flatStreamToLevels from '~libs/flatStreamToLevels';
-import ContentCard from '../ContentCard';
-import {CMSDocument, ComponentBlock, ComponentMap} from "../../types/content";
-
-// TODO: this page (an
-
-const components: ComponentMap = {
-  heading: ({ value }: { value: string }) => (
-    <h1>
-      <span className="u-position-anchor" id={slugify(value)} />
-      {value}
-    </h1>
-  ),
-  staff_list: StaffList,
-};
-
-function getComponent(component: ComponentBlock, data: CMSDocument, key: string) {
-  if (!Object.hasOwnProperty.call(components, component.type)) {
-    console.warn(
-      `[contentAPI] Requested component not found! ${
-        component.type
-        } is missing.`
-    );
-    return null;
-  }
-
-  return React.createElement(components[component.type], {
-    value: component.value,
-    document: data,
-    key,
-  });
-}
+import ContentCard from '../../ContentCard';
+import StreamField from "~components/content/StreamField";
+import {Page} from "~components/content/types";
 
 const fromText = (text: string) => ({ name: text, anchor: slugify(text) });
 
@@ -63,11 +34,15 @@ const levelMap = {
 };
 
 interface IProps {
-  data: CMSDocument
+  page: Page<{ body: any }>; // todo
 }
 
 interface IState {
   visibleKey: string | null;
+}
+
+function getComponent(_a: any, _b: any, _c: any) {
+  return null;
 }
 
 class StaffPage extends React.Component<IProps, IState> {
@@ -80,7 +55,7 @@ class StaffPage extends React.Component<IProps, IState> {
   }
 
   render() {
-    const { data: { body }, data } = this.props;
+    const { page: { data: { body } }, page } = this.props;
 
     const levels = flatStreamToLevels(item => (levelMap as any)[item.type], body);
     return (
@@ -92,10 +67,8 @@ class StaffPage extends React.Component<IProps, IState> {
           {levels.map(({ value, _children = null, ...partData }: { value: any, _children?: any }) => ( // todo
             <ContentCard>
               {getComponent(value, (partData as any), slugify(value))}
-              {_children !== null
-                ? _children.map((element: any) =>
-                    getComponent(element, data, slugify(element.value.heading))
-                  )
+              {_children !== null ?
+                <StreamField page={page} items={_children} />
                 : null}
             </ContentCard>
           ))}

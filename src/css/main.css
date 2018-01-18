@@ -40,7 +40,7 @@
 @import './components/PrefooterMenu.css';
 @import './components/OrganisationCard.css';
 @import './components/Deckchair.css';
-@import './components/RippleLoader.css';
+@import './components/Loader.css';
 @import './components/ResultsList.css';
 @import './components/FlexibleHero.css';
 @import './components/Tweet.css';

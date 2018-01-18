@@ -1,13 +1,15 @@
 import React from 'react';
+import cx from 'classnames';
+import LoaderLeaves from '../../icons/loader.svg';
 
 interface IProps {
   dark?: boolean;
 }
 
-function Loader({ dark = false }: IProps) {
+function Loader(props: IProps) {
   return (
-    <div className="RippleLoader">
-      <div style={{ borderColor: dark ? '#000' : '#fff' }} />
+    <div className={cx('Loader', { 'Loader--dark': props.dark })}>
+      <LoaderLeaves className="Loader__svg" />
     </div>
   );
 }

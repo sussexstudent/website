@@ -1,0 +1,47 @@
+@keyframes leafFade {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.Loader {
+  max-width: 100px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 2rem auto;
+}
+
+.Loader__svg {
+  width: 100%;
+}
+
+.Loader {
+  &__left {
+    fill: rgba(255, 255, 255, 0.5);
+    animation: leafFade 1s linear infinite alternate;
+  }
+
+  &__right {
+    fill: rgba(255, 255, 255, 0.5);
+    animation: leafFade 1s linear infinite alternate;
+    animation-delay: 500ms;
+  }
+}
+
+.Loader--dark{
+  & .Loader__left {
+    fill: #e3e3e3;
+    animation: leafFade 1s linear infinite alternate;
+  }
+
+  & .Loader__right {
+    fill: #e3e3e3;
+    animation: leafFade 1s linear infinite alternate;
+    animation-delay: 500ms;
+  }
+}

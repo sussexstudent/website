@@ -28,7 +28,7 @@ module.exports = {
       '~components': path.resolve(path.join(__dirname, '../src/components')),
       '~falmer': path.resolve(path.join(__dirname, '../src/projects/falmer')),
     },
-    extensions: ['.js', '.svg'],
+    extensions: ['.ts', '.tsx', '.js'],
   },
 
   node: {
@@ -60,17 +60,31 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader?useBabel',
-      },
-      {
         test: /\.(graphql|gql)$/,
         exclude: /node_modules/,
         use: 'graphql-tag/loader',
       },
       {
-        test: /\.svg|\.png|\.woff|\.json/,
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader?useBabel=true',
+      },
+      {
+        test: /\.(svg|woff|png)$/,
         use: 'url-loader?limit=10000',
+        exclude: /icons/,
+      },
+      {
+        test: /\.svg$/,
+        exclude: /img/,
+        use: [
+          'babel-loader',
+          {
+            loader: 'svgr/webpack',
+            options: {
+              svgo: false,
+            },
+          },
+        ],
       },
     ],
   },

@@ -9,7 +9,6 @@ interface ComponentMap {
 
 export default function() {
   const componentMap: ComponentMap = {
-    ContentAPIComposer: () => import(/* webpackChunkName: "ContentAPIComposer" */ '~components/ContentAPIComposer'),
     TweetList: () =>
       import(/* webpackChunkName: "TweetList" */ '~components/TweetList'),
     EventList: () =>
@@ -37,8 +36,8 @@ export default function() {
       import(/* webpackChunkName: "Freshers" */ '~components/Freshers/FreshersApp'),
     ContentExplorer: () =>
       import(/* webpackChunkName: "ContentExplorer" */ '../projects/website/layouts/ContentExplorer'),
-    ContentPageContainer: () =>
-      import(/* webpackChunkName: "ContentPageContainer" */ '../projects/website/layouts/ContentPage'),
+    ContentPage: () =>
+      import(/* webpackChunkName: "ContentPage" */ '../projects/website/layouts/ContentPage'),
   };
 
   Array.from(document.querySelectorAll('.Hydro')).forEach(el => {

@@ -40,18 +40,14 @@ export default {
     // '/officer': require('./src/projects/components/OfficerPage/index'),
 
     // ONE DAY REMOVED WITH CONTENT INTEGRATION
-    '/staff': require('./src/projects/website/layouts/StaffPage'),
+    '/staff-page': require('./src/projects/website/layouts/StaffPage'),
 
     // REMOVED WITH CONTENT INTEGRATION
-    '/soc-events': require('./src/projects/website/layouts/SocEvents'),
-    '/section-page': require('./src/projects/website/layouts/SectionPage'),
     '/support': require('./src/projects/website/layouts/Support'),
-    '/about-us': require('./src/projects/website/layouts/AboutUs'),
     '/plan': require('./src/projects/website/layouts/AnnualPlan'),
     '/environment-feedback':
       require('./src/projects/website/layouts/environment/student-feedback'),
     '/environment': require('./src/projects/website/layouts/environment/environment'),
-    '/get-involved': require('./src/projects/website/layouts/GetInvolved'),
     '/content-explorer': require('./src/projects/website/layouts/ContentExplorer'),
   },
   assets,

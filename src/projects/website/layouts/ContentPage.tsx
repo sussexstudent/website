@@ -9,4 +9,4 @@ class ContentPageContainer extends React.Component<{ path: string }> {
   }
 }
 
-export default HydroLeaf()(ContentPageContainer);
+export default HydroLeaf({ name: 'ContentPage' })(ContentPageContainer);

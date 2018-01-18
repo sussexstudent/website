@@ -3,18 +3,11 @@ import React from 'react';
 import { QueryProps, MutationFunc } from 'react-apollo'
 
 import LoaderComponent from '~components/Loader';
-
-function ErrorHandler() {
-  return (
-    <div>
-      <h1>Failed to load</h1>
-    </div>
-  );
-}
+import {ErrorState} from "~components/ErrorState";
 
 const apolloHandler = (
   Loader = LoaderComponent,
-  Error = ErrorHandler
+  Error = ErrorState
 ) => (WrappedComponent: any) =>
   compose(hoistStatics)((props: any) => {
     const propertyName = 'data';

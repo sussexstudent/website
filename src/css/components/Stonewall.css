@@ -1,0 +1,8 @@
+.Stonewall {
+  text-align: center;
+  padding-bottom: 2rem;
+
+  &__image {
+    color: var(--color__grey-slate);
+  }
+}

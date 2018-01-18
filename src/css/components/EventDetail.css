@@ -39,6 +39,7 @@
   &__icon {
     margin-right: 0.5rem;
     width: 16px;
+    height: auto;
     position: relative;
     top: 3px;
   }

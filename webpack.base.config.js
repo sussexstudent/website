@@ -53,7 +53,7 @@ function generateConfig() {
 
     plugins: [
       new LodashModuleReplacementPlugin({
-        // unicode: true,
+        paths: true,
       }),
       new webpack.DefinePlugin({
         'process.env': {

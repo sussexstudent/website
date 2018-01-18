@@ -75,10 +75,10 @@ class FalmerApplication extends React.Component<IProps> {
 }
 
 export default compose<IProps, {}>(
+  withRouter,
   connect((state: RootState) => ({
     isAuthenticated: state.auth.user !== null,
   }), {
     requestAuthToken,
   }),
-  withRouter
 )(FalmerApplication);

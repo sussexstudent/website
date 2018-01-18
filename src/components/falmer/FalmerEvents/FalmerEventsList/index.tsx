@@ -130,5 +130,5 @@ export default compose<IProps, OwnProps>(
         },
       };
     },
-  })
+  }),
 )(FalmerEvents);

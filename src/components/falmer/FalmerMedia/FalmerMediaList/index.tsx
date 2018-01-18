@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
+import { withRouter } from 'react-router-dom';
 import AllMediaQuery from './AllMedia.graphql';
 import Loader from '../../../Loader';
 import Image from '../../../Image';
@@ -99,5 +100,6 @@ export default compose<IProps, OwnProps>(
         },
       };
     },
-  })
+  }),
+  withRouter,
 )(FalmerMediaList);

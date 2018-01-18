@@ -88,8 +88,8 @@ const FalmerHeader: React.SFC<IProps> = ({ user }) => {
 */
 
 export default compose<IProps, {}>(
+  withRouter,
   connect((state: RootState) => ({
     user: state.auth.user,
   })),
-  withRouter
 )(FalmerHeader)

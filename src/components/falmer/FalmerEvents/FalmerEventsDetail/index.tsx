@@ -133,5 +133,5 @@ export default compose<IProps, OwnProps>(
         eventId: props.match.params.eventId,
       },
     }),
-  })
+  }),
 )(FalmerEventsDetail);

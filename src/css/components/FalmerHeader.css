@@ -13,12 +13,12 @@
   display: flex;
 
   &__logotype {
-    font-size: 1.36rem;
     margin: 0;
+    @mixin type great-primer;
   }
 
   &__user {
-    font-size: 1.1rem;
+    @mixin type pica;
     color: var(--color__grey-winter);
     font-weight: 500;
   }
@@ -33,7 +33,7 @@
     list-style: none;
     display: flex;
     width: 100%;
-    font-size: 1.1rem;
+    @mixin type pica;
   }
 
   &__nav-item {

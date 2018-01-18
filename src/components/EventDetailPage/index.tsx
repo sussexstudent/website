@@ -23,6 +23,9 @@ import CollectionIcon from '../../icons/events-collection.svg';
 import CollectionParentIcon from '../../icons/events-collection-parent.svg';
 import PinIcon from '../../icons/events-pin.svg';
 import SocietyIcon from '../../icons/events-society.svg';
+import apolloHandler from "~components/apolloHandler";
+import {compose} from 'recompose';
+import {generateStylesForBrand} from "~components/EventsApplication/utils";
 
 function isSameLogicalSleepDay(startDate: Date, endDate: Date) {
   if (isSameDay(startDate, endDate)) {
@@ -130,7 +133,7 @@ class EventDetailPage extends React.Component<IProps> {
                 </div>
               ) : null}
               {event.brand !== null ? (
-                <Link to={`/whats-on/collection/${event.brand.slug}`} className="EventDetail__brand">{event.brand.name}</Link>
+                <Link to={`/whats-on/collection/${event.brand.slug}`} className="EventDetail__brand" style={generateStylesForBrand(event.brand)}>{event.brand.name}</Link>
               ) : null}
               {event.bundle !== null ? (
                 <div className="EventDetail__bundle">{event.bundle.name}</div>
@@ -204,7 +207,7 @@ class EventDetailPage extends React.Component<IProps> {
                 </div>
               </div>
               <div className="ContentCard__content">
-                <div className="Prose EventDetail__body">
+                <div className="Prose type-body-copy">
                   {event.bodyHtml !== '' ? (
                     <div dangerouslySetInnerHTML={{ __html: event.bodyHtml }} />
                   ) : (
@@ -256,6 +259,9 @@ class EventDetailPage extends React.Component<IProps> {
   }
 }
 
-export default graphql<any, OwnProps>(DetailPageQuery, {
-  options: ({ match }) => ({ variables: { eventId: match.params.eventId } }),
-})(EventDetailPage);
+export default compose<IProps, OwnProps>(
+  graphql<any, OwnProps>(DetailPageQuery, {
+    options: ({ match }) => ({ variables: { eventId: match.params.eventId } }),
+  }),
+  apolloHandler(),
+)(EventDetailPage);

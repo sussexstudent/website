@@ -16,7 +16,7 @@ import isBefore from 'date-fns/isBefore';
 import isSameDay from 'date-fns/isSameDay';
 import formatDate from 'date-fns/format';
 
-import {Event, EventPart, EventPartType} from "../../types/events";
+import {Brand, Event, EventPart, EventPartType} from "../../types/events";
 
 /* eslint-disable no-nested-ternary */
 
@@ -176,4 +176,15 @@ export function getSmartDate(part: EventPart) {
   }
 
   return formatDate(part.date, 'ddd Do');
+}
+
+
+export function generateStylesForBrand(brand: Brand) {
+  if (!brand.accent) {
+    return {};
+  }
+
+  return {
+    backgroundColor: brand.accent,
+  };
 }

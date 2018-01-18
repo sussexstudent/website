@@ -6,7 +6,8 @@ import HydroLeaf from "~components/HydroLeaf";
 import { EventsList, EventsBrandingPeriod } from "~components/EventsCalender";
 
 const EventsApplication = () => (
-  <Switch>
+  <div className="u-keep-footer-down">
+    <Switch>
     <Route path="/whats-on/" exact component={EventsList} />
     <Route
       path="/whats-on/period/:brandSlug"
@@ -21,6 +22,7 @@ const EventsApplication = () => (
     <Route path="/whats-on/**-:eventId" component={EventDetailPage} />
     <Route path="/whats-on/:eventId" component={EventDetailPage} />
   </Switch>
+  </div>
 );
 
 export default compose(HydroLeaf({ disableSSR: true }))(EventsApplication);

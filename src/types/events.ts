@@ -44,6 +44,10 @@ export interface Venue {
   id: number;
 }
 
+export interface Brand {
+  accent?: string;
+}
+
 export interface Event {
   id: number;
   startTime: string;

@@ -19,6 +19,7 @@ query EventsDetailPage($eventId: Int) {
       name
       slug
       eventAppend
+      accent
     }
     venue {
       name

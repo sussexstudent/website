@@ -26,9 +26,9 @@ function generateConfig() {
         'raven-js',
         'mitt',
       ],
-      main: ['./src/projects/website/entry.js'],
-      devFonts: './src/projects/website/env-dev.js',
-      productionFonts: './src/projects/website/env-production.js',
+      main: ['./src/projects/website/entry.ts'],
+      devFonts: './src/projects/website/env-dev.ts',
+      productionFonts: './src/projects/website/env-production.ts',
     },
 
     output: {

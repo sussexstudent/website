@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {isFunction} from 'lodash';
 import {HydroRoot} from "~components/HydroRoot";
+import BookMarketApp from "~components/bookmarket/BookMarketApp";
 
 interface ComponentMap {
-  [componentName: string]: () => Promise<any>;
+  [componentName: string]: () => Promise<any> | React.SFC;
 }
 
 export default function() {
@@ -38,6 +39,7 @@ export default function() {
       import(/* webpackChunkName: "ContentExplorer" */ '../projects/website/layouts/ContentExplorer'),
     ContentPage: () =>
       import(/* webpackChunkName: "ContentPage" */ '../projects/website/layouts/ContentPage'),
+    BookMarket: () => BookMarketApp,
   };
 
   Array.from(document.querySelectorAll('.Hydro')).forEach(el => {
@@ -50,8 +52,6 @@ export default function() {
         scriptElement.remove();
       }
     }
-
-    console.log(el);
 
     const componentName = el.getAttribute('data-component');
 
@@ -68,28 +68,31 @@ export default function() {
       return;
     }
 
+    function handleComponent(Component: React.SFC) {
+      if (!Component) {
+        console.warn(
+          `[hydro] ${
+            componentName
+            } should have been rendered, but it is "${Component}"`
+        );
+        return;
+      }
+      const shouldHydrate = el.children.length > 0;
+
+      if (shouldHydrate) {
+        ReactDOM.hydrate(<HydroRoot><Component {...props} /></HydroRoot>, el);
+      } else {
+        ReactDOM.render(<HydroRoot><Component {...props} /></HydroRoot>, el);
+      }
+    };
+
+
     const getComponent = componentMap[componentName];
 
-    getComponent()
+    Promise.resolve(getComponent())
       .then(
         (component: any) => (!isFunction(component) ? component.default : component)
       )
-      .then((Component: React.SFC) => {
-        if (!Component) {
-          console.warn(
-            `[hydro] ${
-              componentName
-              } should have been rendered, but it is "${Component}"`
-          );
-          return;
-        }
-        const shouldHydrate = el.children.length > 0;
-
-        if (shouldHydrate) {
-          ReactDOM.hydrate(<HydroRoot><Component {...props} /></HydroRoot>, el);
-        } else {
-          ReactDOM.render(<HydroRoot><Component {...props} /></HydroRoot>, el);
-        }
-      });
-  });
+      .then(handleComponent);
+})
 }

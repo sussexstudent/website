@@ -49,6 +49,7 @@ export default {
       require('./src/projects/website/layouts/environment/student-feedback'),
     '/environment': require('./src/projects/website/layouts/environment/environment'),
     '/content-explorer': require('./src/projects/website/layouts/ContentExplorer'),
+    '/book-market': require('./src/components/bookmarket/BookMarketApp'),
   },
   assets,
   contentApi: {

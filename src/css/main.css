@@ -31,6 +31,8 @@
 @import './components/ContentBlock.css';
 @import './components/ContentCard.css';
 @import './components/NewsGrid.css';
+@import './components/Bento.css';
+@import './components/BentoBox.css';
 @import './components/NavigationCard.css';
 @import './components/NewsBlock.css';
 @import './components/UserBar.css';

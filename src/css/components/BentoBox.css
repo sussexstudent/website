@@ -1,0 +1,42 @@
+.BentoBox {
+  @mixin card standard;
+  background: white;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+
+  &--anchor {
+    display: block;
+  }
+
+  &--impulse {
+    padding: 0.2rem 0.2rem;
+    text-align: center;
+    font-family: var(--type__primary);
+    text-decoration: none;
+    font-weight: 600;
+    min-height: 4.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--color-blue {
+    color: #ffffff;
+    background-color: var(--color__brand-blue);
+  }
+
+  &--color-green {
+    color: #ffffff;
+    background-color: var(--color__brand-green);
+  }
+
+  &--color-red {
+    color: #ffffff;
+    background-color: var(--color__brand-red);
+  }
+
+  &--color-yellow {
+    color: var(--color__brand-blue);
+    background-color: var(--color__brand-yellow);
+  }
+}

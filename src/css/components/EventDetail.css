@@ -16,6 +16,14 @@
     display: block;
     color: #ffffff;
     background-color: #ff546a;
+
+    &--dark-bg {
+      color: #ffffff;
+    }
+
+    &--light-bg {
+      color: var(--color__black);
+    }
   }
 
   &__details {

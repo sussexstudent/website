@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
-const { generateConfig } = require('./webpack.base.config.js');
+const { generateConfig, baseDir } = require('./webpack.base.config.js');
 const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -27,7 +27,7 @@ config.performance = {
 };
 
 config.output = {
-  path: path.resolve(path.join(__dirname, 'dist')),
+  path: path.resolve(path.join(baseDir, 'dist')),
   publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
   filename: 'union.[name].[chunkhash].js',
 };

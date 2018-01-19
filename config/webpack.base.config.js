@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const path = require('path');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 const env = {
@@ -12,6 +13,8 @@ const env = {
   development: NODE_ENV === 'development' || typeof NODE_ENV === 'undefined',
 };
 env.build = env.production || env.staging;
+
+const baseDir = path.join(__dirname, '..');
 
 function generateConfig() {
   return {
@@ -32,7 +35,7 @@ function generateConfig() {
     },
 
     output: {
-      path: path.resolve(path.join(__dirname, 'build')),
+      path: path.resolve(path.join(baseDir, 'build')),
       publicPath: '/assets',
       filename: '[name].js',
       chunkFilename: '[id].chunk.js',
@@ -41,8 +44,8 @@ function generateConfig() {
     resolve: {
       modules: ['web_modules', 'node_modules', './src/images'],
       alias: {
-        '~components': path.resolve(__dirname, 'src/components/'),
-        '~libs': path.resolve(__dirname, 'src/libs/'),
+        '~components': path.resolve(baseDir, 'src/components/'),
+        '~libs': path.resolve(baseDir, 'src/libs/'),
       },
       extensions: ['.ts', '.tsx', '.js', '.svg'],
     },
@@ -115,4 +118,4 @@ function generateConfig() {
   };
 }
 
-module.exports = { generateConfig };
+module.exports = { generateConfig, baseDir };

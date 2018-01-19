@@ -140,8 +140,8 @@
     "what-input": "^5.0.1"
   },
   "scripts": {
-    "prod": "export NODE_ENV=production && export BABEL_ENV=bundle && `yarn bin`/webpack --config webpack.prod.config.js",
-    "falmer:prod": "export NODE_ENV=production && `yarn bin`/webpack --config webpack.config.falmer.js",
+    "prod": "export NODE_ENV=production && export BABEL_ENV=bundle && `yarn bin`/webpack --config ./config/webpack.prod.config.js",
+    "falmer:prod": "export NODE_ENV=production && `yarn bin`/webpack --config ./config/falmer.dev.config.js",
     "gen": "BABEL_ENV=comp `yarn bin`/comp",
     "deploy": "uncommitted && yarn run prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run gen",
     "precommit": "`npm bin`/eslint",
@@ -149,7 +149,7 @@
     "format": "find ./src -name '*.js' | grep -v app | xargs prettier --single-quote --print-width 80 --trailing-comma es5 --write",
     "test": "NODE_ENV=test && jest",
     "testc": "NODE_ENV=test && jest --coverage",
-    "falmer:serve": "webpack-dev-server --config webpack.config.falmer.js",
+    "falmer:serve": "webpack-dev-server --config ./config/falmer.dev.config.js",
     "falmer:_deploy": "node ./config/deployToFalmer.js",
     "falmer:deploy": "yarn run falmer:prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist-falmer/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run falmer:_deploy"
   },

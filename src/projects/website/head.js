@@ -59,7 +59,6 @@ ${MSLTag('JsonUserInfo')}
 const legacyScripts = `
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>
-{head_content}
 `;
 
 export const headContentLegacy = assets => headContent(assets, legacyScripts);

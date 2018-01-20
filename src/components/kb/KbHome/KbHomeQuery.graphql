@@ -1,0 +1,12 @@
+query KbHomepage {
+  knowledgeBase {
+    sections {
+      slug
+      title
+      topics {
+        slug
+        title
+      }
+    }
+  }
+}

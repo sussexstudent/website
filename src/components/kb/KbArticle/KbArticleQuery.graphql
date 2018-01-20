@@ -1,0 +1,17 @@
+query KbArticle($articlePath: String) {
+  knowledgeBase {
+    article(path: $articlePath) {
+      title
+      slug
+      main
+      topic {
+        title
+        slug
+        section {
+          title
+          slug
+        }
+      }
+    }
+  }
+}

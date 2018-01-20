@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {isFunction} from 'lodash';
 import {HydroRoot} from "~components/HydroRoot";
 import BookMarketApp from "~components/bookmarket/BookMarketApp";
+import KnowledgeBaseApp from "~components/kb/KnowledgeBaseApplication";
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.SFC;
@@ -40,6 +41,7 @@ export default function() {
     ContentPage: () =>
       import(/* webpackChunkName: "ContentPage" */ '../projects/website/layouts/ContentPage'),
     BookMarket: () => BookMarketApp,
+    KnowledgeBase: () => KnowledgeBaseApp,
   };
 
   Array.from(document.querySelectorAll('.Hydro')).forEach(el => {

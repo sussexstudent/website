@@ -1,0 +1,16 @@
+query KbSection($sectionSlug: String) {
+  knowledgeBase {
+    section(slug: $sectionSlug) {
+      slug
+      title
+      topics {
+        slug
+        title
+        articles {
+          title
+          slug
+        }
+      }
+    }
+  }
+}

@@ -18,4 +18,6 @@ function Loading(props: IProps) {
   return null;
 }
 
+export { Loading as LoadableLoading }
+
 export default Loading;

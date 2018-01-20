@@ -15,12 +15,14 @@ export const ExternalLink: StreamFieldBlock<{
 };
 
 export const InternalLink: StreamFieldBlock<{
-  link: string;
+  link: {
+    path: string
+  };
   target: any;
   title: string;
 }> = ({ block: { link, title } }) => {
   return (
-    <Link className="Button" to={link}>
+    <Link className="Button" to={link.path}>
       {title}
     </Link>
   );

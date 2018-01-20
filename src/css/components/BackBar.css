@@ -11,8 +11,26 @@
     vertical-align: text-top;
   }
 
+  &--breadcrumb {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 1rem;
+
+    & li {
+      display: inline-block;
+    }
+  }
+
+  &__chevron {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
   &--color {
     &-blue {
+      color: var(--color__brand-blue);
+
       & a {
         color: var(--color__brand-blue);
       }
@@ -23,6 +41,8 @@
     }
 
     &-green {
+      color: var(--color__brand-green);
+
       & a {
         color: var(--color__brand-green);
       }
@@ -33,6 +53,8 @@
     }
 
     &-red {
+      color: var(--color__brand-red);
+
       & a {
         color: var(--color__brand-red);
       }
@@ -49,6 +71,8 @@
     }
 
     &-slate {
+      color: var(--color__grey-slate);
+
       & a {
         color: var(--color__grey-slate);
       }

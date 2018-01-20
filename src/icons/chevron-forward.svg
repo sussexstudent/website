@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="14px" viewBox="0 0 8 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="BackBar" transform="translate(4.000000, 7.000000) scale(-1, 1) translate(-4.000000, -7.000000) " fill="currentcolor" fill-rule="nonzero">
+            <path d="M7.49935092,7.67002437 C7.88108552,7.29253227 7.87804482,6.67853807 7.49630902,6.30258285 L1.34281483,0.24158095 C0.608249975,-0.49065266 -0.491319665,0.60694484 0.241726765,1.33917457 L4.86512082,5.94634327 C5.70336438,7.00000002 5.7081571,7.00000002 4.86512082,8.0521038 L0.241726765,12.660825 C-0.491319665,13.3930586 0.608253865,14.4906522 1.34281483,13.7584186 L7.49935092,7.67002437 Z" id="Shape" transform="translate(3.892068, 7.000000) scale(-1, 1) translate(-3.892068, -7.000000) "></path>
+        </g>
+    </g>
+</svg>

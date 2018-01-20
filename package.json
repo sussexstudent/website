@@ -146,7 +146,7 @@
     "deploy": "uncommitted && yarn run prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run gen",
     "precommit": "`npm bin`/eslint",
     "serve": "node --trace-warnings ./devserver.js",
-    "format": "find ./src -name '*.js' | grep -v app | xargs prettier --single-quote --print-width 80 --trailing-comma es5 --write",
+    "format": "`yarn bin`/prettier --list-different \"src/**/*.{ts,tsx,js,css,graphql}\" --write",
     "test": "NODE_ENV=test && jest",
     "testc": "NODE_ENV=test && jest --coverage",
     "falmer:serve": "webpack-dev-server --config ./config/falmer.dev.config.js",
@@ -166,5 +166,16 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
     ]
+  },
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "always"
   }
 }

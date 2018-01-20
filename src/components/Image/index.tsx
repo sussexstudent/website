@@ -44,7 +44,7 @@ const Image: React.SFC<IProps> = (props) => {
   }
 
   return img;
-}
+};
 
 Image.defaultProps = {
   lazy: false,

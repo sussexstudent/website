@@ -15,7 +15,7 @@ it('accepts colors', () => {
     .create(
       <BackBar href="https://example.com" color="red">
         All examples
-      </BackBar>
+      </BackBar>,
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

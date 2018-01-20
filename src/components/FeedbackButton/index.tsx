@@ -8,7 +8,7 @@ interface IProps {
 }
 
 interface IState {
-  feedbackGivenKeys: Array<string>
+  feedbackGivenKeys: Array<string>;
 }
 
 class FeedbackButton extends React.Component<IProps, IState> {

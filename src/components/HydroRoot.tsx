@@ -7,9 +7,7 @@ import ScrollToTop from '../components/ScrollToTop';
 const HydroRoot: React.SFC<{}> = (props) => (
   <ApolloProvider client={getApolloClientForFalmer}>
     <BrowserRouter>
-      <ScrollToTop>
-        {props.children}
-      </ScrollToTop>
+      <ScrollToTop>{props.children}</ScrollToTop>
     </BrowserRouter>
   </ApolloProvider>
 );

@@ -12,17 +12,15 @@ import FalmerDataList, {
 import FalmerSidebar from '../../FalmerSidebar';
 import FalmerSubSections, { SubSection } from '../../FalmerSubSections';
 import FalmerListView from '../../FalmerListView';
-import {ApolloHandlerChildProps} from "~components/apolloHandler";
-import {Connection} from "~components/falmer/types";
-import {Venue} from "../../../../types/events";
-import {compose} from 'recompose';
+import { ApolloHandlerChildProps } from '~components/apolloHandler';
+import { Connection } from '~components/falmer/types';
+import { Venue } from '../../../../types/events';
+import { compose } from 'recompose';
 
-interface OwnProps {
-
-}
+interface OwnProps {}
 
 interface Result {
-  allVenues: Connection<Venue>
+  allVenues: Connection<Venue>;
 }
 
 type IProps = ApolloHandlerChildProps<OwnProps, Result>;
@@ -42,13 +40,11 @@ function FalmerVenuesList({ data: { loading, allVenues } }: IProps) {
               <SubSection to="/events/" back>
                 Events
               </SubSection>
-              <SubSection to="/events/periods/">
-                Branding Periods
-              </SubSection>
+              <SubSection to="/events/periods/">Branding Periods</SubSection>
             </FalmerSubSections>
             <FalmerDataList
-              items={allVenues.edges.map(edge => edge.node)}
-              header={rowState => (
+              items={allVenues.edges.map((edge) => edge.node)}
+              header={(rowState) => (
                 <Row {...rowState}>
                   <HeaderCell>Name</HeaderCell>
                 </Row>
@@ -77,6 +73,6 @@ function FalmerVenuesList({ data: { loading, allVenues } }: IProps) {
   );
 }
 
-export default compose<IProps, OwnProps>(
-  graphql(AllVenuesQuery)
-)(FalmerVenuesList);
+export default compose<IProps, OwnProps>(graphql(AllVenuesQuery))(
+  FalmerVenuesList,
+);

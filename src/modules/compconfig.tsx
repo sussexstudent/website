@@ -4,8 +4,5 @@ import CompOptionsPanel from '~components/CompOptionsPanel';
 
 export default () => {
   const container = document.createElement('div');
-  ReactDOM.render(
-    <CompOptionsPanel />,
-    document.body.appendChild(container)
-  );
+  ReactDOM.render(<CompOptionsPanel />, document.body.appendChild(container));
 };

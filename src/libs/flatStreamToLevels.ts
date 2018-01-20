@@ -1,4 +1,4 @@
-import {get, set, has} from 'lodash';
+import { get, set, has } from 'lodash';
 
 interface ItemLevelVistor {
   (item: any): number;
@@ -7,12 +7,15 @@ interface ItemLevelVistor {
 interface ResultTree {
   value: any;
   _missingLevel?: boolean;
-  _children?: ResultTree[]
+  _children?: ResultTree[];
 }
 
 // TODO: this doesn't accept streams, might be confusing, initial called that due to
 // use in Wagtail StreamField handling
-export default function flatStreamToLevels(itemToLevelFunc: ItemLevelVistor, flatItemArray: Array<Object>) {
+export default function flatStreamToLevels(
+  itemToLevelFunc: ItemLevelVistor,
+  flatItemArray: Array<Object>,
+) {
   // holds our index pointer for each level
   let lastLevel: number[] = [];
 

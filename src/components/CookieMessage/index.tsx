@@ -1,8 +1,6 @@
 import React from 'react';
 
-interface IProps {
-
-}
+interface IProps {}
 
 interface IState {
   hidden: boolean;

@@ -1,10 +1,4 @@
-import {
-  sortBy,
-  orderBy,
-  toPairs,
-  padStart,
-  groupBy,
-} from 'lodash';
+import { sortBy, orderBy, toPairs, padStart, groupBy } from 'lodash';
 import isAfter from 'date-fns/isAfter';
 import getYear from 'date-fns/getYear';
 import setHours from 'date-fns/setHours';
@@ -16,15 +10,13 @@ import isBefore from 'date-fns/isBefore';
 import isSameDay from 'date-fns/isSameDay';
 import formatDate from 'date-fns/format';
 
-import {Brand, Event, EventPart, EventPartType} from "../../types/events";
+import { Brand, Event, EventPart, EventPartType } from '../../types/events';
 
 /* eslint-disable no-nested-ternary */
-
 
 const now = setHours(new Date(), 0);
 const rightNow = new Date();
 const weekFromNow = setHours(addDays(new Date(), 7), 0);
-
 
 export function splitEventsInToParts(events: Event[], removePast = true) {
   // for all events
@@ -103,9 +95,9 @@ function poorMonthSort(key: string) {
 
 function chunkEventsToRows(events: EventPart[]) {
   const eventNest: Array<Array<EventPart>> = [];
-  const keysMap: {[key: string]: number } = {};
+  const keysMap: { [key: string]: number } = {};
 
-  events.forEach(event => {
+  events.forEach((event) => {
     const dayIndex = getDayOfYear(event.date);
     if (Object.hasOwnProperty.call(keysMap, dayIndex)) {
       eventNest[keysMap[dayIndex]].push(event);
@@ -118,11 +110,11 @@ function chunkEventsToRows(events: EventPart[]) {
 }
 
 export function organisePartsForUI(eventParts: EventPart[], removePast = true) {
-  const orderedParts = sortBy(eventParts, [((part: EventPart) => part.date)]);
+  const orderedParts = sortBy(eventParts, [(part: EventPart) => part.date]);
 
   // next up 7:
 
-  const partsGrouped = groupBy(orderedParts, event => {
+  const partsGrouped = groupBy(orderedParts, (event) => {
     if (isBefore(event.date, now) && removePast) {
       return 'PAST';
     }
@@ -138,7 +130,7 @@ export function organisePartsForUI(eventParts: EventPart[], removePast = true) {
 
   const pairs = toPairs(partsGrouped);
 
-  const sorted = orderBy(pairs, pair => poorMonthSort(pair[0]), 'asc');
+  const sorted = orderBy(pairs, (pair) => poorMonthSort(pair[0]), 'asc');
 
   const asList = sorted
     .filter(([key]) => key !== 'PAST')
@@ -177,7 +169,6 @@ export function getSmartDate(part: EventPart) {
 
   return formatDate(part.date, 'ddd Do');
 }
-
 
 export function generateStylesForBrand(brand: Brand) {
   if (!brand.accent) {

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {isFunction} from 'lodash';
-import {HydroRoot} from "~components/HydroRoot";
-import BookMarketApp from "~components/bookmarket/BookMarketApp";
-import KnowledgeBaseApp from "~components/kb/KnowledgeBaseApplication";
+import { isFunction } from 'lodash';
+import { HydroRoot } from '~components/HydroRoot';
+import BookMarketApp from '~components/bookmarket/BookMarketApp';
+import KnowledgeBaseApp from '~components/kb/KnowledgeBaseApplication';
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.SFC;
@@ -28,7 +28,7 @@ export default function() {
     Header: () => import(/* webpackChunkName: "Header" */ '~components/Header'),
     UserBar: () =>
       import(/* webpackChunkName: "UserBar" */ '~components/UserBar').then(
-        module => module.DesktopUserBar
+        (module) => module.DesktopUserBar,
       ),
     AnnualPlan: () =>
       import(/* webpackChunkName: "AnnualPlan" */ '~components/AnnualPlan'),
@@ -44,7 +44,7 @@ export default function() {
     KnowledgeBase: () => KnowledgeBaseApp,
   };
 
-  Array.from(document.querySelectorAll('.Hydro')).forEach(el => {
+  Array.from(document.querySelectorAll('.Hydro')).forEach((el) => {
     let props = {};
     if (el.hasAttribute('data-id')) {
       const hydroKey = el.getAttribute('data-id');
@@ -63,9 +63,7 @@ export default function() {
 
     if (!Object.hasOwnProperty.call(componentMap, componentName)) {
       console.warn(
-        `[hydro] ${
-          componentName
-          } should have been rendered, but isn't in the component map!`
+        `[hydro] ${componentName} should have been rendered, but isn't in the component map!`,
       );
       return;
     }
@@ -73,28 +71,36 @@ export default function() {
     function handleComponent(Component: React.SFC) {
       if (!Component) {
         console.warn(
-          `[hydro] ${
-            componentName
-            } should have been rendered, but it is "${Component}"`
+          `[hydro] ${componentName} should have been rendered, but it is "${Component}"`,
         );
         return;
       }
       const shouldHydrate = el.children.length > 0;
 
       if (shouldHydrate) {
-        ReactDOM.hydrate(<HydroRoot><Component {...props} /></HydroRoot>, el);
+        ReactDOM.hydrate(
+          <HydroRoot>
+            <Component {...props} />
+          </HydroRoot>,
+          el,
+        );
       } else {
-        ReactDOM.render(<HydroRoot><Component {...props} /></HydroRoot>, el);
+        ReactDOM.render(
+          <HydroRoot>
+            <Component {...props} />
+          </HydroRoot>,
+          el,
+        );
       }
-    };
-
+    }
 
     const getComponent = componentMap[componentName];
 
     Promise.resolve(getComponent())
       .then(
-        (component: any) => (!isFunction(component) ? component.default : component)
+        (component: any) =>
+          !isFunction(component) ? component.default : component,
       )
       .then(handleComponent);
-})
+  });
 }

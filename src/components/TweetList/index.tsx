@@ -1,11 +1,11 @@
 import React from 'react';
-import {each} from 'lodash';
+import { each } from 'lodash';
 import Loader from '~components/Loader';
 import HydroLeaf from '~components/HydroLeaf';
 import Tweet from './Tweet';
 import FitOverflowChildren from '../FitOverflowChildren';
 import perf from '../../tracking/perf';
-import {TweetData} from "~components/TweetList/types";
+import { TweetData } from '~components/TweetList/types';
 
 const ATTACHMENT_TWEET_HEIGHT = 375;
 const TWEET_HEIGHT = 175;
@@ -13,8 +13,8 @@ const MIN_TWEET_COUNT = 3;
 const TWITTER_CACHE_RESOURCE = 'https://dxziiu0wrgyxg.cloudfront.net/tweets';
 
 interface IProps {
-  query: string
-  signature: string,
+  query: string;
+  signature: string;
 }
 
 interface IState {
@@ -47,21 +47,21 @@ class TweetList extends React.Component<IProps, IState> {
     fetch(
       `${TWITTER_CACHE_RESOURCE}?q=${this.props.query}&s=${
         this.props.signature
-      }`
+      }`,
     )
-      .then(response => {
+      .then((response) => {
         t.done();
         return response.json();
       })
-      .then(data => this.setState({ tweets: data, isLoading: false }))
-      .catch(e => this.setState({ tweets: e }));
+      .then((data) => this.setState({ tweets: data, isLoading: false }))
+      .catch((e) => this.setState({ tweets: e }));
   }
 
   getTweetQuantityForHeight() {
     let count = 0;
     let currentHeight = 0;
 
-    each(this.state.tweets, tweet => {
+    each(this.state.tweets, (tweet) => {
       if (this.state.height && currentHeight > this.state.height) {
         count -= 1;
         return false;
@@ -86,7 +86,7 @@ class TweetList extends React.Component<IProps, IState> {
       return (
         <ul
           className="TweetList"
-          ref={ref => {
+          ref={(ref) => {
             this.listEL = ref;
           }}
         >
@@ -106,7 +106,9 @@ class TweetList extends React.Component<IProps, IState> {
     return (
       <ul className="TweetList">
         <FitOverflowChildren area="TweetList" minItems={3}>
-          {tweets.map((tweet: TweetData) => <Tweet data={tweet} key={tweet.id_str} />)}
+          {tweets.map((tweet: TweetData) => (
+            <Tweet data={tweet} key={tweet.id_str} />
+          ))}
         </FitOverflowChildren>
         <a
           className="TweetList__view-more"

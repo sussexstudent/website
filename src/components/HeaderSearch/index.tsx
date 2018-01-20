@@ -42,14 +42,14 @@ interface IProps {
 }
 
 interface IState {
-  query: string,
-  isOpen: boolean,
-  hasFocus: boolean,
-  isMobile: boolean | null,
+  query: string;
+  isOpen: boolean;
+  hasFocus: boolean;
+  isMobile: boolean | null;
   transitionSize: null | {
     paddingRight: number;
     width: number;
-  }
+  };
 }
 
 class HeaderSearch extends React.Component<IProps, IState> {
@@ -85,8 +85,8 @@ class HeaderSearch extends React.Component<IProps, IState> {
     this.handleBackdropClose = this.handleBackdropClose.bind(this);
     this.handleExitClose = this.handleExitClose.bind(this);
     this.handleQueryClear = this.handleQueryClear.bind(this);
-    this.handleSubmit = e => e.preventDefault();
-    this.escapeClose = event => {
+    this.handleSubmit = (e) => e.preventDefault();
+    this.escapeClose = (event) => {
       if (event.key === 'Escape') {
         this.setState({ query: '' }, () => {
           this.handleHasFocus(false);
@@ -213,7 +213,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
                 onBlur={this.handleBlur}
                 onChange={this.handleInputChange}
                 autoFocus={isOpen}
-                ref={input => {
+                ref={(input) => {
                   this.input = input;
                 }}
               />
@@ -266,7 +266,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
               onBlur={this.handleBlur}
               onChange={this.handleInputChange}
               autoFocus={this.state.isOpen}
-              ref={input => {
+              ref={(input) => {
                 this.input = input;
               }}
             />
@@ -302,7 +302,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
           value={this.state.query}
           onChange={this.handleInputChange}
           onFocus={this.handleFocus}
-          ref={el => {
+          ref={(el) => {
             this.dummyInput = el;
           }}
           disabled={disabled}

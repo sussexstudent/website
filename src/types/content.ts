@@ -1,18 +1,17 @@
-
 export interface ComponentBlock {
   type: string;
   value: any;
 }
 
 export interface ComponentData {
-  body: any[] // todo
+  body: any[]; // todo
 }
 
 export interface CMSDocument {
   title: string;
-  body: any[]
+  body: any[];
 }
 
 export interface ComponentMap {
-  [componentType: string]: React.SFC<{value: any, document: CMSDocument}>
+  [componentType: string]: React.SFC<{ value: any; document: CMSDocument }>;
 }

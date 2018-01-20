@@ -1,8 +1,8 @@
 import React from 'react';
-import {Page} from "~components/content/types";
-import {FalmerImage} from "../../../types/events";
-import FigureCollection from "~components/FigureCollection";
-import FigureCollectionFigure from "~components/FigureCollectionFigure";
+import { Page } from '~components/content/types';
+import { FalmerImage } from '../../../types/events';
+import FigureCollection from '~components/FigureCollection';
+import FigureCollectionFigure from '~components/FigureCollectionFigure';
 
 interface FigureCollectionBlock {
   id: string;
@@ -11,13 +11,15 @@ interface FigureCollectionBlock {
     subtitle: string;
     link: string;
     image: FalmerImage;
-  }
+  };
 }
 
 interface IProps {
-  page: Page<{ fullTimeOfficers: FigureCollectionBlock[], partTimeOfficers: FigureCollectionBlock[] }>; // todo
+  page: Page<{
+    fullTimeOfficers: FigureCollectionBlock[];
+    partTimeOfficers: FigureCollectionBlock[];
+  }>; // todo
 }
-
 
 function HomePage(props: IProps) {
   const { page: { data: { fullTimeOfficers, partTimeOfficers } } } = props;
@@ -27,7 +29,7 @@ function HomePage(props: IProps) {
       <div className="ContentBlock">
         <div className="ContentBlock__heading">Your full-time officers</div>
         <FigureCollection>
-          {fullTimeOfficers.map(item => (
+          {fullTimeOfficers.map((item) => (
             <FigureCollectionFigure
               key={item.id}
               title={item.value.title}
@@ -41,7 +43,7 @@ function HomePage(props: IProps) {
       <div className="ContentBlock">
         <div className="ContentBlock__heading">Your part-time officers</div>
         <FigureCollection>
-          {partTimeOfficers.map(item => (
+          {partTimeOfficers.map((item) => (
             <FigureCollectionFigure
               key={item.id}
               title={item.value.title}

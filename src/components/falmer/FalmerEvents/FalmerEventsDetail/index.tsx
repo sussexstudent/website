@@ -11,8 +11,8 @@ import FalmerSelectEvent from '../../FalmerSelectEvent';
 
 import EventDetailQuery from './EventDetail.graphql';
 import MoveEventMutation from './MoveEvent.graphql';
-import {ApolloHandlerChildProps} from "~components/apolloHandler";
-import {Event} from "../../../../types/events";
+import { ApolloHandlerChildProps } from '~components/apolloHandler';
+import { Event } from '../../../../types/events';
 
 interface RouteParams {
   eventId: number;
@@ -28,7 +28,7 @@ interface Result {
 }
 
 type IProps = ApolloHandlerChildProps<OwnProps, Result> & {
-  moveEventMutation: MutationFunc<Result>
+  moveEventMutation: MutationFunc<Result>;
 };
 
 function FalmerEventsDetail({
@@ -81,7 +81,7 @@ function FalmerEventsDetail({
             <div>
               <h2 className="Heading Heading--standard">Sub-events</h2>
               <ul>
-                {event.children.map(subEvent => (
+                {event.children.map((subEvent) => (
                   <li>
                     <Link to={`/events/${subEvent.eventId}`}>
                       {subEvent.title}
@@ -104,7 +104,7 @@ function FalmerEventsDetail({
       >
         <h1>Move event</h1>
         <FalmerSelectEvent
-          onSelect={selectedId => {
+          onSelect={(selectedId) => {
             moveEventMutation({
               variables: {
                 eventId: event.eventId,
@@ -128,7 +128,7 @@ export default compose<IProps, OwnProps>(
     },
   }),
   graphql<Result, OwnProps>(EventDetailQuery, {
-    options: props => ({
+    options: (props) => ({
       variables: {
         eventId: props.match.params.eventId,
       },

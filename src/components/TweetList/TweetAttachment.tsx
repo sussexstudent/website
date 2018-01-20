@@ -1,6 +1,6 @@
 import React from 'react';
 import LoadLinkedImage from '../LoadLinkedImage';
-import {TweetData} from "~components/TweetList/types";
+import { TweetData } from '~components/TweetList/types';
 
 interface IProps {
   tweet: TweetData;

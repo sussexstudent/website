@@ -7,7 +7,7 @@ const MSLTag = (name: string, properties: PropertyMap | null = null) => {
 
   if (properties !== null) {
     props = Object.keys(properties)
-      .map(propName => `${propName}="${properties[propName]}" `)
+      .map((propName) => `${propName}="${properties[propName]}" `)
       .join(' ');
   }
 

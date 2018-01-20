@@ -25,7 +25,7 @@ export default (function() {
   const easeInOutCubic = function(t) {
     return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
   };
-  const easeInOutQuart = t => {
+  const easeInOutQuart = (t) => {
     const t1 = t - 1;
     return t < 0.5 ? 8 * t * t * t * t : 1 - 8 * t1 * t1 * t1 * t1;
   };

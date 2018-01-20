@@ -4,7 +4,7 @@ import TweetHeader from './TweetHeader';
 import TweetPermalink from './TweetPermalink';
 import TweetContent from './TweetContent';
 import TweetAttachment from './TweetAttachment';
-import {TweetData} from "~components/TweetList/types";
+import { TweetData } from '~components/TweetList/types';
 
 interface IProps {
   isQuoted?: boolean;
@@ -13,7 +13,8 @@ interface IProps {
 
 const Tweet: React.SFC<IProps> = ({ isQuoted = false, data }) => {
   const isRetweet = Object.hasOwnProperty.call(data, 'retweeted_status');
-  const tweet: TweetData = data.retweeted_status !== undefined ? data.retweeted_status : data;
+  const tweet: TweetData =
+    data.retweeted_status !== undefined ? data.retweeted_status : data;
 
   /* eslint-disable */
 
@@ -43,7 +44,7 @@ const Tweet: React.SFC<IProps> = ({ isQuoted = false, data }) => {
         tweet.id_str
       }`}
       className="Tweet__faux-link"
-    />
+    />,
   );
 };
 /* eslint-enable */

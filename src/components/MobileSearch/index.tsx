@@ -45,9 +45,9 @@ class HeaderSearch extends React.Component<IProps, IState> {
     this.handleBackdropClose = this.handleBackdropClose.bind(this);
     this.handleExitClose = this.handleExitClose.bind(this);
     this.handleQueryClear = this.handleQueryClear.bind(this);
-    this.handleSubmit = e => e.preventDefault();
+    this.handleSubmit = (e) => e.preventDefault();
 
-    this.handleTouch = e => {
+    this.handleTouch = (e) => {
       if (this.state.query === '') {
         e.preventDefault();
       }
@@ -60,7 +60,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
   }
 
   componentWillReceiveProps(nextProps: IProps) {
-    if (nextProps.isOpen !== this.props.isOpen  && this.htmlEl !== null) {
+    if (nextProps.isOpen !== this.props.isOpen && this.htmlEl !== null) {
       if (nextProps.isOpen) {
         classToggle(this.htmlEl, 'html--search-active', nextProps.isOpen);
         setTimeout(() => this.setState({ isRendered: true }), 80);
@@ -118,7 +118,8 @@ class HeaderSearch extends React.Component<IProps, IState> {
   renderMobileSearch() {
     const { isOpen } = this.props;
     const { isRendered } = this.state;
-    return isOpen ? <Portal>
+    return isOpen ? (
+      <Portal>
         <div className="MobileSearch" onTouchMove={this.handleTouch}>
           <CSSTransition
             in={isRendered}
@@ -146,7 +147,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
                   onBlur={this.handleBlur}
                   onChange={this.handleInputChange}
                   autoFocus={this.state.isRendered}
-                  ref={input => {
+                  ref={(input) => {
                     this.input = input;
                   }}
                 />
@@ -180,7 +181,8 @@ class HeaderSearch extends React.Component<IProps, IState> {
             }
           </CSSTransition>
         </div>
-      </Portal> : null;
+      </Portal>
+    ) : null;
   }
 
   render() {

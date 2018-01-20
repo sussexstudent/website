@@ -18,7 +18,7 @@ function type(mixin, args) {
     keysToRemove.push('line-height');
   }
 
-  const process = map => {
+  const process = (map) => {
     let processedMap = map;
     processedMap = omit(processedMap, keysToRemove);
 
@@ -35,13 +35,13 @@ function type(mixin, args) {
 
   if (size.hasOwnProperty('group-b')) {
     fontMap['@media screen and (min-width: 320px)'] = process(
-      standardType[name]['group-b']
+      standardType[name]['group-b'],
     );
   }
 
   if (size.hasOwnProperty('group-c')) {
     fontMap['@media screen and (min-width: 600px)'] = process(
-      standardType[name]['group-c']
+      standardType[name]['group-c'],
     );
   }
 
@@ -80,7 +80,7 @@ module.exports = {
     const sizes = Object.keys(standardType);
     const map = {};
 
-    sizes.forEach(sizeName => {
+    sizes.forEach((sizeName) => {
       map[`.type-${sizeName}`] = type(mixin, sizeName);
     });
 

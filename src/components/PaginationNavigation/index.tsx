@@ -6,7 +6,11 @@ interface IProps {
   onPageChange(pageNumber: number): void;
 }
 
-function PaginationNavigation({ currentPage, totalPages, onPageChange }: IProps) {
+function PaginationNavigation({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: IProps) {
   return (
     <div className="PaginationNavigation">
       <button

@@ -2,11 +2,10 @@ import React from 'react';
 import cx from 'classnames';
 import slugify from '~libs/slugify';
 
-
 interface Section {
   anchor: string;
   name: string;
-  children: Array<Section>
+  children: Array<Section>;
 }
 
 interface IProps {
@@ -16,18 +15,23 @@ interface IProps {
 }
 
 export function generateTitlesFromStream(body: any): Array<Section> {
-  return body.map((block: any) => {// todo
+  return body.map((block: any) => {
+    // todo
     const heading = block.value.heading;
     return { name: heading, anchor: slugify(heading) };
   });
 }
 
-function canDisplaySubMenu(onlyShowSubMenuWhenChildActive: boolean, children: Array<Section>, key: string) {
+function canDisplaySubMenu(
+  onlyShowSubMenuWhenChildActive: boolean,
+  children: Array<Section>,
+  key: string,
+) {
   if (!onlyShowSubMenuWhenChildActive) {
     return true;
   }
 
-  return children.map(item => item.anchor).indexOf(key) >= 0;
+  return children.map((item) => item.anchor).indexOf(key) >= 0;
 }
 
 // TODO: Tidy this up. Should technically support unlimited levels
@@ -41,7 +45,7 @@ const ContentNavigation: React.SFC<IProps> = ({
     <div className="NavigationCard">
       <h3 className="NavigationCard__title">Navigation</h3>
       <ul className="NavigationCard__list">
-        {items.map(item => (
+        {items.map((item) => (
           <li
             className={cx('NavigationCard__item', {
               'NavigationCard__item--active': item.anchor === activeKey,
@@ -55,11 +59,11 @@ const ContentNavigation: React.SFC<IProps> = ({
             (canDisplaySubMenu(
               onlyShowSubMenuWhenChildActive,
               item.children,
-              activeKey
+              activeKey,
             ) ||
               item.anchor === activeKey) ? (
               <ul className="NavigationCard__sub-list">
-                {item.children.map(itemInner => (
+                {item.children.map((itemInner) => (
                   <li
                     className={cx('NavigationCard__item', {
                       'NavigationCard__item--active':

@@ -9,7 +9,7 @@ function apiGetToken() {
       'X-CSRFToken': window.CSRF,
     },
     credentials: 'include',
-  }).then(res => res.json());
+  }).then((res) => res.json());
 }
 
 function saveToken(token) {
@@ -29,7 +29,7 @@ function apiQuery(query, variables = {}) {
       query,
       variables,
     }),
-  }).then(res => res.json());
+  }).then((res) => res.json());
 }
 
 function apiGetClientData() {
@@ -56,7 +56,7 @@ export default function reducer(
     authToken: null,
     user: null,
   },
-  action = {}
+  action = {},
 ) {
   switch (action.type) {
     case SUCCESS_AUTH_TOKEN: {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { ContentPage } from "~components/content/ContentPage";
-import HydroLeaf from "~components/HydroLeaf";
+import { ContentPage } from '~components/content/ContentPage';
+import HydroLeaf from '~components/HydroLeaf';
 
 class ContentPageContainer extends React.Component<{ path: string }> {
   render() {

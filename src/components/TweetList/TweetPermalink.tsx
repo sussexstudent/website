@@ -1,11 +1,10 @@
 import React from 'react';
 import formatDistance from 'date-fns/formatDistance';
-import {TweetData} from "~components/TweetList/types";
+import { TweetData } from '~components/TweetList/types';
 
 interface IProps {
   tweet: TweetData;
 }
-
 
 const TweetPermalink = ({ tweet }: IProps) => (
   <a

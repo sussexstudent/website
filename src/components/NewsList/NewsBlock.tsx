@@ -11,12 +11,11 @@ export interface NewsItem {
   link: string;
   publishedDate: Date;
   led: string;
-  imageURL?: string
+  imageURL?: string;
 }
 
-
 interface IProps {
-  item: NewsItem
+  item: NewsItem;
 }
 
 const NewsBlock = ({

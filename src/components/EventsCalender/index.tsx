@@ -14,12 +14,13 @@ import EventsCalenderItem from './EventsCalenderItem';
 import EventListingsQuery from './EventListings.graphql';
 import EventListingsBrandingPeriodQuery from './EventListingsBrandingPeriod.graphql';
 import apolloHandler from '../apolloHandler';
-import {Event, EventPart} from "../../types/events";
+import { Event, EventPart } from '../../types/events';
 import {
-  getSmartDate, organisePartsForUI,
-  splitEventsInToParts
-} from "~components/EventsApplication/utils";
-import {compose} from 'recompose';
+  getSmartDate,
+  organisePartsForUI,
+  splitEventsInToParts,
+} from '~components/EventsApplication/utils';
+import { compose } from 'recompose';
 
 const DATE_TODAY = new Date();
 const DATE_TOMORROW = addDays(DATE_TODAY, 1);
@@ -27,7 +28,7 @@ const DATE_TOMORROW = addDays(DATE_TODAY, 1);
 const weekFromNow = setHours(addDays(new Date(), 7), 0);
 
 interface RouterParams {
-  brandSlug?: string
+  brandSlug?: string;
 }
 
 interface OwnProps {
@@ -60,7 +61,9 @@ function EventsCalender({
     <div>
       {disableHeader ? null : (
         <Helmet>
-          <title>{`${brandingPeriod ? `${brandingPeriod.name} | ` : ''}What's on | Sussex Students' Union`}</title>
+          <title>{`${
+            brandingPeriod ? `${brandingPeriod.name} | ` : ''
+          }What's on | Sussex Students' Union`}</title>
         </Helmet>
       )}
       {!brandingPeriod ? (
@@ -73,16 +76,25 @@ function EventsCalender({
           </div>
         </div>
       ) : null}
-      {brandingPeriod ? <div>
-        {brandingPeriod.logoVector ? <img src={brandingPeriod.logoVector.resource} height="160" /> : <h1>{brandingPeriod.name}</h1>}
-        <div className="type-body-copy" dangerouslySetInnerHTML={{ __html: brandingPeriod.description }} />
-      </div> : null}
+      {brandingPeriod ? (
+        <div>
+          {brandingPeriod.logoVector ? (
+            <img src={brandingPeriod.logoVector.resource} height="160" />
+          ) : (
+            <h1>{brandingPeriod.name}</h1>
+          )}
+          <div
+            className="type-body-copy"
+            dangerouslySetInnerHTML={{ __html: brandingPeriod.description }}
+          />
+        </div>
+      ) : null}
       <div className="EventsCalender">
         {uiEvents.map(({ sectionTitle, parts }) => (
           // sectionTitle might not be unique in the future
           <div className="EventsCalender__section" key={sectionTitle}>
             <h2 className="EventsCalender__section-title">{sectionTitle}</h2>
-            {parts.map(chunk => (
+            {parts.map((chunk) => (
               <div className="EventsCalender__section-items">
                 {chunk.map((part: EventPart, index: number) => {
                   const isFirstOfDate =
@@ -101,14 +113,14 @@ function EventsCalender({
                                 ? ' - Do MMMM'
                                 : isBefore(part.date, weekFromNow)
                                   ? 'Do MMMM'
-                                  : 'MMMM'
+                                  : 'MMMM',
                             )}
                           </span>
                         </h3>
                       ) : (
                         <h3
                           className={cx(
-                            'EventsCalender__item-date-kicker EventsCalender__item-date-kicker--continuation'
+                            'EventsCalender__item-date-kicker EventsCalender__item-date-kicker--continuation',
                           )}
                         >
                           {formatDate(part.date, 'dddd Do MMMM')}
@@ -129,7 +141,7 @@ function EventsCalender({
 
 const EventsList = compose<OwnProps, OwnProps>(
   graphql<any, OwnProps>(EventListingsQuery, {
-    options: props => {
+    options: (props) => {
       return {
         variables: {
           filter: props.filter || {
@@ -140,12 +152,12 @@ const EventsList = compose<OwnProps, OwnProps>(
       };
     },
   }),
-  apolloHandler()
+  apolloHandler(),
 )(EventsCalender);
 
 const EventsBrandingPeriod = compose<OwnProps, OwnProps>(
   graphql<any, OwnProps>(EventListingsBrandingPeriodQuery, {
-    options: props => {
+    options: (props) => {
       const brandSlug = props.match.params.brandSlug;
       return {
         variables: {
@@ -159,7 +171,7 @@ const EventsBrandingPeriod = compose<OwnProps, OwnProps>(
       };
     },
   }),
-  apolloHandler()
+  apolloHandler(),
 )(EventsCalender);
 
-export { EventsList, EventsBrandingPeriod }
+export { EventsList, EventsBrandingPeriod };

@@ -1,17 +1,15 @@
 import React from 'react';
 import cx from 'classnames';
 import ClickOutside from 'react-onclickout';
-import client, {ClientAuth} from '~libs/user';
+import client, { ClientAuth } from '~libs/user';
 import Hydroleaf from '~components/HydroLeaf';
 
 enum DropdownState {
   Page,
-  Admin
+  Admin,
 }
 
-interface IProps {
-
-}
+interface IProps {}
 
 interface IState {
   isLoaded: boolean;
@@ -31,34 +29,39 @@ class UserBar extends React.Component<IProps, IState> {
     this.state = {
       isLoaded: false,
       dropdownOpen: null,
-      auth: null
+      auth: null,
     };
 
-    this.handleToggleDropdown = dropdown =>
+    this.handleToggleDropdown = (dropdown) =>
       this.setState({
         dropdownOpen: dropdown === this.state.dropdownOpen ? null : dropdown,
       });
     this.handleTogglePageDropdown = this.handleToggleDropdown.bind(
       this,
-      DropdownState.Page
+      DropdownState.Page,
     );
     this.handleToggleAdminDropdown = this.handleToggleDropdown.bind(
       this,
-      DropdownState.Admin
+      DropdownState.Admin,
     );
-    this.handleCloseDropdown = (e: React.MouseEvent<HTMLElement | Document>) => {
-      if (e.currentTarget.parentElement && e.currentTarget.parentElement.classList.contains('UserBar__item')) {
+    this.handleCloseDropdown = (
+      e: React.MouseEvent<HTMLElement | Document>,
+    ) => {
+      if (
+        e.currentTarget.parentElement &&
+        e.currentTarget.parentElement.classList.contains('UserBar__item')
+      ) {
         return;
       }
 
-      this.setState({ dropdownOpen: null })
+      this.setState({ dropdownOpen: null });
     };
   }
 
   componentDidMount() {
     setTimeout(() => {
       const { auth } = client || { auth: null };
-      this.setState(state => ({
+      this.setState((state) => ({
         ...state,
         isLoaded: true,
         auth,
@@ -67,22 +70,13 @@ class UserBar extends React.Component<IProps, IState> {
   }
 
   renderLoaded() {
-    const {
-      auth,
-      dropdownOpen,
-    } = this.state;
+    const { auth, dropdownOpen } = this.state;
 
     if (!auth) {
       return null;
     }
 
-    const {
-      isLoggedIn,
-      profile,
-      admin,
-      page,
-      actionBound,
-    } = auth;
+    const { isLoggedIn, profile, admin, page, actionBound } = auth;
 
     if (isLoggedIn) {
       return (
@@ -102,29 +96,31 @@ class UserBar extends React.Component<IProps, IState> {
                 'UserBar__item UserBar__item-admin UserBar__admin-menu',
                 {
                   'UserBar__item--open': true,
-                }
+                },
               )}
             >
               <button onClick={this.handleToggleAdminDropdown} type="button">
                 Admin
               </button>
-              {dropdownOpen === DropdownState.Admin ? <ClickOutside onClickOut={this.handleCloseDropdown}>
-                <div className={cx('UserBar__item-dropdown')}>
-                  <ul className="UserBar__dropdown-list">
-                    {admin.admin.map(item => (
-                      <li key={item.name}>
-                        <a href={item.link}>{item.name}</a>
-                      </li>
-                    ))}
-                    <hr />
-                    {admin.orgs.map(item => (
-                      <li key={item.name}>
-                        <a href={item.link}>{item.name}</a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </ClickOutside>: null}
+              {dropdownOpen === DropdownState.Admin ? (
+                <ClickOutside onClickOut={this.handleCloseDropdown}>
+                  <div className={cx('UserBar__item-dropdown')}>
+                    <ul className="UserBar__dropdown-list">
+                      {admin.admin.map((item) => (
+                        <li key={item.name}>
+                          <a href={item.link}>{item.name}</a>
+                        </li>
+                      ))}
+                      <hr />
+                      {admin.orgs.map((item) => (
+                        <li key={item.name}>
+                          <a href={item.link}>{item.name}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </ClickOutside>
+              ) : null}
             </li>
           ) : null}
           {page !== null ? (
@@ -133,27 +129,30 @@ class UserBar extends React.Component<IProps, IState> {
                 'UserBar__item UserBar__item-admin UserBar__admin-menu',
                 {
                   'UserBar__item--open': true,
-                }
+                },
               )}
             >
               <button onClick={this.handleTogglePageDropdown} type="button">
                 Page
               </button>
-              {dropdownOpen === DropdownState.Page ? <ClickOutside onClickOut={this.handleCloseDropdown}>
-                <div
-                  className={cx('UserBar__item-dropdown', {
-                    'UserBar__item--open': dropdownOpen === DropdownState.Page,
-                  })}
-                >
-                  <ul className="UserBar__dropdown-list">
-                    {page.items.map(item => (
-                      <li key={item.name}>
-                        <a href={item.link}>{item.name}</a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </ClickOutside> : null}
+              {dropdownOpen === DropdownState.Page ? (
+                <ClickOutside onClickOut={this.handleCloseDropdown}>
+                  <div
+                    className={cx('UserBar__item-dropdown', {
+                      'UserBar__item--open':
+                        dropdownOpen === DropdownState.Page,
+                    })}
+                  >
+                    <ul className="UserBar__dropdown-list">
+                      {page.items.map((item) => (
+                        <li key={item.name}>
+                          <a href={item.link}>{item.name}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </ClickOutside>
+              ) : null}
             </li>
           ) : null}
 

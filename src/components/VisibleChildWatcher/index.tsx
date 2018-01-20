@@ -1,5 +1,5 @@
 import React from 'react';
-import {throttle, orderBy} from 'lodash';
+import { throttle, orderBy } from 'lodash';
 
 interface IChildWrapperProps {
   handleRef(el: HTMLDivElement): void;
@@ -35,19 +35,19 @@ class VisibleChildWatcher extends React.Component<IProps> {
           return [key, score];
         });
 
-        const scoresRanked = orderBy(scores, [score => score[1]]);
+        const scoresRanked = orderBy(scores, [(score) => score[1]]);
 
         this.props.onChange(`${scoresRanked[0][0]}`);
-      }, 300)
+      }, 300),
     );
   }
 
   render() {
     return (
       <div>
-        {React.Children.map(this.props.children, item => (
+        {React.Children.map(this.props.children, (item) => (
           <ChildWrapper
-            handleRef={el => {
+            handleRef={(el) => {
               this.childEls[(item as any).key] = el;
             }}
           >

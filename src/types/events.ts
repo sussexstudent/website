@@ -1,12 +1,11 @@
-import {StudentGroup} from "~components/OrganisationGrid";
-import {Connection} from "~components/falmer/types";
+import { StudentGroup } from '~components/OrganisationGrid';
+import { Connection } from '~components/falmer/types';
 
 export enum EventPartType {
   Contained,
   SpanStart,
   SpanEnd,
 }
-
 
 export enum TicketType {
   NA = 'NA',
@@ -28,7 +27,8 @@ export interface ImageLabel {
   name: string;
 }
 
-export interface FalmerImage { // todo place higher
+export interface FalmerImage {
+  // todo place higher
   resource: string;
   title: string;
   labels: Connection<ImageLabel>;
@@ -70,18 +70,17 @@ export interface Event {
 
   cost: TicketCost;
   ticketLevel: TicketLevel | string; // todo
-  ticketType?: TicketType
+  ticketType?: TicketType;
 
   bundle: null | {
     name: string;
-  }
+  };
 
   studentGroup?: StudentGroup;
 
   children: Array<Event>;
   parent: Event;
 }
-
 
 export interface EventPart {
   type: EventPartType;

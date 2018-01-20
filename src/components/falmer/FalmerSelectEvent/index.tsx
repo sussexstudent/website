@@ -5,10 +5,10 @@ import formatDate from 'date-fns/format';
 import AllEventsQuery from './AllEvents.graphql';
 import Loader from '../../Loader';
 import FalmerDataList, { Cell, Row, HeaderCell } from '../FalmerDataList/index';
-import {ApolloHandlerChildProps} from "~components/apolloHandler";
-import {Connection} from "~components/falmer/types";
-import {Event} from "../../../types/events";
-import {compose} from 'recompose';
+import { ApolloHandlerChildProps } from '~components/apolloHandler';
+import { Connection } from '~components/falmer/types';
+import { Event } from '../../../types/events';
+import { compose } from 'recompose';
 // import FauxRouterLink from '../../FauxRouterLink';
 // const FalmerEventCard = ({ event }) =>
 //   <div className="FalmerCard FalmerCard--standard">
@@ -23,10 +23,10 @@ interface OwnProps {
 }
 
 interface Result {
-  allEvents: Connection<Event>
+  allEvents: Connection<Event>;
 }
 
-type IProps = ApolloHandlerChildProps<OwnProps, Result>
+type IProps = ApolloHandlerChildProps<OwnProps, Result>;
 
 function FalmerEvents({ data: { loading, allEvents }, onSelect }: IProps) {
   return (
@@ -38,8 +38,8 @@ function FalmerEvents({ data: { loading, allEvents }, onSelect }: IProps) {
         <Loader />
       ) : (
         <FalmerDataList
-          items={allEvents.edges.map(edge => edge.node)}
-          header={rowState => (
+          items={allEvents.edges.map((edge) => edge.node)}
+          header={(rowState) => (
             <Row {...rowState}>
               <HeaderCell>Title</HeaderCell>
               <HeaderCell>Start time</HeaderCell>
@@ -79,6 +79,4 @@ function FalmerEvents({ data: { loading, allEvents }, onSelect }: IProps) {
   );
 }
 
-export default compose<IProps, OwnProps>(
-  graphql(AllEventsQuery)
-)(FalmerEvents);
+export default compose<IProps, OwnProps>(graphql(AllEventsQuery))(FalmerEvents);

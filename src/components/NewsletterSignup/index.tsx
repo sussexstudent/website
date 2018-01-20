@@ -1,15 +1,14 @@
 import React from 'react';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
-import {Store} from "~libs/store";
+import { Store } from '~libs/store';
 
 const LS_KEY = 'newsletter:freshers18';
 const NEWSLETTER_ENDPOINT = `${getFalmerEndpoint()}/newsletters/freshers18/members`;
 
-
 const OPTIONS_MERGE: {
   [key: string]: {
     [key: string]: string;
-  }
+  };
 } = {
   LEVEL: {
     Undergraduate: 'Undergraduate',
@@ -37,11 +36,7 @@ enum FormState {
   Error = 'Error',
 }
 
-
-
-interface IProps {
-
-}
+interface IProps {}
 
 interface IState {
   currentState: FormState;
@@ -51,9 +46,8 @@ interface IState {
     address: string;
     name: string;
     status: string;
-  }
+  };
 }
-
 
 const RESPONSE_TEXT: {
   [state: string]: (data: IState['data']) => string;
@@ -67,9 +61,9 @@ const RESPONSE_TEXT: {
   [FormState.LevelSuccess]: () => `Great. Where are you coming from?`,
   [FormState.FeeSuccess]: (data) => `See you in September, ${data.name}!`,
   [FormState.Complete]: () => `See you in September!`,
-  [FormState.Error]: () => `We haven't been able to add you. Please try again later.`,
+  [FormState.Error]: () =>
+    `We haven't been able to add you. Please try again later.`,
 };
-
 
 class NewsletterSignup extends React.Component<IProps, IState> {
   private handleFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -95,7 +89,7 @@ class NewsletterSignup extends React.Component<IProps, IState> {
           status: '',
         },
       },
-      Store.get(LS_KEY, {})
+      Store.get(LS_KEY, {}),
     );
 
     this.handleEmailAddress = ({ currentTarget: { value } }) =>
@@ -115,7 +109,7 @@ class NewsletterSignup extends React.Component<IProps, IState> {
           email_address: this.state.data.address,
         }),
       })
-        .then(res => Promise.all([res, res.json()]))
+        .then((res) => Promise.all([res, res.json()]))
         .then(([res, data]) => {
           console.log(data);
           if (res.status === 200) {
@@ -153,7 +147,7 @@ class NewsletterSignup extends React.Component<IProps, IState> {
           fields: fieldMap,
         }),
       })
-        .then(res => ({ res, data: res.json() }))
+        .then((res) => ({ res, data: res.json() }))
         .then(({ res }) => {
           if (res.status === 200) {
             this.setState({
@@ -183,7 +177,7 @@ class NewsletterSignup extends React.Component<IProps, IState> {
         STATUS: this.state.data.status,
       });
 
-    this.handleLevel = level => {
+    this.handleLevel = (level) => {
       fieldUpdate(FormState.LevelSuccess, {
         LEVEL: level,
       });
@@ -195,7 +189,7 @@ class NewsletterSignup extends React.Component<IProps, IState> {
       });
     };
 
-    this.handleFormSubmit = e => {
+    this.handleFormSubmit = (e) => {
       e.preventDefault();
       if (
         this.state.currentState === FormState.Initial ||
@@ -218,7 +212,8 @@ class NewsletterSignup extends React.Component<IProps, IState> {
           {currentState ? RESPONSE_TEXT[currentState](data) : null}
         </div>
         <div>
-          {currentState === FormState.Initial || currentState === FormState.InitialFocus ? (
+          {currentState === FormState.Initial ||
+          currentState === FormState.InitialFocus ? (
             <div>
               <form
                 className="NewsletterSignup__form"
@@ -264,7 +259,7 @@ class NewsletterSignup extends React.Component<IProps, IState> {
           {currentState === FormState.NameSuccess ? (
             <div className="NewsletterSignup__form">
               <ul className="NewsletterSignup__options">
-                {Object.keys(OPTIONS_MERGE.LEVEL).map(key => (
+                {Object.keys(OPTIONS_MERGE.LEVEL).map((key) => (
                   <li className="NewsletterSignup__options-item">
                     <button
                       type="button"
@@ -282,7 +277,7 @@ class NewsletterSignup extends React.Component<IProps, IState> {
           {currentState === FormState.LevelSuccess ? (
             <div className="NewsletterSignup__form">
               <ul className="NewsletterSignup__options">
-                {Object.keys(OPTIONS_MERGE.FEE).map(key => (
+                {Object.keys(OPTIONS_MERGE.FEE).map((key) => (
                   <li className="NewsletterSignup__options-item">
                     <button
                       type="button"
@@ -301,6 +296,5 @@ class NewsletterSignup extends React.Component<IProps, IState> {
     );
   }
 }
-
 
 export { NewsletterSignup };

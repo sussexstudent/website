@@ -1,8 +1,10 @@
 import React from 'react';
 import qs from 'query-string';
 import cx from 'classnames';
-import {debounce, orderBy} from 'lodash';
-import SearchResult, {SearchResult as ISearchResult} from '~components/SearchResult';
+import { debounce, orderBy } from 'lodash';
+import SearchResult, {
+  SearchResult as ISearchResult,
+} from '~components/SearchResult';
 import SearchFilterNav from '~components/SearchFilterNav';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 
@@ -19,7 +21,7 @@ enum SearchAreas {
 /* eslint-disable */
 
 function getPayloadMetadata(payload: { [key: string]: Array<Object> }) {
-  const areaTitlesMap: {[key: string]: string} = {
+  const areaTitlesMap: { [key: string]: string } = {
     [SearchAreas.Top]: 'Top results',
     [SearchAreas.Groups]: 'Sports & Societies',
     [SearchAreas.News]: 'News',
@@ -51,13 +53,22 @@ function getPayloadMetadata(payload: { [key: string]: Array<Object> }) {
   });
 
   const orderedAreas = orderBy(
-    [SearchAreas.Top, SearchAreas.Groups, SearchAreas.News, SearchAreas.Events, SearchAreas.Pages].map(mk),
-    [i => i.weight, i => i.title],
-    ['desc', 'asc']
+    [
+      SearchAreas.Top,
+      SearchAreas.Groups,
+      SearchAreas.News,
+      SearchAreas.Events,
+      SearchAreas.Pages,
+    ].map(mk),
+    [(i) => i.weight, (i) => i.title],
+    ['desc', 'asc'],
   );
 
   const hasResults =
-    Object.keys(areaTitlesMap).reduce((acc, key) => payload[key].length + acc, 0) > 0;
+    Object.keys(areaTitlesMap).reduce(
+      (acc, key) => payload[key].length + acc,
+      0,
+    ) > 0;
   return {
     orderedAreas,
     hasResults,
@@ -99,7 +110,7 @@ class SearchPage extends React.Component<IProps, IState> {
     this.handleNotFoundDesiredPage = this.handleNotFoundDesiredPage.bind(this);
     this.loadQueryResultsDebounced = debounce(
       this.loadQueryResults.bind(this),
-      350
+      350,
     );
 
     this.state = {
@@ -151,11 +162,11 @@ class SearchPage extends React.Component<IProps, IState> {
           Accept: 'application/json, text/plain, */*',
         },
       })
-      .then(res => {
+      .then((res) => {
         t.done();
         return res.json();
       })
-      .then(payload => {
+      .then((payload) => {
         if (query === this.props.query) {
           didFinish = true;
           const { orderedAreas, hasResults } = getPayloadMetadata(payload);
@@ -181,13 +192,13 @@ class SearchPage extends React.Component<IProps, IState> {
     this.setState({ page: 1 }, () => this.handleUpdate());
   }
 
-  handleUpdate(forceSearchTerm: string | null  = null) {
+  handleUpdate(forceSearchTerm: string | null = null) {
     const query = forceSearchTerm === null ? this.props.query : forceSearchTerm;
 
     if (query !== '') {
       this.loadQueryResultsDebounced(query);
     } else {
-      this.setState(state => ({
+      this.setState((state) => ({
         ...state,
         results: null,
         isLoading: false,
@@ -211,12 +222,7 @@ class SearchPage extends React.Component<IProps, IState> {
   }
 
   renderMeta() {
-    const {
-      isLoading,
-      hasResults,
-      orderedAreas,
-      currentArea,
-    } = this.state;
+    const { isLoading, hasResults, orderedAreas, currentArea } = this.state;
     let content;
     if (isLoading) {
       content = <span className="SearchMeta__note">Loading…</span>;
@@ -253,7 +259,7 @@ class SearchPage extends React.Component<IProps, IState> {
         {this.renderMeta()}
         <div
           className="Container--for-search"
-          ref={ref => (this.searchContainerRef = ref)}
+          ref={(ref) => (this.searchContainerRef = ref)}
         >
           <div className="Container">
             {results !== null && results[currentArea].length > 0 ? (
@@ -262,7 +268,7 @@ class SearchPage extends React.Component<IProps, IState> {
                   'ResultsList--stale': isLoading,
                 })}
               >
-                {results[currentArea].map(item => (
+                {results[currentArea].map((item) => (
                   <SearchResult key={item} item={resultItems[item]} />
                 ))}
               </ul>
@@ -276,7 +282,7 @@ class SearchPage extends React.Component<IProps, IState> {
   render() {
     return (
       <div
-        ref={ref => {
+        ref={(ref) => {
           this.containerRef = ref;
         }}
       >

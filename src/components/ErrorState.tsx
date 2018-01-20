@@ -1,7 +1,8 @@
 import React from 'react';
 import SadFaceIcon from '../icons/sad-face.svg';
 
-const refreshPage = () => typeof window !== 'undefined' && window.location.reload();
+const refreshPage = () =>
+  typeof window !== 'undefined' && window.location.reload();
 
 const ErrorState: React.SFC<{}> = () => (
   <div className="Stonewall">
@@ -9,10 +10,10 @@ const ErrorState: React.SFC<{}> = () => (
     <h1 className="type-canon">Something went wrong.</h1>
     <p className="type-pica">Something went wrong while making this page.</p>
     <p className="type-pica">We've been notified of what happened.</p>
-    <button className="Button type-great-primer" onClick={refreshPage}>Refresh this page</button>
+    <button className="Button type-great-primer" onClick={refreshPage}>
+      Refresh this page
+    </button>
   </div>
 );
 
-
 export { ErrorState };
-

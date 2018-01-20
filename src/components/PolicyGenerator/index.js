@@ -9,11 +9,11 @@ let sharing = { twitter: () => '' };
 
 if (typeof window === 'undefined') {
 } else {
-  openSocial = url => {
+  openSocial = (url) => {
     window.open(
       url,
       '',
-      'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=522,width=556'
+      'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=522,width=556',
     );
   };
 
@@ -44,7 +44,7 @@ if (typeof window === 'undefined') {
         link = window.location.href;
       }
       const url = `https://www.facebook.com/v2.8/dialog/share?href=${encodeURIComponent(
-        link
+        link,
       )}&app_id=696155863910264`;
       return url;
     },
@@ -56,7 +56,7 @@ if (typeof window === 'undefined') {
       }
       const url =
         `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-          link
+          link,
         )}&text=${encodeURIComponent(text)}` + `&hashtags=${hashtags}`;
 
       return url;
@@ -78,7 +78,7 @@ const generation = createGeneration([
 ]);
 
 console.log(
-  `[generation-game] total combinations: ${generation.totalCombinations}`
+  `[generation-game] total combinations: ${generation.totalCombinations}`,
 );
 
 function capitaliseLine(line) {
@@ -112,9 +112,9 @@ class PolicyGenerator extends React.Component {
     openSocial(
       sharing.twitter(
         `"${capitaliseLine(
-          this.state.generated.output
-        )}" via the @ussu Policy Bot.`
-      )
+          this.state.generated.output,
+        )}" via the @ussu Policy Bot.`,
+      ),
     );
   }
 

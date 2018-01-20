@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from '../../Image';
-import {FalmerImage} from "../../../types/events";
+import { FalmerImage } from '../../../types/events';
 
 interface IProps {
-  image: FalmerImage
+  image: FalmerImage;
 }
 
 function ImageTreatmentPreview({ image }: IProps) {
@@ -28,7 +28,7 @@ function ImageTreatmentPreview({ image }: IProps) {
   return (
     <div className="ImageTreatmentPreview">
       <ul className="ImageTreatmentPreview__list">
-        {treatments.map(treatment => (
+        {treatments.map((treatment) => (
           <li>
             <figure className="ImageTreatmentPreview__figure">
               <div

@@ -37,7 +37,7 @@
     flex-wrap: wrap;
 
     & .EventsCalender__part-container:first-child,
-      .EventsCalender__item-date-kicker {
+    .EventsCalender__item-date-kicker {
       font-size: 1.3rem;
     }
   }

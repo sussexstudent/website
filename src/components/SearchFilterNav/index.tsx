@@ -14,7 +14,12 @@ interface IItemProps {
   option: Option;
 }
 
-function SearchFilterItem({ currentValue, option, onSelect, itemKey }: IItemProps) {
+function SearchFilterItem({
+  currentValue,
+  option,
+  onSelect,
+  itemKey,
+}: IItemProps) {
   const handleClick = onSelect.bind(null, option.key);
   return (
     <li
@@ -26,7 +31,7 @@ function SearchFilterItem({ currentValue, option, onSelect, itemKey }: IItemProp
       onClick={option.count > 0 ? handleClick : () => {}}
     >
       {option.title}
-      {itemKey !== 'top' ? (<span> ({option.count})</span>) : null}
+      {itemKey !== 'top' ? <span> ({option.count})</span> : null}
     </li>
   );
 }
@@ -34,13 +39,13 @@ function SearchFilterItem({ currentValue, option, onSelect, itemKey }: IItemProp
 interface IProps {
   onSelect(key: any): void;
   value: any;
-  options: Array<Option>
+  options: Array<Option>;
 }
 
 function SearchFilterNav({ onSelect, value, options }: IProps) {
   return (
     <ul className="SearchFilterNav">
-      {options.map(option => (
+      {options.map((option) => (
         <SearchFilterItem
           key={option.key}
           itemKey={option.key}

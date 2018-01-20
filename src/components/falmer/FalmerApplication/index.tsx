@@ -8,8 +8,8 @@ import { requestAuthToken } from '~falmer/ducks/auth';
 import FalmerHeader from '../FalmerHeader';
 import Loader from '../../Loader';
 import LoadableLoading from '../../LoadableLoading';
-import {RootState} from "~components/falmer/types";
-import {compose} from 'recompose';
+import { RootState } from '~components/falmer/types';
+import { compose } from 'recompose';
 
 const LoadableMedia = Loadable({
   loader: () => import(/* webpackChunkName: "Media" */ '../FalmerMedia'),
@@ -76,9 +76,12 @@ class FalmerApplication extends React.Component<IProps> {
 
 export default compose<IProps, {}>(
   withRouter,
-  connect((state: RootState) => ({
-    isAuthenticated: state.auth.user !== null,
-  }), {
-    requestAuthToken,
-  }),
+  connect(
+    (state: RootState) => ({
+      isAuthenticated: state.auth.user !== null,
+    }),
+    {
+      requestAuthToken,
+    },
+  ),
 )(FalmerApplication);

@@ -29,11 +29,11 @@ interface IProps {
   assets: {
     main: {
       js: string;
-    }
+    };
     vendor: {
       js: string;
-    }
-  }
+    };
+  };
 }
 
 const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => (
@@ -54,7 +54,10 @@ const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => (
       {/* <PrefooterMenu /> */}
       <Footer />
       <div className="AdvertBar AdvertBar--donatello">
-        <a className="AdvertBar__advert" href="http://www.donatello.co.uk/?utm_source=ussu&utm_medium=footer">
+        <a
+          className="AdvertBar__advert"
+          href="http://www.donatello.co.uk/?utm_source=ussu&utm_medium=footer"
+        >
           <DonatelloBanner />
         </a>
       </div>

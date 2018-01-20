@@ -53,23 +53,23 @@ function linkListener(e) {
 }
 
 if (currentUser.fundraising.blocking) {
-  [...document.querySelectorAll('.AdvertBar')].forEach(advert => {
+  [...document.querySelectorAll('.AdvertBar')].forEach((advert) => {
     advert.remove();
   });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  [...document.querySelectorAll('a')].forEach(e => {
+  [...document.querySelectorAll('a')].forEach((e) => {
     e.addEventListener('click', linkListener);
   });
 
   if (document.querySelector('.QuoteSlips')) {
-    [...document.querySelectorAll('.QuoteSlips')].forEach(quoteSlip => {
+    [...document.querySelectorAll('.QuoteSlips')].forEach((quoteSlip) => {
       [...quoteSlip.querySelector('.QuoteSlips__questions').children].forEach(
-        li => {
+        (li) => {
           li.addEventListener('click', () => {
             const answerContainer = quoteSlip.querySelector(
-              '.QuoteSlips__answer-container'
+              '.QuoteSlips__answer-container',
             );
             const content = li.querySelector('.QuoteSlips__item-answer')
               .innerHTML;
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="QuoteSlips__answer-content">${content}</div>
           `;
           });
-        }
+        },
       );
     });
   }
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // todo dev detection
   if (window.location.hostname === 'localhost') {
     import(/* webpackChunkName: "compoptions.module" */ '../../modules/compconfig').then(
-      module => module.default()
+      (module) => module.default(),
     );
   }
 
@@ -101,20 +101,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // TODO: update homepage news selector
   if (document.querySelector('.app__news')) {
     import(/* webpackChunkName: "homepageNews.module" */ '../../modules/homepageNews').then(
-      module => module.default()
+      (module) => module.default(),
     );
   }
 
   if (document.querySelector('.app__news_page')) {
     import(/* webpackChunkName: "newsPage.module" */ '../../modules/newsPage').then(
-      module => module.default()
+      (module) => module.default(),
     );
   }
 
   // Module: cookie_message
   if (localStorage.getItem('su_cookie') !== '1') {
     import(/* webpackChunkName: "cookie_message.module" */ '../../modules/cookie_message').then(
-      module => module.default()
+      (module) => module.default(),
     );
   }
 });

@@ -1,10 +1,11 @@
-import {hasTouch} from "~libs/features/hasTouch";
-
+import { hasTouch } from '~libs/features/hasTouch';
 
 const features = {
-  'touch': hasTouch,
+  touch: hasTouch,
 };
 
 export function addClassesForFeatures() {
-  Object.entries(features).forEach(([name, detection]) => document.body.classList.add(`feature-${detection() ? '' : 'no-'}${name}`))
+  Object.entries(features).forEach(([name, detection]) =>
+    document.body.classList.add(`feature-${detection() ? '' : 'no-'}${name}`),
+  );
 }

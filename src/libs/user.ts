@@ -1,4 +1,4 @@
-import {has, get} from 'lodash';
+import { has, get } from 'lodash';
 
 interface MenuItem {
   name: string;
@@ -12,14 +12,16 @@ function getAdminItems() {
     return null;
   }
 
-  const adminItems = Array.from(admin.querySelectorAll<HTMLAnchorElement>('#ulAdmin li a'))
-    .map(item => ({
+  const adminItems = Array.from(
+    admin.querySelectorAll<HTMLAnchorElement>('#ulAdmin li a'),
+  ).map((item) => ({
     name: item.innerText,
     link: item.href,
   }));
 
-  const orgItems = Array.from(admin.querySelectorAll<HTMLAnchorElement>('#ulOrgs li a'))
-    .map(item => ({
+  const orgItems = Array.from(
+    admin.querySelectorAll<HTMLAnchorElement>('#ulOrgs li a'),
+  ).map((item) => ({
     name: item.innerText,
     link: item.href,
   }));
@@ -37,8 +39,9 @@ function getPageItems() {
     return null;
   }
 
-  const items = Array.from(page.querySelectorAll<HTMLAnchorElement>('li a'))
-    .map((item) => ({
+  const items = Array.from(
+    page.querySelectorAll<HTMLAnchorElement>('li a'),
+  ).map((item) => ({
     name: item.innerText,
     link: item.href,
   }));
@@ -74,7 +77,9 @@ function auth() {
 function det() {
   if (localStorage.getItem('blocking') != null) {
     try {
-      (window as any).blocking = JSON.parse(localStorage.getItem('blocking') || '{"blocking": false}').enabled;
+      (window as any).blocking = JSON.parse(
+        localStorage.getItem('blocking') || '{"blocking": false}',
+      ).enabled;
       return (window as any).blocking;
     } catch (e) {
       (window as any).blocking = false;
@@ -113,19 +118,19 @@ export interface ClientAuth {
     lastName: string;
     uuid: string;
   };
-  admin: null |{
+  admin: null | {
     admin: MenuItem[];
-    orgs: MenuItem[]
+    orgs: MenuItem[];
   };
   page: null | {
-    items: MenuItem[]
+    items: MenuItem[];
   };
-  actionBound(): void
+  actionBound(): void;
 }
 
 interface Client {
   fundraising: ClientFundraising;
-  auth: ClientAuth
+  auth: ClientAuth;
 }
 
 export default (function currentUser(): Client | null {

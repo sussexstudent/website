@@ -14,7 +14,7 @@ export interface RootState {
 }
 
 export interface Node<T> {
-  node: T
+  node: T;
 }
 
 export interface Connection<T> {
@@ -22,6 +22,5 @@ export interface Connection<T> {
   pageInfo: {
     hasNextPage: boolean;
     endCursor: string;
-  }
+  };
 }
-

@@ -15,7 +15,7 @@ import Button from '../Button';
 import DetailPageQuery from './EventsDetailPage.graphql';
 import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
 import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
-import {Event, TicketType} from "../../types/events";
+import { Event, TicketType } from '../../types/events';
 
 import CalendarIcon from '../../icons/events-calender.svg';
 import ClockIcon from '../../icons/events-clock.svg';
@@ -23,9 +23,9 @@ import CollectionIcon from '../../icons/events-collection.svg';
 import CollectionParentIcon from '../../icons/events-collection-parent.svg';
 import PinIcon from '../../icons/events-pin.svg';
 import SocietyIcon from '../../icons/events-society.svg';
-import apolloHandler from "~components/apolloHandler";
-import {compose} from 'recompose';
-import {generateStylesForBrand} from "~components/EventsApplication/utils";
+import apolloHandler from '~components/apolloHandler';
+import { compose } from 'recompose';
+import { generateStylesForBrand } from '~components/EventsApplication/utils';
 
 function isSameLogicalSleepDay(startDate: Date, endDate: Date) {
   if (isSameDay(startDate, endDate)) {
@@ -44,9 +44,7 @@ interface RouteParams {
   eventId: number;
 }
 
-interface OwnProps extends RouteComponentProps<RouteParams> {
-
-}
+interface OwnProps extends RouteComponentProps<RouteParams> {}
 
 type IProps = OwnProps & ChildProps<OwnProps, any>;
 
@@ -133,7 +131,13 @@ class EventDetailPage extends React.Component<IProps> {
                 </div>
               ) : null}
               {event.brand !== null ? (
-                <Link to={`/whats-on/collection/${event.brand.slug}`} className="EventDetail__brand" style={generateStylesForBrand(event.brand)}>{event.brand.name}</Link>
+                <Link
+                  to={`/whats-on/collection/${event.brand.slug}`}
+                  className="EventDetail__brand"
+                  style={generateStylesForBrand(event.brand)}
+                >
+                  {event.brand.name}
+                </Link>
               ) : null}
               {event.bundle !== null ? (
                 <div className="EventDetail__bundle">{event.bundle.name}</div>
@@ -144,9 +148,7 @@ class EventDetailPage extends React.Component<IProps> {
                   <ul className="EventDetail__details-list">
                     {event.parent ? (
                       <li className="EventDetail__details-list-item">
-                        <CollectionParentIcon
-                          className="EventDetail__icon"
-                        />
+                        <CollectionParentIcon className="EventDetail__icon" />
                         Part of{' '}
                         <Link
                           to={`/whats-on/${event.parent.slug}-${
@@ -158,35 +160,27 @@ class EventDetailPage extends React.Component<IProps> {
                       </li>
                     ) : null}
                     <li className="EventDetail__details-list-item">
-                      <CalendarIcon
-                        className="EventDetail__icon"
-                      />
+                      <CalendarIcon className="EventDetail__icon" />
                       {formatDate(startDate, 'dddd D MMMM YYYY')}
                       {!isSameLogicalSleepDay(startDate, endDate)
                         ? ` - ${formatDate(endDate, 'dddd D MMMM YYYY')}`
                         : ''}
                     </li>
                     <li className="EventDetail__details-list-item">
-                      <ClockIcon
-                        className="EventDetail__icon"
-                      />
+                      <ClockIcon className="EventDetail__icon" />
                       {`${minimalisticTimeRenderer(
-                        startDate
+                        startDate,
                       )} – ${minimalisticTimeRenderer(endDate)}`}
                     </li>
                     {event.locationDisplay !== '' || event.venue !== null ? (
                       <li className="EventDetail__details-list-item">
-                        <PinIcon
-                          className="EventDetail__icon"
-                        />
+                        <PinIcon className="EventDetail__icon" />
                         {event.locationDisplay || event.venue.name}
                       </li>
                     ) : null}
                     {event.studentGroup !== null ? (
                       <li className="EventDetail__details-list-item">
-                        <SocietyIcon
-                          className="EventDetail__icon"
-                        />
+                        <SocietyIcon className="EventDetail__icon" />
                         Organised by{' '}
                         <a href={event.studentGroup.link}>
                           {event.studentGroup.name}
@@ -195,9 +189,7 @@ class EventDetailPage extends React.Component<IProps> {
                     ) : null}
                     {event.children.length > 0 ? (
                       <li className="EventDetail__details-list-item">
-                        <CollectionIcon
-                          className="EventDetail__icon"
-                        />
+                        <CollectionIcon className="EventDetail__icon" />
                         <a href="#sub-events">
                           {event.children.length} sub-events
                         </a>
@@ -213,9 +205,15 @@ class EventDetailPage extends React.Component<IProps> {
                   ) : (
                     <div>{event.shortDescription}</div>
                   )}
-                  {event.brand && event.brand.eventAppend ? <div>
-                    <div dangerouslySetInnerHTML={{ __html: event.brand.eventAppend }} />
-                  </div> : null}
+                  {event.brand && event.brand.eventAppend ? (
+                    <div>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: event.brand.eventAppend,
+                        }}
+                      />
+                    </div>
+                  ) : null}
                 </div>
               </div>
             </ContentCard>
@@ -230,7 +228,9 @@ class EventDetailPage extends React.Component<IProps> {
             {event.ticketType === TicketType.MSL ? (
               <ContentCard>
                 <h3>Tickets</h3>
-                <Button href={`${event.ticketData}#tickets`}>Buy tickets</Button>
+                <Button href={`${event.ticketData}#tickets`}>
+                  Buy tickets
+                </Button>
               </ContentCard>
             ) : null}
             <ContentCard>

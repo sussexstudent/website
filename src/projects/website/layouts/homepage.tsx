@@ -2,8 +2,8 @@ import React from 'react';
 import TweetList from '~components/TweetList';
 import HomepageEventsList from '~components/HomepageEventsList';
 import AdvertBar from '~components/AdvertBar';
-import {ContentPage} from "~components/content/ContentPage";
-import {Bento} from "~components/Bento";
+import { ContentPage } from '~components/content/ContentPage';
+import { Bento } from '~components/Bento';
 
 const Homepage = () => (
   <div>

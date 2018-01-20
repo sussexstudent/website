@@ -10,7 +10,7 @@ import MenuIcon from '../MenuIcon';
 import SearchIcon from '../SearchIcon';
 import CrossIcon from '../CrossIcon';
 import SocialMenu from '../SocialMenu';
-import {MenuItem} from "../../types/skeleton";
+import { MenuItem } from '../../types/skeleton';
 
 function getColor() {
   let index;
@@ -54,17 +54,15 @@ function getActiveItem() {
   return null;
 }
 
-interface IProps {
-
-}
+interface IProps {}
 
 interface IState {
-  isSideMenuOpen: boolean,
-  isAdminOpen: boolean,
-  isSearchOpen: boolean,
-  userData: null,
-  logoColor: string | null,
-  activeItem: MenuItem | null,
+  isSideMenuOpen: boolean;
+  isAdminOpen: boolean;
+  isSearchOpen: boolean;
+  userData: null;
+  logoColor: string | null;
+  activeItem: MenuItem | null;
 }
 
 class Header extends React.Component<IProps, IState> {
@@ -176,7 +174,7 @@ class Header extends React.Component<IProps, IState> {
         </div>
         <div
           onClick={this.handleBackdropClick}
-          onTouchMove={e => e.preventDefault()}
+          onTouchMove={(e) => e.preventDefault()}
           className={cx('Header__backdrop', {
             'Header__backdrop--is-visible': isSideMenuOpen,
           })}
@@ -188,5 +186,5 @@ class Header extends React.Component<IProps, IState> {
 
 export default HydroLeaf({
   className: 'Header',
-  container: props => <header {...props} />,
+  container: (props) => <header {...props} />,
 })(Header);

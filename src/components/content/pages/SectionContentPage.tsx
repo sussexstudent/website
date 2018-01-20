@@ -6,12 +6,18 @@ import ContentCard from '~components/ContentCard';
 import ContentNavigation, {
   generateTitlesFromStream,
 } from '~components/ContentNavigation';
-import StreamField from "~components/content/StreamField";
-import {Page} from "~components/content/types";
-import {FalmerImage} from "../../../types/events";
+import StreamField from '~components/content/StreamField';
+import { Page } from '~components/content/types';
+import { FalmerImage } from '../../../types/events';
 
 interface IProps {
-  page: Page<{ title: string, sidebarBody: any, body: any, headingImage: FalmerImage, contentsInSidebar: boolean }>
+  page: Page<{
+    title: string;
+    sidebarBody: any;
+    body: any;
+    headingImage: FalmerImage;
+    contentsInSidebar: boolean;
+  }>;
 }
 
 interface IState {
@@ -35,7 +41,7 @@ class SectionContentPage extends React.Component<IProps, IState> {
   render() {
     const {
       page: {
-        data: { title, sidebarBody, body, headingImage, contentsInSidebar }
+        data: { title, sidebarBody, body, headingImage, contentsInSidebar },
       },
       page,
     } = this.props;
@@ -49,18 +55,22 @@ class SectionContentPage extends React.Component<IProps, IState> {
                 activeKey={this.state.visibleKey || undefined}
               />
             ) : null}
-            <StreamField page={page} items={sidebarBody}/>
+            <StreamField page={page} items={sidebarBody} />
           </aside>
         </div>
         <div>
           <HeadingHero title={title} imageURL={headingImage.resource} />
           <VisibleChildWatcher onChange={this.handleVisibleChildChange}>
-            {body.map((block: any) => ( // todo
+            {body.map((
+              block: any, // todo
+            ) => (
               <ContentCard anchor={slugify(block.value.heading)}>
                 <h2 className="Heading Heading--highlight">
                   {block.value.heading}
                 </h2>
-                {block.value.body.map((bodyItem: any) => ( // todo
+                {block.value.body.map((
+                  bodyItem: any, // todo
+                ) => (
                   <div
                     className="Prose"
                     dangerouslySetInnerHTML={{ __html: bodyItem.value }}

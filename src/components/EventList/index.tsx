@@ -14,12 +14,10 @@ interface Result {
     edges: Array<{
       node: any;
     }>;
-  }
+  };
 }
 
-interface OwnProps {
-
-}
+interface OwnProps {}
 
 type IProps = ChildProps<OwnProps, Result>;
 
@@ -34,23 +32,24 @@ function EventList(props: IProps) {
   return (
     <ul className="List List--reset">
       <li>
-        {allEvents && allEvents.edges
-          .filter(
-            edge =>
-              !isBefore(
-                new Date(edge.node.startTime),
-                startOfDay(subDays(new Date(), 1))
-              )
-          )
-          .map(edge => (
-            <EventsCalenderItem
-              part={{ event: edge.node }}
-              inline
-              useAnchors
-              showDay
-              relative
-            />
-          ))}
+        {allEvents &&
+          allEvents.edges
+            .filter(
+              (edge) =>
+                !isBefore(
+                  new Date(edge.node.startTime),
+                  startOfDay(subDays(new Date(), 1)),
+                ),
+            )
+            .map((edge) => (
+              <EventsCalenderItem
+                part={{ event: edge.node }}
+                inline
+                useAnchors
+                showDay
+                relative
+              />
+            ))}
       </li>
     </ul>
   );
@@ -72,5 +71,5 @@ function EventsListWrapper() {
   );
 }
 export default HydroLeaf({ disableSSR: true, name: 'EventList' })(
-  EventsListWrapper
+  EventsListWrapper,
 );

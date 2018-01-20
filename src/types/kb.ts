@@ -9,7 +9,7 @@ export interface Topic {
   title: string;
   slug: string;
   section: Section;
-  articles: Array<Article>
+  articles: Array<Article>;
 }
 
 export interface Section {

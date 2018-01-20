@@ -1,8 +1,8 @@
 import React from 'react';
 import slugify from '~libs/slugify';
 import Image from '~components/Image';
-import {FalmerImage} from "../../types/events";
-import {StreamFieldBlock} from "~components/content/types";
+import { FalmerImage } from '../../types/events';
+import { StreamFieldBlock } from '~components/content/types';
 /* eslint-disable react/no-danger */
 
 interface StaffMemberData {
@@ -16,13 +16,16 @@ interface StaffMemberData {
   officeLocation?: string;
 }
 
-const StaffList: StreamFieldBlock<{ heading: string, body: Array<StaffMemberData> }> = ({ block: { heading, body } }) => {
+const StaffList: StreamFieldBlock<{
+  heading: string;
+  body: Array<StaffMemberData>;
+}> = ({ block: { heading, body } }) => {
   return (
     <div>
       <span className="u-position-anchor" id={slugify(heading)} />
       <h2 className="Heading Heading--highlight">{heading}</h2>
       <ul className="StaffList">
-        {body.map(member => (
+        {body.map((member) => (
           <li className="StaffList__item">
             <div className="StaffList__imagecreds">
               <div className="StaffList__image">
@@ -75,7 +78,7 @@ const StaffList: StreamFieldBlock<{ heading: string, body: Array<StaffMemberData
       </ul>
     </div>
   );
-}
+};
 /* eslint-enable react/no-danger */
 
 export default StaffList;

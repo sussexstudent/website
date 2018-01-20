@@ -1,13 +1,13 @@
 import React from 'react';
 import cx from 'classnames';
-import {has} from 'lodash';
+import { has } from 'lodash';
 import formatDate from 'date-fns/format';
 import Image from '../Image';
 import FauxLink from '../FauxLink';
 import FauxRouterLink from '../FauxRouterLink';
 import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
 import EventRelativeTime from './EventRelativeTime';
-import {Event, TicketType} from "../../types/events";
+import { Event, TicketType } from '../../types/events';
 // import PropTypes from 'prop-types';
 
 function renderEventLocation(event: Event) {
@@ -52,8 +52,8 @@ interface IProps {
   showDay?: boolean;
   inline?: boolean;
   part: {
-    event: Event
-  }
+    event: Event;
+  };
 }
 
 function EventsCalenderItem({

@@ -33,7 +33,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   combineReducers(reducers),
   undefined,
-  composeEnhancers(applyMiddleware(sagaMiddleware))
+  composeEnhancers(applyMiddleware(sagaMiddleware)),
 );
 
 sagaMiddleware.run(saga);
@@ -48,5 +48,5 @@ ReactDOM.render(
       </Router>
     </Provider>
   </ApolloProvider>,
-  document.querySelector('.FalmerAppRoot')
+  document.querySelector('.FalmerAppRoot'),
 );

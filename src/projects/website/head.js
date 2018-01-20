@@ -61,4 +61,4 @@ const legacyScripts = `
 <script src="https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>
 `;
 
-export const headContentLegacy = assets => headContent(assets, legacyScripts);
+export const headContentLegacy = (assets) => headContent(assets, legacyScripts);

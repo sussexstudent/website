@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import {MenuItem} from "../../types/skeleton";
+import { MenuItem } from '../../types/skeleton';
 
 interface IPropsItem {
   name: string;

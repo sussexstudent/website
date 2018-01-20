@@ -3,24 +3,22 @@ import { graphql } from 'react-apollo';
 import MediaDetailQuery from './MediaDetail.graphql';
 import Loader from '../../../Loader';
 import ImageTreatmentPreview from '../../ImageTreatmentPreview';
-import {ApolloHandlerChildProps} from "~components/apolloHandler";
-import {FalmerImage} from "../../../../types/events";
-import {compose} from 'recompose';
-import {RouteComponentProps} from 'react-router-dom';
+import { ApolloHandlerChildProps } from '~components/apolloHandler';
+import { FalmerImage } from '../../../../types/events';
+import { compose } from 'recompose';
+import { RouteComponentProps } from 'react-router-dom';
 
 interface RouteParams {
   mediaId: number;
 }
 
-interface OwnProps extends RouteComponentProps<RouteParams> {
-
-}
+interface OwnProps extends RouteComponentProps<RouteParams> {}
 
 interface Result {
   image: FalmerImage;
 }
 
-type IProps = ApolloHandlerChildProps<OwnProps, Result>
+type IProps = ApolloHandlerChildProps<OwnProps, Result>;
 
 function FalmerMediaDetail({ data: { loading, image } }: IProps) {
   return (
@@ -32,7 +30,7 @@ function FalmerMediaDetail({ data: { loading, image } }: IProps) {
           <h2 className="Heading Heading--medium">{image.title}</h2>
           <div style={{ margin: '1rem 0' }}>
             This is perhaps an image of:{' '}
-            {image.labels.edges.map(edge => (
+            {image.labels.edges.map((edge) => (
               <span
                 style={{
                   padding: '0.2rem',
@@ -57,10 +55,10 @@ function FalmerMediaDetail({ data: { loading, image } }: IProps) {
 
 export default compose<IProps, OwnProps>(
   graphql<Result, OwnProps>(MediaDetailQuery, {
-    options: props => ({
+    options: (props) => ({
       variables: {
         mediaId: props.match.params.mediaId,
       },
     }),
-  })
+  }),
 )(FalmerMediaDetail);

@@ -53,7 +53,7 @@
 */
 
 /* @import must be at top of file, otherwise CSS will not work */
-@import url("//hello.myfonts.net/count/2e6b7c");
+@import url('//hello.myfonts.net/count/2e6b7c');
 
 /*
 @font-face {

@@ -1,7 +1,7 @@
 import React from 'react';
 import qs from 'query-string';
-import {ContentPage} from "~components/content/ContentPage";
-import HydroLeaf from "~components/HydroLeaf";
+import { ContentPage } from '~components/content/ContentPage';
+import HydroLeaf from '~components/HydroLeaf';
 
 interface IState {
   path: string | null;
@@ -20,12 +20,12 @@ class ContentExplorer extends React.Component<{}, IState> {
 
   componentDidMount() {
     const query = qs.parse(window.location.search);
-    if (Object.hasOwnProperty.call(query,'path')) {
+    if (Object.hasOwnProperty.call(query, 'path')) {
       const path = query.path;
       this.setState({
         path,
         pathInput: path,
-      })
+      });
     }
   }
 
@@ -50,7 +50,12 @@ class ContentExplorer extends React.Component<{}, IState> {
       <div>
         <div>
           <form onSubmit={this.handleSubmit.bind(this)}>
-            <input type="text" placeholder="path to render" value={pathInput} onChange={this.handleInput.bind(this)} />
+            <input
+              type="text"
+              placeholder="path to render"
+              value={pathInput}
+              onChange={this.handleInput.bind(this)}
+            />
             <input type="submit" value="Render" />
           </form>
           <hr />
@@ -58,7 +63,7 @@ class ContentExplorer extends React.Component<{}, IState> {
 
         {path ? <ContentPage path={path} /> : <h2>No path set</h2>}
       </div>
-    )
+    );
   }
 }
 

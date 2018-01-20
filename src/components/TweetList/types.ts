@@ -16,9 +16,7 @@ export interface MediaEntity extends Entity {
   media_url_https: string;
 }
 
-export interface UserEntity extends TwitterUser, Entity {
-
-}
+export interface UserEntity extends TwitterUser, Entity {}
 
 export interface URLEntity extends Entity {
   url: string;
@@ -41,9 +39,8 @@ export interface TweetData {
   entities: TwitterEntityMap;
   id_str: string;
   created_at: string;
-  display_text_range: number[]
+  display_text_range: number[];
 }
-
 
 export interface EntityHandler {
   (entity: Entities, replaced: string[]): any;

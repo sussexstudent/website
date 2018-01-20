@@ -3,8 +3,8 @@ import React from 'react';
 interface IRowProps {
   id?: number;
   key?: number;
-  selectable: boolean,
-  isSelected: boolean,
+  selectable: boolean;
+  isSelected: boolean;
   onChange(id: number, event: React.KeyboardEvent<HTMLInputElement>): void;
 }
 
@@ -21,8 +21,8 @@ interface IProps {
 
 interface IState {
   checked: {
-    [id: number]: boolean
-  }
+    [id: number]: boolean;
+  };
 }
 
 class FalmerDataList extends React.Component<IProps, IState> {
@@ -52,13 +52,13 @@ class FalmerDataList extends React.Component<IProps, IState> {
             })}
           </thead>
           <tbody>
-            {this.props.items.map(item =>
+            {this.props.items.map((item) =>
               this.props.children(item, {
                 key: item.id,
                 isSelected: this.state.checked[item.id] === true,
                 selectable: this.props.selectable,
                 onChange: this.handleRowSelect.bind(this),
-              })
+              }),
             )}
           </tbody>
         </table>
@@ -69,7 +69,7 @@ class FalmerDataList extends React.Component<IProps, IState> {
 
 export const HeaderCell: React.SFC<{}> = (props) => {
   return <th>{props.children}</th>;
-}
+};
 
 export const Row: React.SFC<IRowProps> = (props) => {
   return (
@@ -86,10 +86,10 @@ export const Row: React.SFC<IRowProps> = (props) => {
       {props.children}
     </tr>
   );
-}
+};
 
 export const Cell: React.SFC<{}> = (props) => {
   return <td>{props.children}</td>;
-}
+};
 
 export default FalmerDataList;

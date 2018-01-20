@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {isEmpty} from 'lodash';
-import {HydroRootServer} from "~components/HydroRootServer";
+import { isEmpty } from 'lodash';
+import { HydroRootServer } from '~components/HydroRootServer';
 
 let hydroId = 0;
 
@@ -17,12 +17,15 @@ interface HydroLeafOptions {
   disableSSR?: boolean;
 }
 
-function generatePropsForContext(contextToPropsMap: ContextToPropsMap, context: { [contextName: string]: any; }) {
+function generatePropsForContext(
+  contextToPropsMap: ContextToPropsMap,
+  context: { [contextName: string]: any },
+) {
   const props: {
     [propName: string]: any;
   } = {};
 
-  Object.keys(contextToPropsMap).forEach(contextName => {
+  Object.keys(contextToPropsMap).forEach((contextName) => {
     props[contextToPropsMap[contextName]] = context[contextName];
   });
 
@@ -46,15 +49,13 @@ interface ISerialProps {
 
 /* eslint-disable react/no-danger */
 /* eslint-disable no-inner-declarations */
-function HydroLeaf(
-  {
-    contextToProps = {},
-    className = '',
-    name = null,
-    container = DefaultContainer,
-    disableSSR = false,
-  }: HydroLeafOptions = {}
-) {
+function HydroLeaf({
+  contextToProps = {},
+  className = '',
+  name = null,
+  container = DefaultContainer,
+  disableSSR = false,
+}: HydroLeafOptions = {}) {
   return function HydroLeafHOC(Component: any) {
     if (process.env.COMP_NODE) {
       // eslint-disable-next-line
@@ -104,7 +105,11 @@ function HydroLeaf(
 
           const componentMarkup = disableSSR
             ? ''
-            : ReactDOM.renderToString(<HydroRootServer apolloClient={this.context.client}><Component {...serialProps} /></HydroRootServer>);
+            : ReactDOM.renderToString(
+                <HydroRootServer apolloClient={this.context.client}>
+                  <Component {...serialProps} />
+                </HydroRootServer>,
+              );
 
           let dataAc = `window.HYDROSTATE_${hydroKey} = ${JSON.stringify(
             serialProps,
@@ -113,7 +118,13 @@ function HydroLeaf(
           if (hydroKey === undefined) {
             dataAc = '';
           } else {
-            dataAc = `<script type="text/javascript" id="hydroscript-${hydroKey}">${dataAc}${this.context.client ? `window.apolloPartials.push(${JSON.stringify(this.context.client.extract())})` : ''}</script>`;
+            dataAc = `<script type="text/javascript" id="hydroscript-${hydroKey}">${dataAc}${
+              this.context.client
+                ? `window.apolloPartials.push(${JSON.stringify(
+                    this.context.client.extract(),
+                  )})`
+                : ''
+            }</script>`;
           }
 
           return container({

@@ -33,7 +33,7 @@
   }
 }
 
-.Loader--dark{
+.Loader--dark {
   & .Loader__left {
     fill: #e3e3e3;
     animation: leafFade 1s linear infinite alternate;

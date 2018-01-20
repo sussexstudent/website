@@ -5,21 +5,19 @@ import FalmerDataList, { Cell, Row, HeaderCell } from '../../FalmerDataList';
 import AllGroupsQuery from './AllGroups.graphql';
 import Loader from '../../../Loader';
 import FalmerSubSections, { SubSection } from '../../FalmerSubSections';
-import {ApolloHandlerChildProps} from "~components/apolloHandler";
-import {StudentGroup} from "~components/OrganisationGrid";
-import {compose} from 'recompose';
+import { ApolloHandlerChildProps } from '~components/apolloHandler';
+import { StudentGroup } from '~components/OrganisationGrid';
+import { compose } from 'recompose';
 
-interface OwnProps {
-
-}
+interface OwnProps {}
 
 interface Result {
   allGroups: {
     edges: Array<{ node: StudentGroup }>;
-  }
+  };
 }
 
-type IProps = ApolloHandlerChildProps<OwnProps, Result>
+type IProps = ApolloHandlerChildProps<OwnProps, Result>;
 
 function FalmerStudentGroupsList({ data: { loading, allGroups } }: IProps) {
   return (
@@ -29,13 +27,11 @@ function FalmerStudentGroupsList({ data: { loading, allGroups } }: IProps) {
       ) : (
         <div>
           <FalmerSubSections>
-            <SubSection to="/groups/awards/">
-              Awards
-            </SubSection>
+            <SubSection to="/groups/awards/">Awards</SubSection>
           </FalmerSubSections>
           <FalmerDataList
-            items={allGroups.edges.map(edge => edge.node)}
-            header={rowState => (
+            items={allGroups.edges.map((edge) => edge.node)}
+            header={(rowState) => (
               <Row {...rowState}>
                 <HeaderCell>Name</HeaderCell>
                 <HeaderCell>Prospective</HeaderCell>
@@ -58,6 +54,6 @@ function FalmerStudentGroupsList({ data: { loading, allGroups } }: IProps) {
   );
 }
 
-export default compose<IProps, OwnProps>(
-  graphql(AllGroupsQuery),
-)(FalmerStudentGroupsList);
+export default compose<IProps, OwnProps>(graphql(AllGroupsQuery))(
+  FalmerStudentGroupsList,
+);

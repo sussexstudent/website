@@ -3,23 +3,23 @@ import { Link } from 'react-router-dom';
 import { compose } from 'recompose';
 import { graphql } from 'react-apollo';
 import KbHomeQuery from './KbHomeQuery.graphql';
-import apolloHandler, {ApolloHandlerChildProps} from "../../apolloHandler";
-import {Section} from "../../../types/kb";
+import apolloHandler, { ApolloHandlerChildProps } from '../../apolloHandler';
+import { Section } from '../../../types/kb';
 
 interface Result {
   knowledgeBase: {
-    sections: Array<Section>
-  }
+    sections: Array<Section>;
+  };
 }
 
-type IProps = ApolloHandlerChildProps<{}, Result>
+type IProps = ApolloHandlerChildProps<{}, Result>;
 
 function KbHome(props: IProps) {
   return (
     <div>
       <h1>Homepage</h1>
       <ul>
-        {props.data.knowledgeBase.sections.map(section => (
+        {props.data.knowledgeBase.sections.map((section) => (
           <li>
             <Link to={`/help/${section.slug}`}>
               <h2>{section.title}</h2>
@@ -30,7 +30,6 @@ function KbHome(props: IProps) {
     </div>
   );
 }
-export default compose<IProps, {}>(
-  graphql(KbHomeQuery),
-  apolloHandler()
-)(KbHome);
+export default compose<IProps, {}>(graphql(KbHomeQuery), apolloHandler())(
+  KbHome,
+);

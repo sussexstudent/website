@@ -5,23 +5,21 @@ import formatDistance from 'date-fns/formatDistance';
 import GroupDetailQuery from './GroupDetail.graphql';
 import Loader from '../../../Loader';
 import CopyToClipboardButton from '../../../CopyToClipboardButton/index';
-import {ApolloHandlerChildProps} from "~components/apolloHandler";
-import {StudentGroup} from "~components/OrganisationGrid";
-import {compose} from 'recompose';
+import { ApolloHandlerChildProps } from '~components/apolloHandler';
+import { StudentGroup } from '~components/OrganisationGrid';
+import { compose } from 'recompose';
 
 interface RouteParams {
   groupId: number;
 }
 
-interface OwnProps extends RouteComponentProps<RouteParams>{
-
-}
+interface OwnProps extends RouteComponentProps<RouteParams> {}
 
 interface Result {
-  group: StudentGroup,
+  group: StudentGroup;
 }
 
-type IProps = ApolloHandlerChildProps<OwnProps, Result>
+type IProps = ApolloHandlerChildProps<OwnProps, Result>;
 
 function FalmerStudentGroupsDetail({ data: { loading, group } }: IProps) {
   return (
@@ -44,7 +42,7 @@ function FalmerStudentGroupsDetail({ data: { loading, group } }: IProps) {
                   MSL linked, last sync:{' '}
                   {formatDistance(
                     new Date(),
-                    new Date(group.mslGroup.lastSync)
+                    new Date(group.mslGroup.lastSync),
                   )}{' '}
                   ago
                 </li>
@@ -59,10 +57,10 @@ function FalmerStudentGroupsDetail({ data: { loading, group } }: IProps) {
 
 export default compose<IProps, OwnProps>(
   graphql<Result, OwnProps>(GroupDetailQuery, {
-    options: props => ({
+    options: (props) => ({
       variables: {
         groupId: props.match.params.groupId,
       },
     }),
-  })
+  }),
 )(FalmerStudentGroupsDetail);

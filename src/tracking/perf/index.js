@@ -16,7 +16,7 @@ function recordTime(component, event, attr, enable = true) {
       const total = window.performance.now() - start;
       console.log(
         `[perf] ${component}/${event} took ${Math.round(total)}ms`,
-        attr || ''
+        attr || '',
       );
     },
   };

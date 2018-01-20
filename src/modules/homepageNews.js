@@ -8,6 +8,6 @@ export default () => {
 
   ReactDOM.render(
     <NewsList items={articles} />,
-    document.querySelector('.app__news')
+    document.querySelector('.app__news'),
   );
 };

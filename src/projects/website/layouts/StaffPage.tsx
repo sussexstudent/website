@@ -1,9 +1,11 @@
 import React from 'react';
 import ContentCard from '~components/ContentCard';
-import {ContentPage} from "~components/content/ContentPage";
-import HydroLeaf from "~components/HydroLeaf";
+import { ContentPage } from '~components/content/ContentPage';
+import HydroLeaf from '~components/HydroLeaf';
 
-const ContentPageLive = HydroLeaf({ disableSSR: true, name: 'ContentPage' })(ContentPage);
+const ContentPageLive = HydroLeaf({ disableSSR: true, name: 'ContentPage' })(
+  ContentPage,
+);
 
 const StaffPage = () => (
   <div>

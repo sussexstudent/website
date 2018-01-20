@@ -40,7 +40,7 @@ export interface SearchResult {
 }
 
 interface IProps {
-  item: SearchResult
+  item: SearchResult;
 }
 
 function SearchResult(props: IProps) {

@@ -11,6 +11,6 @@ export default () => {
 
   ReactDOM.render(
     <NewsList items={articles} fullWidth />,
-    document.querySelector('.app__news_page')
+    document.querySelector('.app__news_page'),
   );
 };

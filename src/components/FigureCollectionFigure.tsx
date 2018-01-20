@@ -8,7 +8,12 @@ interface IProps {
   link: string;
 }
 
-const FigureCollectionFigure = ({ imageResource, title, sub, link }: IProps) => (
+const FigureCollectionFigure = ({
+  imageResource,
+  title,
+  sub,
+  link,
+}: IProps) => (
   <li className="FigureCollection__item">
     <a href={link} className="FigureCollection__link">
       <div className="u-responsive-ratio u-responsive-ratio--square">

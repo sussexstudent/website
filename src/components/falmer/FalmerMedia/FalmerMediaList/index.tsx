@@ -5,14 +5,12 @@ import AllMediaQuery from './AllMedia.graphql';
 import Loader from '../../../Loader';
 import Image from '../../../Image';
 import FauxRouterLink from '../../../FauxRouterLink';
-import {compose} from 'recompose';
-import {Connection} from "~components/falmer/types";
-import {FalmerImage} from "../../../../types/events";
-import {ApolloHandlerChildProps} from "~components/apolloHandler";
+import { compose } from 'recompose';
+import { Connection } from '~components/falmer/types';
+import { FalmerImage } from '../../../../types/events';
+import { ApolloHandlerChildProps } from '~components/apolloHandler';
 
-interface OwnProps {
-
-}
+interface OwnProps {}
 
 interface Result {
   allImages: Connection<FalmerImage>;
@@ -21,8 +19,9 @@ interface Result {
 
 type IProps = ApolloHandlerChildProps<OwnProps, Result>;
 
-
-function FalmerMediaList({ data: { loading, loadMoreEntries, allImages } }: IProps) {
+function FalmerMediaList({
+  data: { loading, loadMoreEntries, allImages },
+}: IProps) {
   return (
     <div>
       {loading ? (
@@ -30,14 +29,14 @@ function FalmerMediaList({ data: { loading, loadMoreEntries, allImages } }: IPro
       ) : (
         <div>
           <ul className="FalmerMediaGrid">
-            {allImages.edges.map(edge => (
+            {allImages.edges.map((edge) => (
               <li className="FalmerMediaGrid__item">
                 <div
                   className="u-responsive-fit"
                   style={{
                     height: '110px',
                     width: `${Math.round(
-                      110 * (edge.node.width / edge.node.height)
+                      110 * (edge.node.width / edge.node.height),
                     )}px`,
                   }}
                 >
@@ -65,7 +64,7 @@ export default compose<IProps, OwnProps>(
     props({ data }) {
       if (!data) {
         return {
-          data
+          data,
         };
       }
 

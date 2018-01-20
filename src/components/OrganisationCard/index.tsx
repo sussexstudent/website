@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from '../Image';
 import PatternPlaceholder from '../PatternPlaceholder';
-import {StudentGroup} from "~components/OrganisationGrid";
+import { StudentGroup } from '~components/OrganisationGrid';
 
 interface IProps {
   org: StudentGroup;

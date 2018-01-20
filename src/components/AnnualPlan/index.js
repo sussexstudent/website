@@ -83,7 +83,7 @@ class OfficerPlan extends React.Component {
             <h2 style={{ color: props.accent }}>
               {props.points[this.state.point][0]}
             </h2>
-            {props.points[this.state.point][1].map(p => <p>{p}</p>)}
+            {props.points[this.state.point][1].map((p) => <p>{p}</p>)}
 
             <button
               className="Button"

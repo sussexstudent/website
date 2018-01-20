@@ -5,8 +5,8 @@ import { compose } from 'recompose';
 import Loader from '../../../Loader';
 import CopyToClipboardButton from '../../../CopyToClipboardButton/index';
 import ImageTreatmentPreview from '../../ImageTreatmentPreview';
-import {ApolloHandlerChildProps} from "~components/apolloHandler";
-import {Event} from "../../../../types/events";
+import { ApolloHandlerChildProps } from '~components/apolloHandler';
+import { Event } from '../../../../types/events';
 
 interface OwnProps {
   handleMoveModal(bool: boolean): void;
@@ -66,7 +66,7 @@ function FalmerEventsCreate({
             <div>
               <h2 className="Heading Heading--standard">Sub-events</h2>
               <ul>
-                {event.children.map(subEvent => (
+                {event.children.map((subEvent) => (
                   <li>
                     <Link to={`/events/${subEvent.eventId}`}>
                       {subEvent.title}

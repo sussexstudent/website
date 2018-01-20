@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import getHours from 'date-fns/getHours';
-import {RootState} from "~components/falmer/types";
-import {compose} from 'recompose';
+import { RootState } from '~components/falmer/types';
+import { compose } from 'recompose';
 
 function getGreeting() {
   const hour = getHours(new Date());
@@ -24,15 +24,13 @@ function getGreeting() {
 
 interface IProps {}
 
-function FalmerDashboard({
-}: IProps) {
+function FalmerDashboard({  }: IProps) {
   return (
     <div>
       <Helmet>
         <title>Dashboard</title>
       </Helmet>
       <h1 className="Heading">{getGreeting()}</h1>
-
     </div>
   );
 }

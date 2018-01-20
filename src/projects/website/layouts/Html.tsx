@@ -9,7 +9,11 @@ interface IProps {
 
 const HTML = ({ children, assets, additionalHead = [] }: IProps) => (
   <html lang="en">
-    <head dangerouslySetInnerHTML={{ __html: headContent(assets, ...additionalHead) }} />
+    <head
+      dangerouslySetInnerHTML={{
+        __html: headContent(assets, ...additionalHead),
+      }}
+    />
     {children}
   </html>
 );

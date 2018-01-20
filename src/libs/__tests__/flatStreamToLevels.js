@@ -38,7 +38,7 @@ it('works with 1 level', () => {
     },
   ];
 
-  const result = flatStreamToLevels(item => levelMap[item.type], data);
+  const result = flatStreamToLevels((item) => levelMap[item.type], data);
 
   expect(result).toEqual([
     {
@@ -85,7 +85,7 @@ it('accepts missing levels', () => {
     },
   ];
 
-  const result = flatStreamToLevels(item => levelMap[item.type], data);
+  const result = flatStreamToLevels((item) => levelMap[item.type], data);
 
   expect(result).toEqual([
     {

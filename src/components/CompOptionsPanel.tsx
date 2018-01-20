@@ -5,12 +5,10 @@ interface IState {
 }
 
 export default class CompOptionsPanel extends React.Component<{}, IState> {
-
   render() {
     return (
       <div className="CompOptionsPanel">
-        <div className="CompOptionsPanel__content">
-        </div>
+        <div className="CompOptionsPanel__content" />
         comp
       </div>
     );

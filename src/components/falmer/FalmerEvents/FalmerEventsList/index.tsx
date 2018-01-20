@@ -13,10 +13,10 @@ import FalmerDataList, {
 import FalmerSidebar from '../../FalmerSidebar';
 import FalmerListView from '../../FalmerListView';
 import FalmerSubSections, { SubSection } from '../../FalmerSubSections';
-import {Event} from "../../../../types/events";
-import {ApolloHandlerChildProps} from "~components/apolloHandler";
-import {Connection} from "~components/falmer/types";
-import {compose} from 'recompose';
+import { Event } from '../../../../types/events';
+import { ApolloHandlerChildProps } from '~components/apolloHandler';
+import { Connection } from '~components/falmer/types';
+import { compose } from 'recompose';
 // import FauxRouterLink from '../../FauxRouterLink';
 // const FalmerEventCard = ({ event }) =>
 //   <div className="FalmerCard FalmerCard--standard">
@@ -25,7 +25,11 @@ import {compose} from 'recompose';
 //       {event.title}
 //     </h2>
 //   </div>;
-function plural(length: number, single: string, pluralWord: string | null = null) {
+function plural(
+  length: number,
+  single: string,
+  pluralWord: string | null = null,
+) {
   if (Math.abs(length) === 1) {
     return single;
   }
@@ -33,15 +37,13 @@ function plural(length: number, single: string, pluralWord: string | null = null
   return pluralWord || `${single}s`;
 }
 
-interface OwnProps {
-
-}
+interface OwnProps {}
 
 interface Result {
-  allEvents: Connection<Event>
+  allEvents: Connection<Event>;
 }
 
-type IProps = ApolloHandlerChildProps<OwnProps, Result>
+type IProps = ApolloHandlerChildProps<OwnProps, Result>;
 
 function FalmerEvents({ data: { loading, allEvents } }: IProps) {
   return (
@@ -55,16 +57,12 @@ function FalmerEvents({ data: { loading, allEvents } }: IProps) {
         <FalmerListView>
           <div className="FalmerListView__main">
             <FalmerSubSections>
-              <SubSection to="/events/venues/">
-                Venues
-              </SubSection>
-              <SubSection to="/events/periods/">
-                Branding Periods
-              </SubSection>
+              <SubSection to="/events/venues/">Venues</SubSection>
+              <SubSection to="/events/periods/">Branding Periods</SubSection>
             </FalmerSubSections>
             <FalmerDataList
-              items={allEvents.edges.map(edge => edge.node)}
-              header={rowState => (
+              items={allEvents.edges.map((edge) => edge.node)}
+              header={(rowState) => (
                 <Row {...rowState}>
                   <HeaderCell>Title</HeaderCell>
                   <HeaderCell>Start time</HeaderCell>
@@ -84,7 +82,7 @@ function FalmerEvents({ data: { loading, allEvents } }: IProps) {
                           {' '}
                           ({item.children.length} sub-{plural(
                             item.children.length,
-                            'event'
+                            'event',
                           )})
                         </small>
                       ) : null}

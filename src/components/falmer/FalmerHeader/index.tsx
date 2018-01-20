@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
-import {FalmerUser, RootState} from "~components/falmer/types";
-import {compose} from 'recompose';
+import { FalmerUser, RootState } from '~components/falmer/types';
+import { compose } from 'recompose';
 
 interface IProps {
-  user: FalmerUser
+  user: FalmerUser;
 }
 
 const FalmerHeader: React.SFC<IProps> = ({ user }) => {
@@ -73,7 +73,7 @@ const FalmerHeader: React.SFC<IProps> = ({ user }) => {
       <div className="FalmerHeader__user">{user.name || user.identifier}</div>
     </header>
   );
-}
+};
 
 /*
  <li className="FalmerHeader__nav-item">
@@ -92,4 +92,4 @@ export default compose<IProps, {}>(
   connect((state: RootState) => ({
     user: state.auth.user,
   })),
-)(FalmerHeader)
+)(FalmerHeader);

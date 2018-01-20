@@ -8,11 +8,10 @@ interface IStore {
 if (process.env.COMP_NODE) {
   Store = {
     get(): any {
-      return ''
+      return '';
     },
-    set(): void {
-    }
-  }
+    set(): void {},
+  };
 } else {
   Store = {
     get(key: string, def: any = null) {
@@ -25,8 +24,8 @@ if (process.env.COMP_NODE) {
     },
     set(key: string, value: any) {
       localStorage.setItem(key, JSON.stringify(value));
-    }
-  }
+    },
+  };
 }
 
 export { Store };

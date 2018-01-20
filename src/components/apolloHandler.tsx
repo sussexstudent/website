@@ -1,14 +1,13 @@
 import { compose, hoistStatics } from 'recompose';
 import React from 'react';
-import { QueryProps, MutationFunc } from 'react-apollo'
+import { QueryProps, MutationFunc } from 'react-apollo';
 
 import LoaderComponent from '~components/Loader';
-import {ErrorState} from "~components/ErrorState";
+import { ErrorState } from '~components/ErrorState';
 
-const apolloHandler = (
-  Loader = LoaderComponent,
-  Error = ErrorState
-) => (WrappedComponent: any) =>
+const apolloHandler = (Loader = LoaderComponent, Error = ErrorState) => (
+  WrappedComponent: any,
+) =>
   compose(hoistStatics)((props: any) => {
     const propertyName = 'data';
     if (props[propertyName].loading) {
@@ -21,10 +20,8 @@ const apolloHandler = (
     return <WrappedComponent {...props} />;
   });
 
-
 export default apolloHandler;
-export { apolloHandler }
-
+export { apolloHandler };
 
 export declare type ApolloHandlerChildProps<P, R> = P & {
   data: QueryProps & R;

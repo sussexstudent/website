@@ -1,5 +1,5 @@
 import React from 'react';
-import {forEach, debounce,reduce} from 'lodash';
+import { forEach, debounce, reduce } from 'lodash';
 
 interface IProps {
   children: any;
@@ -56,7 +56,7 @@ class FitOverflowChildren extends React.Component<IProps, IState> {
     this.updateSize();
     window.addEventListener(
       'resize',
-      debounce(this.updateSize.bind(this), 100)
+      debounce(this.updateSize.bind(this), 100),
     );
   }
 
@@ -66,7 +66,7 @@ class FitOverflowChildren extends React.Component<IProps, IState> {
     let count = 0;
     let currentHeight = 0;
     const containerHeight = this.container.getBoundingClientRect().height;
-    forEach(items, element => {
+    forEach(items, (element) => {
       const elementHeight = element.getBoundingClientRect().height + 10;
       if (currentHeight + elementHeight > containerHeight) {
         return false;
@@ -109,7 +109,7 @@ class FitOverflowChildren extends React.Component<IProps, IState> {
     const fixedHeight = reduce(
       this.items.slice(0, this.props.minItems),
       (sum, el) => sum + el.getBoundingClientRect().height + 10,
-      0
+      0,
     );
     return (
       <div

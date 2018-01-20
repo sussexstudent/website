@@ -5,6 +5,8 @@ import { graphql } from 'react-apollo';
 import KbSectionQuery from './KbSectionQuery.graphql';
 import apolloHandler, { ApolloHandlerChildProps } from '../../apolloHandler';
 import { Section } from '../../../types/kb';
+import {BreadcrumbBar} from "~components/BreadcrumbBar";
+import ContentCard from "~components/ContentCard";
 
 interface RouteParams {
   sectionSlug: string;
@@ -24,24 +26,31 @@ function KbSection(props: IProps) {
   const section = props.data.knowledgeBase.section;
   return (
     <div>
-      <h1>Section: {section.title}</h1>
+      <BreadcrumbBar color="blue">
+        <Link to={`/help`}>Help</Link>
+        <Link to={`/help/${section.slug}`}>{section.title}</Link>
+      </BreadcrumbBar>
+
+      <h1>{section.title}</h1>
       <ul>
         {section.topics.map((topic) => (
           <li>
-            <Link to={`/help/${section.slug}/${topic.slug}`}>
-              <h2>{topic.title}</h2>
-              <ul>
-                {topic.articles.map((article) => (
-                  <li>
-                    <Link
-                      to={`/help/${section.slug}/${topic.slug}/${article.slug}`}
-                    >
-                      {article.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Link>
+            <ContentCard>
+              <Link to={`/help/${section.slug}/${topic.slug}`}>
+                <h2>{topic.title}</h2>
+                <ul>
+                  {topic.articles.map((article) => (
+                    <li>
+                      <Link
+                        to={`/help/${section.slug}/${topic.slug}/${article.slug}`}
+                      >
+                        {article.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </Link>
+            </ContentCard>
           </li>
         ))}
       </ul>

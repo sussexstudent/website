@@ -21,7 +21,6 @@ const LoadableArticle = Loadable({
 
 const KnowledgeBaseApplication = () => (
   <div className="u-keep-footer-down">
-    <h1>Help</h1>
     <Switch>
       <Route path={`/help/`} component={LoadableHome} exact />
       <Route path={`/help/:sectionSlug`} component={LoadableSection} exact />

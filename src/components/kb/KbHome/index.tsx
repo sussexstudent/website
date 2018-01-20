@@ -5,6 +5,7 @@ import { graphql } from 'react-apollo';
 import KbHomeQuery from './KbHomeQuery.graphql';
 import apolloHandler, { ApolloHandlerChildProps } from '../../apolloHandler';
 import { Section } from '../../../types/kb';
+import {BreadcrumbBar} from "~components/BreadcrumbBar";
 
 interface Result {
   knowledgeBase: {
@@ -17,7 +18,14 @@ type IProps = ApolloHandlerChildProps<{}, Result>;
 function KbHome(props: IProps) {
   return (
     <div>
-      <h1>Homepage</h1>
+      <BreadcrumbBar>
+        <Link to="/help">Help</Link>
+      </BreadcrumbBar>
+      <input
+        className="HeaderSearch HeaderSearch--search-icon ActivitiesApp__search-input"
+        type="search"
+        placeholder="How can we help?"
+      />
       <ul>
         {props.data.knowledgeBase.sections.map((section) => (
           <li>

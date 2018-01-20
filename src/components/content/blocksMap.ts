@@ -4,7 +4,7 @@ import { Heading } from '~components/content/blocks/Heading';
 import { HeadingHeroBlock } from '~components/content/blocks/HeadingHeroBlock';
 import { SelectionGridBlock } from '~components/content/blocks/SelectionGridBlock';
 import StaffList from '~components/StaffList';
-import { Paragraph } from '~components/content/blocks/Paragraph';
+import { TextBlock } from '~components/content/blocks/TextBlock';
 import { ExternalLink, InternalLink } from '~components/content/blocks/Links';
 import { ImageBlock } from '~components/content/blocks/Image';
 import { ButtonGroupBlock } from '~components/content/blocks/ButtonGroup';
@@ -17,8 +17,8 @@ export default {
   heading: Heading,
   heading_hero: HeadingHeroBlock,
   selection_grid: SelectionGridBlock,
-  paragraph: Paragraph,
-  text: Paragraph,
+  paragraph: TextBlock,
+  text: TextBlock,
   image: ImageBlock,
   button_group_links: ButtonGroupBlock,
   staff_list: StaffList,

@@ -3,6 +3,11 @@ query KbSection($sectionSlug: String) {
     section(slug: $sectionSlug) {
       slug
       title
+      path
+      ancestors {
+        path
+        title
+      }
       topics {
         slug
         title

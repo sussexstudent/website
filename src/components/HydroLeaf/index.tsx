@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
-import { HydroRootServer } from '~components/HydroRootServer';
 
 let hydroId = 0;
 
@@ -102,6 +101,7 @@ function HydroLeaf({
           }
 
           const ReactDOM = require('react-dom/server');
+          const HydroRootServer =  require('~components/HydroRootServer').HydroRootServer;
 
           const componentMarkup = disableSSR
             ? ''

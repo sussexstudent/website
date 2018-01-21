@@ -4,13 +4,10 @@ query KbArticle($articlePath: String) {
       title
       slug
       main
-      topic {
+      lastPublishedAt
+      ancestors {
+        path
         title
-        slug
-        section {
-          title
-          slug
-        }
       }
     }
   }

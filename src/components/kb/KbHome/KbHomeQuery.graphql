@@ -1,5 +1,11 @@
 query KbHomepage {
   knowledgeBase {
+    title
+    path
+    ancestors {
+      path
+      title
+    }
     sections {
       slug
       title

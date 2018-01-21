@@ -3,6 +3,7 @@ export interface Article {
   slug: string;
   main: any;
   topic: Topic;
+  lastPublishedAt: string;
 }
 
 export interface Topic {

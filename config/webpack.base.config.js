@@ -39,7 +39,7 @@ function generateConfig() {
     target: 'web',
 
     entry: {
-      vendor: ['react-imgix'],
+      vendor: ['./src/projects/common/lazysizes.ts', 'react-imgix'],
       main: ['./src/projects/website/entry.ts'],
       devFonts: './src/projects/website/env-dev.ts',
       productionFonts: './src/projects/website/env-production.ts',

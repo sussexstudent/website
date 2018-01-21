@@ -103,6 +103,7 @@
     "fuse.js": "^3.1.0",
     "graphql": "^0.12.3",
     "history": "^4.7.2",
+    "lazysizes": "^4.0.1",
     "lodash": "^4.17.4",
     "mitt": "^1.1.2",
     "msl-utils": "^0.3.0",

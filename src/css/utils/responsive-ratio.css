@@ -7,15 +7,19 @@
     padding-bottom: 60%;
   }
 
-  &--ultra-wide {
+  &--ultra-wide, &--r20by9 {
     padding-bottom: 45%;
   }
 
-  &--square {
+  &--r1by1, &--square {
     padding-bottom: 100%;
   }
 
-  &--43 {
+  &--r16by9 {
+    padding-bottom: 56.25%;
+  }
+
+  &--43, &--r4by3 {
     padding-bottom: 75%;
   }
 
@@ -41,4 +45,13 @@
     top: 0 !important;
     left: 0 !important;
   }
+}
+
+.lazyload,
+.lazyloading {
+  opacity: 0;
+}
+.lazyloaded {
+  opacity: 1;
+  transition: opacity 300ms;
 }

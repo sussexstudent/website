@@ -2,12 +2,12 @@ import React from 'react';
 import cx from 'classnames';
 import { has } from 'lodash';
 import formatDate from 'date-fns/format';
-import Image from '../Image';
 import FauxLink from '../FauxLink';
 import FauxRouterLink from '../FauxRouterLink';
 import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
 import EventRelativeTime from './EventRelativeTime';
 import { Event, TicketType } from '../../types/events';
+import {AspectRatio, OneImage} from "~components/OneImage";
 // import PropTypes from 'prop-types';
 
 function renderEventLocation(event: Event) {
@@ -80,7 +80,12 @@ function EventsCalenderItem({
       )}
       {has(part, 'event.featuredImage.resource') ? (
         <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
-          <Image src={event.featuredImage.resource} lazy />
+          <OneImage
+            src={event.featuredImage.resource}
+            aspectRatio={AspectRatio.r16by9}
+            alt=""
+            withoutContainer
+          />
           {treat !== null ? (
             <div className="EventsCalender__item-image-treat">{treat}</div>
           ) : null}

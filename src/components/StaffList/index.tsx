@@ -1,8 +1,8 @@
 import React from 'react';
 import slugify from '~libs/slugify';
-import Image from '~components/Image';
 import { FalmerImage } from '../../types/events';
 import { StreamFieldBlock } from '~components/content/types';
+import {AspectRatio, OneImage} from "~components/OneImage";
 /* eslint-disable react/no-danger */
 
 interface StaffMemberData {
@@ -31,10 +31,11 @@ const StaffList: StreamFieldBlock<{
               <div className="StaffList__image">
                 <div className="u-responsive-ratio u-responsive-ratio--square">
                   {member.photo ? (
-                    <Image
-                      className="ResponsiveImage"
+                    <OneImage
+                      aspectRatio={AspectRatio.r1by1}
                       src={member.photo.resource}
                       alt=""
+                      withoutContainer
                     />
                   ) : null}
                 </div>

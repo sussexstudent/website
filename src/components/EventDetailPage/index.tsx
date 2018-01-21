@@ -7,7 +7,6 @@ import isSameDay from 'date-fns/isSameDay';
 import getHours from 'date-fns/getHours';
 import { graphql, ChildProps } from 'react-apollo';
 import ContentCard from '../ContentCard';
-import Image from '../Image';
 import JsonLd from '../JsonLd';
 import Loader from '../Loader';
 import BackBar from '../BackBar/Link';
@@ -26,6 +25,7 @@ import SocietyIcon from '../../icons/events-society.svg';
 import apolloHandler from '~components/apolloHandler';
 import { compose } from 'recompose';
 import { generateStylesForBrand } from '~components/EventsApplication/utils';
+import {AspectRatio, OneImage} from "~components/OneImage";
 
 function isSameLogicalSleepDay(startDate: Date, endDate: Date) {
   if (isSameDay(startDate, endDate)) {
@@ -123,12 +123,11 @@ class EventDetailPage extends React.Component<IProps> {
           <div>
             <ContentCard bleed>
               {event.featuredImage ? (
-                <div className="u-responsive-ratio u-responsive-ratio--ultra-wide">
-                  <Image
-                    className="ResponsiveImage"
-                    src={event.featuredImage.resource}
-                  />
-                </div>
+                <OneImage
+                  aspectRatio={AspectRatio.r20by9}
+                  src={event.featuredImage.resource}
+                  alt=""
+                />
               ) : null}
               {event.brand !== null ? (
                 <Link

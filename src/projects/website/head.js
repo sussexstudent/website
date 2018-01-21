@@ -27,8 +27,8 @@ export const headContent = (assets, ...more) => `
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ${
   assets.manifest
-    ? `<link href="${assets.productionFonts.css}" rel="stylesheet" />
-<link href="${assets.main.css}" rel="stylesheet" />`
+    ? `<link href="${assets.map.productionFonts.css}" rel="stylesheet" />
+<link href="${assets.map.main.css}" rel="stylesheet" />`
     : ''
 }
 ${branding}

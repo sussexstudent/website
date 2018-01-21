@@ -6,8 +6,6 @@ import Html from './src/projects/website/layouts/Html';
 import assets from './webpack-assets.json';
 import manifest from './dist/manifest.json';
 
-assets.manifest = manifest;
-
 export default {
   html: Html,
   root: path.join(__dirname, 'src/projects/'),
@@ -51,7 +49,10 @@ export default {
     '/content-explorer': require('./src/projects/website/layouts/ContentExplorer'),
     '/book-market': require('./src/components/bookmarket/BookMarketApp'),
   },
-  assets,
+  assets: {
+    manifest,
+    map: assets,
+  },
   contentApi: {
     endpoint: 'https://falmer.sussexstudent.com/graphql',
     template: require('./src/projects/website/layouts/ContentPage').default,

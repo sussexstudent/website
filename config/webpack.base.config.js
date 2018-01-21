@@ -104,7 +104,7 @@ function generateConfig() {
         },
         {
           test: /\.tsx?$/,
-          loader: 'awesome-typescript-loader?useBabel=true',
+          loader: 'awesome-typescript-loader?useBabel=true&useCache=true',
         },
         {
           test: /\.svg|\.png|\.woff/,

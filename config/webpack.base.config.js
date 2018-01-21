@@ -16,19 +16,30 @@ env.build = env.production || env.staging;
 
 const baseDir = path.join(__dirname, '..');
 
+const vendorLibs = [
+  'react',
+  'react-dom',
+  'react-imgix',
+  'react-apollo',
+  'apollo-client',
+  'apollo-cache-inmemory',
+  'graphql',
+  'buffer',
+  'react-router',
+  'react-router-dom',
+  'unfetch/polyfill',
+  'raven-js',
+  'mitt',
+];
+
+const vendorExp = new RegExp(`(${vendorLibs.join('|')})`);
+
 function generateConfig() {
   return {
     target: 'web',
 
     entry: {
-      vendor: [
-        'react',
-        'react-dom',
-        'react-imgix',
-        'unfetch/polyfill',
-        'raven-js',
-        'mitt',
-      ],
+      vendor: ['react-imgix'],
       main: ['./src/projects/website/entry.ts'],
       devFonts: './src/projects/website/env-dev.ts',
       productionFonts: './src/projects/website/env-production.ts',
@@ -74,7 +85,7 @@ function generateConfig() {
       new webpack.NamedChunksPlugin(),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
-        minChunks: Infinity,
+        minChunks: (module) => vendorExp.test(module.resource),
       }),
       new DuplicatePackageCheckerPlugin(),
     ],

@@ -45,13 +45,6 @@ config.plugins = config.plugins.concat([
     minimize: true,
   }),
   extractCSS,
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'common.js',
-    filename: 'common.js',
-    async: false,
-    children: true,
-    minChunks: 2,
-  }),
   new ChunkManifestPlugin({
     filename: 'manifest.json',
     manifestVariable: 'chunkManifest',

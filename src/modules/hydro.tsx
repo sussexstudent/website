@@ -4,6 +4,8 @@ import { isFunction } from 'lodash';
 import { HydroRoot } from '~components/HydroRoot';
 import BookMarketApp from '~components/bookmarket/BookMarketApp';
 import KnowledgeBaseApp from '~components/kb/KnowledgeBaseApplication';
+import {DesktopUserBar} from "~components/UserBar";
+import Header from "~components/Header";
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.SFC;
@@ -25,11 +27,8 @@ export default function() {
       import(/* webpackChunkName: "FigureCollection" */ '~components/FigureCollection'),
     StudentGroupsDiscoveryContainer: () =>
       import(/* webpackChunkName: "StudentGroupsDiscovery" */ '~components/StudentGroupsDiscovery'),
-    Header: () => import(/* webpackChunkName: "Header" */ '~components/Header'),
-    UserBar: () =>
-      import(/* webpackChunkName: "UserBar" */ '~components/UserBar').then(
-        (module) => module.DesktopUserBar,
-      ),
+    Header: () => Header,
+    UserBar: () => DesktopUserBar,
     AnnualPlan: () =>
       import(/* webpackChunkName: "AnnualPlan" */ '~components/AnnualPlan'),
     PolicyGenerator: () =>

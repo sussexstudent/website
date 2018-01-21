@@ -2,7 +2,7 @@ import React from 'react';
 import { Page } from '~components/content/types';
 import { FalmerImage } from '../../../types/events';
 import FigureCollection from '~components/FigureCollection';
-import FigureCollectionFigure from '~components/FigureCollectionFigure';
+import FigureCollectionFigure from '~components/FigureCollection/FigureCollectionFigure';
 
 interface FigureCollectionBlock {
   id: string;

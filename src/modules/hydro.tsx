@@ -4,6 +4,7 @@ import { isFunction } from 'lodash';
 import { HydroRoot } from '~components/HydroRoot';
 import BookMarketApp from '~components/bookmarket/BookMarketApp';
 import KnowledgeBaseApp from '~components/kb/KnowledgeBaseApplication';
+import EventsApplicationX from '~components/EventsApplication'
 import {DesktopUserBar} from "~components/UserBar";
 import Header from "~components/Header";
 
@@ -17,8 +18,7 @@ export default function() {
       import(/* webpackChunkName: "TweetList" */ '~components/TweetList'),
     EventList: () =>
       import(/* webpackChunkName: "EventList" */ '~components/EventList'),
-    EventsApplication: () =>
-      import(/* webpackChunkName: "EventsPage" */ '~components/EventsApplication'),
+    EventsApplication: () => EventsApplicationX as any,
     HeaderSearch: () =>
       import(/* webpackChunkName: "HeaderSearch" */ '~components/HeaderSearch'),
     HeadingHero: () =>

@@ -133,13 +133,13 @@ function generateConfig() {
           ],
         },
         {
-          test: /\.svg|\.png|\.woff/,
+          test: /(\.svg|\.png|\.woff)$/,
           use: 'url-loader?limit=10000',
           exclude: /icons/,
         },
         {
           test: /\.svg$/,
-          exclude: /img/,
+          exclude: /img|(\.file\.svg$)/,
           use: [
             'babel-loader',
             {

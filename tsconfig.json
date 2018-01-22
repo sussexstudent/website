@@ -34,8 +34,7 @@
     "build",
     "comp-dist",
     "build-falmer",
-    "dist-falmer",
-    "./node_modules/*"
+    "dist-falmer"
   ],
   "include": [
     "./src/**/*"

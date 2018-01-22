@@ -1,12 +1,13 @@
 import React from 'react';
-import { BentoBox } from '~components/Bento/BentoBox';
 import { BentoBoxImpulse } from '~components/Bento/BentoBoxImpulse';
+import {HighlightTextBox} from "~components/Bento/treatments/HighlightTextBox";
+import {RefreshersBox} from "~components/Bento/treatments/RefreshersBox";
 
 const Bento: React.SFC<{}> = () => (
   <div className="Bento Trail">
-    <div className="Trail__row Trail__row--21">
-      <BentoBox link="/refreshers">hero 2/3</BentoBox>
-      <BentoBox link="/submit-referenda">side 1/3</BentoBox>
+    <div className="Trail__row Trail__row--21 Bento__main-row">
+      <RefreshersBox link="/submit-referenda">hero 2/3</RefreshersBox>
+      <HighlightTextBox link="/news/article/ussu/make-a-difference-in-2018/" imageUrl="original_images/4219b2966c1047dd8fe4bfa2aa922c72" heading="Submit an idea for referendum" />
     </div>
     <div className="Trail__row Trail__row--111">
       <BentoBoxImpulse link="/whats-on" color="blue">

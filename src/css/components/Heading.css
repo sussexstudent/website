@@ -8,7 +8,7 @@
     color: #000000;
     display: inline;
     position: relative;
-    line-height: 1;
+    line-height: 1 !important;
     margin: 0;
     font-family: var(--type__primary);
   }

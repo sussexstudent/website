@@ -3,6 +3,8 @@
   background: white;
   box-sizing: border-box;
   margin-bottom: 1rem;
+  position: relative;
+  display: flex;
 
   &--anchor {
     display: block;
@@ -18,6 +20,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  &__background-image {
+    overflow: auto;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-top: 1rem;
+    box-sizing: border-box;
   }
 
   &--color-blue {
@@ -38,5 +50,12 @@
   &--color-yellow {
     color: var(--color__brand-blue);
     background-color: var(--color__brand-yellow);
+  }
+}
+
+
+.Bento {
+  &__main-row {
+    min-height: 260px;
   }
 }

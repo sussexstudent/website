@@ -12,7 +12,7 @@
           "transform-regenerator"
         ]
       }]],
-      "plugins": [["lodash", { "id": ["lodash", "recompose", "date-fns"] }]]
+      "plugins": [["lodash", { "id": ["lodash", "recompose"] }]]
     },
     "comp": {
       "presets": [["env", {

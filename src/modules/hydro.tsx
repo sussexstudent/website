@@ -35,6 +35,8 @@ export default function() {
       import(/* webpackChunkName: "ContentExplorer" */ '../projects/website/layouts/ContentExplorer'),
     ContentPage: () =>
       import(/* webpackChunkName: "ContentPage" */ '../projects/website/layouts/ContentPage'),
+    BentoBox: () =>
+      import(/* webpackChunkName: "Bento" */ '~components/Bento'),
     BookMarket: () => BookMarketApp,
     KnowledgeBase: () => KnowledgeBaseApp,
   };

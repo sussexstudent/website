@@ -9,6 +9,7 @@
 
 .AnnualPlan__slide {
   display: flex;
+  margin-bottom: 2rem;
 }
 
 .AnnualPlan__footer {
@@ -19,6 +20,8 @@
 
 .AnnualPlan__content {
   flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .AnnualPlan__image {
@@ -26,6 +29,7 @@
   width: 40%;
   max-width: 400px;
   border-left: 0.2em solid #000;
+  background-size: cover;
 
   @media (--medium) {
     display: block;
@@ -47,17 +51,19 @@
   padding: 0;
   margin: 0;
   list-style: none;
+  margin-bottom: auto;
 
   & li {
     padding-left: 0.2em;
+    padding-top: 0.3rem;
     border-left: 0.2em solid #000;
-    margin-bottom: 0.2em;
+    margin-bottom: 1rem;
 
     & h2 {
       padding: 0;
-      font-size: 2em;
       text-transform: uppercase;
       margin: 0;
+      @mixin type canon;
     }
 
     & button {

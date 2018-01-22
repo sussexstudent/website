@@ -42,7 +42,6 @@ export default {
 
     // REMOVED WITH CONTENT INTEGRATION
     '/support': require('./src/projects/website/layouts/Support'),
-    '/plan': require('./src/projects/website/layouts/AnnualPlan'),
     '/environment-feedback':
       require('./src/projects/website/layouts/environment/student-feedback'),
     '/environment': require('./src/projects/website/layouts/environment/environment'),

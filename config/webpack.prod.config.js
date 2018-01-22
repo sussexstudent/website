@@ -40,7 +40,9 @@ config.plugins = config.plugins.concat([
       COMP_NODE: '0',
     },
   }),
-  new CleanWebpackPlugin(['dist']),
+  new CleanWebpackPlugin(['dist'], {
+    root: path.resolve(baseDir),
+  }),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
   }),

@@ -3,12 +3,12 @@ import { graphql } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import AllMediaQuery from './AllMedia.graphql';
 import Loader from '../../../Loader';
-import Image from '../../../Image';
 import FauxRouterLink from '../../../FauxRouterLink';
 import { compose } from 'recompose';
 import { Connection } from '~components/falmer/types';
 import { FalmerImage } from '../../../../types/events';
 import { ApolloHandlerChildProps } from '~components/apolloHandler';
+import {OneImage} from "~components/OneImage";
 
 interface OwnProps {}
 
@@ -41,7 +41,11 @@ function FalmerMediaList({
                   }}
                 >
                   <FauxRouterLink href={`/media/${edge.node.mediaId}`} />
-                  <Image src={edge.node.resource} lazy />
+                  <OneImage
+                    src={edge.node.resource}
+                    aspectRatio={{ width: edge.node.width, height: edge.node.height }}
+                    alt=""
+                  />
                 </div>
               </li>
             ))}

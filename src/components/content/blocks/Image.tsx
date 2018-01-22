@@ -1,7 +1,7 @@
 import React from 'react';
 import { StreamFieldBlock } from '~components/content/types';
 import { FalmerImage } from '../../../types/events';
-import Image from '~components/Image';
+import {OneImage} from "~components/OneImage";
 
 export const ImageBlock: StreamFieldBlock<{
   caption: string;
@@ -9,7 +9,11 @@ export const ImageBlock: StreamFieldBlock<{
 }> = ({ block: { caption, image } }) => {
   return (
     <figure>
-      <Image src={image.resource} />
+      <OneImage
+        src={image.resource}
+        aspectRatio={{ width: image.width, height: image.height }}
+        alt=""
+      />
       <figcaption>{caption}</figcaption>
     </figure>
   );

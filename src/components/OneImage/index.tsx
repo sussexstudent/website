@@ -1,4 +1,7 @@
 import React from 'react';
+import { lifecycle } from 'recompose';
+import classToggle from "~libs/dom/classToggle";
+import * as ReactDOM from 'react-dom';
 
 const FALMER_ENDPOINT = 'https://su.imgix.net/';
 const MSL_ENDPOINT = 'https://ussu.imgix.net/';
@@ -15,43 +18,98 @@ const aspectRatioMap = {
   [AspectRatio.r20by9]: 0.45,
 };
 
-interface IProps {
-  aspectRatio: AspectRatio;
+type AspectRatioInput = AspectRatio | { width: number; height: number };
+
+interface ImageOptions { fit: string; }
+
+interface IProps extends React.HTMLAttributes<HTMLImageElement> {
+  aspectRatio: AspectRatioInput;
   src: string;
   alt: string;
   withoutLazy?: boolean; // todo
   withoutContainer?: boolean;
   mslResource?: boolean;
+  options?: ImageOptions;
+  sizes?: Array<number>
+  mediaSizes?: string;
 }
 
-function aspectMultiplier(aspectRatio: AspectRatio, width: number) {
-  return width * aspectRatioMap[aspectRatio];
+function aspectMultiplier(aspectRatio: AspectRatioInput, width: number) {
+  if (typeof aspectRatio === 'string') {
+    return width * aspectRatioMap[aspectRatio];
+  }
+
+  return width * (aspectRatio.height / aspectRatio.width);
 }
 
-function generateUrl(props: IProps, opts: { width: number }) {
-  return `${props.mslResource ? MSL_ENDPOINT : FALMER_ENDPOINT}${props.src}?w=${opts.width}&h=${aspectMultiplier(props.aspectRatio, opts.width)}&crop=faces&fit=crop`;
+const defaultOptions = {
+  fit: 'crop',
+  crop: 'faces',
+};
+
+function createQueryString(obj: { [key: string]: any }) {
+  return Object.entries(obj).map(pair => pair.join('=')).join('&');
+}
+
+function generateUrl(props: { src: string; aspectRatio?: AspectRatioInput, mslResource?: boolean, options?: ImageOptions }, opts: { width: number }) {
+  if (!props.aspectRatio) {
+    return `${props.mslResource ? MSL_ENDPOINT : FALMER_ENDPOINT}${props.src}?w=${opts.width}`;
+  }
+  return `${props.mslResource ? MSL_ENDPOINT : FALMER_ENDPOINT}${props.src}?w=${opts.width}&h=${aspectMultiplier(props.aspectRatio, opts.width)}&${createQueryString(props.options ? {...defaultOptions, ...props.options } : defaultOptions )}`;
 }
 
 const widths = [160, 320, 640, 1280];
 
-const OneImage: React.SFC<IProps>  = (props) => {
+const OneImageComponent: React.SFC<IProps>  = (props) => {
+  const sizes = props.sizes || widths;
+
   const img = <img
-    className="ResponsiveImage lazyload"
+    className={`ResponsiveImage lazyload ${props.className}`}
     src={generateUrl(props, {width: 100})}
-    data-sizes="auto"
+    data-sizes={props.mediaSizes || 'auto'}
     srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    data-srcset={widths.map(width => `${generateUrl(props, {width: width})} ${width}w`)}
+    data-srcset={sizes.map(width => `${generateUrl(props, {width: width})} ${width}w`)}
   />;
 
   if (props.withoutContainer) {
     return img;
   }
 
+  const containerProps = typeof props.aspectRatio === 'string' ? { className: `u-responsive-ratio u-responsive-ratio--${props.aspectRatio}` } : { className: 'u-responsive-ratio', style: { paddingBottom: `${(props.aspectRatio.height/props.aspectRatio.width)*100}%`} };
+
   return (
-    <div className={`u-responsive-ratio u-responsive-ratio--${props.aspectRatio}`}>
+    <div {...containerProps}>
       {img}
     </div>
   );
 };
 
-export { OneImage };
+const OneImage = lifecycle({
+  componentDidUpdate(prevProps: IProps) {
+    if (this.props.src !== prevProps.src) {
+      const el = ReactDOM.findDOMNode((this as any));
+      classToggle(el, 'lazyloaded', false);
+      classToggle(el, 'lazyload', true);
+    }
+  }
+})(OneImageComponent);
+
+interface IBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
+  aspectRatio?: AspectRatioInput;
+  src: string;
+  mslResource?: boolean;
+}
+
+const OneImageBackground: React.SFC<IBackgroundProps> = (props) => {
+  return (
+    <div
+      className={`lazyload ${props.className}`}
+      data-sizes="auto"
+      data-bgset={widths.map(width => `${generateUrl(props, {width: width})} ${width}w`)}
+    >
+      {props.children}
+    </div>
+  )
+};
+
+export { OneImage, OneImageBackground };

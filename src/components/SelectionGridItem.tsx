@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from './Image';
+import {OneImageBackground} from "~components/OneImage";
 
 interface IProps {
   link: string;
@@ -10,11 +10,11 @@ interface IProps {
 const SelectionGridItem = ({ link, imageURL, title }: IProps) => (
   <li className="SelectionGrid__item SelectionGrid--underneath" key={link}>
     <a className="SelectionGrid__link" href={link}>
-      <Image className="SelectionGrid__image" src={imageURL} type="bg">
+      <OneImageBackground className="SelectionGrid__image" src={imageURL}>
         <div className="SelectionGrid__image-inside">
           <div className="SelectionGrid__title">{title}</div>
         </div>
-      </Image>
+      </OneImageBackground>
     </a>
   </li>
 );

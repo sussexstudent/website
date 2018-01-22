@@ -1,6 +1,6 @@
 import React from 'react';
-import Image from '../../Image';
 import { FalmerImage } from '../../../types/events';
+import {AspectRatio, OneImage} from "~components/OneImage";
 
 interface IProps {
   image: FalmerImage;
@@ -9,19 +9,15 @@ interface IProps {
 function ImageTreatmentPreview({ image }: IProps) {
   const treatments = [
     {
-      size: 'square',
+      size: AspectRatio.r1by1,
       name: 'Square (1:1)',
     },
     {
-      size: '43',
-      name: 'Postcard (4:3)',
+      size: AspectRatio.r16by9,
+      name: 'Wide (16:9)',
     },
     {
-      size: 'wide',
-      name: 'Wide (5:3)',
-    },
-    {
-      size: 'ultra-wide',
+      size: AspectRatio.r20by9,
       name: 'Ultra wide (20:9)',
     },
   ];
@@ -31,17 +27,7 @@ function ImageTreatmentPreview({ image }: IProps) {
         {treatments.map((treatment) => (
           <li>
             <figure className="ImageTreatmentPreview__figure">
-              <div
-                className={`u-responsive-ratio u-responsive-ratio--${
-                  treatment.size
-                }`}
-              >
-                <Image
-                  className="ResponsiveImage"
-                  alt=""
-                  src={image.resource}
-                />
-              </div>
+              <OneImage aspectRatio={treatment.size} src={image.resource} alt={treatment.name} />
               <figcaption className="ImageTreatmentPreview__caption">
                 {treatment.name}
               </figcaption>

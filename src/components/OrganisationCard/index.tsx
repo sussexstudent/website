@@ -1,7 +1,7 @@
 import React from 'react';
-import Image from '../Image';
 import PatternPlaceholder from '../PatternPlaceholder';
 import { StudentGroup } from '~components/OrganisationGrid';
+import {AspectRatio, OneImage} from "~components/OneImage";
 
 interface IProps {
   org: StudentGroup;
@@ -14,14 +14,15 @@ function OrganisationCard(props: IProps) {
       <a className="OrganisationCard__link" href={org.link || '#'}>
         {org.logo !== null ? (
           <div className="OrganisationCard__image-container">
-            <Image
+            <OneImage
               className="OrganisationCard__image"
-              fit="clip"
-              width={416}
-              height={234}
+              aspectRatio={AspectRatio.r16by9}
               src={org.logo.resource}
               alt=""
-              lazy
+              sizes={[416]}
+              mediaSizes="416px"
+              options={{ fit: 'clip' }}
+              withoutContainer
             />
           </div>
         ) : (

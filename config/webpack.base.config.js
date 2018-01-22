@@ -18,6 +18,9 @@ env.build = env.production || env.staging;
 const baseDir = path.join(__dirname, '..');
 
 const vendorLibs = [
+  'unfetch/polyfill',
+  'raven-js',
+  'mitt',
   'react',
   'react-dom',
   'react-apollo',
@@ -26,9 +29,11 @@ const vendorLibs = [
   'graphql',
   'react-router',
   'react-router-dom',
-  'unfetch/polyfill',
-  'raven-js',
-  'mitt',
+  'history',
+  'apollo-utilities',
+  'apollo-link',
+  'apollo-link-http',
+  'what-input',
 ];
 
 const vendorExp = new RegExp(`(${vendorLibs.join('|')})`);
@@ -56,6 +61,13 @@ function generateConfig() {
       alias: {
         '~components': path.resolve(baseDir, 'src/components/'),
         '~libs': path.resolve(baseDir, 'src/libs/'),
+        'react-router-dom': 'react-router-dom/es',
+        'react-router': 'react-router/es',
+        'react-helmet': 'react-helmet/es/Helmet.js',
+        'date-fns': 'date-fns/esm',
+        history: 'history/es',
+        'lodash.pick': 'lodash/pick',
+        'lodash.flowright': 'lodash/flowright',
       },
       extensions: ['.ts', '.tsx', '.js', '.svg'],
     },
@@ -85,6 +97,11 @@ function generateConfig() {
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
         minChunks: (module) => vendorExp.test(module.resource),
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        async: true,
+        children: true,
+        minChunks: 3,
       }),
       new DuplicatePackageCheckerPlugin(),
       new TsConfigPathsPlugin(),
@@ -128,7 +145,7 @@ function generateConfig() {
             {
               loader: 'svgr/webpack',
               options: {
-                svgo: false,
+                svgo: true,
                 prettier: false,
               },
             },

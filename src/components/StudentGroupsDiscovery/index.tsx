@@ -1,7 +1,6 @@
 import React from 'react';
 import { keyBy } from 'lodash';
 import Fuse from 'fuse.js';
-import { forceCheck } from 'react-lazyload';
 import HydroLeaf from '~components/HydroLeaf';
 import OrgansiationGrid, { StudentGroup } from '~components/OrganisationGrid';
 import { graphql, ChildProps } from 'react-apollo';
@@ -60,9 +59,6 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
         displayIds: searchValue
           ? this.fuse.search(searchValue)
           : this.state.groups.map((group) => group.groupId),
-      },
-      () => {
-        forceCheck();
       },
     );
   }

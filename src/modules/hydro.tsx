@@ -21,10 +21,6 @@ export default function() {
     EventsApplication: () => EventsApplicationX as any,
     HeaderSearch: () =>
       import(/* webpackChunkName: "HeaderSearch" */ '~components/HeaderSearch'),
-    HeadingHero: () =>
-      import(/* webpackChunkName: "HeadingHero" */ '~components/HeadingHero'),
-    FigureCollection: () =>
-      import(/* webpackChunkName: "FigureCollection" */ '~components/FigureCollection'),
     StudentGroupsDiscoveryContainer: () =>
       import(/* webpackChunkName: "StudentGroupsDiscovery" */ '~components/StudentGroupsDiscovery'),
     Header: () => Header,

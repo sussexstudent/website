@@ -7,8 +7,8 @@ import KbArticleQuery from './KbArticleQuery.graphql';
 import apolloHandler, { ApolloHandlerChildProps } from '../../apolloHandler';
 import { Article } from '../../../types/kb';
 import StreamField from '~components/content/StreamField';
-import ContentCard from "~components/ContentCard";
-import {ContentBreadcrumbBar} from "~components/BreadcrumbBar";
+import ContentCard from '~components/ContentCard';
+import { ContentBreadcrumbBar } from '~components/BreadcrumbBar';
 
 interface RouteParams {
   sectionSlug: string;
@@ -35,7 +35,10 @@ function KbArticle(props: IProps) {
       <div className="Layout Layout--sidebar-right ">
         <ContentCard>
           <h1 className="type-canon">{article.title}</h1>
-          <div className="type-long-primer">last updated: {format(new Date(article.lastPublishedAt), 'DD/MM/YY')}</div>
+          <div className="type-long-primer">
+            last updated:{' '}
+            {format(new Date(article.lastPublishedAt), 'DD/MM/YY')}
+          </div>
           <StreamField page={article} items={article.main} />
         </ContentCard>
       </div>

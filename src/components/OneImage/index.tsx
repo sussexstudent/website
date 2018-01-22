@@ -1,6 +1,6 @@
 import React from 'react';
 import { lifecycle } from 'recompose';
-import classToggle from "~libs/dom/classToggle";
+import classToggle from '~libs/dom/classToggle';
 import * as ReactDOM from 'react-dom';
 
 const FALMER_ENDPOINT = 'https://su.imgix.net/';
@@ -20,7 +20,9 @@ const aspectRatioMap = {
 
 type AspectRatioInput = AspectRatio | { width: number; height: number };
 
-interface ImageOptions { fit: string; }
+interface ImageOptions {
+  fit: string;
+}
 
 interface IProps extends React.HTMLAttributes<HTMLImageElement> {
   aspectRatio: AspectRatioInput;
@@ -30,7 +32,7 @@ interface IProps extends React.HTMLAttributes<HTMLImageElement> {
   withoutContainer?: boolean;
   mslResource?: boolean;
   options?: ImageOptions;
-  sizes?: Array<number>
+  sizes?: Array<number>;
   mediaSizes?: string;
 }
 
@@ -48,50 +50,80 @@ const defaultOptions = {
 };
 
 function createQueryString(obj: { [key: string]: any }) {
-  return Object.entries(obj).map(pair => pair.join('=')).join('&');
+  return Object.entries(obj)
+    .map((pair) => pair.join('='))
+    .join('&');
 }
 
-function generateUrl(props: { src: string; aspectRatio?: AspectRatioInput, mslResource?: boolean, options?: ImageOptions }, opts: { width: number }) {
+function generateUrl(
+  props: {
+    src: string;
+    aspectRatio?: AspectRatioInput;
+    mslResource?: boolean;
+    options?: ImageOptions;
+  },
+  opts: { width: number },
+) {
   if (!props.aspectRatio) {
-    return `${props.mslResource ? MSL_ENDPOINT : FALMER_ENDPOINT}${props.src}?w=${opts.width}`;
+    return `${props.mslResource ? MSL_ENDPOINT : FALMER_ENDPOINT}${
+      props.src
+    }?w=${opts.width}`;
   }
-  return `${props.mslResource ? MSL_ENDPOINT : FALMER_ENDPOINT}${props.src}?w=${opts.width}&h=${aspectMultiplier(props.aspectRatio, opts.width)}&${createQueryString(props.options ? {...defaultOptions, ...props.options } : defaultOptions )}`;
+  return `${props.mslResource ? MSL_ENDPOINT : FALMER_ENDPOINT}${props.src}?w=${
+    opts.width
+  }&h=${aspectMultiplier(props.aspectRatio, opts.width)}&${createQueryString(
+    props.options ? { ...defaultOptions, ...props.options } : defaultOptions,
+  )}`;
 }
 
 const widths = [160, 320, 640, 1280];
 
-const OneImageComponent: React.SFC<IProps>  = (props) => {
+const OneImageComponent: React.SFC<IProps> = (props) => {
   const sizes = props.sizes || widths;
 
-  const img = <img
-    className={`ResponsiveImage lazyload ${props.className}`}
-    src={generateUrl(props, {width: 100})}
-    data-sizes={props.mediaSizes || 'auto'}
-    srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-    data-srcset={sizes.map(width => `${generateUrl(props, {width: width})} ${width}w`)}
-  />;
+  const img = (
+    <img
+      className={`ResponsiveImage lazyload ${props.className}`}
+      src={generateUrl(props, { width: 100 })}
+      data-sizes={props.mediaSizes || 'auto'}
+      srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+      data-srcset={sizes.map(
+        (width) => `${generateUrl(props, { width: width })} ${width}w`,
+      )}
+    />
+  );
 
   if (props.withoutContainer) {
     return img;
   }
 
-  const containerProps = typeof props.aspectRatio === 'string' ? { className: `u-responsive-ratio u-responsive-ratio--${props.aspectRatio}` } : { className: 'u-responsive-ratio', style: { paddingBottom: `${(props.aspectRatio.height/props.aspectRatio.width)*100}%`} };
+  const containerProps =
+    typeof props.aspectRatio === 'string'
+      ? {
+          className: `u-responsive-ratio u-responsive-ratio--${
+            props.aspectRatio
+          }`,
+        }
+      : {
+          className: 'u-responsive-ratio',
+          style: {
+            paddingBottom: `${props.aspectRatio.height /
+              props.aspectRatio.width *
+              100}%`,
+          },
+        };
 
-  return (
-    <div {...containerProps}>
-      {img}
-    </div>
-  );
+  return <div {...containerProps}>{img}</div>;
 };
 
 const OneImage = lifecycle({
   componentDidUpdate(prevProps: IProps) {
     if (this.props.src !== prevProps.src) {
-      const el = ReactDOM.findDOMNode((this as any));
+      const el = ReactDOM.findDOMNode(this as any);
       classToggle(el, 'lazyloaded', false);
       classToggle(el, 'lazyload', true);
     }
-  }
+  },
 })(OneImageComponent);
 
 interface IBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -105,11 +137,13 @@ const OneImageBackground: React.SFC<IBackgroundProps> = (props) => {
     <div
       className={`lazyload ${props.className}`}
       data-sizes="auto"
-      data-bgset={widths.map(width => `${generateUrl(props, {width: width})} ${width}w`)}
+      data-bgset={widths.map(
+        (width) => `${generateUrl(props, { width: width })} ${width}w`,
+      )}
     >
       {props.children}
     </div>
-  )
+  );
 };
 
 export { OneImage, OneImageBackground };

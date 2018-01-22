@@ -1,5 +1,5 @@
 import React from 'react';
-import {OneImage, AspectRatio} from "~components/OneImage";
+import { OneImage, AspectRatio } from '~components/OneImage';
 
 interface IProps {
   imageResource: string;
@@ -16,11 +16,11 @@ export interface FigureData {
 }
 
 const FigureCollectionFigure = ({
-                                  imageResource,
-                                  title,
-                                  sub,
-                                  link,
-                                }: IProps) => (
+  imageResource,
+  title,
+  sub,
+  link,
+}: IProps) => (
   <li className="FigureCollection__item">
     <a href={link} className="FigureCollection__link">
       <OneImage alt="" aspectRatio={AspectRatio.r1by1} src={imageResource} />

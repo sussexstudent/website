@@ -101,7 +101,8 @@ function HydroLeaf({
           }
 
           const ReactDOM = require('react-dom/server');
-          const HydroRootServer =  require('~components/HydroRootServer').HydroRootServer;
+          const HydroRootServer = require('~components/HydroRootServer')
+            .HydroRootServer;
 
           const componentMarkup = disableSSR
             ? ''

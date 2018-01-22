@@ -1,6 +1,6 @@
 import React from 'react';
-import FauxLink from "~components/FauxLink";
-import {OneImageBackground} from "~components/OneImage";
+import FauxLink from '~components/FauxLink';
+import { OneImageBackground } from '~components/OneImage';
 
 interface IProps {
   link: string;
@@ -16,7 +16,12 @@ const HighlightTextBox: React.SFC<IProps> = (props) => (
       src={props.imageUrl}
     >
       <div style={{ paddingLeft: '1rem', paddingBottom: '1rem' }}>
-        <h2 className="Heading Heading--highlight type-trafalgar" style={{ marginBottom: '1rem' }}>{props.heading}</h2>
+        <h2
+          className="Heading Heading--highlight type-trafalgar"
+          style={{ marginBottom: '1rem' }}
+        >
+          {props.heading}
+        </h2>
       </div>
     </OneImageBackground>
     {props.children}

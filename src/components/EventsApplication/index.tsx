@@ -5,31 +5,30 @@ import HydroLeaf from '~components/HydroLeaf';
 import Loadable from 'react-loadable';
 import { LoadableLoading } from '~components/LoadableLoading';
 
-
-const EventsListLoader = () => import(/* webpackChunkName: "events.listings" */ '~components/EventsCalender');
+const EventsListLoader = () =>
+  import(/* webpackChunkName: "events.listings" */ '~components/EventsCalender');
 
 const LoadableListings = Loadable({
   loading: LoadableLoading,
   loader: EventsListLoader,
   render({ EventsList }: { EventsList: any }, props) {
-    return <EventsList  {...props} />
-  }
+    return <EventsList {...props} />;
+  },
 });
-
 
 const LoadableListingsBranding = Loadable({
   loading: LoadableLoading,
   loader: EventsListLoader,
   render({ EventsBrandingPeriod }: { EventsBrandingPeriod: any }, props) {
-    return <EventsBrandingPeriod {...props} />
-  }
+    return <EventsBrandingPeriod {...props} />;
+  },
 });
 
 const LoadableDetail = Loadable({
   loading: LoadableLoading,
-  loader: () => import(/* webpackChunkName: "events.detail" */ '~components/EventDetailPage')
+  loader: () =>
+    import(/* webpackChunkName: "events.detail" */ '~components/EventDetailPage'),
 });
-
 
 const EventsApplication = () => (
   <div className="u-keep-footer-down">

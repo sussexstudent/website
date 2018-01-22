@@ -2,7 +2,7 @@ import React from 'react';
 import slugify from '~libs/slugify';
 import { FalmerImage } from '../../types/events';
 import { StreamFieldBlock } from '~components/content/types';
-import {AspectRatio, OneImage} from "~components/OneImage";
+import { AspectRatio, OneImage } from '~components/OneImage';
 /* eslint-disable react/no-danger */
 
 interface StaffMemberData {

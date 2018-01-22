@@ -1,7 +1,7 @@
 import React from 'react';
 import { StreamFieldBlock } from '~components/content/types';
 import { FalmerImage } from '../../../types/events';
-import {OneImage} from "~components/OneImage";
+import { OneImage } from '~components/OneImage';
 
 export const ImageBlock: StreamFieldBlock<{
   caption: string;

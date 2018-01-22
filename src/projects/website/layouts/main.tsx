@@ -26,14 +26,15 @@ const mslLogout = MSLTag('LoginButton', {
 interface IProps {
   legacy: boolean;
   loggedIn: boolean;
-  assets: {map: {
+  assets: {
+    map: {
       main: {
         js: string;
       };
       vendor: {
         js: string;
       };
-    }
+    };
   };
 }
 

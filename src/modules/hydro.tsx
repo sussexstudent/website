@@ -4,9 +4,9 @@ import { isFunction } from 'lodash';
 import { HydroRoot } from '~components/HydroRoot';
 import BookMarketApp from '~components/bookmarket/BookMarketApp';
 import KnowledgeBaseApp from '~components/kb/KnowledgeBaseApplication';
-import EventsApplicationX from '~components/EventsApplication'
-import {DesktopUserBar} from "~components/UserBar";
-import Header from "~components/Header";
+import EventsApplicationX from '~components/EventsApplication';
+import { DesktopUserBar } from '~components/UserBar';
+import Header from '~components/Header';
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.SFC;
@@ -35,8 +35,7 @@ export default function() {
       import(/* webpackChunkName: "ContentExplorer" */ '../projects/website/layouts/ContentExplorer'),
     ContentPage: () =>
       import(/* webpackChunkName: "ContentPage" */ '../projects/website/layouts/ContentPage'),
-    BentoBox: () =>
-      import(/* webpackChunkName: "Bento" */ '~components/Bento'),
+    BentoBox: () => import(/* webpackChunkName: "Bento" */ '~components/Bento'),
     BookMarket: () => BookMarketApp,
     KnowledgeBase: () => KnowledgeBaseApp,
   };

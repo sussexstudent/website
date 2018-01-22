@@ -3,7 +3,7 @@ import parse from 'url-parse';
 import formatDistance from 'date-fns/formatDistance';
 import isSameDay from 'date-fns/isSameDay';
 import Logotype from '../../img/logotype';
-import {AspectRatio, OneImage} from "~components/OneImage";
+import { AspectRatio, OneImage } from '~components/OneImage';
 
 export interface NewsItem {
   id: number;
@@ -24,20 +24,20 @@ const NewsBlock = ({
   <li className="NewsGrid__item NewsBlock">
     <a className="NewsBlock__link" href={link}>
       <div className="NewsBlock__image">
-          {imageURL ? (
-            <OneImage
-              src={parse(imageURL).pathname.slice(1)}
-              aspectRatio={AspectRatio.r16by9}
-              alt={""}
-              mslResource
-            />
-          ) : (
-            <div className="u-responsive-ratio u-responsive-ratio--r16by9">
-              <div className="NewsBlock__image--default">
-                <Logotype />
-              </div>
+        {imageURL ? (
+          <OneImage
+            src={parse(imageURL).pathname.slice(1)}
+            aspectRatio={AspectRatio.r16by9}
+            alt={''}
+            mslResource
+          />
+        ) : (
+          <div className="u-responsive-ratio u-responsive-ratio--r16by9">
+            <div className="NewsBlock__image--default">
+              <Logotype />
             </div>
-          )}
+          </div>
+        )}
       </div>
 
       <div className="NewsBlock__content">

@@ -8,4 +8,4 @@ class ContentPageContainer extends React.Component<{ path: string }> {
   }
 }
 
-export default (ContentPageContainer);
+export default ContentPageContainer;

@@ -7,7 +7,7 @@ import FauxRouterLink from '../FauxRouterLink';
 import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
 import EventRelativeTime from './EventRelativeTime';
 import { Event, TicketType } from '../../types/events';
-import {AspectRatio, OneImage} from "~components/OneImage";
+import { AspectRatio, OneImage } from '~components/OneImage';
 // import PropTypes from 'prop-types';
 
 function renderEventLocation(event: Event) {

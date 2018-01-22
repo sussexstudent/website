@@ -5,8 +5,8 @@ import { graphql } from 'react-apollo';
 import KbSectionQuery from './KbSectionQuery.graphql';
 import apolloHandler, { ApolloHandlerChildProps } from '../../apolloHandler';
 import { Section } from '../../../types/kb';
-import {ContentBreadcrumbBar} from "~components/BreadcrumbBar";
-import ContentCard from "~components/ContentCard";
+import { ContentBreadcrumbBar } from '~components/BreadcrumbBar';
+import ContentCard from '~components/ContentCard';
 
 interface RouteParams {
   sectionSlug: string;
@@ -39,7 +39,9 @@ function KbSection(props: IProps) {
                   {topic.articles.map((article) => (
                     <li>
                       <Link
-                        to={`/help/${section.slug}/${topic.slug}/${article.slug}`}
+                        to={`/help/${section.slug}/${topic.slug}/${
+                          article.slug
+                        }`}
                       >
                         {article.title}
                       </Link>

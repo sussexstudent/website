@@ -1,6 +1,6 @@
 import React from 'react';
 import { FalmerImage } from '../../../types/events';
-import {AspectRatio, OneImage} from "~components/OneImage";
+import { AspectRatio, OneImage } from '~components/OneImage';
 
 interface IProps {
   image: FalmerImage;
@@ -27,7 +27,11 @@ function ImageTreatmentPreview({ image }: IProps) {
         {treatments.map((treatment) => (
           <li>
             <figure className="ImageTreatmentPreview__figure">
-              <OneImage aspectRatio={treatment.size} src={image.resource} alt={treatment.name} />
+              <OneImage
+                aspectRatio={treatment.size}
+                src={image.resource}
+                alt={treatment.name}
+              />
               <figcaption className="ImageTreatmentPreview__caption">
                 {treatment.name}
               </figcaption>

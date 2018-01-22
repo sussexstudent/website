@@ -1,6 +1,6 @@
 import React from 'react';
 import HydroLeaf from '../HydroLeaf';
-import {OneImageBackground} from "~components/OneImage";
+import { OneImageBackground } from '~components/OneImage';
 
 interface IProps {
   imageURL: string;

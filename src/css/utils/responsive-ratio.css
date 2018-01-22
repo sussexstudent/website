@@ -7,11 +7,13 @@
     padding-bottom: 60%;
   }
 
-  &--ultra-wide, &--r20by9 {
+  &--ultra-wide,
+  &--r20by9 {
     padding-bottom: 45%;
   }
 
-  &--r1by1, &--square {
+  &--r1by1,
+  &--square {
     padding-bottom: 100%;
   }
 
@@ -19,7 +21,8 @@
     padding-bottom: 56.25%;
   }
 
-  &--43, &--r4by3 {
+  &--43,
+  &--r4by3 {
     padding-bottom: 75%;
   }
 

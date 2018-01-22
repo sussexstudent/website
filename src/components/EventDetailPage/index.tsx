@@ -25,7 +25,7 @@ import SocietyIcon from '../../icons/events-society.svg';
 import apolloHandler from '~components/apolloHandler';
 import { compose } from 'recompose';
 import { generateStylesForBrand } from '~components/EventsApplication/utils';
-import {AspectRatio, OneImage} from "~components/OneImage";
+import { AspectRatio, OneImage } from '~components/OneImage';
 
 function isSameLogicalSleepDay(startDate: Date, endDate: Date) {
   if (isSameDay(startDate, endDate)) {

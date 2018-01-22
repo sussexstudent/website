@@ -1,5 +1,5 @@
 import React from 'react';
-import {OneImageBackground} from "~components/OneImage";
+import { OneImageBackground } from '~components/OneImage';
 
 interface IProps {
   link: string;

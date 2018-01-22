@@ -1,7 +1,7 @@
 import React from 'react';
 import PatternPlaceholder from '../PatternPlaceholder';
 import { StudentGroup } from '~components/OrganisationGrid';
-import {AspectRatio, OneImage} from "~components/OneImage";
+import { AspectRatio, OneImage } from '~components/OneImage';
 
 interface IProps {
   org: StudentGroup;

@@ -16,7 +16,7 @@ export const ExternalLink: StreamFieldBlock<{
 
 export const InternalLink: StreamFieldBlock<{
   link: {
-    path: string
+    path: string;
   };
   target: any;
   title: string;

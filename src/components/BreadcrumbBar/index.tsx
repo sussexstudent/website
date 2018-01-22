@@ -11,27 +11,53 @@ interface IProps {
 
 const BreadcrumbBar: React.SFC<IProps> = ({ color = 'blue', children }) => {
   return (
-    <ul className={cx('BackBar', 'BackBar--breadcrumb', `BackBar--color-${color}`)}>
-      {children && (Array.isArray(children) ? children : [children]).map((child: any, index: number) => (
-        <li>
-          {child}
-          {index < (children as Array<any>).length - 1 && <span className="BackBar__chevron"><ChevronForwardIcon /></span>}
-        </li>
-      ))}
+    <ul
+      className={cx(
+        'BackBar',
+        'BackBar--breadcrumb',
+        `BackBar--color-${color}`,
+      )}
+    >
+      {children &&
+        (Array.isArray(children) ? children : [children]).map(
+          (child: any, index: number) => (
+            <li>
+              {child}
+              {index < (children as Array<any>).length - 1 && (
+                <span className="BackBar__chevron">
+                  <ChevronForwardIcon />
+                </span>
+              )}
+            </li>
+          ),
+        )}
     </ul>
+  );
+};
+
+function generateBreadcrumbsFromPage(page: any) {
+  return compact(
+    [...page.ancestors, page].map(
+      (subPage) =>
+        !!subPage.path ? (
+          <Link to={subPage.path} key={subPage.path}>
+            {subPage.title}
+          </Link>
+        ) : null,
+    ),
   );
 }
 
-function generateBreadcrumbsFromPage(page: any) {
-  return compact([...page.ancestors, page].map(subPage => !!subPage.path ? <Link to={subPage.path} key={subPage.path}>{subPage.title}</Link> : null))
-}
-
 interface IContentProps extends IProps {
-  page: any
+  page: any;
 }
 
 const ContentBreadcrumbBar = (props: IContentProps) => {
-  return <BreadcrumbBar {...omit(props, ['children'])}>{generateBreadcrumbsFromPage(props.page)}</BreadcrumbBar>
+  return (
+    <BreadcrumbBar {...omit(props, ['children'])}>
+      {generateBreadcrumbsFromPage(props.page)}
+    </BreadcrumbBar>
+  );
 };
 
 export { BreadcrumbBar, generateBreadcrumbsFromPage, ContentBreadcrumbBar };

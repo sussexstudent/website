@@ -20,7 +20,7 @@ config.performance = {
 
 config.output = {
   path: path.resolve(path.join(baseDir, 'comp-dist')),
-  publicPath: '/assets/',
+  publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
   filename: 'union.[name].js',
 };
 

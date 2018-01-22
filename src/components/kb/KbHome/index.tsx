@@ -5,7 +5,7 @@ import { graphql } from 'react-apollo';
 import KbHomeQuery from './KbHomeQuery.graphql';
 import apolloHandler, { ApolloHandlerChildProps } from '../../apolloHandler';
 import { Section } from '../../../types/kb';
-import {ContentBreadcrumbBar} from "~components/BreadcrumbBar";
+import { ContentBreadcrumbBar } from '~components/BreadcrumbBar';
 
 interface Result {
   knowledgeBase: {

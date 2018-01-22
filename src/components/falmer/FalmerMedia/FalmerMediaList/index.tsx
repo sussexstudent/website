@@ -8,7 +8,7 @@ import { compose } from 'recompose';
 import { Connection } from '~components/falmer/types';
 import { FalmerImage } from '../../../../types/events';
 import { ApolloHandlerChildProps } from '~components/apolloHandler';
-import {OneImage} from "~components/OneImage";
+import { OneImage } from '~components/OneImage';
 
 interface OwnProps {}
 
@@ -43,7 +43,10 @@ function FalmerMediaList({
                   <FauxRouterLink href={`/media/${edge.node.mediaId}`} />
                   <OneImage
                     src={edge.node.resource}
-                    aspectRatio={{ width: edge.node.width, height: edge.node.height }}
+                    aspectRatio={{
+                      width: edge.node.width,
+                      height: edge.node.height,
+                    }}
                     alt=""
                   />
                 </div>

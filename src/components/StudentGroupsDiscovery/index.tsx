@@ -53,14 +53,12 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
 
   onSearchUpdate(e: React.ChangeEvent<HTMLInputElement>) {
     const searchValue = e.target.value;
-    this.setState(
-      {
-        searchValue,
-        displayIds: searchValue
-          ? this.fuse.search(searchValue)
-          : this.state.groups.map((group) => group.groupId),
-      },
-    );
+    this.setState({
+      searchValue,
+      displayIds: searchValue
+        ? this.fuse.search(searchValue)
+        : this.state.groups.map((group) => group.groupId),
+    });
   }
 
   render() {

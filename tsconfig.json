@@ -28,6 +28,17 @@
       "~libs/*": ["./src/libs/*"],
       "~falmer/*": ["./src/projects/falmer/*"]
     }
-  }
+  },
+  "exclude": [
+    "dist",
+    "build",
+    "comp-dist",
+    "build-falmer",
+    "dist-falmer",
+    "./node_modules/*"
+  ],
+  "include": [
+    "./src/**/*"
+  ]
 }
 

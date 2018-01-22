@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const path = require('path');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -51,7 +52,7 @@ function generateConfig() {
     },
 
     resolve: {
-      modules: ['web_modules', 'node_modules', './src/images'],
+      modules: ['node_modules', './src/images'],
       alias: {
         '~components': path.resolve(baseDir, 'src/components/'),
         '~libs': path.resolve(baseDir, 'src/libs/'),
@@ -86,6 +87,7 @@ function generateConfig() {
         minChunks: (module) => vendorExp.test(module.resource),
       }),
       new DuplicatePackageCheckerPlugin(),
+      new TsConfigPathsPlugin(),
     ],
     module: {
       rules: [
@@ -102,7 +104,16 @@ function generateConfig() {
         },
         {
           test: /\.tsx?$/,
-          loader: 'awesome-typescript-loader?useBabel=true&useCache=true',
+          use: [
+            {
+              loader: 'awesome-typescript-loader?useBabel=true&useCache=true',
+              options: {
+                useBabel: true,
+                useCache: true,
+                reportFiles: ['src/**/*.{ts,tsx}'],
+              },
+            },
+          ],
         },
         {
           test: /\.svg|\.png|\.woff/,
@@ -118,6 +129,7 @@ function generateConfig() {
               loader: 'svgr/webpack',
               options: {
                 svgo: false,
+                prettier: false,
               },
             },
           ],

@@ -92,7 +92,6 @@ function generateConfig() {
         __STAGING__: env.staging,
         __PRODUCTION__: env.production,
       }),
-      new webpack.NamedChunksPlugin(),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
         minChunks: (module) => vendorExp.test(module.resource),

@@ -29,6 +29,7 @@ config.plugins = config.plugins.concat([
       COMP_NODE: '0',
     },
   }),
+  new webpack.NamedModulesPlugin(),
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
 ]);

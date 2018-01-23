@@ -43,6 +43,7 @@ config.plugins = config.plugins.concat([
   new CleanWebpackPlugin(['dist'], {
     root: path.resolve(baseDir),
   }),
+  new webpack.HashedModuleIdsPlugin(),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
   }),

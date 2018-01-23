@@ -51,6 +51,7 @@ interface IProps {
   relative?: boolean;
   showDay?: boolean;
   inline?: boolean;
+  small?: boolean;
   part: {
     event: Event;
   };
@@ -62,6 +63,7 @@ function EventsCalenderItem({
   inline = false,
   showDay = false,
   relative = false,
+  small = false
 }: IProps) {
   const event = part.event;
   const treat = getTreat(event);
@@ -71,6 +73,7 @@ function EventsCalenderItem({
     <div
       className={cx('EventsCalender__item', {
         'EventsCalender--inline': inline,
+        'EventsCalender--small': small,
       })}
     >
       {event.url !== undefined && event.url !== '' ? (

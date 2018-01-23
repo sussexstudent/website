@@ -48,6 +48,7 @@ function EventList(props: IProps) {
                 useAnchors
                 showDay
                 relative
+                small
               />
             ))}
       </li>

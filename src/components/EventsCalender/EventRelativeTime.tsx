@@ -9,19 +9,27 @@ interface IProps {
 }
 
 export default function EventRelativeTime({ event }: IProps) {
+  const startsSoon = isWithinInterval(new Date(), {
+    start: subMinutes(new Date(event.startTime), 90),
+    end: new Date(event.startTime),
+  });
+
+  const onNow = isWithinInterval(new Date(), {
+    start: new Date(event.startTime),
+    end: new Date(event.endTime),
+  });
+
+  if (!startsSoon && !onNow) {
+    return null;
+  }
+
   return (
     <div className="EventsCalender__item-meta">
-      {isWithinInterval(new Date(), {
-        start: subMinutes(new Date(event.startTime), 90),
-        end: new Date(event.startTime),
-      })
-        ? `Starts in ${formatDistance(new Date(event.startTime), new Date())}`
+      {
+        startsSoon ? `Starts in ${formatDistance(new Date(event.startTime), new Date())}`
         : ''}
-      {isWithinInterval(new Date(), {
-        start: new Date(event.startTime),
-        end: new Date(event.endTime),
-      })
-        ? 'On now'
+      {
+        onNow ? 'On now'
         : ''}
     </div>
   );

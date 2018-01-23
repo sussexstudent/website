@@ -57,6 +57,12 @@
     }
   }
 
+  &--small {
+    & .EventsCalender__item-title {
+      @mixin type great-primer;
+    }
+  }
+
   &__item&--inline {
     width: 100%;
   }
@@ -112,8 +118,8 @@
   }
 
   &__item-title {
-    font-size: 1.15rem;
-    margin-top: 0.3rem;
+    @mixin type double-pica;
+    margin: 0.2rem 0 0.4rem 0;
   }
 
   &__item-date-kicker {

@@ -21,7 +21,7 @@
     "@types/recompose": "^0.24.4",
     "@types/url-parse": "^1.1.0",
     "@types/webpack-env": "^1.13.3",
-    "@ussu/comp": "2.1.0",
+    "@ussu/comp": "^3.0.0",
     "assets-webpack-plugin": "^3.5.1",
     "autoprefixer": "^7.1.6",
     "awesome-typescript-loader": "^3.4.1",

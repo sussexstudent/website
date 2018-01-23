@@ -197,14 +197,15 @@
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.5.3.tgz#91b728599544efbb7386d8b6633693a3c2e7ade5"
 
-"@ussu/comp@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@ussu/comp/-/comp-2.1.0.tgz#1e06163b0eb2ea0ecdf94b490a43cf7ff7af3022"
+"@ussu/comp@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@ussu/comp/-/comp-3.0.0.tgz#96e3255ece5e199a5b00586967fd71d667af4207"
   dependencies:
     apollo-client-preset "^1.0.6"
     babel-register "^6.24.1"
     chalk "^2.3.0"
     chokidar "^2.0.0"
+    cookie-parser "^1.4.3"
     copy-paste "^1.3.0"
     express "^4.15.3"
     fs-extra "^5.0.0"
@@ -2091,6 +2092,13 @@ content-type@~1.0.4:
 convert-source-map@^1.4.0, convert-source-map@^1.5.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.5.1.tgz#b8278097b9bc229365de5c62cf5fcaed8b5599e5"
+
+cookie-parser@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/cookie-parser/-/cookie-parser-1.4.3.tgz#0fe31fa19d000b95f4aadf1f53fdc2b8a203baa5"
+  dependencies:
+    cookie "0.3.1"
+    cookie-signature "1.0.6"
 
 cookie-signature@1.0.6:
   version "1.0.6"

@@ -15,9 +15,13 @@
     font-size: 1.3rem;
     padding: 1rem 0;
     position: sticky;
-    z-index: 10000;
+    z-index: var(--layer__sticky-section-header);
     background: #fbfbfbdd;
-    top: -1px;
+    top: 60px;
+
+    @media (--medium) {
+      top: -1px;
+    }
 
     &::before {
       content: '';

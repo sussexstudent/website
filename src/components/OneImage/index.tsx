@@ -76,15 +76,15 @@ function generateUrl(
   )}`;
 }
 
-const widths = [160, 320, 640, 1280];
+const defaultSizes = [960, 240, 320, 480, 624, 800, 1024, 1152, 1248, 1440, 1680];
 
 const OneImageComponent: React.SFC<IProps> = (props) => {
-  const sizes = props.sizes || widths;
+  const sizes = props.sizes || defaultSizes;
 
   const img = (
     <img
       className={`ResponsiveImage lazyload ${props.className}`}
-      src={generateUrl(props, { width: 100 })}
+      src={generateUrl(props, { width: sizes[0] })}
       data-sizes={props.mediaSizes || 'auto'}
       srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
       data-srcset={sizes.map(
@@ -137,7 +137,7 @@ const OneImageBackground: React.SFC<IBackgroundProps> = (props) => {
     <div
       className={`lazyload ${props.className}`}
       data-sizes="auto"
-      data-bgset={widths.map(
+      data-bgset={defaultSizes.map(
         (width) => `${generateUrl(props, { width: width })} ${width}w`,
       )}
     >

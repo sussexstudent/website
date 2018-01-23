@@ -3,7 +3,7 @@
 
 ## website (frontend, src/projects/website)
 
-## falmer (frontend, src/projects/falmer)
+## falmer admin (admin spa, src/projects/falmer)
 
 ## app (react-native experiment, src/projects/app)
 

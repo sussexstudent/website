@@ -22,10 +22,10 @@ const LoadableArticle = Loadable({
 const KnowledgeBaseApplication = () => (
   <div className="u-keep-footer-down">
     <Switch>
-      <Route path={`/help/`} component={LoadableHome} exact />
-      <Route path={`/help/:sectionSlug`} component={LoadableSection} exact />
+      <Route path={`/kb/`} component={LoadableHome} exact />
+      <Route path={`/kb/:sectionSlug`} component={LoadableSection} exact />
       <Route
-        path={`/help/:sectionSlug/:topicSlug/:articleSlug`}
+        path={`/kb/:sectionSlug/:topicSlug/:articleSlug`}
         component={LoadableArticle}
         exact
       />

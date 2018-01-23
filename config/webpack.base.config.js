@@ -18,7 +18,6 @@ env.build = env.production || env.staging;
 const baseDir = path.join(__dirname, '..');
 
 const vendorLibs = [
-  'unfetch/polyfill',
   'raven-js',
   'mitt',
   'react',
@@ -43,7 +42,7 @@ function generateConfig() {
     target: 'web',
 
     entry: {
-      vendor: ['./src/projects/common/lazysizes.ts'],
+      vendor: ['unfetch/polyfill', './src/projects/common/lazysizes.ts'],
       main: ['./src/projects/website/entry.ts'],
       devFonts: './src/projects/website/env-dev.ts',
       productionFonts: './src/projects/website/env-production.ts',

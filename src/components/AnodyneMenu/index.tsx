@@ -30,22 +30,22 @@ const AnodyneMenu = ({ activeItem }: IProps) => (
     <ul className="AnodyneMenu__list">
       <AnodyneMenuItem
         name="Get involved"
-        link="/get-involved"
+        link="/get-involved/"
         active={activeItem === MenuItem.GetInvolved}
       />
       <AnodyneMenuItem
         name="What's on"
-        link="/whats-on"
+        link="/whats-on/"
         active={activeItem === MenuItem.WhatsOn}
       />
       <AnodyneMenuItem
         name="About us"
-        link="/about-us"
+        link="/about-us/"
         active={activeItem === MenuItem.AboutUs}
       />
       <AnodyneMenuItem
         name="Support"
-        link="/support"
+        link="/support/"
         active={activeItem === MenuItem.Support}
       />
     </ul>

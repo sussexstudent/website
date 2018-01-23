@@ -28,7 +28,7 @@ function KbHome(props: IProps) {
       <ul>
         {props.data.knowledgeBase.sections.map((section) => (
           <li>
-            <Link to={`/help/${section.slug}`}>
+            <Link to={`/kb/${section.slug}`}>
               <h2>{section.title}</h2>
             </Link>
           </li>

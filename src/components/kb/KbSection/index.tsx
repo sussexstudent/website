@@ -33,13 +33,13 @@ function KbSection(props: IProps) {
         {section.topics.map((topic) => (
           <li>
             <ContentCard>
-              <Link to={`/help/${section.slug}/${topic.slug}`}>
+              <Link to={`/kb/${section.slug}/${topic.slug}`}>
                 <h2>{topic.title}</h2>
                 <ul>
                   {topic.articles.map((article) => (
                     <li>
                       <Link
-                        to={`/help/${section.slug}/${topic.slug}/${
+                        to={`/kb/${section.slug}/${topic.slug}/${
                           article.slug
                         }`}
                       >

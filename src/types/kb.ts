@@ -10,11 +10,11 @@ export interface Topic {
   title: string;
   slug: string;
   section: Section;
-  articles: Array<Article>;
+  articles: Article[];
 }
 
 export interface Section {
   title: string;
   slug: string;
-  topics: Array<Topic>;
+  topics: Topic[];
 }

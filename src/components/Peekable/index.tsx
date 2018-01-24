@@ -18,6 +18,7 @@ class Peekable extends React.Component<IProps, IState> {
     };
   }
 
+  @bind
   handleOpen() {
     this.setState({ open: true });
   }
@@ -32,7 +33,7 @@ class Peekable extends React.Component<IProps, IState> {
           <div className="Peekable__button">
             <button
               className="Button Button--above"
-              onClick={this.handleOpen.bind(this)}
+              onClick={this.handleOpen}
             >
               {expandText}
             </button>

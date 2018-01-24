@@ -8,8 +8,8 @@ interface PageComponentMap {
 }
 
 export default {
-  StaffPage: StaffPage,
+  StaffPage,
+  SectionContentPage,
+  HomePage,
   SelectionGridPage: GenericContentStreamPage,
-  SectionContentPage: SectionContentPage,
-  HomePage: HomePage,
 } as PageComponentMap;

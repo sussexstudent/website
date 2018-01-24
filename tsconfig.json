@@ -21,6 +21,7 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "skipLibCheck": true,
+    "experimentalDecorators": true,
     "allowJs": true,
     "baseUrl": ".",
     "paths": {

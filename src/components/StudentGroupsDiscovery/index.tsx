@@ -9,22 +9,22 @@ import { compose } from 'recompose';
 import apolloHandler from '~components/apolloHandler';
 
 interface OwnProps {
-  groupsList: Array<StudentGroup>;
+  groupsList: StudentGroup[];
 }
 
 interface Result {
   allGroups: {
-    edges: Array<{
+    edges: {
       node: StudentGroup;
-    }>;
+    }[];
   };
 }
 
 interface IState {
   filter: null;
   searchValue: string;
-  displayIds: Array<number>;
-  groups: Array<StudentGroup>;
+  displayIds: number[];
+  groups: StudentGroup[];
 }
 
 type IProps = OwnProps & ChildProps<OwnProps, Result>;
@@ -42,10 +42,10 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
     this.fuse = new Fuse(groups, { keys: ['name'], id: 'groupId' });
 
     this.state = {
+      groups,
       filter: null,
       searchValue: '',
       displayIds: groups.map((group) => group.groupId),
-      groups,
     };
 
     this.onSearchUpdate = this.onSearchUpdate.bind(this);

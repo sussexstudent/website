@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 
-let hydroId = 0;
 
 interface ContextToPropsMap {
   [contextName: string]: string;
@@ -15,6 +14,8 @@ interface HydroLeafOptions {
   container?(props: any): any;
   disableSSR?: boolean;
 }
+
+let hydroId: number = 0;
 
 function generatePropsForContext(
   contextToPropsMap: ContextToPropsMap,

@@ -7,9 +7,9 @@ import { Page } from '~components/content/types';
 
 const fromText = (text: string) => ({ name: text, anchor: slugify(text) });
 
-export function generateTitlesFromStream(list: Array<any>) {
+export function generateTitlesFromStream(list: any[]) {
   // todo
-  const headings: Array<any | null> = list.map((block) => {
+  const headings: (any | null)[] = list.map((block) => {
     switch (block.value.type) {
       case 'heading':
         return {

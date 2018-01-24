@@ -25,10 +25,10 @@ export interface URLEntity extends Entity {
 export type Entities = HashtagEntity | MediaEntity | UserEntity | URLEntity;
 
 export interface TwitterEntityMap {
-  media: Array<MediaEntity>;
-  user_mentions: Array<UserEntity>;
-  urls: Array<URLEntity>;
-  hashtags: Array<HashtagEntity>;
+  media: MediaEntity[];
+  user_mentions: UserEntity[];
+  urls: URLEntity[];
+  hashtags: HashtagEntity[];
 }
 
 export interface TweetData {

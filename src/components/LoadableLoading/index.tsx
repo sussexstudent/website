@@ -10,11 +10,16 @@ interface IProps {
 function Loading(props: IProps) {
   if (props.error) {
     return <div>Error!</div>;
-  } else if (props.timedOut) {
+  }
+
+  if (props.timedOut) {
     return <div>Taking a long time...</div>;
-  } else if (props.pastDelay) {
+  }
+
+  if (props.pastDelay) {
     return <Loader />;
   }
+
   return null;
 }
 

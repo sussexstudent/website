@@ -1,5 +1,6 @@
 import React from 'react';
 import { forEach, debounce, reduce } from 'lodash';
+import { bind } from 'bind-decorator';
 
 interface IProps {
   children: any;
@@ -17,7 +18,7 @@ interface IState {
   this is all quite horrible
 */
 class FitOverflowChildren extends React.Component<IProps, IState> {
-  private items: Array<any>;
+  private items: any[];
   private container: any;
   static defaultProps = {
     area: '',
@@ -92,12 +93,13 @@ class FitOverflowChildren extends React.Component<IProps, IState> {
       const needsHeight = count < this.props.minItems;
 
       this.setState({
-        visibleToIndex: needsHeight ? this.props.minItems : count,
         needsHeight,
+        visibleToIndex: needsHeight ? this.props.minItems : count,
       });
     }
   }
 
+  @bind
   handleContainerRef(ref: any) {
     this.container = ref;
   }
@@ -119,7 +121,7 @@ class FitOverflowChildren extends React.Component<IProps, IState> {
             ? `${fixedHeight}px`
             : '1 1 0',
         }}
-        ref={this.handleContainerRef.bind(this)}
+        ref={this.handleContainerRef}
       >
         {children.map((child: any, index: number) => (
           <div

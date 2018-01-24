@@ -20,7 +20,7 @@ enum SearchAreas {
 
 /* eslint-disable */
 
-function getPayloadMetadata(payload: { [key: string]: Array<Object> }) {
+function getPayloadMetadata(payload: { [key: string]: Object[] }) {
   const areaTitlesMap: { [key: string]: string } = {
     [SearchAreas.Top]: 'Top results',
     [SearchAreas.Groups]: 'Sports & Societies',
@@ -40,15 +40,15 @@ function getPayloadMetadata(payload: { [key: string]: Array<Object> }) {
     const count = payload[area].length;
     if (count <= 0) {
       return -Infinity;
-    } else {
-      return count;
     }
+
+    return count;
   };
 
   const mk = (key: SearchAreas) => ({
+    key,
     weight: calcWeight(key),
     count: payload[key].length,
-    key,
     title: areaTitlesMap[key],
   });
 
@@ -82,17 +82,17 @@ interface IProps {
 interface IState {
   page: number;
   results: {
-    [area: string]: Array<number>;
+    [area: string]: number[];
   } | null;
-  resultItems: Array<ISearchResult>;
+  resultItems: ISearchResult[];
   isLoading: boolean;
   currentArea: SearchAreas;
-  orderedAreas: Array<{
+  orderedAreas: {
     weight: number;
     count: number;
     key: SearchAreas;
     title: string;
-  }>; // todo
+  }[]; // todo
   hasResults: boolean;
 }
 
@@ -171,10 +171,10 @@ class SearchPage extends React.Component<IProps, IState> {
           didFinish = true;
           const { orderedAreas, hasResults } = getPayloadMetadata(payload);
           this.setState({
-            results: payload,
-            resultItems: payload.results,
             orderedAreas,
             hasResults,
+            results: payload,
+            resultItems: payload.results,
             currentArea: orderedAreas[0].key,
             isLoading: false,
           });

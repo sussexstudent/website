@@ -15,7 +15,7 @@ interface Item {
 interface IProps {
   header(args: IRowProps): any;
   selectable: boolean;
-  items: Array<Item>;
+  items: Item[];
   children(item: Item, props: IRowProps): any;
 }
 

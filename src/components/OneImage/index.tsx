@@ -32,7 +32,7 @@ interface IProps extends React.HTMLAttributes<HTMLImageElement> {
   withoutContainer?: boolean;
   mslResource?: boolean;
   options?: ImageOptions;
-  sizes?: Array<number>;
+  sizes?: number[];
   mediaSizes?: string;
 }
 
@@ -88,7 +88,7 @@ const OneImageComponent: React.SFC<IProps> = (props) => {
       data-sizes={props.mediaSizes || 'auto'}
       srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
       data-srcset={sizes.map(
-        (width) => `${generateUrl(props, { width: width })} ${width}w`,
+        (width) => `${generateUrl(props, { width })} ${width}w`,
       )}
     />
   );
@@ -138,7 +138,7 @@ const OneImageBackground: React.SFC<IBackgroundProps> = (props) => {
       className={`lazyload ${props.className}`}
       data-sizes="auto"
       data-bgset={defaultSizes.map(
-        (width) => `${generateUrl(props, { width: width })} ${width}w`,
+        (width) => `${generateUrl(props, { width })} ${width}w`,
       )}
     >
       {props.children}

@@ -12,7 +12,9 @@ const apolloHandler = (Loader = LoaderComponent, Error = ErrorState) => (
     const propertyName = 'data';
     if (props[propertyName].loading) {
       return <Loader dark />;
-    } else if (props[propertyName].error) {
+    }
+
+    if (props[propertyName].error) {
       console.log(props[propertyName].error);
       return <Error {...props} />;
     }

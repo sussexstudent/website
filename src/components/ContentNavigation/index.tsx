@@ -5,16 +5,16 @@ import slugify from '~libs/slugify';
 interface Section {
   anchor: string;
   name: string;
-  children: Array<Section>;
+  children: Section[];
 }
 
 interface IProps {
-  items: Array<Section>;
+  items: Section[];
   activeKey?: string;
   onlyShowSubMenuWhenChildActive?: boolean;
 }
 
-export function generateTitlesFromStream(body: any): Array<Section> {
+export function generateTitlesFromStream(body: any): Section[] {
   return body.map((block: any) => {
     // todo
     const heading = block.value.heading;
@@ -24,7 +24,7 @@ export function generateTitlesFromStream(body: any): Array<Section> {
 
 function canDisplaySubMenu(
   onlyShowSubMenuWhenChildActive: boolean,
-  children: Array<Section>,
+  children: Section[],
   key: string,
 ) {
   if (!onlyShowSubMenuWhenChildActive) {

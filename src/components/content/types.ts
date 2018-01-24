@@ -11,4 +11,4 @@ export interface StreamFieldBlockData<B = null> {
   value: B;
 }
 
-export type StreamFieldData = Array<StreamFieldBlockData>;
+export type StreamFieldData = StreamFieldBlockData[];

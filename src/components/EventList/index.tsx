@@ -11,9 +11,9 @@ import EventListQuery from './EventList.graphql';
 
 interface Result {
   allEvents: {
-    edges: Array<{
+    edges: {
       node: any;
-    }>;
+    }[];
   };
 }
 

@@ -19,7 +19,7 @@ export interface StudentGroup {
 }
 
 interface IProps {
-  organisations: Array<StudentGroup>;
+  organisations: StudentGroup[];
 }
 
 export default function OrganisationGrid(props: IProps) {

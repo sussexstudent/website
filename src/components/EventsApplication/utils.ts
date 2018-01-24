@@ -39,10 +39,10 @@ export function splitEventsInToParts(events: Event[], removePast = true) {
       }
 
       parts.push({
+        event,
         type: EventPartType.Contained,
         eventId: index,
         date: event.startDate,
-        event,
       });
 
       return;
@@ -50,17 +50,17 @@ export function splitEventsInToParts(events: Event[], removePast = true) {
 
     if (!isAfter(event.startDate, rightNow) && removePast) {
       parts.push({
+        event,
         type: EventPartType.SpanStart,
         eventId: index,
         date: new Date(),
-        event,
       });
     } else {
       parts.push({
+        event,
         type: EventPartType.SpanStart,
         eventId: index,
         date: event.startDate,
-        event,
       });
     }
     //
@@ -94,7 +94,7 @@ function poorMonthSort(key: string) {
 }
 
 function chunkEventsToRows(events: EventPart[]) {
-  const eventNest: Array<Array<EventPart>> = [];
+  const eventNest: EventPart[][] = [];
   const keysMap: { [key: string]: number } = {};
 
   events.forEach((event) => {

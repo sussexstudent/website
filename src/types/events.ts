@@ -78,7 +78,7 @@ export interface Event {
 
   studentGroup?: StudentGroup;
 
-  children: Array<Event>;
+  children: Event[];
   parent: Event;
 }
 

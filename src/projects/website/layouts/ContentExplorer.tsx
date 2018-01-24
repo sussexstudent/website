@@ -2,6 +2,7 @@ import React from 'react';
 import qs from 'query-string';
 import { ContentPage } from '~components/content/ContentPage';
 import HydroLeaf from '~components/HydroLeaf';
+import { bind } from 'bind-decorator';
 
 interface IState {
   path: string | null;
@@ -29,6 +30,7 @@ class ContentExplorer extends React.Component<{}, IState> {
     }
   }
 
+  @bind
   handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -37,6 +39,7 @@ class ContentExplorer extends React.Component<{}, IState> {
     }));
   }
 
+  @bind
   handleInput(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
       pathInput: e.currentTarget.value,
@@ -49,12 +52,12 @@ class ContentExplorer extends React.Component<{}, IState> {
     return (
       <div>
         <div>
-          <form onSubmit={this.handleSubmit.bind(this)}>
+          <form onSubmit={this.handleSubmit}>
             <input
               type="text"
               placeholder="path to render"
               value={pathInput}
-              onChange={this.handleInput.bind(this)}
+              onChange={this.handleInput}
             />
             <input type="submit" value="Render" />
           </form>

@@ -96,8 +96,8 @@ export default compose<IProps, OwnProps>(
                   // Put the new comments at the end of the list and update `pageInfo`
                   // so we have the new `endCursor` and `hasNextPage` values
                   allImages: {
-                    edges: [...previousResult.allImages.edges, ...newEdges],
                     pageInfo,
+                    edges: [...previousResult.allImages.edges, ...newEdges],
                   },
                 };
               },

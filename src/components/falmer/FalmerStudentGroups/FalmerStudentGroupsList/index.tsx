@@ -13,7 +13,7 @@ interface OwnProps {}
 
 interface Result {
   allGroups: {
-    edges: Array<{ node: StudentGroup }>;
+    edges: { node: StudentGroup }[];
   };
 }
 

@@ -39,7 +39,7 @@ function SearchFilterItem({
 interface IProps {
   onSelect(key: any): void;
   value: any;
-  options: Array<Option>;
+  options: Option[];
 }
 
 function SearchFilterNav({ onSelect, value, options }: IProps) {

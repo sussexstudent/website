@@ -23,7 +23,7 @@ const BreadcrumbBar: React.SFC<IProps> = ({ color = 'blue', children }) => {
           (child: any, index: number) => (
             <li>
               {child}
-              {index < (children as Array<any>).length - 1 && (
+              {index < (children as any[]).length - 1 && (
                 <span className="BackBar__chevron">
                   <ChevronForwardIcon />
                 </span>

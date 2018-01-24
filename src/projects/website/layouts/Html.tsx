@@ -4,7 +4,7 @@ import { headContent } from '../head';
 interface IProps {
   assets: any; // todo
   children: any;
-  additionalHead: Array<string>;
+  additionalHead: string[];
 }
 
 const HTML = ({ children, assets, additionalHead = [] }: IProps) => (

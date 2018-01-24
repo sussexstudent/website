@@ -9,7 +9,7 @@ import { ContentBreadcrumbBar } from '~components/BreadcrumbBar';
 
 interface Result {
   knowledgeBase: {
-    sections: Array<Section>;
+    sections: Section[];
   };
 }
 

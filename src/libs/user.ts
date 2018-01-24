@@ -61,8 +61,8 @@ function auth() {
   };
   const button = document.querySelector('.msl-loginbutton');
   return {
-    isLoggedIn: hasDetails,
     profile,
+    isLoggedIn: hasDetails,
     admin: getAdminItems(),
     page: getPageItems(),
     actionBound: () => {

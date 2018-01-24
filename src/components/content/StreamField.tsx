@@ -4,7 +4,7 @@ import { Page, StreamFieldBlock } from '~components/content/types';
 
 interface IProps {
   page: any;
-  items: Array<any>;
+  items: any[];
   renderItem?(props: {
     children: any;
     key: string;
@@ -24,16 +24,16 @@ class StreamField extends React.Component<IProps> {
       if (Component) {
         if (renderItem) {
           return renderItem({
+            page,
             children: (
               <Component page={page} block={item.value} key={item.key} />
             ),
             block: item.value,
             key: item.key,
-            page: page,
           });
-        } else {
-          return <Component page={page} block={item.value} key={item.key} />;
         }
+
+        return <Component page={page} block={item.value} key={item.key} />;
       }
 
       console.warn(`[content] missing block "${item.type}"`);

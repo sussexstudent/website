@@ -18,7 +18,7 @@ export interface Node<T> {
 }
 
 export interface Connection<T> {
-  edges: Array<Node<T>>;
+  edges: Node<T>[];
   pageInfo: {
     hasNextPage: boolean;
     endCursor: string;

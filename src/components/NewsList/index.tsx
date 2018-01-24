@@ -4,7 +4,7 @@ import NewsBlock, { NewsItem } from './NewsBlock';
 
 interface IProps {
   fullWidth: boolean;
-  items: Array<NewsItem>;
+  items: NewsItem[];
 }
 
 const NewsList = ({ items, fullWidth = false }: IProps) => (

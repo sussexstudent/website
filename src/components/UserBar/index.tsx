@@ -63,8 +63,8 @@ class UserBar extends React.Component<IProps, IState> {
       const { auth } = client || { auth: null };
       this.setState((state) => ({
         ...state,
-        isLoaded: true,
         auth,
+        isLoaded: true,
       }));
     }, 1);
   }

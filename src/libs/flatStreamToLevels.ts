@@ -14,7 +14,7 @@ interface ResultTree {
 // use in Wagtail StreamField handling
 export default function flatStreamToLevels(
   itemToLevelFunc: ItemLevelVistor,
-  flatItemArray: Array<Object>,
+  flatItemArray: Object[],
 ) {
   // holds our index pointer for each level
   let lastLevel: number[] = [];

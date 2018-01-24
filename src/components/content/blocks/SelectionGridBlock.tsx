@@ -11,7 +11,7 @@ interface SelectionGridItemData {
 }
 
 export const SelectionGridBlock: StreamFieldBlock<
-  Array<SelectionGridItemData>
+  SelectionGridItemData[]
 > = ({ block }) => {
   return (
     <SelectionGrid>

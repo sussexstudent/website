@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
+    "@storybook/react": "^3.3.10",
     "@types/classnames": "^2.2.3",
     "@types/google.analytics": "^0.0.36",
     "@types/jest": "^22.1.0",
@@ -20,6 +21,7 @@
     "@types/react-router-dom": "^4.2.3",
     "@types/react-transition-group": "^2.0.6",
     "@types/recompose": "^0.24.4",
+    "@types/storybook__react": "^3.0.6",
     "@types/url-parse": "^1.1.0",
     "@types/webpack-env": "^1.13.3",
     "@ussu/comp": "^3.0.0",
@@ -94,6 +96,8 @@
   },
   "dependencies": {
     "@drafty/generation-game": "^2.0.0",
+    "@types/enzyme": "^3.1.8",
+    "@types/react-test-renderer": "^16.0.0",
     "apollo-cache-inmemory": "^1.1.5",
     "apollo-client": "^2.2.0",
     "apollo-link-http": "^1.3.2",
@@ -140,6 +144,7 @@
     "what-input": "^5.0.1"
   },
   "scripts": {
+    "storybook": "start-storybook -p 9001 -c ./config/storybook",
     "prod": "export NODE_ENV=production && export BABEL_ENV=bundle && `yarn bin`/webpack --config ./config/webpack.prod.config.js",
     "falmer:prod": "export NODE_ENV=production && `yarn bin`/webpack --config ./config/falmer.dev.config.js",
     "gen": "BABEL_ENV=comp `yarn bin`/comp",

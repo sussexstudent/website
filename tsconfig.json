@@ -35,7 +35,8 @@
     "build",
     "comp-dist",
     "build-falmer",
-    "dist-falmer"
+    "dist-falmer",
+    "config"
   ],
   "include": [
     "./src/**/*"

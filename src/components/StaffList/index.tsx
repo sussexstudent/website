@@ -18,7 +18,7 @@ interface StaffMemberData {
 
 const StaffList: StreamFieldBlock<{
   heading: string;
-  body: StaffMemberData[]>;
+  body: StaffMemberData[];
 }> = ({ block: { heading, body } }) => {
   return (
     <div>

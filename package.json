@@ -53,7 +53,7 @@
     "html-webpack-harddisk-plugin": "^0.1.0",
     "html-webpack-plugin": "^2.30.1",
     "http-proxy-middleware": "^0.17.4",
-    "husky": "^0.14.3",
+    "husky": "^0.15.0-rc.3",
     "immutable": "^3.8.1",
     "jest": "^22.0.6",
     "json-loader": "^0.5.7",
@@ -141,7 +141,6 @@
     "falmer:prod": "export NODE_ENV=production && `yarn bin`/webpack --config ./config/falmer.dev.config.js",
     "gen": "BABEL_ENV=comp `yarn bin`/comp",
     "deploy": "uncommitted && yarn run prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run gen",
-    "precommit": "`npm bin`/eslint",
     "serve": "node --trace-warnings ./devserver.js",
     "format": "`yarn bin`/prettier \"src/**/*.{ts,tsx,js,css,graphql}\" --write",
     "test": "NODE_ENV=test && jest",
@@ -149,6 +148,11 @@
     "falmer:serve": "webpack-dev-server --config ./config/falmer.dev.config.js",
     "falmer:_deploy": "node ./config/deployToFalmer.js",
     "falmer:deploy": "yarn run falmer:prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist-falmer/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run falmer:_deploy"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format"
+    }
   },
   "jest": {
     "moduleNameMapper": {

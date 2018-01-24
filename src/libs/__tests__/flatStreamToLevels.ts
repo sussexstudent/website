@@ -1,6 +1,6 @@
 import flatStreamToLevels from '../flatStreamToLevels';
 
-const levelMap = {
+const levelMap: { [name: string]: number } = {
   heading: 0,
   content: 1,
   image: 1,

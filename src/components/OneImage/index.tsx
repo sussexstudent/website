@@ -45,6 +45,8 @@ function aspectMultiplier(aspectRatio: AspectRatioInput, width: number) {
 }
 
 const defaultOptions = {
+  auto: 'format',
+  q: 80,
   fit: 'crop',
   crop: 'faces',
 };

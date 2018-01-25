@@ -21,7 +21,7 @@ const aspectRatioMap = {
 type AspectRatioInput = AspectRatio | { width: number; height: number };
 
 interface ImageOptions {
-  fit: string;
+  [optionName: string]: number | string
 }
 
 interface IProps extends React.HTMLAttributes<HTMLImageElement> {

@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a snapshot 1`] = `
+<div
+  className="u-responsive-ratio u-responsive-ratio--r16by9"
+>
+  <img
+    className="ResponsiveImage lazyload undefined"
+    data-sizes="auto"
+    data-srcset={
+      Array [
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=960&h=540&auto=format&q=80&fit=crop&crop=faces 960w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=240&h=135&auto=format&q=80&fit=crop&crop=faces 240w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=320&h=180&auto=format&q=80&fit=crop&crop=faces 320w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=480&h=270&auto=format&q=80&fit=crop&crop=faces 480w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=624&h=351&auto=format&q=80&fit=crop&crop=faces 624w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=800&h=450&auto=format&q=80&fit=crop&crop=faces 800w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1024&h=576&auto=format&q=80&fit=crop&crop=faces 1024w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1152&h=648&auto=format&q=80&fit=crop&crop=faces 1152w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1248&h=702&auto=format&q=80&fit=crop&crop=faces 1248w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1440&h=810&auto=format&q=80&fit=crop&crop=faces 1440w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1680&h=945&auto=format&q=80&fit=crop&crop=faces 1680w",
+      ]
+    }
+    src="https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=960&h=540&auto=format&q=80&fit=crop&crop=faces"
+    srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+  />
+</div>
+`;
+
+exports[`renders as background 1`] = `
+<div
+  className="lazyload undefined"
+  data-bgset={
+    Array [
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=960&h=960&auto=format&q=80&fit=crop&crop=faces 960w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=240&h=240&auto=format&q=80&fit=crop&crop=faces 240w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=320&h=320&auto=format&q=80&fit=crop&crop=faces 320w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=480&h=480&auto=format&q=80&fit=crop&crop=faces 480w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=624&h=624&auto=format&q=80&fit=crop&crop=faces 624w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=800&h=800&auto=format&q=80&fit=crop&crop=faces 800w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1024&h=1024&auto=format&q=80&fit=crop&crop=faces 1024w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1152&h=1152&auto=format&q=80&fit=crop&crop=faces 1152w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1248&h=1248&auto=format&q=80&fit=crop&crop=faces 1248w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1440&h=1440&auto=format&q=80&fit=crop&crop=faces 1440w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1680&h=1680&auto=format&q=80&fit=crop&crop=faces 1680w",
+    ]
+  }
+  data-sizes="auto"
+/>
+`;
+
+exports[`renders using custom dimensions 1`] = `
+<div
+  className="u-responsive-ratio"
+  style={
+    Object {
+      "paddingBottom": "50%",
+    }
+  }
+>
+  <img
+    className="ResponsiveImage lazyload undefined"
+    data-sizes="auto"
+    data-srcset={
+      Array [
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=960&h=480&auto=format&q=80&fit=crop&crop=faces 960w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=240&h=120&auto=format&q=80&fit=crop&crop=faces 240w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=320&h=160&auto=format&q=80&fit=crop&crop=faces 320w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=480&h=240&auto=format&q=80&fit=crop&crop=faces 480w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=624&h=312&auto=format&q=80&fit=crop&crop=faces 624w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=800&h=400&auto=format&q=80&fit=crop&crop=faces 800w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1024&h=512&auto=format&q=80&fit=crop&crop=faces 1024w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1152&h=576&auto=format&q=80&fit=crop&crop=faces 1152w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1248&h=624&auto=format&q=80&fit=crop&crop=faces 1248w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1440&h=720&auto=format&q=80&fit=crop&crop=faces 1440w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1680&h=840&auto=format&q=80&fit=crop&crop=faces 1680w",
+      ]
+    }
+    src="https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=960&h=480&auto=format&q=80&fit=crop&crop=faces"
+    srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+  />
+</div>
+`;
+
+exports[`renders using custom options 1`] = `
+<div
+  className="u-responsive-ratio u-responsive-ratio--r1by1"
+>
+  <img
+    className="ResponsiveImage lazyload undefined"
+    data-sizes="auto"
+    data-srcset={
+      Array [
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=960&h=960&auto=format&q=80&fit=crop&crop=entropy&sat=-100 960w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=240&h=240&auto=format&q=80&fit=crop&crop=entropy&sat=-100 240w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=320&h=320&auto=format&q=80&fit=crop&crop=entropy&sat=-100 320w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=480&h=480&auto=format&q=80&fit=crop&crop=entropy&sat=-100 480w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=624&h=624&auto=format&q=80&fit=crop&crop=entropy&sat=-100 624w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=800&h=800&auto=format&q=80&fit=crop&crop=entropy&sat=-100 800w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1024&h=1024&auto=format&q=80&fit=crop&crop=entropy&sat=-100 1024w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1152&h=1152&auto=format&q=80&fit=crop&crop=entropy&sat=-100 1152w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1248&h=1248&auto=format&q=80&fit=crop&crop=entropy&sat=-100 1248w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1440&h=1440&auto=format&q=80&fit=crop&crop=entropy&sat=-100 1440w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1680&h=1680&auto=format&q=80&fit=crop&crop=entropy&sat=-100 1680w",
+      ]
+    }
+    src="https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=960&h=960&auto=format&q=80&fit=crop&crop=entropy&sat=-100"
+    srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+  />
+</div>
+`;
+
+exports[`renders using custom widths 1`] = `
+<div
+  className="u-responsive-ratio u-responsive-ratio--r1by1"
+>
+  <img
+    className="ResponsiveImage lazyload undefined"
+    data-sizes="auto"
+    data-srcset={
+      Array [
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=300&h=300&auto=format&q=80&fit=crop&crop=faces 300w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=200&h=200&auto=format&q=80&fit=crop&crop=faces 200w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=600&h=600&auto=format&q=80&fit=crop&crop=faces 600w",
+      ]
+    }
+    src="https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=300&h=300&auto=format&q=80&fit=crop&crop=faces"
+    srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+  />
+</div>
+`;
+
+exports[`renders with MSL source image 1`] = `
+<div
+  className="u-responsive-ratio u-responsive-ratio--r1by1"
+>
+  <img
+    className="ResponsiveImage lazyload undefined"
+    data-sizes="auto"
+    data-srcset={
+      Array [
+        "https://ussu.imgix.net/asset/News/6412/unnamed.jpg?w=960&h=960&auto=format&q=80&fit=crop&crop=faces 960w",
+        "https://ussu.imgix.net/asset/News/6412/unnamed.jpg?w=240&h=240&auto=format&q=80&fit=crop&crop=faces 240w",
+        "https://ussu.imgix.net/asset/News/6412/unnamed.jpg?w=320&h=320&auto=format&q=80&fit=crop&crop=faces 320w",
+        "https://ussu.imgix.net/asset/News/6412/unnamed.jpg?w=480&h=480&auto=format&q=80&fit=crop&crop=faces 480w",
+        "https://ussu.imgix.net/asset/News/6412/unnamed.jpg?w=624&h=624&auto=format&q=80&fit=crop&crop=faces 624w",
+        "https://ussu.imgix.net/asset/News/6412/unnamed.jpg?w=800&h=800&auto=format&q=80&fit=crop&crop=faces 800w",
+        "https://ussu.imgix.net/asset/News/6412/unnamed.jpg?w=1024&h=1024&auto=format&q=80&fit=crop&crop=faces 1024w",
+        "https://ussu.imgix.net/asset/News/6412/unnamed.jpg?w=1152&h=1152&auto=format&q=80&fit=crop&crop=faces 1152w",
+        "https://ussu.imgix.net/asset/News/6412/unnamed.jpg?w=1248&h=1248&auto=format&q=80&fit=crop&crop=faces 1248w",
+        "https://ussu.imgix.net/asset/News/6412/unnamed.jpg?w=1440&h=1440&auto=format&q=80&fit=crop&crop=faces 1440w",
+        "https://ussu.imgix.net/asset/News/6412/unnamed.jpg?w=1680&h=1680&auto=format&q=80&fit=crop&crop=faces 1680w",
+      ]
+    }
+    src="https://ussu.imgix.net/asset/News/6412/unnamed.jpg?w=960&h=960&auto=format&q=80&fit=crop&crop=faces"
+    srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+  />
+</div>
+`;
+
+exports[`renders without container 1`] = `
+<img
+  className="ResponsiveImage lazyload undefined"
+  data-sizes="auto"
+  data-srcset={
+    Array [
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=960&h=960&auto=format&q=80&fit=crop&crop=faces 960w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=240&h=240&auto=format&q=80&fit=crop&crop=faces 240w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=320&h=320&auto=format&q=80&fit=crop&crop=faces 320w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=480&h=480&auto=format&q=80&fit=crop&crop=faces 480w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=624&h=624&auto=format&q=80&fit=crop&crop=faces 624w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=800&h=800&auto=format&q=80&fit=crop&crop=faces 800w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1024&h=1024&auto=format&q=80&fit=crop&crop=faces 1024w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1152&h=1152&auto=format&q=80&fit=crop&crop=faces 1152w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1248&h=1248&auto=format&q=80&fit=crop&crop=faces 1248w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1440&h=1440&auto=format&q=80&fit=crop&crop=faces 1440w",
+      "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1680&h=1680&auto=format&q=80&fit=crop&crop=faces 1680w",
+    ]
+  }
+  src="https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=960&h=960&auto=format&q=80&fit=crop&crop=faces"
+  srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+/>
+`;
+
+exports[`renders without lazy 1`] = `
+<div
+  className="u-responsive-ratio u-responsive-ratio--r1by1"
+>
+  <img
+    className="ResponsiveImage lazyload undefined"
+    data-sizes="auto"
+    data-srcset={
+      Array [
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=960&h=960&auto=format&q=80&fit=crop&crop=faces 960w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=240&h=240&auto=format&q=80&fit=crop&crop=faces 240w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=320&h=320&auto=format&q=80&fit=crop&crop=faces 320w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=480&h=480&auto=format&q=80&fit=crop&crop=faces 480w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=624&h=624&auto=format&q=80&fit=crop&crop=faces 624w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=800&h=800&auto=format&q=80&fit=crop&crop=faces 800w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1024&h=1024&auto=format&q=80&fit=crop&crop=faces 1024w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1152&h=1152&auto=format&q=80&fit=crop&crop=faces 1152w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1248&h=1248&auto=format&q=80&fit=crop&crop=faces 1248w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1440&h=1440&auto=format&q=80&fit=crop&crop=faces 1440w",
+        "https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=1680&h=1680&auto=format&q=80&fit=crop&crop=faces 1680w",
+      ]
+    }
+    src="https://su.imgix.net/original_images/4219b2966c1047dd8fe4bfa2aa922c72?w=960&h=960&auto=format&q=80&fit=crop&crop=faces"
+    srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+  />
+</div>
+`;

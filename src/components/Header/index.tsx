@@ -5,7 +5,7 @@ import HeaderSearch from '~components/HeaderSearch';
 import MobileSearch from '~components/MobileSearch';
 import AnodyneMenu from '../AnodyneMenu';
 import SideMenu from '../SideMenu';
-import Logo from '../StudentsUnionLogo';
+import StudentsUnionLogo from '../../icons/students-union-logo.svg';
 import MenuIcon from '../MenuIcon';
 import SearchIcon from '../SearchIcon';
 import CrossIcon from '../CrossIcon';
@@ -80,7 +80,7 @@ class Header extends React.Component<IProps, IState> {
       isAdminOpen: false,
       isSearchOpen: false,
       userData: null,
-      logoColor: null,
+      logoColor: '#eee',
       activeItem: null,
     };
 
@@ -143,8 +143,8 @@ class Header extends React.Component<IProps, IState> {
             <span className="Header__button-label">Search</span>
           </button>
           <div className="Header__logo HeaderLogo">
-            <a className="HeaderLogo__link" href="/">
-              <Logo color={logoColor} />
+            <a className="HeaderLogo__link" href="/" style={{ color: logoColor }}>
+              <StudentsUnionLogo />
             </a>
           </div>
           <button

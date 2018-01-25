@@ -1,5 +1,7 @@
 .HeaderLogo {
   &__link {
+    transition: color ease-out 300ms, fill ease-out 300ms;
+
     @media (--up-to-medium) {
       height: 42px;
       width: 78px;

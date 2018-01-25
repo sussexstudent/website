@@ -16,7 +16,7 @@ const TweetAttachment = ({ tweet }: IProps) => {
     return (
       <div className="Tweet__media">
         <LoadLinkedImage
-          src={`${media.media_url_https}:small`}
+          src={`${media.media_url_https}:thumb`}
           area="TweetList"
           alt=""
         />

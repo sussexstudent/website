@@ -71,6 +71,41 @@ class EventDetailPage extends React.Component<IProps> {
     const startDate = new Date(event.startTime);
     const endDate = new Date(event.endTime);
 
+    function renderDates() {
+      const isSpanningEvent = !isSameLogicalSleepDay(startDate, endDate);
+
+      if (isSpanningEvent) {
+        return (
+          <div>
+            <div>
+              <li className="EventDetail__details-list-item">
+                <CalendarIcon className="EventDetail__icon" />
+                {minimalisticTimeRenderer(startDate)},{' '}
+                {formatDate(startDate, 'ddd D MMM YYYY')} -{' '}
+                {minimalisticTimeRenderer(endDate)},{' '}
+                {formatDate(endDate, 'ddd D MMM YYYY')}
+              </li>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div>
+          <li className="EventDetail__details-list-item">
+            <CalendarIcon className="EventDetail__icon" />
+            {formatDate(startDate, 'dddd D MMMM YYYY')}
+          </li>
+          <li className="EventDetail__details-list-item">
+            <ClockIcon className="EventDetail__icon" />
+            {`${minimalisticTimeRenderer(
+              startDate,
+            )} – ${minimalisticTimeRenderer(endDate)}`}
+          </li>
+        </div>
+      );
+    }
+
     return (
       <div>
         <Helmet>
@@ -158,19 +193,7 @@ class EventDetailPage extends React.Component<IProps> {
                         </Link>
                       </li>
                     ) : null}
-                    <li className="EventDetail__details-list-item">
-                      <CalendarIcon className="EventDetail__icon" />
-                      {formatDate(startDate, 'dddd D MMMM YYYY')}
-                      {!isSameLogicalSleepDay(startDate, endDate)
-                        ? ` - ${formatDate(endDate, 'dddd D MMMM YYYY')}`
-                        : ''}
-                    </li>
-                    <li className="EventDetail__details-list-item">
-                      <ClockIcon className="EventDetail__icon" />
-                      {`${minimalisticTimeRenderer(
-                        startDate,
-                      )} – ${minimalisticTimeRenderer(endDate)}`}
-                    </li>
+                    {renderDates()}
                     {event.locationDisplay !== '' || event.venue !== null ? (
                       <li className="EventDetail__details-list-item">
                         <PinIcon className="EventDetail__icon" />

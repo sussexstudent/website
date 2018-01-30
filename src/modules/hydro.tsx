@@ -1,15 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { isFunction } from 'lodash';
-import { HydroRoot } from '~components/HydroRoot';
 import BookMarketApp from '~components/bookmarket/BookMarketApp';
 import KnowledgeBaseApp from '~components/kb/KnowledgeBaseApplication';
 import EventsApplicationX from '~components/EventsApplication';
 import { DesktopUserBar } from '~components/UserBar';
 import Header from '~components/Header';
+import { Provider } from '../types/hydro';
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.SFC;
+}
+
+const rootCache: any[] = [];
+
+function wrapProviders(providers: any[], child: any) {
+  let tree = child;
+
+  providers
+    .reverse()
+    .forEach((ProviderEl) => (tree = <ProviderEl>{tree}</ProviderEl>));
+
+  return tree;
 }
 
 export default function() {
@@ -40,6 +52,29 @@ export default function() {
     KnowledgeBase: () => KnowledgeBaseApp,
   };
 
+  const providerLoaders: any[] = [];
+
+  providerLoaders[Provider.Apollo] = () =>
+    import(/* webpackChunkName: "root.apollo" */ '~components/HydroRootApollo').then(
+      (m) => m.default,
+    );
+
+  providerLoaders[Provider.Router] = () =>
+    import(/* webpackChunkName: "root.router" */ '~components/HydroRootRouter').then(
+      (m) => m.default,
+    );
+
+  const getRoot = (provider: Provider) => {
+    if (rootCache[provider]) {
+      return rootCache[provider];
+    }
+    const data = providerLoaders[provider]();
+
+    rootCache[provider] = data;
+
+    return data;
+  };
+
   Array.from(document.querySelectorAll('.Hydro')).forEach((el) => {
     let props = {};
     if (el.hasAttribute('data-id')) {
@@ -52,6 +87,10 @@ export default function() {
     }
 
     const componentName = el.getAttribute('data-component');
+    const providerAttr = el.getAttribute('data-providers');
+    const requiredProviders = providerAttr
+      ? providerAttr.split(',').map((id) => parseInt(id, 10))
+      : [];
 
     if (componentName === null) {
       return;
@@ -73,21 +112,21 @@ export default function() {
       }
       const shouldHydrate = el.children.length > 0;
 
-      if (shouldHydrate) {
-        ReactDOM.hydrate(
-          <HydroRoot>
-            <Component {...props} />
-          </HydroRoot>,
-          el,
-        );
-      } else {
-        ReactDOM.render(
-          <HydroRoot>
-            <Component {...props} />
-          </HydroRoot>,
-          el,
-        );
-      }
+      return Promise.all(
+        requiredProviders.map((providerId) => getRoot(providerId)),
+      ).then((ProvidersList) => {
+        if (shouldHydrate) {
+          ReactDOM.hydrate(
+            wrapProviders(ProvidersList, <Component {...props} />),
+            el,
+          );
+        } else {
+          ReactDOM.render(
+            wrapProviders(ProvidersList, <Component {...props} />),
+            el,
+          );
+        }
+      });
     }
 
     const getComponent = componentMap[componentName];

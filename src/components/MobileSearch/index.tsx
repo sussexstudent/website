@@ -62,9 +62,13 @@ class HeaderSearch extends React.Component<IProps, IState> {
     if (nextProps.isOpen !== this.props.isOpen && this.htmlEl !== null) {
       if (nextProps.isOpen) {
         classToggle(this.htmlEl, 'html--search-active', nextProps.isOpen);
-        setTimeout(() => this.setState({ isRendered: true }, () => {
-          this.setInputFocus();
-        }), 80);
+        setTimeout(
+          () =>
+            this.setState({ isRendered: true }, () => {
+              this.setInputFocus();
+            }),
+          80,
+        );
       } else {
         classToggle(this.htmlEl, 'html--search-active', nextProps.isOpen);
       }

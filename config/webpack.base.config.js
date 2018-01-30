@@ -22,16 +22,6 @@ const vendorLibs = [
   'mitt',
   'react',
   'react-dom',
-  'react-apollo',
-  'apollo-client',
-  'apollo-cache-inmemory',
-  'graphql',
-  'react-router',
-  'react-router-dom',
-  'history',
-  'apollo-utilities',
-  'apollo-link',
-  'apollo-link-http',
   'what-input',
 ];
 
@@ -96,11 +86,11 @@ function generateConfig() {
         name: 'vendor',
         minChunks: (module) => vendorExp.test(module.resource),
       }),
-      new webpack.optimize.CommonsChunkPlugin({
-        async: true,
-        children: true,
-        minChunks: 3,
-      }),
+      // new webpack.optimize.CommonsChunkPlugin({
+      //   async: true,
+      //   children: true,
+      //   minChunks: 3,
+      // }),
       new DuplicatePackageCheckerPlugin(),
       new TsConfigPathsPlugin(),
     ],

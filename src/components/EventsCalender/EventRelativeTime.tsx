@@ -25,12 +25,10 @@ export default function EventRelativeTime({ event }: IProps) {
 
   return (
     <div className="EventsCalender__item-meta">
-      {
-        startsSoon ? `Starts in ${formatDistance(new Date(event.startTime), new Date())}`
+      {startsSoon
+        ? `Starts in ${formatDistance(new Date(event.startTime), new Date())}`
         : ''}
-      {
-        onNow ? 'On now'
-        : ''}
+      {onNow ? 'On now' : ''}
     </div>
   );
 }

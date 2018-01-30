@@ -10,6 +10,10 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+"@brudil/granule@0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@brudil/granule/-/granule-0.2.1.tgz#3f140cca56ebb78b9358c9d6dcd947236e450f60"
+
 "@drafty/generation-game@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@drafty/generation-game/-/generation-game-2.0.0.tgz#1b8ba11820a1d03bc35c7a6bea85a92809018367"

@@ -21,7 +21,7 @@ const aspectRatioMap = {
 type AspectRatioInput = AspectRatio | { width: number; height: number };
 
 interface ImageOptions {
-  [optionName: string]: number | string
+  [optionName: string]: number | string;
 }
 
 interface IProps extends React.HTMLAttributes<HTMLImageElement> {
@@ -78,7 +78,19 @@ function generateUrl(
   )}`;
 }
 
-const defaultSizes = [960, 240, 320, 480, 624, 800, 1024, 1152, 1248, 1440, 1680];
+const defaultSizes = [
+  960,
+  240,
+  320,
+  480,
+  624,
+  800,
+  1024,
+  1152,
+  1248,
+  1440,
+  1680,
+];
 
 const OneImageComponent: React.SFC<IProps> = (props) => {
   const sizes = props.sizes || defaultSizes;

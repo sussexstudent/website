@@ -7,6 +7,7 @@ import { graphql, ChildProps } from 'react-apollo';
 import StudentGroupListingsQuery from './StudentGroupListings.graphql';
 import { compose } from 'recompose';
 import apolloHandler from '~components/apolloHandler';
+import {Provider} from "../../types/hydro";
 
 interface OwnProps {
   groupsList: StudentGroup[];
@@ -103,4 +104,4 @@ const StudentGroupListings = compose<OwnProps, {}>(
   apolloHandler(),
 )(StudentGroupsDiscovery);
 
-export default HydroLeaf()(StudentGroupListings);
+export default HydroLeaf({ providers: [Provider.Apollo] })(StudentGroupListings);

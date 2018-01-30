@@ -143,7 +143,11 @@ class Header extends React.Component<IProps, IState> {
             <span className="Header__button-label">Search</span>
           </button>
           <div className="Header__logo HeaderLogo">
-            <a className="HeaderLogo__link" href="/" style={{ color: logoColor }}>
+            <a
+              className="HeaderLogo__link"
+              href="/"
+              style={{ color: logoColor }}
+            >
               <StudentsUnionLogo />
             </a>
           </div>

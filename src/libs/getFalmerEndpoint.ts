@@ -1,12 +1,11 @@
-// TODO: refactor to make more sense
-export default function getFalmerEndpoint(forceProd = false) {
-  if (typeof window === 'undefined') {
-    return process.env.FALMER_ENDPOINT;
-  }
+export default function getFalmerEndpoint() {
+  const serverSide = typeof localStorage === 'undefined';
 
-  if (forceProd) {
-    return 'https://falmer.sussexstudent.com';
-  }
+  const clientEndpoint = serverSide
+    ? null
+    : window.localStorage.getItem('falmerEndpoint');
 
-  return process.env.FALMER_ENDPOINT;
+  return clientEndpoint === null
+    ? 'https://falmer.sussexstudent.com/graphql'
+    : clientEndpoint;
 }

@@ -1,19 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
-
-
-interface ContextToPropsMap {
-  [contextName: string]: string;
-}
-
-interface HydroLeafOptions {
-  contextToProps?: ContextToPropsMap;
-  className?: string;
-  name?: string;
-  container?(props: any): any;
-  disableSSR?: boolean;
-}
+import { ContextToPropsMap, HydroLeafOptions } from '../../types/hydro';
 
 let hydroId: number = 0;
 
@@ -55,6 +43,7 @@ function HydroLeaf({
   name = null,
   container = DefaultContainer,
   disableSSR = false,
+  providers = [],
 }: HydroLeafOptions = {}) {
   return function HydroLeafHOC(Component: any) {
     if (process.env.COMP_NODE) {
@@ -85,7 +74,10 @@ function HydroLeaf({
             delete serialProps.hydroId;
           }
 
-          let hydroIdSpread = {};
+          let hydroIdSpread: {
+            'data-id'?: number;
+            'data-providers'?: string;
+          } = {};
 
           if (isEmpty(serialProps)) {
             hydroKey = undefined;
@@ -93,8 +85,11 @@ function HydroLeaf({
             hydroIdSpread = { 'data-id': hydroKey };
           }
 
+          if (providers.length > 0) {
+            hydroIdSpread['data-providers'] = providers.join(',');
+          }
+
           if (renderStatic) {
-            console.log('rendering static');
             return container({
               className,
               children: <Component {...serialProps} />,

@@ -10,9 +10,9 @@ interface SelectionGridItemData {
   image: FalmerImage;
 }
 
-export const SelectionGridBlock: StreamFieldBlock<
-  SelectionGridItemData[]
-> = ({ block }) => {
+export const SelectionGridBlock: StreamFieldBlock<SelectionGridItemData[]> = ({
+  block,
+}) => {
   return (
     <SelectionGrid>
       {block.map((

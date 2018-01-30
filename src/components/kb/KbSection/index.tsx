@@ -39,9 +39,7 @@ function KbSection(props: IProps) {
                   {topic.articles.map((article) => (
                     <li>
                       <Link
-                        to={`/kb/${section.slug}/${topic.slug}/${
-                          article.slug
-                        }`}
+                        to={`/kb/${section.slug}/${topic.slug}/${article.slug}`}
                       >
                         {article.title}
                       </Link>

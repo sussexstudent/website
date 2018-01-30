@@ -63,7 +63,7 @@ function EventsCalenderItem({
   inline = false,
   showDay = false,
   relative = false,
-  small = false
+  small = false,
 }: IProps) {
   const event = part.event;
   const treat = getTreat(event);

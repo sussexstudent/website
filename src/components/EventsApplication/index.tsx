@@ -4,6 +4,7 @@ import { compose } from 'recompose';
 import HydroLeaf from '~components/HydroLeaf';
 import Loadable from 'react-loadable';
 import { LoadableLoading } from '~components/LoadableLoading';
+import { Provider } from '../../types/hydro';
 
 const EventsListLoader = () =>
   import(/* webpackChunkName: "events.listings" */ '~components/EventsCalender');
@@ -50,4 +51,9 @@ const EventsApplication = () => (
   </div>
 );
 
-export default compose(HydroLeaf({ disableSSR: true }))(EventsApplication);
+export default compose(
+  HydroLeaf({
+    disableSSR: true,
+    providers: [Provider.Apollo, Provider.Router],
+  }),
+)(EventsApplication);

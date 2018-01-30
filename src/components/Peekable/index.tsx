@@ -32,10 +32,7 @@ class Peekable extends React.Component<IProps, IState> {
         {children}
         <div className="Peekable__mask">
           <div className="Peekable__button">
-            <button
-              className="Button Button--above"
-              onClick={this.handleOpen}
-            >
+            <button className="Button Button--above" onClick={this.handleOpen}>
               {expandText}
             </button>
           </div>

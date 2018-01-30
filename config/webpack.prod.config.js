@@ -33,7 +33,7 @@ config.output = {
 };
 
 config.plugins = config.plugins.concat([
-  // new BundleAnalyzerPlugin(),
+  new BundleAnalyzerPlugin(),
   new webpack.DefinePlugin({
     'process.env': {
       HYDROLEAF_MODE: JSON.stringify('RENDER_COMPONENT'),
@@ -44,9 +44,6 @@ config.plugins = config.plugins.concat([
     root: path.resolve(baseDir),
   }),
   new webpack.HashedModuleIdsPlugin(),
-  new webpack.LoaderOptionsPlugin({
-    minimize: true,
-  }),
   extractCSS,
   new ChunkManifestPlugin({
     filename: 'manifest.json',

@@ -1,8 +1,5 @@
 query EventList($fromTime: String) {
-  allEvents(
-    filter: { fromTime: $fromTime }
-    first: 4
-  ) {
+  allEvents(filter: { fromTime: $fromTime }, first: 4) {
     edges {
       node {
         title

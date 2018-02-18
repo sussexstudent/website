@@ -30,6 +30,7 @@ config.output = {
   path: path.resolve(path.join(baseDir, 'dist')),
   publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
   filename: 'union.[name].[chunkhash].js',
+  chunkFilename: 'union.[name].[chunkhash].js',
 };
 
 config.plugins = config.plugins.concat([

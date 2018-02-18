@@ -23,6 +23,7 @@ const vendorLibs = [
   'react',
   'react-dom',
   'what-input',
+  'graphql',
 ];
 
 const vendorExp = new RegExp(`(${vendorLibs.join('|')})`);
@@ -85,6 +86,14 @@ function generateConfig() {
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
         minChunks: (module) => vendorExp.test(module.resource),
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        async: true,
+        minChunks: (module) => /react\-apollo/.test(module.resource),
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        async: true,
+        minChunks: 3,
       }),
       // new webpack.optimize.CommonsChunkPlugin({
       //   async: true,

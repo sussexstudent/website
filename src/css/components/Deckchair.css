@@ -1,14 +1,14 @@
 .Deckchair {
   background-color: var(--color__brand-blue);
   color: white;
-  padding: 0.5lh;
-  margin-bottom: 1.5lh;
+  padding: 1rem;
+  margin-bottom: 2em;
   font-family: var(--type__primary);
-  padding-right: calc(0.5lh + 24px + 12px);
   position: relative;
   overflow: hidden;
+  display: flex;
 
-  @mixin card flat;
+  @mixin card standard-no-action;
 
   &--color-red {
     background-color: var(--color__brand-red);
@@ -19,13 +19,11 @@
   }
 
   &__cta {
-    float: left;
     padding-top: 1rem;
   }
 
-  &__info {
-    float: left;
-    width: 65%;
+  &__right {
+    margin-left: auto;
   }
 
   &__close {
@@ -41,12 +39,10 @@
 
   &__header {
     margin: 0;
-    @mixin type double-pica;
   }
 
   &__about {
     margin: 0;
-    @mixin type long-primer;
   }
 
   &__button {

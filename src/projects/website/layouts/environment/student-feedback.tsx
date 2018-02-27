@@ -292,9 +292,9 @@ function Feedback() {
         color="green"
         header="Thoughts, comments or questions?"
         about="If you have any further thoughts , comments, questions on the SU’s environmental sustainability work or would like support running a project, campaign, initiative then please get in contact."
-        buttonTitle="Email environment@sussexstudent.com"
-        buttonLink="mailto:environment@sussexstudent.com"
-      />
+      >
+        <a href="mailto:environment@sussexstudent.com">Email environment@sussexstudent.com</a>
+      </Deckchair>
     </div>
   );
 }

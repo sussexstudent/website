@@ -1,0 +1,9 @@
+mutation CreateListing($listingData: MarketListingInput!) {
+  createMarketListing(listingData: $listingData) {
+    ok
+    listing {
+      pk
+    }
+  }
+}
+

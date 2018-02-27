@@ -2,8 +2,8 @@ export function hasTouch() {
   return 'ontouchstart' in window ||
     // @ts-ignore
     ((window as any).DocumentTouch && document instanceof DocumentTouch) ||
-    (window.hasOwnProperty &&
-      (window.hasOwnProperty('ontouchstart') ||
+    ((window as any).hasOwnProperty &&
+      ((window as any).hasOwnProperty('ontouchstart') ||
         // @ts-ignore
         ((window as any).DocumentTouch && document instanceof DocumentTouch) ||
         navigator.msMaxTouchPoints))

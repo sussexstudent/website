@@ -1,6 +1,7 @@
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { setContext } from 'apollo-link-context';
 import getFalmerEndpoint from "~libs/getFalmerEndpoint";
 
 const link = new HttpLink({
@@ -17,9 +18,21 @@ if (typeof window !== 'undefined') {
   cache.restore(fullState);
 }
 
-const client = new ApolloClient({
-  link,
-  cache,
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('MSL_JWT_OVERRIDE') || (window as any).mslUserInfo.jwt || false;
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    }
+  }
 });
+
+
+const client = new ApolloClient({
+  cache,
+  link: authLink.concat(link),
+} as any);
 
 export default client;

@@ -42,7 +42,7 @@
   & img {
     display: block;
     width: auto;
-    max-width: 100%;
+    max-width: 764px;
   }
 
   &--top {

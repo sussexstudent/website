@@ -58,11 +58,11 @@ class HeaderSearch extends React.Component<IProps, IState> {
   private handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   private escapeClose: (e: KeyboardEvent) => void;
 
-  private header: HTMLDivElement | null;
-  private userBarEl: HTMLDivElement | null;
-  private htmlEl: HTMLElement | null;
-  private input: HTMLInputElement | null;
-  private dummyInput: HTMLInputElement | null;
+  private header: HTMLDivElement | null = null;
+  private userBarEl: HTMLDivElement | null = null;
+  private htmlEl: HTMLElement | null = null;
+  private input: HTMLInputElement | null = null;
+  private dummyInput: HTMLInputElement | null = null;
 
   static defaultProps = {
     disabled: false,

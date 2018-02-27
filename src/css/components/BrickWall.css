@@ -1,0 +1,20 @@
+.BrickWall {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: var(--type__primary);
+  font-weight: 500;
+
+  &__item {
+    margin: 0.2em;
+  }
+
+  &__anchor {
+    background-color: var(--color__brand-yellow);
+    color: var(--color__grey-sad-slate);
+    padding: 0.2rem 0.4rem;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 2px;
+  }
+}

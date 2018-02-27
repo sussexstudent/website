@@ -84,3 +84,7 @@
 @import './components/SearchMeta.css';
 @import './components/VoteHero.css';
 @import './components/VoteModal.css';
+@import './components/MarketListing.css';
+@import './components/ListingList.css';
+@import './components/BrickWall.css';
+@import './components/BasicForm.css';

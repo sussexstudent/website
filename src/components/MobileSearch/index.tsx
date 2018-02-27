@@ -23,9 +23,9 @@ class HeaderSearch extends React.Component<IProps, IState> {
   private handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   private handleTouch: (e: any) => void; // todo
 
-  private input: HTMLInputElement | null;
-  private header: HTMLDivElement;
-  private htmlEl: HTMLElement;
+  private input: HTMLInputElement | null = null;
+  private header: HTMLDivElement | null = null;
+  private htmlEl: HTMLElement | null = null;
 
   constructor(props: IProps) {
     super(props);
@@ -82,7 +82,10 @@ class HeaderSearch extends React.Component<IProps, IState> {
   handleHasFocus() {
     const { isOpen } = this.props;
 
-    classToggle(this.htmlEl, 'html--search-active', isOpen);
+    if (this.htmlEl) {
+      classToggle(this.htmlEl, 'html--search-active', isOpen);
+    }
+
     if (isOpen) {
       this.handleOpen();
     } else {
@@ -91,11 +94,15 @@ class HeaderSearch extends React.Component<IProps, IState> {
   }
 
   handleOpen() {
-    this.header.classList.add('Header--search-focus');
+    if (this.header) {
+      this.header.classList.add('Header--search-focus');
+    }
   }
 
   handleClose() {
-    this.header.classList.remove('Header--search-focus');
+    if (this.header) {
+      this.header.classList.remove('Header--search-focus');
+    }
   }
 
   setInputFocus() {

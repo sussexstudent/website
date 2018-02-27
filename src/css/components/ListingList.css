@@ -1,0 +1,28 @@
+.ListingList {
+
+  &__item {
+    display: flex;
+    position: relative;
+    background-color: #ffffff;
+    @mixin card standard;
+    margin-bottom: 1rem;
+  }
+
+  &__image {
+    max-width: 60px;
+  }
+
+  &__info {
+    flex: 1 1 auto;
+  }
+
+  &__title {
+    @mixin type great-primer;
+    font-weight: 600;
+  }
+
+  &__author {
+    @mixin type great-primer;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,14 @@
+query GetMarketListing($filters: MarketListingsFilter) {
+  allMarketListings(filters: $filters) {
+    edges {
+      node {
+        pk
+        bookTitle
+        bookAuthor
+        buyPrice
+        state
+        description
+      }
+    }
+  }
+}

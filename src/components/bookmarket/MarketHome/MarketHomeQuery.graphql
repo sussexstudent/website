@@ -1,0 +1,6 @@
+query MarketHomeQuery {
+  allMarketSections {
+    title
+    slug
+  }
+}

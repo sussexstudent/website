@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import HydroLeaf from '../HydroLeaf';
 import { OneImageBackground } from '~components/OneImage';
 
@@ -6,10 +7,11 @@ interface IProps {
   imageURL: string;
   title: string;
   description?: string;
+  thin?: boolean;
 }
 
-const HeadingHero = ({ imageURL, title, description = '' }: IProps) => (
-  <OneImageBackground className="HeadingImage" src={imageURL}>
+const HeadingHero = ({ imageURL, title, description = '', thin = false }: IProps) => (
+  <OneImageBackground className={cx('HeadingImage', { 'HeadingImage--thin': thin})} src={imageURL}>
     <h1 className="HeadingImage__title">{title}</h1>
     {description ? (
       <div>

@@ -98,8 +98,8 @@ interface IState {
 
 class SearchPage extends React.Component<IProps, IState> {
   private loadQueryResultsDebounced: (query: string) => void;
-  private searchContainerRef: HTMLDivElement | null;
-  private containerRef: HTMLDivElement | null;
+  private searchContainerRef: HTMLDivElement | null = null;
+  private containerRef: HTMLDivElement | null = null;
 
   constructor(props: IProps) {
     super(props);

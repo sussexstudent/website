@@ -1,0 +1,17 @@
+query GetMarketListing($filters: MarketListingsFilter, $sectionSlug: String) {
+  allMarketListings(filters: $filters) {
+    edges {
+      node {
+        pk
+        bookTitle
+        bookAuthor
+        buyPrice
+        description
+      }
+    }
+  }
+  marketSection(slug: $sectionSlug) {
+    title
+    slug
+  }
+}

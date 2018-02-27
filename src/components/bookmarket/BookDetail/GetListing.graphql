@@ -1,0 +1,14 @@
+query GetMarketListing($listingId: Int) {
+  marketListing(listingId: $listingId) {
+    pk
+    bookTitle
+    bookAuthor
+    description
+    buyPrice
+    state
+    section {
+      title
+      slug
+    }
+  }
+}

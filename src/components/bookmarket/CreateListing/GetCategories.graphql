@@ -1,0 +1,7 @@
+query CreateListingSections {
+  allMarketSections {
+    pk
+    title
+    slug
+  }
+}

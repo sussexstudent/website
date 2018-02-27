@@ -6,4 +6,3 @@ mutation CreateListing($listingData: MarketListingInput!) {
     }
   }
 }
-

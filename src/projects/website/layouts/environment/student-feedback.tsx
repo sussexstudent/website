@@ -293,7 +293,9 @@ function Feedback() {
         header="Thoughts, comments or questions?"
         about="If you have any further thoughts , comments, questions on the SU’s environmental sustainability work or would like support running a project, campaign, initiative then please get in contact."
       >
-        <a href="mailto:environment@sussexstudent.com">Email environment@sussexstudent.com</a>
+        <a href="mailto:environment@sussexstudent.com">
+          Email environment@sussexstudent.com
+        </a>
       </Deckchair>
     </div>
   );

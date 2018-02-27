@@ -70,7 +70,10 @@ function EventsCalender({
         <div className="PageHeader">
           <h1 className="PageHeader__title">{"What's on"}</h1>
           <div className="PageHeader__treats">
-            <a className="Button" href="/sport-societies-media/information-for-committee-members/events-trips/">
+            <a
+              className="Button"
+              href="/sport-societies-media/information-for-committee-members/events-trips/"
+            >
               Hold your own event
             </a>
           </div>

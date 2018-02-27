@@ -13,7 +13,7 @@ const Deckchair: React.SFC<IProps> = ({
   about,
   chairKey,
   color,
-  children
+  children,
 }: IProps) => (
   <div className={`Deckchair Deckchair--color-${color}`} data-chair={chairKey}>
     {chairKey ? <div className="Deckchair__close" /> : null}
@@ -21,9 +21,7 @@ const Deckchair: React.SFC<IProps> = ({
       <h3 className="Deckchair__header type-great-primer">{header}</h3>
       <p className="Deckchair__about type-pica">{about}</p>
     </div>
-    <div className="Deckchair__right">
-      {children ? children : null}
-    </div>
+    <div className="Deckchair__right">{children ? children : null}</div>
   </div>
 );
 

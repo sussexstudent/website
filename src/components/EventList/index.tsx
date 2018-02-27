@@ -6,7 +6,7 @@ import HydroLeaf from '~components/HydroLeaf';
 import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
 import Loader from '../Loader/index';
 import EventListQuery from './EventList.graphql';
-import {Query} from "../../css/components/Query";
+import { Query } from '../../css/components/Query';
 import { GranuleChildProps } from '@brudil/granule';
 
 interface Result {
@@ -33,7 +33,8 @@ function EventList() {
 
           const { allEvents } = data;
 
-          return allEvents &&
+          return (
+            allEvents &&
             allEvents.edges
               .filter(
                 (edge) =>
@@ -54,6 +55,7 @@ function EventList() {
                   />
                 </li>
               ))
+          );
         }}
       </Query>
     </ul>

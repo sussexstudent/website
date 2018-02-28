@@ -40,7 +40,7 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
   const listing = props.data.marketListing;
 
   const isOwner =
-    props.isAuthenticated &&
+    props.isAuthenticated && props.currentUser &&
     listing.listingUser.userId === props.currentUser.userId;
 
   function renderListingManagement() {
@@ -61,7 +61,7 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                   },
                 })
               }
-              type="button"
+              type="button" className="Deckchair__button"
             >
               Publish
             </button>
@@ -82,16 +82,16 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                   },
                 })
               }
-              type="button"
+              type="button" className="Deckchair__button"
             >
-              Un-list
+              Unlist
             </button>
           </Deckchair>
         ) : null}
         {listing.state === MarketListingState.Unlisted ? (
           <Deckchair
-            header="This listing un-listed"
-            about="Still want to sell it? Simply re-list it!"
+            header="This listing unlisted"
+            about="Still want to sell it? Simply relist it!"
             color="blue"
           >
             <button
@@ -103,9 +103,9 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                   },
                 })
               }
-              type="button"
+              type="button" className="Deckchair__button"
             >
-              Re-list
+              Relist
             </button>
           </Deckchair>
         ) : null}{' '}
@@ -124,9 +124,9 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                   },
                 })
               }
-              type="button"
+              type="button" className="Deckchair__button"
             >
-              Re-list
+              Relist
             </button>
           </Deckchair>
         ) : null}
@@ -176,7 +176,7 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
           </div>
         </div>
         <div>
-          <h2>{listing.buyPrice === 0 ? 'Free!' : `£${listing.buyPrice}`}</h2>
+          <div className="Listing__price">{listing.buyPrice === 0 ? 'Free!' : `£${listing.buyPrice}`}</div>
           {props.isAuthenticated ? (
             <button className="Button">Get book!</button>
           ) : (

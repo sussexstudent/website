@@ -17,6 +17,7 @@
     color: var(--color__grey-slate);
     @mixin type trafalgar;
     font-weight: 600;
+    margin-top: 0;
   }
 
   &__book-author {
@@ -24,5 +25,12 @@
     color: var(--color__grey-worst-day-of-winter);
     font-weight: 600;
     margin-top: 0.5em;
+  }
+
+  &__price {
+    @mixin type trafalgar;
+    color: var(--color__brand-blue);
+    font-weight: 600;
+    margin-bottom: 1rem;
   }
 }

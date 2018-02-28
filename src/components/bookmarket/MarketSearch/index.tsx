@@ -9,6 +9,7 @@ import { graphql, ChildProps } from 'react-apollo';
 import Loader from '~components/Loader';
 import { MarketListing } from '../../../types/market';
 import { ListingList } from '~components/bookmarket/ListingList';
+import {Field, Form} from 'react-final-form';
 
 interface OwnProps extends RouteComponentProps<{ sectionSlug?: string }> {}
 
@@ -21,19 +22,31 @@ interface Result {
 type IProps = OwnProps & ChildProps<{}, Result>;
 
 const MarketSearchComponent: React.SFC<IProps> = (props: IProps) => {
-  if (props.data && props.data.loading) {
-    return <Loader />;
+
+  function renderList() {
+    if (props.data && props.data.loading) {
+      return <Loader />;
+    }
+
+    if (
+      !props.data ||
+      !props.data.allMarketListings ||
+      !props.data.allMarketListings.edges
+    ) {
+      return <h1>Error</h1>;
+    }
+
+    const edges = props.data.allMarketListings.edges;
+
+    return (
+      <ListingList items={edges.map((edge) => edge.node)} />
+    )
   }
 
-  if (
-    !props.data ||
-    !props.data.allMarketListings ||
-    !props.data.allMarketListings.edges
-  ) {
-    return <h1>Error</h1>;
-  }
-
-  const edges = props.data.allMarketListings.edges;
+  const onSearchSubmit = (data: any) =>
+    (props as any).history.push(
+      `/book-market/search?${qs.stringify({ q: data.query })}`,
+    );
 
   return (
     <div>
@@ -42,7 +55,23 @@ const MarketSearchComponent: React.SFC<IProps> = (props: IProps) => {
         <Link to="/book-market/search">Search</Link>
       </BreadcrumbBar>
       <div className="Layout Layout--sidebar-right">
-        <ListingList items={edges.map((edge) => edge.node)} />
+        <div>
+          <Form
+            onSubmit={onSearchSubmit}
+            render={({ handleSubmit }) => (
+              <form onSubmit={handleSubmit}>
+                <Field
+                  name="query"
+                  className="HeaderSearch"
+                  component="input"
+                  type="search"
+                  placeholder="Search by author or title"
+                />
+              </form>
+            )}
+          />
+          {renderList()}
+        </div>
       </div>
     </div>
   );

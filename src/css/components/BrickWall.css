@@ -3,10 +3,10 @@
   flex-wrap: wrap;
   justify-content: center;
   font-family: var(--type__primary);
-  font-weight: 500;
+  font-weight: 600;
 
   &__item {
-    margin: 0.2em;
+    margin: 0.3em;
   }
 
   &__anchor {

@@ -71,14 +71,12 @@ function generateConfig() {
         paths: true,
       }),
       new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify(NODE_ENV),
-          FALMER_ENDPOINT: JSON.stringify(
-            env.production
-              ? 'https://falmer.sussexstudent.com'
-              : 'http://localhost:8000'
-          ),
-        },
+        'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
+        'process.env.FALMER_ENDPOINT': JSON.stringify(
+          env.production
+            ? 'https://falmer.sussexstudent.com'
+            : 'http://localhost:8000'
+        ),
         __DEV__: env.development,
         __STAGING__: env.staging,
         __PRODUCTION__: env.production,

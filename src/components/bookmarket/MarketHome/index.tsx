@@ -62,7 +62,7 @@ const MarketHomeComponent: React.SFC<IProps> = (props) => {
           />
           {props.data && props.data.allMarketSections ? (
             <div>
-              <h3 className="type-pica">Discover by school</h3>
+              <h3 className="type-pica" style={{ textAlign: 'center' }}>Discover by school</h3>
               <ul className="BrickWall List--reset">
                 {props.data.allMarketSections.map((section) => (
                   <li className="BrickWall__item">
@@ -82,7 +82,7 @@ const MarketHomeComponent: React.SFC<IProps> = (props) => {
           <ul className="List--reset">
             {props.isAuthenticated ? (
               <li>
-                <Link className="Button" to="/book-market/list">
+                <Link className="Button Button--color-green" to="/book-market/list">
                   List a book
                 </Link>
               </li>

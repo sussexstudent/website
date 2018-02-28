@@ -3,6 +3,7 @@ import cx from 'classnames';
 import FauxRouterLink from '~components/FauxRouterLink';
 import { MarketListing, MarketListingState } from '../../../types/market';
 import { AspectRatio, OneImage } from '~components/OneImage';
+import {NoListItems} from "~components/bookmarket/NoListItems";
 
 interface IProps {
   items: MarketListing[];
@@ -13,13 +14,14 @@ const stateLangMap = {
   [MarketListingState.Draft]: 'Draft',
   [MarketListingState.Ready]: 'Live',
   [MarketListingState.Expired]: 'Expired',
-  [MarketListingState.Unlisted]: 'Un-listed',
+  [MarketListingState.Unlisted]: 'Unlisted',
 };
 
 const ListingList: React.SFC<IProps> = (props: IProps) => {
   if (props.items.length <= 0) {
-    return <h2>No items found!</h2>;
+    return <NoListItems />;
   }
+
 
   return (
     <ul className="ListingList List--reset">

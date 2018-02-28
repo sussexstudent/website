@@ -8,6 +8,8 @@
   overflow: hidden;
   display: flex;
 
+  flex-wrap: wrap;
+
   @mixin card standard-no-action;
 
   &--color-red {
@@ -32,6 +34,7 @@
 
   &__right {
     margin-left: auto;
+    display: flex;
   }
 
   &__close {
@@ -60,5 +63,9 @@
     display: inline-block;
     text-decoration: none;
     font-weight: bold;
+    border: 0;
+    @mixin type great-primer;
+    justify-self: end;
+    @mixin card standard;
   }
 }

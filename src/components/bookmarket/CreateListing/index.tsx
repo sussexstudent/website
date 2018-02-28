@@ -53,7 +53,7 @@ const CreateListingComponent: React.SFC<IProps> = (props) => {
     <div>
       <BreadcrumbBar>
         <Link to="/book-market/">Book Market</Link>
-        <Link to={`/book-market/add/`}>Add a listing</Link>
+        <Link to={`/book-market/list/`}>Add a listing</Link>
       </BreadcrumbBar>
 
       <h1>Add a listing</h1>

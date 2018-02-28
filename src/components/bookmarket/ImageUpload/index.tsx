@@ -98,7 +98,7 @@ class ImageUpload extends React.Component<IProps, IState> {
           )}
         </Dropzone>
         {this.renderStatus()}
-        </div>
+      </div>
     );
   }
 }

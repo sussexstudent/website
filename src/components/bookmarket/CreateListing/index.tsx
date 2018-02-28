@@ -135,6 +135,28 @@ const CreateListingComponent: React.SFC<IProps> = (props) => {
               )}
             </Field>
 
+            <Field name="contactDetails" validate={required}>
+              {({ input, meta }) => (
+                <div className="BasicForm__field">
+                  <label htmlFor="contactDetails">
+                    Contact Details{' '}
+                    {meta.error &&
+                      meta.touched && (
+                        <span className="BasicForm__requirement">
+                          {meta.error}
+                        </span>
+                      )}
+                  </label>
+                  <textarea
+                    {...input}
+                    id="contactDetails"
+                    placeholder="How should a buyer get in touch? Please do not post personal information, as these details are public to any logged in user."
+                    required
+                  />
+                </div>
+              )}
+            </Field>
+
             <Field name="price" validate={required}>
               {({ input, meta }) => (
                 <div className="BasicForm__field">
@@ -173,6 +195,9 @@ const CreateListingComponent: React.SFC<IProps> = (props) => {
                       )}
                   </label>
                   <select {...input} id="sectionId">
+                    <option selected hidden>
+                      Select a section
+                    </option>
                     {props.categoryQuery &&
                       props.categoryQuery.allMarketSections &&
                       props.categoryQuery.allMarketSections.map((section) => (

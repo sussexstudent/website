@@ -1,0 +1,8 @@
+mutation RequestMarketListingContactDetails($listingId: Int) {
+  requestMarketListingContactDetails(listingId: $listingId) {
+    listing {
+      id
+      contactDetails
+    }
+  }
+}

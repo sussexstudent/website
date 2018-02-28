@@ -9,7 +9,7 @@ import { graphql, ChildProps } from 'react-apollo';
 import Loader from '~components/Loader';
 import { MarketListing } from '../../../types/market';
 import { ListingList } from '~components/bookmarket/ListingList';
-import {Field, Form} from 'react-final-form';
+import { Field, Form } from 'react-final-form';
 
 interface OwnProps extends RouteComponentProps<{ sectionSlug?: string }> {}
 
@@ -22,7 +22,6 @@ interface Result {
 type IProps = OwnProps & ChildProps<{}, Result>;
 
 const MarketSearchComponent: React.SFC<IProps> = (props: IProps) => {
-
   function renderList() {
     if (props.data && props.data.loading) {
       return <Loader />;
@@ -38,9 +37,7 @@ const MarketSearchComponent: React.SFC<IProps> = (props: IProps) => {
 
     const edges = props.data.allMarketListings.edges;
 
-    return (
-      <ListingList items={edges.map((edge) => edge.node)} />
-    )
+    return <ListingList items={edges.map((edge) => edge.node)} />;
   }
 
   const onSearchSubmit = (data: any) =>

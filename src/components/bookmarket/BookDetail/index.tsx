@@ -1,6 +1,7 @@
 import React from 'react';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
 import { Link, RouteComponentProps } from 'react-router-dom';
+import RequestContactDetails from './RequestContactDetails.graphql';
 import GetListing from './GetListing.graphql';
 import UpdateImage from './UpdateImage.graphql';
 import ChangeState from './ChangeState.graphql';
@@ -19,6 +20,7 @@ import {
 interface OwnProps extends RouteComponentProps<{ listingId: string }> {
   updateImage(data: any): Promise<{}>;
   changeState(data: any): Promise<{}>;
+  requestContactDetails(data: any): Promise<{}>;
   currentUser: any;
 }
 
@@ -40,7 +42,8 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
   const listing = props.data.marketListing;
 
   const isOwner =
-    props.isAuthenticated && props.currentUser &&
+    props.isAuthenticated &&
+    props.currentUser &&
     listing.listingUser.userId === props.currentUser.userId;
 
   function renderListingManagement() {
@@ -61,7 +64,8 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                   },
                 })
               }
-              type="button" className="Deckchair__button"
+              type="button"
+              className="Deckchair__button"
             >
               Publish
             </button>
@@ -82,7 +86,8 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                   },
                 })
               }
-              type="button" className="Deckchair__button"
+              type="button"
+              className="Deckchair__button"
             >
               Unlist
             </button>
@@ -103,7 +108,8 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                   },
                 })
               }
-              type="button" className="Deckchair__button"
+              type="button"
+              className="Deckchair__button"
             >
               Relist
             </button>
@@ -124,13 +130,24 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                   },
                 })
               }
-              type="button" className="Deckchair__button"
+              type="button"
+              className="Deckchair__button"
             >
               Relist
             </button>
           </Deckchair>
         ) : null}
       </div>
+    );
+  }
+
+  function renderAddImage() {
+    return (
+      <Deckchair
+        header="Let's add an image"
+        about="Take a photo directly from your phone, or drag and drop an image"
+        color="red"
+      />
     );
   }
 
@@ -147,7 +164,9 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
           {listing.bookTitle}
         </Link>
       </BreadcrumbBar>
-      {isOwner ? renderListingManagement() : null}
+      {isOwner
+        ? listing.image ? renderListingManagement() : renderAddImage()
+        : null}
       <div className="Layout Layout--sidebar-right">
         <div className="Listing__book">
           <div className="Listing__image">
@@ -161,13 +180,13 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                   });
                 }}
               />
-            ) : (
+            ) : listing.image ? (
               <OneImage
                 src={listing.image.resource}
                 alt=""
                 aspectRatio={AspectRatio.r3by4}
               />
-            )}
+            ) : null}
           </div>
           <div className="Listing__book-info">
             <h1 className="Listing__book-title">{listing.bookTitle}</h1>
@@ -176,9 +195,29 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
           </div>
         </div>
         <div>
-          <div className="Listing__price">{listing.buyPrice === 0 ? 'Free!' : `£${listing.buyPrice}`}</div>
+          <div className="Listing__price">
+            {listing.buyPrice === 0 ? 'Free!' : `£${listing.buyPrice}`}
+          </div>
+
           {props.isAuthenticated ? (
-            <button className="Button">Get book!</button>
+            listing.contactDetails === null ? (
+              <button
+                className="Button"
+                type="button"
+                onClick={() =>
+                  props.requestContactDetails({
+                    variables: { listingId: listing.pk },
+                  })
+                }
+              >
+                Get book!
+              </button>
+            ) : (
+              <div>
+                <div>Contact details:</div>
+                <div>{listing.contactDetails}</div>
+              </div>
+            )
           ) : (
             <em>Log in to get book</em>
           )}
@@ -194,6 +233,9 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
 
 const BookDetail = compose<OwnProps, IProps>(
   currentUserData(),
+  graphql(RequestContactDetails, {
+    name: 'requestContactDetails',
+  }),
   graphql(UpdateImage, {
     name: 'updateImage',
   }),

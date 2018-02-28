@@ -18,7 +18,8 @@
     transition: transform ease 300ms;
   }
 
-  &:hover &__icon, &--active &__icon {
+  &:hover &__icon,
+  &--active &__icon {
     transform: scale(1.05);
   }
 }

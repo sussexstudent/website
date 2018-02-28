@@ -3,7 +3,7 @@ import cx from 'classnames';
 import FauxRouterLink from '~components/FauxRouterLink';
 import { MarketListing, MarketListingState } from '../../../types/market';
 import { AspectRatio, OneImage } from '~components/OneImage';
-import {NoListItems} from "~components/bookmarket/NoListItems";
+import { NoListItems } from '~components/bookmarket/NoListItems';
 
 interface IProps {
   items: MarketListing[];
@@ -21,7 +21,6 @@ const ListingList: React.SFC<IProps> = (props: IProps) => {
   if (props.items.length <= 0) {
     return <NoListItems />;
   }
-
 
   return (
     <ul className="ListingList List--reset">

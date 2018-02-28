@@ -18,5 +18,6 @@ query GetMarketListing($listingId: Int) {
       userId
       name
     }
+    contactDetails
   }
 }

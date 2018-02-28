@@ -29,4 +29,5 @@ export interface MarketListing {
   state: MarketListingState;
   image: FalmerImage;
   listingUser: BasicUser;
+  contactDetails: null | string;
 }

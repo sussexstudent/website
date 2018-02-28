@@ -3,10 +3,14 @@ query GetMarketListing($filters: MarketListingsFilter) {
     edges {
       node {
         pk
+        id
         bookTitle
         bookAuthor
         buyPrice
         description
+        image {
+          resource
+        }
       }
     }
   }

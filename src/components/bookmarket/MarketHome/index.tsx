@@ -44,7 +44,7 @@ const MarketHomeComponent: React.SFC<IProps> = (props) => {
         description="Buy and sell second hand books at Sussex"
         thin
       />
-      <div className="Layout--sidebar-right">
+      <div className="Layout Layout--sidebar-right Layout--sidebar-divider">
         <main>
           <Form
             onSubmit={onSearchSubmit}

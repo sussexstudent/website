@@ -17,7 +17,7 @@
   box-sizing: border-box;
   transition: transform ease 300ms, box-shadow ease 300ms;
   border-radius: 2px;
-
+  -webkit-appearance: none;
   @mixin card flat;
 
   @media (--medium) {

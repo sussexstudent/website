@@ -61,6 +61,7 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                   },
                 })
               }
+              type="button"
             >
               Publish
             </button>
@@ -81,6 +82,7 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                   },
                 })
               }
+              type="button"
             >
               Un-list
             </button>
@@ -101,6 +103,7 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                   },
                 })
               }
+              type="button"
             >
               Re-list
             </button>
@@ -121,6 +124,7 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                   },
                 })
               }
+              type="button"
             >
               Re-list
             </button>

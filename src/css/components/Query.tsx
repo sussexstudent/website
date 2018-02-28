@@ -5,7 +5,7 @@ import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 const store = createStore();
 
 export const Query = (props: any) => (
-  <Granule endpoint={getFalmerEndpoint()} store={store} {...props}>
+  <Granule endpoint={`${getFalmerEndpoint()}/graphql`} store={store} {...props}>
     {props.children}
   </Granule>
 );

@@ -8,20 +8,55 @@
   }
 
   &__image {
-    max-width: 60px;
+    width: 80px;
   }
 
   &__info {
     flex: 1 1 auto;
+    padding: 0.5em 1em;
+  }
+
+  &__info, &__actionable {
+    padding: 0.5em 1em;
   }
 
   &__title {
+    color: var(--color__grey-slate);
     @mixin type great-primer;
     font-weight: 600;
   }
 
   &__author {
     @mixin type great-primer;
+    color: var(--color__grey-worst-day-of-winter);
     font-weight: 600;
+  }
+
+  &__actionable {
+    color: var(--color__brand-blue);
+  }
+
+  &__state {
+    margin-left: 1rem;
+    padding: 0.2em 0.4em;
+    color: #ffffff;
+    border-radius: 2px;
+
+    &--draft {
+      background-color: var(--color__brand-red);
+    }
+
+    &--ready {
+      background-color: var(--color__brand-green);
+    }
+
+    &--unlisted {
+      background-color: var(--color__brand-yellow);
+      color: var(--color__brand-blue);
+    }
+
+    &--expired {
+      background-color: var(--color__brand-blue);
+    }
   }
 }

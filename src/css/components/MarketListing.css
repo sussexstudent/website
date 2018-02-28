@@ -1,5 +1,29 @@
 .Listing {
+  &__image {
+    padding-right: 2rem;
+    width: 100%;
+
+    @media (--medium) {
+      width: 50%;
+    }
+  }
+
   &__book {
     display: flex;
   }
+
+
+  &__book-title {
+    color: var(--color__grey-slate);
+    @mixin type trafalgar;
+    font-weight: 600;
+  }
+
+  &__book-author {
+    @mixin type double-pica;
+    color: var(--color__grey-worst-day-of-winter);
+    font-weight: 600;
+    margin-top: 0.5em;
+  }
+
 }

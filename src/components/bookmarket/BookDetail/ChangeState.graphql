@@ -1,0 +1,9 @@
+mutation ChangeState($listingId: Int, $state: String) {
+  updateMarketListing(listingId: $listingId, listingData: { state: $state }) {
+    listing {
+      id
+      pk
+      state
+    }
+  }
+}

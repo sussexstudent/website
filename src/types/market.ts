@@ -1,7 +1,16 @@
+import {FalmerImage} from "./events";
+
 export enum MarketListingState {
   Draft = 'DRAFT',
   Ready = 'READY',
   Unlisted = 'UNLISTED',
+  Expired = 'EXPIRED',
+}
+
+export interface BasicUser {
+  name: string;
+  id: number;
+  userId: number;
 }
 
 export interface MarketSection {
@@ -18,4 +27,6 @@ export interface MarketListing {
   buyPrice: number;
   section: MarketSection;
   state: MarketListingState;
+  image: FalmerImage;
+  listingUser: BasicUser;
 }

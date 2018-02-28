@@ -18,6 +18,14 @@
     background-color: var(--color__brand-green);
   }
 
+  &--color-blue {
+    background-color: var(--color__brand-blue);
+  }
+
+  &--color-yellow {
+    background-color: var(--color__brand-yellow);
+  }
+
   &__cta {
     padding-top: 1rem;
   }

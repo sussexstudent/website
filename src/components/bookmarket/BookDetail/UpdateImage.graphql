@@ -1,0 +1,20 @@
+mutation UpdateListingImage($listingId: Int, $imageId: Int) {
+  updateMarketListing(listingId: $listingId, listingData: { imageId: $imageId }) {
+    listing {
+      pk
+      id
+      bookTitle
+      bookAuthor
+      description
+      buyPrice
+      state
+      section {
+        title
+        slug
+      }
+      image {
+        resource
+      }
+    }
+  }
+}

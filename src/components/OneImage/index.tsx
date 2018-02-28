@@ -10,12 +10,14 @@ export enum AspectRatio {
   r16by9 = 'r16by9',
   r20by9 = 'r20by9',
   r1by1 = 'r1by1',
+  r3by4 = 'r3by4',
 }
 
 const aspectRatioMap = {
   [AspectRatio.r1by1]: 1.0,
   [AspectRatio.r16by9]: 0.5625,
   [AspectRatio.r20by9]: 0.45,
+  [AspectRatio.r3by4]: 1.333333333,
 };
 
 type AspectRatioInput = AspectRatio | { width: number; height: number };

@@ -1,6 +1,7 @@
 query GetMarketListing($listingId: Int) {
   marketListing(listingId: $listingId) {
     pk
+    id
     bookTitle
     bookAuthor
     description
@@ -9,6 +10,13 @@ query GetMarketListing($listingId: Int) {
     section {
       title
       slug
+    }
+    image {
+      resource
+    }
+    listingUser {
+      userId
+      name
     }
   }
 }

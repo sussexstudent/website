@@ -3,9 +3,10 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { setContext } from 'apollo-link-context';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
+import {getMslJwt} from "~libs/getMslJwt";
 
 const link = new HttpLink({
-  uri: getFalmerEndpoint(),
+  uri: `${getFalmerEndpoint()}/graphql`,
 });
 const cache = new InMemoryCache();
 
@@ -19,10 +20,7 @@ if (typeof window !== 'undefined') {
 }
 
 const authLink = setContext((_, { headers }) => {
-  const token =
-    localStorage.getItem('MSL_JWT_OVERRIDE') ||
-    (window as any).mslUserInfo.jwt ||
-    false;
+  const token = getMslJwt();
 
   return {
     headers: {
@@ -35,6 +33,7 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
   cache,
   link: authLink.concat(link),
+  connectToDevTools: true,
 } as any);
 
 export default client;

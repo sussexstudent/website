@@ -1,15 +1,16 @@
 .Listing {
   &__image {
-    padding-right: 2rem;
     width: 100%;
 
     @media (--medium) {
+      padding-right: 2rem;
       width: 50%;
     }
   }
 
   &__book {
     display: flex;
+    flex-wrap: wrap;
   }
 
   &__book-title {

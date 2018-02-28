@@ -5,6 +5,7 @@ import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import { getMslJwt } from '~libs/getMslJwt';
 import { ImageSourcePurpose } from '../../../types/upload';
 import { FalmerImage } from '../../../types/events';
+import AddImageIcon from '../../../icons/add-image.svg';
 import { AspectRatio, OneImage } from '~components/OneImage';
 
 interface IProps {
@@ -66,22 +67,21 @@ class ImageUpload extends React.Component<IProps, IState> {
     }
 
     if (this.state.uploaded) {
-      return 'uploaded!';
+      return 'Uploaded!';
     }
-
-    return 'nothing uploaded';
   }
 
   render() {
     return (
-      <div>
+      <div className="ImageUpload">
         <Dropzone
           onDrop={this.onDrop}
           accept="image/jpeg,image/jpg,image/png"
           multiple={false}
           maxSize={8000000}
+          style={{}}
+          activeClassName="ImageUpload--active"
         >
-          Drop image here
           {this.props.image ? (
             <OneImage
               src={this.props.image.resource}
@@ -89,11 +89,16 @@ class ImageUpload extends React.Component<IProps, IState> {
               alt=""
             />
           ) : (
-            'No image currently being used!'
+            <div className="ImageUpload__no-image">
+              <div className="ImageUpload__icon">
+                <AddImageIcon />
+              </div>
+              <div>Add an image</div>
+            </div>
           )}
         </Dropzone>
-        <div>{this.renderStatus()}</div>
-      </div>
+        {this.renderStatus()}
+        </div>
     );
   }
 }

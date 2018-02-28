@@ -1,0 +1,24 @@
+.ImageUpload {
+  cursor: pointer;
+
+  &--active &__no-image {
+    border: 3px dashed var(--color__grey-winter);
+  }
+
+  &__no-image {
+    padding: 1rem;
+    box-sizing: border-box;
+    background-color: var(--color__grey-summer);
+    text-align: center;
+
+    border: 3px dashed transparent;
+  }
+
+  &__icon {
+    transition: transform ease 300ms;
+  }
+
+  &:hover &__icon, &--active &__icon {
+    transform: scale(1.05);
+  }
+}

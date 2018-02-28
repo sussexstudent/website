@@ -1,11 +1,11 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import bind from 'bind-decorator';
-import getFalmerEndpoint from "~libs/getFalmerEndpoint";
-import {getMslJwt} from "~libs/getMslJwt";
-import {ImageSourcePurpose} from "../../../types/upload";
-import {FalmerImage} from "../../../types/events";
-import {AspectRatio, OneImage} from "~components/OneImage";
+import getFalmerEndpoint from '~libs/getFalmerEndpoint';
+import { getMslJwt } from '~libs/getMslJwt';
+import { ImageSourcePurpose } from '../../../types/upload';
+import { FalmerImage } from '../../../types/events';
+import { AspectRatio, OneImage } from '~components/OneImage';
 
 interface IProps {
   onUploadComplete(data: FalmerImage): void;
@@ -18,7 +18,6 @@ interface IState {
 }
 
 class ImageUpload extends React.Component<IProps, IState> {
-
   constructor(props: IProps) {
     super(props);
 
@@ -44,12 +43,12 @@ class ImageUpload extends React.Component<IProps, IState> {
     fetch(`${getFalmerEndpoint()}/images/`, {
       method: 'PUT',
       headers: {
-        'authorization': `Bearer ${getMslJwt()}`
+        authorization: `Bearer ${getMslJwt()}`,
       },
       body: formData,
     })
-      .then(res => res.json())
-      .then(response => {
+      .then((res) => res.json())
+      .then((response) => {
         this.props.onUploadComplete(response.data);
       });
 
@@ -57,8 +56,8 @@ class ImageUpload extends React.Component<IProps, IState> {
       this.setState({
         isUploading: false,
         uploaded: true,
-      })
-    }, 2000)
+      });
+    }, 2000);
   }
 
   renderStatus() {
@@ -67,7 +66,7 @@ class ImageUpload extends React.Component<IProps, IState> {
     }
 
     if (this.state.uploaded) {
-      return 'uploaded!'
+      return 'uploaded!';
     }
 
     return 'nothing uploaded';
@@ -83,12 +82,19 @@ class ImageUpload extends React.Component<IProps, IState> {
           maxSize={8000000}
         >
           Drop image here
-          {this.props.image ? <OneImage src={this.props.image.resource} aspectRatio={AspectRatio.r3by4} alt="" /> : 'No image currently being used!'}
+          {this.props.image ? (
+            <OneImage
+              src={this.props.image.resource}
+              aspectRatio={AspectRatio.r3by4}
+              alt=""
+            />
+          ) : (
+            'No image currently being used!'
+          )}
         </Dropzone>
         <div>{this.renderStatus()}</div>
       </div>
     );
-
   }
 }
 

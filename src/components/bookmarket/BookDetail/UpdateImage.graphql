@@ -1,5 +1,8 @@
 mutation UpdateListingImage($listingId: Int, $imageId: Int) {
-  updateMarketListing(listingId: $listingId, listingData: { imageId: $imageId }) {
+  updateMarketListing(
+    listingId: $listingId
+    listingData: { imageId: $imageId }
+  ) {
     listing {
       pk
       id

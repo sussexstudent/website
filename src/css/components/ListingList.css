@@ -16,7 +16,8 @@
     padding: 0.5em 1em;
   }
 
-  &__info, &__actionable {
+  &__info,
+  &__actionable {
     padding: 0.5em 1em;
   }
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
 import FauxRouterLink from '~components/FauxRouterLink';
-import {MarketListing, MarketListingState} from '../../../types/market';
-import {AspectRatio, OneImage} from "~components/OneImage";
+import { MarketListing, MarketListingState } from '../../../types/market';
+import { AspectRatio, OneImage } from '~components/OneImage';
 
 interface IProps {
   items: MarketListing[];
@@ -27,17 +27,31 @@ const ListingList: React.SFC<IProps> = (props: IProps) => {
         <li className="ListingList__item">
           <FauxRouterLink href={`/book-market/listing/${item.pk}`} />
           <div className="ListingList__image">
-            {item.image ? <OneImage src={item.image.resource} alt="" aspectRatio={AspectRatio.r3by4} /> : null}
+            {item.image ? (
+              <OneImage
+                src={item.image.resource}
+                alt=""
+                aspectRatio={AspectRatio.r3by4}
+              />
+            ) : null}
           </div>
           <div className="ListingList__info">
             <div className="ListingList__title">
               {item.bookTitle}
-              <span className={cx('ListingList__state type-long-primer', {
-                'ListingList__state--draft': item.state === MarketListingState.Draft,
-                'ListingList__state--ready': item.state === MarketListingState.Ready,
-                'ListingList__state--expired': item.state === MarketListingState.Expired,
-                'ListingList__state--unlisted': item.state === MarketListingState.Unlisted,
-              })}>{props.ownUser ? stateLangMap[item.state] : null}</span>
+              <span
+                className={cx('ListingList__state type-long-primer', {
+                  'ListingList__state--draft':
+                    item.state === MarketListingState.Draft,
+                  'ListingList__state--ready':
+                    item.state === MarketListingState.Ready,
+                  'ListingList__state--expired':
+                    item.state === MarketListingState.Expired,
+                  'ListingList__state--unlisted':
+                    item.state === MarketListingState.Unlisted,
+                })}
+              >
+                {props.ownUser ? stateLangMap[item.state] : null}
+              </span>
             </div>
             <div className="ListingList__author">{item.bookAuthor}</div>
           </div>

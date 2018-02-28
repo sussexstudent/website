@@ -1,6 +1,6 @@
-import {graphql} from "react-apollo";
+import { graphql } from 'react-apollo';
 import CurrentUser from './CurrentUser.graphql';
-import {FalmerUser} from "~components/falmer/types";
+import { FalmerUser } from '~components/falmer/types';
 
 interface Result {
   viewer: FalmerUser;
@@ -11,12 +11,13 @@ export interface CurrentUserProps {
   currentUser: FalmerUser;
 }
 
-export const currentUserData = () => graphql<Result>(CurrentUser, {
-  props({ data, ownProps }) {
-    return {
-      ...ownProps,
-      isAuthenticated: data && data.viewer !== null,
-      currentUser: data && data.viewer,
-    }
-  }
-}) as any;
+export const currentUserData = () =>
+  graphql<Result>(CurrentUser, {
+    props({ data, ownProps }) {
+      return {
+        ...ownProps,
+        isAuthenticated: data && data.viewer !== null,
+        currentUser: data && data.viewer,
+      };
+    },
+  }) as any;

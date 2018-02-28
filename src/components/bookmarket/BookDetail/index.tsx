@@ -10,8 +10,11 @@ import Loader from '~components/Loader';
 import { MarketListing, MarketListingState } from '../../../types/market';
 import Deckchair from '~components/Deckchair';
 import { ImageUpload } from '~components/bookmarket/ImageUpload';
-import {AspectRatio, OneImage} from "~components/OneImage";
-import {currentUserData, CurrentUserProps} from "~components/bookmarket/currentUserData";
+import { AspectRatio, OneImage } from '~components/OneImage';
+import {
+  currentUserData,
+  CurrentUserProps,
+} from '~components/bookmarket/currentUserData';
 
 interface OwnProps extends RouteComponentProps<{ listingId: string }> {
   updateImage(data: any): Promise<{}>;
@@ -36,7 +39,9 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
 
   const listing = props.data.marketListing;
 
-  const isOwner = props.isAuthenticated && listing.listingUser.userId === props.currentUser.userId;
+  const isOwner =
+    props.isAuthenticated &&
+    listing.listingUser.userId === props.currentUser.userId;
 
   function renderListingManagement() {
     return (
@@ -47,7 +52,18 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
             about="You need to publish your listing students can see it!"
             color="red"
           >
-            <button onClick={() => props.changeState({ variables: { listingId: listing.pk, state: MarketListingState.Ready }})}>Publish</button>
+            <button
+              onClick={() =>
+                props.changeState({
+                  variables: {
+                    listingId: listing.pk,
+                    state: MarketListingState.Ready,
+                  },
+                })
+              }
+            >
+              Publish
+            </button>
           </Deckchair>
         ) : null}
         {listing.state === MarketListingState.Ready ? (
@@ -56,7 +72,18 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
             about="Sold the book?"
             color="green"
           >
-            <button onClick={() => props.changeState({ variables: { listingId: listing.pk, state: MarketListingState.Unlisted }})}>Un-list</button>
+            <button
+              onClick={() =>
+                props.changeState({
+                  variables: {
+                    listingId: listing.pk,
+                    state: MarketListingState.Unlisted,
+                  },
+                })
+              }
+            >
+              Un-list
+            </button>
           </Deckchair>
         ) : null}
         {listing.state === MarketListingState.Unlisted ? (
@@ -65,19 +92,42 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
             about="Still want to sell it? Simply re-list it!"
             color="blue"
           >
-            <button onClick={() => props.changeState({ variables: { listingId: listing.pk, state: MarketListingState.Ready }})}>Re-list</button>
+            <button
+              onClick={() =>
+                props.changeState({
+                  variables: {
+                    listingId: listing.pk,
+                    state: MarketListingState.Ready,
+                  },
+                })
+              }
+            >
+              Re-list
+            </button>
           </Deckchair>
-        ) : null}      {listing.state === MarketListingState.Expired ? (
-        <Deckchair
-          header="This listing un-listed"
-          about="Still want to sell it? Simply re-list it!"
-          color="blue"
-        >
-          <button onClick={() => props.changeState({ variables: { listingId: listing.pk, state: MarketListingState.Ready }})}>Re-list</button>
-        </Deckchair>
-      ) : null}
+        ) : null}{' '}
+        {listing.state === MarketListingState.Expired ? (
+          <Deckchair
+            header="This listing un-listed"
+            about="Still want to sell it? Simply re-list it!"
+            color="blue"
+          >
+            <button
+              onClick={() =>
+                props.changeState({
+                  variables: {
+                    listingId: listing.pk,
+                    state: MarketListingState.Ready,
+                  },
+                })
+              }
+            >
+              Re-list
+            </button>
+          </Deckchair>
+        ) : null}
       </div>
-    )
+    );
   }
 
   return (
@@ -97,12 +147,23 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
       <div className="Layout Layout--sidebar-right">
         <div className="Listing__book">
           <div className="Listing__image">
-            { isOwner ?
-              <ImageUpload image={listing.image} onUploadComplete={(data) => {
-                console.log(data);
-                props.updateImage({ variables: { listingId: listing.pk, imageId: data.mediaId }})}
-              } /> : <OneImage src={listing.image.resource} alt="" aspectRatio={AspectRatio.r3by4} />
-            }
+            {isOwner ? (
+              <ImageUpload
+                image={listing.image}
+                onUploadComplete={(data) => {
+                  console.log(data);
+                  props.updateImage({
+                    variables: { listingId: listing.pk, imageId: data.mediaId },
+                  });
+                }}
+              />
+            ) : (
+              <OneImage
+                src={listing.image.resource}
+                alt=""
+                aspectRatio={AspectRatio.r3by4}
+              />
+            )}
           </div>
           <div className="Listing__book-info">
             <h1 className="Listing__book-title">{listing.bookTitle}</h1>
@@ -112,9 +173,15 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
         </div>
         <div>
           <h2>{listing.buyPrice === 0 ? 'Free!' : `£${listing.buyPrice}`}</h2>
-          {props.isAuthenticated ? <button className="Button">Get book!</button> : <em>Log in to get book</em>}
+          {props.isAuthenticated ? (
+            <button className="Button">Get book!</button>
+          ) : (
+            <em>Log in to get book</em>
+          )}
 
-          <div className="Listing__lister">Listed by {listing.listingUser.name}</div>
+          <div className="Listing__lister">
+            Listed by {listing.listingUser.name}
+          </div>
         </div>
       </div>
     </div>

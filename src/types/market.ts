@@ -1,4 +1,4 @@
-import {FalmerImage} from "./events";
+import { FalmerImage } from './events';
 
 export enum MarketListingState {
   Draft = 'DRAFT',

@@ -3,7 +3,7 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { setContext } from 'apollo-link-context';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
-import {getMslJwt} from "~libs/getMslJwt";
+import { getMslJwt } from '~libs/getMslJwt';
 
 const link = new HttpLink({
   uri: `${getFalmerEndpoint()}/graphql`,

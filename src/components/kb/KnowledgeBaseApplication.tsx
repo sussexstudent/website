@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import HydroLeaf from '~components/HydroLeaf';
 import { LoadableLoading } from '~components/LoadableLoading';
+import {Provider} from "../../types/hydro";
 
 const LoadableHome = Loadable({
   loading: LoadableLoading,
@@ -33,6 +34,6 @@ const KnowledgeBaseApplication = () => (
   </div>
 );
 
-export default HydroLeaf({ disableSSR: true, name: 'KnowledgeBase' })(
+export default HydroLeaf({ disableSSR: true, name: 'KnowledgeBase', providers: [Provider.Router, Provider.Apollo] })(
   KnowledgeBaseApplication,
 );

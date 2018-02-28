@@ -47,6 +47,8 @@ export default {
     '/environment': require('./src/projects/website/layouts/environment/environment'),
     '/content-explorer': require('./src/projects/website/layouts/ContentExplorer'),
     '/book-market': require('./src/components/bookmarket/BookMarketApp'),
+    '/kb': require('./src/components/kb/KnowledgeBaseApplication'),
+    '/kb-local': require('./src/components/kb/KnowledgeBaseApplication'),
   },
   assets: {
     manifest,

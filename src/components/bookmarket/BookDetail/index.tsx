@@ -167,7 +167,7 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
       {isOwner
         ? listing.image ? renderListingManagement() : renderAddImage()
         : null}
-      <div className="Layout Layout--sidebar-right">
+      <div className="Layout Layout--sidebar-right Layout--sidebar-thin">
         <div className="Listing__book">
           <div className="Listing__image">
             {isOwner ? (
@@ -213,9 +213,9 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                 Get book!
               </button>
             ) : (
-              <div>
-                <div>Contact details:</div>
-                <div>{listing.contactDetails}</div>
+              <div className="Listing__contact">
+                <div className="Listing__contact-heading">Contact details:</div>
+                <div className="Listing__contact-details">{listing.contactDetails}</div>
               </div>
             )
           ) : (

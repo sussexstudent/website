@@ -1,16 +1,25 @@
 .Listing {
   &__image {
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 
     @media (--medium) {
       padding-right: 2rem;
-      width: 50%;
+      width: 40%;
     }
+
+    margin-bottom: 1rem;
   }
 
   &__book {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  &__book-info {
+    flex: 1 1 0;
   }
 
   &__book-title {
@@ -24,13 +33,46 @@
     @mixin type double-pica;
     color: var(--color__grey-worst-day-of-winter);
     font-weight: 600;
-    margin-top: 0.5em;
+    margin-top: 0;
   }
 
   &__price {
     @mixin type trafalgar;
     color: var(--color__brand-blue);
     font-weight: 600;
-    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+
+    &:after {
+      content: '';
+      display: block;
+      border-bottom: 2px solid var(--color__grey-spring);
+      width: 30%;
+      max-width: 30px;
+      margin-top: 1rem;
+    }
+  }
+
+  &__contact-heading {
+    font-weight: 600;
+  }
+
+  &__contact-details {
+    font-style: italic;
+  }
+
+  &__contact {
+    padding-bottom: 1rem;
+
+    &:after {
+      content: '';
+      display: block;
+      border-bottom: 2px solid var(--color__grey-spring);
+      width: 30%;
+      max-width: 30px;
+      margin-top: 1rem;
+    }
+  }
+
+  &__lister {
   }
 }

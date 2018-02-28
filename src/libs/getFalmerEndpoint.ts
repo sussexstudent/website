@@ -6,6 +6,6 @@ export default function getFalmerEndpoint() {
     : window.localStorage.getItem('falmerEndpoint');
 
   return clientEndpoint === null
-    ? 'https://falmer.sussexstudent.com/graphql'
+    ? 'https://falmer.sussexstudent.com'
     : clientEndpoint;
 }

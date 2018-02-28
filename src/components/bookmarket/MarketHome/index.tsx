@@ -7,6 +7,10 @@ import { Link } from 'react-router-dom';
 
 import MarketHomeQuery from './MarketHomeQuery.graphql';
 import { Form, Field } from 'react-final-form';
+import {
+  currentUserData,
+  CurrentUserProps,
+} from '~components/bookmarket/currentUserData';
 
 interface OwnProps {}
 
@@ -24,7 +28,7 @@ interface Result {
   allMarketSections: MarketSection[];
 }
 
-type IProps = ChildProps<OwnProps, Result> & ComponentProps;
+type IProps = ChildProps<OwnProps, Result> & ComponentProps & CurrentUserProps;
 
 const MarketHomeComponent: React.SFC<IProps> = (props) => {
   const onSearchSubmit = (data: any) =>
@@ -76,16 +80,22 @@ const MarketHomeComponent: React.SFC<IProps> = (props) => {
         </main>
         <aside>
           <ul className="List--reset">
-            <li>
-              <Link className="Button" to="/book-market/list">
-                List a book
-              </Link>
-            </li>
-            <li>
-              <Link className="Button" to="/book-market/my-listings">
-                Your listings
-              </Link>
-            </li>
+            {props.isAuthenticated ? (
+              <li>
+                <Link className="Button" to="/book-market/list">
+                  List a book
+                </Link>
+              </li>
+            ) : (
+              <em>Log in to list book</em>
+            )}
+            {props.isAuthenticated ? (
+              <li>
+                <Link className="Button" to="/book-market/my-listings">
+                  Your listings
+                </Link>
+              </li>
+            ) : null}
 
             <li>
               <a href="#">Information for sellers</a>
@@ -104,8 +114,9 @@ const MarketHomeComponent: React.SFC<IProps> = (props) => {
 };
 
 const MarketHome = compose<ComponentProps, IProps>(
+  currentUserData(),
   graphql(MarketHomeQuery),
   withState('query', 'setQuery', ''),
-)(MarketHomeComponent);
+)(MarketHomeComponent as any); // todo
 
 export { MarketHome };

@@ -36,7 +36,7 @@ ${more.join('')}
 ${MSLTag('JsonUserInfo', {
   DataParameters: 'COURSE_NAME,DEPARTMENT,STATUS,EXP_END_DATE',
   GenerateJwt: 'true',
-  JwtSecret: process.env.MSL_JWT_SECRET,
+  JwtSecret: `"${process.env.MSL_JWT_SECRET}"`,
 })}
 {head_content}
 <script type="text/javascript">

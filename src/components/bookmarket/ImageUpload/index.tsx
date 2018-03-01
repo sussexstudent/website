@@ -35,7 +35,7 @@ class ImageUpload extends React.Component<IProps, IState> {
     if (acceptedFiles.length === 0 && rejectedFiles.length > 0) {
       this.setState({
         error: {
-          errors: 'File rejected'
+          errors: 'File rejected, must be jpg/png, under 5MB'
         }
       });
       return;

@@ -18,6 +18,7 @@ import {
   CurrentUserProps,
 } from '~components/bookmarket/currentUserData';
 import Helmet from 'react-helmet';
+import {formatPrice} from "~components/bookmarket/utils";
 
 interface OwnProps extends RouteComponentProps<{ listingId: string }> {
   updateImage(data: any): Promise<{}>;
@@ -222,7 +223,7 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
         </div>
         <div>
           <div className="Listing__price">
-            {listing.buyPrice === 0 ? 'Free!' : `£${listing.buyPrice}`}
+            {listing.buyPrice === 0 ? 'Free!' : `£${formatPrice(listing.buyPrice)}`}
           </div>
 
           {props.isAuthenticated ? (

@@ -16,6 +16,7 @@ interface IProps {
 interface IState {
   isUploading: boolean;
   uploaded: boolean;
+  error: null | any;
 }
 
 class ImageUpload extends React.Component<IProps, IState> {
@@ -25,15 +26,24 @@ class ImageUpload extends React.Component<IProps, IState> {
     this.state = {
       isUploading: false,
       uploaded: false,
+      error: null
     };
   }
 
   @bind
   onDrop(acceptedFiles: any, rejectedFiles: any) {
-    console.log({ acceptedFiles, rejectedFiles });
+    if (acceptedFiles.length === 0 && rejectedFiles.length > 0) {
+      this.setState({
+        error: {
+          errors: 'File rejected'
+        }
+      });
+      return;
+    }
 
     this.setState({
       isUploading: true,
+      error: null,
     });
 
     const formData = new FormData();
@@ -50,18 +60,30 @@ class ImageUpload extends React.Component<IProps, IState> {
     })
       .then((res) => res.json())
       .then((response) => {
-        this.props.onUploadComplete(response.data);
+        console.log(response);
+        if (response.ok) {
+          this.props.onUploadComplete(response.data);
+          this.setState({
+            isUploading: false,
+            uploaded: true,
+          });
+        } else {
+          this.setState({ error: response.data })
+        }
       });
-
-    setTimeout(() => {
-      this.setState({
-        isUploading: false,
-        uploaded: true,
-      });
-    }, 2000);
   }
 
   renderStatus() {
+    if (this.state.error) {
+      return (
+        <div>
+          Sorry an error occurred!
+          <pre>
+            {JSON.stringify(this.state.error.errors)}
+          </pre>
+       </div>
+      );
+    }
     if (this.state.isUploading) {
       return 'Uploading';
     }

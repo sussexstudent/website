@@ -5,6 +5,7 @@ import RequestContactDetails from './RequestContactDetails.graphql';
 import GetListing from './GetListing.graphql';
 import UpdateImage from './UpdateImage.graphql';
 import ChangeState from './ChangeState.graphql';
+import JsonLd from '../../JsonLd';
 import { compose } from 'recompose';
 import { graphql, ChildProps } from 'react-apollo';
 import Loader from '~components/Loader';
@@ -16,6 +17,7 @@ import {
   currentUserData,
   CurrentUserProps,
 } from '~components/bookmarket/currentUserData';
+import Helmet from 'react-helmet';
 
 interface OwnProps extends RouteComponentProps<{ listingId: string }> {
   updateImage(data: any): Promise<{}>;
@@ -151,8 +153,32 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
     );
   }
 
+  const ldData: any = {
+    '@context': 'http://schema.org',
+    '@type': 'Product',
+    name: listing.bookTitle,
+    description: listing.description,
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "GBP",
+      "price": listing.buyPrice,
+      "itemCondition": "http://schema.org/UsedCondition",
+      "availability": "http://schema.org/InStock"
+    }
+  };
+
+  if (listing.image) {
+    ldData.image = [`https://su.imgix.net/${
+        listing.image.resource
+        }?w=800&fit=crop&crop=focal&auto=format`]
+  }
+
   return (
     <div>
+      <Helmet title={listing.bookTitle}>
+        <meta name="description" content={`${listing.bookTitle} by ${listing.bookAuthor} is on the Sussex Book Market`} />
+      </Helmet>
+      <JsonLd data={ldData} />
       <BreadcrumbBar>
         <Link to="/book-market/">Book Market</Link>
         <Link

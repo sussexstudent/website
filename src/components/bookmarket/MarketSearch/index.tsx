@@ -10,6 +10,7 @@ import Loader from '~components/Loader';
 import { MarketListing } from '../../../types/market';
 import { ListingList } from '~components/bookmarket/ListingList';
 import { Field, Form } from 'react-final-form';
+import Helmet from 'react-helmet';
 
 interface OwnProps extends RouteComponentProps<{ sectionSlug?: string }> {}
 
@@ -47,6 +48,8 @@ const MarketSearchComponent: React.SFC<IProps> = (props: IProps) => {
 
   return (
     <div>
+      <Helmet title="Search" />
+
       <BreadcrumbBar>
         <Link to="/book-market/">Book Market</Link>
         <Link to="/book-market/search">Search</Link>

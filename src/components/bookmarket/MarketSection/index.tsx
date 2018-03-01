@@ -8,6 +8,7 @@ import { graphql, ChildProps } from 'react-apollo';
 import Loader from '~components/Loader';
 import { MarketListing, MarketSection } from '../../../types/market';
 import { ListingList } from '~components/bookmarket/ListingList';
+import Helmet from 'react-helmet';
 
 interface OwnProps extends RouteComponentProps<{ sectionSlug: string }> {}
 
@@ -37,6 +38,8 @@ const MarketSectionComponent: React.SFC<IProps> = (props: IProps) => {
 
   return (
     <div>
+      <Helmet title={props.data.marketSection && props.data.marketSection.title} />
+
       <BreadcrumbBar>
         <Link to="/book-market/">Book Market</Link>
         <Link

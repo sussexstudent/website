@@ -189,7 +189,7 @@ const CreateListingComponent: React.SFC<IProps> = (props) => {
               {({ input, meta }) => (
                 <div className="BasicForm__field">
                   <label htmlFor="sectionId">
-                    Section{' '}
+                    School{' '}
                     {meta.error &&
                       meta.touched && (
                         <span className="BasicForm__requirement">
@@ -199,7 +199,7 @@ const CreateListingComponent: React.SFC<IProps> = (props) => {
                   </label>
                   <select {...input} id="sectionId">
                     <option selected hidden>
-                      Select a section
+                      Select a school
                     </option>
                     {props.categoryQuery &&
                       props.categoryQuery.allMarketSections &&

@@ -26,7 +26,7 @@ class ImageUpload extends React.Component<IProps, IState> {
     this.state = {
       isUploading: false,
       uploaded: false,
-      error: null
+      error: null,
     };
   }
 
@@ -35,8 +35,8 @@ class ImageUpload extends React.Component<IProps, IState> {
     if (acceptedFiles.length === 0 && rejectedFiles.length > 0) {
       this.setState({
         error: {
-          errors: 'File rejected, must be jpg/png, under 5MB'
-        }
+          errors: 'File rejected, must be jpg/png, under 5MB',
+        },
       });
       return;
     }
@@ -68,7 +68,7 @@ class ImageUpload extends React.Component<IProps, IState> {
             uploaded: true,
           });
         } else {
-          this.setState({ error: response.data })
+          this.setState({ error: response.data });
         }
       });
   }
@@ -78,10 +78,8 @@ class ImageUpload extends React.Component<IProps, IState> {
       return (
         <div>
           Sorry an error occurred!
-          <pre>
-            {JSON.stringify(this.state.error.errors)}
-          </pre>
-       </div>
+          <pre>{JSON.stringify(this.state.error.errors)}</pre>
+        </div>
       );
     }
     if (this.state.isUploading) {

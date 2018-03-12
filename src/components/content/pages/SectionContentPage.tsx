@@ -9,6 +9,7 @@ import ContentNavigation, {
 import StreamField from '~components/content/StreamField';
 import { Page } from '~components/content/types';
 import { FalmerImage } from '../../../types/events';
+import { OneImage } from '~components/OneImage';
 
 interface IProps {
   page: Page<{
@@ -41,7 +42,8 @@ class SectionContentPage extends React.Component<IProps, IState> {
   render() {
     const {
       page: {
-        data: { title, sidebarBody, body, headingImage, contentsInSidebar },
+        title,
+        data: { sidebarBody, body, headingImage, contentsInSidebar },
       },
       page,
     } = this.props;
@@ -64,18 +66,32 @@ class SectionContentPage extends React.Component<IProps, IState> {
             {body.map((
               block: any, // todo
             ) => (
-              <ContentCard anchor={slugify(block.value.heading)}>
-                <h2 className="Heading Heading--highlight">
-                  {block.value.heading}
-                </h2>
-                {block.value.body.map((
-                  bodyItem: any, // todo
-                ) => (
-                  <div
-                    className="Prose"
-                    dangerouslySetInnerHTML={{ __html: bodyItem.value }}
-                  />
-                ))}
+              <ContentCard anchor={slugify(block.value.heading)} bleed>
+                {block.value.headingImage ? (
+                  <div>
+                    <OneImage
+                      src={block.value.headingImage.resource}
+                      aspectRatio={block.value.headingImage}
+                      alt={block.value.heading}
+                    />
+                  </div>
+                ) : (
+                  <div className="ContentCard__content">
+                    <h2 className="Heading Heading--highlight">
+                      {block.value.heading}
+                    </h2>
+                  </div>
+                )}
+                <div className="ContentCard__content">
+                  {block.value.body.map((
+                    bodyItem: any, // todo
+                  ) => (
+                    <div
+                      className="Prose"
+                      dangerouslySetInnerHTML={{ __html: bodyItem.value }}
+                    />
+                  ))}
+                </div>
               </ContentCard>
             ))}
           </VisibleChildWatcher>

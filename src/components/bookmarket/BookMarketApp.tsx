@@ -15,10 +15,16 @@ const BookMarketApplication: React.SFC<{}> = () => (
     path={`/book-market/`}
     component={() => (
       <div>
-        <Helmet titleTemplate="%s | Book Market | Sussex Students' Union" defaultTitle="Book Market | Sussex Students' Union" />
+        <Helmet
+          titleTemplate="%s | Book Market | Sussex Students' Union"
+          defaultTitle="Book Market | Sussex Students' Union"
+        />
         <Switch>
           <Route path={`/book-market/`} component={MarketHome} exact />
-          <Route path={`/book-market/my-listings`} component={MarketMyListings} />
+          <Route
+            path={`/book-market/my-listings`}
+            component={MarketMyListings}
+          />
           <Route path={`/book-market/search`} component={MarketSearch} />
           <Route
             path={`/book-market/section/:sectionSlug`}

@@ -103,13 +103,19 @@ const MarketHomeComponent: React.SFC<IProps> = (props) => {
             ) : null}
 
             <li>
-              <a href="/kb/features/book-market/information-sellers">Information for sellers</a>
+              <a href="/kb/features/book-market/information-sellers">
+                Information for sellers
+              </a>
             </li>
             <li>
-              <a href="/kb/features/book-market/information-buyers">Information for buyers</a>
+              <a href="/kb/features/book-market/information-buyers">
+                Information for buyers
+              </a>
             </li>
             <li>
-              <a href="/kb/features/book-market/usage-guidelines">Usage Guidelines</a>
+              <a href="/kb/features/book-market/usage-guidelines">
+                Usage Guidelines
+              </a>
             </li>
           </ul>
         </aside>

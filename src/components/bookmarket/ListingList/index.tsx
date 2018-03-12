@@ -4,7 +4,7 @@ import FauxRouterLink from '~components/FauxRouterLink';
 import { MarketListing, MarketListingState } from '../../../types/market';
 import { AspectRatio, OneImage } from '~components/OneImage';
 import { NoListItems } from '~components/bookmarket/NoListItems';
-import {formatPrice} from "~components/bookmarket/utils";
+import { formatPrice } from '~components/bookmarket/utils';
 
 interface IProps {
   items: MarketListing[];
@@ -58,7 +58,9 @@ const ListingList: React.SFC<IProps> = (props: IProps) => {
             <div className="ListingList__author">{item.bookAuthor}</div>
           </div>
           <div className="ListingList__actionable">
-            <h2>{item.buyPrice === 0 ? 'Free!' : `£${formatPrice(item.buyPrice)}`}</h2>
+            <h2>
+              {item.buyPrice === 0 ? 'Free!' : `£${formatPrice(item.buyPrice)}`}
+            </h2>
           </div>
         </li>
       ))}

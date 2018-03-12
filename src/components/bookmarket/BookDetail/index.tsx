@@ -18,7 +18,7 @@ import {
   CurrentUserProps,
 } from '~components/bookmarket/currentUserData';
 import Helmet from 'react-helmet';
-import {formatPrice} from "~components/bookmarket/utils";
+import { formatPrice } from '~components/bookmarket/utils';
 
 interface OwnProps extends RouteComponentProps<{ listingId: string }> {
   updateImage(data: any): Promise<{}>;
@@ -159,25 +159,32 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
     '@type': 'Product',
     name: listing.bookTitle,
     description: listing.description,
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "GBP",
-      "price": listing.buyPrice,
-      "itemCondition": "http://schema.org/UsedCondition",
-      "availability": "http://schema.org/InStock"
-    }
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'GBP',
+      price: listing.buyPrice,
+      itemCondition: 'http://schema.org/UsedCondition',
+      availability: 'http://schema.org/InStock',
+    },
   };
 
   if (listing.image) {
-    ldData.image = [`https://su.imgix.net/${
+    ldData.image = [
+      `https://su.imgix.net/${
         listing.image.resource
-        }?w=800&fit=crop&crop=focal&auto=format`]
+      }?w=800&fit=crop&crop=focal&auto=format`,
+    ];
   }
 
   return (
     <div>
       <Helmet title={listing.bookTitle}>
-        <meta name="description" content={`${listing.bookTitle} by ${listing.bookAuthor} is on the Sussex Book Market`} />
+        <meta
+          name="description"
+          content={`${listing.bookTitle} by ${
+            listing.bookAuthor
+          } is on the Sussex Book Market`}
+        />
       </Helmet>
       <JsonLd data={ldData} />
       <BreadcrumbBar>
@@ -223,7 +230,9 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
         </div>
         <div>
           <div className="Listing__price">
-            {listing.buyPrice === 0 ? 'Free!' : `£${formatPrice(listing.buyPrice)}`}
+            {listing.buyPrice === 0
+              ? 'Free!'
+              : `£${formatPrice(listing.buyPrice)}`}
           </div>
 
           {props.isAuthenticated ? (
@@ -242,7 +251,9 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
             ) : (
               <div className="Listing__contact">
                 <div className="Listing__contact-heading">Contact details:</div>
-                <div className="Listing__contact-details">{listing.contactDetails}</div>
+                <div className="Listing__contact-details">
+                  {listing.contactDetails}
+                </div>
               </div>
             )
           ) : (

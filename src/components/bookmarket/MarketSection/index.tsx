@@ -38,7 +38,9 @@ const MarketSectionComponent: React.SFC<IProps> = (props: IProps) => {
 
   return (
     <div>
-      <Helmet title={props.data.marketSection && props.data.marketSection.title} />
+      <Helmet
+        title={props.data.marketSection && props.data.marketSection.title}
+      />
 
       <BreadcrumbBar>
         <Link to="/book-market/">Book Market</Link>

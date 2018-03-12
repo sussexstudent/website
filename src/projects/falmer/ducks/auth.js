@@ -18,7 +18,7 @@ function saveToken(token) {
 
 function apiQuery(query, variables = {}) {
   const token = localStorage.getItem('token');
-  return fetch('/graphql', {
+  return fetch('/graphql/', {
     method: 'POST',
     headers: {
       Accept: 'application/json',

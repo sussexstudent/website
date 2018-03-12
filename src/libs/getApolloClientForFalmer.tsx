@@ -6,7 +6,7 @@ import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import { getMslJwt } from '~libs/getMslJwt';
 
 const link = new HttpLink({
-  uri: `${getFalmerEndpoint()}/graphql`,
+  uri: `${getFalmerEndpoint()}/graphql/`,
 });
 const cache = new InMemoryCache();
 

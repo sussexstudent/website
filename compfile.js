@@ -55,7 +55,7 @@ export default {
     map: assets,
   },
   contentApi: {
-    endpoint: 'https://falmer.sussexstudent.com/graphql',
+    endpoint: 'https://falmer.sussexstudent.com/graphql/',
     template: require('./src/projects/website/layouts/ContentPage').default,
     skipPaths: ['/'],
   },

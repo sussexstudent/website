@@ -7,8 +7,6 @@ import gql from 'graphql-tag';
 import format from 'date-fns/format';
 import HTMLContentRenderer from '../components/HTMLContentRenderer';
 import DetailContent from '../components/DetailContent';
-import { colors } from '../vars';
-import HeaderImageScrollView, { TriggeringView } from 'react-native-image-header-scroll-view';
 
 const styles = StyleSheet.create({
   container: {
@@ -55,11 +53,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   infoContainer: {
-    flex: 1,
-    alignSelf: 'stretch'
-  },
-  attribContainer: {
-    marginLeft: -5,
+    paddingTop: 170,
   },
   infoContainerInner: {
     backgroundColor: '#fff',
@@ -68,13 +62,13 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     shadowOffset: { width: 0, height: -1 },
     flex: 1,
+    paddingBottom: 170,
   },
   detailItem: {
     marginBottom: 10,
   },
   detailItemText: {
     fontWeight: '500',
-    color: colors.greyWinter,
   },
   detailItemImage: {
     marginRight: 10,
@@ -98,47 +92,38 @@ const EventDetailItem = ({ image, children }) => (
   </View>
 );
 
-function TabWhatsOn({ data: { event, loading } }) {
+function TabWhatsOn({ data: { group, loading } }) {
   return (
     <View style={styles.tabContent}>
       {loading ? (
         <Text>Loading</Text>
       ) : (
-        <View style={styles.infoContainer}>
-          <HeaderImageScrollView
-            style={styles.infoContainer}
-            maxHeight={180}
-            minHeight={0}
-            headerImage={{
-              uri: `https://su.imgix.net/${event.featuredImage
-                .resource}?w=${PixelRatio.getPixelSizeForLayoutSize(
-                getSize().width
-              )}&h=${PixelRatio.getPixelSizeForLayoutSize(
-                180
-              )}&fit=crop&q=85`,
-            }}
-          >
+        <View>
+          {group.logo !== null ? (
+            <View style={styles.eventImageContainer}>
+              <Image
+                style={styles.eventImage}
+                source={{
+                  uri: `https://su.imgix.net/${group.logo
+                    .resource}?w=${PixelRatio.getPixelSizeForLayoutSize(
+                    getSize().width
+                  )}&h=${PixelRatio.getPixelSizeForLayoutSize(
+                    180
+                  )}&fit=crop&q=85`,
+                }}
+                width={getSize().width}
+                height={180}
+              />
+            </View>
+          ) : null}
+
+          <ScrollView style={styles.infoContainer}>
             <View style={styles.infoContainerInner}>
               <DetailContent>
-                <Text style={styles.title}>{event.title}</Text>
-                <View style={styles.attribContainer}>
-                  <EventDetailItem image={require('../img/EventsCalender.png')}>
-                    {format(new Date(event.startTime), 'dddd Do MMMM')}
-                  </EventDetailItem>
-                  <EventDetailItem image={require('../img/EventsClock.png')}>
-                    {`${format(new Date(event.startTime), 'h:mma')}-${format(
-                      new Date(event.endTime),
-                      'h:mma'
-                    )}`}
-                  </EventDetailItem>
-                  <EventDetailItem image={require('../img/EventsPin.png')}>
-                    {event.locationDisplay}
-                  </EventDetailItem>
-                </View>
-                <HTMLContentRenderer content={event.bodyHtml} />
+                <Text style={styles.title}>{group.name}</Text>
               </DetailContent>
             </View>
-          </HeaderImageScrollView>
+          </ScrollView>
         </View>
       )}
     </View>
@@ -147,17 +132,23 @@ function TabWhatsOn({ data: { event, loading } }) {
 
 export default graphql(
   gql`
-    query AllEvents($eventId: Int) {
-      event(eventId: $eventId) {
-        id
-        title
-        startTime
-        endTime
-        locationDisplay
-        bodyHtml
-        shortDescription
-        featuredImage {
+    query AllEvents($groupId: Int) {
+      group(groupId: $groupId) {
+        name
+        logo {
           resource
+        }
+        eventSet(last: 5) {
+          edges {
+            node {
+              title
+              startTime
+              endTime
+              featuredImage {
+                resource
+              }
+            }
+          }
         }
       }
     }
@@ -165,7 +156,7 @@ export default graphql(
   {
     options: props => ({
       variables: {
-        eventId: props.eventId,
+        groupId: props.groupId,
       },
     }),
   }

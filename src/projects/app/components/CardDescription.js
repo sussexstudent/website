@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
   text: {
     color: colors.greyWorstDayOfWinter,
     fontSize: 14,
+    marginBottom: 6,
   },
 });
 

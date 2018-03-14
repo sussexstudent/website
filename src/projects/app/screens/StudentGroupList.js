@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text, FlatList, Image } from 'react-native';
-import { graphql, gql } from 'react-apollo';
+import { StyleSheet, View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import CardDescription from '../components/CardDescription';
 import Card from '../components/Card';
 import CardContent from '../components/CardContent';
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function TabStudentGroup({ data: { allGroups, loading } }) {
+function TabStudentGroup({ data: { allGroups, loading }, navigator }) {
   return (
     <View style={styles.tabContent}>
       {loading ? (
@@ -47,13 +48,23 @@ function TabStudentGroup({ data: { allGroups, loading } }) {
           keyExtractor={item => item.node.id}
           renderItem={({ item }) => (
             <Card>
-              {item.node.logo !== null ? (
-                <CardImage image={item.node.logo} />
-              ) : null}
-              <CardContent>
-                <CardTitle>{item.node.name}</CardTitle>
-                <CardDescription>{item.node.description}</CardDescription>
-              </CardContent>
+              <TouchableOpacity
+                onPress={() =>
+                  navigator.push({
+                    screen: 'ussu.Groups.GroupDetail',
+                    passProps: {
+                      groupId: item.node.groupId,
+                    },
+                  })}
+              >
+                {item.node.logo !== null ? (
+                  <CardImage image={item.node.logo} maintainAspectRatio />
+                ) : null}
+                <CardContent>
+                  <CardTitle>{item.node.name}</CardTitle>
+                  <CardDescription>{item.node.description}</CardDescription>
+                </CardContent>
+              </TouchableOpacity>
             </Card>
           )}
         />
@@ -67,11 +78,13 @@ export default graphql(gql`
     allGroups {
       edges {
         node {
-          id
+          groupId
           name
           description
           logo {
             resource
+            width
+            height
           }
         }
       }

@@ -5,6 +5,7 @@ import { Navigation, ScreenVisibilityListener } from 'react-native-navigation';
 import WhatsOnList from './WhatsOn';
 import StudentGroupList from './StudentGroupList';
 import EventDetail from './EventDetail';
+import GroupDetail from './GroupDetail';
 
 const Feedback = () => (
   <View>
@@ -30,6 +31,13 @@ export function registerScreens(store, client) {
   Navigation.registerComponent(
     'ussu.Groups',
     () => StudentGroupList,
+    store,
+    ApolloProvider,
+    { client }
+  );
+  Navigation.registerComponent(
+    'ussu.Groups.GroupDetail',
+    () => GroupDetail,
     store,
     ApolloProvider,
     { client }

@@ -6,7 +6,8 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import { graphql, gql } from 'react-apollo';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import format from 'date-fns/format';
 import Card from '../components/Card';
 import CardDescription from '../components/CardDescription';
@@ -14,6 +15,7 @@ import CardContent from '../components/CardContent';
 import CardImage from '../components/CardImage';
 import CardTitle from '../components/CardTitle';
 import CardBanner from '../components/CardBanner';
+import CardMetadata from '../components/CardMetadata';
 import { colors } from '../vars';
 
 const styles = StyleSheet.create({
@@ -85,13 +87,13 @@ function TabWhatsOn({ data: { allEvents, loading }, navigator }) {
                     {item.node.shortDescription}
                   </CardDescription>
 
-                  <Text>
+                  <CardMetadata>
                     {`${format(
                       new Date(item.node.startTime),
                       'h:mma'
                     )}-${format(new Date(item.node.endTime), 'h:mma')}`}{' '}
                     / {item.node.locationDisplay}
-                  </Text>
+                  </CardMetadata>
                 </CardContent>
               </TouchableOpacity>
             </Card>

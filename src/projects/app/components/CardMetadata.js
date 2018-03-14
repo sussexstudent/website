@@ -3,18 +3,17 @@ import { View, Text, StyleSheet } from 'react-native';
 import { colors } from '../vars';
 
 const styles = StyleSheet.create({
-  title: {
-    color: '#000',
-    fontSize: 18,
-    fontWeight: '700',
-    marginBottom: 6,
+  text: {
+    color: colors.greyWinter,
+    fontSize: 12,
+    paddingTop: 4,
   },
 });
 
-export default function CardTitle({ children }) {
+export default function CardMetadata({ children }) {
   return (
     <View>
-      <Text style={styles.title}>{children}</Text>
+      <Text style={styles.text}>{children}</Text>
     </View>
   );
 }

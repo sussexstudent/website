@@ -55,8 +55,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   infoContainer: {
-    flex: 1,
-    alignSelf: 'stretch'
+    paddingTop: 170,
   },
   attribContainer: {
     marginLeft: -5,
@@ -68,6 +67,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     shadowOffset: { width: 0, height: -1 },
     flex: 1,
+    paddingBottom: 170,
   },
   detailItem: {
     marginBottom: 10,
@@ -104,20 +104,27 @@ function TabWhatsOn({ data: { event, loading } }) {
       {loading ? (
         <Text>Loading</Text>
       ) : (
-        <View style={styles.infoContainer}>
-          <HeaderImageScrollView
-            style={styles.infoContainer}
-            maxHeight={180}
-            minHeight={0}
-            headerImage={{
-              uri: `https://su.imgix.net/${event.featuredImage
-                .resource}?w=${PixelRatio.getPixelSizeForLayoutSize(
-                getSize().width
-              )}&h=${PixelRatio.getPixelSizeForLayoutSize(
-                180
-              )}&fit=crop&q=85`,
-            }}
-          >
+        <View>
+          {event.featuredImage !== null ? (
+            <View style={styles.eventImageContainer}>
+              <Image
+                style={styles.eventImage}
+                source={{
+                  uri: `https://su.imgix.net/${event.featuredImage
+                    .resource}?w=${PixelRatio.getPixelSizeForLayoutSize(
+                    getSize().width
+                  )}&h=${PixelRatio.getPixelSizeForLayoutSize(
+                    180
+                  )}&fit=crop&q=85`,
+                }}
+                width={getSize().width}
+                height={180}
+                resizeMode="cover"
+              />
+            </View>
+          ) : null}
+
+          <ScrollView style={styles.infoContainer}>
             <View style={styles.infoContainerInner}>
               <DetailContent>
                 <Text style={styles.title}>{event.title}</Text>
@@ -138,7 +145,7 @@ function TabWhatsOn({ data: { event, loading } }) {
                 <HTMLContentRenderer content={event.bodyHtml} />
               </DetailContent>
             </View>
-          </HeaderImageScrollView>
+          </ScrollView>
         </View>
       )}
     </View>

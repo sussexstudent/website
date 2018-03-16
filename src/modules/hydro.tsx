@@ -7,6 +7,7 @@ import EventsApplicationX from '~components/EventsApplication';
 import { DesktopUserBar } from '~components/UserBar';
 import Header from '~components/Header';
 import { Provider } from '../types/hydro';
+import {CountdownBox} from "~components/Bento/treatments/CountdownBox";
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.SFC;
@@ -37,6 +38,7 @@ export default function() {
       import(/* webpackChunkName: "StudentGroupsDiscovery" */ '~components/StudentGroupsDiscovery'),
     Header: () => Header,
     UserBar: () => DesktopUserBar,
+    CountdownBox: () => CountdownBox,
     AnnualPlan: () =>
       import(/* webpackChunkName: "AnnualPlan" */ '~components/AnnualPlan'),
     PolicyGenerator: () =>

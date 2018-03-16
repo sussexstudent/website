@@ -1,30 +1,32 @@
 import React from 'react';
 import { BentoBoxImpulse } from '~components/Bento/BentoBoxImpulse';
-import { HighlightTextBox } from '~components/Bento/treatments/HighlightTextBox';
+import {HighlightTextBox, HighlightTheme} from '~components/Bento/treatments/HighlightTextBox';
+import {CountdownBox} from "~components/Bento/treatments/CountdownBox";
 
 const Bento: React.SFC<{}> = () => (
   <div className="Bento Trail">
     <div className="Trail__row Trail__row--21 Bento__main-row">
       <HighlightTextBox
-        link="/elections/"
-        imageUrl="original_images/139bfa28e2bd466ba9a92f18f1ee0e4c"
-        heading="Stand for election "
+        link="/elections/candidates/118/"
+        imageUrl="original_images/23748e8e475049fe8e49162ccd827b44"
+        heading="Meet the candidates"
+        theme={HighlightTheme.WhiteOnBlack}
       />
-      <HighlightTextBox
-        link="/news/article/ussu/make-a-difference-in-2018/"
+      <CountdownBox
+        link="/elections/candidates/118/"
         imageUrl="original_images/4219b2966c1047dd8fe4bfa2aa922c72"
-        heading="Submit an idea for referendum"
+        targetDate={new Date(2018, 2, 19, 9, 0,0)}
       />
     </div>
     <div className="Trail__row Trail__row--111">
-      <BentoBoxImpulse link="/whats-on" color="blue">
-        See what's on
-      </BentoBoxImpulse>
-      <BentoBoxImpulse link="/sport-societies-media/discover" color="green">
+      <BentoBoxImpulse link="/sport-societies-media/discover" color="blue">
         Discover student groups
       </BentoBoxImpulse>
-      <BentoBoxImpulse link="/outlets" color="yellow">
-        Explore our shops and bars
+      <BentoBoxImpulse link="/whats-on" color="green">
+        See what's on
+      </BentoBoxImpulse>
+      <BentoBoxImpulse link="/book-market" color="yellow">
+        Buy and sell books in the Book Market
       </BentoBoxImpulse>
     </div>
   </div>

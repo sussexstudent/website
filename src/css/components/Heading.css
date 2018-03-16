@@ -13,6 +13,11 @@
     font-family: var(--type__primary);
   }
 
+  &--highlight-w_b {
+    color: #ffffff;
+    background-color: #000000;
+  }
+
   &--tight {
     font-size: 1.4rem;
   }

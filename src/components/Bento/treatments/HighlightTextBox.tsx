@@ -1,11 +1,18 @@
 import React from 'react';
+import cx from 'classnames';
 import FauxLink from '~components/FauxLink';
 import { OneImageBackground } from '~components/OneImage';
+
+export enum HighlightTheme {
+  BlackOnYellow = 'b_y',
+  WhiteOnBlack = 'w_b',
+}
 
 interface IProps {
   link: string;
   imageUrl: string;
   heading: string;
+  theme?: HighlightTheme;
 }
 
 const HighlightTextBox: React.SFC<IProps> = (props) => (
@@ -17,7 +24,7 @@ const HighlightTextBox: React.SFC<IProps> = (props) => (
     >
       <div style={{ paddingLeft: '1rem', paddingBottom: '1rem' }}>
         <h2
-          className="Heading Heading--highlight type-trafalgar"
+          className={cx('Heading Heading--highlight type-trafalgar', `Heading--highlight-${props.theme ? props.theme : HighlightTheme.BlackOnYellow}`)}
           style={{ marginBottom: '1rem' }}
         >
           {props.heading}

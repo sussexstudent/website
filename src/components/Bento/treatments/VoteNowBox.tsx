@@ -21,7 +21,9 @@ interface IState {
   now: Date;
 }
 
-class CountdownBoxComponent extends React.Component<IProps, IState> {
+const timeBox = { width: '100%', flex: '1 1 auto' };
+
+class VoteNowBoxComponent extends React.Component<IProps, IState> {
   interval: number | undefined;
 
   state = {
@@ -54,28 +56,29 @@ class CountdownBoxComponent extends React.Component<IProps, IState> {
           src={imageUrl}
         >
         <FauxLink href={link} />
-          <div style={{ paddingLeft: '1rem', paddingBottom: '1rem', color: '#fff' }}>
+          <div style={{ paddingLeft: '1rem', paddingBottom: '1rem', color: '#fff', width: '100%' }}>
+            <h1 className={cx('type-canon')} style={{ backgroundColor: '#000', color: '#fff', padding: '0.2em', fontWeight: 600, display: 'inline-block', textTransform: 'uppercase' }}>Vote now</h1>
             <h2
               className={cx('type-trafalgar')}
               style={{ marginBottom: '1rem' }}
-            >Voting opens in</h2>
+            >Voting closes in</h2>
             <h2
-              className={cx('type-trafalgar')}
-              style={{ marginBottom: '1rem' }}
+              className={cx('type-double-pica')}
+              style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'space-between' }}
             >
-              <div>
+              <div style={timeBox}>
                 <span>{days}</span>
                 <span> day{days !== 1 ? 's' : null}</span>
               </div>
-              <div>
+              <div style={timeBox}>
                 <span>{hours}</span>
                 <span> hour{hours !== 1 ? 's' : null}</span>
               </div>
-              <div>
+              <div style={timeBox}>
                 <span>{minutes}</span>
                 <span> minute{minutes !== 1 ? 's' : null}</span>
               </div>
-              <div>
+              <div style={timeBox}>
                 <span>{seconds}</span>
                 <span> second{seconds !== 1 ? 's' : null}</span>
               </div>
@@ -87,6 +90,6 @@ class CountdownBoxComponent extends React.Component<IProps, IState> {
   }
 }
 
-const CountdownBox = HydroLeaf({ name: 'CountdownBox', disableSSR: true })(CountdownBoxComponent)
+const VoteNowBox = HydroLeaf({ name: 'VoteNowBox', disableSSR: true })(VoteNowBoxComponent);
 
-export { CountdownBox };
+export { VoteNowBox };

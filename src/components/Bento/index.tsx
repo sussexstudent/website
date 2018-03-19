@@ -1,22 +1,23 @@
 import React from 'react';
 import { BentoBoxImpulse } from '~components/Bento/BentoBoxImpulse';
-import {HighlightTextBox, HighlightTheme} from '~components/Bento/treatments/HighlightTextBox';
-import {CountdownBox} from "~components/Bento/treatments/CountdownBox";
+import {OneWorldWeekBox} from '~components/Bento/treatments/OneWorldWeekBox';
+import {VoteNowBox} from "~components/Bento/treatments/VoteNowBox";
 
 const Bento: React.SFC<{}> = () => (
   <div className="Bento Trail">
     <div className="Trail__row Trail__row--21 Bento__main-row">
-      <HighlightTextBox
-        link="/elections/candidates/118/"
+      {/*<HighlightTextBox*/}
+        {/*link="/elections/candidates/118/"*/}
+        {/*imageUrl="original_images/23748e8e475049fe8e49162ccd827b44"*/}
+        {/*heading="Meet the candidates"*/}
+        {/*theme={HighlightTheme.WhiteOnBlack}*/}
+      {/*/>*/}
+      <VoteNowBox
+        link="/vote/"
         imageUrl="original_images/23748e8e475049fe8e49162ccd827b44"
-        heading="Meet the candidates"
-        theme={HighlightTheme.WhiteOnBlack}
+        targetDate={new Date(2018, 2, 23, 17, 0,0)}
       />
-      <CountdownBox
-        link="/elections/candidates/118/"
-        imageUrl="original_images/4219b2966c1047dd8fe4bfa2aa922c72"
-        targetDate={new Date(2018, 2, 19, 9, 0,0)}
-      />
+      <OneWorldWeekBox />
     </div>
     <div className="Trail__row Trail__row--111">
       <BentoBoxImpulse link="/sport-societies-media/discover" color="blue">

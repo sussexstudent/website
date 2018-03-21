@@ -128,7 +128,7 @@ function generateConfig() {
           ],
         },
         {
-          test: /(\.svg|\.png|\.woff)$/,
+          test: /(\.svg|\.png|\.woff|\.mp3|\.webm)$/,
           use: 'url-loader?limit=10000',
           exclude: /icons/,
         },

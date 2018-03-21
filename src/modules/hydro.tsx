@@ -45,6 +45,8 @@ export default function() {
     CountdownBox: () => CountdownBox,
     AnnualPlan: () =>
       import(/* webpackChunkName: "AnnualPlan" */ '~components/AnnualPlan'),
+    DemocracyAirHorn: () =>
+      import(/* webpackChunkName: "DemocracyAirHorn" */ '~components/DemocracyAirHorn'),
     PolicyGenerator: () =>
       import(/* webpackChunkName: "PolicyGenerator" */ '~components/PolicyGenerator'),
     FreshersApp: () =>

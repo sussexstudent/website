@@ -47,6 +47,7 @@ export default {
     '/environment': require('./src/projects/website/layouts/environment/environment'),
     '/content-explorer': require('./src/projects/website/layouts/ContentExplorer'),
     '/book-market': require('./src/components/bookmarket/BookMarketApp'),
+    '/horn': require('./src/projects/website/layouts/DemocracyAirHorn'),
     '/kb': require('./src/components/kb/KnowledgeBaseApplication'),
     '/kb-local': require('./src/components/kb/KnowledgeBaseApplication'),
   },

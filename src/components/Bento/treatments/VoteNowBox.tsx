@@ -41,7 +41,7 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
     this.interval = window.setInterval(() => this.setState({ now: new Date() }), 1000);
 
 
-    this.socket = new WebSocket("wss://ding-server-obpgpmmjny.now.sh/", "protocolOne");
+    this.socket = new WebSocket("wss://ding-server-xzywabxhzp.now.sh/", "protocolOne");
 
     this.socket.onmessage = (event) => {
       const data = JSON.parse(event.data);

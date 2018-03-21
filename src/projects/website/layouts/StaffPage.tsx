@@ -157,17 +157,6 @@ const StaffPage = () => (
 
                 <p>&nbsp;</p>
               </div>
-
-              <div className="col-sm-4 col-sm-offset-2">
-                <h3>The Globe</h3>
-
-                <p>
-                  <a href="mailto:hello@globe.pub">hello@globe.pub</a>
-                  01273 770685
-                </p>
-
-                <p>&nbsp;</p>
-              </div>
             </div>
           </ContentCard>
         </div>

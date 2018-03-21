@@ -87,6 +87,6 @@ class CountdownBoxComponent extends React.Component<IProps, IState> {
   }
 }
 
-const CountdownBox = HydroLeaf({ name: 'CountdownBox', disableSSR: true })(CountdownBoxComponent)
+const CountdownBox = HydroLeaf({ name: 'CountdownBox', disableSSR: true })(CountdownBoxComponent);
 
 export { CountdownBox };

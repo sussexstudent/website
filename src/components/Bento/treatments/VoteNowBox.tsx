@@ -3,6 +3,7 @@ import cx from 'classnames';
 import FauxLink from '~components/FauxLink';
 import {differenceInDays, differenceInMinutes, differenceInHours, differenceInSeconds} from 'date-fns';
 import HydroLeaf from "~components/HydroLeaf";
+import CountUp from "react-countup";
 import {OneImageBackground} from "~components/OneImage";
 
 export enum HighlightTheme {
@@ -19,6 +20,7 @@ interface IProps {
 
 interface IState {
   now: Date;
+  voterCount: null | number;
 }
 
 const timeBox = { width: '100%', flex: '1 1 auto' };
@@ -26,12 +28,41 @@ const timeBox = { width: '100%', flex: '1 1 auto' };
 class VoteNowBoxComponent extends React.Component<IProps, IState> {
   interval: number | undefined;
 
+  private socket?: WebSocket;
+
   state = {
     now: new Date(),
+    voterCount: 1000,
   };
 
   componentDidMount() {
     this.interval = window.setInterval(() => this.setState({ now: new Date() }), 1000);
+
+
+    this.socket = new WebSocket("wss://ding-server-obpgpmmjny.now.sh/", "protocolOne");
+
+    this.socket.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+
+      if (data.name === 'initial') {
+        this.setState({
+          voterCount: data.data.Voters,
+        });
+
+        return
+      }
+
+      if (data.name !== 'schoolChange') {
+        return;
+      }
+
+      const newCount = Object.keys(data.data).reduce((count, school) => {
+        return data.data[school] + count;
+      }, 0);
+
+      this.setState((state: IState) => ({...state, voterCount: state.voterCount + newCount}));
+
+    }
   }
 
   componentWillUnmount() {
@@ -42,7 +73,7 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
 
   render() {
     const { targetDate, link, imageUrl } = this.props;
-    const { now } = this.state;
+    const { now, voterCount } = this.state;
 
     const days = differenceInDays(targetDate, now);
     const hours = differenceInHours(targetDate, now) - (days * 24);
@@ -57,7 +88,10 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
         >
         <FauxLink href={link} />
           <div style={{ paddingLeft: '1rem', paddingBottom: '1rem', color: '#fff', width: '100%' }}>
-            <h1 className={cx('type-canon')} style={{ backgroundColor: '#000', color: '#fff', padding: '0.2em', fontWeight: 600, display: 'inline-block', textTransform: 'uppercase' }}>Vote now</h1>
+            <div>
+              <div className="type-long-primer type-primary" style={{ display: 'inline-block', background: '#fff', color: '#000', padding: '0.3em', textTransform: 'uppercase', fontWeight: 600, border: '3px solid #000' }}>{voterCount ? <span>Join the <CountUp start={0} end={voterCount} duration={4} /> students already voted</span> : 'placeholder'}</div>
+            </div>
+            <h1 className={cx('type-canon')} style={{ backgroundColor: '#000', color: '#fff', marginTop: '0.2rem', padding: '0.2em', paddingBottom: '0.1em', fontWeight: 600, display: 'inline-block', textTransform: 'uppercase' }}>Vote now</h1>
             <h2
               className={cx('type-trafalgar')}
               style={{ marginBottom: '1rem' }}

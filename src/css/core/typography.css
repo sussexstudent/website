@@ -4,3 +4,11 @@
 
   font: 16px / 1.5 var(--type__secondary);
 }
+
+.type-primary {
+  font-family: var(--type__primary);
+}
+
+.type-secondary {
+  font-family: var(--type__secondary);
+}

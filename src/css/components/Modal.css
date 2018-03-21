@@ -26,7 +26,7 @@
   }
 
   @media (--small) {
-    max-width: 500px;
+    max-width: 660px;
     box-sizing: content-box;
     height: auto;
   }

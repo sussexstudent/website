@@ -23,7 +23,7 @@ function apiQuery(query, variables = {}) {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Falmer ${token}`,
     },
     body: JSON.stringify({
       query,

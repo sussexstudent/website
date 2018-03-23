@@ -5,14 +5,15 @@ const path = require('path');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
+const baseDir = path.join(__dirname, '..');
 
 module.exports = {
   target: 'web',
 
   entry: {
     main: ['babel-polyfill', './src/projects/falmer/entry.js'],
-    devFonts: './src/projects/website/env-dev.js',
-    productionFonts: './src/projects/website/env-production.js',
+    devFonts: './src/projects/website/env-dev.ts',
+    productionFonts: './src/projects/website/env-production.ts',
   },
 
   output: {
@@ -27,6 +28,14 @@ module.exports = {
     alias: {
       '~components': path.resolve(path.join(__dirname, '../src/components')),
       '~falmer': path.resolve(path.join(__dirname, '../src/projects/falmer')),
+      '~libs': path.resolve(baseDir, 'src/libs/'),
+      'react-router-dom': 'react-router-dom/es',
+      'react-router': 'react-router/es',
+      'react-helmet': 'react-helmet/es/Helmet.js',
+      'date-fns': 'date-fns/esm',
+      history: 'history/es',
+      'lodash.pick': 'lodash/pick',
+      'lodash.flowright': 'lodash/flowright',
     },
     extensions: ['.ts', '.tsx', '.js'],
   },

@@ -14,8 +14,10 @@ config.bail = true;
 config.profile = false;
 config.devtool = 'source-map';
 
+const baseDir = path.join(__dirname, '..');
+
 config.output = {
-  path: path.resolve(path.join(__dirname, '../dist-falmer')),
+  path: path.resolve(path.join(baseDir, 'dist-falmer')),
   publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
   filename: 'falmer.[name].[chunkhash].js',
 };

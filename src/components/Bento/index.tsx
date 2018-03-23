@@ -1,23 +1,13 @@
 import React from 'react';
 import { BentoBoxImpulse } from '~components/Bento/BentoBoxImpulse';
-import {OneWorldWeekBox} from '~components/Bento/treatments/OneWorldWeekBox';
-import {VoteNowBox} from "~components/Bento/treatments/VoteNowBox";
+import {HighlightTextBox} from "~components/Bento/treatments/HighlightTextBox";
+import {StudentAwardsBox} from "~components/Bento/treatments/StudentAwardsBox";
 
 const Bento: React.SFC<{}> = () => (
   <div className="Bento Trail">
     <div className="Trail__row Trail__row--21 Bento__main-row">
-      {/*<HighlightTextBox*/}
-        {/*link="/elections/candidates/118/"*/}
-        {/*imageUrl="original_images/23748e8e475049fe8e49162ccd827b44"*/}
-        {/*heading="Meet the candidates"*/}
-        {/*theme={HighlightTheme.WhiteOnBlack}*/}
-      {/*/>*/}
-      <VoteNowBox
-        link="/vote/"
-        imageUrl="original_images/23748e8e475049fe8e49162ccd827b44"
-        targetDate={new Date(2018, 2, 23, 17, 0,0)}
-      />
-      <OneWorldWeekBox />
+      <StudentAwardsBox />
+      <HighlightTextBox link="https://www.surveymonkey.co.uk/r/MW22Y5Y" imageUrl="original_images/e8236f9aa8194f56a17b90764bd6aadd" heading="Rate the union in our survey"/>
     </div>
     <div className="Trail__row Trail__row--111">
       <BentoBoxImpulse link="/sport-societies-media/discover" color="blue">

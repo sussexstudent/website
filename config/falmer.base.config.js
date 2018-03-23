@@ -75,7 +75,16 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader?useBabel=true',
+        use: [
+          {
+            loader: 'awesome-typescript-loader?useBabel=true&useCache=true',
+            options: {
+              useBabel: true,
+              useCache: true,
+              reportFiles: ['src/**/*.{ts,tsx}'],
+            },
+          },
+        ],
       },
       {
         test: /\.(svg|woff|png)$/,

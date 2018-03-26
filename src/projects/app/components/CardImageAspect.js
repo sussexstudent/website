@@ -12,6 +12,9 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 2,
     borderTopRightRadius: 2,
     overflow: 'hidden',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
@@ -21,17 +24,32 @@ function getSize() {
   };
 }
 
+const MAX_HEIGHT = 170;
+
 export default function CardImage({ image, maintainAspectRatio }) {
+  const displayWidth = getSize().width - 40;
+  const displayHeight = displayWidth * (image.height/image.width)
+
+  const imageSize = {
+    width: displayWidth,
+    height: displayHeight,
+  };
+
+  if (displayHeight > MAX_HEIGHT) {
+    imageSize.width = MAX_HEIGHT * (image.width/image.height);
+    imageSize.height = MAX_HEIGHT;
+  }
+
+
   return (
     <View style={styles.eventImageContainer}>
       <Image
-        style={styles.eventImage }
+        style={imageSize}
         source={{
           uri: `https://su.imgix.net/${image.resource}?w=${PixelRatio.getPixelSizeForLayoutSize(
             getSize().width - 40
           )}&q=85`,
         }}
-        height={(getSize().width - 40)}
       />
     </View>
   );

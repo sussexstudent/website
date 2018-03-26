@@ -7,22 +7,14 @@ import gql from 'graphql-tag';
 import format from 'date-fns/format';
 import HTMLContentRenderer from '../components/HTMLContentRenderer';
 import DetailContent from '../components/DetailContent';
+import DetailItem from '../components/DetailItem';
+import HeaderImageScrollView, { TriggeringView } from 'react-native-image-header-scroll-view';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     backgroundColor: '#fbfbfb',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
   tabContent: {
     flex: 1,
@@ -53,7 +45,8 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   infoContainer: {
-    paddingTop: 170,
+    flex: 1,
+    alignSelf: 'stretch'
   },
   infoContainerInner: {
     backgroundColor: '#fff',
@@ -64,17 +57,11 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 170,
   },
-  detailItem: {
-    marginBottom: 10,
+  attribContainer: {
+    paddingTop: 5,
+    marginBottom: 15,
   },
-  detailItemText: {
-    fontWeight: '500',
-  },
-  detailItemImage: {
-    marginRight: 10,
-    width: 18,
-    height: 18,
-  },
+
 });
 
 function getSize() {
@@ -83,47 +70,43 @@ function getSize() {
   };
 }
 
-const EventDetailItem = ({ image, children }) => (
-  <View style={styles.detailItem}>
-    <Text style={styles.detailItemText}>
-      <Image style={styles.detailItemImage} source={image} resizeMode="contain" />
-      {children}
-    </Text>
-  </View>
-);
 
 function TabWhatsOn({ data: { group, loading } }) {
+
   return (
     <View style={styles.tabContent}>
       {loading ? (
         <Text>Loading</Text>
       ) : (
-        <View>
-          {group.logo !== null ? (
-            <View style={styles.eventImageContainer}>
-              <Image
-                style={styles.eventImage}
-                source={{
-                  uri: `https://su.imgix.net/${group.logo
-                    .resource}?w=${PixelRatio.getPixelSizeForLayoutSize(
-                    getSize().width
-                  )}&h=${PixelRatio.getPixelSizeForLayoutSize(
-                    180
-                  )}&fit=crop&q=85`,
-                }}
-                width={getSize().width}
-                height={180}
-              />
-            </View>
-          ) : null}
+        <View
+          style={styles.infoContainer}
+        >
+          <HeaderImageScrollView
+            style={styles.infoContainer}
+            maxHeight={180}
+            minHeight={0}
+            headerImage={{
+              uri: `https://su.imgix.net/${group.logo
+                .resource}?w=${PixelRatio.getPixelSizeForLayoutSize(
+                getSize().width
+              )}&h=${PixelRatio.getPixelSizeForLayoutSize(
+                180
+              )}&fit=crop&q=85`,
+            }}
+          >
 
-          <ScrollView style={styles.infoContainer}>
             <View style={styles.infoContainerInner}>
               <DetailContent>
                 <Text style={styles.title}>{group.name}</Text>
+                <View style={styles.attribContainer}>
+                  <DetailItem image={require('../img/EventsCalender.png')}>
+                    Social next Thursday, 6pm >
+                  </DetailItem>
+                </View>
+                <HTMLContentRenderer content={'groupDescriptionMarkup'} />
               </DetailContent>
             </View>
-          </ScrollView>
+          </HeaderImageScrollView>
         </View>
       )}
     </View>

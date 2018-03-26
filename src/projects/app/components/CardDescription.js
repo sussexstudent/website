@@ -4,7 +4,7 @@ import { colors } from '../vars';
 
 const styles = StyleSheet.create({
   text: {
-    color: colors.greyWorstDayOfWinter,
+    color: colors.greyWinter,
     fontSize: 14,
     marginBottom: 6,
   },

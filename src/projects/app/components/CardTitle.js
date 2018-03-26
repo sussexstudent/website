@@ -5,7 +5,7 @@ import { colors } from '../vars';
 const styles = StyleSheet.create({
   title: {
     color: '#000',
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '700',
     marginBottom: 6,
   },

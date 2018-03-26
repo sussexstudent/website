@@ -7,12 +7,15 @@ import gql from 'graphql-tag';
 import format from 'date-fns/format';
 import HTMLContentRenderer from '../components/HTMLContentRenderer';
 import DetailContent from '../components/DetailContent';
+import DetailItem from '../components/DetailItem';
+import AddToButton from '../components/AddToButton';
 import { colors } from '../vars';
 import HeaderImageScrollView, { TriggeringView } from 'react-native-image-header-scroll-view';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fbfbfb',
   },
@@ -25,10 +28,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
-  },
-  tabContent: {
-    flex: 1,
-    alignItems: 'center',
   },
   tabText: {
     margin: 20,
@@ -59,7 +58,8 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch'
   },
   attribContainer: {
-    marginLeft: -5,
+    paddingTop: 5,
+    marginBottom: 15,
   },
   infoContainerInner: {
     backgroundColor: '#fff',
@@ -69,18 +69,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: -1 },
     flex: 1,
   },
-  detailItem: {
-    marginBottom: 10,
-  },
-  detailItemText: {
-    fontWeight: '500',
-    color: colors.greyWinter,
-  },
-  detailItemImage: {
-    marginRight: 10,
-    width: 18,
-    height: 18,
-  },
 });
 
 function getSize() {
@@ -89,18 +77,9 @@ function getSize() {
   };
 }
 
-const EventDetailItem = ({ image, children }) => (
-  <View style={styles.detailItem}>
-    <Text style={styles.detailItemText}>
-      <Image style={styles.detailItemImage} source={image} resizeMode="contain" />
-      {children}
-    </Text>
-  </View>
-);
-
 function TabWhatsOn({ data: { event, loading } }) {
   return (
-    <View style={styles.tabContent}>
+    <View style={styles.container}>
       {loading ? (
         <Text>Loading</Text>
       ) : (
@@ -122,18 +101,19 @@ function TabWhatsOn({ data: { event, loading } }) {
               <DetailContent>
                 <Text style={styles.title}>{event.title}</Text>
                 <View style={styles.attribContainer}>
-                  <EventDetailItem image={require('../img/EventsCalender.png')}>
+                  <DetailItem image={require('../img/EventsCalender.png')}>
                     {format(new Date(event.startTime), 'dddd Do MMMM')}
-                  </EventDetailItem>
-                  <EventDetailItem image={require('../img/EventsClock.png')}>
+                  </DetailItem>
+                  <DetailItem image={require('../img/EventsClock.png')}>
                     {`${format(new Date(event.startTime), 'h:mma')}-${format(
                       new Date(event.endTime),
                       'h:mma'
                     )}`}
-                  </EventDetailItem>
-                  <EventDetailItem image={require('../img/EventsPin.png')}>
+                  </DetailItem>
+                  <DetailItem image={require('../img/EventsPin.png')}>
                     {event.locationDisplay}
-                  </EventDetailItem>
+                  </DetailItem>
+                  <AddToButton text="Add to My Events" />
                 </View>
                 <HTMLContentRenderer content={event.bodyHtml} />
               </DetailContent>

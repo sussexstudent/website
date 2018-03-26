@@ -4,8 +4,8 @@ import { colors } from '../vars';
 
 const styles = StyleSheet.create({
   text: {
-    color: colors.greyWinter,
-    fontSize: 12,
+    color: colors.greyWorstDayOfWinter,
+    fontSize: 14,
     paddingTop: 4,
   },
 });

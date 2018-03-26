@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: '#fbfbfb',
+    alignItems: 'center',
   },
   welcome: {
     fontSize: 20,
@@ -34,29 +35,29 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-  tabContent: {
-    flex: 1,
-    alignItems: 'center',
-  },
   tabText: {
     margin: 20,
     fontSize: 20,
     fontWeight: 'bold',
   },
+  scrollContainer: {
+    paddingTop: 20,
+  }
 });
 
 function TabWhatsOn({ data: { allEvents, loading }, navigator }) {
   return (
-    <View style={styles.tabContent}>
+    <View style={styles.container}>
       {loading ? (
         <Text>Loading</Text>
       ) : (
         <FlatList
-          data={allEvents.edges}
-          keyExtractor={item => item.node.id}
+          style={styles.scrollContainer}
+          data={allEvents.edges.slice(1)}
+          keyExtractor={item => item.node.eventId.toString(10)}
           // renderSectionHeader={() => <Text>{}</Text>}
           renderItem={({ item }) => (
-            <Card>
+            <Card key={item.node.eventId}>
               <TouchableOpacity
                 onPress={() =>
                   navigator.push({

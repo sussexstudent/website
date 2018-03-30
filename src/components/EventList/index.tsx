@@ -6,8 +6,8 @@ import HydroLeaf from '~components/HydroLeaf';
 import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
 import Loader from '../Loader/index';
 import EventListQuery from './EventList.graphql';
-import { Query } from '../../css/components/Query';
 import { GranuleChildProps } from '@brudil/granule';
+import {GranuleQuery} from "~components/Query";
 
 interface Result {
   allEvents: {
@@ -20,7 +20,7 @@ interface Result {
 function EventList() {
   return (
     <ul className="List List--reset">
-      <Query
+      <GranuleQuery
         query={EventListQuery}
         variables={{
           fromTime: new Date(),
@@ -57,7 +57,7 @@ function EventList() {
               ))
           );
         }}
-      </Query>
+      </GranuleQuery>
     </ul>
   );
 }

@@ -1,14 +1,13 @@
 import React from 'react';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import RequestContactDetails from './RequestContactDetails.graphql';
-import GetListing from './GetListing.graphql';
-import UpdateImage from './UpdateImage.graphql';
-import ChangeState from './ChangeState.graphql';
+import REQUEST_CONTACT_DETAILS_MUTATION from './RequestContactDetails.graphql';
+import GET_LISTING_QUERY from './GetListing.graphql';
+import UPDATE_IMAGE_MUTATION from './UpdateImage.graphql';
+import CHANGE_STATE_MUTATION from './ChangeState.graphql';
 import JsonLd from '../../JsonLd';
 import { compose } from 'recompose';
-import { graphql, ChildProps } from 'react-apollo';
-import Loader from '~components/Loader';
+import { Mutation } from 'react-apollo';
 import { MarketListing, MarketListingState } from '../../../types/market';
 import Deckchair from '~components/Deckchair';
 import { ImageUpload } from '~components/bookmarket/ImageUpload';
@@ -19,6 +18,7 @@ import {
 } from '~components/bookmarket/currentUserData';
 import Helmet from 'react-helmet';
 import { formatPrice } from '~components/bookmarket/utils';
+import { HandledQuery } from '~components/HandledQuery';
 
 interface OwnProps extends RouteComponentProps<{ listingId: string }> {
   updateImage(data: any): Promise<{}>;
@@ -31,17 +31,11 @@ interface Result {
   marketListing: MarketListing;
 }
 
-type IProps = OwnProps & ChildProps<{}, Result> & CurrentUserProps;
+type IProps = OwnProps & CurrentUserProps;
+
+class GetListingQuery extends HandledQuery<Result, { listingId: number }> {}
 
 const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
-  if (props.data && props.data.loading) {
-    return <Loader />;
-  }
-
-  if (!props.data || !props.data.marketListing) {
-    return <h1>Error</h1>;
-  }
-
   const listing = props.data.marketListing;
 
   const isOwner =
@@ -210,7 +204,10 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
                 onUploadComplete={(data) => {
                   console.log(data);
                   props.updateImage({
-                    variables: { listingId: listing.pk, imageId: data.mediaId },
+                    variables: {
+                      listingId: listing.pk,
+                      imageId: data.mediaId,
+                    },
                   });
                 }}
               />
@@ -269,26 +266,46 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
   );
 };
 
-const BookDetail = compose<OwnProps, IProps>(
-  currentUserData(),
-  graphql(RequestContactDetails, {
-    name: 'requestContactDetails',
-  }),
-  graphql(UpdateImage, {
-    name: 'updateImage',
-  }),
-  graphql(ChangeState, {
-    name: 'changeState',
-  }),
-  graphql<Result, IProps>(GetListing, {
-    options: (props) => {
-      return {
-        variables: {
-          listingId: parseInt(props.match.params.listingId, 10),
-        },
-      };
-    },
-  }),
-)(BookDetailComponent as any);
+const BookDetailConnector: React.SFC<IProps> = (props: IProps) => {
+  return (
+    <GetListingQuery
+      query={GET_LISTING_QUERY}
+      variables={{
+        listingId: parseInt(props.match.params.listingId, 10),
+      }}
+    >
+      {({ data }) => (
+        <Mutation mutation={CHANGE_STATE_MUTATION}>
+          {({ changeState }) => (
+            <Mutation mutation={UPDATE_IMAGE_MUTATION}>
+              {({ updateImage }) => (
+                <Mutation mutation={REQUEST_CONTACT_DETAILS_MUTATION}>
+                  {({ requestContactDetails }) => {
+                    if (!data) {
+                      return;
+                    }
+
+                    return (
+                      <BookDetailComponent
+                        data={data}
+                        changeState={changeState}
+                        updateImage={updateImage}
+                        requestContentDetails={requestContactDetails}
+                      />
+                    );
+                  }}
+                </Mutation>
+              )}
+            </Mutation>
+          )}
+        </Mutation>
+      )}
+    </GetListingQuery>
+  );
+};
+
+const BookDetail = compose<OwnProps, IProps>(currentUserData())(
+  BookDetailConnector as any,
+);
 
 export { BookDetail };

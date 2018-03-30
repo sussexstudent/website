@@ -1,14 +1,12 @@
 import React from 'react';
-import { compose } from 'recompose';
 import format from 'date-fns/format';
 import { RouteComponentProps } from 'react-router-dom';
-import { graphql } from 'react-apollo';
-import KbArticleQuery from './KbArticleQuery.graphql';
-import apolloHandler, { ApolloHandlerChildProps } from '../../apolloHandler';
+import KB_ARTICLE_QUERY from './KbArticleQuery.graphql';
 import { Article } from '../../../types/kb';
 import StreamField from '~components/content/StreamField';
 import ContentCard from '~components/ContentCard';
 import { ContentBreadcrumbBar } from '~components/BreadcrumbBar';
+import { HandledQuery } from '~components/HandledQuery';
 
 interface RouteParams {
   sectionSlug: string;
@@ -24,38 +22,47 @@ interface Result {
   };
 }
 
-type IProps = ApolloHandlerChildProps<OwnProps, Result>;
+type IProps = OwnProps;
+
+class ArticleQuery extends HandledQuery<Result, { articlePath: string }> {}
 
 function KbArticle(props: IProps) {
-  const article = props.data.knowledgeBase.article;
   return (
-    <div>
-      <ContentBreadcrumbBar page={props.data.knowledgeBase.article} />
-
-      <div className="Layout Layout--sidebar-right ">
-        <ContentCard>
-          <h1 className="type-canon">{article.title}</h1>
-          <div className="type-long-primer">
-            last updated:{' '}
-            {format(new Date(article.lastPublishedAt), 'DD/MM/YY')}
-          </div>
-          <StreamField page={article} items={article.main} />
-        </ContentCard>
-      </div>
-    </div>
-  );
-}
-export default compose<IProps, OwnProps>(
-  graphql<Result, OwnProps>(KbArticleQuery, {
-    options: (props) => ({
-      variables: {
+    <ArticleQuery
+      query={KB_ARTICLE_QUERY}
+      variables={{
         articlePath: [
           props.match.params.sectionSlug,
           props.match.params.topicSlug,
           props.match.params.articleSlug,
         ].join('/'),
-      },
-    }),
-  }),
-  apolloHandler(),
-)(KbArticle);
+      }}
+    >
+      {({ data }) => {
+        if (!data) {
+          return;
+        }
+
+        const article = data && data.knowledgeBase.article;
+
+        return (
+          <div>
+            <ContentBreadcrumbBar page={article} />
+
+            <div className="Layout Layout--sidebar-right ">
+              <ContentCard>
+                <h1 className="type-canon">{article.title}</h1>
+                <div className="type-long-primer">
+                  last updated:{' '}
+                  {format(new Date(article.lastPublishedAt), 'DD/MM/YY')}
+                </div>
+                <StreamField page={article} items={article.main} />
+              </ContentCard>
+            </div>
+          </div>
+        );
+      }}
+    </ArticleQuery>
+  );
+}
+export default KbArticle;

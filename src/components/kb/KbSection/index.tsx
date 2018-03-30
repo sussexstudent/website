@@ -1,12 +1,10 @@
 import React from 'react';
-import { compose } from 'recompose';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { graphql } from 'react-apollo';
-import KbSectionQuery from './KbSectionQuery.graphql';
-import apolloHandler, { ApolloHandlerChildProps } from '../../apolloHandler';
+import KB_SECTION_QUERY from './KbSectionQuery.graphql';
 import { Section } from '../../../types/kb';
 import { ContentBreadcrumbBar } from '~components/BreadcrumbBar';
 import ContentCard from '~components/ContentCard';
+import {HandledQuery} from "~components/HandledQuery";
 
 interface RouteParams {
   sectionSlug: string;
@@ -20,9 +18,11 @@ interface Result {
   };
 }
 
-type IProps = ApolloHandlerChildProps<OwnProps, Result>;
+type IProps = OwnProps & { data: Result };
 
-function KbSection(props: IProps) {
+class KbSectionQuery extends HandledQuery<Result, {}> {}
+
+function KbSectionComponent(props: IProps) {
   const section = props.data.knowledgeBase.section;
   return (
     <div>
@@ -54,13 +54,24 @@ function KbSection(props: IProps) {
     </div>
   );
 }
-export default compose<IProps, OwnProps>(
-  graphql<Result, OwnProps>(KbSectionQuery, {
-    options: (props) => ({
-      variables: {
+
+function KbSectionConnector(props: OwnProps) {
+  return (
+    <KbSectionQuery
+      query={KB_SECTION_QUERY}
+      variables={{
         sectionSlug: props.match.params.sectionSlug,
-      },
-    }),
-  }),
-  apolloHandler(),
-)(KbSection);
+      }}
+    >
+      {({ data }) => {
+        if (!data) {return}
+
+        return (
+          <KbSectionComponent {...props} data={data} />
+        )
+      }}
+    </KbSectionQuery>
+  )
+}
+
+export default KbSectionConnector;

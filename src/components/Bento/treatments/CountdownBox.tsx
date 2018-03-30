@@ -1,9 +1,14 @@
 import React from 'react';
 import cx from 'classnames';
 import FauxLink from '~components/FauxLink';
-import {differenceInDays, differenceInMinutes, differenceInHours, differenceInSeconds} from 'date-fns';
-import HydroLeaf from "~components/HydroLeaf";
-import {OneImageBackground} from "~components/OneImage";
+import {
+  differenceInDays,
+  differenceInMinutes,
+  differenceInHours,
+  differenceInSeconds,
+} from 'date-fns';
+import HydroLeaf from '~components/HydroLeaf';
+import { OneImageBackground } from '~components/OneImage';
 
 export enum HighlightTheme {
   BlackOnYellow = 'b_y',
@@ -29,7 +34,10 @@ class CountdownBoxComponent extends React.Component<IProps, IState> {
   };
 
   componentDidMount() {
-    this.interval = window.setInterval(() => this.setState({ now: new Date() }), 1000);
+    this.interval = window.setInterval(
+      () => this.setState({ now: new Date() }),
+      1000,
+    );
   }
 
   componentWillUnmount() {
@@ -43,9 +51,14 @@ class CountdownBoxComponent extends React.Component<IProps, IState> {
     const { now } = this.state;
 
     const days = differenceInDays(targetDate, now);
-    const hours = differenceInHours(targetDate, now) - (days * 24);
-    const minutes = differenceInMinutes(targetDate, now) - (days * 24 * 60) - hours * 60;
-    const seconds = differenceInSeconds(targetDate, now) - (days * 24 * 60 * 60) - hours * 60 * 60 - (minutes * 60);
+    const hours = differenceInHours(targetDate, now) - days * 24;
+    const minutes =
+      differenceInMinutes(targetDate, now) - days * 24 * 60 - hours * 60;
+    const seconds =
+      differenceInSeconds(targetDate, now) -
+      days * 24 * 60 * 60 -
+      hours * 60 * 60 -
+      minutes * 60;
 
     return (
       <div className="BentoBox" style={{ backgroundColor: '#e95452' }}>
@@ -53,12 +66,20 @@ class CountdownBoxComponent extends React.Component<IProps, IState> {
           className="BentoBox__background-image"
           src={imageUrl}
         >
-        <FauxLink href={link} />
-          <div style={{ paddingLeft: '1rem', paddingBottom: '1rem', color: '#fff' }}>
+          <FauxLink href={link} />
+          <div
+            style={{
+              paddingLeft: '1rem',
+              paddingBottom: '1rem',
+              color: '#fff',
+            }}
+          >
             <h2
               className={cx('type-trafalgar')}
               style={{ marginBottom: '1rem' }}
-            >Voting opens in</h2>
+            >
+              Voting opens in
+            </h2>
             <h2
               className={cx('type-trafalgar')}
               style={{ marginBottom: '1rem' }}
@@ -87,6 +108,8 @@ class CountdownBoxComponent extends React.Component<IProps, IState> {
   }
 }
 
-const CountdownBox = HydroLeaf({ name: 'CountdownBox', disableSSR: true })(CountdownBoxComponent);
+const CountdownBox = HydroLeaf({ name: 'CountdownBox', disableSSR: true })(
+  CountdownBoxComponent,
+);
 
 export { CountdownBox };

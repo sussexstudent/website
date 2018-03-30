@@ -3,15 +3,9 @@ import { keyBy } from 'lodash';
 import Fuse from 'fuse.js';
 import HydroLeaf from '~components/HydroLeaf';
 import OrgansiationGrid, { StudentGroup } from '~components/OrganisationGrid';
-import { graphql, ChildProps } from 'react-apollo';
-import StudentGroupListingsQuery from './StudentGroupListings.graphql';
-import { compose } from 'recompose';
-import apolloHandler from '~components/apolloHandler';
+import STUDENT_GROUP_LISTING_QUERY from './StudentGroupListings.graphql';
 import { Provider } from '../../types/hydro';
-
-interface OwnProps {
-  groupsList: StudentGroup[];
-}
+import {HandledQuery} from "~components/HandledQuery";
 
 interface Result {
   allGroups: {
@@ -21,6 +15,10 @@ interface Result {
   };
 }
 
+interface IProps {
+  data: Result;
+}
+
 interface IState {
   filter: null;
   searchValue: string;
@@ -28,7 +26,7 @@ interface IState {
   groups: StudentGroup[];
 }
 
-type IProps = OwnProps & ChildProps<OwnProps, Result>;
+class StudentGroupListingsQuery extends HandledQuery<Result, {}> {}
 
 class StudentGroupsDiscovery extends React.Component<IProps, IState> {
   private fuse: Fuse;
@@ -99,10 +97,19 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
   }
 }
 
-const StudentGroupListings = compose<OwnProps, {}>(
-  graphql<Result>(StudentGroupListingsQuery),
-  apolloHandler(),
-)(StudentGroupsDiscovery);
+function StudentGroupListings() {
+  return (
+    <StudentGroupListingsQuery
+      query={STUDENT_GROUP_LISTING_QUERY}
+    >
+      {({ data }) => {
+        if (!data) { return; }
+
+        return <StudentGroupsDiscovery data={data}/>;
+      }}
+    </StudentGroupListingsQuery>
+  )
+}
 
 export default HydroLeaf({ providers: [Provider.Apollo] })(
   StudentGroupListings,

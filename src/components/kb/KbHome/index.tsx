@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { compose } from 'recompose';
-import { graphql } from 'react-apollo';
-import KbHomeQuery from './KbHomeQuery.graphql';
-import apolloHandler, { ApolloHandlerChildProps } from '../../apolloHandler';
+import KB_HOME_QUERY from './KbHomeQuery.graphql';
 import { Section } from '../../../types/kb';
 import { ContentBreadcrumbBar } from '~components/BreadcrumbBar';
+import { HandledQuery } from '~components/HandledQuery';
 
 interface Result {
   knowledgeBase: {
@@ -13,30 +11,40 @@ interface Result {
   };
 }
 
-type IProps = ApolloHandlerChildProps<{}, Result>;
+class KbHomeQuery extends HandledQuery<Result, {}> {}
 
-function KbHome(props: IProps) {
+function KbHome() {
   return (
-    <div>
-      <ContentBreadcrumbBar page={props.data.knowledgeBase} />
+    <KbHomeQuery query={KB_HOME_QUERY}>
+      {({ data }) => {
+        if (!data) {
+          return;
+        }
 
-      <input
-        className="HeaderSearch HeaderSearch--search-icon ActivitiesApp__search-input"
-        type="search"
-        placeholder="How can we help?"
-      />
-      <ul>
-        {props.data.knowledgeBase.sections.map((section) => (
-          <li>
-            <Link to={`/kb/${section.slug}`}>
-              <h2>{section.title}</h2>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+        const knowledgeBase = data.knowledgeBase;
+
+        return (
+          <div>
+            <ContentBreadcrumbBar page={knowledgeBase} />
+
+            <input
+              className="HeaderSearch HeaderSearch--search-icon ActivitiesApp__search-input"
+              type="search"
+              placeholder="How can we help?"
+            />
+            <ul>
+              {knowledgeBase.sections.map((section) => (
+                <li>
+                  <Link to={`/kb/${section.slug}`}>
+                    <h2>{section.title}</h2>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      }}
+    </KbHomeQuery>
   );
 }
-export default compose<IProps, {}>(graphql(KbHomeQuery), apolloHandler())(
-  KbHome,
-);
+export default KbHome;

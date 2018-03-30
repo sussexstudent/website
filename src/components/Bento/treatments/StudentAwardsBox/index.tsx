@@ -1,14 +1,11 @@
 import React from 'react';
 import FauxLink from '~components/FauxLink';
-import {AspectRatio, OneImage} from "~components/OneImage";
+import { AspectRatio, OneImage } from '~components/OneImage';
 
-interface IProps {
-}
+interface IProps {}
 
 const StudentAwardsBox: React.SFC<IProps> = () => (
-  <div
-    className="BentoBox"
-  >
+  <div className="BentoBox">
     <FauxLink href="/studentawards" />
     <div
       style={{

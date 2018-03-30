@@ -14,6 +14,7 @@ config.output = {
   filename: '[name].js',
   chunkFilename: '[id].chunk.js',
 };
+config.mode = 'development';
 
 config.devtool = 'inline-source-map';
 

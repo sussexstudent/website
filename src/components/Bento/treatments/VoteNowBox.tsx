@@ -1,10 +1,15 @@
 import React from 'react';
 import cx from 'classnames';
 import FauxLink from '~components/FauxLink';
-import {differenceInDays, differenceInMinutes, differenceInHours, differenceInSeconds} from 'date-fns';
-import HydroLeaf from "~components/HydroLeaf";
-import CountUp from "react-countup";
-import {OneImageBackground} from "~components/OneImage";
+import {
+  differenceInDays,
+  differenceInMinutes,
+  differenceInHours,
+  differenceInSeconds,
+} from 'date-fns';
+import HydroLeaf from '~components/HydroLeaf';
+import CountUp from 'react-countup';
+import { OneImageBackground } from '~components/OneImage';
 
 export enum HighlightTheme {
   BlackOnYellow = 'b_y',
@@ -38,10 +43,15 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
   };
 
   componentDidMount() {
-    this.interval = window.setInterval(() => this.setState({ now: new Date() }), 1000);
+    this.interval = window.setInterval(
+      () => this.setState({ now: new Date() }),
+      1000,
+    );
 
-
-    this.socket = new WebSocket("wss://ding-server-xzywabxhzp.now.sh/", "protocolOne");
+    this.socket = new WebSocket(
+      'wss://ding-server-xzywabxhzp.now.sh/',
+      'protocolOne',
+    );
 
     this.socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
@@ -51,7 +61,7 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
           voterCountEnd: data.data.Voters,
         });
 
-        return
+        return;
       }
 
       if (data.name !== 'schoolChange') {
@@ -62,9 +72,12 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
         return data.data[school] + count;
       }, 0);
 
-      this.setState((state: IState) => ({...state, voterCountStart: state.voterCountEnd, voterCountEnd: state.voterCountEnd + newCount}));
-
-    }
+      this.setState((state: IState) => ({
+        ...state,
+        voterCountStart: state.voterCountEnd,
+        voterCountEnd: state.voterCountEnd + newCount,
+      }));
+    };
   }
 
   componentWillUnmount() {
@@ -78,9 +91,14 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
     const { now, voterCountStart, voterCountEnd } = this.state;
 
     const days = differenceInDays(targetDate, now);
-    const hours = differenceInHours(targetDate, now) - (days * 24);
-    const minutes = differenceInMinutes(targetDate, now) - (days * 24 * 60) - hours * 60;
-    const seconds = differenceInSeconds(targetDate, now) - (days * 24 * 60 * 60) - hours * 60 * 60 - (minutes * 60);
+    const hours = differenceInHours(targetDate, now) - days * 24;
+    const minutes =
+      differenceInMinutes(targetDate, now) - days * 24 * 60 - hours * 60;
+    const seconds =
+      differenceInSeconds(targetDate, now) -
+      days * 24 * 60 * 60 -
+      hours * 60 * 60 -
+      minutes * 60;
 
     return (
       <div className="BentoBox" style={{ backgroundColor: '#e95452' }}>
@@ -88,19 +106,69 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
           className="BentoBox__background-image"
           src={imageUrl}
         >
-        <FauxLink href={link} />
-          <div style={{ paddingLeft: '1rem', paddingBottom: '1rem', color: '#fff', width: '100%' }}>
+          <FauxLink href={link} />
+          <div
+            style={{
+              paddingLeft: '1rem',
+              paddingBottom: '1rem',
+              color: '#fff',
+              width: '100%',
+            }}
+          >
             <div>
-              <div className="type-long-primer type-primary" style={{ display: 'inline-block', background: '#fff', color: '#000', padding: '0.3em', textTransform: 'uppercase', fontWeight: 600, border: '3px solid #000' }}>{<span>Join the <CountUp start={voterCountStart} end={voterCountEnd} duration={4} /> students who have already voted</span>}</div>
+              <div
+                className="type-long-primer type-primary"
+                style={{
+                  display: 'inline-block',
+                  background: '#fff',
+                  color: '#000',
+                  padding: '0.3em',
+                  textTransform: 'uppercase',
+                  fontWeight: 600,
+                  border: '3px solid #000',
+                }}
+              >
+                {
+                  <span>
+                    Join the{' '}
+                    <CountUp
+                      start={voterCountStart}
+                      end={voterCountEnd}
+                      duration={4}
+                    />{' '}
+                    students who have already voted
+                  </span>
+                }
+              </div>
             </div>
-            <h1 className={cx('type-canon')} style={{ backgroundColor: '#000', color: '#fff', marginTop: '0.2rem', padding: '0.2em', paddingBottom: '0.1em', fontWeight: 600, display: 'inline-block', textTransform: 'uppercase' }}>Vote now</h1>
+            <h1
+              className={cx('type-canon')}
+              style={{
+                backgroundColor: '#000',
+                color: '#fff',
+                marginTop: '0.2rem',
+                padding: '0.2em',
+                paddingBottom: '0.1em',
+                fontWeight: 600,
+                display: 'inline-block',
+                textTransform: 'uppercase',
+              }}
+            >
+              Vote now
+            </h1>
             <h2
               className={cx('type-trafalgar')}
               style={{ marginBottom: '1rem' }}
-            >Voting closes in</h2>
+            >
+              Voting closes in
+            </h2>
             <h2
               className={cx('type-double-pica')}
-              style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'space-between' }}
+              style={{
+                marginBottom: '1rem',
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
             >
               <div style={timeBox}>
                 <span>{days}</span>
@@ -126,6 +194,8 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
   }
 }
 
-const VoteNowBox = HydroLeaf({ name: 'VoteNowBox', disableSSR: true })(VoteNowBoxComponent);
+const VoteNowBox = HydroLeaf({ name: 'VoteNowBox', disableSSR: true })(
+  VoteNowBoxComponent,
+);
 
 export { VoteNowBox };

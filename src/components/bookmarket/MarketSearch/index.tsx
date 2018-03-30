@@ -2,15 +2,12 @@ import React from 'react';
 import qs from 'query-string';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
 import { Link, RouteComponentProps } from 'react-router-dom';
-
-import GetSearch from './GetSearch.graphql';
-import { compose } from 'recompose';
-import { graphql, ChildProps } from 'react-apollo';
-import Loader from '~components/Loader';
+import GET_SEARCH_QUERY from './GetSearch.graphql';
 import { MarketListing } from '../../../types/market';
 import { ListingList } from '~components/bookmarket/ListingList';
 import { Field, Form } from 'react-final-form';
 import Helmet from 'react-helmet';
+import {HandledQuery} from "~components/HandledQuery";
 
 interface OwnProps extends RouteComponentProps<{ sectionSlug?: string }> {}
 
@@ -20,14 +17,12 @@ interface Result {
   };
 }
 
-type IProps = OwnProps & ChildProps<{}, Result>;
+type IProps = OwnProps & { data: Result };
+
+class MarketSearchQuery extends HandledQuery<Result, {}> {}
 
 const MarketSearchComponent: React.SFC<IProps> = (props: IProps) => {
   function renderList() {
-    if (props.data && props.data.loading) {
-      return <Loader />;
-    }
-
     if (
       !props.data ||
       !props.data.allMarketListings ||
@@ -77,16 +72,24 @@ const MarketSearchComponent: React.SFC<IProps> = (props: IProps) => {
   );
 };
 
-const MarketSearch = compose<OwnProps, IProps>(
-  graphql<Result, IProps>(GetSearch, {
-    options: (props) => ({
-      variables: {
+function MarketSearch(props: OwnProps) {
+  return (
+    <MarketSearchQuery
+      query={GET_SEARCH_QUERY}
+      variables={{
         filters: {
           q: qs.parse(props.location.search).q,
         },
-      },
-    }),
-  }),
-)(MarketSearchComponent);
+      }}
+    >
+      {({ data }) => {
+        if (!data) { return; }
+
+        return <MarketSearchComponent {...props} data={data} />;
+      }}
+
+    </MarketSearchQuery>
+  );
+}
 
 export { MarketSearch };

@@ -44,7 +44,13 @@ class SectionContentPage extends React.Component<IProps, IState> {
     const {
       page: {
         title,
-        data: { sidebarBody, body, headingImageAsHero, headingImage, contentsInSidebar },
+        data: {
+          sidebarBody,
+          body,
+          headingImageAsHero,
+          headingImage,
+          contentsInSidebar,
+        },
       },
       page,
     } = this.props;
@@ -62,7 +68,17 @@ class SectionContentPage extends React.Component<IProps, IState> {
           </aside>
         </div>
         <div>
-          {headingImageAsHero ? <div style={{ marginBottom: '1rem' }}><OneImage src={headingImage.resource} aspectRatio={headingImage} alt={title} /></div> : <HeadingHero title={title} imageURL={headingImage.resource} />}
+          {headingImageAsHero ? (
+            <div style={{ marginBottom: '1rem' }}>
+              <OneImage
+                src={headingImage.resource}
+                aspectRatio={headingImage}
+                alt={title}
+              />
+            </div>
+          ) : (
+            <HeadingHero title={title} imageURL={headingImage.resource} />
+          )}
 
           <VisibleChildWatcher onChange={this.handleVisibleChildChange}>
             {body.map((

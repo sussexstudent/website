@@ -7,9 +7,9 @@ import EventsApplicationX from '~components/EventsApplication';
 import { DesktopUserBar } from '~components/UserBar';
 import Header from '~components/Header';
 import { Provider } from '../types/hydro';
-import {CountdownBox} from "~components/Bento/treatments/CountdownBox";
-import {VoteNowBox} from "~components/Bento/treatments/VoteNowBox";
-import {VoteNowModalContainer} from "~components/VoteNowModal";
+import { CountdownBox } from '~components/Bento/treatments/CountdownBox';
+import { VoteNowBox } from '~components/Bento/treatments/VoteNowBox';
+import { VoteNowModalContainer } from '~components/VoteNowModal';
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.SFC;

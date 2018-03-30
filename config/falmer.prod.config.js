@@ -13,6 +13,7 @@ const extractCSS = new ExtractTextPlugin({
 config.bail = true;
 config.profile = false;
 config.devtool = 'source-map';
+config.mode = 'production';
 
 const baseDir = path.join(__dirname, '..');
 

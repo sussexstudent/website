@@ -1,5 +1,5 @@
 import { graphql } from 'react-apollo';
-import CurrentUser from './CurrentUser.graphql';
+import CURRENT_USER_QUERY from './CurrentUser.graphql';
 import { FalmerUser } from '~components/falmer/types';
 
 interface Result {
@@ -12,7 +12,7 @@ export interface CurrentUserProps {
 }
 
 export const currentUserData = () =>
-  graphql<Result>(CurrentUser, {
+  graphql<Result>(CURRENT_USER_QUERY, {
     props({ data, ownProps }) {
       return {
         ...ownProps,

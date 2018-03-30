@@ -1,13 +1,10 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
 import { RouteComponentProps } from 'react-router-dom';
 import formatDistance from 'date-fns/formatDistance';
-import GroupDetailQuery from './GroupDetail.graphql';
-import Loader from '../../../Loader';
+import GROUP_DETAIL_QUERY from './GroupDetail.graphql';
 import CopyToClipboardButton from '../../../CopyToClipboardButton/index';
-import { ApolloHandlerChildProps } from '~components/apolloHandler';
 import { StudentGroup } from '~components/OrganisationGrid';
-import { compose } from 'recompose';
+import {HandledQuery} from "~components/HandledQuery";
 
 interface RouteParams {
   groupId: number;
@@ -19,48 +16,50 @@ interface Result {
   group: StudentGroup;
 }
 
-type IProps = ApolloHandlerChildProps<OwnProps, Result>;
+class GroupDetailQuery extends HandledQuery<Result, {}> {}
 
-function FalmerStudentGroupsDetail({ data: { loading, group } }: IProps) {
+type IProps = OwnProps & { data: Result };
+
+function FalmerStudentGroupsDetailComponent({ data: { group } }: IProps) {
   return (
     <div>
-      {loading ? (
-        <Loader />
-      ) : (
-        <div>
-          <h2 className="Heading Heading--medium">{group.name}</h2>
-          <CopyToClipboardButton
-            value={`https://falmer.sussexstudent.com/o/g/${group.groupId}`}
-          >
-            Copy sharing link
-          </CopyToClipboardButton>
+      <h2 className="Heading Heading--medium">{group.name}</h2>
+      <CopyToClipboardButton
+        value={`https://falmer.sussexstudent.com/o/g/${group.groupId}`}
+      >
+        Copy sharing link
+      </CopyToClipboardButton>
 
-          <div>
-            <ul>
-              {group.mslGroup ? (
-                <li>
-                  MSL linked, last sync:{' '}
-                  {formatDistance(
-                    new Date(),
-                    new Date(group.mslGroup.lastSync),
-                  )}{' '}
-                  ago
-                </li>
-              ) : null}
-            </ul>
-          </div>
-        </div>
-      )}
+      <div>
+        <ul>
+          {group.mslGroup ? (
+            <li>
+              MSL linked, last sync:{' '}
+              {formatDistance(
+                new Date(),
+                new Date(group.mslGroup.lastSync),
+              )}{' '}
+              ago
+            </li>
+          ) : null}
+        </ul>
+      </div>
     </div>
   );
 }
 
-export default compose<IProps, OwnProps>(
-  graphql<Result, OwnProps>(GroupDetailQuery, {
-    options: (props) => ({
-      variables: {
-        groupId: props.match.params.groupId,
-      },
-    }),
-  }),
-)(FalmerStudentGroupsDetail);
+function FalmerStudentGroupsDetailConnector(props: OwnProps) {
+  return (
+    <GroupDetailQuery query={GROUP_DETAIL_QUERY}>
+      {({ data }) => {
+        if (!data) { return }
+
+        return (
+          <FalmerStudentGroupsDetailComponent {...props} data={data} />
+        )
+      }}
+    </GroupDetailQuery>
+  )
+}
+
+export default FalmerStudentGroupsDetailConnector;

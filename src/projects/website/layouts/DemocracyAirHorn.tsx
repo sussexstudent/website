@@ -1,5 +1,5 @@
 import React from 'react';
-import DemocracyAirHorn from "~components/DemocracyAirHorn";
+import DemocracyAirHorn from '~components/DemocracyAirHorn';
 
 const DemocracyAirHornPage = () => (
   <div>

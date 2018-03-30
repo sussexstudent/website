@@ -8,6 +8,7 @@
     "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore"],
     "import-name": [false],
     "jsx-boolean-value": ["never"],
-    "function-name": [false]
+    "function-name": [false],
+    "jsx-no-lambda": [false]
   }
 }

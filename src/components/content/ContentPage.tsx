@@ -1,11 +1,7 @@
 import React from 'react';
-import apolloHandler, {
-  ApolloHandlerChildProps,
-} from '~components/apolloHandler';
-import ContentPageQuery from './ContentPageQuery.graphql';
-import { compose } from 'recompose';
-import { graphql } from 'react-apollo';
+import CONTENT_PAGE_QUERY from './ContentPageQuery.graphql';
 import pageMap from '~components/content/pageMap';
+import {HandledQuery} from "~components/HandledQuery";
 
 interface OwnProps {
   path: string;
@@ -19,36 +15,39 @@ interface Result {
   };
 }
 
-type IProps = ApolloHandlerChildProps<OwnProps, Result>;
+class ContentPageQuery extends HandledQuery<Result, {}> {}
 
-class ContentPageComponent extends React.Component<IProps> {
-  render() {
-    const page = this.props.data.page;
-    const Component = pageMap.hasOwnProperty(page.type)
-      ? pageMap[page.type]
-      : null;
 
-    if (Component) {
-      return <Component page={page} />;
-    }
+type IProps = OwnProps;
 
-    return (
-      <div className="Layout">
-        <h1>Page type can't be found: "{page.type}"</h1>
-      </div>
-    );
-  }
-}
-
-const ContentPage = compose<IProps, OwnProps>(
-  graphql<Result, OwnProps>(ContentPageQuery, {
-    options: (props) => ({
-      variables: {
+const ContentPage: React.SFC<IProps> = (props: IProps) => {
+  return (
+    <ContentPageQuery
+      query={CONTENT_PAGE_QUERY}
+      variables={{
         path: props.path,
-      },
-    }),
-  }),
-  apolloHandler(),
-)(ContentPageComponent);
+      }}
+    >
+      {({ data }) => {
+        if (!data) { return }
+
+        const page = data.page;
+        const Component = pageMap.hasOwnProperty(page.type)
+          ? pageMap[page.type]
+          : null;
+
+        if (Component) {
+          return <Component page={page} />;
+        }
+
+        return (
+          <div className="Layout">
+            <h1>Page type can't be found: "{page.type}"</h1>
+          </div>
+        );
+      }}
+    </ContentPageQuery>
+  );
+};
 
 export { ContentPage };

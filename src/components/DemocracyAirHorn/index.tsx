@@ -2,11 +2,9 @@ import React from 'react';
 import CountUp from 'react-countup';
 import bind from 'bind-decorator';
 import { Howl } from 'howler';
-import HydroLeaf from "~components/HydroLeaf";
+import HydroLeaf from '~components/HydroLeaf';
 
-interface IProps {
-
-}
+interface IProps {}
 
 interface IState {
   now: Date;
@@ -16,7 +14,7 @@ interface IState {
 }
 
 const horn = new Howl({
-  src: [require('./horn.mp3')]
+  src: [require('./horn.mp3')],
 });
 
 @HydroLeaf({ name: 'DemocracyAirHorn', disableSSR: true })
@@ -31,7 +29,10 @@ export default class DemocracyAirHorn extends React.Component<IProps, IState> {
   };
 
   componentDidMount() {
-    this.socket = new WebSocket("wss://ding-server-xzywabxhzp.now.sh/", "protocolOne");
+    this.socket = new WebSocket(
+      'wss://ding-server-xzywabxhzp.now.sh/',
+      'protocolOne',
+    );
 
     this.socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
@@ -41,7 +42,7 @@ export default class DemocracyAirHorn extends React.Component<IProps, IState> {
           voterCountEnd: data.data.Voters,
         });
 
-        return
+        return;
       }
 
       if (data.name !== 'schoolChange') {
@@ -52,13 +53,18 @@ export default class DemocracyAirHorn extends React.Component<IProps, IState> {
         return data.data[school] + count;
       }, 0);
 
-    Array(newCount).fill(newCount).forEach((_i, index) => {
-      setTimeout(() => this.playHorn(), 600 * index);
-    });
+      Array(newCount)
+        .fill(newCount)
+        .forEach((_i, index) => {
+          setTimeout(() => this.playHorn(), 600 * index);
+        });
 
-      this.setState((state: IState) => ({...state, voterCountStart: state.voterCountEnd, voterCountEnd: state.voterCountEnd + newCount}));
-
-    }
+      this.setState((state: IState) => ({
+        ...state,
+        voterCountStart: state.voterCountEnd,
+        voterCountEnd: state.voterCountEnd + newCount,
+      }));
+    };
   }
 
   @bind
@@ -69,7 +75,7 @@ export default class DemocracyAirHorn extends React.Component<IProps, IState> {
   @bind
   hideButton() {
     this.playHorn();
-    this.setState({ button: false, })
+    this.setState({ button: false });
   }
 
   render() {
@@ -77,13 +83,38 @@ export default class DemocracyAirHorn extends React.Component<IProps, IState> {
 
     return (
       <div style={{ textAlign: 'center' }}>
-        <h2 style={{ fontSize: '2.2em', textTransform: 'uppercase', lineHeight: 1.4 }}>Welcome to the democracy air horn</h2>
-        <h1 style={{ fontSize: '5.2em', marginTop: '0.5em' }}><CountUp start={voterCountStart} end={voterCountEnd} duration={4} /></h1>
+        <h2
+          style={{
+            fontSize: '2.2em',
+            textTransform: 'uppercase',
+            lineHeight: 1.4,
+          }}
+        >
+          Welcome to the democracy air horn
+        </h2>
+        <h1 style={{ fontSize: '5.2em', marginTop: '0.5em' }}>
+          <CountUp start={voterCountStart} end={voterCountEnd} duration={4} />
+        </h1>
         <h3 style={{ fontSize: '1.2em' }}>voters so far</h3>
-        <p><em>Every voter causes a live play of the air horn.</em></p>
-        <p><em>Already voted? Remind your friends to vote and listen to democracy in real time.</em></p>
-        {button ? <button className="Button" style={{ marginTop: '3rem' }} onClick={this.hideButton}>On mobile & sound not working?</button> : null}
+        <p>
+          <em>Every voter causes a live play of the air horn.</em>
+        </p>
+        <p>
+          <em>
+            Already voted? Remind your friends to vote and listen to democracy
+            in real time.
+          </em>
+        </p>
+        {button ? (
+          <button
+            className="Button"
+            style={{ marginTop: '3rem' }}
+            onClick={this.hideButton}
+          >
+            On mobile & sound not working?
+          </button>
+        ) : null}
       </div>
-    )
+    );
   }
 }

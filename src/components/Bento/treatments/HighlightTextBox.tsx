@@ -24,7 +24,12 @@ const HighlightTextBox: React.SFC<IProps> = (props) => (
     >
       <div style={{ paddingLeft: '1rem', paddingBottom: '1rem' }}>
         <h2
-          className={cx('Heading Heading--highlight type-trafalgar', `Heading--highlight-${props.theme ? props.theme : HighlightTheme.BlackOnYellow}`)}
+          className={cx(
+            'Heading Heading--highlight type-trafalgar',
+            `Heading--highlight-${
+              props.theme ? props.theme : HighlightTheme.BlackOnYellow
+            }`,
+          )}
           style={{ marginBottom: '1rem' }}
         >
           {props.heading}

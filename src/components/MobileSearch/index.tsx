@@ -58,7 +58,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
     this.htmlEl = document.documentElement as HTMLDivElement;
   }
 
-  componentWillReceiveProps(nextProps: IProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: IProps) {
     if (nextProps.isOpen !== this.props.isOpen && this.htmlEl !== null) {
       if (nextProps.isOpen) {
         classToggle(this.htmlEl, 'html--search-active', nextProps.isOpen);

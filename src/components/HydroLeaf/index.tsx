@@ -53,7 +53,7 @@ function HydroLeaf({
           client: PropTypes.object,
         };
 
-        componentWillMount() {
+        UNSAFE_componentWillMount() {
           hydroId += 1;
         }
 

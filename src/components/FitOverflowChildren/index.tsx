@@ -43,7 +43,7 @@ class FitOverflowChildren extends React.Component<IProps, IState> {
     this.items[index] = element;
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (Object.hasOwnProperty.call(window, 'emitter')) {
       (window as any).emitter.on('imageLoaded', (data: { area: string }) => {
         if (data.area === this.props.area) {

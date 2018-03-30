@@ -124,13 +124,13 @@ class SearchPage extends React.Component<IProps, IState> {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (this.props.query) {
       this.loadQueryResults(this.props.query);
     }
   }
 
-  componentWillReceiveProps(nextProps: IProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: IProps) {
     if (nextProps.query !== this.props.query) {
       this.handleUpdate(nextProps.query);
     }

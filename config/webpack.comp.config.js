@@ -1,12 +1,12 @@
 const path = require('path');
 const { generateConfig, baseDir } = require('./webpack.base.config.js');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = generateConfig();
 
-const extractCSS = new ExtractTextPlugin({
+const extractCSS = new MiniCssExtractPlugin({
   filename: 'union.[contenthash].[name].css',
-  allChunks: true,
+  //allChunks: true,
 });
 
 config.bail = true;
@@ -36,10 +36,7 @@ config.module.rules = config.module.rules.concat([
   },
   {
     test: /\.css$/,
-    loader: extractCSS.extract({
-      fallback: 'style-loader',
-      use: 'css-loader?importLoaders=1!postcss-loader',
-    }),
+    loader: [MiniCssExtractPlugin.loader, 'css-loader?importLoaders=1', 'postcss-loader'],
   },
 ]);
 

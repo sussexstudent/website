@@ -4,7 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const { generateConfig, baseDir } = require('./webpack.base.config.js');
 const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
@@ -12,9 +12,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 
 const config = generateConfig();
 
-const extractCSS = new ExtractTextPlugin({
+const extractCSS = new MiniCssExtractPlugin({
   filename: 'union.[contenthash].[name].css',
-  allChunks: true,
 });
 
 config.bail = true;
@@ -68,10 +67,7 @@ config.module.rules = config.module.rules.concat([
   },
   {
     test: /\.css$/,
-    loader: extractCSS.extract({
-      fallback: 'style-loader',
-      use: 'css-loader?importLoaders=1!postcss-loader',
-    }),
+    loader: [MiniCssExtractPlugin.loader, 'css-loader?importLoaders=1', 'postcss-loader'],
   },
 ]);
 

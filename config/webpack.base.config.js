@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const path = require('path');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
+const TsConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -47,6 +47,7 @@ function generateConfig() {
     },
 
     resolve: {
+      plugins: [new TsConfigPathsPlugin({ /*configFile: "./path/to/tsconfig.json" */ })],
       modules: ['node_modules', './src/images'],
       alias: {
         '~components': path.resolve(baseDir, 'src/components/'),
@@ -81,25 +82,7 @@ function generateConfig() {
         __STAGING__: env.staging,
         __PRODUCTION__: env.production,
       }),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: (module) => vendorExp.test(module.resource),
-      }),
-      new webpack.optimize.CommonsChunkPlugin({
-        async: true,
-        minChunks: (module) => /react\-apollo/.test(module.resource),
-      }),
-      new webpack.optimize.CommonsChunkPlugin({
-        async: true,
-        minChunks: 3,
-      }),
-      // new webpack.optimize.CommonsChunkPlugin({
-      //   async: true,
-      //   children: true,
-      //   minChunks: 3,
-      // }),
       new DuplicatePackageCheckerPlugin(),
-      new TsConfigPathsPlugin(),
     ],
     module: {
       rules: [

@@ -1,4 +1,5 @@
 import React from 'react';
+import bind from 'bind-decorator';
 import slugify from '~libs/slugify';
 import HeadingHero from '~components/HeadingHero';
 import VisibleChildWatcher from '~components/VisibleChildWatcher';
@@ -27,15 +28,11 @@ interface IState {
 }
 
 class SectionContentPage extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
+  state = {
+    visibleKey: null,
+  };
 
-    this.handleVisibleChildChange = this.handleVisibleChildChange.bind(this);
-    this.state = {
-      visibleKey: null,
-    };
-  }
-
+  @bind
   handleVisibleChildChange(key: string) {
     this.setState({ visibleKey: key });
   }

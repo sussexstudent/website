@@ -4,11 +4,10 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import REQUEST_CONTACT_DETAILS_MUTATION from './RequestContactDetails.graphql';
 import GET_LISTING_QUERY from './GetListing.graphql';
 import UPDATE_IMAGE_MUTATION from './UpdateImage.graphql';
-import CHANGE_STATE_MUTATION from './ChangeState.graphql';
 import JsonLd from '../../JsonLd';
 import { compose } from 'recompose';
 import { Mutation } from 'react-apollo';
-import { MarketListing, MarketListingState } from '../../../types/market';
+import { MarketListing } from '../../../types/market';
 import Deckchair from '~components/Deckchair';
 import { ImageUpload } from '~components/bookmarket/ImageUpload';
 import { AspectRatio, OneImage } from '~components/OneImage';
@@ -19,10 +18,10 @@ import {
 import Helmet from 'react-helmet';
 import { formatPrice } from '~components/bookmarket/utils';
 import { HandledQuery } from '~components/HandledQuery';
+import {OwnerStatusBanner} from "~components/bookmarket/BookDetail/OwnerStatusBanner";
 
 interface OwnProps extends RouteComponentProps<{ listingId: string }> {
   updateImage(data: any): Promise<{}>;
-  changeState(data: any): Promise<{}>;
   requestContactDetails(data: any): Promise<{}>;
   currentUser: any;
 }
@@ -43,100 +42,7 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
     props.currentUser &&
     listing.listingUser.userId === props.currentUser.userId;
 
-  function renderListingManagement() {
-    return (
-      <div>
-        {listing.state === MarketListingState.Draft ? (
-          <Deckchair
-            header="This is a draft"
-            about="You need to publish your listing students can see it!"
-            color="red"
-          >
-            <button
-              onClick={() =>
-                props.changeState({
-                  variables: {
-                    listingId: listing.pk,
-                    state: MarketListingState.Ready,
-                  },
-                })
-              }
-              type="button"
-              className="Deckchair__button"
-            >
-              Publish
-            </button>
-          </Deckchair>
-        ) : null}
-        {listing.state === MarketListingState.Ready ? (
-          <Deckchair
-            header="This listing is live!"
-            about="Sold the book?"
-            color="green"
-          >
-            <button
-              onClick={() =>
-                props.changeState({
-                  variables: {
-                    listingId: listing.pk,
-                    state: MarketListingState.Unlisted,
-                  },
-                })
-              }
-              type="button"
-              className="Deckchair__button"
-            >
-              Unlist
-            </button>
-          </Deckchair>
-        ) : null}
-        {listing.state === MarketListingState.Unlisted ? (
-          <Deckchair
-            header="This listing unlisted"
-            about="Still want to sell it? Simply relist it!"
-            color="blue"
-          >
-            <button
-              onClick={() =>
-                props.changeState({
-                  variables: {
-                    listingId: listing.pk,
-                    state: MarketListingState.Ready,
-                  },
-                })
-              }
-              type="button"
-              className="Deckchair__button"
-            >
-              Relist
-            </button>
-          </Deckchair>
-        ) : null}{' '}
-        {listing.state === MarketListingState.Expired ? (
-          <Deckchair
-            header="This listing un-listed"
-            about="Still want to sell it? Simply re-list it!"
-            color="blue"
-          >
-            <button
-              onClick={() =>
-                props.changeState({
-                  variables: {
-                    listingId: listing.pk,
-                    state: MarketListingState.Ready,
-                  },
-                })
-              }
-              type="button"
-              className="Deckchair__button"
-            >
-              Relist
-            </button>
-          </Deckchair>
-        ) : null}
-      </div>
-    );
-  }
+
 
   function renderAddImage() {
     return (
@@ -193,7 +99,7 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
         </Link>
       </BreadcrumbBar>
       {isOwner
-        ? listing.image ? renderListingManagement() : renderAddImage()
+        ? listing.image ? <OwnerStatusBanner listingId={listing.pk} state={listing.state} /> : renderAddImage()
         : null}
       <div className="Layout Layout--sidebar-right Layout--sidebar-thin">
         <div className="Listing__book">
@@ -266,6 +172,9 @@ const BookDetailComponent: React.SFC<IProps> = (props: IProps) => {
   );
 };
 
+class UpdateImageMutation extends Mutation<{ updateImage(data: any): Promise<{}> }> {}
+class RequestContactDetailsMutation extends Mutation<{ requestContactDetails(data: any): Promise<{}> }> {}
+
 const BookDetailConnector: React.SFC<IProps> = (props: IProps) => {
   return (
     <GetListingQuery
@@ -275,30 +184,25 @@ const BookDetailConnector: React.SFC<IProps> = (props: IProps) => {
       }}
     >
       {({ data }) => (
-        <Mutation mutation={CHANGE_STATE_MUTATION}>
-          {({ changeState }) => (
-            <Mutation mutation={UPDATE_IMAGE_MUTATION}>
-              {({ updateImage }) => (
-                <Mutation mutation={REQUEST_CONTACT_DETAILS_MUTATION}>
-                  {({ requestContactDetails }) => {
-                    if (!data) {
-                      return;
-                    }
+          <UpdateImageMutation mutation={UPDATE_IMAGE_MUTATION}>
+            {(updateImage) => (
+              <RequestContactDetailsMutation mutation={REQUEST_CONTACT_DETAILS_MUTATION}>
+                {(requestContactDetails) => {
+                  if (!data) {
+                    return;
+                  }
 
-                    return (
-                      <BookDetailComponent
-                        data={data}
-                        changeState={changeState}
-                        updateImage={updateImage}
-                        requestContentDetails={requestContactDetails}
-                      />
-                    );
-                  }}
-                </Mutation>
-              )}
-            </Mutation>
-          )}
-        </Mutation>
+                  return (
+                    <BookDetailComponent
+                      data={data}
+                      updateImage={updateImage}
+                      requestContactDetails={requestContactDetails}
+                    />
+                  );
+                }}
+              </RequestContactDetailsMutation>
+            )}
+          </UpdateImageMutation>
       )}
     </GetListingQuery>
   );

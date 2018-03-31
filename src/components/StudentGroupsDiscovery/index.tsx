@@ -1,4 +1,5 @@
 import React from 'react';
+import bind from 'bind-decorator';
 import { keyBy } from 'lodash';
 import Fuse from 'fuse.js';
 import HydroLeaf from '~components/HydroLeaf';
@@ -24,39 +25,40 @@ interface IState {
   searchValue: string;
   displayIds: number[];
   groups: StudentGroup[];
+  fuse: any;
 }
 
 class StudentGroupListingsQuery extends HandledQuery<Result, {}> {}
 
 class StudentGroupsDiscovery extends React.Component<IProps, IState> {
-  private fuse: Fuse;
-  constructor(props: IProps) {
-    super(props);
+  state = {
+    groups: [],
+    filter: null,
+    searchValue: '',
+    displayIds: [],
+    fuse: new Fuse([]),
+  };
 
-    const groups =
-      props.data && props.data.allGroups
-        ? props.data.allGroups.edges.map((edge) => edge.node)
-        : [];
+  getDerivedStateFromProps(props: IProps) {
+    const groups = props.data && props.data.allGroups
+      ? props.data.allGroups.edges.map((edge) => edge.node)
+      : [];
 
-    this.fuse = new Fuse(groups, { keys: ['name'], id: 'groupId' });
-
-    this.state = {
+    return {
       groups,
-      filter: null,
-      searchValue: '',
       displayIds: groups.map((group) => group.groupId),
-    };
-
-    this.onSearchUpdate = this.onSearchUpdate.bind(this);
+      fuse: new Fuse(groups, { keys: ['name'], id: 'groupId' })
+    }
   }
 
+  @bind
   onSearchUpdate(e: React.ChangeEvent<HTMLInputElement>) {
     const searchValue = e.target.value;
     this.setState({
       searchValue,
       displayIds: searchValue
-        ? this.fuse.search(searchValue)
-        : this.state.groups.map((group) => group.groupId),
+        ? this.state.fuse.search(searchValue)
+        : this.state.groups.map((group: StudentGroup) => group.groupId),
     });
   }
 

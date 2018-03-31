@@ -1,4 +1,5 @@
 import React from 'react';
+import bind from 'bind-decorator';
 import qs from 'query-string';
 import cx from 'classnames';
 import { debounce, orderBy } from 'lodash';
@@ -104,12 +105,8 @@ class SearchPage extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
 
-    this.handleSearch = this.handleSearch.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
-    this.handleAreaChange = this.handleAreaChange.bind(this);
-    this.handleNotFoundDesiredPage = this.handleNotFoundDesiredPage.bind(this);
     this.loadQueryResultsDebounced = debounce(
-      this.loadQueryResults.bind(this),
+      this.loadQueryResults,
       350,
     );
 
@@ -141,6 +138,7 @@ class SearchPage extends React.Component<IProps, IState> {
     ga('send', 'event', 'Search', 'emptyresults', this.props.query);
   }
 
+  @bind
   loadQueryResults(query: string) {
     // alleviate flash of loading when result is cached and gets returned quickly
     let didFinish = false;
@@ -182,16 +180,19 @@ class SearchPage extends React.Component<IProps, IState> {
       });
   }
 
+  @bind
   handleNotFoundDesiredPage() {
     // eslint-disable-next-line no-undef
     ga('send', 'event', 'Search', 'nothappy', this.props.query);
   }
 
+  @bind
   handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     this.setState({ page: 1 }, () => this.handleUpdate());
   }
 
+  @bind
   handleUpdate(forceSearchTerm: string | null = null) {
     const query = forceSearchTerm === null ? this.props.query : forceSearchTerm;
 
@@ -208,15 +209,18 @@ class SearchPage extends React.Component<IProps, IState> {
     }
   }
 
+  @bind
   handlePageChange(nextNumber: number) {
     this.setState({ page: nextNumber }, () => this.handleUpdate());
     this.containerRef && this.containerRef.scrollIntoView(true);
   }
 
+  @bind
   handleMoveToContainerTop() {
     this.containerRef && this.containerRef.scrollIntoView(true);
   }
 
+  @bind
   handleAreaChange(area: SearchAreas) {
     this.setState({ currentArea: area });
   }

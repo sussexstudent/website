@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import bind from 'bind-decorator';
 import { Portal } from 'react-portal';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import SearchPage from '~components/SearchPage';
@@ -56,7 +57,6 @@ class HeaderSearch extends React.Component<IProps, IState> {
   private handleBlur: () => void;
   private handleFocus: () => void;
   private handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  private escapeClose: (e: KeyboardEvent) => void;
 
   private header: HTMLDivElement | null = null;
   private userBarEl: HTMLDivElement | null = null;
@@ -71,29 +71,18 @@ class HeaderSearch extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
 
-    this.state = {
-      query: '',
-      isOpen: false,
-      hasFocus: false,
-      isMobile: null,
-      transitionSize: null,
-    };
-
     this.handleBlur = this.handleHasFocus.bind(this, false);
     this.handleFocus = this.handleHasFocus.bind(this, true);
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleBackdropClose = this.handleBackdropClose.bind(this);
-    this.handleExitClose = this.handleExitClose.bind(this);
-    this.handleQueryClear = this.handleQueryClear.bind(this);
     this.handleSubmit = (e) => e.preventDefault();
-    this.escapeClose = (event) => {
-      if (event.key === 'Escape') {
-        this.setState({ query: '' }, () => {
-          this.handleHasFocus(false);
-        });
-      }
-    };
   }
+
+  state = {
+    query: '',
+    isOpen: false,
+    hasFocus: false,
+    isMobile: null,
+    transitionSize: null,
+  };
 
   componentDidMount() {
     this.header = document.querySelector('.Header');
@@ -108,6 +97,16 @@ class HeaderSearch extends React.Component<IProps, IState> {
     }
   }
 
+  @bind
+  escapeClose(event) {
+    if (event.key === 'Escape') {
+      this.setState({ query: '' }, () => {
+        this.handleHasFocus(false);
+      });
+    }
+  }
+
+  @bind
   handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({ query: e.target.value });
   }
@@ -131,7 +130,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
             const distance = Math.abs(getDistanceFromUserBar(this.userBarEl));
             if (distance >= 10) {
               const time = Math.round(distance * 3.85);
-              setTimeout(this.handleOpen.bind(this), time);
+              setTimeout(this.handleOpen, time);
               (smoothscroll as any)(this.userBarEl, time); // todo
             } else {
               window.scrollTo(0, getCoords(this.userBarEl).top);

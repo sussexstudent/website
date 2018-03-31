@@ -18,22 +18,16 @@ interface IState {
   this is all quite horrible
 */
 class FitOverflowChildren extends React.Component<IProps, IState> {
-  private items: any[];
+  private items: any[] = [];
   private container: any;
   static defaultProps = {
     area: '',
   };
 
-  constructor(props: IProps) {
-    super(props);
-
-    this.items = [];
-    this.state = {
-      visibleToIndex: 0,
-      needsHeight: false,
-    };
-  }
-
+  state = {
+    visibleToIndex: 0,
+    needsHeight: false,
+  };
   // eslint-disable-next-line
   registerItem(element: HTMLElement, index: number) {
     if (element == null) {
@@ -57,7 +51,7 @@ class FitOverflowChildren extends React.Component<IProps, IState> {
     this.updateSize();
     window.addEventListener(
       'resize',
-      debounce(this.updateSize.bind(this), 100),
+      debounce(this.updateSize, 100),
     );
   }
 
@@ -81,6 +75,7 @@ class FitOverflowChildren extends React.Component<IProps, IState> {
     return count;
   }
 
+  @bind
   updateSize() {
     if (!this.container) {
       return;

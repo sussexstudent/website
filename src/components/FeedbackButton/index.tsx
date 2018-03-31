@@ -1,4 +1,5 @@
 import React from 'react';
+import bind from 'bind-decorator';
 
 interface IProps {
   buttonText: string;
@@ -12,16 +13,11 @@ interface IState {
 }
 
 class FeedbackButton extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
+  state = {
+    feedbackGivenKeys: [],
+  };
 
-    this.handleFeedbackClicked = this.handleFeedbackClicked.bind(this);
-
-    this.state = {
-      feedbackGivenKeys: [],
-    };
-  }
-
+  @bind
   handleFeedbackClicked() {
     this.props.onFeedback();
     this.setState({

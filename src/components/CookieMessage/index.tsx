@@ -1,4 +1,5 @@
 import React from 'react';
+import bind from 'bind-decorator';
 
 interface IProps {}
 
@@ -7,14 +8,9 @@ interface IState {
 }
 
 class CookieMessage extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
+  state = { hidden: false };
 
-    this.state = { hidden: false };
-
-    this.handleHide = this.handleHide.bind(this);
-  }
-
+  @bind
   handleHide() {
     this.setState({ hidden: true });
   }

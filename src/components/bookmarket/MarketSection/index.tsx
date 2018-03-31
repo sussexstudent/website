@@ -1,14 +1,11 @@
 import React from 'react';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
 import { Link, RouteComponentProps } from 'react-router-dom';
-
-import SectionListingsQuery from './SectionListings.graphql';
-import { compose } from 'recompose';
-import { graphql, ChildProps } from 'react-apollo';
-import Loader from '~components/Loader';
+import SECTION_LISTINGS_QUERY from './SectionListings.graphql';
 import { MarketListing, MarketSection } from '../../../types/market';
 import { ListingList } from '~components/bookmarket/ListingList';
 import Helmet from 'react-helmet';
+import {HandledQuery} from "~components/HandledQuery";
 
 interface OwnProps extends RouteComponentProps<{ sectionSlug: string }> {}
 
@@ -19,56 +16,49 @@ interface Result {
   marketSection: MarketSection;
 }
 
-type IProps = OwnProps & ChildProps<{}, Result>;
+type IProps = OwnProps;
 
-const MarketSectionComponent: React.SFC<IProps> = (props: IProps) => {
-  if (props.data && props.data.loading) {
-    return <Loader />;
-  }
+class SectionListingsQuery extends HandledQuery<Result, { filters: { section: string }, sectionSlug: string }> {}
 
-  if (
-    !props.data ||
-    !props.data.allMarketListings ||
-    !props.data.allMarketListings.edges
-  ) {
-    return <h1>Error</h1>;
-  }
+const MarketSection: React.SFC<IProps> = (props: IProps) => {
 
-  const edges = props.data.allMarketListings.edges;
+
 
   return (
-    <div>
-      <Helmet
-        title={props.data.marketSection && props.data.marketSection.title}
-      />
+    <SectionListingsQuery query={SECTION_LISTINGS_QUERY} variables={{
+      filters: {
+        section: props.match.params.sectionSlug,
+      },
+      sectionSlug: props.match.params.sectionSlug,
+    }}>
+      {({ data }) => {
+        if (!data) { return }
+        const edges = data.allMarketListings.edges;
 
-      <BreadcrumbBar>
-        <Link to="/book-market/">Book Market</Link>
-        <Link
-          to={`/book-market/section/${props.data.marketSection &&
-            props.data.marketSection.slug}`}
-        >
-          {props.data.marketSection && props.data.marketSection.title}
-        </Link>
-      </BreadcrumbBar>
-      <div className="Layout Layout--sidebar-right">
-        <ListingList items={edges.map((edge) => edge.node)} />
-      </div>
-    </div>
-  );
+        return (
+          <div>
+            <Helmet
+              title={data.marketSection && data.marketSection.title}
+            />
+
+            <BreadcrumbBar>
+              <Link to="/book-market/">Book Market</Link>
+              <Link
+                to={`/book-market/section/${data.marketSection &&
+                data.marketSection.slug}`}
+              >
+                {data.marketSection && data.marketSection.title}
+              </Link>
+            </BreadcrumbBar>
+            <div className="Layout Layout--sidebar-right">
+              <ListingList items={edges.map((edge) => edge.node)}/>
+            </div>
+          </div>
+        );
+      }}
+    </SectionListingsQuery>
+  )
 };
 
-const MarketSection = compose<OwnProps, IProps>(
-  graphql<Result, IProps>(SectionListingsQuery, {
-    options: (props) => ({
-      variables: {
-        filters: {
-          section: props.match.params.sectionSlug,
-        },
-        sectionSlug: props.match.params.sectionSlug,
-      },
-    }),
-  }),
-)(MarketSectionComponent);
 
 export { MarketSection };

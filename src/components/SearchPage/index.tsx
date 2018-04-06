@@ -105,10 +105,7 @@ class SearchPage extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
 
-    this.loadQueryResultsDebounced = debounce(
-      this.loadQueryResults,
-      350,
-    );
+    this.loadQueryResultsDebounced = debounce(this.loadQueryResults, 350);
 
     this.state = {
       page: parseInt(qs.parse(location.search).page, 10) || 1,

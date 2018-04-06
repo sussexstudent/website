@@ -61,7 +61,7 @@ interface IState {
   isAdminOpen: boolean;
   isSearchOpen: boolean;
   userData: null;
-  logoColor: string | null;
+  logoColor: string;
   activeItem: MenuItem | null;
 }
 
@@ -190,5 +190,6 @@ class Header extends React.Component<IProps, IState> {
 
 export default HydroLeaf({
   className: 'Header',
+  name: 'Header',
   container: (props) => <header {...props} />,
 })(Header);

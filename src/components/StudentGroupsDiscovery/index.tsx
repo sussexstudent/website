@@ -6,7 +6,7 @@ import HydroLeaf from '~components/HydroLeaf';
 import OrgansiationGrid, { StudentGroup } from '~components/OrganisationGrid';
 import STUDENT_GROUP_LISTING_QUERY from './StudentGroupListings.graphql';
 import { Provider } from '../../types/hydro';
-import {HandledQuery} from "~components/HandledQuery";
+import { HandledQuery } from '~components/HandledQuery';
 
 interface Result {
   allGroups: {
@@ -40,15 +40,16 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
   };
 
   getDerivedStateFromProps(props: IProps) {
-    const groups = props.data && props.data.allGroups
-      ? props.data.allGroups.edges.map((edge) => edge.node)
-      : [];
+    const groups =
+      props.data && props.data.allGroups
+        ? props.data.allGroups.edges.map((edge) => edge.node)
+        : [];
 
     return {
       groups,
       displayIds: groups.map((group) => group.groupId),
-      fuse: new Fuse(groups, { keys: ['name'], id: 'groupId' })
-    }
+      fuse: new Fuse(groups, { keys: ['name'], id: 'groupId' }),
+    };
   }
 
   @bind
@@ -101,16 +102,16 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
 
 function StudentGroupListings() {
   return (
-    <StudentGroupListingsQuery
-      query={STUDENT_GROUP_LISTING_QUERY}
-    >
+    <StudentGroupListingsQuery query={STUDENT_GROUP_LISTING_QUERY}>
       {({ data }) => {
-        if (!data) { return; }
+        if (!data) {
+          return;
+        }
 
-        return <StudentGroupsDiscovery data={data}/>;
+        return <StudentGroupsDiscovery data={data} />;
       }}
     </StudentGroupListingsQuery>
-  )
+  );
 }
 
 export default HydroLeaf({ providers: [Provider.Apollo] })(

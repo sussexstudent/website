@@ -7,7 +7,7 @@ import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
 import Loader from '../Loader/index';
 import EventListQuery from './EventList.graphql';
 import { GranuleChildProps } from '@brudil/granule';
-import {GranuleQuery} from "~components/Query";
+import { GranuleQuery } from '~components/Query';
 
 interface Result {
   allEvents: {

@@ -1,7 +1,7 @@
 import React from 'react';
 import CONTENT_PAGE_QUERY from './ContentPageQuery.graphql';
 import pageMap from '~components/content/pageMap';
-import {HandledQuery} from "~components/HandledQuery";
+import { HandledQuery } from '~components/HandledQuery';
 
 interface OwnProps {
   path: string;
@@ -17,7 +17,6 @@ interface Result {
 
 class ContentPageQuery extends HandledQuery<Result, {}> {}
 
-
 type IProps = OwnProps;
 
 const ContentPage: React.SFC<IProps> = (props: IProps) => {
@@ -29,7 +28,9 @@ const ContentPage: React.SFC<IProps> = (props: IProps) => {
       }}
     >
       {({ data }) => {
-        if (!data) { return }
+        if (!data) {
+          return;
+        }
 
         const page = data.page;
         const Component = pageMap.hasOwnProperty(page.type)

@@ -123,4 +123,5 @@ class TweetList extends React.Component<IProps, IState> {
 
 export default HydroLeaf({
   className: 'u-extend-flex',
+  name: 'TweetList',
 })(TweetList);

@@ -4,7 +4,7 @@ import formatDistance from 'date-fns/formatDistance';
 import GROUP_DETAIL_QUERY from './GroupDetail.graphql';
 import CopyToClipboardButton from '../../../CopyToClipboardButton/index';
 import { StudentGroup } from '~components/OrganisationGrid';
-import {HandledQuery} from "~components/HandledQuery";
+import { HandledQuery } from '~components/HandledQuery';
 
 interface RouteParams {
   groupId: number;
@@ -35,10 +35,7 @@ function FalmerStudentGroupsDetailComponent({ data: { group } }: IProps) {
           {group.mslGroup ? (
             <li>
               MSL linked, last sync:{' '}
-              {formatDistance(
-                new Date(),
-                new Date(group.mslGroup.lastSync),
-              )}{' '}
+              {formatDistance(new Date(), new Date(group.mslGroup.lastSync))}{' '}
               ago
             </li>
           ) : null}
@@ -52,14 +49,14 @@ function FalmerStudentGroupsDetailConnector(props: OwnProps) {
   return (
     <GroupDetailQuery query={GROUP_DETAIL_QUERY}>
       {({ data }) => {
-        if (!data) { return }
+        if (!data) {
+          return;
+        }
 
-        return (
-          <FalmerStudentGroupsDetailComponent {...props} data={data} />
-        )
+        return <FalmerStudentGroupsDetailComponent {...props} data={data} />;
       }}
     </GroupDetailQuery>
-  )
+  );
 }
 
 export default FalmerStudentGroupsDetailConnector;

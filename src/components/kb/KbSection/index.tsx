@@ -4,7 +4,7 @@ import KB_SECTION_QUERY from './KbSectionQuery.graphql';
 import { Section } from '../../../types/kb';
 import { ContentBreadcrumbBar } from '~components/BreadcrumbBar';
 import ContentCard from '~components/ContentCard';
-import {HandledQuery} from "~components/HandledQuery";
+import { HandledQuery } from '~components/HandledQuery';
 
 interface RouteParams {
   sectionSlug: string;
@@ -64,14 +64,14 @@ function KbSectionConnector(props: OwnProps) {
       }}
     >
       {({ data }) => {
-        if (!data) {return}
+        if (!data) {
+          return;
+        }
 
-        return (
-          <KbSectionComponent {...props} data={data} />
-        )
+        return <KbSectionComponent {...props} data={data} />;
       }}
     </KbSectionQuery>
-  )
+  );
 }
 
 export default KbSectionConnector;

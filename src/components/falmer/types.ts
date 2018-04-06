@@ -3,6 +3,7 @@ export interface FalmerUser {
   isStaff: boolean;
   identifier: string;
   name: string;
+  userId: number;
 }
 
 export interface AuthState {

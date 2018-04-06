@@ -98,7 +98,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
   }
 
   @bind
-  escapeClose(event) {
+  escapeClose(event: KeyboardEvent) {
     if (event.key === 'Escape') {
       this.setState({ query: '' }, () => {
         this.handleHasFocus(false);
@@ -144,6 +144,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
     });
   }
 
+  @bind
   handleOpen() {
     if (this.dummyInput && this.header) {
       this.setState({
@@ -159,6 +160,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
     }
   }
 
+  @bind
   handleClose() {
     this.setState({
       isOpen: false,
@@ -169,12 +171,14 @@ class HeaderSearch extends React.Component<IProps, IState> {
     document.removeEventListener('keyup', this.escapeClose);
   }
 
+  @bind
   handleBackdropClose() {
     if (this.state.query === '') {
       this.handleHasFocus(false);
     }
   }
 
+  @bind
   handleExitClose(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     this.setState({ query: '' }, () => {
@@ -182,6 +186,7 @@ class HeaderSearch extends React.Component<IProps, IState> {
     });
   }
 
+  @bind
   handleQueryClear(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     this.setState({ query: '' }, () => this.input && this.input.focus());

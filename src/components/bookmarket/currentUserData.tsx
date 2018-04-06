@@ -1,4 +1,5 @@
-import { graphql } from 'react-apollo';
+import React from 'react';
+import { Query } from 'react-apollo';
 import CURRENT_USER_QUERY from './CurrentUser.graphql';
 import { FalmerUser } from '~components/falmer/types';
 
@@ -11,13 +12,15 @@ export interface CurrentUserProps {
   currentUser: FalmerUser;
 }
 
-export const currentUserData = () =>
-  graphql<Result>(CURRENT_USER_QUERY, {
-    props({ data, ownProps }) {
-      return {
-        ...ownProps,
+class CurrentUserQueryComponent extends Query<Result> {}
+
+export const CurrentUserQuery = (props: { render: any }) => (
+  <CurrentUserQueryComponent query={CURRENT_USER_QUERY}>
+    {({ data }) =>
+      props.render({
         isAuthenticated: data && data.viewer !== null,
         currentUser: data && data.viewer,
-      };
-    },
-  }) as any;
+      })
+    }
+  </CurrentUserQueryComponent>
+);

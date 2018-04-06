@@ -1,5 +1,4 @@
 import React from 'react';
-import { lifecycle } from 'recompose';
 import classToggle from '~libs/dom/classToggle';
 import * as ReactDOM from 'react-dom';
 
@@ -94,53 +93,50 @@ const defaultSizes = [
   1680,
 ];
 
-const OneImageComponent: React.SFC<IProps> = (props) => {
-  const sizes = props.sizes || defaultSizes;
-
-  const img = (
-    <img
-      className={`ResponsiveImage lazyload ${props.className}`}
-      src={generateUrl(props, { width: sizes[0] })}
-      data-sizes={props.mediaSizes || 'auto'}
-      srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-      data-srcset={sizes.map(
-        (width) => `${generateUrl(props, { width })} ${width}w`,
-      )}
-    />
-  );
-
-  if (props.withoutContainer) {
-    return img;
-  }
-
-  const containerProps =
-    typeof props.aspectRatio === 'string'
-      ? {
-          className: `u-responsive-ratio u-responsive-ratio--${
-            props.aspectRatio
-          }`,
-        }
-      : {
-          className: 'u-responsive-ratio',
-          style: {
-            paddingBottom: `${props.aspectRatio.height /
-              props.aspectRatio.width *
-              100}%`,
-          },
-        };
-
-  return <div {...containerProps}>{img}</div>;
-};
-
-const OneImage = lifecycle({
+class OneImage extends React.Component<IProps> {
   componentDidUpdate(prevProps: IProps) {
     if (this.props.src !== prevProps.src) {
       const el = ReactDOM.findDOMNode(this as any);
       classToggle(el, 'lazyloaded', false);
       classToggle(el, 'lazyload', true);
     }
-  },
-})(OneImageComponent);
+  }
+
+  render() {
+    const { withoutContainer, className, mediaSizes, aspectRatio } = this.props;
+    const sizes = this.props.sizes || defaultSizes;
+
+    const img = (
+      <img
+        className={`ResponsiveImage lazyload ${className}`}
+        src={generateUrl(this.props, { width: sizes[0] })}
+        data-sizes={mediaSizes || 'auto'}
+        srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        data-srcset={sizes.map(
+          (width: number) => `${generateUrl(this.props, { width })} ${width}w`,
+        )}
+      />
+    );
+
+    if (withoutContainer) {
+      return img;
+    }
+
+    const containerProps =
+      typeof aspectRatio === 'string'
+        ? {
+            className: `u-responsive-ratio u-responsive-ratio--${aspectRatio}`,
+          }
+        : {
+            className: 'u-responsive-ratio',
+            style: {
+              paddingBottom: `${aspectRatio.height / aspectRatio.width * 100}%`,
+            },
+          };
+
+    return <div {...containerProps}>{img}</div>;
+  }
+}
 
 interface IBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
   aspectRatio?: AspectRatioInput;

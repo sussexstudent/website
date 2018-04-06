@@ -7,7 +7,7 @@ import { MarketListing } from '../../../types/market';
 import { ListingList } from '~components/bookmarket/ListingList';
 import { Field, Form } from 'react-final-form';
 import Helmet from 'react-helmet';
-import {HandledQuery} from "~components/HandledQuery";
+import { HandledQuery } from '~components/HandledQuery';
 
 interface OwnProps extends RouteComponentProps<{ sectionSlug?: string }> {}
 
@@ -83,11 +83,12 @@ function MarketSearch(props: OwnProps) {
       }}
     >
       {({ data }) => {
-        if (!data) { return; }
+        if (!data) {
+          return;
+        }
 
         return <MarketSearchComponent {...props} data={data} />;
       }}
-
     </MarketSearchQuery>
   );
 }

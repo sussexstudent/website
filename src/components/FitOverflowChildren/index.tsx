@@ -49,10 +49,7 @@ class FitOverflowChildren extends React.Component<IProps, IState> {
 
   componentDidMount() {
     this.updateSize();
-    window.addEventListener(
-      'resize',
-      debounce(this.updateSize, 100),
-    );
+    window.addEventListener('resize', debounce(this.updateSize, 100));
   }
 
   getItems() {

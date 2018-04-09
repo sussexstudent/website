@@ -25,21 +25,21 @@ interface IState {
   searchValue: string;
   displayIds: number[];
   groups: StudentGroup[];
-  fuse: any;
+  fuse: Fuse | null;
 }
 
 class StudentGroupListingsQuery extends HandledQuery<Result, {}> {}
 
 class StudentGroupsDiscovery extends React.Component<IProps, IState> {
-  state = {
+  state: IState = {
     groups: [],
     filter: null,
     searchValue: '',
     displayIds: [],
-    fuse: new Fuse([]),
+    fuse: null,
   };
 
-  getDerivedStateFromProps(props: IProps) {
+  static getDerivedStateFromProps(props: IProps) {
     const groups =
       props.data && props.data.allGroups
         ? props.data.allGroups.edges.map((edge) => edge.node)
@@ -54,11 +54,16 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
 
   @bind
   onSearchUpdate(e: React.ChangeEvent<HTMLInputElement>) {
+    const fuse = this.state.fuse;
+    if (fuse === null) {
+      return;
+    }
+
     const searchValue = e.target.value;
     this.setState({
       searchValue,
       displayIds: searchValue
-        ? this.state.fuse.search(searchValue)
+        ? fuse.search(searchValue)
         : this.state.groups.map((group: StudentGroup) => group.groupId),
     });
   }
@@ -107,7 +112,7 @@ function StudentGroupListings() {
         if (!data) {
           return;
         }
-
+        console.log({ data });
         return <StudentGroupsDiscovery data={data} />;
       }}
     </StudentGroupListingsQuery>

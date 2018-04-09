@@ -2,7 +2,7 @@ import React from 'react';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import REQUEST_CONTACT_DETAILS_MUTATION from './RequestContactDetails.graphql';
-import GET_LISTING_QUERY from './GetListing.graphql';
+import GET_LISTING_QUERY from './Getlisting.graphql';
 import UPDATE_IMAGE_MUTATION from './UpdateImage.graphql';
 import JsonLd from '../../JsonLd';
 import { Mutation } from 'react-apollo';
@@ -39,14 +39,14 @@ class RequestContactDetailsMutation extends Mutation<{
 
 interface RenderProps {
   user: CurrentUserProps;
-  listing: any;
+  listingQuery: any;
   updateImage: any;
   requestContactDetails: any;
 }
 
 const Composed = adopt<RenderProps, OwnProps>({
   user: CurrentUserQuery,
-  listing: ({ render, match }) => (
+  listingQuery: ({ render, match }) => (
     <GetListingQuery
       query={GET_LISTING_QUERY}
       variables={{
@@ -71,7 +71,9 @@ const Composed = adopt<RenderProps, OwnProps>({
 const BookDetail: React.SFC<IProps> = (props: IProps) => {
   return (
     <Composed {...props}>
-      {({ listing, user, updateImage, requestContactDetails }) => {
+      {({ listingQuery, user, updateImage, requestContactDetails }) => {
+        const listing = listingQuery.data.marketListing;
+
         const isOwner =
           user.isAuthenticated &&
           user.currentUser &&

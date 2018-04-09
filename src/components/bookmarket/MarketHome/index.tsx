@@ -33,7 +33,7 @@ class MarketHomeQuery extends HandledQuery<Result, {}> {}
 
 interface RenderProps {
   user: CurrentUserProps;
-  market: Result;
+  market: { data: Result };
 }
 
 const Compose = adopt<RenderProps>({
@@ -47,9 +47,7 @@ const MarketHomeComponent: React.SFC<IProps> = (props) => {
   return (
     <Compose>
       {(rProps) => {
-        console.log(rProps);
-
-        const data = rProps.market;
+        const { data } = rProps.market;
 
         const onSearchSubmit = (data: any) =>
           (props as any).history.push(

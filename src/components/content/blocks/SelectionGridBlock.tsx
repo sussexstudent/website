@@ -3,6 +3,7 @@ import { StreamFieldBlock } from '~components/content/types';
 import { FalmerImage } from '../../../types/events';
 import SelectionGridItem from '~components/SelectionGridItem';
 import SelectionGrid from '~components/SelectionGrid';
+import { normaliseContentLink } from '~components/content/utils';
 
 interface SelectionGridItemData {
   title: string;
@@ -20,7 +21,7 @@ export const SelectionGridBlock: StreamFieldBlock<SelectionGridItemData[]> = ({
       ) => (
         <SelectionGridItem
           title={item.title}
-          link={item.link}
+          link={normaliseContentLink(item.link)}
           imageURL={item.image.resource}
         />
       ))}

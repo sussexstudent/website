@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { StreamFieldBlock } from '~components/content/types';
+import { normaliseContentLink } from '~components/content/utils';
 
 export const ExternalLink: StreamFieldBlock<{
   link: string;
@@ -8,7 +9,7 @@ export const ExternalLink: StreamFieldBlock<{
   title: string;
 }> = ({ block: { link, title } }) => {
   return (
-    <a className="Button" href={link}>
+    <a className="Button" href={normaliseContentLink(link)}>
       {title}
     </a>
   );

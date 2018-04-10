@@ -47,7 +47,8 @@ const MarketHomeComponent: React.SFC<IProps> = (props) => {
   return (
     <Compose>
       {(rProps) => {
-        const { data } = rProps.market;
+        const { user, market } = rProps;
+        const { data } = market;
 
         const onSearchSubmit = (data: any) =>
           (props as any).history.push(
@@ -100,7 +101,7 @@ const MarketHomeComponent: React.SFC<IProps> = (props) => {
               </main>
               <aside>
                 <ul className="List--reset">
-                  {props.isAuthenticated ? (
+                  {user.isAuthenticated ? (
                     <li>
                       <Link
                         className="Button Button--color-green"
@@ -112,7 +113,7 @@ const MarketHomeComponent: React.SFC<IProps> = (props) => {
                   ) : (
                     <em>Log in to list book</em>
                   )}
-                  {props.isAuthenticated ? (
+                  {user.isAuthenticated ? (
                     <li>
                       <Link className="Button" to="/book-market/my-listings">
                         Your listings

@@ -3,13 +3,8 @@ import cx from 'classnames';
 import { match } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import { Helmet } from 'react-helmet';
-import isBefore from 'date-fns/isBefore';
 import startOfDay from 'date-fns/startOfDay';
 import addMonths from 'date-fns/addMonths';
-import setHours from 'date-fns/setHours';
-import addDays from 'date-fns/addDays';
-import isSameDay from 'date-fns/isSameDay';
-import formatDate from 'date-fns/format';
 import EventsCalenderItem from './EventsCalenderItem';
 import EventListingsQuery from './EventListings.graphql';
 import EventListingsBrandingPeriodQuery from './EventListingsBrandingPeriod.graphql';
@@ -21,11 +16,6 @@ import {
   splitEventsInToParts,
 } from '~components/EventsApplication/utils';
 import { compose } from 'recompose';
-
-const DATE_TODAY = new Date();
-const DATE_TOMORROW = addDays(DATE_TODAY, 1);
-
-const weekFromNow = setHours(addDays(new Date(), 7), 0);
 
 interface RouterParams {
   brandSlug?: string;
@@ -98,42 +88,20 @@ function EventsCalender({
           <div className="EventsCalender__section" key={sectionTitle}>
             <h2 className="EventsCalender__section-title">{sectionTitle}</h2>
             {parts.map((chunk) => (
+              <div>
+                <h3 className={cx('EventsCalender__item-date-kicker')}>
+                  {getSmartDate(chunk[0])}
+                </h3>
               <div className="EventsCalender__section-items">
                 {chunk.map((part: EventPart, index: number) => {
-                  const isFirstOfDate =
-                    index < 1 ||
-                    getSmartDate(chunk[index - 1]) !== getSmartDate(part);
                   return (
                     <div className="EventsCalender__part-container" key={index}>
-                      {isFirstOfDate ? (
-                        <h3 className={cx('EventsCalender__item-date-kicker')}>
-                          {getSmartDate(part)}{' '}
-                          <span className="EventsCalender__item-date-kicker--continuation">
-                            {formatDate(
-                              part.date,
-                              isSameDay(part.date, DATE_TODAY) ||
-                              isSameDay(part.date, DATE_TOMORROW)
-                                ? ' - Do MMMM'
-                                : isBefore(part.date, weekFromNow)
-                                  ? 'Do MMMM'
-                                  : 'MMMM',
-                            )}
-                          </span>
-                        </h3>
-                      ) : (
-                        <h3
-                          className={cx(
-                            'EventsCalender__item-date-kicker EventsCalender__item-date-kicker--continuation',
-                          )}
-                        >
-                          {formatDate(part.date, 'dddd Do MMMM')}
-                        </h3>
-                      )}
                       <EventsCalenderItem part={part} useAnchors={useAnchors} />
                     </div>
                   );
                 })}
               </div>
+                </div>
             ))}
           </div>
         ))}

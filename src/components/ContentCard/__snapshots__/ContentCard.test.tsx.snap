@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with an anchor 1`] = `
+<div
+  className="ContentCard"
+>
+  <span
+    className="u-position-anchor"
+    id="example"
+  />
+  <h1>
+    All examples
+  </h1>
+</div>
+`;
+
+exports[`renders without anchor 1`] = `
+<div
+  className="ContentCard"
+>
+  <h1>
+    No anchor example
+  </h1>
+</div>
+`;

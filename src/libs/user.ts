@@ -75,10 +75,10 @@ function auth() {
 }
 
 function det() {
-  if (localStorage.getItem('blocking') != null) {
+  if (window.localStorage.getItem('blocking') != null) {
     try {
       (window as any).blocking = JSON.parse(
-        localStorage.getItem('blocking') || '{"blocking": false}',
+        window.localStorage.getItem('blocking') || '{"blocking": false}',
       ).enabled;
       return (window as any).blocking;
     } catch (e) {
@@ -88,11 +88,11 @@ function det() {
   } else {
     fetch('https://du9l8eemj97rm.cloudfront.net/showads.js')
       .then(() => {
-        localStorage.setItem('blocking', JSON.stringify({ enabled: false }));
+        window.localStorage.setItem('blocking', JSON.stringify({ enabled: false }));
         (window as any).blocking = false;
       })
       .catch(() => {
-        localStorage.setItem('blocking', JSON.stringify({ enabled: true }));
+        window.localStorage.setItem('blocking', JSON.stringify({ enabled: true }));
         (window as any).blocking = true;
       });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
+import { render, Simulate } from 'react-testing-library';
 
 import CookieMessage from './index';
 
@@ -10,7 +10,10 @@ it('renders a snapshot', () => {
 });
 
 it('hides on close', () => {
-  const wrapper = shallow(<CookieMessage />);
-  wrapper.find('button').simulate('click');
-  expect(wrapper.type()).toBeFalsy();
+  const { getByText, container } = render(<CookieMessage />);
+  const closeButton = getByText('Close');
+
+  Simulate.click(closeButton);
+
+  expect(container.firstChild).toBeNull();
 });

@@ -82,6 +82,7 @@
     "promise": "^8.0.1",
     "react-router": "^4.2.0",
     "react-test-renderer": "^16.3.1",
+    "react-testing-library": "^2.1.0",
     "rimraf": "^2.6.2",
     "strip-ansi": "^4.0.0",
     "style-loader": "^0.20.3",
@@ -190,15 +191,17 @@
       "<rootDir>/(build|docs|node_modules)/",
       "/src/projects/app/"
     ],
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
-      "src/**/*.{ts,tsx}"
+      "src/**/*.{ts,tsx}",
+      "!src/**/*.{svg,d.ts,stories.tsx}"
     ],
     "transform": {
       "^.+\\.tsx?$": "ts-jest",
       "^.+\\.jsx?$": "babel-jest"
     },
+    "setupFiles": ["<rootDir>/__mocks__/browserMocks.js"],
     "setupTestFrameworkScriptFile": "<rootDir>/config/setupTests.js",
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "moduleFileExtensions": [

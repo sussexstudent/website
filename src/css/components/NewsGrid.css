@@ -43,7 +43,6 @@
 
   background: var(--color__brand-yellow);
   color: var(--color__grey-slate);
-  @mixin type brevier;
   align-self: flex-start;
   padding: 0.1rem 0.4rem;
   font-family: var(--type__primary);

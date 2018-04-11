@@ -15,7 +15,7 @@ const Homepage = () => (
           <div className="ContentBlock__heading">News</div>
           <div className="u-h">{'{unionnewslist}'}</div>
           <div className="app__news" />
-          <a className="NewsViewMore" href="/news">
+          <a className="NewsViewMore type-brevier" href="/news">
             Read more news stories
           </a>
         </div>

@@ -110,7 +110,7 @@ class TweetList extends React.Component<IProps, IState> {
           ))}
         </FitOverflowChildren>
         <a
-          className="TweetList__view-more"
+          className="TweetList__view-more type-brevier"
           href="https://twitter.com/USSU/lists/ussu"
         >
           View on Twitter

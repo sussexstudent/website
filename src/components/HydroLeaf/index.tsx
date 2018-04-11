@@ -35,8 +35,6 @@ interface ISerialProps {
   client?: any;
 }
 
-/* eslint-disable react/no-danger */
-/* eslint-disable no-inner-declarations */
 function HydroLeaf({
   contextToProps = {},
   className = '',
@@ -47,7 +45,6 @@ function HydroLeaf({
 }: HydroLeafOptions = {}) {
   return function HydroLeafHOC(Component: any) {
     if (process.env.COMP_NODE) {
-      // eslint-disable-next-line
       class DeHydro extends React.Component<IDeHydroProps> {
         static contextTypes = {
           client: PropTypes.object,
@@ -141,7 +138,5 @@ function HydroLeaf({
     return Component;
   };
 }
-/* eslint-enable react/no-danger */
-/* eslint-enable no-inner-declarations */
 
 export default HydroLeaf;

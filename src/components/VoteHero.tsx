@@ -1,6 +1,5 @@
 import React from 'react';
 
-/* eslint-disable */
 const svg = (
   <svg
     width="310px"
@@ -43,7 +42,6 @@ const svg = (
     </g>
   </svg>
 );
-/* eslint-enable */
 
 const VoteHero = () => (
   <a className="FlexibleHero FlexibleHero--link VoteHero" href="/vote">

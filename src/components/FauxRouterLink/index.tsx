@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// eslint-disable-next-line jsx-a11y/anchor-has-content
 export default ({ href }: { href: string }) => (
   <Link className="u-faux-link" to={href} />
 );

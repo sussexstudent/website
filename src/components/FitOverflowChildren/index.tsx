@@ -28,7 +28,7 @@ class FitOverflowChildren extends React.Component<IProps, IState> {
     visibleToIndex: 0,
     needsHeight: false,
   };
-  // eslint-disable-next-line
+
   registerItem(element: HTMLElement, index: number) {
     if (element == null) {
       return;

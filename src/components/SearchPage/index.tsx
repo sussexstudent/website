@@ -19,8 +19,6 @@ enum SearchAreas {
   Pages = 'pages',
 }
 
-/* eslint-disable */
-
 function getPayloadMetadata(payload: { [key: string]: Object[] }) {
   const areaTitlesMap: { [key: string]: string } = {
     [SearchAreas.Top]: 'Top results',
@@ -131,7 +129,6 @@ class SearchPage extends React.Component<IProps, IState> {
   }
 
   onEmptyResults() {
-    // eslint-disable-next-line no-undef
     ga('send', 'event', 'Search', 'emptyresults', this.props.query);
   }
 
@@ -179,7 +176,6 @@ class SearchPage extends React.Component<IProps, IState> {
 
   @bind
   handleNotFoundDesiredPage() {
-    // eslint-disable-next-line no-undef
     ga('send', 'event', 'Search', 'nothappy', this.props.query);
   }
 

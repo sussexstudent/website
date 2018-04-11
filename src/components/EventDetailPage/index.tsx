@@ -48,7 +48,6 @@ interface OwnProps extends RouteComponentProps<RouteParams> {}
 
 type IProps = OwnProps & ChildProps<OwnProps, any>;
 
-/* eslint-disable */
 class EventDetailPage extends React.Component<IProps> {
   componentDidUpdate() {
     if (!this.props.data || !this.props.data.event) {

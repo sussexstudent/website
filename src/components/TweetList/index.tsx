@@ -39,7 +39,6 @@ class TweetList extends React.Component<IProps, IState> {
   componentDidMount() {
     if (this.listEL) {
       const { height } = this.listEL.getBoundingClientRect();
-      // eslint-disable-next-line
       this.setState({ height });
     }
     const t = perf.recordTime(`TweetList: ${this.props.query}`, 'fetch');

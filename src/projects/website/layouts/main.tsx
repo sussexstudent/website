@@ -42,7 +42,6 @@ const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => (
   <div className="Body" id="top">
     <div
       style={{ display: 'none' }}
-      // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{
         __html: `${MSLTag('ControlPanel')}${MSLTag('Admin')}${mslLogout}`,
       }}

@@ -67,7 +67,6 @@ function auth() {
     page: getPageItems(),
     actionBound: () => {
       if (typeof (window as any).__doPostBack === 'function' && button) {
-        // eslint-disable-next-line no-undef
         (window as any).__doPostBack(button.id.replace(/_/gi, '$'), 0);
       }
     },

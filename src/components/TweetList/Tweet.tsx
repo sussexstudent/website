@@ -16,8 +16,6 @@ const Tweet: React.SFC<IProps> = ({ isQuoted = false, data }) => {
   const tweet: TweetData =
     data.retweeted_status !== undefined ? data.retweeted_status : data;
 
-  /* eslint-disable */
-
   return React.createElement(
     isQuoted ? 'div' : 'li',
     {
@@ -47,7 +45,6 @@ const Tweet: React.SFC<IProps> = ({ isQuoted = false, data }) => {
     />,
   );
 };
-/* eslint-enable */
 
 Tweet.defaultProps = {
   isQuoted: false,

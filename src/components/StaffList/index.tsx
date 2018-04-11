@@ -3,7 +3,6 @@ import slugify from '~libs/slugify';
 import { FalmerImage } from '../../types/events';
 import { StreamFieldBlock } from '~components/content/types';
 import { AspectRatio, OneImage } from '~components/OneImage';
-/* eslint-disable react/no-danger */
 
 interface StaffMemberData {
   photo?: FalmerImage;
@@ -80,6 +79,5 @@ const StaffList: StreamFieldBlock<{
     </div>
   );
 };
-/* eslint-enable react/no-danger */
 
 export default StaffList;

@@ -4,7 +4,6 @@ interface IProps {
   handleClose(): void;
 }
 
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 const Modal: React.SFC<IProps> = (props) => {
   return (
     <div className="ModalContainer">
@@ -27,5 +26,4 @@ const Modal: React.SFC<IProps> = (props) => {
   );
 };
 
-/* eslint-enable jsx-a11y/no-static-element-interactions */
 export default Modal;

@@ -92,7 +92,6 @@ class HeaderSearch extends React.Component<IProps, IState> {
 
   componentDidUpdate(_prevProps: IProps, prevState: IState) {
     if (this.state.isOpen && !prevState.isOpen) {
-      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ transitionSize: null });
     }
   }

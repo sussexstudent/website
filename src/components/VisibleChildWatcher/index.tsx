@@ -5,7 +5,6 @@ interface IChildWrapperProps {
   handleRef(el: HTMLDivElement): void;
 }
 
-// eslint-disable-next-line
 class ChildWrapper extends React.Component<IChildWrapperProps> {
   render() {
     const { handleRef } = this.props;
@@ -17,7 +16,6 @@ interface IProps {
   onChange(key: string): void;
 }
 
-// eslint-disable-next-line
 class VisibleChildWatcher extends React.Component<IProps> {
   private childEls: { [key: string]: HTMLElement } = {};
 

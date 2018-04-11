@@ -11,12 +11,13 @@ import isSameDay from 'date-fns/isSameDay';
 import formatDate from 'date-fns/format';
 
 import { Brand, Event, EventPart, EventPartType } from '../../types/events';
+import {startOfWeek, addWeeks } from 'date-fns';
 
 /* eslint-disable no-nested-ternary */
 
 const now = setHours(new Date(), 0);
 const rightNow = new Date();
-const weekFromNow = setHours(addDays(new Date(), 7), 0);
+const startOfNextWeek = addWeeks(startOfWeek(new Date(), { weekStartsOn: 1 }), 1);
 
 export function splitEventsInToParts(events: Event[], removePast = true) {
   // for all events
@@ -63,13 +64,6 @@ export function splitEventsInToParts(events: Event[], removePast = true) {
         date: event.startDate,
       });
     }
-    //
-    // parts.push({
-    //   type: EVENT_PART.SPAN_END,
-    //   eventId: index,
-    //   date: event.endDate,
-    //   event,
-    // });
   });
 
   return parts;
@@ -119,11 +113,9 @@ export function organisePartsForUI(eventParts: EventPart[], removePast = true) {
       return 'PAST';
     }
 
-    /*
-    if (isBefore(event.date, weekFromNow)) {
+    if (isBefore(event.date, startOfNextWeek)) {
       return 0;
     }
-    */
 
     return `MONTH:${getYear(event.date)}-${getMonth(event.date)}`;
   });
@@ -152,22 +144,11 @@ export function getSmartDate(part: EventPart) {
     return 'Tomorrow';
   }
 
-  if (isBefore(part.date, weekFromNow)) {
-    // if (
-    //   part.type === EVENT_PART.SPAN_END &&
-    //   isBefore(part.event.startDate, now)
-    // ) {
-    //   return `until ${formatDate(part.date, 'dddd')}`;
-    // }
-    //
-    // if (part.type === EVENT_PART.SPAN_START) {
-    //   return `starts ${formatDate(part.date, 'dddd')}`;
-    // }
-
+  if (isBefore(part.date, startOfNextWeek)) {
     return formatDate(part.date, 'dddd');
   }
 
-  return formatDate(part.date, 'ddd Do');
+  return formatDate(part.date, 'dddd Do');
 }
 
 export function generateStylesForBrand(brand: Brand) {

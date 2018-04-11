@@ -42,6 +42,11 @@
 
   &__details-list-item {
     margin-bottom: 0.5rem;
+    color: var(--color__grey-slate);
+  }
+
+  &__dim {
+    color: var(--color__grey-worst-day-of-winter);
   }
 
   &__icon {

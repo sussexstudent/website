@@ -99,7 +99,7 @@ class EventDetailPage extends React.Component<IProps> {
             <ClockIcon className="EventDetail__icon" />
             {`${minimalisticTimeRenderer(
               startDate,
-            )} – ${minimalisticTimeRenderer(endDate)}`}
+            )}`}<span className="EventDetail__dim"> – {minimalisticTimeRenderer(endDate)}</span>
           </li>
         </div>
       );

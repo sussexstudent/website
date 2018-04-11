@@ -5,6 +5,7 @@ import currentUser from '~libs/user';
 import smoothscroll from '~libs/smoothscroll';
 import { addClassesForFeatures } from '~libs/features';
 import hydro from '../../modules/hydro';
+import '../../modules/eventRedirect';
 
 addClassesForFeatures();
 

@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
 interface IProps {
-  color: 'red' | 'blue' | 'green' | 'slate';
+  color?: 'red' | 'blue' | 'green' | 'slate';
   to: string;
   children: any;
 }

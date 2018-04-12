@@ -19,7 +19,9 @@ interface RouteParams {
 }
 
 interface Result {
-  event: Event;
+  data: {
+    event: Event
+  };
 }
 
 interface RenderProps {
@@ -62,7 +64,10 @@ function FalmerEventsDetail(props: Props) {
   const { handleMoveModal, isMoveModalOpen } = props;
   return (
     <Compose {...props}>
-      {({ query: { event }, moveEvent }) => {
+      {({ query , moveEvent }) => {
+        console.log({ query });
+
+        const event = query.data.event;
         return (
           <div>
             <Helmet>

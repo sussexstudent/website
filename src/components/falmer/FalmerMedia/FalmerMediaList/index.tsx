@@ -11,7 +11,9 @@ import { adopt } from '~components/Adopt';
 interface IProps {}
 
 interface Result {
-  allImages: Connection<FalmerImage>;
+  data: {
+    allImages: Connection<FalmerImage>
+  };
 }
 
 interface RenderProps {
@@ -30,7 +32,7 @@ function FalmerMediaList(props: IProps) {
   return (
     <Compose {...props}>
       {({ allMedia }) => {
-        const { allImages } = allMedia;
+        const { allImages } = allMedia.data;
         return (
           <div>
             <ul className="FalmerMediaGrid">

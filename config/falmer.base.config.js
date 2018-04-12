@@ -11,7 +11,7 @@ module.exports = {
   target: 'web',
 
   entry: {
-    main: ['babel-polyfill', './src/projects/falmer/entry.js'],
+    main: ['babel-polyfill', './src/projects/common/lazysizes.ts', './src/projects/falmer/entry.js'],
     devFonts: './src/projects/website/env-dev.ts',
     productionFonts: './src/projects/website/env-production.ts',
   },

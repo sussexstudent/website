@@ -22,6 +22,7 @@
 @import './components/Layout.css';
 
 /* components */
+@import './components/List.css';
 @import './components/Button.css';
 @import './components/Heading.css';
 @import './components/FalmerHeader.css';
@@ -35,4 +36,5 @@
 @import './components/FalmerDataList.css';
 @import './components/ImagePlaceholder.css';
 @import './components/FalmerMediaGrid.css';
+@import './components/BackBar.css';
 @import './components/ContentCard.css';

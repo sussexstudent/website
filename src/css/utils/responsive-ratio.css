@@ -54,11 +54,11 @@
   }
 }
 
-.lazyload,
-.lazyloading {
+img.lazyload,
+img.lazyloading {
   opacity: 0;
 }
-.lazyloaded {
+img.lazyloaded {
   opacity: 1;
   transition: opacity 300ms;
 }

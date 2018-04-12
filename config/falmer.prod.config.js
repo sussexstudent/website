@@ -3,9 +3,9 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const config = require('./falmer.base.config.js');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCSSExtract = require('mini-css-extract-plugin');
 
-const extractCSS = new ExtractTextPlugin({
+const extractCSS = new MiniCSSExtract({
   filename: 'falmer.[contenthash].[name].css',
   allChunks: true,
 });
@@ -31,22 +31,7 @@ config.plugins = config.plugins.concat([
     minimize: true,
   }),
   extractCSS,
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'common.js',
-    async: false,
-    children: true,
-    minChunks: 2,
-  }),
-  // new ChunkManifestPlugin({
-  //   filename: 'falmer-manifest.json',
-  //   manifestVariable: 'chunkManifest',
-  // }),
-  new webpack.optimize.UglifyJsPlugin({
-    output: { comments: false },
-    sourceMap: true,
-  }),
   new AssetsWebpackPlugin(),
-  // new webpack.optimize.ModuleConcatenationPlugin(),
 ]);
 
 config.module.rules = config.module.rules.concat([
@@ -57,10 +42,7 @@ config.module.rules = config.module.rules.concat([
   },
   {
     test: /\.css$/,
-    loader: extractCSS.extract({
-      fallback: 'style-loader',
-      use: 'css-loader?importLoaders=1!postcss-loader',
-    }),
+    loader: [MiniCSSExtract.loader, 'css-loader?importLoaders=1', 'postcss-loader'],
   },
 ]);
 

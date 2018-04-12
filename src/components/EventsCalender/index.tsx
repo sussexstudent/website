@@ -92,16 +92,22 @@ function EventsCalender({
                 <h3 className={cx('EventsCalender__item-date-kicker')}>
                   {getSmartDate(chunk[0])}
                 </h3>
-              <div className="EventsCalender__section-items">
-                {chunk.map((part: EventPart, index: number) => {
-                  return (
-                    <div className="EventsCalender__part-container" key={index}>
-                      <EventsCalenderItem part={part} useAnchors={useAnchors} />
-                    </div>
-                  );
-                })}
-              </div>
+                <div className="EventsCalender__section-items">
+                  {chunk.map((part: EventPart, index: number) => {
+                    return (
+                      <div
+                        className="EventsCalender__part-container"
+                        key={index}
+                      >
+                        <EventsCalenderItem
+                          part={part}
+                          useAnchors={useAnchors}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
+              </div>
             ))}
           </div>
         ))}

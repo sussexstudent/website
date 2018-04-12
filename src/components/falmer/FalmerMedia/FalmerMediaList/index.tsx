@@ -12,7 +12,7 @@ interface IProps {}
 
 interface Result {
   data: {
-    allImages: Connection<FalmerImage>
+    allImages: Connection<FalmerImage>;
   };
 }
 

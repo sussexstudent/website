@@ -5,9 +5,9 @@ import GROUP_DETAIL_QUERY from './GroupDetail.graphql';
 import CopyToClipboardButton from '../../../CopyToClipboardButton/index';
 import { StudentGroup } from '~components/OrganisationGrid';
 import { HandledQuery } from '~components/HandledQuery';
-import {adopt} from "~components/Adopt";
-import BackBar from "~components/BackBar/Link";
-import {Tags, Tag} from "~components/Tags";
+import { adopt } from '~components/Adopt';
+import BackBar from '~components/BackBar/Link';
+import { Tags, Tag } from '~components/Tags';
 
 interface RouteParams {
   groupId: number;
@@ -23,12 +23,19 @@ class GroupDetailQuery extends HandledQuery<Result, {}> {}
 
 interface RenderProps {
   query: {
-    data: Result
-  },
+    data: Result;
+  };
 }
 
 const Composed = adopt<RenderProps, IProps>({
-  query: ({ render, match }) => <GroupDetailQuery query={GROUP_DETAIL_QUERY} variables={{ groupId: match.params.groupId }}>{render}</GroupDetailQuery>
+  query: ({ render, match }) => (
+    <GroupDetailQuery
+      query={GROUP_DETAIL_QUERY}
+      variables={{ groupId: match.params.groupId }}
+    >
+      {render}
+    </GroupDetailQuery>
+  ),
 });
 
 function FalmerStudentGroupsDetail(props: IProps) {
@@ -42,9 +49,16 @@ function FalmerStudentGroupsDetail(props: IProps) {
               <h2 className="Heading Heading--medium">{group.name}</h2>
               <Tags>
                 {group.mslGroup ? <Tag>MSL</Tag> : null}
-                {group.mslGroup ? <Tag>last sync:{' '}
-                  {formatDistance(new Date(), new Date(group.mslGroup.lastSync))}{' '}
-                  ago</Tag> : null}
+                {group.mslGroup ? (
+                  <Tag>
+                    last sync:{' '}
+                    {formatDistance(
+                      new Date(),
+                      new Date(group.mslGroup.lastSync),
+                    )}{' '}
+                    ago
+                  </Tag>
+                ) : null}
               </Tags>
             </div>
             <CopyToClipboardButton
@@ -55,7 +69,6 @@ function FalmerStudentGroupsDetail(props: IProps) {
           </div>
         );
       }}
-
     </Composed>
   );
 }

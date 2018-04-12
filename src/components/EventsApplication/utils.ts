@@ -11,11 +11,14 @@ import isSameDay from 'date-fns/isSameDay';
 import formatDate from 'date-fns/format';
 
 import { Brand, Event, EventPart, EventPartType } from '../../types/events';
-import {startOfWeek, addWeeks } from 'date-fns';
+import { startOfWeek, addWeeks } from 'date-fns';
 
 const now = setHours(new Date(), 0);
 const rightNow = new Date();
-const startOfNextWeek = addWeeks(startOfWeek(new Date(), { weekStartsOn: 1 }), 1);
+const startOfNextWeek = addWeeks(
+  startOfWeek(new Date(), { weekStartsOn: 1 }),
+  1,
+);
 
 export function splitEventsInToParts(events: Event[], removePast = true) {
   // for all events

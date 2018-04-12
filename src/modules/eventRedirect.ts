@@ -1,4 +1,4 @@
-import getFalmerEndpoint from "~libs/getFalmerEndpoint";
+import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 
 const pathRegEx = /\/ents\/event\/([0-9]+)\/?/;
 
@@ -23,12 +23,12 @@ if (match !== null && window.location.hash !== '#tickets') {
           }
         `,
         variables: {
-          mslEventId
-        }
+          mslEventId,
+        },
       }),
     })
-      .then(res => res.json())
-      .then(response => {
+      .then((res) => res.json())
+      .then((response) => {
         if (response.data.event) {
           const { slug, eventId } = response.data.event;
           window.history.replaceState({}, '', `/whats-on/${slug}-${eventId}`);

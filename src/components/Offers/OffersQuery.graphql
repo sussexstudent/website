@@ -1,0 +1,11 @@
+query Offers {
+  allOffers {
+    dealTag
+    companyName
+    companyLogo {
+      resource
+      width
+      height
+    }
+  }
+}

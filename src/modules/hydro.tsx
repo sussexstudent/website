@@ -56,6 +56,7 @@ export default function() {
     ContentPage: () =>
       import(/* webpackChunkName: "ContentPage" */ '../projects/website/layouts/ContentPage'),
     BentoBox: () => import(/* webpackChunkName: "Bento" */ '~components/Bento'),
+    Offers: () => import(/* webpackChunkName: "Offers" */ '~components/Offers'),
     BookMarket: () => BookMarketApp,
     KnowledgeBase: () => KnowledgeBaseApp,
   };

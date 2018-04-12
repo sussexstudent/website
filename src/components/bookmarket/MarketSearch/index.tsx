@@ -53,8 +53,9 @@ const MarketSearchComponent: React.SFC<IProps> = (props: IProps) => {
         <div>
           <Form
             onSubmit={onSearchSubmit}
+            initialValues={{ query: qs.parse(props.location.search).q }}
             render={({ handleSubmit }) => (
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} style={{ marginBottom: '1rem' }}>
                 <Field
                   name="query"
                   className="HeaderSearch"

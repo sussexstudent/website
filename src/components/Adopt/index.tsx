@@ -69,7 +69,7 @@ export function adopt<RP, P = {}>(mapper: Mapper<RP, P>): RPC<RP, P> {
 
         return isFn(element)
           ? React.createElement(element, assign({}, rest, props, { render }))
-          : React.cloneElement(element, null, render);
+          : React.cloneElement(element, {}, render);
       }}
     </Component>
   );

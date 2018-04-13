@@ -96,9 +96,11 @@ const defaultSizes = [
 class OneImage extends React.Component<IProps> {
   componentDidUpdate(prevProps: IProps) {
     if (this.props.src !== prevProps.src) {
-      const el = ReactDOM.findDOMNode(this as any);
-      classToggle(el, 'lazyloaded', false);
-      classToggle(el, 'lazyload', true);
+      const el = ReactDOM.findDOMNode(this as any) as HTMLElement;
+      if (el) {
+        classToggle(el, 'lazyloaded', false);
+        classToggle(el, 'lazyload', true);
+      }
     }
   }
 

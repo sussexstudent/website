@@ -6,7 +6,7 @@ import smoothscroll from '~libs/smoothscroll';
 import { addClassesForFeatures } from '~libs/features';
 import hydro from '../../modules/hydro';
 import Modal from 'react-modal';
-import '../../modules/eventRedirect';
+// import '../../modules/eventRedirect';
 
 
 Modal.setAppElement('.Body');

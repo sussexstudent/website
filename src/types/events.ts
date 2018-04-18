@@ -71,12 +71,15 @@ export interface Event {
   cost: TicketCost;
   ticketLevel: TicketLevel | string; // todo
   ticketType?: TicketType;
+  ticketData: string;
+
+  socialFacebook: string;
 
   bundle: null | {
     name: string;
   };
 
-  studentGroup?: StudentGroup;
+  studentGroup: null | StudentGroup;
 
   children: Event[];
   parent: Event;

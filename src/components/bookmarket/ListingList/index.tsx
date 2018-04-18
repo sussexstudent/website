@@ -4,7 +4,7 @@ import FauxRouterLink from '~components/FauxRouterLink';
 import { MarketListing, MarketListingState } from '../../../types/market';
 import { AspectRatio, OneImage } from '~components/OneImage';
 import { NoListItems } from '~components/bookmarket/NoListItems';
-import { formatPrice } from '~components/bookmarket/utils';
+import { formatPrice } from '~libs/money';
 
 interface IProps {
   items: MarketListing[];

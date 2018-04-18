@@ -8,5 +8,7 @@ export function hasTouch() {
         ((window as any).DocumentTouch && document instanceof DocumentTouch) ||
         navigator.msMaxTouchPoints))
     ? !0
-    : 'ontouchstart' in window ? !0 : !1;
+    : 'ontouchstart' in window
+      ? !0
+      : !1;
 }

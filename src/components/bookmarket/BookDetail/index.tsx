@@ -15,10 +15,10 @@ import {
   CurrentUserQuery,
 } from '~components/bookmarket/currentUserData';
 import Helmet from 'react-helmet';
-import { formatPrice } from '~components/bookmarket/utils';
 import { HandledQuery } from '~components/HandledQuery';
 import { OwnerStatusBanner } from '~components/bookmarket/BookDetail/OwnerStatusBanner';
 import { adopt } from '~components/Adopt';
+import { formatPrice } from '~libs/money';
 
 interface OwnProps extends RouteComponentProps<{ listingId: string }> {}
 

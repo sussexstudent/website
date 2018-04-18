@@ -56,7 +56,12 @@ class StaffPage extends React.Component<IProps, IState> {
   }
 
   render() {
-    const { page: { data: { body } }, page } = this.props;
+    const {
+      page: {
+        data: { body },
+      },
+      page,
+    } = this.props;
 
     const levels = flatStreamToLevels(
       (item) => (levelMap as any)[item.type],

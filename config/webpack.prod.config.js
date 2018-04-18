@@ -30,8 +30,8 @@ config.mode = 'production';
 config.output = {
   path: path.resolve(path.join(baseDir, 'dist')),
   publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
-  filename: 'union.[name].[chunkhash].js',
-  chunkFilename: 'union.[name].[chunkhash].js',
+  filename: 'union.[name].[hash].js',
+  chunkFilename: 'union.[name].[hash].js',
 };
 
 config.plugins = config.plugins.concat([
@@ -45,7 +45,7 @@ config.plugins = config.plugins.concat([
   new CleanWebpackPlugin(['dist'], {
     root: path.resolve(baseDir),
   }),
-  new webpack.HashedModuleIdsPlugin(),
+  // new webpack.HashedModuleIdsPlugin(),
   extractCSS,
   new ChunkManifestPlugin({
     filename: 'manifest.json',

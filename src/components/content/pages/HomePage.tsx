@@ -22,7 +22,11 @@ interface IProps {
 }
 
 function HomePage(props: IProps) {
-  const { page: { data: { fullTimeOfficers, partTimeOfficers } } } = props;
+  const {
+    page: {
+      data: { fullTimeOfficers, partTimeOfficers },
+    },
+  } = props;
 
   return (
     <div>

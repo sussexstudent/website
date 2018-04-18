@@ -41,7 +41,11 @@ const Composed = adopt<RenderProps, IProps>({
 function FalmerStudentGroupsDetail(props: IProps) {
   return (
     <Composed {...props}>
-      {({ query: { data: { group } } }) => {
+      {({
+        query: {
+          data: { group },
+        },
+      }) => {
         return (
           <div>
             <BackBar to="/groups">Groups</BackBar>

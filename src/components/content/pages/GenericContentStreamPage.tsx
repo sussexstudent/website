@@ -8,7 +8,12 @@ interface IProps {
 
 class GenericContentStreamPage extends React.Component<IProps> {
   render() {
-    const { page: { data: { body } }, page } = this.props;
+    const {
+      page: {
+        data: { body },
+      },
+      page,
+    } = this.props;
     return (
       <div className="Layout">
         <StreamField items={body} page={page} />

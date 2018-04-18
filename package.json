@@ -114,7 +114,7 @@
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.4",
     "bind-decorator": "^1.0.11",
-    "chunk-manifest-webpack-plugin": "^1.1.2",
+    "chunk-manifest-webpack-plugin": "https://github.com/malectro/chunk-manifest-webpack-plugin.git#webpack-4",
     "classnames": "^2.2.5",
     "date-fns": "^2.0.0-alpha.7",
     "es6-shim": "^0.35.1",

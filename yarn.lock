@@ -3137,9 +3137,9 @@ chrome-trace-event@^0.1.1:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/chrome-trace-event/-/chrome-trace-event-0.1.2.tgz#90f36885d5345a50621332f0717b595883d5d982"
 
-chunk-manifest-webpack-plugin@^1.1.2:
+"chunk-manifest-webpack-plugin@https://github.com/malectro/chunk-manifest-webpack-plugin.git#webpack-4":
   version "1.1.2"
-  resolved "https://registry.yarnpkg.com/chunk-manifest-webpack-plugin/-/chunk-manifest-webpack-plugin-1.1.2.tgz#b332efb97c1a23bfd3ca5dcee13aa120df72df59"
+  resolved "https://github.com/malectro/chunk-manifest-webpack-plugin.git#a9f27d34544bc03cdbbee1f2a566cb79f1d30b9f"
   dependencies:
     webpack-core "^0.6.9"
 

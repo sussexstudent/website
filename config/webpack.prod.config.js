@@ -47,10 +47,10 @@ config.plugins = config.plugins.concat([
   }),
   new webpack.HashedModuleIdsPlugin(),
   extractCSS,
-  // new ChunkManifestPlugin({
-  //   filename: 'manifest.json',
-  //   manifestVariable: 'chunkManifest',
-  // }),
+  new ChunkManifestPlugin({
+    filename: 'manifest.json',
+    manifestVariable: 'chunkManifest',
+  }),
   new CopyWebpackPlugin([{ from: './src/img/favicons', to: './branding' }]),
   new AssetsWebpackPlugin(),
 ]);

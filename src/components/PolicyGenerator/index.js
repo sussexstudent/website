@@ -77,10 +77,6 @@ const generation = createGeneration([
   gs`${starters} should be made to defend ${starters}`,
 ]);
 
-console.log(
-  `[generation-game] total combinations: ${generation.totalCombinations}`,
-);
-
 function capitaliseLine(line) {
   return `${line.charAt(0).toUpperCase()}${line.slice(1)}`;
 }

@@ -38,7 +38,6 @@ class EventDetailPage extends React.Component<IProps, IState> {
 
   componentDidUpdate() {
     if (!this.props.data || !this.props.data.event) {
-      console.log(this.props);
       return;
     }
 

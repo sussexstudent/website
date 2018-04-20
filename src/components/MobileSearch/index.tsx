@@ -106,7 +106,6 @@ class HeaderSearch extends React.Component<IProps, IState> {
   }
 
   setInputFocus() {
-    console.log(this.input);
     if (this.input) {
       this.input.focus();
     }

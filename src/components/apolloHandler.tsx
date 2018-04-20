@@ -15,7 +15,6 @@ const apolloHandler = (Loader = LoaderComponent, Error = ErrorState) => (
     }
 
     if (props[propertyName].error) {
-      console.log(props[propertyName].error);
       return <Error {...props} />;
     }
 

@@ -41,7 +41,6 @@ const CreateListingComponent: React.SFC<IProps> = (props) => {
           },
         })
         .then((response) => {
-          console.log(response);
           (props as any).history.push(
             `/book-market/listing/${
               response.data.createMarketListing.listing.pk

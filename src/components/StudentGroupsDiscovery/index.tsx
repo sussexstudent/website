@@ -112,7 +112,6 @@ function StudentGroupListings() {
         if (!data) {
           return;
         }
-        console.log({ data });
         return <StudentGroupsDiscovery data={data} />;
       }}
     </StudentGroupListingsQuery>

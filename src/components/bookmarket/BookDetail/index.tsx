@@ -151,7 +151,6 @@ const BookDetail: React.SFC<IProps> = (props: IProps) => {
                     <ImageUpload
                       image={listing.image}
                       onUploadComplete={(data) => {
-                        console.log(data);
                         updateImage.mutate({
                           variables: {
                             listingId: listing.pk,

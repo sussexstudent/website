@@ -111,7 +111,6 @@ class NewsletterSignup extends React.Component<IProps, IState> {
       })
         .then((res) => Promise.all([res, res.json()]))
         .then(([res, data]) => {
-          console.log(data);
           if (res.status === 200) {
             if (data.complete) {
               this.setState({ currentState: FormState.Complete });

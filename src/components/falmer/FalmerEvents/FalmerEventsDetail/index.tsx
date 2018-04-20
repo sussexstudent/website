@@ -65,8 +65,6 @@ function FalmerEventsDetail(props: Props) {
   return (
     <Compose {...props}>
       {({ query, moveEvent }) => {
-        console.log({ query });
-
         const event = query.data.event;
         return (
           <div>

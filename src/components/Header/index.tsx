@@ -101,7 +101,6 @@ class Header extends React.Component<IProps, IState> {
     };
 
     this.handleBackdropClick = () => {
-      console.log('backdrop clicked');
       if (this.state.isSideMenuOpen) {
         this.handleCloseSideMenu();
       }

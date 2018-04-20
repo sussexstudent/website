@@ -60,7 +60,6 @@ class ImageUpload extends React.Component<IProps, IState> {
     })
       .then((res) => res.json())
       .then((response) => {
-        console.log(response);
         if (response.ok) {
           this.props.onUploadComplete(response.data);
           this.setState({

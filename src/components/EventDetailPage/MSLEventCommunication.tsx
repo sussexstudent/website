@@ -28,7 +28,6 @@ export class MSLEventCommunication extends React.Component<IProps, IState> {
         this.props.onData(data.payload);
 
         if (data.payload.pageMenuOptions) {
-          data.payload.pageMenuOptions = { items: [{ name: 'Edit MSL Event', link: '##' }] };
           (window as any).emitter.emit('changePageOptions', data.payload.pageMenuOptions);
         }
       }

@@ -13,7 +13,7 @@ function eventPage() {
       return;
     }
 
-    if (window.location.hash === '#communication') {
+    if (window.self !== window.top) {
       window.top.postMessage(
         {
           source: 'ussu-msl-frame-initial-data',
@@ -25,10 +25,6 @@ function eventPage() {
         '*',
       );
 
-      return;
-    }
-
-    if (window.self !== window.top) {
       return;
     }
 

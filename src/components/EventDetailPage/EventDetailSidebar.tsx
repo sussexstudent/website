@@ -2,7 +2,7 @@ import React from 'react';
 import { Event, TicketType } from '../../types/events';
 import ContentCard from '~components/ContentCard';
 import Button from '~components/Button';
-import { MSLTickets } from '~components/EventDetailPage/MSLTickets';
+// import { MSLTickets } from '~components/EventDetailPage/MSLTickets';
 import { SocialArray } from '~components/SocialArray';
 
 interface IProps {
@@ -11,7 +11,7 @@ interface IProps {
 }
 
 export const EventDetailSidebar = (props: IProps) => {
-  const { event, msl } = props;
+  const { event } = props;
 
   return (
     <aside>
@@ -22,7 +22,11 @@ export const EventDetailSidebar = (props: IProps) => {
         </ContentCard>
       ) : null}
       {event.ticketType === TicketType.MSL ? (
-        <MSLTickets msl={msl} />
+        // <MSLTickets msl={msl} />
+        <ContentCard>
+          <h3>Tickets</h3>
+          <Button href={event.ticketData}>Get tickets</Button>
+        </ContentCard>
       ) : null}
       <ContentCard>
         For access requirements please contact{' '}

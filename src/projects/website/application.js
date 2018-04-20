@@ -30,32 +30,6 @@ window.LinkshimAsyncLink = {
   swap() {},
 };
 
-const actions = {
-  login() {
-    // e.preventDefault();
-    // modals.add(<LoginModal />);
-  },
-  snapchat() {
-    // e.preventDefault();
-    // modals.add(<SnapchatModal />);
-  },
-  newsletter_subscribe() {
-    // e.preventDefault();
-    // modals.add(<NewsletterModal />);
-  },
-  scrollTop(e) {
-    e.preventDefault();
-    smoothscroll(document.body, 300);
-  },
-};
-
-function linkListener(e) {
-  const el = e.target.dataset;
-  if (Object.hasOwnProperty.call(actions, el.action)) {
-    actions[el.action](e);
-  }
-}
-
 if (currentUser.fundraising.blocking) {
   [...document.querySelectorAll('.AdvertBar')].forEach((advert) => {
     advert.remove();
@@ -63,10 +37,6 @@ if (currentUser.fundraising.blocking) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  [...document.querySelectorAll('a')].forEach((e) => {
-    e.addEventListener('click', linkListener);
-  });
-
   if (document.querySelector('.QuoteSlips')) {
     [...document.querySelectorAll('.QuoteSlips')].forEach((quoteSlip) => {
       [...quoteSlip.querySelector('.QuoteSlips__questions').children].forEach(

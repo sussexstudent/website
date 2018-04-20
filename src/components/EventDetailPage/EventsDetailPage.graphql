@@ -10,8 +10,10 @@ query EventsDetailPage($eventId: Int) {
     bodyHtml
     shortDescription
     url
+    socialFacebook
     ticketType
     ticketData
+    mslEventId
     bundle {
       name
     }

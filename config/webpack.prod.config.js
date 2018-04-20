@@ -59,7 +59,7 @@ config.module.rules = config.module.rules.concat([
   {
     test: /\.js?$/,
     loaders: ['babel-loader?forceEnv=bundle'],
-    exclude: /node_modules/,
+//    exclude: /node_modules/,
   },
   {
     test: /\.css$/,

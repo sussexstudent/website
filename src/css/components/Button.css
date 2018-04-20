@@ -36,6 +36,14 @@
       @mixin card flat;
     }
   }
+
+  &--endOfCard {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    @mixin type pica;
+  }
 }
 
 .msl_admin_page .button {

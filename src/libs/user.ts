@@ -1,3 +1,4 @@
+import mitt from 'mitt';
 import { has, get } from 'lodash';
 
 interface MenuItem {
@@ -136,9 +137,10 @@ export interface ClientAuth {
 interface Client {
   fundraising: ClientFundraising;
   auth: ClientAuth;
+  mitt: mitt.Emitter
 }
 
-export default (function currentUser(): Client | null {
+function currentUser(): Client | null {
   if (typeof window === 'undefined') {
     return null;
   }
@@ -146,5 +148,8 @@ export default (function currentUser(): Client | null {
   return {
     auth: auth(),
     fundraising: fundraising(),
+    mitt: new mitt(),
   };
-})();
+}
+
+export default (currentUser());

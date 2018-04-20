@@ -67,6 +67,13 @@ class UserBar extends React.Component<IProps, IState> {
         isLoaded: true,
       }));
     }, 1);
+
+    // trying to avoid using some sort of state container for now. hacky
+    (window as any).emitter.on('changePageOptions', (options: any) => {
+      this.setState((state) => ({
+        auth: ({ ...state.auth, page: options } as ClientAuth)
+      }));
+    })
   }
 
   renderLoaded() {

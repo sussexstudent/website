@@ -1,5 +1,6 @@
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import { parseTickets } from '~libs/mslEventTicketParser';
+import user from "~libs/user";
 
 const pathRegEx = /^\/ents\/event\/([0-9]+)\/?/;
 
@@ -12,11 +13,14 @@ function eventPage() {
       return;
     }
 
-    if (window.location.hash === '#ticketData') {
+    if (window.location.hash === '#communication') {
       window.top.postMessage(
         {
-          source: 'ussu-ticket-frame-initial-data',
-          payload: parseTickets(),
+          source: 'ussu-msl-frame-initial-data',
+          payload: {
+            tickets: parseTickets(),
+            pageMenuOptions: user ? user.auth.page : false,
+          },
         },
         '*',
       );

@@ -1,43 +1,22 @@
 import React from 'react';
+import bind from 'bind-decorator';
 import { Helmet } from 'react-helmet';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import formatDate from 'date-fns/format';
-import addDays from 'date-fns/addDays';
-import isSameDay from 'date-fns/isSameDay';
-import getHours from 'date-fns/getHours';
 import { graphql, ChildProps } from 'react-apollo';
 import ContentCard from '../ContentCard';
 import JsonLd from '../JsonLd';
 import Loader from '../Loader';
 import BackBar from '../BackBar/Link';
-import Button from '../Button';
 import DetailPageQuery from './EventsDetailPage.graphql';
 import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
-import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
-import { Event, TicketType } from '../../types/events';
+import { Event } from '../../types/events';
 
-import CalendarIcon from '../../icons/events-calender.svg';
-import ClockIcon from '../../icons/events-clock.svg';
-import CollectionIcon from '../../icons/events-collection.svg';
-import CollectionParentIcon from '../../icons/events-collection-parent.svg';
-import PinIcon from '../../icons/events-pin.svg';
-import SocietyIcon from '../../icons/events-society.svg';
 import apolloHandler from '~components/apolloHandler';
-import { compose } from 'recompose';
 import { generateStylesForBrand } from '~components/EventsApplication/utils';
 import { AspectRatio, OneImage } from '~components/OneImage';
-
-function isSameLogicalSleepDay(startDate: Date, endDate: Date) {
-  if (isSameDay(startDate, endDate)) {
-    return true;
-  }
-
-  if (isSameDay(addDays(startDate, 1), endDate) && getHours(endDate) < 7) {
-    return true;
-  }
-
-  return false;
-}
+import { EventDetailDetails } from '~components/EventDetailPage/EventDetailDetails';
+import { EventDetailSidebar } from '~components/EventDetailPage/EventDetailSidebar';
+import {MSLEventCommunication} from "~components/EventDetailPage/MSLEventCommunication";
 
 interface RouteParams {
   [0]: string;
@@ -48,7 +27,15 @@ interface OwnProps extends RouteComponentProps<RouteParams> {}
 
 type IProps = OwnProps & ChildProps<OwnProps, any>;
 
-class EventDetailPage extends React.Component<IProps> {
+interface IState {
+  msl: any;
+}
+
+class EventDetailPage extends React.Component<IProps, IState> {
+  state = {
+    msl: null,
+  };
+
   componentDidUpdate() {
     if (!this.props.data || !this.props.data.event) {
       console.log(this.props);
@@ -61,51 +48,17 @@ class EventDetailPage extends React.Component<IProps> {
     }
   }
 
+  @bind
+  handleMslCommunication(data: any) {
+    this.setState({ msl: data });
+  }
+
   render() {
     if (!this.props.data || this.props.data.loading) {
       return <Loader />;
     }
 
     const event = this.props.data.event;
-    const startDate = new Date(event.startTime);
-    const endDate = new Date(event.endTime);
-
-    function renderDates() {
-      const isSpanningEvent = !isSameLogicalSleepDay(startDate, endDate);
-
-      if (isSpanningEvent) {
-        return (
-          <div>
-            <div>
-              <li className="EventDetail__details-list-item">
-                <CalendarIcon className="EventDetail__icon" />
-                {minimalisticTimeRenderer(startDate)},{' '}
-                {formatDate(startDate, 'ddd D MMM YYYY')} -{' '}
-                {minimalisticTimeRenderer(endDate)},{' '}
-                {formatDate(endDate, 'ddd D MMM YYYY')}
-              </li>
-            </div>
-          </div>
-        );
-      }
-
-      return (
-        <div>
-          <li className="EventDetail__details-list-item">
-            <CalendarIcon className="EventDetail__icon" />
-            {formatDate(startDate, 'dddd D MMMM YYYY')}
-          </li>
-          <li className="EventDetail__details-list-item">
-            <ClockIcon className="EventDetail__icon" />
-            {`${minimalisticTimeRenderer(startDate)}`}
-            <span className="EventDetail__dim">
-              {' '}
-              – {minimalisticTimeRenderer(endDate)}
-            </span>
-          </li>
-        </div>
-      );
-    }
 
     return (
       <div>
@@ -177,50 +130,7 @@ class EventDetailPage extends React.Component<IProps> {
               {event.bundle !== null ? (
                 <div className="EventDetail__bundle">{event.bundle.name}</div>
               ) : null}
-              <div className="EventDetail__details">
-                <div className="ContentCard__content">
-                  <h2 className="EventDetail__title">{event.title}</h2>
-                  <ul className="EventDetail__details-list">
-                    {event.parent ? (
-                      <li className="EventDetail__details-list-item">
-                        <CollectionParentIcon className="EventDetail__icon" />
-                        Part of{' '}
-                        <Link
-                          to={`/whats-on/${event.parent.slug}-${
-                            event.parent.eventId
-                          }`}
-                        >
-                          {event.parent.title}
-                        </Link>
-                      </li>
-                    ) : null}
-                    {renderDates()}
-                    {event.locationDisplay !== '' || event.venue !== null ? (
-                      <li className="EventDetail__details-list-item">
-                        <PinIcon className="EventDetail__icon" />
-                        {event.locationDisplay || event.venue.name}
-                      </li>
-                    ) : null}
-                    {event.studentGroup !== null ? (
-                      <li className="EventDetail__details-list-item">
-                        <SocietyIcon className="EventDetail__icon" />
-                        Organised by{' '}
-                        <a href={event.studentGroup.link}>
-                          {event.studentGroup.name}
-                        </a>
-                      </li>
-                    ) : null}
-                    {event.children.length > 0 ? (
-                      <li className="EventDetail__details-list-item">
-                        <CollectionIcon className="EventDetail__icon" />
-                        <a href="#sub-events">
-                          {event.children.length} sub-events
-                        </a>
-                      </li>
-                    ) : null}
-                  </ul>
-                </div>
-              </div>
+              <EventDetailDetails event={event} />
               <div className="ContentCard__content">
                 <div className="Prose type-body-copy">
                   {event.bodyHtml !== '' ? (
@@ -241,28 +151,7 @@ class EventDetailPage extends React.Component<IProps> {
               </div>
             </ContentCard>
           </div>
-          <aside>
-            {event.ticketType === TicketType.Native ? (
-              <ContentCard>
-                <h3>Tickets</h3>
-                <Button href={event.ticketData}>Buy tickets on Native</Button>
-              </ContentCard>
-            ) : null}
-            {event.ticketType === TicketType.MSL ? (
-              <ContentCard>
-                <h3>Tickets</h3>
-                <Button href={`${event.ticketData}#tickets`}>
-                  Buy tickets
-                </Button>
-              </ContentCard>
-            ) : null}
-            <ContentCard>
-              For access requirements please contact{' '}
-              <a href="mailto:access@sussexstudent.com">
-                access@sussexstudent.com
-              </a>
-            </ContentCard>
-          </aside>
+          <EventDetailSidebar event={event} msl={this.state.msl} />
         </div>
         {event.children.length > 0 ? (
           <div>
@@ -277,14 +166,13 @@ class EventDetailPage extends React.Component<IProps> {
             </div>
           </div>
         ) : null}
+
+        {event.mslEventId ? <MSLEventCommunication mslEventId={event.mslEventId} onData={this.handleMslCommunication} /> : null}
       </div>
     );
   }
 }
 
-export default compose<IProps, OwnProps>(
-  graphql<any, OwnProps>(DetailPageQuery, {
-    options: ({ match }) => ({ variables: { eventId: match.params.eventId } }),
-  }),
-  apolloHandler(),
-)(EventDetailPage);
+export default graphql<any, OwnProps>(DetailPageQuery, {
+  options: ({ match }) => ({ variables: { eventId: match.params.eventId } }),
+})(apolloHandler()(EventDetailPage));

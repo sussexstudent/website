@@ -1,0 +1,51 @@
+.TicketOutlet {
+  font-family: var(--type__primary);
+
+  &__item {
+    display: flex;
+  }
+
+  &__name {
+    padding-right: 1rem;
+    margin-right: auto;
+  }
+
+  &__sub-name {
+  }
+
+  &__price {
+    font-weight: 600;
+  }
+
+  &__rocker {
+    display: flex;
+    background: var(--color__grey-spring);
+    border-radius: 2px;
+  }
+
+  &__rocker-container {
+    display: flex;
+  }
+
+  &__rocker-button {
+    border: 0;
+    font-weight: 600;
+    background: transparent;
+    @mixin type pica;
+
+    &[disabled] {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  &__rocker-input {
+    text-align: center;
+    border: 0;
+    width: 2rem;
+    font-weight: 600;
+    flex: 1 1 auto;
+    background: transparent;
+    @mixin type pica;
+  }
+}

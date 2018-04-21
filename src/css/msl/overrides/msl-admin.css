@@ -1,0 +1,22 @@
+.msl_admin_page {
+  padding: 0 !important;
+
+  h1 {
+    margin: 0;
+  }
+
+  #msl_toolbar {
+    font-family: var(--type__primary);
+    font-weight: 600;
+    border-bottom: 2px solid var(--color__grey-slate);
+
+    li a {
+      padding: 1rem;
+
+      &.msl_toolbarbutton_selected {
+        background: var(--color__brand-blue);
+        color: white;
+      }
+    }
+  }
+}

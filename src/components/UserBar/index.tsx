@@ -1,8 +1,10 @@
 import React from 'react';
+import bind from 'bind-decorator';
 import cx from 'classnames';
 import ClickOutside from 'react-onclickout';
 import client, { ClientAuth } from '~libs/user';
 import Hydroleaf from '~components/HydroLeaf';
+import {shuffle} from 'lodash';
 
 enum DropdownState {
   Page,
@@ -15,7 +17,25 @@ interface IState {
   isLoaded: boolean;
   dropdownOpen: DropdownState | null;
   auth: ClientAuth | null;
+  greetingIndex: 0;
 }
+
+
+// Submit pull requests!
+const greetings = shuffle([
+  'Salut', // French
+  'Hallo', // German
+  'Hej', // Swedish,
+  '早', // Chinese
+  'Salve', // Italian
+  'Hei', // Norwegian
+  'Cześć', // Polish
+  'Bună ziua', // Romanian
+  'Saluton', // Esperanto,
+  'Olá', // Portuguese,
+]);
+
+greetings.unshift('Hi');
 
 class UserBar extends React.Component<IProps, IState> {
   private handleToggleDropdown: (dropdown: DropdownState) => void;
@@ -30,6 +50,7 @@ class UserBar extends React.Component<IProps, IState> {
       isLoaded: false,
       dropdownOpen: null,
       auth: null,
+      greetingIndex: 0,
     };
 
     this.handleToggleDropdown = (dropdown) =>
@@ -76,8 +97,13 @@ class UserBar extends React.Component<IProps, IState> {
     })
   }
 
+  @bind
+  handleGreetingPress() {
+    this.setState(state => ({ greetingIndex: state.greetingIndex + 1 >= greetings.length ? 0 : state.greetingIndex + 1 } as any));
+  }
+
   renderLoaded() {
-    const { auth, dropdownOpen } = this.state;
+    const { auth, dropdownOpen, greetingIndex } = this.state;
 
     if (!auth) {
       return null;
@@ -88,8 +114,8 @@ class UserBar extends React.Component<IProps, IState> {
     if (isLoggedIn) {
       return (
         <ul className="UserBar__list">
-          <li className="UserBar__item UserBar__item--welcome">
-            Hi {profile.firstName}!
+          <li className="UserBar__item UserBar__item--welcome" onClick={this.handleGreetingPress}>
+            {greetings[greetingIndex]} {profile.firstName}!
           </li>
           <li className="UserBar__item UserBar__item--action">
             <button onClick={actionBound} type="button">

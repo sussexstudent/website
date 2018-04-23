@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider as ReduxProvider } from 'react-redux';
 import { isFunction } from 'lodash';
 import BookMarketApp from '~components/bookmarket/BookMarketApp';
 import KnowledgeBaseApp from '~components/kb/KnowledgeBaseApplication';
@@ -10,6 +11,7 @@ import { Provider } from '../types/hydro';
 import { CountdownBox } from '~components/Bento/treatments/CountdownBox';
 import { VoteNowBox } from '~components/Bento/treatments/VoteNowBox';
 import { VoteNowModalContainer } from '~components/VoteNowModal';
+import { store } from '../projects/website/redux/store';
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.SFC;
@@ -126,12 +128,22 @@ export default function() {
       ).then((ProvidersList) => {
         if (shouldHydrate) {
           ReactDOM.hydrate(
-            wrapProviders(ProvidersList, <Component {...props} />),
+            wrapProviders(
+              ProvidersList,
+              <ReduxProvider store={store}>
+                <Component {...props} />
+              </ReduxProvider>,
+            ),
             el,
           );
         } else {
           ReactDOM.render(
-            wrapProviders(ProvidersList, <Component {...props} />),
+            wrapProviders(
+              ProvidersList,
+              <ReduxProvider store={store}>
+                <Component {...props} />
+              </ReduxProvider>,
+            ),
             el,
           );
         }

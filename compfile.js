@@ -3,6 +3,7 @@ import path from 'path';
 import React from 'react';
 import { headContent, headContentLegacy } from './src/projects/website/head';
 import Html from './src/projects/website/layouts/Html';
+import CompProviders from './src/components/CompProviders';
 import assets from './webpack-assets.json';
 import manifest from './dist/manifest.json';
 
@@ -55,6 +56,7 @@ export default {
     manifest,
     map: assets,
   },
+  providers: CompProviders,
   contentApi: {
     endpoint: 'https://falmer.sussexstudent.com/graphql/',
     template: require('./src/projects/website/layouts/ContentPage').default,

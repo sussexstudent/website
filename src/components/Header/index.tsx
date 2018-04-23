@@ -11,6 +11,10 @@ import SearchIcon from '../SearchIcon';
 import CrossIcon from '../CrossIcon';
 import SocialMenu from '../SocialMenu';
 import { MenuItem } from '../../types/skeleton';
+import { LoginModal } from '~components/LoginModal';
+import { connect } from 'react-redux';
+import { closeLoginModal } from '../../projects/website/ducks/user';
+import { WebsiteRootState } from '../../types/website';
 
 function getColor() {
   let index;
@@ -54,7 +58,10 @@ function getActiveItem() {
   return null;
 }
 
-interface IProps {}
+interface IProps {
+  closeLoginModal(): void;
+  loginModalOpen: boolean;
+}
 
 interface IState {
   isSideMenuOpen: boolean;
@@ -128,9 +135,11 @@ class Header extends React.Component<IProps, IState> {
 
   render() {
     const { isSideMenuOpen, isSearchOpen, logoColor } = this.state;
+    const { closeLoginModal, loginModalOpen } = this.props;
 
     return (
       <div className="Container">
+        <LoginModal isOpen={loginModalOpen} onRequestClose={closeLoginModal} />
         <div className="Header__top">
           <button
             className="Header__search-mobile"
@@ -190,4 +199,13 @@ export default HydroLeaf({
   className: 'Header',
   name: 'Header',
   container: (props) => <header {...props} />,
-})(Header);
+})(
+  connect(
+    (state: WebsiteRootState) => ({
+      loginModalOpen: state.user.loginModalOpen,
+    }),
+    {
+      closeLoginModal,
+    },
+  )(Header as any),
+);

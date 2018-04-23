@@ -8,9 +8,9 @@ import HydroLeaf from '~components/HydroLeaf';
 import Loader from '~components/Loader';
 import { AspectRatio, OneImage } from '~components/OneImage';
 import PatternPlaceholder from '~components/PatternPlaceholder';
-import Modal from "react-modal";
-import StreamField from "~components/content/StreamField";
+import StreamField from '~components/content/StreamField';
 import Button from '~components/Button';
+import { Modal } from '~components/Modal';
 
 interface Result {
   allOffers: Offer[];
@@ -20,7 +20,7 @@ interface OffersState {
   openOffer: number;
 }
 
-class Offers extends React.Component<{}, OffersState> {
+class Offers extends React.Component<{}, OffersState> {
   state = {
     openOffer: -1,
   };
@@ -38,9 +38,9 @@ class Offers extends React.Component<{}, OffersState> {
   render() {
     return (
       <GranuleQuery query={OFFERS_QUERY}>
-        {({data, loading}: GranuleChildProps<Result>) => {
+        {({ data, loading }: GranuleChildProps<Result>) => {
           if (!data || loading) {
-            return <Loader/>;
+            return <Loader />;
           }
 
           return (
@@ -48,7 +48,10 @@ class Offers extends React.Component<{}, OffersState> {
               <ul className="List List--reset OrgansiationGrid">
                 {data.allOffers.map((offer, index) => (
                   <li className="OrganisationCard">
-                    <div className="OrganisationCard__link" onClick={this.handleOpenOffer.bind(this, index)}>
+                    <div
+                      className="OrganisationCard__link"
+                      onClick={this.handleOpenOffer.bind(this, index)}
+                    >
                       {offer.companyLogo !== null ? (
                         <div className="OrganisationCard__image-container">
                           <OneImage
@@ -58,13 +61,13 @@ class Offers extends React.Component<{}, OffersState> {
                             alt=""
                             sizes={[416]}
                             mediaSizes="416px"
-                            options={{fit: 'clip'}}
+                            options={{ fit: 'clip' }}
                             withoutContainer
                           />
                         </div>
                       ) : (
                         <div className="OrganisationCard__image-container">
-                          <PatternPlaceholder/>
+                          <PatternPlaceholder />
                         </div>
                       )}
                       <div className="OrganisationCard__info">
@@ -79,19 +82,27 @@ class Offers extends React.Component<{}, OffersState> {
                   </li>
                 ))}
               </ul>
-              {this.state.openOffer >= 0 ?
-              <Modal
-                isOpen={this.state.openOffer !== null}
-                onRequestClose={this.handleClose}
-                style={{overlay: {zIndex: 400}}}
-              >
-                <h1>{data.allOffers[this.state.openOffer].companyName}</h1>
-                <h2>{data.allOffers[this.state.openOffer].dealTag}</h2>
-                {data.allOffers[this.state.openOffer].companyWebsite ? <Button href={data.allOffers[this.state.openOffer].companyWebsite}>View website ></Button> : null}
-                <StreamField page={{}} items={data.allOffers[this.state.openOffer].main}/>
-
-                <button className="Button" onClick={this.handleClose}>Close</button>
-              </Modal> : null}
+              {this.state.openOffer >= 0 ? (
+                <Modal
+                  isOpen={this.state.openOffer !== null}
+                  onRequestClose={this.handleClose}
+                  footerClose
+                >
+                  <h1>{data.allOffers[this.state.openOffer].companyName}</h1>
+                  <h2>{data.allOffers[this.state.openOffer].dealTag}</h2>
+                  {data.allOffers[this.state.openOffer].companyWebsite ? (
+                    <Button
+                      href={data.allOffers[this.state.openOffer].companyWebsite}
+                    >
+                      View website >
+                    </Button>
+                  ) : null}
+                  <StreamField
+                    page={{}}
+                    items={data.allOffers[this.state.openOffer].main}
+                  />
+                </Modal>
+              ) : null}
             </div>
           );
         }}

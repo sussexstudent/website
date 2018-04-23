@@ -1,4 +1,4 @@
-.Modal {
+.XModal {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -30,4 +30,61 @@
     box-sizing: content-box;
     height: auto;
   }
+}
+
+.Modal {
+  position: relative;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 2px;
+  outline: none;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 15px 3px rgba(0, 0, 0, 0.2);
+
+  @media (--medium) {
+    width: 80%;
+    max-width: 800px;
+  }
+
+  &--small {
+    max-width: 400px;
+  }
+
+  &__content {
+    padding: 1rem;
+  }
+
+  &__footerClose {
+    background: var(--color__grey-spring);
+    color: var(--color__grey-sad-slate);
+    text-align: center;
+    padding: 0.6rem;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    width: 100%;
+    display: block;
+    font-family: var(--type__primary);
+    border: 0;
+    font-weight: bold;
+  }
+}
+
+.Overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(26, 26, 26, 0.4);
+  z-index: 400;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-items: flex-start;
+  padding: 10px;
 }

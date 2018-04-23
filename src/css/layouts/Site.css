@@ -25,6 +25,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body.modal-open {
+  position: fixed;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+}
+
 .html--search-active {
   @media (--up-to-medium) {
   }

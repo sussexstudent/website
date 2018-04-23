@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '~components/Modal';
+import { Modal } from '~components/Modal';
 import HydroLeaf from '~components/HydroLeaf';
 import { VoteNowBox } from '~components/Bento/treatments/VoteNowBox';
 
@@ -40,15 +40,18 @@ class VoteNowModal extends React.Component<IProps, IState> {
   }
 
   render() {
-    return this.state.shouldDisplay ? (
-      <Modal handleClose={this.handleClose}>
+    return (
+      <Modal
+        isOpen={this.state.shouldDisplay}
+        onRequestClose={this.handleClose}
+      >
         <VoteNowBox
           link="/vote/"
           imageUrl="original_images/23748e8e475049fe8e49162ccd827b44"
           targetDate={new Date(2018, 2, 23, 17, 0, 0)}
         />
       </Modal>
-    ) : null;
+    );
   }
 }
 

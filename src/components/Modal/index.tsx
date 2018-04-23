@@ -1,29 +1,35 @@
 import React from 'react';
+import cx from 'classnames';
+import ReactModal from 'react-modal';
+import { omit } from 'lodash';
 
-interface IProps {
-  handleClose(): void;
+interface EnchancedModalProps {
+  size?: 'small' | 'normal' | 'full';
+
+  footerClose?: boolean;
 }
 
-const Modal: React.SFC<IProps> = (props) => {
-  return (
-    <div className="ModalContainer">
-      <div className="ModalContainer__modal Modal">
-        <button
-          className="Modal__close"
-          onClick={props.handleClose}
-          title="Close"
-        >
-          <span className="u-h">Close</span>
-        </button>
-        {props.children}
-      </div>
-      <div
-        className="ModalContainer__back"
-        onClick={props.handleClose}
-        role="presentation"
-      />
-    </div>
-  );
-};
+const Modal = (
+  props: ReactModal.Props & EnchancedModalProps & { children: any },
+) => (
+  <ReactModal
+    className={cx('Modal', { 'Modal--small': props.size === 'small' })}
+    overlayClassName="Overlay"
+    {...omit(props, ['size']) as ReactModal.Props}
+  >
+    <div className="Modal__content">{props.children}</div>
 
-export default Modal;
+    {props.footerClose ? (
+      <button
+        className="Modal__footerClose"
+        onClick={(e) =>
+          props.onRequestClose ? props.onRequestClose(e.nativeEvent) : null
+        }
+      >
+        close
+      </button>
+    ) : null}
+  </ReactModal>
+);
+
+export { Modal };

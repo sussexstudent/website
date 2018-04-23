@@ -1,7 +1,7 @@
 import React from 'react';
-import Modal from 'react-modal';
 import HydroLeaf from '~components/HydroLeaf';
 import { AspectRatio, OneImage } from '~components/OneImage';
+import { Modal } from '~components/Modal';
 
 // TODO: Use OneIamge, remove SwipableViews in favor of scrolling down
 class OfficerPlan extends React.Component {
@@ -80,7 +80,6 @@ class OfficerPlan extends React.Component {
           <Modal
             isOpen={this.state.point !== null}
             onRequestClose={this.handleClose.bind(this)}
-            style={{ overlay: { zIndex: 400 } }}
           >
             <h2 style={{ color: props.accent }}>
               {props.points[this.state.point][0]}

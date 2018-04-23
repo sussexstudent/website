@@ -2,6 +2,7 @@ query Offers {
   allOffers {
     dealTag
     companyName
+    companyWebsite
     companyLogo {
       resource
       width

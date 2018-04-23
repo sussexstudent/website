@@ -89,7 +89,7 @@ class TweetList extends React.Component<IProps, IState> {
             this.listEL = ref;
           }}
         >
-          <Loader />
+          <Loader dark />
         </ul>
       );
     }

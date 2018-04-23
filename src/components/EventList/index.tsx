@@ -28,7 +28,7 @@ function EventList() {
       >
         {({ data, loading }: GranuleChildProps<Result>) => {
           if (!data || loading) {
-            return <Loader />;
+            return <Loader dark />;
           }
 
           const { allEvents } = data;

@@ -1,10 +1,10 @@
 @keyframes leafFade {
   0% {
-    opacity: 1;
+    opacity: 0.8;
   }
 
   100% {
-    opacity: 0.4;
+    opacity: 0.5;
   }
 }
 
@@ -22,26 +22,23 @@
 
 .Loader {
   &__left {
-    fill: rgba(255, 255, 255, 0.5);
-    animation: leafFade 1s linear infinite alternate;
+    fill: rgba(180, 180, 180, 0.3);
+    animation: leafFade 430ms ease-in-out infinite alternate;
   }
 
   &__right {
-    fill: rgba(255, 255, 255, 0.5);
-    animation: leafFade 1s linear infinite alternate;
-    animation-delay: 500ms;
+    fill: rgba(180, 180, 180, 0.3);
+    animation: leafFade 430ms ease-in-out infinite alternate;
+    animation-delay: 430ms;
   }
 }
 
 .Loader--dark {
   & .Loader__left {
-    fill: #e3e3e3;
-    animation: leafFade 1s linear infinite alternate;
+    fill: #fff8;
   }
 
   & .Loader__right {
-    fill: #e3e3e3;
-    animation: leafFade 1s linear infinite alternate;
-    animation-delay: 500ms;
+    fill: #fff8;
   }
 }

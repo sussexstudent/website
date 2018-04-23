@@ -6,7 +6,7 @@ interface CommonProps {
   flag: string;
 }
 
-interface SeparateProps extends CommonProps{
+interface SeparateProps extends CommonProps {
   enabled: RenderFunction;
   disabled: RenderFunction;
 }
@@ -14,7 +14,6 @@ interface SeparateProps extends CommonProps{
 type IProps = SeparateProps;
 
 export class FeatureFlag extends React.Component<IProps> {
-
   render() {
     const isLoading = false;
     const state = false;
@@ -22,7 +21,6 @@ export class FeatureFlag extends React.Component<IProps> {
     if (isLoading) {
       return null;
     }
-
 
     return state ? this.props.enabled(state) : this.props.disabled(state);
   }

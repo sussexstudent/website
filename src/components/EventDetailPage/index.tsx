@@ -16,7 +16,7 @@ import { generateStylesForBrand } from '~components/EventsApplication/utils';
 import { AspectRatio, OneImage } from '~components/OneImage';
 import { EventDetailDetails } from '~components/EventDetailPage/EventDetailDetails';
 import { EventDetailSidebar } from '~components/EventDetailPage/EventDetailSidebar';
-import {MSLEventCommunication} from "~components/EventDetailPage/MSLEventCommunication";
+import { MSLEventCommunication } from '~components/EventDetailPage/MSLEventCommunication';
 
 interface RouteParams {
   [0]: string;
@@ -166,7 +166,12 @@ class EventDetailPage extends React.Component<IProps, IState> {
           </div>
         ) : null}
 
-        {event.mslEventId ? <MSLEventCommunication mslEventId={event.mslEventId} onData={this.handleMslCommunication} /> : null}
+        {event.mslEventId ? (
+          <MSLEventCommunication
+            mslEventId={event.mslEventId}
+            onData={this.handleMslCommunication}
+          />
+        ) : null}
       </div>
     );
   }

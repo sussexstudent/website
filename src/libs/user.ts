@@ -137,7 +137,7 @@ export interface ClientAuth {
 interface Client {
   fundraising: ClientFundraising;
   auth: ClientAuth;
-  mitt: mitt.Emitter
+  mitt: mitt.Emitter;
 }
 
 function currentUser(): Client | null {
@@ -152,4 +152,4 @@ function currentUser(): Client | null {
   };
 }
 
-export default (currentUser());
+export default currentUser();

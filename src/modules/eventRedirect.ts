@@ -1,11 +1,10 @@
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import { parseTickets } from '~libs/mslEventTicketParser';
-import user from "~libs/user";
+import user from '~libs/user';
 
 const pathRegEx = /^\/ents\/event\/([0-9]+)\/?/;
 
 function eventPage() {
-
   const match = window.location.pathname.match(pathRegEx);
 
   if (match !== null) {

@@ -1,5 +1,5 @@
-import React from "react";
-import {Event} from "../../types/events";
+import React from 'react';
+import { Event } from '../../types/events';
 
 interface IProps {
   mslEventId: Event;
@@ -28,7 +28,10 @@ export class MSLEventCommunication extends React.Component<IProps, IState> {
         this.props.onData(data.payload);
 
         if (data.payload.pageMenuOptions) {
-          (window as any).emitter.emit('changePageOptions', data.payload.pageMenuOptions);
+          (window as any).emitter.emit(
+            'changePageOptions',
+            data.payload.pageMenuOptions,
+          );
         }
       }
     };
@@ -43,6 +46,6 @@ export class MSLEventCommunication extends React.Component<IProps, IState> {
         src={`/ents/event/${mslEventId}#communication`}
         frameBorder="0"
       />
-    )
+    );
   }
 }

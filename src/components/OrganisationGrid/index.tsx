@@ -26,7 +26,7 @@ export default function OrganisationGrid(props: IProps) {
   const { organisations } = props;
   return (
     <ul className="OrgansiationGrid">
-      {organisations.map((org) => <OrganisationCard org={org} key={org.id} />)}
+      {organisations.map((org) => <OrganisationCard org={org} key={org.groupId} />)}
     </ul>
   );
 }

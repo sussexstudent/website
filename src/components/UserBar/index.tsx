@@ -4,14 +4,21 @@ import cx from 'classnames';
 import ClickOutside from 'react-onclickout';
 import client, { ClientAuth } from '~libs/user';
 import Hydroleaf from '~components/HydroLeaf';
-import {shuffle} from 'lodash';
+import { shuffle } from 'lodash';
+import {connect} from 'react-redux';
+import {WebsiteRootState} from "../../types/website";
+import {PageState} from "../../projects/website/ducks/page";
+import {UserState} from "../../projects/website/ducks/user";
 
 enum DropdownState {
   Page,
   Admin,
 }
 
-interface IProps {}
+interface IProps {
+  page: PageState;
+  user: UserState;
+}
 
 interface IState {
   isLoaded: boolean;
@@ -19,7 +26,6 @@ interface IState {
   auth: ClientAuth | null;
   greetingIndex: 0;
 }
-
 
 // Submit pull requests!
 const greetings = shuffle([
@@ -90,40 +96,48 @@ class UserBar extends React.Component<IProps, IState> {
     }, 1);
 
     // trying to avoid using some sort of state container for now. hacky
-    (window as any).emitter.on('changePageOptions', (options: any) => {
-      this.setState((state) => ({
-        auth: ({ ...state.auth, page: options } as ClientAuth)
-      }));
-    })
+    (window as any).emitter.on('changePageOptions', (_options: any) => {
+
+    });
   }
 
   @bind
   handleGreetingPress() {
-    this.setState(state => ({ greetingIndex: state.greetingIndex + 1 >= greetings.length ? 0 : state.greetingIndex + 1 } as any));
+    this.setState(
+      (state) =>
+        ({
+          greetingIndex:
+            state.greetingIndex + 1 >= greetings.length
+              ? 0
+              : state.greetingIndex + 1,
+        } as any),
+    );
   }
 
   renderLoaded() {
-    const { auth, dropdownOpen, greetingIndex } = this.state;
+    const { page: { menu }, user: { isLoaded, isLoggedIn, profile, actionBound } } = this.props;
+    const { dropdownOpen, greetingIndex } = this.state;
 
-    if (!auth) {
+    if (!isLoaded) {
       return null;
     }
 
-    const { isLoggedIn, profile, admin, page, actionBound } = auth;
-
-    if (isLoggedIn) {
+    if (isLoggedIn && profile) {
       return (
         <ul className="UserBar__list">
-          <li className="UserBar__item UserBar__item--welcome" onClick={this.handleGreetingPress}>
+          <li
+            className="UserBar__item UserBar__item--welcome"
+            onClick={this.handleGreetingPress}
+          >
             {greetings[greetingIndex]} {profile.firstName}!
           </li>
           <li className="UserBar__item UserBar__item--action">
-            <button onClick={actionBound} type="button">
+            <button onClick={actionBound || undefined} type="button">
               Log out
             </button>
           </li>
 
-          {admin !== null ? (
+          {(menu.admin.areas.length > 0) || (menu.admin.orgs.length > 0) ? (
             <li
               className={cx(
                 'UserBar__item UserBar__item-admin UserBar__admin-menu',
@@ -139,13 +153,13 @@ class UserBar extends React.Component<IProps, IState> {
                 <ClickOutside onClickOut={this.handleCloseDropdown}>
                   <div className={cx('UserBar__item-dropdown')}>
                     <ul className="UserBar__dropdown-list">
-                      {admin.admin.map((item) => (
+                      {menu.admin.areas.map((item) => (
                         <li key={item.name}>
                           <a href={item.link}>{item.name}</a>
                         </li>
                       ))}
                       <hr />
-                      {admin.orgs.map((item) => (
+                      {menu.admin.orgs.map((item) => (
                         <li key={item.name}>
                           <a href={item.link}>{item.name}</a>
                         </li>
@@ -156,7 +170,7 @@ class UserBar extends React.Component<IProps, IState> {
               ) : null}
             </li>
           ) : null}
-          {page !== null ? (
+          {menu.page.actions.length > 0 ? (
             <li
               className={cx(
                 'UserBar__item UserBar__item-admin UserBar__admin-menu',
@@ -177,7 +191,7 @@ class UserBar extends React.Component<IProps, IState> {
                     })}
                   >
                     <ul className="UserBar__dropdown-list">
-                      {page.items.map((item) => (
+                      {menu.page.actions.map((item) => (
                         <li key={item.name}>
                           <a href={item.link}>{item.name}</a>
                         </li>
@@ -199,7 +213,7 @@ class UserBar extends React.Component<IProps, IState> {
       <ul className="UserBar__list">
         <li className="UserBar__item">Hi there!</li>
         <li className="UserBar__item UserBar__item--action">
-          <a href="/login" data-action="login">
+          <a href="/login">
             Log in
           </a>
         </li>
@@ -224,19 +238,19 @@ class UserBar extends React.Component<IProps, IState> {
   }
 }
 
-export default UserBar;
+const UserBarContainer: React.SFC<{page: PageState, user: UserState}> = (props) => <UserBar {...props} />;
+
+const UserBarConnected = connect((state: WebsiteRootState) => ({
+  page: state.page,
+  user: state.user,
+}))(UserBarContainer);
+
+export default UserBarConnected;
 
 function DesktopContainer() {
   return (
     <div className="Container UserBar__container">
-      {/* <button */}
-      {/* className="UserBar__a11y" */}
-      {/* type="button" */}
-      {/* onClick={() => window.loadRecite()} */}
-      {/* > */}
-      {/* Accessibility */}
-      {/* </button> */}
-      <UserBar />
+      <UserBarConnected />
     </div>
   );
 }

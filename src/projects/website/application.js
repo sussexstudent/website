@@ -2,15 +2,14 @@ import Raven from 'raven-js';
 import mitt from 'mitt';
 import 'what-input';
 import currentUser from '~libs/user';
-import smoothscroll from '~libs/smoothscroll';
 import { addClassesForFeatures } from '~libs/features';
 import hydro from '../../modules/hydro';
 import Modal from 'react-modal';
-// import '../../modules/eventRedirect';
+import '../../modules/eventRedirect';
 
+addClassesForFeatures();
 
 Modal.setAppElement('.Body');
-addClassesForFeatures();
 
 // Install raven for sentry error  reporting
 if (process.env.NODE_ENV === 'production') {

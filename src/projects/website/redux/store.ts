@@ -1,4 +1,5 @@
 import * as reducers from './reducers';
+import user from '../../../libs/user';
 import { createStore, combineReducers, compose } from 'redux';
 
 const composeEnhancers =
@@ -10,5 +11,12 @@ const store = createStore(
   {},
   composeEnhancers(),
 );
+
+if (user && user.auth) {
+  store.dispatch({
+    type: 'PAGE_HYDRATION',
+    payload: user,
+  });
+}
 
 export { store };

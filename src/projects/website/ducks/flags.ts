@@ -6,7 +6,7 @@ interface Flag {
   mode: 'FORCE';
 }
 
-interface FlagsState {
+export interface FlagsState {
   loaded: boolean;
   flags: { [flagName: string]: Flag };
 }

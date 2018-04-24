@@ -1,5 +1,5 @@
 import flags from '../ducks/flags';
 import user from '../ducks/user';
-import userbar from '../ducks/userbar';
+import page from '../ducks/page';
 
-export { flags, user, userbar };
+export { flags, user, page };

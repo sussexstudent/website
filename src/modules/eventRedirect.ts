@@ -18,7 +18,7 @@ function eventPage() {
           source: 'ussu-msl-frame-initial-data',
           payload: {
             tickets: parseTickets(),
-            pageMenuOptions: user ? user.auth.page : false,
+            pageMenuOptions: user ? user.auth.menu.page : false,
           },
         },
         '*',

@@ -10,7 +10,7 @@ function getAdminItems() {
   const admin = document.querySelector('#msl_admin');
 
   if (admin === null) {
-    return null;
+    return { areas: [], orgs: [] };
   }
 
   const adminItems = Array.from(
@@ -28,7 +28,7 @@ function getAdminItems() {
   }));
 
   return {
-    admin: adminItems,
+    areas: adminItems,
     orgs: orgItems,
   };
 }
@@ -37,10 +37,10 @@ function getPageItems() {
   const page = document.querySelector('#controlpanel');
 
   if (page === null) {
-    return null;
+    return { actions: [] };
   }
 
-  const items = Array.from(
+  const actions = Array.from(
     page.querySelectorAll<HTMLAnchorElement>('li a'),
   ).map((item) => ({
     name: item.innerText,
@@ -48,7 +48,7 @@ function getPageItems() {
   }));
 
   return {
-    items,
+    actions,
   };
 }
 
@@ -64,8 +64,10 @@ function auth() {
   return {
     profile,
     isLoggedIn: hasDetails,
-    admin: getAdminItems(),
-    page: getPageItems(),
+    menu: {
+      admin: getAdminItems(),
+      page: getPageItems(),
+    },
     actionBound: () => {
       if (typeof (window as any).__doPostBack === 'function' && button) {
         (window as any).__doPostBack(button.id.replace(/_/gi, '$'), 0);
@@ -124,12 +126,14 @@ export interface ClientAuth {
     lastName: string;
     uuid: string;
   };
-  admin: null | {
-    admin: MenuItem[];
-    orgs: MenuItem[];
-  };
-  page: null | {
-    items: MenuItem[];
+  menu: {
+    admin: {
+      areas: MenuItem[];
+      orgs: MenuItem[];
+    };
+    page: {
+      actions: MenuItem[];
+    };
   };
   actionBound(): void;
 }

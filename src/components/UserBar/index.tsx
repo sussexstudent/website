@@ -5,10 +5,10 @@ import ClickOutside from 'react-onclickout';
 import client, { ClientAuth } from '~libs/user';
 import Hydroleaf from '~components/HydroLeaf';
 import { shuffle } from 'lodash';
-import {connect} from 'react-redux';
-import {WebsiteRootState} from "../../types/website";
-import {PageState} from "../../projects/website/ducks/page";
-import {UserState} from "../../projects/website/ducks/user";
+import { connect } from 'react-redux';
+import { WebsiteRootState } from '../../types/website';
+import { PageState } from '../../projects/website/ducks/page';
+import { UserState } from '../../projects/website/ducks/user';
 
 enum DropdownState {
   Page,
@@ -96,9 +96,7 @@ class UserBar extends React.Component<IProps, IState> {
     }, 1);
 
     // trying to avoid using some sort of state container for now. hacky
-    (window as any).emitter.on('changePageOptions', (_options: any) => {
-
-    });
+    (window as any).emitter.on('changePageOptions', (_options: any) => {});
   }
 
   @bind
@@ -115,7 +113,10 @@ class UserBar extends React.Component<IProps, IState> {
   }
 
   renderLoaded() {
-    const { page: { menu }, user: { isLoaded, isLoggedIn, profile, actionBound } } = this.props;
+    const {
+      page: { menu },
+      user: { isLoaded, isLoggedIn, profile, actionBound },
+    } = this.props;
     const { dropdownOpen, greetingIndex } = this.state;
 
     if (!isLoaded) {
@@ -137,7 +138,7 @@ class UserBar extends React.Component<IProps, IState> {
             </button>
           </li>
 
-          {(menu.admin.areas.length > 0) || (menu.admin.orgs.length > 0) ? (
+          {menu.admin.areas.length > 0 || menu.admin.orgs.length > 0 ? (
             <li
               className={cx(
                 'UserBar__item UserBar__item-admin UserBar__admin-menu',
@@ -213,9 +214,7 @@ class UserBar extends React.Component<IProps, IState> {
       <ul className="UserBar__list">
         <li className="UserBar__item">Hi there!</li>
         <li className="UserBar__item UserBar__item--action">
-          <a href="/login">
-            Log in
-          </a>
+          <a href="/login">Log in</a>
         </li>
         <li className="UserBar__item UserBar__item--action UserBar__item--action-highlight">
           <a href="/shop/basket">Basket</a>
@@ -238,7 +237,9 @@ class UserBar extends React.Component<IProps, IState> {
   }
 }
 
-const UserBarContainer: React.SFC<{page: PageState, user: UserState}> = (props) => <UserBar {...props} />;
+const UserBarContainer: React.SFC<{ page: PageState; user: UserState }> = (
+  props,
+) => <UserBar {...props} />;
 
 const UserBarConnected = connect((state: WebsiteRootState) => ({
   page: state.page,

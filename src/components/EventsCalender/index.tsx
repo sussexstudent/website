@@ -36,8 +36,8 @@ class EventsCalender extends React.Component<IProps> {
     const {
       data: { allEvents, brandingPeriod },
       disableHeader = false,
-        useAnchors = false,
-        match,
+      useAnchors = false,
+      match,
     } = this.props;
     const events = allEvents.edges.map(({ node }: { node: Event }) => ({
       ...node,

@@ -1,7 +1,12 @@
 import React from 'react';
-import bind  from 'bind-decorator';
+import bind from 'bind-decorator';
 import { debounce } from 'lodash';
-import { Route, Switch, withRouter, RouteComponentProps } from 'react-router-dom';
+import {
+  Route,
+  Switch,
+  withRouter,
+  RouteComponentProps,
+} from 'react-router-dom';
 import HydroLeaf from '~components/HydroLeaf';
 import Loadable from 'react-loadable';
 import { LoadableLoading } from '~components/LoadableLoading';
@@ -32,8 +37,7 @@ const LoadableDetail = Loadable({
     import(/* webpackChunkName: "events.detail" */ '~components/EventDetailPage'),
 });
 
-interface Props  {
-}
+interface Props {}
 
 type EventsApplicationProps = RouteComponentProps<{}> & Props;
 
@@ -41,7 +45,10 @@ interface EventsApplicationState {
   currentListingsScrollPosition: number;
 }
 
-class EventsApplication extends React.Component<EventsApplicationProps, EventsApplicationState> {
+class EventsApplication extends React.Component<
+  EventsApplicationProps,
+  EventsApplicationState
+> {
   state = {
     currentListingsScrollPosition: -1,
   };
@@ -59,11 +66,13 @@ class EventsApplication extends React.Component<EventsApplicationProps, EventsAp
 
   componentDidUpdate(prevProps: EventsApplicationProps) {
     if (
-      this.props.location.pathname === '/whats-on'
-      && this.props.location.pathname !== prevProps.location.pathname
-      && this.state.currentListingsScrollPosition !== null
+      this.props.location.pathname === '/whats-on' &&
+      this.props.location.pathname !== prevProps.location.pathname &&
+      this.state.currentListingsScrollPosition !== null
     ) {
-      requestAnimationFrame(() => window.scrollTo({ top: this.state.currentListingsScrollPosition }))
+      requestAnimationFrame(() =>
+        window.scrollTo({ top: this.state.currentListingsScrollPosition }),
+      );
     }
   }
 

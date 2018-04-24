@@ -8,11 +8,11 @@ interface MenuItem {
 export interface PageState {
   menu: {
     page: {
-      actions: MenuItem[]
+      actions: MenuItem[];
     };
     admin: {
-      areas: MenuItem[],
-      orgs: MenuItem[]
+      areas: MenuItem[];
+      orgs: MenuItem[];
     };
   };
 }
@@ -25,7 +25,9 @@ export const setMenuItems = (options: {
 }) => ({ type: PAGE_SET_MENU_ITEMS, payload: options });
 
 export default function reducer(
-  state: PageState = { menu: { page: {actions: []}, admin: {areas: [], orgs: []} } },
+  state: PageState = {
+    menu: { page: { actions: [] }, admin: { areas: [], orgs: [] } },
+  },
   action: AnyAction,
 ) {
   switch (action.type) {

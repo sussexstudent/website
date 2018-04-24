@@ -15,7 +15,7 @@ export interface UserState {
   profile: null | Profile;
   jwt: string | null;
   loginModalOpen: boolean;
-  actionBound: null | LogoutFn
+  actionBound: null | LogoutFn;
 }
 
 const USER_CLOSE_LOGIN_MODAL = 'USER_CLOSE_LOGIN_MODAL';
@@ -36,7 +36,7 @@ export default function reducer(
     isLoggedIn: false,
     profile: null,
     jwt: null,
-    actionBound: null
+    actionBound: null,
   },
   action: AnyAction,
 ) {
@@ -51,7 +51,13 @@ export default function reducer(
       return { ...state, profile: action.payload, isLoggedIn: true };
     }
     case 'PAGE_HYDRATION': {
-      return { ...state, isLoaded: true, profile: action.payload.auth.profile, isLoggedIn: action.payload.auth.isLoggedIn, actionBound: action.payload.auth.actionBound };
+      return {
+        ...state,
+        isLoaded: true,
+        profile: action.payload.auth.profile,
+        isLoggedIn: action.payload.auth.isLoggedIn,
+        actionBound: action.payload.auth.actionBound,
+      };
     }
   }
 

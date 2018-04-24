@@ -9,11 +9,16 @@
 }
 
 .Loader {
-  max-width: 100px;
+  max-width: 80px;
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
-  margin: 2rem auto;
+  margin: 1.4rem auto;
+
+  @media (--medium) {
+    max-width: 100px;
+    margin: 2rem auto;
+  }
 }
 
 .Loader__svg {

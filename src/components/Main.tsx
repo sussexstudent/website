@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const Main: React.SFC<IProps> = ({ legacy }) => (
-  <main className={cx('Site__content')}>
+  <main className={cx('Site__content u-keep-footer-down')}>
     {legacy ? (
       <div className={cx('Container')}>
         <div

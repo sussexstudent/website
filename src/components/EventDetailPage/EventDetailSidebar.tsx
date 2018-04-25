@@ -25,7 +25,7 @@ export const EventDetailSidebar = (props: IProps) => {
         // <MSLTickets msl={msl} />
         <ContentCard>
           <h3>Tickets</h3>
-          <Button href={event.ticketData}>Get tickets</Button>
+          <Button href={`${event.ticketData}#tickets`}>Get tickets</Button>
         </ContentCard>
       ) : null}
       <ContentCard>

@@ -17,12 +17,11 @@ export interface PageState {
   };
 }
 
-const PAGE_SET_MENU_ITEMS = 'PAGE_SET_MENU_ITEMS';
+const PAGE_REPLACE_PAGE_ACTIONS = 'PAGE_REPLACE_PAGE_ACTIONS';
 
-export const setMenuItems = (options: {
-  page: MenuItem[];
-  admin: MenuItem[];
-}) => ({ type: PAGE_SET_MENU_ITEMS, payload: options });
+export const replacePageActions = (options: {
+  actions: MenuItem[];
+}) => ({ type: PAGE_REPLACE_PAGE_ACTIONS, payload: options });
 
 export default function reducer(
   state: PageState = {
@@ -31,8 +30,9 @@ export default function reducer(
   action: AnyAction,
 ) {
   switch (action.type) {
-    case PAGE_SET_MENU_ITEMS: {
-      return { ...state, menu: action.payload };
+    case PAGE_REPLACE_PAGE_ACTIONS: {
+      console.log(action);
+      return { ...state, menu: { ...state.menu, page: action.payload }};
     }
     case 'PAGE_HYDRATION': {
       return { ...state, menu: action.payload.auth.menu };

@@ -1,7 +1,14 @@
 import React from 'react';
+import bind from 'bind-decorator';
 import { Event } from '../../types/events';
+import {connect} from 'react-redux';
+import {replacePageActions} from '../../projects/website/ducks/page';
 
-interface IProps {
+interface Dispatchers {
+  replacePageActions: typeof replacePageActions;
+}
+
+interface IProps extends Dispatchers {
   mslEventId: Event;
   onData(data: any): void;
 }
@@ -10,7 +17,7 @@ interface IState {
   data: any;
 }
 
-export class MSLEventCommunication extends React.Component<IProps, IState> {
+class MSLEventCommunicationComponent extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
 
@@ -20,21 +27,25 @@ export class MSLEventCommunication extends React.Component<IProps, IState> {
   }
 
   componentDidMount() {
-    window.onmessage = (e) => {
-      const data = e.data;
-      if (data.source === 'ussu-msl-frame-initial-data') {
-        this.setState({ data: data.payload });
-        console.log(data.payload);
-        this.props.onData(data.payload);
+    window.addEventListener('message', this.handleMessage);
+  }
 
-        if (data.payload.pageMenuOptions) {
-          (window as any).emitter.emit(
-            'changePageOptions',
-            data.payload.pageMenuOptions,
-          );
-        }
+  componentWillUnmount() {
+    window.removeEventListener('message', this.handleMessage);
+  }
+
+  @bind
+  handleMessage(e: MessageEvent) {
+    const data = e.data;
+    if (data.source === 'ussu-msl-frame-initial-data') {
+      this.setState({ data: data.payload });
+      console.log(data.payload);
+      this.props.onData(data.payload);
+
+      if (data.payload.pageMenuOptions) {
+        this.props.replacePageActions(data.payload.pageMenuOptions);
       }
-    };
+    }
   }
 
   render() {
@@ -49,3 +60,7 @@ export class MSLEventCommunication extends React.Component<IProps, IState> {
     );
   }
 }
+
+export const MSLEventCommunication = connect(null, {
+  replacePageActions,
+})((props: IProps) => <MSLEventCommunicationComponent {...props} />);

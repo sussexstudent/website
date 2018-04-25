@@ -8,6 +8,10 @@ a {
   outline-offset: -2px;
 }
 
+::selection {
+  background: var(--color__brand-yellow);
+}
+
 h1,
 h2,
 h3,

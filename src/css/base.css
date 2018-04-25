@@ -26,6 +26,13 @@ h6,
   color: inherit;
 }
 
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid var(--color__grey-spring);
+}
+
 h1 small,
 h2 small,
 h3 small,

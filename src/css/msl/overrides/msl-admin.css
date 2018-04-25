@@ -24,7 +24,29 @@
       &.msl_toolbarbutton_selected {
         background: var(--color__brand-blue);
         color: white;
+        font-size: inherit;
       }
     }
+  }
+
+  .vp_form input.textbox, .vp_form textarea.textbox {
+    font-size: 1rem;
+    padding: 0.3rem !important;
+    border: 1px solid var(--color__grey-spring);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 20em;
+  }
+
+  .vp_form .vp_highlight {
+    background-color: transparent;
+  }
+
+  .vp_form .vpFormPair, .vp_form .vpFormSubmit {
+    padding: 0.6rem 0;
+  }
+
+  .vp_form textarea.max {
+    max-width: 40em;
   }
 }

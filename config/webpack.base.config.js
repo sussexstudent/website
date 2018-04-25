@@ -55,7 +55,6 @@ function generateConfig() {
         'react-router-dom': 'react-router-dom/es',
         'react-router': 'react-router/es',
         'react-helmet': 'react-helmet/es/Helmet.js',
-        'date-fns': 'date-fns/esm',
         history: 'history/es',
         'lodash.pick': 'lodash/pick',
         'lodash.flowright': 'lodash/flowright',

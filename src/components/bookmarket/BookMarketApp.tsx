@@ -1,14 +1,42 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { MarketHome } from '~components/BookMarket/MarketHome';
 import HydroLeaf from '~components/HydroLeaf';
 import { Provider } from '../../types/hydro';
-import { BookDetail } from '~components/bookmarket/BookDetail';
-import { CreateListing } from '~components/bookmarket/CreateListing';
-import { MarketSearch } from '~components/bookmarket/MarketSearch';
-import { MarketSection } from '~components/bookmarket/MarketSection';
-import { MarketMyListings } from '~components/bookmarket/MarketMyListings';
 import Helmet from 'react-helmet';
+import {LoadableLoading} from "~components/LoadableLoading";
+import Loadable from 'react-loadable';
+
+const LoadableMarketHome = Loadable({
+  loading: LoadableLoading,
+  loader: () => import(/* webpackChunkName: "MarketHome" */ './MarketHome').then(m => m.MarketHome),
+});
+
+const LoadableMarketMyListings = Loadable({
+  loading: LoadableLoading,
+  loader: () => import(/* webpackChunkName: "MarketMyListings" */ './MarketMyListings').then(m => m.MarketMyListings),
+});
+
+const LoadableMarketSearch = Loadable({
+  loading: LoadableLoading,
+  loader: () => import(/* webpackChunkName: "MarketSearch" */ './MarketSearch').then(m => m.MarketSearch),
+});
+
+const LoadableMarketSection = Loadable({
+  loading: LoadableLoading,
+  loader: () => import(/* webpackChunkName: "MarketSection" */ './MarketSection').then(m => m.MarketSection),
+});
+
+const LoadableMarketBookDetail = Loadable({
+  loading: LoadableLoading,
+  loader: () => import(/* webpackChunkName: "MarketBookDetail" */ './BookDetail').then(m => m.BookDetail),
+});
+
+const LoadableMarketCreateListing = Loadable({
+  loading: LoadableLoading,
+  loader: () => import(/* webpackChunkName: "MarketCreateListing" */ './CreateListing').then(m => m.CreateListing),
+});
+
+
 
 const BookMarketApplication: React.SFC<{}> = () => (
   <Route
@@ -20,21 +48,21 @@ const BookMarketApplication: React.SFC<{}> = () => (
           defaultTitle="Book Market | Sussex Students' Union"
         />
         <Switch>
-          <Route path={`/book-market/`} component={MarketHome} exact />
+          <Route path={`/book-market/`} component={LoadableMarketHome} exact />
           <Route
             path={`/book-market/my-listings`}
-            component={MarketMyListings}
+            component={LoadableMarketMyListings}
           />
-          <Route path={`/book-market/search`} component={MarketSearch} />
+          <Route path={`/book-market/search`} component={LoadableMarketSearch} />
           <Route
             path={`/book-market/section/:sectionSlug`}
-            component={MarketSection}
+            component={LoadableMarketSection}
           />
           <Route
             path={`/book-market/listing/:listingId`}
-            component={BookDetail}
+            component={LoadableMarketBookDetail}
           />
-          <Route path={`/book-market/list`} component={CreateListing} />
+          <Route path={`/book-market/list`} component={LoadableMarketCreateListing} />
         </Switch>
       </div>
     )}

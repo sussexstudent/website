@@ -8,9 +8,6 @@ import EventsApplicationX from '~components/EventsApplication';
 import { DesktopUserBar } from '~components/UserBar';
 import Header from '~components/Header';
 import { Provider } from '../types/hydro';
-import { CountdownBox } from '~components/Bento/treatments/CountdownBox';
-import { VoteNowBox } from '~components/Bento/treatments/VoteNowBox';
-import { VoteNowModalContainer } from '~components/VoteNowModal';
 import { store } from '../projects/website/redux/store';
 
 interface ComponentMap {
@@ -31,20 +28,19 @@ function wrapProviders(providers: any[], child: any) {
 
 export default function() {
   const componentMap: ComponentMap = {
+    /* Core Template Components */
+    Header: () => Header,
+    UserBar: () => DesktopUserBar,
+
+    HeaderSearch: () =>
+      import(/* webpackChunkName: "HeaderSearch" */ '~components/HeaderSearch'),
+
     TweetList: () =>
       import(/* webpackChunkName: "TweetList" */ '~components/TweetList'),
     EventList: () =>
       import(/* webpackChunkName: "EventList" */ '~components/EventList'),
-    EventsApplication: () => EventsApplicationX as any,
-    HeaderSearch: () =>
-      import(/* webpackChunkName: "HeaderSearch" */ '~components/HeaderSearch'),
-    StudentGroupsDiscoveryContainer: () =>
-      import(/* webpackChunkName: "StudentGroupsDiscovery" */ '~components/StudentGroupsDiscovery'),
-    Header: () => Header,
-    UserBar: () => DesktopUserBar,
-    VoteNowBox: () => VoteNowBox,
-    VoteNowModalContainer: () => VoteNowModalContainer,
-    CountdownBox: () => CountdownBox,
+    VoteNowBox: () => import(/* webpackChunkName: "VoteNowBox" */ '~components/Bento/treatments/VoteNowBox').then(m => m.VoteNowBox),
+    CountdownBox: () => import(/* webpackChunkName: "CountdownBox" */ '~components/Bento/treatments/CountdownBox').then(m => m.CountdownBox),
     AnnualPlan: () =>
       import(/* webpackChunkName: "AnnualPlan" */ '~components/AnnualPlan'),
     DemocracyAirHorn: () =>
@@ -59,8 +55,13 @@ export default function() {
       import(/* webpackChunkName: "ContentPage" */ '../projects/website/layouts/ContentPage'),
     BentoBox: () => import(/* webpackChunkName: "Bento" */ '~components/Bento'),
     Offers: () => import(/* webpackChunkName: "Offers" */ '~components/Offers'),
+
+    /* Applications! */
+    EventsApplication: () => EventsApplicationX as any,
     BookMarket: () => BookMarketApp,
     KnowledgeBase: () => KnowledgeBaseApp,
+    StudentGroupsDiscoveryContainer: () =>
+      import(/* webpackChunkName: "StudentGroupsDiscovery" */ '~components/StudentGroupsDiscovery'),
   };
 
   const providerLoaders: any[] = [];

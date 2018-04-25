@@ -34,6 +34,23 @@ config.output = {
   chunkFilename: 'union.[name].[hash].js',
 };
 
+// config.optimization = {
+//   splitChunks: {
+//     chunks: 'all',
+//     cacheGroups: {
+//       vendor: {
+//         name: 'vendor',
+//         minChunks: 3,
+//       },
+//       default: {
+//         minChunks: 2,
+//         priority: -20,
+//         reuseExistingChunk: true
+//       }
+//     }
+//   }
+// };
+
 config.plugins = config.plugins.concat([
   // new BundleAnalyzerPlugin(),
   new webpack.DefinePlugin({

@@ -12,6 +12,8 @@ import CollectionParentIcon from '../../icons/events-collection-parent.svg';
 import PinIcon from '../../icons/events-pin.svg';
 import SocietyIcon from '../../icons/events-society.svg';
 import { Link } from 'react-router-dom';
+import { getOrdinal } from '~components/EventsApplication/utils';
+import { getDate } from 'date-fns';
 
 function isSameLogicalSleepDay(startDate: Date, endDate: Date) {
   if (isSameDay(startDate, endDate)) {
@@ -41,9 +43,12 @@ function renderDates(event: Event) {
           <li className="EventDetail__details-list-item">
             <CalendarIcon className="EventDetail__icon" />
             {minimalisticTimeRenderer(startDate)},{' '}
-            {formatDate(startDate, 'ddd D MMM YYYY')} -{' '}
-            {minimalisticTimeRenderer(endDate)},{' '}
-            {formatDate(endDate, 'ddd D MMM YYYY')}
+            {formatDate(startDate, 'dddd D')}
+            <sup>{getOrdinal(getDate(startDate))}</sup>
+            {formatDate(startDate, ' MMMM YYYY')} -{' '}
+            {minimalisticTimeRenderer(endDate)}, {formatDate(endDate, 'dddd D')}
+            <sup>{getOrdinal(getDate(endDate))}</sup>
+            {formatDate(endDate, ' MMMM YYYY')}
           </li>
         </div>
       </div>
@@ -54,7 +59,9 @@ function renderDates(event: Event) {
     <div>
       <li className="EventDetail__details-list-item">
         <CalendarIcon className="EventDetail__icon" />
-        {formatDate(startDate, 'dddd D MMMM YYYY')}
+        {formatDate(startDate, 'dddd D')}
+        <sup>{getOrdinal(getDate(startDate))}</sup>
+        {formatDate(startDate, ' MMMM YYYY')}
       </li>
       <li className="EventDetail__details-list-item">
         <ClockIcon className="EventDetail__icon" />

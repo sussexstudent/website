@@ -1,8 +1,8 @@
 import React from 'react';
 import bind from 'bind-decorator';
 import { Event } from '../../types/events';
-import {connect} from 'react-redux';
-import {replacePageActions} from '../../projects/website/ducks/page';
+import { connect } from 'react-redux';
+import { replacePageActions } from '../../projects/website/ducks/page';
 
 interface Dispatchers {
   replacePageActions: typeof replacePageActions;

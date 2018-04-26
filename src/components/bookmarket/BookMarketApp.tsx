@@ -3,40 +3,56 @@ import { Switch, Route } from 'react-router-dom';
 import HydroLeaf from '~components/HydroLeaf';
 import { Provider } from '../../types/hydro';
 import Helmet from 'react-helmet';
-import {LoadableLoading} from "~components/LoadableLoading";
+import { LoadableLoading } from '~components/LoadableLoading';
 import Loadable from 'react-loadable';
 
 const LoadableMarketHome = Loadable({
   loading: LoadableLoading,
-  loader: () => import(/* webpackChunkName: "MarketHome" */ './MarketHome').then(m => m.MarketHome),
+  loader: () =>
+    import(/* webpackChunkName: "MarketHome" */ './MarketHome').then(
+      (m) => m.MarketHome,
+    ),
 });
 
 const LoadableMarketMyListings = Loadable({
   loading: LoadableLoading,
-  loader: () => import(/* webpackChunkName: "MarketMyListings" */ './MarketMyListings').then(m => m.MarketMyListings),
+  loader: () =>
+    import(/* webpackChunkName: "MarketMyListings" */ './MarketMyListings').then(
+      (m) => m.MarketMyListings,
+    ),
 });
 
 const LoadableMarketSearch = Loadable({
   loading: LoadableLoading,
-  loader: () => import(/* webpackChunkName: "MarketSearch" */ './MarketSearch').then(m => m.MarketSearch),
+  loader: () =>
+    import(/* webpackChunkName: "MarketSearch" */ './MarketSearch').then(
+      (m) => m.MarketSearch,
+    ),
 });
 
 const LoadableMarketSection = Loadable({
   loading: LoadableLoading,
-  loader: () => import(/* webpackChunkName: "MarketSection" */ './MarketSection').then(m => m.MarketSection),
+  loader: () =>
+    import(/* webpackChunkName: "MarketSection" */ './MarketSection').then(
+      (m) => m.MarketSection,
+    ),
 });
 
 const LoadableMarketBookDetail = Loadable({
   loading: LoadableLoading,
-  loader: () => import(/* webpackChunkName: "MarketBookDetail" */ './BookDetail').then(m => m.BookDetail),
+  loader: () =>
+    import(/* webpackChunkName: "MarketBookDetail" */ './BookDetail').then(
+      (m) => m.BookDetail,
+    ),
 });
 
 const LoadableMarketCreateListing = Loadable({
   loading: LoadableLoading,
-  loader: () => import(/* webpackChunkName: "MarketCreateListing" */ './CreateListing').then(m => m.CreateListing),
+  loader: () =>
+    import(/* webpackChunkName: "MarketCreateListing" */ './CreateListing').then(
+      (m) => m.CreateListing,
+    ),
 });
-
-
 
 const BookMarketApplication: React.SFC<{}> = () => (
   <Route
@@ -53,7 +69,10 @@ const BookMarketApplication: React.SFC<{}> = () => (
             path={`/book-market/my-listings`}
             component={LoadableMarketMyListings}
           />
-          <Route path={`/book-market/search`} component={LoadableMarketSearch} />
+          <Route
+            path={`/book-market/search`}
+            component={LoadableMarketSearch}
+          />
           <Route
             path={`/book-market/section/:sectionSlug`}
             component={LoadableMarketSection}
@@ -62,7 +81,10 @@ const BookMarketApplication: React.SFC<{}> = () => (
             path={`/book-market/listing/:listingId`}
             component={LoadableMarketBookDetail}
           />
-          <Route path={`/book-market/list`} component={LoadableMarketCreateListing} />
+          <Route
+            path={`/book-market/list`}
+            component={LoadableMarketCreateListing}
+          />
         </Switch>
       </div>
     )}

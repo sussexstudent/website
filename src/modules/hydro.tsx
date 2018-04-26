@@ -39,8 +39,14 @@ export default function() {
       import(/* webpackChunkName: "TweetList" */ '~components/TweetList'),
     EventList: () =>
       import(/* webpackChunkName: "EventList" */ '~components/EventList'),
-    VoteNowBox: () => import(/* webpackChunkName: "VoteNowBox" */ '~components/Bento/treatments/VoteNowBox').then(m => m.VoteNowBox),
-    CountdownBox: () => import(/* webpackChunkName: "CountdownBox" */ '~components/Bento/treatments/CountdownBox').then(m => m.CountdownBox),
+    VoteNowBox: () =>
+      import(/* webpackChunkName: "VoteNowBox" */ '~components/Bento/treatments/VoteNowBox').then(
+        (m) => m.VoteNowBox,
+      ),
+    CountdownBox: () =>
+      import(/* webpackChunkName: "CountdownBox" */ '~components/Bento/treatments/CountdownBox').then(
+        (m) => m.CountdownBox,
+      ),
     AnnualPlan: () =>
       import(/* webpackChunkName: "AnnualPlan" */ '~components/AnnualPlan'),
     DemocracyAirHorn: () =>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { sortBy, orderBy, toPairs, padStart, groupBy } from 'lodash';
 import isAfter from 'date-fns/isAfter';
 import getYear from 'date-fns/getYear';
@@ -11,7 +12,7 @@ import isSameDay from 'date-fns/isSameDay';
 import formatDate from 'date-fns/format';
 
 import { Brand, Event, EventPart, EventPartType } from '../../types/events';
-import { startOfWeek, addWeeks } from 'date-fns';
+import { startOfWeek, addWeeks, getDate } from 'date-fns';
 
 const now = setHours(new Date(), 0);
 const rightNow = new Date();
@@ -136,6 +137,21 @@ export function organisePartsForUI(eventParts: EventPart[], removePast = true) {
   return asList;
 }
 
+export function getOrdinal(day: number) {
+  const rem100 = day % 100;
+  if (rem100 > 20 || rem100 < 10) {
+    switch (rem100 % 10) {
+      case 1:
+        return 'st';
+      case 2:
+        return 'nd';
+      case 3:
+        return 'rd';
+    }
+  }
+  return 'th';
+}
+
 export function getSmartDate(part: EventPart) {
   if (isSameDay(new Date(), part.date)) {
     return 'Today';
@@ -149,7 +165,12 @@ export function getSmartDate(part: EventPart) {
     return formatDate(part.date, 'dddd');
   }
 
-  return formatDate(part.date, 'dddd Do');
+  return (
+    <span>
+      {formatDate(part.date, 'dddd')} {getDate(part.date)}
+      <sup>{getOrdinal(getDate(part.date))}</sup>
+    </span>
+  );
 }
 
 export function generateStylesForBrand(brand: Brand) {

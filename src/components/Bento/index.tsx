@@ -1,12 +1,15 @@
 import React from 'react';
 import { BentoBoxImpulse } from '~components/Bento/BentoBoxImpulse';
 import { HighlightTextBox } from '~components/Bento/treatments/HighlightTextBox';
-import { StudentAwardsBox } from '~components/Bento/treatments/StudentAwardsBox';
+import { VoteNowBox } from "~components/Bento/treatments/VoteNowBox";
 
 const Bento: React.SFC<{}> = () => (
   <div className="Bento Trail">
     <div className="Trail__row Trail__row--21 Bento__main-row">
-      <StudentAwardsBox />
+      <VoteNowBox
+        link="https://www.sussexstudent.com/referenda/"
+        targetDate={new Date(2018, 4, 4, 17, 0, 0)}
+      />
       <HighlightTextBox
         link="https://www.surveymonkey.co.uk/r/MW22Y5Y"
         imageUrl="original_images/e8236f9aa8194f56a17b90764bd6aadd"

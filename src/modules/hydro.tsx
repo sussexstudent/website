@@ -9,6 +9,8 @@ import { DesktopUserBar } from '~components/UserBar';
 import Header from '~components/Header';
 import { Provider } from '../types/hydro';
 import { store } from '../projects/website/redux/store';
+import {VoteNowBox} from "~components/Bento/treatments/VoteNowBox";
+import {CountdownBox} from "~components/Bento/treatments/CountdownBox";
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.SFC;
@@ -39,14 +41,8 @@ export default function() {
       import(/* webpackChunkName: "TweetList" */ '~components/TweetList'),
     EventList: () =>
       import(/* webpackChunkName: "EventList" */ '~components/EventList'),
-    VoteNowBox: () =>
-      import(/* webpackChunkName: "VoteNowBox" */ '~components/Bento/treatments/VoteNowBox').then(
-        (m) => m.VoteNowBox,
-      ),
-    CountdownBox: () =>
-      import(/* webpackChunkName: "CountdownBox" */ '~components/Bento/treatments/CountdownBox').then(
-        (m) => m.CountdownBox,
-      ),
+    VoteNowBox: () => VoteNowBox,
+    CountdownBox: () => CountdownBox,
     AnnualPlan: () =>
       import(/* webpackChunkName: "AnnualPlan" */ '~components/AnnualPlan'),
     DemocracyAirHorn: () =>

@@ -21,6 +21,7 @@ interface IProps {
   imageUrl: string;
   targetDate: Date;
   theme?: HighlightTheme;
+  liveCounting?: boolean;
 }
 
 interface IState {
@@ -43,41 +44,43 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
   };
 
   componentDidMount() {
-    this.interval = window.setInterval(
-      () => this.setState({ now: new Date() }),
-      1000,
-    );
+    if (this.props.liveCounting) {
+      this.interval = window.setInterval(
+        () => this.setState({ now: new Date() }),
+        1000,
+      );
 
-    this.socket = new WebSocket(
-      'wss://ding-server-xzywabxhzp.now.sh/',
-      'protocolOne',
-    );
+      this.socket = new WebSocket(
+        'wss://ding-server-xzywabxhzp.now.sh/',
+        'protocolOne',
+      );
 
-    this.socket.onmessage = (event) => {
-      const data = JSON.parse(event.data);
+      this.socket.onmessage = (event) => {
+        const data = JSON.parse(event.data);
 
-      if (data.name === 'initial') {
-        this.setState({
-          voterCountEnd: data.data.Voters,
-        });
+        if (data.name === 'initial') {
+          this.setState({
+            voterCountEnd: data.data.Voters,
+          });
 
-        return;
-      }
+          return;
+        }
 
-      if (data.name !== 'schoolChange') {
-        return;
-      }
+        if (data.name !== 'schoolChange') {
+          return;
+        }
 
-      const newCount = Object.keys(data.data).reduce((count, school) => {
-        return data.data[school] + count;
-      }, 0);
+        const newCount = Object.keys(data.data).reduce((count, school) => {
+          return data.data[school] + count;
+        }, 0);
 
-      this.setState((state: IState) => ({
-        ...state,
-        voterCountStart: state.voterCountEnd,
-        voterCountEnd: state.voterCountEnd + newCount,
-      }));
-    };
+        this.setState((state: IState) => ({
+          ...state,
+          voterCountStart: state.voterCountEnd,
+          voterCountEnd: state.voterCountEnd + newCount,
+        }));
+      };
+    }
   }
 
   componentWillUnmount() {
@@ -115,7 +118,7 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
               width: '100%',
             }}
           >
-            <div>
+            {this.props.liveCounting ? <div>
               <div
                 className="type-long-primer type-primary"
                 style={{
@@ -140,7 +143,7 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
                   </span>
                 }
               </div>
-            </div>
+            </div> : null}
             <h1
               className={cx('type-canon')}
               style={{

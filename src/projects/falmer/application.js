@@ -17,7 +17,7 @@ const sagaMiddleware = createSagaMiddleware();
 const link = new HttpLink({
   uri:
     process.env.NODE_ENV === 'production'
-      ? 'https://falmer.sussexstudent.com/graphql/'
+      ? 'https://falmer.su.280canvas.com/graphql/'
       : 'http://localhost:8000/graphql/',
   // Additional fetch options like `credentials` or `headers`
   credentials: 'same-origin',

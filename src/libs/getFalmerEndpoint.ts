@@ -6,6 +6,6 @@ export default function getFalmerEndpoint() {
     : window.localStorage.getItem('falmerEndpoint');
 
   return clientEndpoint === null
-    ? 'https://falmer.sussexstudent.com'
+    ? 'https://falmer.su.280canvas.com'
     : clientEndpoint;
 }

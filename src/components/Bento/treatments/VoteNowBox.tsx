@@ -44,12 +44,12 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
   };
 
   componentDidMount() {
-    if (this.props.liveCounting) {
-      this.interval = window.setInterval(
-        () => this.setState({ now: new Date() }),
-        1000,
-      );
+    this.interval = window.setInterval(
+      () => this.setState({ now: new Date() }),
+      1000,
+    );
 
+    if (this.props.liveCounting) {
       this.socket = new WebSocket(
         'wss://ding-server-xzywabxhzp.now.sh/',
         'protocolOne',

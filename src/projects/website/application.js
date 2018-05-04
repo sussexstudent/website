@@ -1,7 +1,6 @@
 import Raven from 'raven-js';
 import mitt from 'mitt';
 import 'what-input';
-import 'regenerator-runtime';
 import currentUser from '~libs/user';
 import { addClassesForFeatures } from '~libs/features';
 import hydro from '../../modules/hydro';

@@ -66,32 +66,39 @@ export class Grooves<EventMap> {
     });
   }
 
-  private async setup() {
+  private setup(): Promise<void> {
     const clientIds = getExistingIds();
 
     if (clientIds === false) {
-      this.sessionId = await this.createSession();
-      log('created new session');
-    } else {
-      log('restoring current session');
-      this.sessionId = clientIds.sessionId;
+      return this.createSession()
+        .then(sessionId => {
+          this.sessionId = sessionId;
+          log('created new session');
+          this.isReady = true;
+        });
     }
 
-    this.isReady = true;
+    return new Promise((resolve) => {
+      log('restoring current session');
+      this.sessionId = clientIds.sessionId;
+      this.isReady = true;
+      resolve();
+    });
   }
 
-  private async createSession() {
-    const response = await this.performRequest('session');
+  private createSession() {
+    return this.performRequest('session')
+      .then(response => {
+        localStorage.setItem(
+          'grooves',
+          JSON.stringify({
+            sessionId: response.id,
+            sessionCreated: new Date().toISOString(),
+          }),
+        );
 
-    localStorage.setItem(
-      'grooves',
-      JSON.stringify({
-        sessionId: response.id,
-        sessionCreated: new Date().toISOString(),
-      }),
-    );
-
-    return response.id;
+        return response.id;
+      })
   }
 
   public page() {

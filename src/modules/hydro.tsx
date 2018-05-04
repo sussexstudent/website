@@ -9,8 +9,8 @@ import { DesktopUserBar } from '~components/UserBar';
 import Header from '~components/Header';
 import { Provider } from '../types/hydro';
 import { store } from '../projects/website/redux/store';
-import {VoteNowBox} from "~components/Bento/treatments/VoteNowBox";
-import {CountdownBox} from "~components/Bento/treatments/CountdownBox";
+import { VoteNowBox } from '~components/Bento/treatments/VoteNowBox';
+import { CountdownBox } from '~components/Bento/treatments/CountdownBox';
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.SFC;

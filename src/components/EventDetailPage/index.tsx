@@ -17,6 +17,8 @@ import { AspectRatio, OneImage } from '~components/OneImage';
 import { EventDetailDetails } from '~components/EventDetailPage/EventDetailDetails';
 import { EventDetailSidebar } from '~components/EventDetailPage/EventDetailSidebar';
 import { MSLEventCommunication } from '~components/EventDetailPage/MSLEventCommunication';
+import { Tracking } from '~components/TrackOnMount';
+import { grooves } from '~libs/grooves';
 
 interface RouteParams {
   [0]: string;
@@ -61,6 +63,14 @@ class EventDetailPage extends React.Component<IProps, IState> {
 
     return (
       <div>
+        <Tracking
+          onMount={() =>
+            grooves.track('Event Viewed', {
+              eventId: event.eventId,
+              eventTitle: event.title,
+            })
+          }
+        />
         <Helmet>
           <title>{`${event.title} | What's on | Sussex Students' Union`}</title>
           <meta name="description" content={event.shortDescription} />

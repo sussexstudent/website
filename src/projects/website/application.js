@@ -5,6 +5,7 @@ import currentUser from '~libs/user';
 import { addClassesForFeatures } from '~libs/features';
 import hydro from '../../modules/hydro';
 import Modal from 'react-modal';
+import { grooves } from '../../libs/grooves';
 import '../../modules/eventRedirect';
 
 addClassesForFeatures();
@@ -32,6 +33,23 @@ window.LinkshimAsyncLink = {
 if (currentUser.fundraising.blocking) {
   [...document.querySelectorAll('.AdvertBar')].forEach((advert) => {
     advert.remove();
+  });
+}
+
+if (window.performance && window.performance.timing) {
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const timings = window.performance.timing;
+      grooves.track('Performance Timed', {
+        dnsTiming: timings.domainLookupEnd - timings.domainLookupStart,
+        tcpTiming: timings.connectEnd - timings.connectStart,
+        requestTiming: timings.responseStart - timings.connectEnd,
+        responseTiming: timings.responseEnd - timings.responseStart,
+        processingTiming: timings.loadEventStart - timings.domLoading,
+        onLoadTiming: timings.loadEventEnd - timings.loadEventStart,
+        totalPageLoadTime: timings.loadEventEnd - timings.navigationStart,
+      });
+    }, 0);
   });
 }
 

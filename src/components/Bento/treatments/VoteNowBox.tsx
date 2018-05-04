@@ -118,32 +118,34 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
               width: '100%',
             }}
           >
-            {this.props.liveCounting ? <div>
-              <div
-                className="type-long-primer type-primary"
-                style={{
-                  display: 'inline-block',
-                  background: '#fff',
-                  color: '#000',
-                  padding: '0.3em',
-                  textTransform: 'uppercase',
-                  fontWeight: 600,
-                  border: '3px solid #000',
-                }}
-              >
-                {
-                  <span>
-                    Join the{' '}
-                    <CountUp
-                      start={voterCountStart}
-                      end={voterCountEnd}
-                      duration={4}
-                    />{' '}
-                    students who have already voted
-                  </span>
-                }
+            {this.props.liveCounting ? (
+              <div>
+                <div
+                  className="type-long-primer type-primary"
+                  style={{
+                    display: 'inline-block',
+                    background: '#fff',
+                    color: '#000',
+                    padding: '0.3em',
+                    textTransform: 'uppercase',
+                    fontWeight: 600,
+                    border: '3px solid #000',
+                  }}
+                >
+                  {
+                    <span>
+                      Join the{' '}
+                      <CountUp
+                        start={voterCountStart}
+                        end={voterCountEnd}
+                        duration={4}
+                      />{' '}
+                      students who have already voted
+                    </span>
+                  }
+                </div>
               </div>
-            </div> : null}
+            ) : null}
             <h1
               className={cx('type-canon')}
               style={{

@@ -1,4 +1,4 @@
-import { isAfter, addHours } from 'date-fns';
+import { isBefore, addHours } from 'date-fns';
 
 interface GroovesEvent {}
 
@@ -10,7 +10,7 @@ interface GroovesOptions {
 }
 
 function sessionHasExpired(date: Date) {
-  return isAfter(date, addHours(new Date(), 4));
+  return isBefore(addHours(date, 4), new Date());
 }
 
 function getExistingIds() {

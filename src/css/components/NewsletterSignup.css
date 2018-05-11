@@ -1,0 +1,94 @@
+.NewsletterSignup {
+  z-index: 100;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  color: var(--color__grey-sad-slate);
+  font-weight: 600;
+  font-size: 1.6rem;
+  max-width: 660px;
+  font-family: var(--type__primary);
+  margin: 2rem auto 0;
+
+  &__input {
+    font-family: var(--type__primary);
+    @mixin card flat;
+    border-radius: 2px;
+    font-size: 1.6rem;
+    padding: 0.4rem;
+    border: 0;
+    flex: 1 0 auto;
+    margin-bottom: 0.5rem;
+    &:focus {
+      @mixin card raised;
+    }
+
+    @media (--medium) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    @media (--medium) {
+      flex-direction: row;
+    }
+  }
+
+  &__button {
+    @mixin type double-pica;
+    border: 0;
+    background: var(--color__brand-blue);
+    color: #ffffff;
+    font-family: var(--type__primary);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  &__options {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    width: 100%;
+
+    @media (--medium) {
+      flex-direction: row;
+    }
+
+    &-item {
+      flex: 1 1 auto;
+      display: flex;
+      padding-bottom: 0.6rem;
+
+      @media (--medium) {
+        padding: 0 0.2rem;
+      }
+    }
+
+    &-button {
+      flex: 1 1 auto;
+      border: 0;
+      padding: 0.6rem;
+      font-family: var(--type__primary);
+      background: var(--color__brand-blue);
+      font-size: 1.4rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #fff;
+
+      @media (--medium) {
+        font-size: 1.2rem;
+        padding: 0.2rem;
+      }
+
+      &:hover {
+        color: var(--color__brand-blue--hover);
+        background: #ffffff;
+      }
+    }
+  }
+}

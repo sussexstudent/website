@@ -1,6 +1,7 @@
 import React from 'react';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import { Store } from '~libs/store';
+import {grooves} from "~libs/grooves";
 
 const LS_KEY = 'newsletter:freshers18';
 const NEWSLETTER_ENDPOINT = `${getFalmerEndpoint()}/newsletters/freshers18/members`;
@@ -56,13 +57,13 @@ const RESPONSE_TEXT: {
     `Sign up to our newsletter for exclusive freshers news and tips`,
   [FormState.InitialFocus]: () => `Enter your email address`,
   [FormState.AddressSuccess]: () =>
-    "Check you inbox to confirm! But first, what's your name?",
+    "Check your inbox to confirm! But first, what's your name?",
   [FormState.NameSuccess]: () => `Thanks! What will you be?`,
   [FormState.LevelSuccess]: () => `Great. Where are you coming from?`,
   [FormState.FeeSuccess]: (data) => `See you in September, ${data.name}!`,
   [FormState.Complete]: () => `See you in September!`,
   [FormState.Error]: () =>
-    `We haven't been able to add you. Please try again later.`,
+    `We either haven't been able to add you or you might already be on there. Please try again later.`,
 };
 
 class NewsletterSignup extends React.Component<IProps, IState> {
@@ -195,10 +196,13 @@ class NewsletterSignup extends React.Component<IProps, IState> {
         this.state.currentState === FormState.InitialFocus
       ) {
         this.handleEmailSubmit();
+        grooves.track('Freshers Signup Email Added', {});
       } else if (this.state.currentState === FormState.AddressSuccess) {
         this.handleNameSubmit();
+        grooves.track('Freshers Signup Name Added', {});
       } else if (this.state.currentState === FormState.NameSuccess) {
         this.handleStatusSubmit();
+        grooves.track('Freshers Signup Status Added', {});
       }
     };
   }
@@ -226,6 +230,7 @@ class NewsletterSignup extends React.Component<IProps, IState> {
                   onFocus={() =>
                     this.setState({ currentState: FormState.InitialFocus })
                   }
+                  placeholder="example@email.com"
                   required
                 />
                 <button className="NewsletterSignup__button" type="submit">

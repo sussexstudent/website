@@ -31,6 +31,19 @@ interface WebsiteEvents {
   'Book Listing Details Requested': {
     bookId: number;
   };
+  'Book Listing Unlisted': {
+    bookId: number;
+  }
+  'Book Listing Listed': {
+    bookId: number;
+  }
+  'Book Listing Completed': {
+    bookId: number;
+  }
+  'Freshers Signup Email Added': {}
+  'Freshers Signup Name Added': {}
+  'Freshers Signup Status Added': {}
+
 
   // perf
   'Performance Timed': {

@@ -63,5 +63,5 @@ export const grooves = new Grooves<WebsiteEvents>({
       ? 'https://m.sussexstudent.com'
       : 'http://localhost:6789',
   sessionProperties: () => ({ userId: 999 }),
-  disable: window.location.hash === '#communication',
+  disabled: typeof window === 'undefined' || window.location.hash === '#communication',
 });

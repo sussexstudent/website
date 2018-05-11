@@ -6,7 +6,7 @@ interface GroovesOptions {
   endpoint: string;
   pageTracking?: boolean;
   sessionProperties: () => object;
-  disable?: boolean;
+  disabled?: boolean;
 }
 
 function sessionHasExpired(date: Date) {
@@ -57,6 +57,10 @@ export class Grooves<EventMap> {
 
   constructor(options: GroovesOptions) {
     this.options = options;
+
+    if (options.disabled) {
+      return;
+    }
 
     this.setup().then(() => {
       log('setup complete');
@@ -140,7 +144,7 @@ export class Grooves<EventMap> {
       return false;
     }
 
-    if (this.options.disable === true) {
+    if (this.options.disabled === true) {
       return;
     }
 

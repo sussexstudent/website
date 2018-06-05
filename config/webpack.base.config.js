@@ -17,17 +17,6 @@ env.build = env.production || env.staging;
 
 const baseDir = path.join(__dirname, '..');
 
-const vendorLibs = [
-  'raven-js',
-  'mitt',
-  'react',
-  'react-dom',
-  'what-input',
-  'graphql',
-];
-
-const vendorExp = new RegExp(`(${vendorLibs.join('|')})`);
-
 function generateConfig() {
   return {
     target: 'web',

@@ -52,7 +52,7 @@ config.output = {
 // };
 
 config.plugins = config.plugins.concat([
-  // new BundleAnalyzerPlugin(),
+  new BundleAnalyzerPlugin(),
   new webpack.DefinePlugin({
     'process.env': {
       HYDROLEAF_MODE: JSON.stringify('RENDER_COMPONENT'),

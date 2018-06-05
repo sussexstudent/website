@@ -144,8 +144,6 @@ const EventsBrandingPeriod = compose<OwnProps, OwnProps>(
           brandSlug,
           filter: {
             brandSlug,
-            fromTime: startOfDay(new Date()).toISOString(),
-            toTime: addMonths(startOfDay(new Date()), 6).toISOString(),
           },
         },
       };

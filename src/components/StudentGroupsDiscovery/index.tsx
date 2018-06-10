@@ -7,9 +7,8 @@ import OrgansiationGrid, { StudentGroup } from '~components/OrganisationGrid';
 import STUDENT_GROUP_LISTING_QUERY from './StudentGroupListings.graphql';
 import { Provider } from '../../types/hydro';
 import { HandledQuery } from '~components/HandledQuery';
-import {Sectionbar, SectionbarItem} from "~components/Sectionbar";
 import {removePageContainer} from "~libs/hacky";
-import {InternalAppLink} from "~components/InternalAppLink";
+import {StudentGroupsSectionbar} from "~components/StudentGroupsSectionbar";
 
 interface Result {
   allGroups: {
@@ -92,11 +91,7 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
     const { searchValue, displayIds } = this.state;
     return (
       <div>
-        <Sectionbar title="Societies, sports & media">
-          <SectionbarItem>
-            <InternalAppLink to={'/sport-societies-media/discover'}>Discover</InternalAppLink>
-          </SectionbarItem>
-        </Sectionbar>
+        <StudentGroupsSectionbar />
         <div className="ActivitiesApp__ LokiContainer">
           <div className="ActivitiesApp__header">
             <h1 className="Heading Heading--medium">

@@ -1,0 +1,10 @@
+.TrophyCabinet {
+  &__awards {
+    display: flex;
+
+    & li {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  }
+}

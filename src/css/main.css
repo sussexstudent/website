@@ -47,6 +47,7 @@
 @import './components/ResultsList.css';
 @import './components/FlexibleHero.css';
 @import './components/Tweet.css';
+@import './components/TrophyCabinet.css';
 @import './components/PatternPlaceholder.css';
 @import './components/AnnualPlan.css';
 @import './components/EventsList.css';
@@ -57,6 +58,7 @@
 @import './components/Stonewall.css';
 @import './components/ActivitiesApp.css';
 @import './components/StaffList.css';
+@import './components/Award.css';
 @import './components/SearchResult.css';
 @import './components/MobileSearch.css';
 @import './components/PolicyGenerator.css';

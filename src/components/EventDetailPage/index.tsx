@@ -6,7 +6,6 @@ import { graphql, ChildProps } from 'react-apollo';
 import ContentCard from '../ContentCard';
 import JsonLd from '../JsonLd';
 import Loader from '../Loader';
-import BackBar from '../BackBar/Link';
 import DetailPageQuery from './EventsDetailPage.graphql';
 import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
 import { Event } from '../../types/events';
@@ -114,9 +113,6 @@ class EventDetailPage extends React.Component<IProps, IState> {
             endDate: event.endTime,
           }}
         />
-        <BackBar to="/whats-on" color="blue">
-          {`What's on`}
-        </BackBar>
         <div className="Layout Layout--sidebar-right EventDetail">
           <div>
             <ContentCard bleed>
@@ -129,7 +125,7 @@ class EventDetailPage extends React.Component<IProps, IState> {
               ) : null}
               {event.brand !== null ? (
                 <Link
-                  to={`/whats-on/collection/${event.brand.slug}`}
+                  to={`/whats-on/collections/${event.brand.slug}`}
                   className="EventDetail__brand"
                   style={generateStylesForBrand(event.brand)}
                 >

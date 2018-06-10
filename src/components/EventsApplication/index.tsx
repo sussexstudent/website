@@ -4,13 +4,14 @@ import { debounce } from 'lodash';
 import {
   Route,
   Switch,
-  withRouter,
   RouteComponentProps,
+  NavLink,
+  Redirect
 } from 'react-router-dom';
-import HydroLeaf from '~components/HydroLeaf';
 import Loadable from 'react-loadable';
 import { LoadableLoading } from '~components/LoadableLoading';
-import { Provider } from '../../types/hydro';
+import {Sectionbar, SectionbarItem} from "~components/Sectionbar";
+import {removePageContainer} from '~libs/hacky';
 
 const EventsListLoader = () =>
   import(/* webpackChunkName: "events.listings" */ '~components/EventsCalender');
@@ -54,6 +55,7 @@ class EventsApplication extends React.Component<
   };
 
   componentDidMount() {
+    removePageContainer();
     window.addEventListener('scroll', debounce(this.onScroll, 100));
   }
 
@@ -78,28 +80,32 @@ class EventsApplication extends React.Component<
 
   render() {
     return (
-      <div className="u-keep-footer-down">
-        <Switch>
-          <Route path="/whats-on/" exact component={LoadableListings} />
-          <Route
-            path="/whats-on/period/:brandSlug"
-            exact
-            component={LoadableListingsBranding}
-          />
-          <Route
-            path="/whats-on/collection/:brandSlug"
-            exact
-            component={LoadableListingsBranding}
-          />
-          <Route path="/whats-on/**-:eventId" component={LoadableDetail} />
-          <Route path="/whats-on/:eventId" component={LoadableDetail} />
-        </Switch>
+      <div className="u-keep-footer-down js-expand-container">
+        <Sectionbar title="What's on">
+          <SectionbarItem>
+            <NavLink to={'/whats-on'} exact>Listings</NavLink>
+          </SectionbarItem>
+          <SectionbarItem>
+            <a href={'/sport-societies-media/information-for-committee-members/events-trips/'}>Holding an event</a>
+          </SectionbarItem>
+        </Sectionbar>
+        <div className="LokiContainer">
+          <Switch>
+            <Route path="/whats-on/" exact component={LoadableListings} />
+            <Redirect from='/whats-on/period/:brandSlug' to='/whats-on/collections/:brandSlug'/>
+            <Redirect from='/whats-on/collection/:brandSlug' to='/whats-on/collections/:brandSlug'/>
+            <Route
+              path="/whats-on/collections/:brandSlug"
+              exact
+              component={LoadableListingsBranding}
+            />
+            <Route path="/whats-on/**-:eventId" component={LoadableDetail} />
+            <Route path="/whats-on/:eventId" component={LoadableDetail} />
+          </Switch>
+        </div>
       </div>
     );
   }
 }
 
-export default HydroLeaf({
-  disableSSR: true,
-  providers: [Provider.Apollo, Provider.Router],
-})(withRouter(EventsApplication as any));
+export default EventsApplication;

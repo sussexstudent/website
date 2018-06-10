@@ -32,7 +32,6 @@ export default {
   },
   pages: {
     '/': require('./src/projects/website/layouts/homepage'),
-    '/whats-on': require('./src/projects/website/layouts/WhatsOn'),
     '/policy-generator': require('./src/projects/website/layouts/PolicyIdeaGenerator'),
     '/freshers': require('./src/projects/website/layouts/Freshers'),
     '/discover-groups': require('./src/projects/website/layouts/SportsSocieties'),

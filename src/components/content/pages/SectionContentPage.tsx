@@ -52,64 +52,66 @@ class SectionContentPage extends React.Component<IProps, IState> {
       page,
     } = this.props;
     return (
-      <div className="Layout Layout--sidebar-left">
-        <div>
-          <aside>
-            {contentsInSidebar ? (
-              <ContentNavigation
-                items={generateTitlesFromStream(body)}
-                activeKey={this.state.visibleKey || undefined}
-              />
-            ) : null}
-            <StreamField page={page} items={sidebarBody} />
-          </aside>
-        </div>
-        <div>
-          {headingImageAsHero ? (
-            <div style={{ marginBottom: '1rem' }}>
-              <OneImage
-                src={headingImage.resource}
-                aspectRatio={headingImage}
-                alt={title}
-              />
-            </div>
-          ) : (
-            <HeadingHero title={title} imageURL={headingImage.resource} />
-          )}
+      <div className="LokiContainer">
+        <div className="Layout Layout--sidebar-left">
+          <div>
+            <aside>
+              {contentsInSidebar ? (
+                <ContentNavigation
+                  items={generateTitlesFromStream(body)}
+                  activeKey={this.state.visibleKey || undefined}
+                />
+              ) : null}
+              <StreamField page={page} items={sidebarBody} />
+            </aside>
+          </div>
+          <div>
+            {headingImageAsHero ? (
+              <div style={{ marginBottom: '1rem' }}>
+                <OneImage
+                  src={headingImage.resource}
+                  aspectRatio={headingImage}
+                  alt={title}
+                />
+              </div>
+            ) : (
+              <HeadingHero title={title} imageURL={headingImage.resource} />
+            )}
 
-          <VisibleChildWatcher onChange={this.handleVisibleChildChange}>
-            {body.map((
-              block: any, // todo
-            ) => (
-              <ContentCard anchor={slugify(block.value.heading)} bleed>
-                {block.value.headingImage ? (
-                  <div>
-                    <OneImage
-                      src={block.value.headingImage.resource}
-                      aspectRatio={block.value.headingImage}
-                      alt={block.value.heading}
-                    />
-                  </div>
-                ) : (
+            <VisibleChildWatcher onChange={this.handleVisibleChildChange}>
+              {body.map((
+                block: any, // todo
+              ) => (
+                <ContentCard anchor={slugify(block.value.heading)} bleed>
+                  {block.value.headingImage ? (
+                    <div>
+                      <OneImage
+                        src={block.value.headingImage.resource}
+                        aspectRatio={block.value.headingImage}
+                        alt={block.value.heading}
+                      />
+                    </div>
+                  ) : (
+                    <div className="ContentCard__content">
+                      <h2 className="Heading Heading--highlight">
+                        {block.value.heading}
+                      </h2>
+                    </div>
+                  )}
                   <div className="ContentCard__content">
-                    <h2 className="Heading Heading--highlight">
-                      {block.value.heading}
-                    </h2>
+                    {block.value.body.map((
+                      bodyItem: any, // todo
+                    ) => (
+                      <div
+                        className="Prose"
+                        dangerouslySetInnerHTML={{ __html: bodyItem.value }}
+                      />
+                    ))}
                   </div>
-                )}
-                <div className="ContentCard__content">
-                  {block.value.body.map((
-                    bodyItem: any, // todo
-                  ) => (
-                    <div
-                      className="Prose"
-                      dangerouslySetInnerHTML={{ __html: bodyItem.value }}
-                    />
-                  ))}
-                </div>
-              </ContentCard>
-            ))}
-          </VisibleChildWatcher>
+                </ContentCard>
+              ))}
+            </VisibleChildWatcher>
+          </div>
         </div>
       </div>
     );

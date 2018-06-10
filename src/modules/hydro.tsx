@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import { isFunction } from 'lodash';
-import BookMarketApp from '~components/bookmarket/BookMarketApp';
-import KnowledgeBaseApp from '~components/kb/KnowledgeBaseApplication';
 import EventsApplicationX from '~components/EventsApplication';
 import { DesktopUserBar } from '~components/UserBar';
 import Header from '~components/Header';
@@ -49,8 +47,6 @@ export default function() {
       import(/* webpackChunkName: "DemocracyAirHorn" */ '~components/DemocracyAirHorn'),
     PolicyGenerator: () =>
       import(/* webpackChunkName: "PolicyGenerator" */ '~components/PolicyGenerator'),
-    FreshersApp: () =>
-      import(/* webpackChunkName: "Freshers" */ '~components/Freshers/FreshersApp'),
     ContentExplorer: () =>
       import(/* webpackChunkName: "ContentExplorer" */ '../projects/website/layouts/ContentExplorer'),
     ContentPage: () =>
@@ -60,8 +56,6 @@ export default function() {
 
     /* Applications! */
     EventsApplication: () => EventsApplicationX as any,
-    BookMarket: () => BookMarketApp,
-    KnowledgeBase: () => KnowledgeBaseApp,
     StudentGroupsDiscoveryContainer: () =>
       import(/* webpackChunkName: "StudentGroupsDiscovery" */ '~components/StudentGroupsDiscovery'),
   };

@@ -1,0 +1,14 @@
+.LokiContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+
+  @media (--medium) {
+    padding: 0 1rem;
+  }
+}
+
+.LokiContainer .LokiContainer {
+  max-width: none;
+  padding: 0;
+}

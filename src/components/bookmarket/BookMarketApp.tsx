@@ -58,7 +58,7 @@ const BookMarketApplication: React.SFC<{}> = () => (
   <Route
     path={`/book-market/`}
     component={() => (
-      <div>
+      <div className="LokiContainer">
         <Helmet
           titleTemplate="%s | Book Market | Sussex Students' Union"
           defaultTitle="Book Market | Sussex Students' Union"

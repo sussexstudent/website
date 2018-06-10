@@ -21,7 +21,7 @@ const LoadableArticle = Loadable({
 });
 
 const KnowledgeBaseApplication = () => (
-  <div className="u-keep-footer-down">
+  <div className="u-keep-footer-down LokiContainer">
     <Switch>
       <Route path={`/kb/`} component={LoadableHome} exact />
       <Route path={`/kb/:sectionSlug`} component={LoadableSection} exact />

@@ -15,8 +15,10 @@ class GenericContentStreamPage extends React.Component<IProps> {
       page,
     } = this.props;
     return (
-      <div className="Layout">
-        <StreamField items={body} page={page} />
+      <div className="LokiContainer">
+        <div className="Layout">
+          <StreamField items={body} page={page} />
+        </div>
       </div>
     );
   }

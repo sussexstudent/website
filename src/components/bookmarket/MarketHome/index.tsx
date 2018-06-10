@@ -12,6 +12,7 @@ import {
 } from '~components/bookmarket/currentUserData';
 import { HandledQuery } from '~components/HandledQuery';
 import { adopt } from '~components/Adopt';
+import {InternalAppLink} from "~components/InternalAppLink";
 
 interface ComponentProps {
   query: string;
@@ -122,19 +123,19 @@ const MarketHomeComponent: React.SFC<IProps> = (props) => {
                   ) : null}
 
                   <li>
-                    <a href="/kb/features/book-market/information-sellers">
+                    <InternalAppLink to="/kb/features/book-market/information-sellers">
                       Information for sellers
-                    </a>
+                    </InternalAppLink>
                   </li>
                   <li>
-                    <a href="/kb/features/book-market/information-buyers">
+                    <InternalAppLink to="/kb/features/book-market/information-buyers">
                       Information for buyers
-                    </a>
+                    </InternalAppLink>
                   </li>
                   <li>
-                    <a href="/kb/features/book-market/usage-guidelines">
+                    <InternalAppLink to="/kb/features/book-market/usage-guidelines">
                       Usage Guidelines
-                    </a>
+                    </InternalAppLink>
                   </li>
                 </ul>
               </aside>

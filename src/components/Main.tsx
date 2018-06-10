@@ -17,7 +17,7 @@ const Main: React.SFC<IProps> = ({ legacy }) => (
       </div>
     ) : (
       <div
-        className={cx('Container')}
+        className={cx('LokiContainer', 'js-page-container')}
         dangerouslySetInnerHTML={{ __html: MSLTag('Content') }}
       />
     )}

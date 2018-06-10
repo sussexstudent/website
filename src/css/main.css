@@ -49,6 +49,7 @@
 @import './components/Tweet.css';
 @import './components/TrophyCabinet.css';
 @import './components/PatternPlaceholder.css';
+@import './components/Sectionbar.css';
 @import './components/AnnualPlan.css';
 @import './components/EventsList.css';
 @import './components/CompOptionsPanel.css';
@@ -93,3 +94,4 @@
 @import './components/BasicForm.css';
 @import './components/NewsletterSignup.css';
 @import './components/ImageUpload.css';
+@import './components/LokiContainer.css';

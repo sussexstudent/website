@@ -7,6 +7,9 @@ import OrgansiationGrid, { StudentGroup } from '~components/OrganisationGrid';
 import STUDENT_GROUP_LISTING_QUERY from './StudentGroupListings.graphql';
 import { Provider } from '../../types/hydro';
 import { HandledQuery } from '~components/HandledQuery';
+import {Sectionbar, SectionbarItem} from "~components/Sectionbar";
+import {removePageContainer} from "~libs/hacky";
+import {InternalAppLink} from "~components/InternalAppLink";
 
 interface Result {
   allGroups: {
@@ -39,7 +42,11 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
     fuse: null,
   };
 
-  static getDerivedStateFromProps(props: IProps) {
+  static getDerivedStateFromProps(props: IProps, prevState: IState) {
+    if (prevState.groups.length > 0) {
+      return null;
+    }
+
     const groups =
       props.data && props.data.allGroups
         ? props.data.allGroups.edges.map((edge) => edge.node)
@@ -60,12 +67,17 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
     }
 
     const searchValue = e.target.value;
+    console.log({ searchValue, d:  fuse.search(searchValue) });
     this.setState({
       searchValue,
       displayIds: searchValue
         ? fuse.search(searchValue)
         : this.state.groups.map((group: StudentGroup) => group.groupId),
     });
+  }
+
+  componentDidMount() {
+    removePageContainer();
   }
 
   render() {
@@ -79,25 +91,32 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
     );
     const { searchValue, displayIds } = this.state;
     return (
-      <div className="ActivitiesApp__">
-        <div className="ActivitiesApp__header">
-          <h1 className="Heading Heading--medium">
-            Discover sports and societies
-          </h1>
-          <input
-            className="HeaderSearch HeaderSearch--search-icon ActivitiesApp__search-input"
-            type="search"
-            placeholder="Search"
-            value={searchValue}
-            onChange={this.onSearchUpdate}
-          />
-          <div className="ActivitiesApp__filter-stat">
-            Displaying {displayIds.length} sports {'&'} societies
+      <div>
+        <Sectionbar title="Societies, sports & media">
+          <SectionbarItem>
+            <InternalAppLink to={'/sport-societies-media/discover'}>Discover</InternalAppLink>
+          </SectionbarItem>
+        </Sectionbar>
+        <div className="ActivitiesApp__ LokiContainer">
+          <div className="ActivitiesApp__header">
+            <h1 className="Heading Heading--medium">
+              Discover sports and societies
+            </h1>
+            <input
+              className="HeaderSearch HeaderSearch--search-icon ActivitiesApp__search-input"
+              type="search"
+              placeholder="Search"
+              value={searchValue}
+              onChange={this.onSearchUpdate}
+            />
+            <div className="ActivitiesApp__filter-stat">
+              Displaying {displayIds.length} sports {'&'} societies
+            </div>
           </div>
-        </div>
-        <div className="ActivitiesApp__main">
-          <div className="ActivitiesApp__grid">
-            <OrgansiationGrid organisations={displayIds.map((id) => map[id])} />
+          <div className="ActivitiesApp__main">
+            <div className="ActivitiesApp__grid">
+              <OrgansiationGrid organisations={displayIds.map((id) => map[id])} />
+            </div>
           </div>
         </div>
       </div>

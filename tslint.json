@@ -9,6 +9,7 @@
     "import-name": [false],
     "jsx-boolean-value": ["never"],
     "function-name": [false],
-    "jsx-no-lambda": [false]
+    "jsx-no-lambda": [false],
+    "no-duplicate-imports": [false]
   }
 }

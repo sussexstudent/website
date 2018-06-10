@@ -1,27 +1,44 @@
 import 'what-input';
 import currentUser from '~libs/user';
-import { addClassesForFeatures } from '~libs/features';
 import hydro from '../../modules/hydro';
 import Modal from 'react-modal';
+import routes from "./routes";
 
 export function setup() {
-  addClassesForFeatures();
   Modal.setAppElement('.Body');
-
 
     if (currentUser && currentUser.fundraising.blocking) {
       Array.from(document.querySelectorAll('.AdvertBar')).forEach((advert) => {
         advert.remove();
       });
     }
-    // All pages
-    hydro();
 
     if (window.location.pathname.match(/\/organisation\/([0-9a-z].)/)) {
       import(/* webpackChunkName: "StudentGroupEnhancement" */ '../../modules/StudentGroupEnhancement').then(
         (module) => module.default(),
       );
     }
+
+
+    const prerouterMatch = routes.matches(window.location.pathname);
+
+    if (prerouterMatch) {
+      const container = document.querySelector('.Site__content');
+
+      if (container && !container.classList.contains('js-content-replaced')) {
+        container.classList.add('js-content-replaced');
+        while (container.firstChild) {
+          container.removeChild(container.firstChild);
+        }
+
+        import(/* webpackChunkName: "WebsiteApplicationModule" */ '../../modules/WebsiteApplicationModule').then(
+          (module) => module.default(container),
+        );
+      }
+    }
+
+    // All pages
+    hydro();
 
     // todo dev detection
     if (window.location.hostname === 'localhost') {

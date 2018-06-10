@@ -1,5 +1,7 @@
 import Raven from 'raven-js';
 import mitt from 'mitt';
+import { addClassesForFeatures } from '~libs/features';
+addClassesForFeatures();
 
 // import { grooves } from '~libs/grooves';
 import '../../modules/eventRedirect';

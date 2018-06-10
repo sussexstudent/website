@@ -23,7 +23,7 @@ const USER_OPEN_LOGIN_MODAL = 'USER_OPEN_LOGIN_MODAL';
 const USER_SET_USER = 'USER_SET_USER';
 
 export const closeLoginModal = () => ({ type: USER_CLOSE_LOGIN_MODAL });
-export const openLoginModal = () => ({ type: USER_CLOSE_LOGIN_MODAL });
+export const openLoginModal = () => ({ type: USER_OPEN_LOGIN_MODAL });
 export const setUser = (user: Profile) => ({
   type: USER_SET_USER,
   payload: user,

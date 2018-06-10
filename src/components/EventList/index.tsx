@@ -48,7 +48,6 @@ function EventList() {
                   <EventsCalenderItem
                     part={{ event: edge.node }}
                     inline
-                    useAnchors
                     showDay
                     relative
                     small

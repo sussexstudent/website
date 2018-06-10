@@ -14,7 +14,10 @@ import {Sectionbar, SectionbarItem} from "~components/Sectionbar";
 import {removePageContainer} from '~libs/hacky';
 
 const EventsListLoader = () =>
-  import(/* webpackChunkName: "events.listings" */ '~components/EventsCalender');
+  import(/* webpackChunkName: "events.listings" */ '~components/EventsCalender/index');
+
+const EventBrandingPeriodLoader = () =>
+  import(/* webpackChunkName: "events.listings" */ '~components/EventsCalender/EventBrandingPeriod');
 
 const LoadableListings = Loadable({
   loading: LoadableLoading,
@@ -26,9 +29,9 @@ const LoadableListings = Loadable({
 
 const LoadableListingsBranding = Loadable({
   loading: LoadableLoading,
-  loader: EventsListLoader,
-  render({ EventsBrandingPeriod }: { EventsBrandingPeriod: any }, props) {
-    return <EventsBrandingPeriod {...props} />;
+  loader: EventBrandingPeriodLoader,
+  render({ EventBrandingPeriod }: { EventBrandingPeriod: any }, props) {
+    return <EventBrandingPeriod {...props} />;
   },
 }) as any;
 
@@ -92,10 +95,11 @@ class EventsApplication extends React.Component<
         <div className="LokiContainer">
           <Switch>
             <Route path="/whats-on/" exact component={LoadableListings} />
-            <Redirect from='/whats-on/period/:brandSlug' to='/whats-on/collections/:brandSlug'/>
-            <Redirect from='/whats-on/collection/:brandSlug' to='/whats-on/collections/:brandSlug'/>
+            <Redirect from='/whats-on/period/:brandSlug' to='/whats-on/periods/:brandSlug'/>
+            <Redirect from='/whats-on/collections/:brandSlug' to='/whats-on/periods/:brandSlug'/>
+            <Redirect from='/whats-on/collection/:brandSlug' to='/whats-on/periods/:brandSlug'/>
             <Route
-              path="/whats-on/collections/:brandSlug"
+              path="/whats-on/periods/:brandSlug"
               exact
               component={LoadableListingsBranding}
             />

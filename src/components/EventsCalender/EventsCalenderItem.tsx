@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { has } from 'lodash';
 import formatDate from 'date-fns/format';
 import FauxLink from '../FauxLink';
-import FauxRouterLink from '../FauxRouterLink';
+import FauxInternalAppLink from '../FauxInternalAppLink';
 import minimalisticTimeRenderer from '../../libs/minimalisticTimeRenderer';
 import EventRelativeTime from './EventRelativeTime';
 import { Event, TicketType } from '../../types/events';
@@ -47,7 +47,6 @@ function getTreat(event: Event) {
 }
 
 interface IProps {
-  useAnchors?: boolean;
   relative?: boolean;
   showDay?: boolean;
   inline?: boolean;
@@ -59,7 +58,6 @@ interface IProps {
 
 function EventsCalenderItem({
   part,
-  useAnchors = false,
   inline = false,
   showDay = false,
   relative = false,
@@ -67,7 +65,6 @@ function EventsCalenderItem({
 }: IProps) {
   const event = part.event;
   const treat = getTreat(event);
-  const FauxFalmerLink = useAnchors ? FauxLink : FauxRouterLink;
 
   return (
     <div
@@ -79,7 +76,7 @@ function EventsCalenderItem({
       {event.url !== undefined && event.url !== '' ? (
         <FauxLink href={event.url} />
       ) : (
-        <FauxFalmerLink href={`/whats-on/${event.slug}-${event.eventId}`} />
+        <FauxInternalAppLink href={`/whats-on/${event.slug}-${event.eventId}`} />
       )}
       {has(part, 'event.featuredImage.resource') ? (
         <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">

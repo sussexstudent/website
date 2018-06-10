@@ -5,6 +5,8 @@ import { Provider } from '../../types/hydro';
 import Helmet from 'react-helmet';
 import { LoadableLoading } from '~components/LoadableLoading';
 import Loadable from 'react-loadable';
+import {Sectionbar, SectionbarItem} from "~components/Sectionbar";
+import {InternalAppLink} from "~components/InternalAppLink";
 
 const LoadableMarketHome = Loadable({
   loading: LoadableLoading,
@@ -58,35 +60,43 @@ const BookMarketApplication: React.SFC<{}> = () => (
   <Route
     path={`/book-market/`}
     component={() => (
-      <div className="LokiContainer">
-        <Helmet
-          titleTemplate="%s | Book Market | Sussex Students' Union"
-          defaultTitle="Book Market | Sussex Students' Union"
-        />
-        <Switch>
-          <Route path={`/book-market/`} component={LoadableMarketHome} exact />
-          <Route
-            path={`/book-market/my-listings`}
-            component={LoadableMarketMyListings}
+      <React.Fragment>
+        <Sectionbar title="Book Market">
+          <SectionbarItem>
+            <InternalAppLink to="/book-market">Home</InternalAppLink>
+            <InternalAppLink to="/book-market/my-listings/">Your listings</InternalAppLink>
+          </SectionbarItem>
+        </Sectionbar>
+        <div className="LokiContainer">
+          <Helmet
+            titleTemplate="%s | Book Market | Sussex Students' Union"
+            defaultTitle="Book Market | Sussex Students' Union"
           />
-          <Route
-            path={`/book-market/search`}
-            component={LoadableMarketSearch}
-          />
-          <Route
-            path={`/book-market/section/:sectionSlug`}
-            component={LoadableMarketSection}
-          />
-          <Route
-            path={`/book-market/listing/:listingId`}
-            component={LoadableMarketBookDetail}
-          />
-          <Route
-            path={`/book-market/list`}
-            component={LoadableMarketCreateListing}
-          />
-        </Switch>
-      </div>
+          <Switch>
+            <Route path={`/book-market/`} component={LoadableMarketHome} exact />
+            <Route
+              path={`/book-market/my-listings`}
+              component={LoadableMarketMyListings}
+            />
+            <Route
+              path={`/book-market/search`}
+              component={LoadableMarketSearch}
+            />
+            <Route
+              path={`/book-market/section/:sectionSlug`}
+              component={LoadableMarketSection}
+            />
+            <Route
+              path={`/book-market/listing/:listingId`}
+              component={LoadableMarketBookDetail}
+            />
+            <Route
+              path={`/book-market/list`}
+              component={LoadableMarketCreateListing}
+            />
+          </Switch>
+        </div>
+      </React.Fragment>
     )}
   />
 );

@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import FauxRouterLink from '~components/FauxRouterLink';
+import FauxInternalAppLink from '~components/FauxInternalAppLink';
 import { MarketListing, MarketListingState } from '../../../types/market';
 import { AspectRatio, OneImage } from '~components/OneImage';
 import { NoListItems } from '~components/bookmarket/NoListItems';
@@ -27,7 +27,7 @@ const ListingList: React.SFC<IProps> = (props: IProps) => {
     <ul className="ListingList List--reset">
       {props.items.map((item) => (
         <li className="ListingList__item">
-          <FauxRouterLink href={`/book-market/listing/${item.pk}`} />
+          <FauxInternalAppLink href={`/book-market/listing/${item.pk}`} />
           <div className="ListingList__image">
             {item.image ? (
               <OneImage

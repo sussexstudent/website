@@ -6,14 +6,6 @@ import FalmerDataList, { Cell, Row, HeaderCell } from '../FalmerDataList/index';
 import { Connection } from '~components/falmer/types';
 import { Event } from '../../../types/events';
 import { HandledQuery } from '~components/HandledQuery';
-// import FauxRouterLink from '../../FauxRouterLink';
-// const FalmerEventCard = ({ event }) =>
-//   <div className="FalmerCard FalmerCard--standard">
-//     <FauxRouterLink href={`/events/${event.eventId}`} />
-//     <h2>
-//       {event.title}
-//     </h2>
-//   </div>;
 
 interface IProps {
   onSelect(eventId: number): void;

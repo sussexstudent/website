@@ -14,14 +14,7 @@ import FalmerSubSections, { SubSection } from '../../FalmerSubSections';
 import { Event } from '../../../../types/events';
 import { Connection } from '~components/falmer/types';
 import { HandledQuery } from '~components/HandledQuery';
-// import FauxRouterLink from '../../FauxRouterLink';
-// const FalmerEventCard = ({ event }) =>
-//   <div className="FalmerCard FalmerCard--standard">
-//     <FauxRouterLink href={`/events/${event.eventId}`} />
-//     <h2>
-//       {event.title}
-//     </h2>
-//   </div>;
+
 function plural(
   length: number,
   single: string,

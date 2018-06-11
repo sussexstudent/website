@@ -16,8 +16,9 @@ export default function ready() {
   }
 
   const siteContent = document.querySelector('.Site__content');
+  const sectionBar = document.querySelector('.Sectionbar');
 
-  if (siteContent) {
+  if (siteContent && !sectionBar) {
     const topOfContent = document.createElement('div');
     siteContent.insertBefore(topOfContent, siteContent.firstChild);
 

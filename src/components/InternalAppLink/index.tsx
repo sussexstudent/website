@@ -8,6 +8,7 @@ interface InternalAppLinkProps extends React.HTMLProps<HTMLAnchorElement>{
   to: string;
   history: History;
   replace?: boolean;
+  innerRef?: any;
 }
 
 const isModifiedEvent = (event: React.MouseEvent<HTMLAnchorElement>) =>
@@ -36,7 +37,7 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
   };
 
   render() {
-    const { to, history } = this.props;
+    const { to, history, innerRef } = this.props;
     const isClientRendered = routes.matches(to);
     console.log({ to, isClientRendered });
     if (isClientRendered && history) {
@@ -49,12 +50,12 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
       const href = history.createHref(location);
 
       return (
-        <a {...this.props} onClick={this.handleClick} href={href} />
+        <a {...this.props} ref={innerRef} onClick={this.handleClick} href={href} />
       )
     }
 
     return (
-      <a {...this.props} href={to} />
+      <a {...this.props} ref={innerRef} href={to} />
     );
   }
 }

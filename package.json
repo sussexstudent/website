@@ -148,7 +148,7 @@
     "react-loadable": "^5.4.0",
     "react-modal": "^3.4.5",
     "react-onclickout": "^2.0.8",
-    "react-popover": "^0.5.7",
+    "react-popper": "^1.0.0-beta.6",
     "react-portal": "4.1.5",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",

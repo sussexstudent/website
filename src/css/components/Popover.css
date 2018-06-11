@@ -1,0 +1,9 @@
+.Popover {
+  flex-direction: column;
+  padding: 0.3em 0.5em;
+  background: hsla(0, 0%, 10%, 0.9);
+  color: white;
+  border-radius: 2px;
+  // display: none;
+}
+

@@ -5,7 +5,7 @@ addClassesForFeatures();
 
 // import { grooves } from '~libs/grooves';
 import '../../modules/eventRedirect';
-import {getSiteMode, Mode} from "~libs/siteModeDectector";
+import { getSiteMode, Mode } from '~libs/siteModeDectector';
 
 // Install raven for sentry error  reporting
 if (process.env.NODE_ENV === 'production') {
@@ -27,12 +27,16 @@ if (process.env.NODE_ENV === 'production') {
 
 const siteMode = getSiteMode();
 
-if ((siteMode === Mode.Top) || (siteMode === Mode.ExternalFrame)) {
+if (siteMode === Mode.Top || siteMode === Mode.ExternalFrame) {
   console.log(`[mode] ${siteMode}, loading visualBootstrap`);
-  import(/* webpackChunkName: "visualBootstrap" */ './visualBootstrap').then(module => module.setup());
+  import(/* webpackChunkName: "visualBootstrap" */ './visualBootstrap').then(
+    (module) => module.setup(),
+  );
 } else if (siteMode === Mode.InternalFrame) {
   console.log(`[mode] ${siteMode}, loading communicationBootstrap`);
-  import(/* webpackChunkName: "communicationBootstrap" */ './communicationBootstrap').then(module => module.setup());
+  import(/* webpackChunkName: "communicationBootstrap" */ './communicationBootstrap').then(
+    (module) => module.setup(),
+  );
 }
 
 // if (window.performance && window.performance.timing) {

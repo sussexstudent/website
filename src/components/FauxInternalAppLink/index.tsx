@@ -1,5 +1,5 @@
 import React from 'react';
-import {InternalAppLink} from "~components/InternalAppLink";
+import { InternalAppLink } from '~components/InternalAppLink';
 
 export default ({ href }: { href: string }) => (
   <InternalAppLink className="u-faux-link" to={href} />

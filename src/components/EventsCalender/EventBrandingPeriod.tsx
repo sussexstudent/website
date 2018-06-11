@@ -1,11 +1,11 @@
 import React from 'react';
-import apolloHandler from "~components/apolloHandler";
-import {EventListings} from "~components/EventsCalender/EventListings";
-import Helmet from "react-helmet";
-import {match} from 'react-router-dom';
-import {compose} from 'recompose';
+import apolloHandler from '~components/apolloHandler';
+import { EventListings } from '~components/EventsCalender/EventListings';
+import Helmet from 'react-helmet';
+import { match } from 'react-router-dom';
+import { compose } from 'recompose';
 import EventListingsBrandingPeriodQuery from './EventListingsBrandingPeriod.graphql';
-import {graphql} from 'react-apollo';
+import { graphql } from 'react-apollo';
 
 interface RouterParams {
   brandSlug?: string;
@@ -29,7 +29,9 @@ class EventsCalender extends React.Component<IProps> {
     return (
       <div>
         <Helmet>
-          <title>{`${brandingPeriod.name} | What's on | Sussex Students' Union`}</title>
+          <title>{`${
+            brandingPeriod.name
+          } | What's on | Sussex Students' Union`}</title>
         </Helmet>
         <h2 className="type-brevier">Event Period</h2>
         <div>

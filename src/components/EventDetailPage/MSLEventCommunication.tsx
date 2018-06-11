@@ -61,6 +61,9 @@ class MSLEventCommunicationComponent extends React.Component<IProps, IState> {
   }
 }
 
-export const MSLEventCommunication = connect(null, {
-  replacePageActions,
-})((props: IProps) => <MSLEventCommunicationComponent {...props} />);
+export const MSLEventCommunication = connect(
+  null,
+  {
+    replacePageActions,
+  },
+)((props: IProps) => <MSLEventCommunicationComponent {...props} />);

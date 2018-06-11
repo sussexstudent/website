@@ -4,11 +4,10 @@ interface AwardProps {
   color: string;
   title: string;
   subtitle: string;
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export function Award(props: AwardProps) {
-
   return (
     <div className="Award" style={{ color: props.color }}>
       <div className="Award__disc" style={{ backgroundColor: props.color }}>

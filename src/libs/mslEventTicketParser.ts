@@ -4,7 +4,8 @@ export function parseTickets() {
   return Array.from(
     document.querySelectorAll('.event_tickets .event_ticket'),
   ).map((eventTicketEl) => {
-    const ticketString = eventTicketEl.childNodes[4].textContent;
+    const ticketStringSpan = eventTicketEl.querySelector('span');
+    const ticketString = ticketStringSpan ? ticketStringSpan.textContent : '';
     const lastSelectOption = eventTicketEl.querySelector(
       'select option:last-child',
     );
@@ -23,6 +24,7 @@ export function parseTickets() {
     }
 
     const ticketMatch = ticketString.trim().match(MSL_TICKET_STRING_REGEX);
+    console.log({ ticketString, ticketMatch, eventTicketEl });
 
     if (ticketMatch) {
       const [, currencySymbol, main, fractional, ticketName] = ticketMatch;

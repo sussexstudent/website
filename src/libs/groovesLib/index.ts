@@ -74,12 +74,11 @@ export class Grooves<EventMap> {
     const clientIds = getExistingIds();
 
     if (clientIds === false) {
-      return this.createSession()
-        .then(sessionId => {
-          this.sessionId = sessionId;
-          log('created new session');
-          this.isReady = true;
-        });
+      return this.createSession().then((sessionId) => {
+        this.sessionId = sessionId;
+        log('created new session');
+        this.isReady = true;
+      });
     }
 
     return new Promise((resolve) => {
@@ -91,18 +90,17 @@ export class Grooves<EventMap> {
   }
 
   private createSession() {
-    return this.performRequest('session')
-      .then(response => {
-        localStorage.setItem(
-          'grooves',
-          JSON.stringify({
-            sessionId: response.id,
-            sessionCreated: new Date().toISOString(),
-          }),
-        );
+    return this.performRequest('session').then((response) => {
+      localStorage.setItem(
+        'grooves',
+        JSON.stringify({
+          sessionId: response.id,
+          sessionCreated: new Date().toISOString(),
+        }),
+      );
 
-        return response.id;
-      })
+      return response.id;
+    });
   }
 
   public page() {

@@ -132,7 +132,8 @@ class OneImage extends React.Component<IProps> {
         : {
             className: 'u-responsive-ratio',
             style: {
-              paddingBottom: `${aspectRatio.height / aspectRatio.width * 100}%`,
+              paddingBottom: `${(aspectRatio.height / aspectRatio.width) *
+                100}%`,
             },
           };
 

@@ -1,4 +1,4 @@
-import {History, Location} from 'history';
+import { History, Location } from 'history';
 import { AnyAction } from 'redux';
 
 export interface RouterState {
@@ -6,7 +6,7 @@ export interface RouterState {
   location: null | Location;
 }
 
-const ROUTER_SET_ROUTER= 'ROUTER_SET_ROUTER';
+const ROUTER_SET_ROUTER = 'ROUTER_SET_ROUTER';
 export const setRouter = (history: History, location: Location) => ({
   type: ROUTER_SET_ROUTER,
   payload: { history, location },
@@ -25,7 +25,7 @@ export default function reducer(
         ...state,
         history: action.payload.history,
         location: action.payload.location,
-      }
+      };
   }
 
   return state;

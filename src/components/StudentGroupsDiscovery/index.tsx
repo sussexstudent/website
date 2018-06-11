@@ -7,8 +7,8 @@ import OrgansiationGrid, { StudentGroup } from '~components/OrganisationGrid';
 import STUDENT_GROUP_LISTING_QUERY from './StudentGroupListings.graphql';
 import { Provider } from '../../types/hydro';
 import { HandledQuery } from '~components/HandledQuery';
-import {removePageContainer} from "~libs/hacky";
-import {StudentGroupsSectionbar} from "~components/StudentGroupsSectionbar";
+import { removePageContainer } from '~libs/hacky';
+import { StudentGroupsSectionbar } from '~components/StudentGroupsSectionbar';
 
 interface Result {
   allGroups: {
@@ -66,7 +66,7 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
     }
 
     const searchValue = e.target.value;
-    console.log({ searchValue, d:  fuse.search(searchValue) });
+    console.log({ searchValue, d: fuse.search(searchValue) });
     this.setState({
       searchValue,
       displayIds: searchValue
@@ -110,7 +110,9 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
           </div>
           <div className="ActivitiesApp__main">
             <div className="ActivitiesApp__grid">
-              <OrgansiationGrid organisations={displayIds.map((id) => map[id])} />
+              <OrgansiationGrid
+                organisations={displayIds.map((id) => map[id])}
+              />
             </div>
           </div>
         </div>

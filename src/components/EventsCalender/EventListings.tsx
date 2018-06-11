@@ -3,10 +3,10 @@ import React from 'react';
 import {
   getSmartDate,
   organisePartsForUI,
-  splitEventsInToParts
-} from "~components/EventsApplication/utils";
-import {Event, EventPart} from "../../types/events";
-import EventsCalenderItem from "~components/EventsCalender/EventsCalenderItem";
+  splitEventsInToParts,
+} from '~components/EventsApplication/utils';
+import { Event, EventPart } from '../../types/events';
+import EventsCalenderItem from '~components/EventsCalender/EventsCalenderItem';
 
 interface EventListingsProps {
   events: any;
@@ -38,13 +38,8 @@ export function EventListings(props: EventListingsProps) {
               <div className="EventsCalender__section-items">
                 {chunk.map((part: EventPart, index: number) => {
                   return (
-                    <div
-                      className="EventsCalender__part-container"
-                      key={index}
-                    >
-                      <EventsCalenderItem
-                        part={part}
-                      />
+                    <div className="EventsCalender__part-container" key={index}>
+                      <EventsCalenderItem part={part} />
                     </div>
                   );
                 })}

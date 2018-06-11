@@ -8,7 +8,7 @@ import Main from '~components/Main';
 import AdvertBar from '~components/AdvertBar';
 import MSLTag from '~components/MSLTag';
 import DonatelloBanner from '../../../icons/donatello.svg';
-import {LokiHeader} from "~components/LokiHeader";
+import { LokiHeader } from '~components/LokiHeader';
 
 const ga = `!function(u,s,S,U){u.GoogleAnalyticsObject=S;u[S]||(u[S]=function(){
 (u[S].q=u[S].q||[]).push(arguments)});u[S].l=+new Date;U=s.createElement('script');
@@ -70,7 +70,10 @@ const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => {
         <script src="https://cdn.polyfill.io/v2/polyfill.min.js?rum=0&features=es6,es7,default-3.6,performance.now,Object.entries,Object.values&flags=gated&callback=hasPolyfilled&unknown=polyfill" />
         <script src={assets.map.vendor.js} />
         <script src={assets.map.main.js} />
-        <script type="text/javascript" dangerouslySetInnerHTML={{ __html: ga }} />
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{ __html: ga }}
+        />
         <noscript>
           <img
             alt=""
@@ -79,7 +82,7 @@ const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => {
           />
         </noscript>
       </div>
-    )
+    );
   }
 
   return (

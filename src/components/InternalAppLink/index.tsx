@@ -1,10 +1,10 @@
 import React from 'react';
-import routes from "../../projects/website/routes";
-import {WebsiteRootState} from "../../types/website";
-import { connect} from 'react-redux';
-import {History, createLocation} from 'history';
+import routes from '../../projects/website/routes';
+import { WebsiteRootState } from '../../types/website';
+import { connect } from 'react-redux';
+import { History, createLocation } from 'history';
 
-interface InternalAppLinkProps extends React.HTMLProps<HTMLAnchorElement>{
+interface InternalAppLinkProps extends React.HTMLProps<HTMLAnchorElement> {
   to: string;
   history: History;
   replace?: boolean;
@@ -41,22 +41,24 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
     const isClientRendered = routes.matches(to);
     console.log({ to, isClientRendered });
     if (isClientRendered && history) {
-
       const location =
-        typeof to === "string"
+        typeof to === 'string'
           ? createLocation(to, null, undefined, history.location)
           : to;
 
       const href = history.createHref(location);
 
       return (
-        <a {...this.props} ref={innerRef} onClick={this.handleClick} href={href} />
-      )
+        <a
+          {...this.props}
+          ref={innerRef}
+          onClick={this.handleClick}
+          href={href}
+        />
+      );
     }
 
-    return (
-      <a {...this.props} ref={innerRef} href={to} />
-    );
+    return <a {...this.props} ref={innerRef} href={to} />;
   }
 }
 

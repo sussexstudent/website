@@ -76,7 +76,9 @@ function EventsCalenderItem({
       {event.url !== undefined && event.url !== '' ? (
         <FauxLink href={event.url} />
       ) : (
-        <FauxInternalAppLink href={`/whats-on/${event.slug}-${event.eventId}`} />
+        <FauxInternalAppLink
+          href={`/whats-on/${event.slug}-${event.eventId}`}
+        />
       )}
       {has(part, 'event.featuredImage.resource') ? (
         <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">

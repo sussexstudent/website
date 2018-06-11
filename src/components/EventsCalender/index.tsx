@@ -7,8 +7,7 @@ import EventListingsQuery from './EventListings.graphql';
 import apolloHandler from '../apolloHandler';
 
 import { compose } from 'recompose';
-import {EventListings} from "~components/EventsCalender/EventListings";
-
+import { EventListings } from '~components/EventsCalender/EventListings';
 
 interface OwnProps {
   disableHeader: boolean;
@@ -30,10 +29,7 @@ class EventsCalender extends React.Component<IProps> {
           <title>{`What's on | Sussex Students' Union`}</title>
         </Helmet>
 
-        <EventListings
-          events={allEvents}
-          removePast={true}
-        />
+        <EventListings events={allEvents} removePast={true} />
       </div>
     );
   }

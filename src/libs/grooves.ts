@@ -33,17 +33,16 @@ interface WebsiteEvents {
   };
   'Book Listing Unlisted': {
     bookId: number;
-  }
+  };
   'Book Listing Listed': {
     bookId: number;
-  }
+  };
   'Book Listing Completed': {
     bookId: number;
-  }
-  'Freshers Signup Email Added': {}
-  'Freshers Signup Name Added': {}
-  'Freshers Signup Status Added': {}
-
+  };
+  'Freshers Signup Email Added': {};
+  'Freshers Signup Name Added': {};
+  'Freshers Signup Status Added': {};
 
   // perf
   'Performance Timed': {
@@ -63,5 +62,6 @@ export const grooves = new Grooves<WebsiteEvents>({
       ? 'https://m.sussexstudent.com'
       : 'http://localhost:6789',
   sessionProperties: () => ({ userId: 999 }),
-  disabled: typeof window === 'undefined' || window.location.hash === '#communication',
+  disabled:
+    typeof window === 'undefined' || window.location.hash === '#communication',
 });

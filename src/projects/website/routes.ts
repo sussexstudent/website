@@ -1,4 +1,4 @@
-import {PreRouter} from "~libs/PreRouter";
+import { PreRouter } from '~libs/PreRouter';
 
 export default new PreRouter([
   '/whats-on',
@@ -9,4 +9,4 @@ export default new PreRouter([
   '/search',
   /^\/get-involved$/,
   /^\/support$/,
-])
+]);

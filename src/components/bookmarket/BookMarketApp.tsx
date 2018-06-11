@@ -5,8 +5,8 @@ import { Provider } from '../../types/hydro';
 import Helmet from 'react-helmet';
 import { LoadableLoading } from '~components/LoadableLoading';
 import Loadable from 'react-loadable';
-import {Sectionbar, SectionbarItem} from "~components/Sectionbar";
-import {InternalAppLink} from "~components/InternalAppLink";
+import { Sectionbar, SectionbarItem } from '~components/Sectionbar';
+import { InternalAppLink } from '~components/InternalAppLink';
 
 const LoadableMarketHome = Loadable({
   loading: LoadableLoading,
@@ -65,9 +65,9 @@ const BookMarketApplication: React.SFC<{}> = () => (
           <SectionbarItem>
             <InternalAppLink to="/book-market">Home</InternalAppLink>
             {/*<HoverTapTooltip content={"Log in to list books"}>*/}
-              {/*{({ ref, handleOpen, handleClose }) => (*/}
-                {/*<InternalAppLink to="/book-market/my-listings/" onMouseOver={handleOpen} onMouseLeave={handleClose} innerRef={ref}>Your listings</InternalAppLink>*/}
-              {/*)}*/}
+            {/*{({ ref, handleOpen, handleClose }) => (*/}
+            {/*<InternalAppLink to="/book-market/my-listings/" onMouseOver={handleOpen} onMouseLeave={handleClose} innerRef={ref}>Your listings</InternalAppLink>*/}
+            {/*)}*/}
             {/*</HoverTapTooltip>*/}
           </SectionbarItem>
         </Sectionbar>
@@ -77,7 +77,11 @@ const BookMarketApplication: React.SFC<{}> = () => (
             defaultTitle="Book Market | Sussex Students' Union"
           />
           <Switch>
-            <Route path={`/book-market/`} component={LoadableMarketHome} exact />
+            <Route
+              path={`/book-market/`}
+              component={LoadableMarketHome}
+              exact
+            />
             <Route
               path={`/book-market/my-listings`}
               component={LoadableMarketMyListings}

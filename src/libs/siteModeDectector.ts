@@ -1,9 +1,8 @@
 export enum Mode {
   InternalFrame,
   ExternalFrame,
-  Top
+  Top,
 }
-
 
 export function getSiteMode() {
   if (window.self !== window.top) {

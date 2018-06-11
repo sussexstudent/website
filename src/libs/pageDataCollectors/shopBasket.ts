@@ -1,3 +1,1 @@
-export function getBasketData() {
-
-}
+export function getBasketData() {}

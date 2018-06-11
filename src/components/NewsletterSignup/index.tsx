@@ -1,7 +1,7 @@
 import React from 'react';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import { Store } from '~libs/store';
-import {grooves} from "~libs/grooves";
+import { grooves } from '~libs/grooves';
 
 const LS_KEY = 'newsletter:freshers18';
 const NEWSLETTER_ENDPOINT = `${getFalmerEndpoint()}/newsletters/freshers18/members`;

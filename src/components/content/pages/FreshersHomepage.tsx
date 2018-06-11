@@ -1,9 +1,8 @@
 import React from 'react';
 import FreshersLogo from '../../../icons/freshers-no-year.svg';
-import {NewsletterSignup} from "~components/NewsletterSignup";
+import { NewsletterSignup } from '~components/NewsletterSignup';
 
 function FreshersHomepage() {
-
   return (
     <div>
       <style>

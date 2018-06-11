@@ -12,7 +12,7 @@ import {
 } from '~components/bookmarket/currentUserData';
 import { HandledQuery } from '~components/HandledQuery';
 import { adopt } from '~components/Adopt';
-import {InternalAppLink} from "~components/InternalAppLink";
+import { InternalAppLink } from '~components/InternalAppLink';
 
 interface ComponentProps {
   query: string;

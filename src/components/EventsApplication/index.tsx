@@ -6,12 +6,12 @@ import {
   Switch,
   RouteComponentProps,
   NavLink,
-  Redirect
+  Redirect,
 } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { LoadableLoading } from '~components/LoadableLoading';
-import {Sectionbar, SectionbarItem} from "~components/Sectionbar";
-import {removePageContainer} from '~libs/hacky';
+import { Sectionbar, SectionbarItem } from '~components/Sectionbar';
+import { removePageContainer } from '~libs/hacky';
 
 const EventsListLoader = () =>
   import(/* webpackChunkName: "events.listings" */ '~components/EventsCalender/index');
@@ -86,18 +86,35 @@ class EventsApplication extends React.Component<
       <div className="u-keep-footer-down js-expand-container">
         <Sectionbar title="What's on">
           <SectionbarItem>
-            <NavLink to={'/whats-on'} exact>Listings</NavLink>
+            <NavLink to={'/whats-on'} exact>
+              Listings
+            </NavLink>
           </SectionbarItem>
           <SectionbarItem>
-            <a href={'/sport-societies-media/information-for-committee-members/events-trips/'}>Holding an event</a>
+            <a
+              href={
+                '/sport-societies-media/information-for-committee-members/events-trips/'
+              }
+            >
+              Holding an event
+            </a>
           </SectionbarItem>
         </Sectionbar>
         <div className="LokiContainer">
           <Switch>
             <Route path="/whats-on/" exact component={LoadableListings} />
-            <Redirect from='/whats-on/period/:brandSlug' to='/whats-on/periods/:brandSlug'/>
-            <Redirect from='/whats-on/collections/:brandSlug' to='/whats-on/periods/:brandSlug'/>
-            <Redirect from='/whats-on/collection/:brandSlug' to='/whats-on/periods/:brandSlug'/>
+            <Redirect
+              from="/whats-on/period/:brandSlug"
+              to="/whats-on/periods/:brandSlug"
+            />
+            <Redirect
+              from="/whats-on/collections/:brandSlug"
+              to="/whats-on/periods/:brandSlug"
+            />
+            <Redirect
+              from="/whats-on/collection/:brandSlug"
+              to="/whats-on/periods/:brandSlug"
+            />
             <Route
               path="/whats-on/periods/:brandSlug"
               exact

@@ -64,7 +64,11 @@ const BookMarketApplication: React.SFC<{}> = () => (
         <Sectionbar title="Book Market">
           <SectionbarItem>
             <InternalAppLink to="/book-market">Home</InternalAppLink>
-            <InternalAppLink to="/book-market/my-listings/">Your listings</InternalAppLink>
+            {/*<HoverTapTooltip content={"Log in to list books"}>*/}
+              {/*{({ ref, handleOpen, handleClose }) => (*/}
+                {/*<InternalAppLink to="/book-market/my-listings/" onMouseOver={handleOpen} onMouseLeave={handleClose} innerRef={ref}>Your listings</InternalAppLink>*/}
+              {/*)}*/}
+            {/*</HoverTapTooltip>*/}
           </SectionbarItem>
         </Sectionbar>
         <div className="LokiContainer">

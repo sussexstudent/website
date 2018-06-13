@@ -43,7 +43,11 @@ export class MSLTickets extends React.Component<IProps, IState> {
                     {ticketOption.ticketName}
                   </span>
                   <span className="TicketOutlet__price">
-                    {ticketOption.value > 0 ? `${ticketOption.currencySymbol}${formatPrice(ticketOption.value)}` : 'Free!'}
+                    {ticketOption.value > 0
+                      ? `${ticketOption.currencySymbol}${formatPrice(
+                          ticketOption.value,
+                        )}`
+                      : 'Free!'}
                   </span>
                   <div className="TicketOutlet__rocker-container">
                     <Stepper

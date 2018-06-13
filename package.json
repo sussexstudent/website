@@ -115,6 +115,7 @@
     "apollo-client": "^2.3.3",
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.4",
+    "babel-preset-es2015": "^6.24.1",
     "bind-decorator": "^1.0.11",
     "chunk-manifest-webpack-plugin": "https://github.com/malectro/chunk-manifest-webpack-plugin.git#webpack-4",
     "classnames": "^2.2.6",

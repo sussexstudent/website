@@ -43,10 +43,10 @@ function renderDates(event: Event) {
           <li className="EventDetail__details-list-item">
             <CalendarIcon className="EventDetail__icon" />
             {minimalisticTimeRenderer(startDate)},{' '}
-            {formatDate(startDate, 'dddd D')}
+            {formatDate(startDate, 'EEEE d')}
             <sup>{getOrdinal(getDate(startDate))}</sup>
             {formatDate(startDate, ' MMMM YYYY')} -{' '}
-            {minimalisticTimeRenderer(endDate)}, {formatDate(endDate, 'dddd D')}
+            {minimalisticTimeRenderer(endDate)}, {formatDate(endDate, 'EEEE d')}
             <sup>{getOrdinal(getDate(endDate))}</sup>
             {formatDate(endDate, ' MMMM YYYY')}
           </li>
@@ -59,7 +59,7 @@ function renderDates(event: Event) {
     <div>
       <li className="EventDetail__details-list-item">
         <CalendarIcon className="EventDetail__icon" />
-        {formatDate(startDate, 'dddd D')}
+        {formatDate(startDate, 'EEEE d')}
         <sup>{getOrdinal(getDate(startDate))}</sup>
         {formatDate(startDate, ' MMMM YYYY')}
       </li>

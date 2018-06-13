@@ -53,10 +53,10 @@ function FalmerEvents({ onSelect }: IProps) {
                     ) : null}
                   </Cell>
                   <Cell>
-                    {formatDate(new Date(item.startTime), 'ddd Do MMM, HH:mm')}
+                    {formatDate(new Date(item.startTime), 'EEE Do MMM, HH:mm')}
                   </Cell>
                   <Cell>
-                    {formatDate(new Date(item.endTime), 'ddd Do MMM, HH:mm')}
+                    {formatDate(new Date(item.endTime), 'EEE Do MMM, HH:mm')}
                   </Cell>
                   <Cell>
                     <button

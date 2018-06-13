@@ -54,7 +54,7 @@ function KbArticle(props: IProps) {
                 <h1 className="type-canon">{article.title}</h1>
                 <div className="type-long-primer">
                   last updated:{' '}
-                  {format(new Date(article.lastPublishedAt), 'DD/MM/YY')}
+                  {format(new Date(article.lastPublishedAt), 'd/MM/YYYY')}
                 </div>
                 <StreamField page={article} items={article.main} />
               </ContentCard>

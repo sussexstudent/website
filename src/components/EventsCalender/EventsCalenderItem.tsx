@@ -117,7 +117,7 @@ function EventsCalenderItem({
           {event.shortDescription}
         </div>
         <div className="EventsCalender__item-meta">
-          {showDay ? formatDate(new Date(event.startTime), 'ddd ') : ''}
+          {showDay ? formatDate(new Date(event.startTime), 'EEE ') : ''}
           {minimalisticTimeRenderer(new Date(event.startTime))}
           <span> – </span>
           {minimalisticTimeRenderer(new Date(event.endTime))}

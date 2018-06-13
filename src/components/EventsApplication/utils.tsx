@@ -162,12 +162,12 @@ export function getSmartDate(part: EventPart) {
   }
 
   if (isBefore(part.date, startOfNextWeek)) {
-    return formatDate(part.date, 'dddd');
+    return formatDate(part.date, 'EEEE');
   }
 
   return (
     <span>
-      {formatDate(part.date, 'dddd')} {getDate(part.date)}
+      {formatDate(part.date, 'EEEE')} {getDate(part.date)}
       <sup>{getOrdinal(getDate(part.date))}</sup>
     </span>
   );

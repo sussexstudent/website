@@ -95,13 +95,13 @@ function FalmerEvents() {
                       <Cell>
                         {formatDate(
                           new Date(item.startTime),
-                          'ddd Do MMM, HH:mm',
+                          'EEE Do MMM, HH:mm',
                         )}
                       </Cell>
                       <Cell>
                         {formatDate(
                           new Date(item.endTime),
-                          'ddd Do MMM, HH:mm',
+                          'EEE Do MMM, HH:mm',
                         )}
                       </Cell>
                       <Cell>

@@ -39,7 +39,7 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
   render() {
     const { to, history, innerRef } = this.props;
     const isClientRendered = routes.matches(to);
-    console.log({ to, isClientRendered });
+
     if (isClientRendered && history) {
       const location =
         typeof to === 'string'
@@ -62,6 +62,9 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
   }
 }
 
-export const InternalAppLink = connect((state: WebsiteRootState) => ({
-  history: state.router.history,
-}))(InternalAppLinkComponent);
+export const InternalAppLink = connect(
+  (state: WebsiteRootState) => ({
+    history: state.router.history,
+  }),
+  {},
+)(InternalAppLinkComponent);

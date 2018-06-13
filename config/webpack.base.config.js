@@ -105,6 +105,7 @@ function generateConfig() {
             {
               loader: '@svgr/webpack',
               options: {
+                icon: true,
                 svgo: true,
                 prettier: false,
               },

@@ -9,7 +9,7 @@
 }
 
 .Loader {
-  max-width: 100px;
+  max-width: 120px;
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
@@ -24,6 +24,7 @@
 
 .Loader__svg {
   width: 100%;
+  height: auto;
 }
 
 .Loader {

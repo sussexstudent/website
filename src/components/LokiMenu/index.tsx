@@ -40,14 +40,14 @@ export const LokiMenu = ({ activeItem }: IProps) => (
         active={activeItem === MenuItem.WhatsOn}
       />
       <LokiMenuItem
-        name="About us"
-        link="/about-us/"
-        active={activeItem === MenuItem.AboutUs}
-      />
-      <LokiMenuItem
         name="Support"
         link="/support/"
         active={activeItem === MenuItem.Support}
+      />
+      <LokiMenuItem
+        name="About us"
+        link="/about-us/"
+        active={activeItem === MenuItem.AboutUs}
       />
     </ul>
   </nav>

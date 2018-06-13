@@ -1,7 +1,5 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import HydroLeaf from '~components/HydroLeaf';
-import { Provider } from '../../types/hydro';
 import Helmet from 'react-helmet';
 import { LoadableLoading } from '~components/LoadableLoading';
 import Loadable from 'react-loadable';
@@ -109,8 +107,4 @@ const BookMarketApplication: React.SFC<{}> = () => (
   />
 );
 
-export default HydroLeaf({
-  disableSSR: true,
-  name: 'BookMarket',
-  providers: [Provider.Apollo, Provider.Router],
-})(BookMarketApplication);
+export default BookMarketApplication;

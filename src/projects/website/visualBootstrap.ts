@@ -2,7 +2,6 @@ import 'what-input';
 import currentUser from '~libs/user';
 import hydro from '../../modules/hydro';
 import Modal from 'react-modal';
-import routes from './routes';
 
 export function setup() {
   Modal.setAppElement('.Body');
@@ -17,23 +16,6 @@ export function setup() {
     import(/* webpackChunkName: "StudentGroupEnhancement" */ '../../modules/StudentGroupEnhancement').then(
       (module) => module.default(),
     );
-  }
-
-  const prerouterMatch = routes.matches(window.location.pathname);
-
-  if (prerouterMatch) {
-    const container = document.querySelector('.Site__content');
-
-    if (container && !container.classList.contains('js-content-replaced')) {
-      container.classList.add('js-content-replaced');
-      while (container.firstChild) {
-        container.removeChild(container.firstChild);
-      }
-
-      import(/* webpackChunkName: "WebsiteApplicationModule" */ '../../modules/WebsiteApplicationModule').then(
-        (module) => module.default(container),
-      );
-    }
   }
 
   // All pages

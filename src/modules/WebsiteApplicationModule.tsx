@@ -5,13 +5,17 @@ import HydroRootApollo from '~components/HydroRootApollo';
 import HydroRootRouter from '~components/HydroRootRouter';
 import WebsiteApplication from '~components/WebsiteApplication';
 import { store } from '../projects/website/redux/store';
+import { AppMountState } from '../projects/website/ducks/router';
 
-export default function ready(container: any) {
+export default function ready(
+  container: any,
+  appMountState: AppMountState = AppMountState.Initial,
+) {
   ReactDOM.render(
     <HydroRootApollo>
       <HydroRootRouter>
         <ReduxProvider store={store}>
-          <WebsiteApplication />
+          <WebsiteApplication appMountState={appMountState} />
         </ReduxProvider>
       </HydroRootRouter>
     </HydroRootApollo>,

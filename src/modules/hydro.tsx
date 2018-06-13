@@ -2,13 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import { isFunction } from 'lodash';
-import EventsApplicationX from '~components/EventsApplication';
-import { DesktopUserBar } from '~components/UserBar';
-import Header from '~components/Header';
 import { Provider } from '../types/hydro';
 import { store } from '../projects/website/redux/store';
 import { VoteNowBox } from '~components/Bento/treatments/VoteNowBox';
 import { CountdownBox } from '~components/Bento/treatments/CountdownBox';
+import { LokiHeader } from '~components/LokiHeader';
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.SFC;
@@ -29,11 +27,7 @@ function wrapProviders(providers: any[], child: any) {
 export default function() {
   const componentMap: ComponentMap = {
     /* Core Template Components */
-    Header: () => Header,
-    UserBar: () => DesktopUserBar,
-
-    HeaderSearch: () =>
-      import(/* webpackChunkName: "HeaderSearch" */ '~components/HeaderSearch'),
+    LokiHeader: () => LokiHeader,
 
     TweetList: () =>
       import(/* webpackChunkName: "TweetList" */ '~components/TweetList'),
@@ -47,17 +41,9 @@ export default function() {
       import(/* webpackChunkName: "DemocracyAirHorn" */ '~components/DemocracyAirHorn'),
     PolicyGenerator: () =>
       import(/* webpackChunkName: "PolicyGenerator" */ '~components/PolicyGenerator'),
-    ContentExplorer: () =>
-      import(/* webpackChunkName: "ContentExplorer" */ '../projects/website/layouts/ContentExplorer'),
-    ContentPage: () =>
-      import(/* webpackChunkName: "ContentPage" */ '../projects/website/layouts/ContentPage'),
     BentoBox: () => import(/* webpackChunkName: "Bento" */ '~components/Bento'),
-    Offers: () => import(/* webpackChunkName: "Offers" */ '~components/Offers'),
 
-    /* Applications! */
-    EventsApplication: () => EventsApplicationX as any,
-    StudentGroupsDiscoveryContainer: () =>
-      import(/* webpackChunkName: "StudentGroupsDiscovery" */ '~components/StudentGroupsDiscovery'),
+    Offers: () => import(/* webpackChunkName: "Offers" */ '~components/Offers'),
   };
 
   const providerLoaders: any[] = [];

@@ -103,7 +103,7 @@ function generateConfig() {
           use: [
             'babel-loader',
             {
-              loader: 'svgr/webpack',
+              loader: '@svgr/webpack',
               options: {
                 svgo: true,
                 prettier: false,

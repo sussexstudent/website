@@ -3,7 +3,6 @@
   margin-bottom: 1lh;
   position: relative;
   box-sizing: border-box;
-  height: 60px;
 
   @mixin card flat;
 
@@ -26,6 +25,5 @@
   &__note {
     display: block;
     color: var(--color__grey-winter);
-    padding: 0.8rem;
   }
 }

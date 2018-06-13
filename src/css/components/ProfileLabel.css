@@ -1,0 +1,19 @@
+.ProfileLabel {
+  background-color: var(--color__brand-blue);
+  color: #ffffff;
+  font-family: var(--type__primary);
+  font-weight: 600;
+  padding: calc(5px + 0.2rem) 0.4rem 0.2rem;
+  margin-top: -15px;
+  border-radius: 2px;
+
+  &__textual-button {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    border: 0;
+    background: transparent;
+    padding: 0;
+  }
+}

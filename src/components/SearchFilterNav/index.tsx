@@ -1,5 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
+import qs from 'query-string';
+import { NavLink } from 'react-router-dom';
 
 interface Option {
   key: any;
@@ -12,26 +14,31 @@ interface IItemProps {
   currentValue: any;
   itemKey: any;
   option: Option;
+  query: string;
 }
 
-function SearchFilterItem({
-  currentValue,
-  option,
-  onSelect,
-  itemKey,
-}: IItemProps) {
+function SearchFilterItem(props: IItemProps) {
+  const { currentValue, option, query, onSelect, itemKey } = props;
   const handleClick = onSelect.bind(null, option.key);
+
+  const count = itemKey !== 'top' ? <span>{`(${option.count})`}</span> : null;
+
   return (
     <li
-      className={cx('SearchFilterNav__item', {
-        'SearchFilterNav__item--current': currentValue === option.key,
-        'SearchFilterNav__item--disabled': option.count <= 0,
+      className={cx('Sectionbar__menu-item', {
+        'Sectionbar__menu-item--active': currentValue === option.key,
+        'Sectionbar__menu-item--disabled': option.count <= 0,
       })}
       key={option.key}
       onClick={option.count > 0 ? handleClick : () => {}}
     >
-      {option.title}
-      {itemKey !== 'top' ? <span> ({option.count})</span> : null}
+      <NavLink
+        to={`/search?${qs.stringify({ q: query, area: option.key })}`}
+        exact
+      >
+        {option.title}
+        {count}
+      </NavLink>
     </li>
   );
 }
@@ -40,21 +47,23 @@ interface IProps {
   onSelect(key: any): void;
   value: any;
   options: Option[];
+  query: string;
 }
 
-function SearchFilterNav({ onSelect, value, options }: IProps) {
+function SearchFilterNav({ onSelect, value, options, query }: IProps) {
   return (
-    <ul className="SearchFilterNav">
+    <React.Fragment>
       {options.map((option) => (
         <SearchFilterItem
           key={option.key}
           itemKey={option.key}
+          query={query}
           option={option}
           currentValue={value}
           onSelect={onSelect}
         />
       ))}
-    </ul>
+    </React.Fragment>
   );
 }
 

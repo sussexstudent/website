@@ -1,6 +1,7 @@
 import React from 'react';
-import bind from 'bind-decorator';
 import qs from 'query-string';
+import { Sectionbar } from '~components/Sectionbar';
+import bind from 'bind-decorator';
 import cx from 'classnames';
 import { debounce, orderBy } from 'lodash';
 import SearchResult, {
@@ -10,6 +11,10 @@ import SearchFilterNav from '~components/SearchFilterNav';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 
 import perf from '../../tracking/perf';
+import { RouteComponentProps } from 'react-router-dom';
+import { WebsiteRootState } from '../../types/website';
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
 
 enum SearchAreas {
   Top = 'top',
@@ -74,7 +79,7 @@ function getPayloadMetadata(payload: { [key: string]: Object[] }) {
   };
 }
 
-interface IProps {
+interface IProps extends RouteComponentProps<{}> {
   query: string;
 }
 
@@ -95,10 +100,8 @@ interface IState {
   hasResults: boolean;
 }
 
-class SearchPage extends React.Component<IProps, IState> {
+class SearchApp extends React.Component<IProps, IState> {
   private loadQueryResultsDebounced: (query: string) => void;
-  private searchContainerRef: HTMLDivElement | null = null;
-  private containerRef: HTMLDivElement | null = null;
 
   constructor(props: IProps) {
     super(props);
@@ -115,21 +118,20 @@ class SearchPage extends React.Component<IProps, IState> {
       orderedAreas: [],
     };
   }
-
   UNSAFE_componentWillMount() {
-    if (this.props.query) {
-      this.loadQueryResults(this.props.query);
+    const query = this.props.query;
+    if (query) {
+      this.loadQueryResults(query);
     }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps: IProps) {
-    if (nextProps.query !== this.props.query) {
-      this.handleUpdate(nextProps.query);
-    }
-  }
+    const query = this.props.query;
+    const queryNext = nextProps.query;
 
-  onEmptyResults() {
-    ga('send', 'event', 'Search', 'emptyresults', this.props.query);
+    if (queryNext !== query) {
+      this.handleUpdate(queryNext);
+    }
   }
 
   @bind
@@ -137,7 +139,8 @@ class SearchPage extends React.Component<IProps, IState> {
     // alleviate flash of loading when result is cached and gets returned quickly
     let didFinish = false;
     setTimeout(() => {
-      if (!didFinish && this.props.query === query) {
+      if (!didFinish && query === query) {
+        // === current query
         this.setState({ isLoading: true });
       }
     }, 60);
@@ -159,7 +162,8 @@ class SearchPage extends React.Component<IProps, IState> {
         return res.json();
       })
       .then((payload) => {
-        if (query === this.props.query) {
+        if (query === query) {
+          // === current query
           didFinish = true;
           const { orderedAreas, hasResults } = getPayloadMetadata(payload);
           this.setState({
@@ -172,11 +176,6 @@ class SearchPage extends React.Component<IProps, IState> {
           });
         }
       });
-  }
-
-  @bind
-  handleNotFoundDesiredPage() {
-    ga('send', 'event', 'Search', 'nothappy', this.props.query);
   }
 
   @bind
@@ -205,12 +204,6 @@ class SearchPage extends React.Component<IProps, IState> {
   @bind
   handlePageChange(nextNumber: number) {
     this.setState({ page: nextNumber }, () => this.handleUpdate());
-    this.containerRef && this.containerRef.scrollIntoView(true);
-  }
-
-  @bind
-  handleMoveToContainerTop() {
-    this.containerRef && this.containerRef.scrollIntoView(true);
   }
 
   @bind
@@ -229,9 +222,9 @@ class SearchPage extends React.Component<IProps, IState> {
     } else if (orderedAreas.length > 0) {
       content = (
         <SearchFilterNav
+          query={query}
           value={currentArea}
           options={orderedAreas}
-          query={query}
           onSelect={this.handleAreaChange}
         />
       );
@@ -239,11 +232,7 @@ class SearchPage extends React.Component<IProps, IState> {
       content = <span className="SearchMeta__note">No results found.</span>;
     }
 
-    return (
-      <div className="SearchMeta">
-        <div className="Container">{content}</div>
-      </div>
-    );
+    return content;
   }
 
   renderResults() {
@@ -255,40 +244,33 @@ class SearchPage extends React.Component<IProps, IState> {
 
     return (
       <div className={containerclassNamees}>
-        {this.renderMeta()}
-        <div
-          className="Container--for-search"
-          ref={(ref) => (this.searchContainerRef = ref)}
-        >
-          <div className="Container">
-            {results !== null && results[currentArea].length > 0 ? (
-              <ul
-                className={cx('ResultsList', {
-                  'ResultsList--stale': isLoading,
-                })}
-              >
-                {results[currentArea].map((item) => (
-                  <SearchResult key={item} item={resultItems[item]} />
-                ))}
-              </ul>
-            ) : null}
-          </div>
-        </div>
+        {results !== null && results[currentArea].length > 0 ? (
+          <ul
+            className={cx('ResultsList', {
+              'ResultsList--stale': isLoading,
+            })}
+          >
+            {results[currentArea].map((item) => (
+              <SearchResult key={item} item={resultItems[item]} />
+            ))}
+          </ul>
+        ) : null}
       </div>
     );
   }
 
   render() {
     return (
-      <div
-        ref={(ref) => {
-          this.containerRef = ref;
-        }}
-      >
-        {this.renderResults()}
+      <div>
+        <Sectionbar title="Search">{this.renderMeta()}</Sectionbar>
+        <div className="LokiContainer">{this.renderResults()}</div>
       </div>
     );
   }
 }
 
-export default SearchPage;
+export default compose<IProps, {}>(
+  connect((state: WebsiteRootState) => ({
+    query: state.router.searchQuery,
+  })),
+)(SearchApp as any);

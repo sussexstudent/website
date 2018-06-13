@@ -95,4 +95,10 @@
 @import './components/NewsletterSignup.css';
 @import './components/ImageUpload.css';
 @import './components/Popover.css';
+@import './components/FreshersSite.css';
+
+/* Loki:Skeleton */
 @import './components/LokiContainer.css';
+@import './components/LokiHeader.css';
+@import './components/ProfileLabel.css';
+@import './components/LokiMenu.css';

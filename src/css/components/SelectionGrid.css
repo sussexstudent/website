@@ -22,6 +22,7 @@
   &__item {
     @mixin card standard;
 
+    background-color: var(--color__brand-yellow);
     margin-bottom: 1rem;
   }
 

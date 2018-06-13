@@ -9,11 +9,16 @@ import { ContentPage } from '~components/content/ContentPage';
 import KnowledgeBaseApp from '~components/kb/KnowledgeBaseApplication';
 import StudentGroupsDiscovery from '~components/StudentGroupsDiscovery';
 import SearchApp from '~components/SearchApp';
+import { compose } from 'recompose';
+import { AppMountState } from '../../projects/website/ducks/router';
+import ContentExplorer from '../../projects/website/layouts/ContentExplorer';
 
 interface WebsiteApplicationProps {
   setRouter: typeof routerActions.setRouter;
+  announceMount: typeof routerActions.announceMount;
   history: History;
   location: Location;
+  appMountState: AppMountState;
 }
 
 const ContentAPI = (props: any) => (
@@ -23,6 +28,7 @@ const ContentAPI = (props: any) => (
 class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
   componentDidMount() {
     this.props.setRouter(this.props.history, this.props.location);
+    this.props.announceMount(this.props.appMountState);
   }
 
   componentDidUpdate() {
@@ -35,7 +41,7 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
         <Route path="/book-market" component={BookMarketApp} />
         <Route path="/whats-on" component={EventsApplication as any} />
         <Route path="/kb" component={KnowledgeBaseApp} />
-        <Route path="/search" component={SearchApp} />
+        <Route path="/search" component={SearchApp as any} />
         <Route
           path="/sport-societies-media/discover"
           component={StudentGroupsDiscovery}
@@ -43,16 +49,24 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
         <Route path="/freshers" component={ContentAPI} />
         <Route path="/get-involved" component={ContentAPI} exact />
         <Route path="/support" component={ContentAPI} exact />
+        <Route path="/content-explorer" component={ContentExplorer} exact />
       </Switch>
     );
   }
 }
 
-export default withRouter<any>(
+export default compose<
+  WebsiteApplicationProps,
+  {
+    appMountState: AppMountState;
+  }
+>(
+  withRouter,
   connect(
     null,
     {
       setRouter: routerActions.setRouter,
+      announceMount: routerActions.announceMount,
     },
-  )(WebsiteApplication),
-);
+  ),
+)(WebsiteApplication);

@@ -96,7 +96,7 @@ class EventsApplication extends React.Component<
                 '/sport-societies-media/information-for-committee-members/events-trips/'
               }
             >
-              Holding an event
+              Hold an event
             </a>
           </SectionbarItem>
         </Sectionbar>

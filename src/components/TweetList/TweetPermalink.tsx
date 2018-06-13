@@ -11,7 +11,7 @@ const TweetPermalink = ({ tweet }: IProps) => (
     href={`https://twitter.com/statuses/${tweet.id_str}`}
     className="Tweet__permalink"
   >
-    {formatDistance(tweet.created_at, new Date())} ago
+    {formatDistance(new Date(tweet.created_at), new Date())} ago
   </a>
 );
 

@@ -1,26 +1,18 @@
 import React from 'react';
-import FreshersLogo from '../../../icons/freshers-no-year.svg';
 import { NewsletterSignup } from '~components/NewsletterSignup';
+import { Lottie } from '~components/Lottie';
+import logoAnimation from '../../freshers/logoAnimation.json';
 
 function FreshersHomepage() {
   return (
-    <div>
-      <style>
-        {`
-         .FreshersLogoContainer {
-          color: #484598;
-          max-width: 400px;
-          width: 80%;
-          margin: 1rem auto;
-         }
-         .FreshersLogoContainer svg{
-           width: 100%;
-           height: auto;
-         }
-        `}
-      </style>
+    <div className="FreshersSite u-keep-footer-down">
       <div className="FreshersLogoContainer">
-        <FreshersLogo />
+        <Lottie
+          loop={false}
+          autoplay={true}
+          data={logoAnimation}
+          renderer="svg"
+        />
       </div>
       <NewsletterSignup />
     </div>

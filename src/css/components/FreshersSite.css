@@ -1,0 +1,18 @@
+.FreshersSite {
+  background-color: var(--color__f18-blue);
+  color: #ffffff;
+  margin-top: -1rem;
+  padding-top: 2rem;
+}
+
+.FreshersLogoContainer {
+  color: #484598;
+  max-width: 800px;
+  width: 80%;
+  margin: 0 auto;
+  max-height: 500px;
+}
+.FreshersLogoContainer svg {
+  width: 100%;
+  height: auto;
+}

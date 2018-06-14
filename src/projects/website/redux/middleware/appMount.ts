@@ -12,6 +12,7 @@ import qs from 'query-string';
 import { WebsiteRootState } from '../../../../types/website';
 import routes from '../../routes';
 import {debounce} from 'lodash';
+import {toggleMobileMenu} from "../../ducks/page";
 
 let hasAttemptedRender = false;
 
@@ -91,6 +92,13 @@ export const appMountMiddleware = (store: any) => (next: any) => (
       }
 
       onPageChange(location.pathname + location.search);
+
+      const { page: { isOpenMobileMenu } } = store.getState() as WebsiteRootState;
+
+      if (isOpenMobileMenu) {
+        store.dispatch(toggleMobileMenu(false));
+      }
+
       // something here to turn qs query and set the router var
     });
 

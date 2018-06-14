@@ -22,12 +22,13 @@
     display: block;
     text-decoration: none;
     font-weight: bold;
-    @mixin type pica;
     padding: 0.8rem 1rem;
+    @mixin type great-primer;
 
     @media (--medium) {
       padding: 0.2rem 0 0.2rem 0.2rem;
       margin-left: -0.2rem;
+      @mixin type pica;
     }
 
     @media (--large) {
@@ -42,7 +43,8 @@
 }
 
 .LokiMenu__item:nth-child(1) .LokiMenu__link {
-  color: var(--color__brand-blue);
+  background-color: var(--color__brand-blue);
+  color: #fff;
 
   @media (--medium) {
     background-color: transparent;
@@ -58,6 +60,7 @@
 
 .LokiMenu__item:nth-child(2) .LokiMenu__link {
   background-color: var(--color__brand-green);
+  color: #fff;
 
   @media (--medium) {
     background-color: transparent;
@@ -73,6 +76,7 @@
 
 .LokiMenu__item:nth-child(3) .LokiMenu__link {
   background-color: var(--color__brand-red);
+  color: #fff;
 
   @media (--medium) {
     background-color: transparent;
@@ -88,10 +92,12 @@
 
 .LokiMenu__item:nth-child(4) .LokiMenu__link {
   background-color: var(--color__grey-slate);
+  color: #fff;
 
   @media (--medium) {
     background-color: transparent;
     color: var(--color__grey-slate);
+
   }
 
   &:hover,

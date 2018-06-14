@@ -13,10 +13,7 @@
   }
 
   @media (--medium) {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
-    padding-bottom: 0.6rem;
-    padding-top: 0;
+    padding: 0 0.5rem 0.6rem;
     margin-bottom: 1rem;
     position: relative;
   }

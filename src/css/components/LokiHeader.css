@@ -1,9 +1,18 @@
+.html--side-menu .LokiHeader {
+  border-bottom: 0 !important;
+}
+
 .LokiHeader {
   background: #fff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
   margin-bottom: 1rem;
   border-bottom: 1px solid var(--color__grey-spring);
   z-index: var(--layer__header--mobile);
+  font-family: var(--type__primary);
+
+  @media (--up-to-medium) {
+    height: 50px;
+  }
 
   position: fixed;
   top: 0;
@@ -24,7 +33,15 @@
   }
 
   & .LokiContainer {
-    padding-top: 10px;
+    padding: 0.4rem 0;
+    height: 50px;
+    box-sizing: border-box;
+
+    @media (--medium) {
+      padding-top: 10px;
+      padding-bottom: 0;
+      height: auto;
+    }
   }
 
   &__top-row {
@@ -79,8 +96,8 @@
     width: 100%;
 
     @media (--up-to-medium) {
-      max-height: 33px;
-      max-width: 40px;
+      max-height: 30px;
+      max-width: 50px;
       margin: 0 auto;
     }
 
@@ -122,7 +139,7 @@
     border: 0;
     width: 100%;
 
-    font-family: var(--type__primary);
+    font-family: inherit;
     font-weight: 600;
     font-size: 20px;
     padding: 0.4rem;
@@ -141,7 +158,7 @@
   &__side-menu {
     background: #ffffff;
     position: fixed;
-    padding-top: 61px;
+    padding-top: 50px;
     top: 0;
     left: 0;
     right: 0;
@@ -184,12 +201,6 @@
     }
   }
 
-  &__button-label {
-    display: block;
-    padding-top: 0.1rem;
-    font-weight: 600;
-  }
-
   &__backdrop {
     position: fixed;
     top: 0;
@@ -213,13 +224,34 @@
     }
   }
 
-  &__menu-button-mobile {
+  &__button-mobile {
+    min-width: 60px;
     background: transparent;
     border: 0;
-    min-width: 60px;
-    text-align: right;
+    padding: 0 0.5rem;
+    display: block;
+    text-decoration: none;
+    font-family: var(--type__primary);
+
     @media (--medium) {
       display: none;
     }
+
+    &--search {
+      text-align: left;
+    }
+
+    &--menu {
+      text-align: right;
+    }
+  }
+
+  &__button-mobile-label {
+    display: block;
+    padding-top: 0.1rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: #000000;
+    @mixin type brevier;
   }
 }

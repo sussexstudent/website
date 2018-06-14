@@ -19,7 +19,7 @@ export interface PageState {
 }
 
 const PAGE_REPLACE_PAGE_ACTIONS = 'PAGE_REPLACE_PAGE_ACTIONS';
-const PAGE_TOGGLE_MOBILE_MENU = 'PAGE_TOGGLE_MOBILE_MENU';
+export const PAGE_TOGGLE_MOBILE_MENU = 'PAGE_TOGGLE_MOBILE_MENU';
 
 export const replacePageActions = (options: { actions: MenuItem[] }) => ({
   type: PAGE_REPLACE_PAGE_ACTIONS,
@@ -28,7 +28,9 @@ export const replacePageActions = (options: { actions: MenuItem[] }) => ({
 
 export const toggleMobileMenu = (isOpen: boolean) => ({
   type: PAGE_TOGGLE_MOBILE_MENU,
-  payload: isOpen,
+  payload: {
+    isOpen
+  },
 });
 
 export default function reducer(

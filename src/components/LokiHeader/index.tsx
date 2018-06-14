@@ -1,5 +1,4 @@
 import React from 'react';
-import cx from 'classnames';
 import StudentsUnionLogoNoLogotype from '../../icons/students-union-logo-no-logotype.svg';
 import { LokiHeaderSearch } from '~components/LokiHeader/LokiHeaderSearch';
 import { LokiMenu } from '~components/LokiMenu';
@@ -9,12 +8,18 @@ import { LokiSideMenu } from '~components/LokiSideMenu';
 import MenuIcon from '~components/MenuIcon';
 import CrossIcon from '~components/CrossIcon';
 import SearchIcon from '~components/SearchIcon';
+import * as pageActions from '../../projects/website/ducks/page';
+import {WebsiteRootState} from "../../types/website";
+import {connect} from 'react-redux';
+import {InternalAppLink} from "~components/InternalAppLink";
 
-interface LokiHeaderProps {}
+interface LokiHeaderProps {
+  isOpenMobileMenu: boolean;
+  toggleMobileMenu: typeof pageActions.toggleMobileMenu
+}
 
 interface LokiHeaderState {
   logoColor: string;
-  isSideMenuOpen: boolean;
 }
 
 class LokiHeaderComponent extends React.Component<
@@ -22,52 +27,22 @@ class LokiHeaderComponent extends React.Component<
   LokiHeaderState
 > {
   state = {
-    logoColor: '#eee',
-    isSideMenuOpen: false,
-  };
-
-  handleOpenSideMenu = () => {
-    document.documentElement.classList.add('html--modal');
-    this.setState({ isSideMenuOpen: true });
-  };
-
-  handleCloseSideMenu = () => {
-    document.documentElement.classList.remove('html--modal');
-    this.setState({ isSideMenuOpen: false });
-  };
-
-  handleToggleSideMenu = () => {
-    if (this.state.isSideMenuOpen) {
-      this.handleCloseSideMenu();
-    } else {
-      this.handleOpenSideMenu();
-    }
-  };
-
-  handleBackdropClick = () => {
-    if (this.state.isSideMenuOpen) {
-      this.handleCloseSideMenu();
-    }
-  };
-
-  handleOpenSearch = () => {
-    // dark shit
+    logoColor: '#eee'
   };
 
   render() {
-    const { isSideMenuOpen } = this.state;
+    const { isOpenMobileMenu, toggleMobileMenu } = this.props;
 
     return (
       <React.Fragment>
         <div className="LokiContainer LokiHeader__container">
-          <button
-            className="Header__search-mobile"
-            onClick={this.handleOpenSearch}
-            type="button"
+          <InternalAppLink
+            className="LokiHeader__button-mobile LokiHeader__button-mobile--search"
+            to="/search"
           >
             <SearchIcon />
-            <span className="Header__button-label">Search</span>
-          </button>
+            <span className="LokiHeader__button-mobile-label">Search</span>
+          </InternalAppLink>
           <div className="LokiHeader__logo">
             <a
               className="LokiHeader__logo-link"
@@ -89,28 +64,20 @@ class LokiHeaderComponent extends React.Component<
             </div>
           </div>
           <button
-            className="LokiHeader__menu-button-mobile"
-            onClick={this.handleToggleSideMenu}
+            className="LokiHeader__button-mobile LokiHeader__button-mobile--menu"
+            onClick={() => toggleMobileMenu(!isOpenMobileMenu)}
             type="button"
           >
-            {isSideMenuOpen ? <CrossIcon /> : <MenuIcon />}
-            <span className="LokiHeader__button-label">
-              {isSideMenuOpen ? 'Exit' : 'Menu'}
+            {isOpenMobileMenu ? <CrossIcon /> : <MenuIcon />}
+            <span className="LokiHeader__button-mobile-label">
+              {isOpenMobileMenu ? 'Exit' : 'Menu'}
             </span>
           </button>
-          <LokiSideMenu isOpen={isSideMenuOpen} />
+          <LokiSideMenu isOpen={isOpenMobileMenu} onBackdropClick={() => toggleMobileMenu(!isOpenMobileMenu)} />
         </div>
         <div className="LokiHeader__dropover" style={{ display: 'none' }}>
           <div className="LokiContainer">hello this is a drop over</div>
         </div>
-
-        <div
-          onClick={this.handleBackdropClick}
-          onTouchMove={(e) => e.preventDefault()}
-          className={cx('LokiHeader__backdrop', {
-            'LokiHeader__backdrop--is-visible': isSideMenuOpen,
-          })}
-        />
       </React.Fragment>
     );
   }
@@ -120,4 +87,8 @@ export const LokiHeader = HydroLeaf({
   name: 'LokiHeader',
   className: 'LokiHeader',
   container: (props) => <header {...props} />,
-})(LokiHeaderComponent);
+})(connect((state: WebsiteRootState) => ({
+  isOpenMobileMenu: state.page.isOpenMobileMenu,
+}), {
+  toggleMobileMenu: pageActions.toggleMobileMenu
+})(LokiHeaderComponent as any));

@@ -46,8 +46,17 @@
     margin-bottom: 1rem;
     width: 100%;
 
+    @media (--small) {
+      width: 240px;
+      margin-right: 1rem;
+    }
+
     @media (--medium) {
-      margin-right: 1.5lh;
+      width: 280px;
+    }
+
+    @media (--large) {
+      margin-right: 1.5rem;
       width: 320px;
     }
   }
@@ -100,7 +109,7 @@
     width: 100%;
     margin-bottom: 0.5rem;
 
-    @media (--medium) {
+    @media (--small) {
       width: auto;
     }
   }

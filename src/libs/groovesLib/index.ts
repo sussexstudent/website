@@ -65,8 +65,6 @@ export class Grooves<EventMap> {
     this.setup().then(() => {
       log('setup complete');
       this.transportQueue();
-
-      this.page();
     });
   }
 

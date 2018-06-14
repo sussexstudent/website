@@ -38,20 +38,3 @@ if (siteMode === Mode.Top || siteMode === Mode.ExternalFrame) {
     (module) => module.setup(),
   );
 }
-
-// if (window.performance && window.performance.timing) {
-//   window.addEventListener('load', () => {
-//     setTimeout(() => {
-//       const timings = window.performance.timing;
-//       grooves.track('Performance Timed', {
-//         dnsTiming: timings.domainLookupEnd - timings.domainLookupStart,
-//         tcpTiming: timings.connectEnd - timings.connectStart,
-//         requestTiming: timings.responseStart - timings.connectEnd,
-//         responseTiming: timings.responseEnd - timings.responseStart,
-//         processingTiming: timings.loadEventStart - timings.domLoading,
-//         onLoadTiming: timings.loadEventEnd - timings.loadEventStart,
-//         totalPageLoadTime: timings.loadEventEnd - timings.navigationStart,
-//       });
-//     }, 0);
-//   });
-// }

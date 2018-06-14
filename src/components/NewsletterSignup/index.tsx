@@ -1,7 +1,6 @@
 import React from 'react';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import { Store } from '~libs/store';
-import { grooves } from '~libs/grooves';
 
 const LS_KEY = 'newsletter:freshers18';
 const NEWSLETTER_ENDPOINT = `${getFalmerEndpoint()}/newsletters/freshers18/members`;
@@ -196,13 +195,10 @@ class NewsletterSignup extends React.Component<IProps, IState> {
         this.state.currentState === FormState.InitialFocus
       ) {
         this.handleEmailSubmit();
-        grooves.track('Freshers Signup Email Added', {});
       } else if (this.state.currentState === FormState.AddressSuccess) {
         this.handleNameSubmit();
-        grooves.track('Freshers Signup Name Added', {});
       } else if (this.state.currentState === FormState.NameSuccess) {
         this.handleStatusSubmit();
-        grooves.track('Freshers Signup Status Added', {});
       }
     };
   }

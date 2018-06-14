@@ -12,6 +12,7 @@ import { AppMountState } from '../../projects/website/ducks/router';
 import ContentExplorer from '../../projects/website/layouts/ContentExplorer';
 import {LoadableLoading} from "~components/LoadableLoading";
 import Loadable from 'react-loadable';
+import Helmet from 'react-helmet';
 
 interface WebsiteApplicationProps {
   setRouter: typeof routerActions.setRouter;
@@ -53,20 +54,23 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
 
   render() {
     return (
-      <Switch>
-        <Route path="/book-market" component={BookMarketApp} />
-        <Route path="/whats-on" component={EventsApplication as any} />
-        <Route path="/kb" component={KnowledgeBaseApp} />
-        <Route path="/search" component={LoadableSearchApp} />
-        <Route
-          path="/sport-societies-media/discover"
-          component={LoadableStudentGroupsDiscovery}
-        />
-        <Route path="/freshers" component={FreshersContentAPI} />
-        <Route path="/get-involved" component={ContentAPI} exact />
-        <Route path="/support" component={ContentAPI} exact />
-        <Route path="/content-explorer" component={ContentExplorer} exact />
-      </Switch>
+      <React.Fragment>
+        <Helmet defaultTitle="Sussex Students' Union" titleTemplate="%s | Sussex Students' Union" />
+        <Switch>
+          <Route path="/book-market" component={BookMarketApp} />
+          <Route path="/whats-on" component={EventsApplication as any} />
+          <Route path="/kb" component={KnowledgeBaseApp} />
+          <Route path="/search" component={LoadableSearchApp} />
+          <Route
+            path="/sport-societies-media/discover"
+            component={LoadableStudentGroupsDiscovery}
+          />
+          <Route path="/freshers" component={FreshersContentAPI} />
+          <Route path="/get-involved" component={ContentAPI} exact />
+          <Route path="/support" component={ContentAPI} exact />
+          <Route path="/content-explorer" component={ContentExplorer} exact />
+        </Switch>
+      </React.Fragment>
     );
   }
 }

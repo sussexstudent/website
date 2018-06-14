@@ -2,6 +2,7 @@ import React from 'react';
 import CONTENT_PAGE_QUERY from './ContentPageQuery.graphql';
 import pageMap from '~components/content/pageMap';
 import { HandledQuery } from '~components/HandledQuery';
+import Helmet from 'react-helmet';
 
 interface OwnProps {
   path: string;
@@ -38,7 +39,12 @@ const ContentPage: React.SFC<IProps> = (props: IProps) => {
           : null;
 
         if (Component) {
-          return <Component page={page} />;
+          return (
+          <React.Fragment>
+            <Helmet title={page.title} />
+
+            <Component page={page} />;
+          </React.Fragment>)
         }
 
         return (

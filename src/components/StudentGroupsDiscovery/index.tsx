@@ -7,6 +7,7 @@ import STUDENT_GROUP_LISTING_QUERY from './StudentGroupListings.graphql';
 import { HandledQuery } from '~components/HandledQuery';
 import { removePageContainer } from '~libs/hacky';
 import { StudentGroupsSectionbar } from '~components/StudentGroupsSectionbar';
+import Helmet from 'react-helmet';
 
 interface Result {
   allGroups: {
@@ -89,6 +90,7 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
     const { searchValue, displayIds } = this.state;
     return (
       <div>
+        <Helmet title="Discover student groups" />
         <StudentGroupsSectionbar />
         <div className="ActivitiesApp__ LokiContainer">
           <div className="ActivitiesApp__header">

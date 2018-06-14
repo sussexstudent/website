@@ -9,12 +9,13 @@ import SearchResult, {
 } from '~components/SearchResult';
 import SearchFilterNav from '~components/SearchFilterNav';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
-
 import perf from '../../tracking/perf';
 import { RouteComponentProps } from 'react-router-dom';
 import { WebsiteRootState } from '../../types/website';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
+import * as routerActions from '../../projects/website/ducks/router';
+import Helmet from 'react-helmet';
 
 enum SearchAreas {
   Top = 'top',
@@ -81,6 +82,7 @@ function getPayloadMetadata(payload: { [key: string]: Object[] }) {
 
 interface IProps extends RouteComponentProps<{}> {
   query: string;
+  setSearchValue: typeof routerActions.setSearchValue
 }
 
 interface IState {
@@ -145,11 +147,6 @@ class SearchApp extends React.Component<IProps, IState> {
       }
     }, 60);
 
-    // TODO: send after 1s. not here. causes half words in stats
-    // send ga
-    ga('set', 'page', `/search?q=${query}`);
-    ga('send', 'pageview');
-
     const t = perf.recordTime('Search', 'fetchResults', { query });
     window
       .fetch(`${getFalmerEndpoint()}/search/?q=${query}`, {
@@ -211,6 +208,11 @@ class SearchApp extends React.Component<IProps, IState> {
     this.setState({ currentArea: area });
   }
 
+  @bind
+  handleSearchInput(e: React.ChangeEvent<HTMLInputElement>) {
+    this.props.setSearchValue(e.currentTarget.value);
+  }
+
   renderMeta() {
     const { isLoading, hasResults, orderedAreas, currentArea } = this.state;
     const { query } = this.props;
@@ -218,7 +220,7 @@ class SearchApp extends React.Component<IProps, IState> {
     if (isLoading) {
       content = <span className="SearchMeta__note">Loading…</span>;
     } else if (hasResults === false) {
-      return null;
+      content = null;
     } else if (orderedAreas.length > 0) {
       content = (
         <SearchFilterNav
@@ -232,7 +234,12 @@ class SearchApp extends React.Component<IProps, IState> {
       content = <span className="SearchMeta__note">No results found.</span>;
     }
 
-    return content;
+    return (
+      <React.Fragment>
+        <input type="search" value={this.props.query} onChange={this.handleSearchInput} />
+        {content}
+      </React.Fragment>
+    );
   }
 
   renderResults() {
@@ -262,6 +269,7 @@ class SearchApp extends React.Component<IProps, IState> {
   render() {
     return (
       <div>
+        <Helmet title={this.props.query ? `Search for "${this.props.query}"` : 'Search'} />
         <Sectionbar title="Search">{this.renderMeta()}</Sectionbar>
         <div className="LokiContainer">{this.renderResults()}</div>
       </div>
@@ -272,5 +280,7 @@ class SearchApp extends React.Component<IProps, IState> {
 export default compose<IProps, {}>(
   connect((state: WebsiteRootState) => ({
     query: state.router.searchQuery,
-  })),
+  }), {
+    setSearchValue: routerActions.setSearchValue
+  }),
 )(SearchApp as any);

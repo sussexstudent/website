@@ -16,7 +16,7 @@
 
   &--donatello {
     background: #a42928;
-    box-shadow: inset -4px 3px 5px rgba(30, 30, 30, 0.4);
+    box-shadow: inset -4px 3px 5px rgba(117, 16, 16, 0.61);
     padding-top: 8px;
 
     & a {
@@ -26,6 +26,8 @@
 
     & svg {
       width: 100%;
+      max-height: 66px;
+      height: 100%;
     }
   }
 

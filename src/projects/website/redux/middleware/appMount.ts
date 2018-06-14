@@ -11,8 +11,17 @@ import {
 import qs from 'query-string';
 import { WebsiteRootState } from '../../../../types/website';
 import routes from '../../routes';
+import {debounce} from 'lodash';
 
 let hasAttemptedRender = false;
+
+function trackPageGA(path: string) {
+  console.log('ga', path);
+  ga('set', 'page', path);
+  ga('send', 'pageview');
+}
+
+const onPageChange = debounce(trackPageGA, 350);
 
 export const appMountMiddleware = (store: any) => (next: any) => (
   action: any,
@@ -81,6 +90,7 @@ export const appMountMiddleware = (store: any) => (next: any) => (
         );
       }
 
+      onPageChange(location.pathname + location.search);
       // something here to turn qs query and set the router var
     });
 

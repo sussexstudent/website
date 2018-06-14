@@ -2,10 +2,8 @@ import React from 'react';
 import bind from 'bind-decorator';
 import { keyBy } from 'lodash';
 import Fuse from 'fuse.js';
-import HydroLeaf from '~components/HydroLeaf';
 import OrgansiationGrid, { StudentGroup } from '~components/OrganisationGrid';
 import STUDENT_GROUP_LISTING_QUERY from './StudentGroupListings.graphql';
-import { Provider } from '../../types/hydro';
 import { HandledQuery } from '~components/HandledQuery';
 import { removePageContainer } from '~libs/hacky';
 import { StudentGroupsSectionbar } from '~components/StudentGroupsSectionbar';
@@ -134,6 +132,4 @@ function StudentGroupListings() {
   );
 }
 
-export default HydroLeaf({ providers: [Provider.Apollo] })(
-  StudentGroupListings,
-);
+export default StudentGroupListings;

@@ -7,11 +7,11 @@ import * as routerActions from '../../projects/website/ducks/router';
 import { connect } from 'react-redux';
 import { ContentPage } from '~components/content/ContentPage';
 import KnowledgeBaseApp from '~components/kb/KnowledgeBaseApplication';
-import StudentGroupsDiscovery from '~components/StudentGroupsDiscovery';
-import SearchApp from '~components/SearchApp';
 import { compose } from 'recompose';
 import { AppMountState } from '../../projects/website/ducks/router';
 import ContentExplorer from '../../projects/website/layouts/ContentExplorer';
+import {LoadableLoading} from "~components/LoadableLoading";
+import Loadable from 'react-loadable';
 
 interface WebsiteApplicationProps {
   setRouter: typeof routerActions.setRouter;
@@ -24,6 +24,22 @@ interface WebsiteApplicationProps {
 const ContentAPI = (props: any) => (
   <ContentPage path={props.location.pathname} />
 );
+
+const FreshersContentAPI = (props: any) => (
+  <div className="FreshersSite u-keep-footer-down">
+    <ContentPage path={props.location.pathname} />
+  </div>
+);
+
+const LoadableSearchApp = Loadable({
+  loading: LoadableLoading,
+  loader: () => import(/* webpackChunkName: "searchapp" */ '~components/SearchApp'),
+});
+
+const LoadableStudentGroupsDiscovery = Loadable({
+  loading: LoadableLoading,
+  loader: () => import(/* webpackChunkName: "sgd" */ '~components/StudentGroupsDiscovery'),
+});
 
 class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
   componentDidMount() {
@@ -41,12 +57,12 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
         <Route path="/book-market" component={BookMarketApp} />
         <Route path="/whats-on" component={EventsApplication as any} />
         <Route path="/kb" component={KnowledgeBaseApp} />
-        <Route path="/search" component={SearchApp as any} />
+        <Route path="/search" component={LoadableSearchApp} />
         <Route
           path="/sport-societies-media/discover"
-          component={StudentGroupsDiscovery}
+          component={LoadableStudentGroupsDiscovery}
         />
-        <Route path="/freshers" component={ContentAPI} />
+        <Route path="/freshers" component={FreshersContentAPI} />
         <Route path="/get-involved" component={ContentAPI} exact />
         <Route path="/support" component={ContentAPI} exact />
         <Route path="/content-explorer" component={ContentExplorer} exact />

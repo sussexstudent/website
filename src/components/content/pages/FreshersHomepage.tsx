@@ -5,7 +5,7 @@ import logoAnimation from '../../freshers/logoAnimation.json';
 
 function FreshersHomepage() {
   return (
-    <div className="FreshersSite u-keep-footer-down">
+    <React.Fragment>
       <div className="FreshersLogoContainer">
         <Lottie
           loop={false}
@@ -15,7 +15,7 @@ function FreshersHomepage() {
         />
       </div>
       <NewsletterSignup />
-    </div>
+    </React.Fragment>
   );
 }
 

@@ -48,8 +48,10 @@ class LokiHeaderComponent extends React.Component<
               className="LokiHeader__logo-link"
               href="/"
               style={{ color: '#ee534f' }}
+              title="Sussex Students' Union"
             >
               <StudentsUnionLogoNoLogotype />
+              <span className="u-h">Sussex Students' Union</span>
             </a>
           </div>
           <div className="LokiHeader__parts">

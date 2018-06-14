@@ -14,4 +14,21 @@
   &__results-message--is-visible {
     visibility: visible;
   }
+
+  &__mobile-search-input {
+    @mixin type great-primer;
+    @mixin card standard;
+    font-family: var(--type__primary);
+    font-weight: 600;
+    padding: 0.4rem;
+    box-sizing: border-box;
+    border: 0;
+    background: #ffffff;
+    margin-bottom: 1rem;
+
+
+    @media (--medium) {
+      display: none;
+    }
+  }
 }

@@ -9,15 +9,8 @@
     background: white;
     margin-bottom: 1.5rem;
     padding: 0.5rem;
-    transition: transform 300ms ease;
 
-    @mixin card standard-no-transition;
-
-    transition: box-shadow 300ms ease, transform 300ms ease;
-
-    &:hover {
-      transform: scale(1.02);
-    }
+    @mixin card standard;
   }
 
   &--stale {
@@ -26,6 +19,8 @@
 
   &__title {
     @mixin type great-primer;
+
+    line-height: 1.3 !important;
     margin-top: 0;
     margin-bottom: 0.5rem;
   }

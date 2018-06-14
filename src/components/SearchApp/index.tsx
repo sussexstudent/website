@@ -236,7 +236,13 @@ class SearchApp extends React.Component<IProps, IState> {
 
     return (
       <React.Fragment>
-        <input type="search" value={this.props.query} onChange={this.handleSearchInput} />
+        <input
+          className="SearchApp__mobile-search-input"
+          type="search"
+          value={this.props.query}
+          onChange={this.handleSearchInput}
+          placeholder="Search"
+        />
         {content}
       </React.Fragment>
     );

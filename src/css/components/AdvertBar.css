@@ -5,6 +5,7 @@
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   min-height: 80px;
+  z-index: var(--layer__header-advert-bar);
 
   &--hide {
     display: none;
@@ -22,6 +23,7 @@
     & a {
       width: 100%;
       max-width: 600px;
+      max-height: 120px;
     }
 
     & svg {

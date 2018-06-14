@@ -52,6 +52,7 @@ const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => {
           }}
         />
         <div className="Site">
+          <AdvertBar className="AdvertBar--top" position="TopBanner" />
           <LokiHeader />
           <Main legacy={legacy} />
           <MobileFooterTreats />

@@ -3,9 +3,9 @@ import Social from '~components/SocialMenu';
 
 const Footer = () => (
   <footer className="Footer">
-    <div className="Footer__container Container">
+    <div className="Footer__container LokiContainer">
       <div className="Footer__contact">
-        <h2>Contact us</h2>
+        <h3>Contact us</h3>
         <p>
           01273 678152<br />
           info@sussexstudent.com<br />
@@ -20,8 +20,9 @@ const Footer = () => (
           <a href="/about-us/jobs">Jobs</a>
           <br />
           <a href="/advertise">Advertise With Us</a>
+          <br />
+          <a href="/privacy">Our privacy policy</a>
         </p>
-
         <p>
           <small>
             University of Sussex Students’ Union - Company No. 07695765. Charity

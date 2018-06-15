@@ -2,7 +2,7 @@ import {
   AppMountState,
   ContentRoot,
   RootTransitionSource,
-  ROUTER_ANNOUNCE_MOUNT,
+  ROUTER_ANNOUNCE_MOUNT, ROUTER_NAVIGATE_TO,
   ROUTER_SET_ROUTER,
   ROUTER_SET_SEARCH_QUERY,
   setSearchValue,
@@ -126,6 +126,13 @@ export const appMountMiddleware = (store: any) => (next: any) => (
         store.dispatch(setSearchValue(queryString));
       }
     }
+  }
+
+  if (action.type === ROUTER_NAVIGATE_TO) {
+    window.history.replaceState({ initialDynamicPush: true }, '', window.location.pathname + window.location.search);
+    window.history.pushState(null, '', action.payload.to);
+
+    store.dispatch(transitionRootTo(ContentRoot.App, RootTransitionSource.Addition));
   }
 
   return next(action);

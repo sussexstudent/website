@@ -85,7 +85,7 @@ export const rootTransitionMiddleware = (store: any) => (next: any) => (
       }
     }
 
-    window.addEventListener('popstate', () => {
+    window.addEventListener('popstate', (event: PopStateEvent) => {
       const {
         router: { appMountState },
       } = store.getState() as WebsiteRootState;
@@ -99,6 +99,13 @@ export const rootTransitionMiddleware = (store: any) => (next: any) => (
               transitionRootTo(ContentRoot.App, RootTransitionSource.Initial),
             );
           }
+        }
+      } else {
+        const initialDynamicPush = event.state && event.state.initialDynamicPush;
+        if (initialDynamicPush) {
+          store.dispatch(
+            transitionRootTo(ContentRoot.Natural, RootTransitionSource.Addition),
+          );
         }
       }
     });

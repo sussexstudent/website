@@ -1,5 +1,6 @@
 import React from 'react';
 import routes from '../../projects/website/routes';
+import * as routerActions from '../../projects/website/ducks/router';
 import { WebsiteRootState } from '../../types/website';
 import { connect } from 'react-redux';
 import { History, createLocation } from 'history';
@@ -9,6 +10,7 @@ interface InternalAppLinkProps extends React.HTMLProps<HTMLAnchorElement> {
   history: History;
   replace?: boolean;
   innerRef?: any;
+  navigateTo: typeof routerActions.navigateTo
 }
 
 const isModifiedEvent = (event: React.MouseEvent<HTMLAnchorElement>) =>
@@ -28,10 +30,14 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
 
       const { history, replace, to } = this.props;
 
-      if (replace) {
-        history.replace(to);
+      if (history) {
+        if (replace) {
+          history.replace(to);
+        } else {
+          history.push(to);
+        }
       } else {
-        history.push(to);
+        this.props.navigateTo(to);
       }
     }
   };
@@ -40,22 +46,34 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
     const { to, history, innerRef } = this.props;
     const isClientRendered = routes.matches(to);
 
-    if (isClientRendered && history) {
-      const location =
-        typeof to === 'string'
-          ? createLocation(to, null, undefined, history.location)
-          : to;
+    if (isClientRendered) {
+      if (history) {
+        const location =
+          typeof to === 'string'
+            ? createLocation(to, null, undefined, history.location)
+            : to;
 
-      const href = history.createHref(location);
+        const href = history.createHref(location);
 
-      return (
-        <a
-          {...this.props}
-          ref={innerRef}
-          onClick={this.handleClick}
-          href={href}
-        />
-      );
+        return (
+          <a
+            {...this.props}
+            ref={innerRef}
+            onClick={this.handleClick}
+            href={href}
+          />
+        );
+      }
+
+      // return (
+      //   <a
+      //     {...this.props}
+      //     ref={innerRef}
+      //     onClick={this.handleClick}
+      //     href={to}
+      //   />
+      // );
+
     }
 
     return <a {...this.props} ref={innerRef} href={to} />;
@@ -66,5 +84,7 @@ export const InternalAppLink = connect(
   (state: WebsiteRootState) => ({
     history: state.router.history,
   }),
-  {},
+  {
+    navigateTo: routerActions.navigateTo
+  },
 )(InternalAppLinkComponent);

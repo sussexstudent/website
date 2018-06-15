@@ -30,6 +30,7 @@ export const ROUTER_SET_ROUTER = 'ROUTER_SET_ROUTER';
 export const ROUTER_TRANSITION_ROOT = 'ROUTER_TRANSITION_ROOT';
 export const ROUTER_SET_SEARCH_QUERY = 'ROUTER_SET_SEARCH_QUERY';
 export const ROUTER_ANNOUNCE_MOUNT = 'ROUTER_ANNOUNCE_MOUNT';
+export const ROUTER_NAVIGATE_TO = 'ROUTER_NAVIGATE_TO';
 
 export const setRouter = (history: History, location: Location) => ({
   type: ROUTER_SET_ROUTER,
@@ -56,6 +57,15 @@ export const transitionRootTo = (
   payload: {
     root,
     source,
+  },
+});
+
+export const navigateTo = (
+  to: string,
+) => ({
+  type: ROUTER_NAVIGATE_TO,
+  payload: {
+    to,
   },
 });
 

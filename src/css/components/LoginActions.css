@@ -1,0 +1,20 @@
+.LoginActions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  @mixin type great-primer;
+  font-family: var(--type__primary);
+  font-weight: 600;
+
+  &__item-anchor {
+    @mixin card standard;
+    box-sizing: border-box;
+    padding: 0.8rem 0.5rem;
+    color: #ffffff;
+    background-color: var(--color__brand-blue);
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    margin-bottom: 1rem;
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface AccordionItemProps {
+export interface AccordionItemProps {
   title: any;
   name: string;
 }

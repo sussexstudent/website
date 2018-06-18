@@ -51,6 +51,7 @@ const ProfileLabelComponent = (props: ProfileLabelProps) => {
       <div className="ProfileLabel ProfileLabel--anonymous">
         <button
           className="ProfileLabel__textual-button"
+          type="button"
           onClick={props.openLoginModal}
         >
           Log in

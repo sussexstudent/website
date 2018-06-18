@@ -37,7 +37,8 @@ const Footer = () => (
 
         <p>
           <small>
-            {"Designed and built by Sussex Students' Union. Powered by MSL."}
+            {"Designed and built by Sussex Students' Union. Powered by MSL. "}
+            <a href="https://sussexstudent.github.io/changelog/">changelog</a>
           </small>
         </p>
       </div>

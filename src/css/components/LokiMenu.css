@@ -97,7 +97,6 @@
   @media (--medium) {
     background-color: transparent;
     color: var(--color__grey-slate);
-
   }
 
   &:hover,

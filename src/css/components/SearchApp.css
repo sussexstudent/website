@@ -26,7 +26,6 @@
     background: #ffffff;
     margin-bottom: 1rem;
 
-
     @media (--medium) {
       display: none;
     }

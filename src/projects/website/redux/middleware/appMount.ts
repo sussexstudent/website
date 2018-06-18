@@ -2,7 +2,8 @@ import {
   AppMountState,
   ContentRoot,
   RootTransitionSource,
-  ROUTER_ANNOUNCE_MOUNT, ROUTER_NAVIGATE_TO,
+  ROUTER_ANNOUNCE_MOUNT,
+  ROUTER_NAVIGATE_TO,
   ROUTER_SET_ROUTER,
   ROUTER_SET_SEARCH_QUERY,
   setSearchValue,
@@ -11,8 +12,8 @@ import {
 import qs from 'query-string';
 import { WebsiteRootState } from '../../../../types/website';
 import routes from '../../routes';
-import {debounce} from 'lodash';
-import {toggleMobileMenu} from "../../ducks/page";
+import { debounce } from 'lodash';
+import { toggleMobileMenu } from '../../ducks/page';
 
 let hasAttemptedRender = false;
 
@@ -93,7 +94,9 @@ export const appMountMiddleware = (store: any) => (next: any) => (
 
       onPageChange(location.pathname + location.search);
 
-      const { page: { isOpenMobileMenu } } = store.getState() as WebsiteRootState;
+      const {
+        page: { isOpenMobileMenu },
+      } = store.getState() as WebsiteRootState;
 
       if (isOpenMobileMenu) {
         store.dispatch(toggleMobileMenu(false));
@@ -129,10 +132,16 @@ export const appMountMiddleware = (store: any) => (next: any) => (
   }
 
   if (action.type === ROUTER_NAVIGATE_TO) {
-    window.history.replaceState({ initialDynamicPush: true }, '', window.location.pathname + window.location.search);
+    window.history.replaceState(
+      { initialDynamicPush: true },
+      '',
+      window.location.pathname + window.location.search,
+    );
     window.history.pushState(null, '', action.payload.to);
 
-    store.dispatch(transitionRootTo(ContentRoot.App, RootTransitionSource.Addition));
+    store.dispatch(
+      transitionRootTo(ContentRoot.App, RootTransitionSource.Addition),
+    );
   }
 
   return next(action);

@@ -10,7 +10,7 @@ interface InternalAppLinkProps extends React.HTMLProps<HTMLAnchorElement> {
   history: History;
   replace?: boolean;
   innerRef?: any;
-  navigateTo: typeof routerActions.navigateTo
+  navigateTo: typeof routerActions.navigateTo;
 }
 
 const isModifiedEvent = (event: React.MouseEvent<HTMLAnchorElement>) =>
@@ -73,7 +73,6 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
       //     href={to}
       //   />
       // );
-
     }
 
     return <a {...this.props} ref={innerRef} href={to} />;
@@ -85,6 +84,6 @@ export const InternalAppLink = connect(
     history: state.router.history,
   }),
   {
-    navigateTo: routerActions.navigateTo
+    navigateTo: routerActions.navigateTo,
   },
 )(InternalAppLinkComponent);

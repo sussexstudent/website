@@ -101,10 +101,14 @@ export const rootTransitionMiddleware = (store: any) => (next: any) => (
           }
         }
       } else {
-        const initialDynamicPush = event.state && event.state.initialDynamicPush;
+        const initialDynamicPush =
+          event.state && event.state.initialDynamicPush;
         if (initialDynamicPush) {
           store.dispatch(
-            transitionRootTo(ContentRoot.Natural, RootTransitionSource.Addition),
+            transitionRootTo(
+              ContentRoot.Natural,
+              RootTransitionSource.Addition,
+            ),
           );
         }
       }

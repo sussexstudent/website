@@ -29,7 +29,7 @@ export const replacePageActions = (options: { actions: MenuItem[] }) => ({
 export const toggleMobileMenu = (isOpen: boolean) => ({
   type: PAGE_TOGGLE_MOBILE_MENU,
   payload: {
-    isOpen
+    isOpen,
   },
 });
 

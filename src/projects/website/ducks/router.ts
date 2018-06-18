@@ -60,9 +60,7 @@ export const transitionRootTo = (
   },
 });
 
-export const navigateTo = (
-  to: string,
-) => ({
+export const navigateTo = (to: string) => ({
   type: ROUTER_NAVIGATE_TO,
   payload: {
     to,

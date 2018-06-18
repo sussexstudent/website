@@ -10,7 +10,7 @@ import KnowledgeBaseApp from '~components/kb/KnowledgeBaseApplication';
 import { compose } from 'recompose';
 import { AppMountState } from '../../projects/website/ducks/router';
 import ContentExplorer from '../../projects/website/layouts/ContentExplorer';
-import {LoadableLoading} from "~components/LoadableLoading";
+import { LoadableLoading } from '~components/LoadableLoading';
 import Loadable from 'react-loadable';
 import Helmet from 'react-helmet';
 
@@ -34,12 +34,14 @@ const FreshersContentAPI = (props: any) => (
 
 const LoadableSearchApp = Loadable({
   loading: LoadableLoading,
-  loader: () => import(/* webpackChunkName: "searchapp" */ '~components/SearchApp'),
+  loader: () =>
+    import(/* webpackChunkName: "searchapp" */ '~components/SearchApp'),
 });
 
 const LoadableStudentGroupsDiscovery = Loadable({
   loading: LoadableLoading,
-  loader: () => import(/* webpackChunkName: "sgd" */ '~components/StudentGroupsDiscovery'),
+  loader: () =>
+    import(/* webpackChunkName: "sgd" */ '~components/StudentGroupsDiscovery'),
 });
 
 class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
@@ -55,7 +57,10 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
   render() {
     return (
       <React.Fragment>
-        <Helmet defaultTitle="Sussex Students' Union" titleTemplate="%s | Sussex Students' Union" />
+        <Helmet
+          defaultTitle="Sussex Students' Union"
+          titleTemplate="%s | Sussex Students' Union"
+        />
         <Switch>
           <Route path="/book-market" component={BookMarketApp} />
           <Route path="/whats-on" component={EventsApplication as any} />

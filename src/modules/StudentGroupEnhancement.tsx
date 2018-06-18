@@ -7,7 +7,7 @@ import { StudentGroupsSectionbar } from '~components/StudentGroupsSectionbar';
 import { store } from 'src/projects/website/redux/store';
 
 export default function ready() {
-  const sidebar = document.querySelector('.col-md-4');
+  const sidebar = document.querySelector('.col-md-4.test-awards');
 
   if (sidebar) {
     const sidebarBottom = document.createElement('div');

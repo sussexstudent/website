@@ -40,11 +40,12 @@ const ContentPage: React.SFC<IProps> = (props: IProps) => {
 
         if (Component) {
           return (
-          <React.Fragment>
-            <Helmet title={page.title} />
+            <React.Fragment>
+              <Helmet title={page.title} />
 
-            <Component page={page} />
-          </React.Fragment>)
+              <Component page={page} />
+            </React.Fragment>
+          );
         }
 
         return (

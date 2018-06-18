@@ -7,10 +7,11 @@ export class LoginModal extends React.Component<
   LoginModalProps & ReactModal.Props
 > {
   render() {
-    const currentPath = typeof window !== "undefined" ? window.location.pathname : '/';
+    const currentPath =
+      typeof window !== 'undefined' ? window.location.pathname : '/';
 
     return (
-      <Modal isOpen={true} size="small" {...this.props} footerClose>
+      <Modal size="small" {...this.props} footerClose>
         <h1 className="Modal__heading">Log in</h1>
         <ul className="LoginActions">
           <li>

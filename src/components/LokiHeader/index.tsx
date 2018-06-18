@@ -9,13 +9,13 @@ import MenuIcon from '~components/MenuIcon';
 import CrossIcon from '~components/CrossIcon';
 import SearchIcon from '~components/SearchIcon';
 import * as pageActions from '../../projects/website/ducks/page';
-import {WebsiteRootState} from "../../types/website";
-import {connect} from 'react-redux';
-import {InternalAppLink} from "~components/InternalAppLink";
+import { WebsiteRootState } from '../../types/website';
+import { connect } from 'react-redux';
+import { InternalAppLink } from '~components/InternalAppLink';
 
 interface LokiHeaderProps {
   isOpenMobileMenu: boolean;
-  toggleMobileMenu: typeof pageActions.toggleMobileMenu
+  toggleMobileMenu: typeof pageActions.toggleMobileMenu;
 }
 
 interface LokiHeaderState {
@@ -27,7 +27,7 @@ class LokiHeaderComponent extends React.Component<
   LokiHeaderState
 > {
   state = {
-    logoColor: '#eee'
+    logoColor: '#eee',
   };
 
   render() {
@@ -75,7 +75,10 @@ class LokiHeaderComponent extends React.Component<
               {isOpenMobileMenu ? 'Exit' : 'Menu'}
             </span>
           </button>
-          <LokiSideMenu isOpen={isOpenMobileMenu} onBackdropClick={() => toggleMobileMenu(!isOpenMobileMenu)} />
+          <LokiSideMenu
+            isOpen={isOpenMobileMenu}
+            onBackdropClick={() => toggleMobileMenu(!isOpenMobileMenu)}
+          />
         </div>
         <div className="LokiHeader__dropover" style={{ display: 'none' }}>
           <div className="LokiContainer">hello this is a drop over</div>
@@ -89,8 +92,13 @@ export const LokiHeader = HydroLeaf({
   name: 'LokiHeader',
   className: 'LokiHeader',
   container: (props) => <header {...props} />,
-})(connect((state: WebsiteRootState) => ({
-  isOpenMobileMenu: state.page.isOpenMobileMenu,
-}), {
-  toggleMobileMenu: pageActions.toggleMobileMenu
-})(LokiHeaderComponent as any));
+})(
+  connect(
+    (state: WebsiteRootState) => ({
+      isOpenMobileMenu: state.page.isOpenMobileMenu,
+    }),
+    {
+      toggleMobileMenu: pageActions.toggleMobileMenu,
+    },
+  )(LokiHeaderComponent as any),
+);

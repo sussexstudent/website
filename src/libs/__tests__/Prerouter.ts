@@ -1,9 +1,6 @@
 import { PreRouter } from '../PreRouter';
 
-const router = new PreRouter([
-  '/awesome/string',
-  /^\/direct\/regex-match$/,
-]);
+const router = new PreRouter(['/awesome/string', /^\/direct\/regex-match$/]);
 
 it('matches strings endlessly', () => {
   expect(router.matches('/awesome/string/mate')).not.toBeUndefined();

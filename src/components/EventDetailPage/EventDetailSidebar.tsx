@@ -4,7 +4,6 @@ import ContentCard from '~components/ContentCard';
 import Button from '~components/Button';
 // import { MSLTickets } from '~components/EventDetailPage/MSLTickets';
 import { SocialArray } from '~components/SocialArray';
-import { MSLTickets } from '~components/EventDetailPage/MSLTickets';
 
 interface IProps {
   event: Event;
@@ -24,7 +23,7 @@ export const EventDetailSidebar = (props: IProps) => {
       ) : null}
       {event.ticketType === TicketType.MSL ? (
         <React.Fragment>
-          <MSLTickets msl={props.msl} />
+          {/*<MSLTickets msl={props.msl} />*/}
           <ContentCard>
             <h3>Tickets</h3>
             <Button href={`${event.ticketData}#tickets`}>Get tickets</Button>

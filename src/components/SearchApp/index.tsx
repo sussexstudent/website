@@ -16,7 +16,7 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import * as routerActions from '../../projects/website/ducks/router';
 import Helmet from 'react-helmet';
-import {NoListItems} from "~components/bookmarket/NoListItems";
+import { NoListItems } from '~components/bookmarket/NoListItems';
 
 enum SearchAreas {
   Top = 'top',
@@ -83,7 +83,7 @@ function getPayloadMetadata(payload: { [key: string]: Object[] }) {
 
 interface IProps extends RouteComponentProps<{}> {
   query: string;
-  setSearchValue: typeof routerActions.setSearchValue
+  setSearchValue: typeof routerActions.setSearchValue;
 }
 
 interface IState {
@@ -269,7 +269,9 @@ class SearchApp extends React.Component<IProps, IState> {
             ))}
           </ul>
         ) : null}
-        {results !== null && results[currentArea].length >= 0 ? <NoListItems /> : null}
+        {results !== null && results[currentArea].length >= 0 ? (
+          <NoListItems />
+        ) : null}
       </div>
     );
   }
@@ -277,7 +279,11 @@ class SearchApp extends React.Component<IProps, IState> {
   render() {
     return (
       <div>
-        <Helmet title={this.props.query ? `Search for "${this.props.query}"` : 'Search'} />
+        <Helmet
+          title={
+            this.props.query ? `Search for "${this.props.query}"` : 'Search'
+          }
+        />
         <Sectionbar title="Search">{this.renderMeta()}</Sectionbar>
         <div className="LokiContainer">{this.renderResults()}</div>
       </div>
@@ -286,9 +292,12 @@ class SearchApp extends React.Component<IProps, IState> {
 }
 
 export default compose<IProps, {}>(
-  connect((state: WebsiteRootState) => ({
-    query: state.router.searchQuery,
-  }), {
-    setSearchValue: routerActions.setSearchValue
-  }),
+  connect(
+    (state: WebsiteRootState) => ({
+      query: state.router.searchQuery,
+    }),
+    {
+      setSearchValue: routerActions.setSearchValue,
+    },
+  ),
 )(SearchApp as any);

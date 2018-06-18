@@ -4,7 +4,7 @@ import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import { appMountMiddleware } from './middleware/appMount';
 import { rootTransitionMiddleware } from './middleware/rootTransition';
 import { ROUTER_INITIAL } from '../ducks/router';
-import {sideMenuMiddleware} from "./middleware/sideMenu";
+import { sideMenuMiddleware } from './middleware/sideMenu';
 
 const composeEnhancers =
   (typeof (window as any) !== 'undefined' ? window : ({} as any))
@@ -14,7 +14,11 @@ const store = createStore(
   combineReducers(reducers) as any, // fix me
   {},
   composeEnhancers(
-    applyMiddleware(appMountMiddleware, rootTransitionMiddleware, sideMenuMiddleware),
+    applyMiddleware(
+      appMountMiddleware,
+      rootTransitionMiddleware,
+      sideMenuMiddleware,
+    ),
   ),
 );
 

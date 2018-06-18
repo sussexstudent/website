@@ -31,11 +31,11 @@ const ProfileLabelComponent = (props: ProfileLabelProps) => {
           className="ProfileLabel ProfileLabel--authenticated"
           onClick={props.openYourModal}
         >
-          <ProfileIcon />
+          <ProfileIcon className="ProfileLabel__icon" />
           <span className="ProfileLabel__textual-button ProfileLabel__name">
             {firstName} {lastName}
           </span>
-          <UserChevronIcon />
+          <UserChevronIcon className="ProfileLabel__icon" />
         </div>
 
         <YourPage

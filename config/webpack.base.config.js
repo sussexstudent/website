@@ -107,6 +107,10 @@ function generateConfig() {
               options: {
                 // icon: true,
                 svgo: true,
+                dimensions: false,
+                svgoConfig: {
+                  plugins: [{removeViewBox: false}],
+                },
                 prettier: false,
               },
             },

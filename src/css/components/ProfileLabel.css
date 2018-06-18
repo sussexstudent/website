@@ -20,4 +20,8 @@
   & > svg {
     vertical-align: middle;
   }
+
+  &__icon {
+    width: 1em;
+  }
 }

@@ -245,6 +245,14 @@
     &--menu {
       text-align: right;
     }
+
+    & > svg {
+      display: block;
+    }
+  }
+
+  &__button-mobile--menu svg {
+    margin-left: auto;
   }
 
   &__button-mobile-label {

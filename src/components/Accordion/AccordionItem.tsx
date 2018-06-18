@@ -20,8 +20,15 @@ export const AccordionItemInternal: React.SFC<
 > = (props) => {
   return (
     <li className={`${props.className}__item`}>
-      {props.title({ className: `${props.className}__item-title`, onClick: () => props.onOpen() })}
-      {props.isOpen ? <div className={`${props.className}__item-content`}>{props.children}</div> : null}
+      {props.title({
+        className: `${props.className}__item-title`,
+        onClick: () => props.onOpen(),
+      })}
+      {props.isOpen ? (
+        <div className={`${props.className}__item-content`}>
+          {props.children}
+        </div>
+      ) : null}
     </li>
   );
 };

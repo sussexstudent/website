@@ -75,7 +75,9 @@ const YourPageComponent: React.SFC<YourPageProps & ReactModal.Props> = (
       </Accordion>
 
       <div>
-        <a className="Button" href="/shop/basket">Basket</a>
+        <a className="Button" href="/shop/basket">
+          Basket
+        </a>
       </div>
 
       <button

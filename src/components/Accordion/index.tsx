@@ -1,9 +1,12 @@
 import React from 'react';
-import {AccordionItemInternal, AccordionItemProps} from '~components/Accordion/AccordionItem';
+import {
+  AccordionItemInternal,
+  AccordionItemProps,
+} from '~components/Accordion/AccordionItem';
 
 interface AccordionProps {
   children: (React.ReactElement<AccordionItemProps> | null)[];
-  className: string
+  className: string;
 }
 
 interface AccordionState {
@@ -21,19 +24,23 @@ export class Accordion extends React.Component<AccordionProps, AccordionState> {
 
     return (
       <ul className={className}>
-        {children.map((item) => (
-           item === null ? null : <AccordionItemInternal
-            className={className}
-            key={item.props.name}
-            {...item.props}
-            isOpen={openArea === item.props.name}
-            onOpen={() =>
-              this.setState(({ openArea }) => ({
-                openArea: openArea === item.props.name ? null : item.props.name,
-              }))
-            }
-          />
-        ))}
+        {children.map(
+          (item) =>
+            item === null ? null : (
+              <AccordionItemInternal
+                className={className}
+                key={item.props.name}
+                {...item.props}
+                isOpen={openArea === item.props.name}
+                onOpen={() =>
+                  this.setState(({ openArea }) => ({
+                    openArea:
+                      openArea === item.props.name ? null : item.props.name,
+                  }))
+                }
+              />
+            ),
+        )}
       </ul>
     );
   }

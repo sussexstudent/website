@@ -7,12 +7,14 @@ function FreshersHomepage() {
   return (
     <React.Fragment>
       <div className="FreshersLogoContainer">
-        <Lottie
-          loop={false}
-          autoplay={true}
-          data={logoAnimation}
-          renderer="svg"
-        />
+        <div className="u-responsive-ratio u-responsive-ratio--r23by8">
+          <Lottie
+            loop={false}
+            autoplay={true}
+            data={logoAnimation}
+            renderer="svg"
+          />
+        </div>
       </div>
       <NewsletterSignup />
     </React.Fragment>

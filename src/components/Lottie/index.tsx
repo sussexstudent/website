@@ -24,8 +24,8 @@ export class Lottie extends React.Component<LottieProps> {
   render() {
     return (
       <div
+        className="Lottie"
         ref={(ref: HTMLDivElement) => (this.containerRef = ref)}
-        style={{ width: '100%' }}
       />
     );
   }

@@ -12,6 +12,10 @@
     padding-bottom: 45%;
   }
 
+  &--r23by8 {
+    padding-bottom: 34.78%;
+  }
+
   &--r1by1,
   &--square {
     padding-bottom: 100%;

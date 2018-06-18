@@ -43,7 +43,7 @@ const ContentPage: React.SFC<IProps> = (props: IProps) => {
           <React.Fragment>
             <Helmet title={page.title} />
 
-            <Component page={page} />;
+            <Component page={page} />
           </React.Fragment>)
         }
 

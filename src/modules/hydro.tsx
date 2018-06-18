@@ -4,8 +4,8 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { isFunction } from 'lodash';
 import { Provider } from '../types/hydro';
 import { store } from '../projects/website/redux/store';
-import { VoteNowBox } from '~components/Bento/treatments/VoteNowBox';
-import { CountdownBox } from '~components/Bento/treatments/CountdownBox';
+// import { VoteNowBox } from '~components/Bento/treatments/VoteNowBox';
+// import { CountdownBox } from '~components/Bento/treatments/CountdownBox';
 import { LokiHeader } from '~components/LokiHeader';
 
 interface ComponentMap {
@@ -33,8 +33,8 @@ export default function() {
       import(/* webpackChunkName: "TweetList" */ '~components/TweetList'),
     EventList: () =>
       import(/* webpackChunkName: "EventList" */ '~components/EventList'),
-    VoteNowBox: () => VoteNowBox,
-    CountdownBox: () => CountdownBox,
+    // VoteNowBox: () => VoteNowBox,
+    // CountdownBox: () => CountdownBox,
     AnnualPlan: () =>
       import(/* webpackChunkName: "AnnualPlan" */ '~components/AnnualPlan'),
     DemocracyAirHorn: () =>

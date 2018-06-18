@@ -41,6 +41,8 @@ export default function() {
       import(/* webpackChunkName: "DemocracyAirHorn" */ '~components/DemocracyAirHorn'),
     PolicyGenerator: () =>
       import(/* webpackChunkName: "PolicyGenerator" */ '~components/PolicyGenerator'),
+    ContentPage: () =>
+      import(/* webpackChunkName: "ContentPage" */ '../projects/website/layouts/ContentPage'),
     BentoBox: () => import(/* webpackChunkName: "Bento" */ '~components/Bento'),
 
     Offers: () => import(/* webpackChunkName: "Offers" */ '~components/Offers'),

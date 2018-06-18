@@ -4,22 +4,87 @@ import { connect } from 'react-redux';
 import { WebsiteRootState } from '../../types/website';
 import { UserState } from '../../projects/website/ducks/user';
 import { PageState } from '../../projects/website/ducks/page';
+import { Accordion } from '~components/Accordion';
+import { AccordionItem } from '~components/Accordion/AccordionItem';
 
 interface YourPageProps {
   user: UserState;
   page: PageState;
+  isOpen: boolean;
 }
 
-const YourPageComponent: React.SFC<YourPageProps> = (props) => {
+const YourPageComponent: React.SFC<YourPageProps & ReactModal.Props> = (
+  props,
+) => {
   if (!props.user || !props.user.profile) {
     return null;
   }
 
+  const { actionBound } = props.user;
+  const { menu } = props.page;
+
   return (
-    <Modal isOpen footerClose>
-      <h1>
+    <Modal size="small" {...props} footerClose>
+      <h2 className="Modal__heading">
         {props.user.profile.firstName} {props.user.profile.lastName}
-      </h1>
+      </h2>
+
+      <Accordion className="ModalAccordion">
+        {menu.admin.areas.length > 0 || menu.admin.orgs.length > 0 ? (
+          <AccordionItem
+            name="admin"
+            title={(props: any) => (
+              <button {...props} type="button">
+                Admin
+              </button>
+            )}
+          >
+            <ul className="XX__dropdown-list">
+              {menu.admin.areas.map((item) => (
+                <li key={item.name}>
+                  <a href={item.link}>{item.name}</a>
+                </li>
+              ))}
+              <hr />
+              {menu.admin.orgs.map((item) => (
+                <li key={item.name}>
+                  <a href={item.link}>{item.name}</a>
+                </li>
+              ))}
+            </ul>
+          </AccordionItem>
+        ) : null}
+        {menu.page.actions.length > 0 ? (
+          <AccordionItem
+            name="page"
+            title={(props: any) => (
+              <button {...props} type="button">
+                Page
+              </button>
+            )}
+          >
+            <ul className="XX__dropdown-list">
+              {menu.page.actions.map((item) => (
+                <li key={item.name}>
+                  <a href={item.link}>{item.name}</a>
+                </li>
+              ))}
+            </ul>
+          </AccordionItem>
+        ) : null}
+      </Accordion>
+
+      <div>
+        <a className="Button" href="/shop/basket">Basket</a>
+      </div>
+
+      <button
+        className="Button Button--color-red"
+        onClick={actionBound || undefined}
+        type="button"
+      >
+        Log out
+      </button>
     </Modal>
   );
 };

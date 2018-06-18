@@ -103,6 +103,6 @@
 @import './components/ProfileLabel.css';
 @import './components/LokiMenu.css';
 
-
 /* Loki:Modals */
 @import './components/LoginActions.css';
+@import './components/ModalAccordion.css';

@@ -15,15 +15,24 @@ export interface UserState {
   profile: null | Profile;
   jwt: string | null;
   loginModalOpen: boolean;
+  yourModalOpen: boolean;
   actionBound: null | LogoutFn;
 }
 
 const USER_CLOSE_LOGIN_MODAL = 'USER_CLOSE_LOGIN_MODAL';
 const USER_OPEN_LOGIN_MODAL = 'USER_OPEN_LOGIN_MODAL';
+
+const USER_CLOSE_YOUR_MODAL = 'USER_CLOSE_YOUR_MODAL';
+const USER_OPEN_YOUR_MODAL = 'USER_OPEN_YOUR_MODAL';
+
 const USER_SET_USER = 'USER_SET_USER';
 
 export const closeLoginModal = () => ({ type: USER_CLOSE_LOGIN_MODAL });
 export const openLoginModal = () => ({ type: USER_OPEN_LOGIN_MODAL });
+
+export const closeYourModal = () => ({ type: USER_CLOSE_YOUR_MODAL });
+export const openYourModal = () => ({ type: USER_OPEN_YOUR_MODAL });
+
 export const setUser = (user: Profile) => ({
   type: USER_SET_USER,
   payload: user,
@@ -33,6 +42,7 @@ export default function reducer(
   state: UserState = {
     isLoaded: false,
     loginModalOpen: false,
+    yourModalOpen: false,
     isLoggedIn: false,
     profile: null,
     jwt: null,
@@ -46,6 +56,12 @@ export default function reducer(
     }
     case USER_OPEN_LOGIN_MODAL: {
       return { ...state, loginModalOpen: true };
+    }
+    case USER_CLOSE_YOUR_MODAL: {
+      return { ...state, yourModalOpen: false };
+    }
+    case USER_OPEN_YOUR_MODAL: {
+      return { ...state, yourModalOpen: true };
     }
     case USER_SET_USER: {
       return { ...state, profile: action.payload, isLoggedIn: true };

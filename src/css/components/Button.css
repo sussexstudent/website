@@ -23,6 +23,10 @@
     background-color: var(--color__brand-green);
   }
 
+  &--color-red {
+    background-color: var(--color__brand-red);
+  }
+
   &--above {
     @mixin card flat;
     @mixin rounded;

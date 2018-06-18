@@ -6,11 +6,15 @@ import { connect } from 'react-redux';
 import * as userActions from '../../projects/website/ducks/user';
 import { UserState } from '../../projects/website/ducks/user';
 import { LoginModal } from '~components/LoginModal';
+import { YourPage } from '~components/YourPage';
 
 interface ProfileLabelProps {
   user: UserState;
   openLoginModal: typeof userActions.openLoginModal;
   closeLoginModal: typeof userActions.closeLoginModal;
+
+  openYourModal: typeof userActions.openYourModal;
+  closeYourModal: typeof userActions.closeYourModal;
 }
 
 const ProfileLabelComponent = (props: ProfileLabelProps) => {
@@ -23,13 +27,21 @@ const ProfileLabelComponent = (props: ProfileLabelProps) => {
 
     return (
       <React.Fragment>
-        <div className="ProfileLabel ProfileLabel--authenticated">
+        <div
+          className="ProfileLabel ProfileLabel--authenticated"
+          onClick={props.openYourModal}
+        >
           <ProfileIcon />
           <span className="ProfileLabel__textual-button ProfileLabel__name">
             {firstName} {lastName}
           </span>
           <UserChevronIcon />
         </div>
+
+        <YourPage
+          isOpen={props.user.yourModalOpen}
+          onRequestClose={props.closeYourModal}
+        />
       </React.Fragment>
     );
   }
@@ -60,5 +72,7 @@ export const ProfileLabel = connect(
   {
     openLoginModal: userActions.openLoginModal,
     closeLoginModal: userActions.closeLoginModal,
+    openYourModal: userActions.openYourModal,
+    closeYourModal: userActions.closeYourModal,
   },
 )(ProfileLabelComponent);

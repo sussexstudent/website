@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import * as routerActions from '../../projects/website/ducks/router';
 import Helmet from 'react-helmet';
+import {NoListItems} from "~components/bookmarket/NoListItems";
 
 enum SearchAreas {
   Top = 'top',
@@ -268,6 +269,7 @@ class SearchApp extends React.Component<IProps, IState> {
             ))}
           </ul>
         ) : null}
+        {results !== null && results[currentArea].length >= 0 ? <NoListItems /> : null}
       </div>
     );
   }

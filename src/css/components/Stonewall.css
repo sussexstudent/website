@@ -4,5 +4,8 @@
 
   &__image {
     color: var(--color__grey-slate);
+    width: 100%;
+    height: auto;
+    max-width: 80px;
   }
 }

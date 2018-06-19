@@ -24,3 +24,4 @@ npm-debug.log
 /comp-dist
 /.awcache
 /stats.json
+/storybook-static

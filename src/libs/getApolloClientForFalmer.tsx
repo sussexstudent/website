@@ -10,7 +10,7 @@ const link = new HttpLink({
 });
 const cache = new InMemoryCache();
 
-if (typeof window !== 'undefined') {
+if (typeof window !== 'undefined' && (window as any).apolloPartials) {
   const fullState = Object.assign({}, ...(window as any).apolloPartials);
   fullState.ROOT_QUERY = Object.assign(
     {},
@@ -34,6 +34,6 @@ const client = new ApolloClient({
   cache,
   link: authLink.concat(link),
   connectToDevTools: true,
-} as any);
+});
 
 export default client;

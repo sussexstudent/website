@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import MSLTag from './MSLTag';
+import MSLTag from '../MSLTag';
 
 interface IProps {
   className?: string;

@@ -1,8 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { LokiMenu } from '~components/LokiMenu/index';
 import {Storybase} from "~components/Storybase";
+import SocialMenu from "~components/SocialMenu/index";
 
-storiesOf('LokiMenu', module)
+storiesOf('SocialMenu', module)
   .addDecorator(Storybase())
-  .add('standard', () => <LokiMenu />);
+  .add('default', () => (
+    <SocialMenu />
+  ));

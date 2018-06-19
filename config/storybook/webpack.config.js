@@ -16,6 +16,7 @@ const config = {
   },
 
   resolve: {
+    plugins: [new TsConfigPathsPlugin({ /*configFile: "./path/to/tsconfig.json" */ })],
     modules: ['node_modules', './src/images'],
     alias: {
       '~components': path.resolve(baseDir, 'src/components/'),
@@ -35,7 +36,6 @@ const config = {
         ),
       },
     }),
-    new TsConfigPathsPlugin(),
   ],
   module: {
     rules: [
@@ -68,9 +68,13 @@ const config = {
         use: [
           'babel-loader',
           {
-            loader: 'svgr/webpack',
+            loader: '@svgr/webpack',
             options: {
               svgo: true,
+              dimensions: false,
+              svgoConfig: {
+                plugins: [{removeViewBox: false}],
+              },
               prettier: false,
             },
           },
@@ -87,8 +91,6 @@ config.plugins = config.plugins.concat([
       COMP_NODE: '0',
     },
   }),
-  new webpack.NamedModulesPlugin(),
-  new webpack.NoEmitOnErrorsPlugin(),
 ]);
 
 config.module.rules = config.module.rules.concat([

@@ -1,5 +1,5 @@
 import React from 'react';
-import SadFaceIcon from '../icons/sad-face.svg';
+import SadFaceIcon from '../../icons/sad-face.svg';
 
 const refreshPage = () =>
   typeof window !== 'undefined' && window.location.reload();

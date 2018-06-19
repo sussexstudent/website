@@ -47,6 +47,7 @@
     display: block;
     width: auto;
     max-width: 764px;
+    max-height: 90px;
   }
 
   &--top {

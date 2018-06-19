@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from '~components/Header';
-import { DesktopUserBar as UserBar } from '~components/UserBar';
 import MobileFooterTreats from '~components/MobileFooterTreats';
 // import PrefooterMenu from '~components/PrefooterMenu';
 import Footer from '~components/Footer';
@@ -39,54 +37,7 @@ interface IProps {
   };
 }
 
-const lokiEnabled = true;
-
 const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => {
-  if (lokiEnabled) {
-    return (
-      <div className="Body" id="top">
-        <div
-          style={{ display: 'none' }}
-          dangerouslySetInnerHTML={{
-            __html: `${MSLTag('ControlPanel')}${MSLTag('Admin')}${mslLogout}`,
-          }}
-        />
-        <div className="Site">
-          <AdvertBar className="AdvertBar--top" position="TopBanner" />
-          <LokiHeader />
-          <Main legacy={legacy} />
-          <MobileFooterTreats />
-          {/* <PrefooterMenu /> */}
-          <Footer />
-          <div className="AdvertBar AdvertBar--donatello">
-            <a
-              className="AdvertBar__advert"
-              href="http://www.donatello.co.uk/?utm_source=ussu&utm_medium=footer"
-            >
-              <DonatelloBanner />
-            </a>
-          </div>
-        </div>
-        <div className="js__modal" />
-        <div className="js-side-menu" />
-        <script src="https://cdn.polyfill.io/v2/polyfill.min.js?rum=0&features=es6,es7,default-3.6,performance.now,Object.entries,Object.values&flags=gated&callback=hasPolyfilled&unknown=polyfill" />
-        <script src={assets.map.vendor.js} />
-        <script src={assets.map.main.js} />
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{ __html: ga }}
-        />
-        <noscript>
-          <img
-            alt=""
-            src="https://secure.leadforensics.com/110817.png"
-            style={{ display: 'none' }}
-          />
-        </noscript>
-      </div>
-    );
-  }
-
   return (
     <div className="Body" id="top">
       <div
@@ -97,8 +48,7 @@ const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => {
       />
       <div className="Site">
         <AdvertBar className="AdvertBar--top" position="TopBanner" />
-        <UserBar />
-        <Header />
+        <LokiHeader />
         <Main legacy={legacy} />
         <MobileFooterTreats />
         {/* <PrefooterMenu /> */}
@@ -113,10 +63,14 @@ const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => {
         </div>
       </div>
       <div className="js__modal" />
+      <div className="js-side-menu" />
       <script src="https://cdn.polyfill.io/v2/polyfill.min.js?rum=0&features=es6,es7,default-3.6,performance.now,Object.entries,Object.values&flags=gated&callback=hasPolyfilled&unknown=polyfill" />
       <script src={assets.map.vendor.js} />
       <script src={assets.map.main.js} />
-      <script type="text/javascript" dangerouslySetInnerHTML={{ __html: ga }} />
+      <script
+        type="text/javascript"
+        dangerouslySetInnerHTML={{ __html: ga }}
+      />
       <noscript>
         <img
           alt=""

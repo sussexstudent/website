@@ -3,9 +3,12 @@
   color: #ffffff;
   font-family: var(--type__primary);
   font-weight: 600;
-  padding: calc(5px + 0.2rem) 0.4rem 0.2rem;
+  padding: calc(5px + 0.3rem) 0.4rem 0.2rem;
   margin-top: -15px;
   border-radius: 2px;
+  font-size: 1rem;
+  border: 0;
+  display: block;
 
   &__textual-button {
     font-family: inherit;

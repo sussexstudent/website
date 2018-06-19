@@ -27,16 +27,17 @@ const ProfileLabelComponent = (props: ProfileLabelProps) => {
 
     return (
       <React.Fragment>
-        <div
+        <button
           className="ProfileLabel ProfileLabel--authenticated"
           onClick={props.openYourModal}
+          type="button"
         >
           <ProfileIcon className="ProfileLabel__icon" />
           <span className="ProfileLabel__textual-button ProfileLabel__name">
             {firstName} {lastName}
           </span>
           <UserChevronIcon className="ProfileLabel__icon" />
-        </div>
+        </button>
 
         <YourPage
           isOpen={props.user.yourModalOpen}

@@ -39,7 +39,7 @@ const YourPageComponent: React.SFC<YourPageProps & ReactModal.Props> = (
               </button>
             )}
           >
-            <ul className="XX__dropdown-list">
+            <ul className="ModalAccordion__content-list">
               {menu.admin.areas.map((item) => (
                 <li key={item.name}>
                   <a href={item.link}>{item.name}</a>
@@ -63,7 +63,7 @@ const YourPageComponent: React.SFC<YourPageProps & ReactModal.Props> = (
               </button>
             )}
           >
-            <ul className="XX__dropdown-list">
+            <ul className="ModalAccordion__content-list">
               {menu.page.actions.map((item) => (
                 <li key={item.name}>
                   <a href={item.link}>{item.name}</a>
@@ -74,19 +74,20 @@ const YourPageComponent: React.SFC<YourPageProps & ReactModal.Props> = (
         ) : null}
       </Accordion>
 
-      <div>
+      <div className="ModalAccordion__button-set">
         <a className="Button" href="/shop/basket">
           Basket
         </a>
-      </div>
 
       <button
         className="Button Button--color-red"
-        onClick={actionBound || undefined}
+        onClick={() => setTimeout(() => actionBound ? actionBound() : undefined, 0)}
         type="button"
       >
         Log out
       </button>
+      </div>
+
     </Modal>
   );
 };

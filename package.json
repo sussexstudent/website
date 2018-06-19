@@ -2,6 +2,9 @@
   "name": "ussu-website",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "10.x"
+  },
   "devDependencies": {
     "@storybook/addon-knobs": "^3.4.7",
     "@storybook/addon-options": "^3.4.7",

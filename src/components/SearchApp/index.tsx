@@ -243,6 +243,7 @@ class SearchApp extends React.Component<IProps, IState> {
           value={this.props.query}
           onChange={this.handleSearchInput}
           placeholder="Search"
+          autoFocus
         />
         {content}
       </React.Fragment>

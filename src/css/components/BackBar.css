@@ -1,5 +1,6 @@
 .BackBar {
-  margin-bottom: 0.5lh;
+  @mixin type pica;
+  margin-bottom: 1rem;
   font-weight: 700;
 
   & a {
@@ -23,8 +24,14 @@
   }
 
   &__chevron {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    vertical-align: middle;
+
+    & > svg {
+      width: 1em;
+      height: 1em;
+    }
   }
 
   &--color {

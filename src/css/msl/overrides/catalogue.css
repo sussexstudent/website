@@ -10,19 +10,26 @@
     box-sizing: border-box;
     padding: 1em;
     margin-top: 1em;
-    margin-right: 2em;
+    margin-right: 0;
     margin-left: 0;
     margin-bottom: 1em;
     width: 100%;
+    height: unset;
+    justify-content: space-between;
 
     @media (--medium) {
       width: 200px;
+      margin-right: 2em;
     }
   }
 
   & .msl-product-image {
     display: block;
     margin: 0 auto 1em;
+
+    height: auto;
+    width: 100%;
+    max-width: 100px;
   }
 
   & .msl-product-name {

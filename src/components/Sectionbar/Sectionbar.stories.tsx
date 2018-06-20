@@ -5,6 +5,7 @@ import {Sectionbar, SectionbarItem} from "~components/Sectionbar/index";
 
 storiesOf('Sectionbar', module)
   .addDecorator(Storybase())
+  .addDecorator((story => <div style={{ paddingTop: '1rem' }}>{story()}</div>))
   .add('empty', () => (
     <Sectionbar title="Sectionbar" />
   ))

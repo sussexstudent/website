@@ -81,7 +81,7 @@ const YourPageComponent: React.SFC<YourPageProps & ReactModal.Props> = (
 
       <button
         className="Button Button--color-red"
-        onClick={() => setTimeout(() => actionBound ? actionBound() : undefined, 0)}
+        onClick={actionBound || undefined}
         type="button"
       >
         Log out

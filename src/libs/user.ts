@@ -70,7 +70,8 @@ function auth() {
     },
     actionBound: () => {
       if (typeof (window as any).__doPostBack === 'function' && button) {
-        (window as any).__doPostBack(button.id.replace(/_/gi, '$'), 0);
+
+        setTimeout(() => (window as any).__doPostBack(button.id.replace(/_/gi, '$'), 0), 0);
       }
     },
   };

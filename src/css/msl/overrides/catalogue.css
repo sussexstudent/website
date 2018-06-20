@@ -1,0 +1,38 @@
+.catalogue_productlist {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+
+  & li {
+    @mixin card standard;
+    background: #ffffff;
+    box-sizing: border-box;
+    padding: 1em;
+    margin-top: 1em;
+    margin-right: 2em;
+    margin-left: 0;
+    margin-bottom: 1em;
+    width: 100%;
+
+    @media (--medium) {
+      width: 200px;
+    }
+  }
+
+  & .msl-product-image {
+    display: block;
+    margin: 0 auto 1em;
+  }
+
+  & .msl-product-name {
+    font-family: var(--type__primary);
+    @mixin type pica;
+    font-weight: 600;
+    display: block;
+  }
+
+  & .msl-product-price {
+    text-align: center;
+  }
+}

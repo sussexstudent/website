@@ -24,8 +24,6 @@ function generateConfig() {
     entry: {
       vendor: ['unfetch/polyfill', './src/projects/common/lazysizes.ts'],
       main: ['./src/projects/website/entry.ts'],
-      devFonts: './src/projects/website/env-dev.ts',
-      productionFonts: './src/projects/website/env-production.ts',
     },
 
     output: {

@@ -9,10 +9,7 @@
     background: #ffffff;
     box-sizing: border-box;
     padding: 1em;
-    margin-top: 1em;
-    margin-right: 0;
-    margin-left: 0;
-    margin-bottom: 1em;
+    margin: 1em 0;
     width: 100%;
     height: unset;
     justify-content: space-between;

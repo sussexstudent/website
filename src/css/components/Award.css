@@ -2,7 +2,6 @@
   font-family: var(--type__primary);
   display: flex;
   flex-direction: column;
-  width: 64px;
 
   &__disc {
     border-radius: 50%;
@@ -18,9 +17,12 @@
     align-items: center;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.18);
     margin-bottom: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
 
     & svg {
       color: #ffffff;
+      width: 40px;
     }
 
     &::after {

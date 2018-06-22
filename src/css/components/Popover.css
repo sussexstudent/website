@@ -1,8 +1,17 @@
 .Popover {
-  flex-direction: column;
-  padding: 0.3em 0.5em;
-  background: hsla(0, 0%, 10%, 0.9);
-  color: white;
-  border-radius: 2px;
-  // display: none;
+  padding: 0.5em;
+  z-index: 9999999;
+  max-width: 200px;
+  position: relative;
+
+  &__inner {
+    @mixin type long-primer;
+    font-family: var(--type__primary);
+    flex-direction: column;
+    padding: 0.3em 0.5em;
+    background: hsla(0, 0%, 10%, 0.9);
+    color: white;
+    border-radius: 2px;
+    // display: none;
+  }
 }

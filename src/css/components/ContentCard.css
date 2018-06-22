@@ -14,4 +14,13 @@
     padding: 0;
     overflow: hidden;
   }
+
+  &__error-message {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    @mixin type long-primer;
+    text-align: center;
+    font-style: italic;
+    color: var(--color__grey-slate);
+  }
 }

@@ -1,0 +1,23 @@
+query AllGroupAwards($slug: String) {
+  group(groupSlug: $slug) {
+    awards {
+      startDate
+      endDate
+      displayName
+
+      authority {
+        name
+        slug
+      }
+
+      awarded {
+        grade
+        award {
+          description
+          name
+          icon
+        }
+      }
+    }
+  }
+}

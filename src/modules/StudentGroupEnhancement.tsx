@@ -7,15 +7,19 @@ import { StudentGroupsSectionbar } from '~components/StudentGroupsSectionbar';
 import { store } from 'src/projects/website/redux/store';
 
 export default function ready() {
-  const sidebar = document.querySelector('.col-md-4.test-awards');
+  const match = window.location.pathname.match(
+    /\/organisation\/([a-zA-Z0-9_-]+)/,
+  );
 
-  if (sidebar) {
+  const sidebar = document.querySelector('.col-md-4');
+
+  if (sidebar && match) {
     const sidebarBottom = document.createElement('div');
     sidebar.appendChild(sidebarBottom);
     ReactDOM.render(
       <HydroRootApollo>
         <ReduxProvider store={store}>
-          <TrophyCabinet />
+          <TrophyCabinet slug={match[1]} />
         </ReduxProvider>
       </HydroRootApollo>,
       sidebarBottom,

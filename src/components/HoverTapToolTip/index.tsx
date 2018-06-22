@@ -1,4 +1,5 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import cx from 'classnames';
 import { Popper, Manager, Reference } from 'react-popper';
 
@@ -39,24 +40,34 @@ export class HoverTapTooltip extends React.Component<
             })
           }
         </Reference>
-        {isOpen ? (
-          <Popper placement="top">
-            {(props) => (
-              <div
-                className={cx('Popover', { 'Popover--open': true })}
-                ref={props.ref}
-                style={props.style}
-                data-placement={props.placement}
-              >
-                {content}
-                <div
-                  ref={props.arrowProps.ref}
-                  style={props.arrowProps.style}
-                />
-              </div>
-            )}
-          </Popper>
-        ) : null}
+        {isOpen
+          ? document.body &&
+            createPortal(
+              <Popper placement="top">
+                {(props) => (
+                  <div
+                    ref={props.ref}
+                    style={props.style}
+                    data-placement={props.placement}
+                    className={'Popover'}
+                  >
+                    <div
+                      className={cx('Popover__inner', {
+                        'Popover--open': true,
+                      })}
+                    >
+                      {content()}
+                    </div>
+                    <div
+                      ref={props.arrowProps.ref}
+                      style={props.arrowProps.style}
+                    />
+                  </div>
+                )}
+              </Popper>,
+              document.body,
+            )
+          : null}
       </Manager>
     );
   }

@@ -12,7 +12,7 @@ import LeafInclusivity from '../../icons/awards/leaf-inclusivity.svg';
 export const gradeMap: GradeMap = {
   leaves: [
     { title: 'Bronze', color: '#ab6e37' },
-    { title: 'Sliver', color: '#8c9198' },
+    { title: 'Silver', color: '#8c9198' },
     { title: 'Gold', color: '#D7AF46' },
   ],
 };

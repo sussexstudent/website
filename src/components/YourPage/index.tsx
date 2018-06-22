@@ -79,15 +79,14 @@ const YourPageComponent: React.SFC<YourPageProps & ReactModal.Props> = (
           Basket
         </a>
 
-      <button
-        className="Button Button--color-red"
-        onClick={actionBound || undefined}
-        type="button"
-      >
-        Log out
-      </button>
+        <button
+          className="Button Button--color-red"
+          onClick={actionBound || undefined}
+          type="button"
+        >
+          Log out
+        </button>
       </div>
-
     </Modal>
   );
 };

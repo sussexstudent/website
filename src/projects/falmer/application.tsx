@@ -22,26 +22,26 @@ const link = new HttpLink({
   // Additional fetch options like `credentials` or `headers`
   credentials: 'same-origin',
   headers: {
-    'X-CSRFToken': window.CSRF,
+    'X-CSRFToken': (window as any).CSRF,
   },
 });
 
 const client = new ApolloClient({
   link,
   cache: new InMemoryCache(),
+  connectToDevTools: true,
 });
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   combineReducers(reducers),
-  undefined,
   composeEnhancers(applyMiddleware(sagaMiddleware)),
 );
 
 sagaMiddleware.run(saga);
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
+  <ApolloProvider client={client as any}>
     <Provider store={store}>
       <Router>
         <ScrollToTop>

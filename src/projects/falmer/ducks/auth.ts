@@ -1,4 +1,5 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
+import {AnyAction} from 'redux';
 
 function apiGetToken() {
   return fetch('/auth/token/', {
@@ -6,17 +7,17 @@ function apiGetToken() {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      'X-CSRFToken': window.CSRF,
+      'X-CSRFToken': (window as any).CSRF,
     },
     credentials: 'include',
   }).then((res) => res.json());
 }
 
-function saveToken(token) {
+function saveToken(token: string) {
   localStorage.setItem('token', token);
 }
 
-function apiQuery(query, variables = {}) {
+function apiQuery(query: Object, variables = {}) {
   const token = localStorage.getItem('token');
   return fetch('/graphql/', {
     method: 'POST',
@@ -56,7 +57,7 @@ export default function reducer(
     authToken: null,
     user: null,
   },
-  action = {},
+  action: AnyAction,
 ) {
   switch (action.type) {
     case SUCCESS_AUTH_TOKEN: {

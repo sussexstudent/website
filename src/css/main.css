@@ -8,7 +8,6 @@
 
 /* general */
 @import './components/Footer.css';
-@import './components/Header.css';
 @import './components/Container.css';
 
 /* utils */
@@ -25,7 +24,6 @@
 @import './components/Layout.css';
 
 /* components */
-@import './components/AnodyneMenu.css';
 @import './components/Heading.css';
 @import './components/HeadingImage.css';
 @import './components/ContentBlock.css';
@@ -61,7 +59,6 @@
 @import './components/StaffList.css';
 @import './components/Award.css';
 @import './components/SearchResult.css';
-@import './components/MobileSearch.css';
 @import './components/PolicyGenerator.css';
 @import './components/Legacy.css';
 @import './components/MobileFooterTreats.css';
@@ -72,7 +69,6 @@
 @import './components/PageHeader.css';
 @import './components/ModalOverlay.css';
 @import './components/Modal.css';
-@import './components/HeaderLogo.css';
 @import './components/FigureCollection.css';
 @import './components/BackBar.css';
 @import './components/FeedbackButton.css';

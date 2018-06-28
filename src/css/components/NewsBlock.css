@@ -1,6 +1,3 @@
-@import '../core/typography.css';
-@import '../core/mq.css';
-
 .NewsBlock {
   margin-bottom: 1lh;
   display: flex;

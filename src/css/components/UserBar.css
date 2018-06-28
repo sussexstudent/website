@@ -1,5 +1,3 @@
-@import '../core/typography.css';
-
 .UserBar {
   font-family: var(--type__primary);
   font-weight: bold;

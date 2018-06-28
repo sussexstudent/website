@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { compact, omit } from 'lodash';
 import cx from 'classnames';
 
-import ChevronForwardIcon from '../../icons/chevron-forward.svg';
+import ChevronForwardIcon from '~icons/chevron-forward.svg';
 
 interface IProps {
   color?: 'red' | 'blue' | 'green' | 'slate';

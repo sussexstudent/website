@@ -1,5 +1,5 @@
 import React from 'react';
-import FreshersApp from '~components/freshers/FreshersApp';
+import FreshersApp from '~website/containers/freshers/FreshersApp';
 
 const FreshersPage = () => (
   <div>

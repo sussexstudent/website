@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContentPage } from '~components/content/ContentPage';
+import { ContentPage } from '~website/containers/content/ContentPage';
 
 class ContentPageContainer extends React.Component<{ path: string }> {
   render() {

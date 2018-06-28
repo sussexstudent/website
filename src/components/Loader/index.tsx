@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import LoaderLeaves from '../../icons/loader.svg';
+import LoaderLeaves from '~icons/loader.svg';
 
 interface IProps {
   dark?: boolean;

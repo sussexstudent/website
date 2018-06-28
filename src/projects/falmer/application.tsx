@@ -32,7 +32,8 @@ const client = new ApolloClient({
   connectToDevTools: true,
 });
 
-const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers =
+  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   combineReducers(reducers),
   composeEnhancers(applyMiddleware(sagaMiddleware)),

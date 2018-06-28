@@ -1,6 +1,3 @@
-@import '../core/typography.css';
-@import '../core/colors.css';
-
 .HeadingImage {
   @mixin rounded mask;
 

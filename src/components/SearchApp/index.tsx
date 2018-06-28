@@ -16,7 +16,7 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import * as routerActions from '../../projects/website/ducks/router';
 import Helmet from 'react-helmet';
-import { NoListItems } from '~components/bookmarket/NoListItems';
+import { NoListItems } from '~website/containers/bookmarket/NoListItems';
 
 enum SearchAreas {
   Top = 'top',

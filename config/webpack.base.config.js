@@ -37,6 +37,7 @@ function generateConfig() {
       plugins: [new TsConfigPathsPlugin({ /*configFile: "./path/to/tsconfig.json" */ })],
       modules: ['node_modules', './src/images'],
       alias: {
+        '~icons': path.resolve(path.join(__dirname, '../src/icons')),
         '~components': path.resolve(baseDir, 'src/components/'),
         '~libs': path.resolve(baseDir, 'src/libs/'),
         'react-router-dom': 'react-router-dom/es',

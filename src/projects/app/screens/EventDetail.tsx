@@ -74,7 +74,7 @@ function getSize() {
   };
 }
 
-function TabWhatsOn({ data: { event, loading } }) {
+const EventDetailsScreen: React.SFC = ({ data: { event, loading } }) => {
   return (
     <View style={styles.container}>
       {loading ? (
@@ -145,4 +145,4 @@ export default graphql(
       },
     }),
   },
-)(TabWhatsOn);
+)(EventDetailsScreen);

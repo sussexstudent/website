@@ -1,6 +1,6 @@
 import React from 'react';
 import OrganisationCard from '../OrganisationCard';
-import { FalmerImage } from '../../types/events';
+import { FalmerImage } from '~types/events';
 
 export interface StudentGroup {
   link: string;
@@ -25,7 +25,7 @@ interface IProps {
 export default function OrganisationGrid(props: IProps) {
   const { organisations } = props;
   return (
-    <ul className="OrgansiationGrid">
+    <ul className="OrganisationGrid">
       {organisations.map((org) => (
         <OrganisationCard org={org} key={org.groupId} />
       ))}

@@ -23,7 +23,9 @@ module.exports = {
   resolve: {
     modules: ['web_modules', 'node_modules', './src/images'],
     alias: {
+      '~icons': path.resolve(path.join(__dirname, '../src/icons')),
       '~components': path.resolve(path.join(__dirname, '../src/components')),
+      '~types': path.resolve(path.join(__dirname, '../src/types')),
       '~falmer': path.resolve(path.join(__dirname, '../src/projects/falmer')),
       '~libs': path.resolve(baseDir, 'src/libs/'),
       'react-router-dom': 'react-router-dom/es',

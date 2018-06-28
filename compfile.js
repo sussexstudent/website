@@ -46,10 +46,10 @@ export default {
       require('./src/projects/website/layouts/environment/student-feedback'),
     '/environment': require('./src/projects/website/layouts/environment/environment'),
     '/content-explorer': require('./src/projects/website/layouts/ContentExplorer'),
-    '/book-market': require('./src/components/bookmarket/BookMarketApp'),
+    '/book-market': require('./src/projects/website/containers/bookmarket/BookMarketApp'),
     '/horn': require('./src/projects/website/layouts/DemocracyAirHorn'),
-    '/kb': require('./src/components/kb/KnowledgeBaseApplication'),
-    '/kb-local': require('./src/components/kb/KnowledgeBaseApplication'),
+    '/kb': require('./src/projects/website/containers/kb/KnowledgeBaseApplication'),
+    '/kb-local': require('./src/projects/website/containers/kb/KnowledgeBaseApplication'),
   },
   assets: {
     manifest,

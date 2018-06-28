@@ -1,6 +1,6 @@
 import React from 'react';
-import ProfileIcon from '../../icons/user.svg';
-import UserChevronIcon from '../../icons/user-chevron.svg';
+import ProfileIcon from '~icons/user.svg';
+import UserChevronIcon from '~icons/user-chevron.svg';
 import { WebsiteRootState } from '../../types/website';
 import { connect } from 'react-redux';
 import * as userActions from '../../projects/website/ducks/user';

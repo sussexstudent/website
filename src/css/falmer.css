@@ -4,8 +4,7 @@
 @import './core/colors.css';
 
 /* general */
-@import './components/Footer.css';
-@import './components/Header.css';
+@import '../components/Footer/Footer.css';
 @import './components/Container.css';
 
 /* utils */
@@ -23,7 +22,7 @@
 
 /* components */
 @import './components/List.css';
-@import './components/Button.css';
+@import '../components/Button/Button.css';
 @import './components/Heading.css';
 @import './components/FalmerHeader.css';
 @import './components/FalmerSplash.css';
@@ -36,5 +35,5 @@
 @import './components/FalmerDataList.css';
 @import './components/ImagePlaceholder.css';
 @import './components/FalmerMediaGrid.css';
-@import './components/BackBar.css';
-@import './components/ContentCard.css';
+@import '../components/BackBar/BackBar.css';
+@import '../components/ContentCard/ContentCard.css';

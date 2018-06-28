@@ -2,7 +2,7 @@ import React from 'react';
 import TweetList from '~components/TweetList';
 import HomepageEventsList from '~components/HomepageEventsList';
 import AdvertBar from '~components/AdvertBar';
-import { ContentPage } from '~components/content/ContentPage';
+import { ContentPage } from '~website/containers/content/ContentPage';
 import { Bento } from '~components/Bento';
 
 const Homepage = () => (

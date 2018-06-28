@@ -8,7 +8,7 @@ import HydroLeaf from '~components/HydroLeaf';
 import Loader from '~components/Loader';
 import { AspectRatio, OneImage } from '~components/OneImage';
 import PatternPlaceholder from '~components/PatternPlaceholder';
-import StreamField from '~components/content/StreamField';
+import StreamField from '~website/containers/content/StreamField';
 import Button from '~components/Button';
 import { Modal } from '~components/Modal';
 

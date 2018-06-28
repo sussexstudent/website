@@ -14,9 +14,6 @@ import format from 'date-fns/format';
 import { HTMLContentRenderer } from '../components/HTMLContentRenderer';
 import { DetailContent } from '../components/DetailContent';
 import { colors } from '../vars';
-import HeaderImageScrollView, {
-  TriggeringView,
-} from 'react-native-image-header-scroll-view';
 
 const styles = StyleSheet.create({
   container: {
@@ -110,7 +107,7 @@ const EventDetailItem = ({ image, children }) => (
   </View>
 );
 
-function TabWhatsOn({ data: { event, loading } }) {
+const EventDetailOrginalScreen: React.SFC = ({ data: { event, loading } }) => {
   return (
     <View style={styles.tabContent}>
       {loading ? (
@@ -189,4 +186,4 @@ export default graphql(
       },
     }),
   },
-)(TabWhatsOn);
+)(EventDetailOrginalScreen);

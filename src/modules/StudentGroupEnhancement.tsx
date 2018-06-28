@@ -4,7 +4,7 @@ import HydroRootApollo from '~components/HydroRootApollo';
 import { Provider as ReduxProvider } from 'react-redux';
 import TrophyCabinet from '~components/TrophyCabinet';
 import { StudentGroupsSectionbar } from '~components/StudentGroupsSectionbar';
-import { store } from 'src/projects/website/redux/store';
+import { store } from '~website/redux/store';
 
 export default function ready() {
   const match = window.location.pathname.match(

@@ -3,7 +3,7 @@ import isBefore from 'date-fns/isBefore';
 import startOfDay from 'date-fns/startOfDay';
 import subDays from 'date-fns/subDays';
 import HydroLeaf from '~components/HydroLeaf';
-import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
+import EventsCalenderItem from '../../projects/website/containers/EventsCalender/EventsCalenderItem';
 import Loader from '../Loader/index';
 import EventListQuery from './EventList.graphql';
 import { GranuleChildProps } from '@brudil/granule';

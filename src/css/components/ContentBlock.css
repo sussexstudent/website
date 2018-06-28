@@ -1,6 +1,3 @@
-@import '../core/colors.css';
-@import '../core/typography.css';
-
 .ContentBlock {
   display: flex;
   flex-direction: column;

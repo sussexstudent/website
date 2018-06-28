@@ -1,5 +1,5 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
-import {AnyAction} from 'redux';
+import { AnyAction } from 'redux';
 
 function apiGetToken() {
   return fetch('/auth/token/', {

@@ -1,5 +1,3 @@
-@import '../core/mq.css';
-
 .app__news {
   display: flex;
   flex: auto;

@@ -7,7 +7,7 @@
 @import './msl/index.css';
 
 /* general */
-@import './components/Footer.css';
+@import '../components/Footer/Footer.css';
 @import './components/Container.css';
 
 /* utils */
@@ -27,7 +27,6 @@
 @import './components/Heading.css';
 @import './components/HeadingImage.css';
 @import './components/ContentBlock.css';
-@import './components/ContentCard.css';
 @import './components/NewsGrid.css';
 @import './components/Bento.css';
 @import './components/BentoBox.css';
@@ -35,50 +34,27 @@
 @import './components/NewsBlock.css';
 @import './components/UserBar.css';
 @import './components/ImagePlaceholder.css';
-@import './components/Social.css';
 @import './components/SearchApp.css';
 @import './components/InlineSearch.css';
-@import './components/PrefooterMenu.css';
-@import './components/OrganisationCard.css';
-@import './components/Deckchair.css';
-@import './components/Loader.css';
 @import './components/ResultsList.css';
 @import './components/FlexibleHero.css';
-@import './components/Tweet.css';
-@import './components/TrophyCabinet.css';
-@import './components/PatternPlaceholder.css';
-@import './components/Sectionbar.css';
-@import './components/AnnualPlan.css';
-@import './components/EventsList.css';
 @import './components/CompOptionsPanel.css';
-@import './components/EventsCalender.css';
 @import './components/SelectionGrid.css';
-@import './components/OrgansiationGrid.css';
 @import './components/Stonewall.css';
 @import './components/ActivitiesApp.css';
-@import './components/StaffList.css';
 @import './components/Award.css';
 @import './components/SearchResult.css';
 @import './components/PolicyGenerator.css';
 @import './components/Legacy.css';
-@import './components/MobileFooterTreats.css';
-@import './components/Button.css';
 @import './components/Trail.css';
-@import './components/AdvertBar.css';
 @import './components/HeaderSearch.css';
 @import './components/PageHeader.css';
 @import './components/ModalOverlay.css';
 @import './components/Modal.css';
-@import './components/FigureCollection.css';
-@import './components/BackBar.css';
 @import './components/FeedbackButton.css';
-@import './components/PaginationNavigation.css';
 @import './components/QuoteSlips.css';
-@import './components/Peekable.css';
 @import './components/Prose.css';
-@import './components/CookieNotice.css';
 @import './components/List.css';
-@import './components/EventDetail.css';
 @import './components/TicketOutlet.css';
 @import './components/SearchFilterNav.css';
 @import './components/SearchMeta.css';
@@ -88,16 +64,42 @@
 @import './components/ListingList.css';
 @import './components/BrickWall.css';
 @import './components/BasicForm.css';
-@import './components/NewsletterSignup.css';
 @import './components/ImageUpload.css';
 @import './components/Popover.css';
 @import './components/FreshersSite.css';
 
+@import '../components/NewsletterSignup/NewsletterSignup.css';
+@import '../components/CookieMessage/CookieMessage.css';
+@import '../components/OrganisationGrid/OrganisationGrid.css';
+@import '../components/StaffList/StaffList.css';
+@import '../components/MobileFooterTreats/MobileFooterTreats.css';
+@import '../components/Button/Button.css';
+@import '../components/AdvertBar/AdvertBar.css';
+@import '../components/FigureCollection/FigureCollection.css';
+@import '../components/BackBar/BackBar.css';
+@import '../components/PaginationNavigation/PaginationNavigation.css';
+@import '../components/Peekable/Peekable.css';
+@import '../components/TweetList/Tweet.css';
+@import '../components/TrophyCabinet/TrophyCabinet.css';
+@import '../components/PatternPlaceholder/PatternPlaceholder.css';
+@import '../components/Sectionbar/Sectionbar.css';
+@import '../components/AnnualPlan/AnnualPlan.css';
+@import '../components/EventList/EventsList.css';
+@import '../components/ContentCard/ContentCard.css';
+@import '../components/SocialArray/Social.css';
+@import '../components/PrefooterMenu/PrefooterMenu.css';
+@import '../components/OrganisationCard/OrganisationCard.css';
+@import '../components/Deckchair/Deckchair.css';
+@import '../components/Loader/Loader.css';
+
+@import '../projects/website/containers/EventDetailPage/EventDetail.css';
+@import '../projects/website/containers/EventsCalender/EventsCalender.css';
+
 /* Loki:Skeleton */
 @import './components/LokiContainer.css';
-@import './components/LokiHeader.css';
+@import '../components/LokiHeader/LokiHeader.css';
 @import './components/ProfileLabel.css';
-@import './components/LokiMenu.css';
+@import '../components/LokiMenu/LokiMenu.css';
 
 /* Loki:Modals */
 @import './components/LoginActions.css';

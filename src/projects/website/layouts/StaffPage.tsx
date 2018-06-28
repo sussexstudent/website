@@ -1,6 +1,6 @@
 import React from 'react';
 import ContentCard from '~components/ContentCard';
-import { ContentPage } from '~components/content/ContentPage';
+import { ContentPage } from '~website/containers/content/ContentPage';
 import HydroLeaf from '~components/HydroLeaf';
 
 const ContentPageLive = HydroLeaf({ disableSSR: true, name: 'ContentPage' })(

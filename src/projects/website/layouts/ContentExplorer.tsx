@@ -1,6 +1,6 @@
 import React from 'react';
 import qs from 'query-string';
-import { ContentPage } from '~components/content/ContentPage';
+import { ContentPage } from '~website/containers/content/ContentPage';
 import HydroLeaf from '~components/HydroLeaf';
 import { bind } from 'bind-decorator';
 

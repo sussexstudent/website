@@ -13,7 +13,7 @@ const Feedback = () => (
   </View>
 );
 
-export function registerScreens(store, client) {
+export function registerScreens(store: any, client: any) {
   Navigation.registerComponent(
     'ussu.WhatsOn',
     () => WhatsOnList,

@@ -1,5 +1,5 @@
 import React from 'react';
-import StudentsUnionLogoNoLogotype from '../../icons/students-union-logo-no-logotype.svg';
+import StudentsUnionLogoNoLogotype from '~icons/students-union-logo-no-logotype.svg';
 import { LokiHeaderSearch } from '~components/LokiHeader/LokiHeaderSearch';
 import { LokiMenu } from '~components/LokiMenu';
 import { ProfileLabel } from '~components/LokiHeader/ProfileLabel';

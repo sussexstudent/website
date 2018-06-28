@@ -95,13 +95,13 @@ function FalmerEvents() {
                       <Cell>
                         {formatDate(
                           new Date(item.startTime),
-                          'EEE Do MMM, HH:mm',
+                          'EEE do MMM HH:mm',
                         )}
                       </Cell>
                       <Cell>
                         {formatDate(
                           new Date(item.endTime),
-                          'EEE Do MMM, HH:mm',
+                          'EEE do MMM HH:mm',
                         )}
                       </Cell>
                       <Cell>
@@ -116,7 +116,7 @@ function FalmerEvents() {
                 </FalmerDataList>
               </div>
               <FalmerSidebar>
-                <Link className="Button" to="create">
+                <Link className="Button" to="/events/new">
                   New Event
                 </Link>
               </FalmerSidebar>

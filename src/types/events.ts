@@ -48,6 +48,11 @@ export interface Brand {
   accent?: string;
 }
 
+export interface MSLEvent {
+  lastSync: string;
+  disableSync: boolean;
+}
+
 export interface Event {
   id: number;
   startTime: string;
@@ -83,6 +88,8 @@ export interface Event {
 
   children: Event[];
   parent: Event;
+
+  mslEvent?: MSLEvent;
 }
 
 export interface EventPart {

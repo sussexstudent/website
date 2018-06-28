@@ -4,6 +4,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const config = require('./falmer.base.config.js');
 const MiniCSSExtract = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const extractCSS = new MiniCSSExtract({
   filename: 'falmer.[contenthash].[name].css',
@@ -21,6 +23,18 @@ config.output = {
   path: path.resolve(path.join(baseDir, 'dist-falmer')),
   publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
   filename: 'falmer.[name].[chunkhash].js',
+};
+
+
+config.optimization = {
+  minimizer: [
+    new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true
+    }),
+    new OptimizeCSSAssetsPlugin({})
+  ]
 };
 
 config.plugins = config.plugins.concat([

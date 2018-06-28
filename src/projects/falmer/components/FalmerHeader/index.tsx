@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
 import { FalmerUser, RootState } from '~types/falmer';
 import { compose } from 'recompose';
+import StudentsUnionLogoNoLogotype from '~icons/students-union-logo-no-logotype.svg';
 
 interface IProps {
   user: FalmerUser;
@@ -11,6 +12,14 @@ interface IProps {
 const FalmerHeader: React.SFC<IProps> = ({ user }) => {
   return (
     <header className="FalmerHeader">
+      <div
+        className="FalmerHeader__logo-link"
+        style={{ color: '#333' }}
+        title="Sussex Students' Union"
+      >
+        <StudentsUnionLogoNoLogotype />
+        <span className="u-h">Sussex Students' Union</span>
+      </div>
       <h1 className="FalmerHeader__logotype">Falmer</h1>
       <nav className="FalmerHeader__nav">
         <ul className="FalmerHeader__nav-list">

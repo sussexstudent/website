@@ -23,6 +23,13 @@
     font-weight: 500;
   }
 
+  &__logo-link {
+    display: block;
+    height: 24px;
+    width: 24px;
+    padding-right: 0.4em;
+  }
+
   &__nav {
     flex: 1 1 auto;
   }

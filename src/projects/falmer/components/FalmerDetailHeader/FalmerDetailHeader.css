@@ -1,0 +1,6 @@
+.FalmerDetailHeader {
+  &__heading {
+    float: left;
+    padding-right: 1em;
+  }
+}

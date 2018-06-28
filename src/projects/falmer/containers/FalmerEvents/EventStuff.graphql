@@ -13,4 +13,8 @@ fragment EventStuff on Event {
     name
     groupId
   }
+  mslEvent {
+    lastSync
+    disableSync
+  }
 }

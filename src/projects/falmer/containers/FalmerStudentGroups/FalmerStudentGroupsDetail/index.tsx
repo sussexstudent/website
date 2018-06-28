@@ -8,6 +8,7 @@ import { HandledQuery } from '~components/HandledQuery';
 import { adopt } from '~components/Adopt';
 import BackBar from '~components/BackBar/Link';
 import { Tags, Tag } from '~components/Tags';
+import {FalmerDetailHeader} from "~falmer/components/FalmerDetailHeader";
 
 interface RouteParams {
   groupId: number;
@@ -50,8 +51,7 @@ function FalmerStudentGroupsDetail(props: IProps) {
           <div>
             <BackBar to="/groups">Groups</BackBar>
             <div>
-              <h2 className="Heading Heading--medium">{group.name}</h2>
-              <Tags>
+              <FalmerDetailHeader title={group.name} tags={() => (<Tags>
                 {group.mslGroup ? <Tag>MSL</Tag> : null}
                 {group.mslGroup ? (
                   <Tag>
@@ -63,13 +63,20 @@ function FalmerStudentGroupsDetail(props: IProps) {
                     ago
                   </Tag>
                 ) : null}
-              </Tags>
+              </Tags>)}
+              actions={() => (
+                <div>
+                  <CopyToClipboardButton
+                    value={`https://falmer.sussexstudent.com/o/g/${group.groupId}`}
+                  >
+                    Copy sharing link
+                  </CopyToClipboardButton>
+                </div>
+              )}
+              />
+
             </div>
-            <CopyToClipboardButton
-              value={`https://falmer.sussexstudent.com/o/g/${group.groupId}`}
-            >
-              Copy sharing link
-            </CopyToClipboardButton>
+
           </div>
         );
       }}

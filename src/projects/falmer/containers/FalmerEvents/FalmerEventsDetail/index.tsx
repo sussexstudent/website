@@ -5,7 +5,6 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import { withState } from 'recompose';
 import CopyToClipboardButton from '~components/CopyToClipboardButton';
 import ImageTreatmentPreview from '../../../components/ImageTreatmentPreview';
-import FalmerModal from '~falmer/components/FalmerModal';
 import FalmerSelectEvent from '../../FalmerSelectEvent';
 
 import EVENT_DETAIL_QUERY from './EventDetail.graphql';
@@ -13,6 +12,10 @@ import MOVE_EVENT_MUTATION from './MoveEvent.graphql';
 import { Event } from '~types/events';
 import { HandledQuery } from '~components/HandledQuery';
 import { adopt } from '~components/Adopt';
+import {Modal} from "~components/Modal";
+import {Tag, Tags} from "~components/Tags";
+import {formatDistance} from 'date-fns';
+import {FalmerDetailHeader} from "~falmer/components/FalmerDetailHeader";
 
 interface RouteParams {
   eventId: number;
@@ -72,16 +75,32 @@ function FalmerEventsDetail(props: Props) {
               <title>{`${event.title} | Events`}</title>
             </Helmet>
             <div>
-              <h2 className="Heading Heading--medium">
-                {event.title}
-                <button
-                  className="Button"
-                  onClick={() => handleMoveModal(true)}
-                  disabled={event.children.length > 0}
-                >
-                  Move under
-                </button>
-              </h2>
+              <FalmerDetailHeader
+                title={event.title}
+                tags={() => (
+                  <Tags>
+                    {event.mslEvent !== null ? <Tag>MSL linked</Tag> : null}
+                    {event.mslEvent ? <Tag>last sync {formatDistance(new Date(), new Date(event.mslEvent.lastSync))} ago</Tag> : null}
+                  </Tags>
+                )}
+                actions={() => (
+                  <div>
+                    <CopyToClipboardButton
+                      value={`https://falmer.sussexstudent.com/o/e/${event.eventId}`}
+                    >
+                      Copy sharing link
+                    </CopyToClipboardButton>
+                    <button
+                      className="Button"
+                      onClick={() => handleMoveModal(true)}
+                      disabled={event.children.length > 0}
+                    >
+                      Move under
+                    </button>
+
+                  </div>
+                )}
+              />
               {event.parent ? (
                 <div>
                   Part of{' '}
@@ -90,11 +109,7 @@ function FalmerEventsDetail(props: Props) {
                   </Link>
                 </div>
               ) : null}
-              <CopyToClipboardButton
-                value={`https://falmer.sussexstudent.com/o/e/${event.eventId}`}
-              >
-                Copy sharing link
-              </CopyToClipboardButton>
+
               <div>
                 <h2 className="Heading Heading--standard">Images</h2>
                 {event.featuredImage ? (
@@ -119,7 +134,7 @@ function FalmerEventsDetail(props: Props) {
               ) : null}
             </div>
 
-            <FalmerModal
+            <Modal
               isOpen={isMoveModalOpen}
               // onAfterOpen={afterOpenFn}
               onRequestClose={() => handleMoveModal(false)}
@@ -127,7 +142,7 @@ function FalmerEventsDetail(props: Props) {
               // style={customStyle}
               contentLabel="Modal"
             >
-              <h1>Move event</h1>
+              <h1>Make an child of</h1>
               <FalmerSelectEvent
                 onSelect={(selectedId) => {
                   moveEvent.mutate({
@@ -139,7 +154,7 @@ function FalmerEventsDetail(props: Props) {
                   handleMoveModal(false);
                 }}
               />
-            </FalmerModal>
+            </Modal>
           </div>
         );
       }}

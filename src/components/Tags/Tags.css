@@ -1,0 +1,15 @@
+.Tags {
+  font-family: var(--type__primary);
+  @mixin type long-primer no-line-height;
+  font-weight: 600;
+
+  &__tag {
+    padding: 0.2em 0.3em;
+    background-color: var(--color__brand-red);
+    color: #fff;
+    display: inline-block;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    border-radius: 6px;
+  }
+}

@@ -9,7 +9,7 @@ import MenuIcon from '~components/MenuIcon';
 import CrossIcon from '~components/CrossIcon';
 import SearchIcon from '~components/SearchIcon';
 import * as pageActions from '../../projects/website/ducks/page';
-import { WebsiteRootState } from '../../types/website';
+import { WebsiteRootState } from '~types/website';
 import { connect } from 'react-redux';
 import { InternalAppLink } from '~components/InternalAppLink';
 

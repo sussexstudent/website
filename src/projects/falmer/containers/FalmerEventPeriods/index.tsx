@@ -1,12 +1,12 @@
 import React from 'react';
-import { FalmerSplash } from '../../components/FalmerSplash';
+import { FalmerSplash } from '~falmer/components/FalmerSplash';
 
-import calenderImage from './calender.svg';
+import CalenderImage from '~icons/calender.svg';
 
 function FalmerEventPeriods() {
   return (
     <FalmerSplash
-      image={calenderImage}
+      image={<CalenderImage />}
       text="Managing Event Branding Periods within Falmer is coming soon."
     />
   );

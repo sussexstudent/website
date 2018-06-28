@@ -1,12 +1,12 @@
 import React from 'react';
 import { FalmerSplash } from '../../components/FalmerSplash';
 
-import awardImage from './award.svg';
+import AwardImage from '~icons/award.svg';
 
 function FalmerGroupAwards() {
   return (
     <FalmerSplash
-      image={awardImage}
+      image={<AwardImage />}
       text="Group Awards within Falmer is coming soon."
     />
   );

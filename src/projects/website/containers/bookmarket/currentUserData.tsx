@@ -1,7 +1,7 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import CURRENT_USER_QUERY from './CurrentUser.graphql';
-import { FalmerUser } from '~components/falmer/types';
+import { FalmerUser } from '~types/falmer';
 
 interface Result {
   viewer: FalmerUser;

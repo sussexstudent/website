@@ -1,5 +1,5 @@
 .FalmerHeader {
-  @mixin card flat;
+  box-shadow: 0 2px 8px 0 rgba(32, 31, 72, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.026);
   background: #ffffff;
 
   position: fixed;

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FalmerApplication from '~components/falmer/FalmerApplication';
+import FalmerApplication from '~falmer/containers/FalmerApplication';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';

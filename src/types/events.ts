@@ -1,5 +1,5 @@
 import { StudentGroup } from '~components/OrganisationGrid';
-import { Connection } from '~components/falmer/types';
+import { Connection } from '~types/falmer';
 
 export enum EventPartType {
   Contained,

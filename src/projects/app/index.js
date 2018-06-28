@@ -6,7 +6,7 @@ import apolloClientForFalmer from './getApolloClientForFalmer';
 import { colors } from './vars';
 
 // screen related book keeping
-const store = createStore((x) => x,  {});
+const store = createStore((x) => x, {});
 registerScreens(store, apolloClientForFalmer);
 registerScreenVisibilityListener();
 

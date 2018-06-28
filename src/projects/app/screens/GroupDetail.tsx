@@ -1,14 +1,13 @@
 import React from 'react';
-import PixelRatio from 'PixelRatio';
-import Dimensions from 'Dimensions';
-import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, PixelRatio, Dimensions } from 'react-native';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import format from 'date-fns/format';
-import HTMLContentRenderer from '../components/HTMLContentRenderer';
-import DetailContent from '../components/DetailContent';
-import DetailItem from '../components/DetailItem';
-import HeaderImageScrollView, { TriggeringView } from 'react-native-image-header-scroll-view';
+import { HTMLContentRenderer } from '../components/HTMLContentRenderer';
+import { DetailContent } from '../components/DetailContent';
+import { DetailItem } from '../components/DetailItem';
+import HeaderImageScrollView, {
+  TriggeringView,
+} from 'react-native-image-header-scroll-view';
 
 const styles = StyleSheet.create({
   container: {
@@ -46,7 +45,7 @@ const styles = StyleSheet.create({
   },
   infoContainer: {
     flex: 1,
-    alignSelf: 'stretch'
+    alignSelf: 'stretch',
   },
   infoContainerInner: {
     backgroundColor: '#fff',
@@ -61,7 +60,6 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     marginBottom: 15,
   },
-
 });
 
 function getSize() {
@@ -70,31 +68,25 @@ function getSize() {
   };
 }
 
-
 function TabWhatsOn({ data: { group, loading } }) {
-
   return (
     <View style={styles.tabContent}>
       {loading ? (
         <Text>Loading</Text>
       ) : (
-        <View
-          style={styles.infoContainer}
-        >
+        <View style={styles.infoContainer}>
           <HeaderImageScrollView
             style={styles.infoContainer}
             maxHeight={180}
             minHeight={0}
             headerImage={{
-              uri: `https://su.imgix.net/${group.logo
-                .resource}?w=${PixelRatio.getPixelSizeForLayoutSize(
-                getSize().width
-              )}&h=${PixelRatio.getPixelSizeForLayoutSize(
-                180
-              )}&fit=crop&q=85`,
+              uri: `https://su.imgix.net/${
+                group.logo.resource
+              }?w=${PixelRatio.getPixelSizeForLayoutSize(
+                getSize().width,
+              )}&h=${PixelRatio.getPixelSizeForLayoutSize(180)}&fit=crop&q=85`,
             }}
           >
-
             <View style={styles.infoContainerInner}>
               <DetailContent>
                 <Text style={styles.title}>{group.name}</Text>
@@ -137,10 +129,10 @@ export default graphql(
     }
   `,
   {
-    options: props => ({
+    options: (props) => ({
       variables: {
         groupId: props.groupId,
       },
     }),
-  }
+  },
 )(TabWhatsOn);

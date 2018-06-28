@@ -12,10 +12,14 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function CardBanner({ color, children }) {
+interface CardBannerProps {
+  color: string;
+}
+
+export const CardBanner: React.SFC<CardBannerProps> = ({ color, children }) => {
   return (
     <View style={{ backgroundColor: color }}>
       <Text style={styles.text}>{children}</Text>
     </View>
   );
-}
+};

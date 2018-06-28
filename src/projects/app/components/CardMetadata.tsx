@@ -4,16 +4,16 @@ import { colors } from '../vars';
 
 const styles = StyleSheet.create({
   text: {
-    color: colors.greyWinter,
+    color: colors.greyWorstDayOfWinter,
     fontSize: 14,
-    marginBottom: 6,
+    paddingTop: 4,
   },
 });
 
-export default function CardDescription({ children }) {
+export const CardMetadata: React.SFC = ({ children }) => {
   return (
     <View>
       <Text style={styles.text}>{children}</Text>
     </View>
   );
-}
+};

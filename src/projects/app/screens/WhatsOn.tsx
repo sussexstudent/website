@@ -9,13 +9,13 @@ import {
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import format from 'date-fns/format';
-import Card from '../components/Card';
-import CardDescription from '../components/CardDescription';
-import CardContent from '../components/CardContent';
-import CardImage from '../components/CardImage';
-import CardTitle from '../components/CardTitle';
-import CardBanner from '../components/CardBanner';
-import CardMetadata from '../components/CardMetadata';
+import { Card } from '../components/Card';
+import { CardDescription } from '../components/CardDescription';
+import { CardContent } from '../components/CardContent';
+import { CardImage } from '../components/CardImage';
+import { CardTitle } from '../components/CardTitle';
+import { CardBanner } from '../components/CardBanner';
+import { CardMetadata } from '../components/CardMetadata';
 import { colors } from '../vars';
 
 const styles = StyleSheet.create({
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     paddingTop: 20,
-  }
+  },
 });
 
 function TabWhatsOn({ data: { allEvents, loading }, navigator }) {
@@ -54,7 +54,7 @@ function TabWhatsOn({ data: { allEvents, loading }, navigator }) {
         <FlatList
           style={styles.scrollContainer}
           data={allEvents.edges.slice(1)}
-          keyExtractor={item => item.node.eventId.toString(10)}
+          keyExtractor={(item) => item.node.eventId.toString(10)}
           // renderSectionHeader={() => <Text>{}</Text>}
           renderItem={({ item }) => (
             <Card key={item.node.eventId}>
@@ -65,7 +65,8 @@ function TabWhatsOn({ data: { allEvents, loading }, navigator }) {
                     passProps: {
                       eventId: item.node.eventId,
                     },
-                  })}
+                  })
+                }
               >
                 {item.node.featuredImage !== null ? (
                   <CardImage image={item.node.featuredImage} />
@@ -91,7 +92,7 @@ function TabWhatsOn({ data: { allEvents, loading }, navigator }) {
                   <CardMetadata>
                     {`${format(
                       new Date(item.node.startTime),
-                      'h:mma'
+                      'h:mma',
                     )}-${format(new Date(item.node.endTime), 'h:mma')}`}{' '}
                     / {item.node.locationDisplay}
                   </CardMetadata>
@@ -141,5 +142,5 @@ export default graphql(
         fromTime: new Date(),
       },
     },
-  }
+  },
 )(TabWhatsOn);

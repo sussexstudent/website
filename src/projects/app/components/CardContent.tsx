@@ -7,6 +7,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function CardContent({ children }) {
+export const CardContent: React.SFC = ({ children }) => {
   return <View style={styles.cardContent}>{children}</View>;
-}
+};

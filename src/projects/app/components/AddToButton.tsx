@@ -28,11 +28,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function AddToButton({ text }) {
+interface AddToButton {
+  text: string;
+}
+
+export const AddToButton: React.SFC<AddToButton> = ({ text }) => {
   return (
     <View style={styles.button}>
       <Image style={styles.icon} source={require('../img/WhitePlus.png')} />
       <Text style={styles.text}>{text}</Text>
     </View>
   );
-}
+};

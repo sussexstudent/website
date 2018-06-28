@@ -7,6 +7,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function DetailContent({ children }) {
+export const DetailContent: React.SFC = ({ children }) => {
   return <View style={styles.detailContent}>{children}</View>;
-}
+};

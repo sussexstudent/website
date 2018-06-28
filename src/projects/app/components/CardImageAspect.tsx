@@ -1,7 +1,6 @@
 import React from 'react';
-import PixelRatio from 'PixelRatio';
-import Dimensions from 'Dimensions';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet, PixelRatio, Dimensions } from 'react-native';
+import { FalmerImage } from '../../../types/events';
 
 const styles = StyleSheet.create({
   eventImage: {
@@ -26,9 +25,13 @@ function getSize() {
 
 const MAX_HEIGHT = 170;
 
-export default function CardImage({ image, maintainAspectRatio }) {
+interface CardImageProps {
+  image: FalmerImage;
+}
+
+export const CardImageAspect: React.SFC<CardImageProps> = ({ image }) => {
   const displayWidth = getSize().width - 40;
-  const displayHeight = displayWidth * (image.height/image.width)
+  const displayHeight = displayWidth * (image.height / image.width);
 
   const imageSize = {
     width: displayWidth,
@@ -36,21 +39,22 @@ export default function CardImage({ image, maintainAspectRatio }) {
   };
 
   if (displayHeight > MAX_HEIGHT) {
-    imageSize.width = MAX_HEIGHT * (image.width/image.height);
+    imageSize.width = MAX_HEIGHT * (image.width / image.height);
     imageSize.height = MAX_HEIGHT;
   }
-
 
   return (
     <View style={styles.eventImageContainer}>
       <Image
         style={imageSize}
         source={{
-          uri: `https://su.imgix.net/${image.resource}?w=${PixelRatio.getPixelSizeForLayoutSize(
-            getSize().width - 40
+          uri: `https://su.imgix.net/${
+            image.resource
+          }?w=${PixelRatio.getPixelSizeForLayoutSize(
+            getSize().width - 40,
           )}&q=85`,
         }}
       />
     </View>
   );
-}
+};

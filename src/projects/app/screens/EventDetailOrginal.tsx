@@ -1,14 +1,22 @@
 import React from 'react';
-import PixelRatio from 'PixelRatio';
-import Dimensions from 'Dimensions';
-import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  ScrollView,
+  PixelRatio,
+  Dimensions,
+} from 'react-native';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import format from 'date-fns/format';
-import HTMLContentRenderer from '../components/HTMLContentRenderer';
-import DetailContent from '../components/DetailContent';
+import { HTMLContentRenderer } from '../components/HTMLContentRenderer';
+import { DetailContent } from '../components/DetailContent';
 import { colors } from '../vars';
-import HeaderImageScrollView, { TriggeringView } from 'react-native-image-header-scroll-view';
+import HeaderImageScrollView, {
+  TriggeringView,
+} from 'react-native-image-header-scroll-view';
 
 const styles = StyleSheet.create({
   container: {
@@ -92,7 +100,11 @@ function getSize() {
 const EventDetailItem = ({ image, children }) => (
   <View style={styles.detailItem}>
     <Text style={styles.detailItemText}>
-      <Image style={styles.detailItemImage} source={image} resizeMode="contain" />
+      <Image
+        style={styles.detailItemImage}
+        source={image}
+        resizeMode="contain"
+      />
       {children}
     </Text>
   </View>
@@ -110,11 +122,12 @@ function TabWhatsOn({ data: { event, loading } }) {
               <Image
                 style={styles.eventImage}
                 source={{
-                  uri: `https://su.imgix.net/${event.featuredImage
-                    .resource}?w=${PixelRatio.getPixelSizeForLayoutSize(
-                    getSize().width
+                  uri: `https://su.imgix.net/${
+                    event.featuredImage.resource
+                  }?w=${PixelRatio.getPixelSizeForLayoutSize(
+                    getSize().width,
                   )}&h=${PixelRatio.getPixelSizeForLayoutSize(
-                    180
+                    180,
                   )}&fit=crop&q=85`,
                 }}
                 width={getSize().width}
@@ -135,7 +148,7 @@ function TabWhatsOn({ data: { event, loading } }) {
                   <EventDetailItem image={require('../img/EventsClock.png')}>
                     {`${format(new Date(event.startTime), 'h:mma')}-${format(
                       new Date(event.endTime),
-                      'h:mma'
+                      'h:mma',
                     )}`}
                   </EventDetailItem>
                   <EventDetailItem image={require('../img/EventsPin.png')}>
@@ -170,10 +183,10 @@ export default graphql(
     }
   `,
   {
-    options: props => ({
+    options: (props) => ({
       variables: {
         eventId: props.eventId,
       },
     }),
-  }
+  },
 )(TabWhatsOn);

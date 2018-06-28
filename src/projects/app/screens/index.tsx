@@ -19,35 +19,35 @@ export function registerScreens(store, client) {
     () => WhatsOnList,
     store,
     ApolloProvider,
-    { client }
+    { client },
   );
   Navigation.registerComponent(
     'ussu.WhatsOn.EventDetail',
     () => EventDetail,
     store,
     ApolloProvider,
-    { client }
+    { client },
   );
   Navigation.registerComponent(
     'ussu.Groups',
     () => StudentGroupList,
     store,
     ApolloProvider,
-    { client }
+    { client },
   );
   Navigation.registerComponent(
     'ussu.Groups.GroupDetail',
     () => GroupDetail,
     store,
     ApolloProvider,
-    { client }
+    { client },
   );
   Navigation.registerComponent(
     'ussu.Feedback',
     () => Feedback,
     store,
     ApolloProvider,
-    { client }
+    { client },
   );
 }
 
@@ -58,7 +58,7 @@ export function registerScreenVisibilityListener() {
       console.log(
         'screenVisibility',
         `Screen ${screen} displayed in ${endTime -
-          startTime} millis [${commandType}]`
+          startTime} millis [${commandType}]`,
       ),
     willDisappear: ({ screen }) =>
       console.log(`Screen will disappear ${screen}`),

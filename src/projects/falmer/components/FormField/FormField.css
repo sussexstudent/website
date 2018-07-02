@@ -1,0 +1,62 @@
+.FormField {
+  @mixin type pica;
+  margin-bottom: 1em;
+
+  &__label {
+    display: block;
+    @mixin type long-primer;
+    font-family: var(--type__primary);
+    font-weight: 600;
+    color: var(--color__grey-worst-day-of-winter);
+  }
+
+  &__input {
+    font-size: inherit;
+    font-family: inherit;
+    padding: 0.4em;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--color__grey-spring);
+    border-radius: 2px;
+
+    &:focus {
+      outline: var(--color__brand-yellow) solid 3px;
+    }
+  }
+
+  &--title &__input {
+    @mixin type double-pica;
+  }
+}
+
+
+.FormFieldGroup {
+  display: flex;
+
+  & > div {
+    padding-right: 1em;
+    box-sizing: border-box;
+  }
+}
+
+.FormFieldSet {
+  border: 0;
+  box-sizing: border-box;
+  padding: 0;
+
+  & > legend {
+    padding-top: 2em;
+    margin: 0 auto 1em;
+    text-transform: uppercase;
+    font-family: var(--type__primary);
+    @mixin type great-primer;
+    font-weight: 600;
+    color: var(--color__grey-winter);
+  }
+}
+
+.FalmerForm {
+  max-width: 680px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}

@@ -71,7 +71,7 @@ export interface Event {
   url?: string;
   slug: string;
   eventId: number;
-  featuredImage: FalmerImage;
+  featuredImage: null | FalmerImage;
 
   cost: TicketCost;
   ticketLevel: TicketLevel | string; // todo
@@ -87,7 +87,7 @@ export interface Event {
   studentGroup: null | StudentGroup;
 
   children: Event[];
-  parent: Event;
+  parent: null | Event;
 
   mslEvent?: MSLEvent;
 }

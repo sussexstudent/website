@@ -1,7 +1,21 @@
 .FalmerDataList {
   &__list {
     border-collapse: collapse;
-    display: block;
+    display: table;
+    width: 100%;
+  }
+
+  &__select {
+    width: 20px;
+    padding: 0.4em;
+  }
+
+  &__boolean {
+  }
+
+  & th {
+    text-align: left;
+    padding: 0.4em 1em;
   }
 
   &__row {
@@ -12,7 +26,7 @@
     }
 
     & > td {
-      padding: 0.3rem;
+      padding: 0.4em 1em;
     }
   }
 }

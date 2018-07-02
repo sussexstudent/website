@@ -1,4 +1,4 @@
-query EventsListings($filter: EventFilter) {
+query EventsListings($filter: EventFilterInput) {
   allEvents(filter: $filter) {
     edges {
       node {

@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FalmerDataList, { Cell, Row, HeaderCell } from '../../../components/FalmerDataList';
+import FalmerDataList, {
+  Cell,
+  Row,
+  HeaderCell,
+} from '../../../components/FalmerDataList';
 import ALL_GROUPS_QUERY from './AllGroups.graphql';
-import FalmerSubSections, { SubSection } from '../../../components/FalmerSubSections';
+import FalmerSubSections, {
+  SubSection,
+} from '../../../components/FalmerSubSections';
 import { StudentGroup } from '~components/OrganisationGrid';
 import { HandledQuery } from '~components/HandledQuery';
 
@@ -44,7 +50,7 @@ function FalmerStudentGroupsList() {
                   <Cell>
                     <Link to={`/groups/${item.groupId}`}>{item.name}</Link>
                   </Cell>
-                  <Cell>{item.isProspective ? 'yes' : ''}</Cell>
+                  <Cell>{item.isProspective ? '✓' : ''}</Cell>
                 </Row>
               )}
             </FalmerDataList>

@@ -2,7 +2,11 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import formatDate from 'date-fns/format';
 import ALL_EVENTS_QUERY from './AllEvents.graphql';
-import FalmerDataList, { Cell, Row, HeaderCell } from '~falmer/components/FalmerDataList';
+import FalmerDataList, {
+  Cell,
+  Row,
+  HeaderCell,
+} from '~falmer/components/FalmerDataList';
 import { Connection } from '~types/falmer';
 import { Event } from '~types/events';
 import { HandledQuery } from '~components/HandledQuery';

@@ -75,7 +75,7 @@ export const Row: React.SFC<IRowProps> = (props) => {
   return (
     <tr className="FalmerDataList__row" key={props.id}>
       {props.selectable ? (
-        <td>
+        <td className="FalmerDataList__select">
           <input
             type="checkbox"
             checked={props.isSelected}

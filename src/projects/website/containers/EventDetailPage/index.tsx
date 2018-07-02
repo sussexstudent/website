@@ -7,7 +7,6 @@ import ContentCard from '~components/ContentCard';
 import JsonLd from '~components/JsonLd';
 import Loader from '~components/Loader';
 import DetailPageQuery from './EventsDetailPage.graphql';
-import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
 import { Event } from '~types/events';
 
 import apolloHandler from '~components/apolloHandler';
@@ -16,6 +15,7 @@ import { AspectRatio, OneImage } from '~components/OneImage';
 import { EventDetailDetails } from '~website/containers/EventDetailPage/EventDetailDetails';
 import { EventDetailSidebar } from '~website/containers/EventDetailPage/EventDetailSidebar';
 import { MSLEventCommunication } from '~website/containers/EventDetailPage/MSLEventCommunication';
+import {EventCard} from "~components/EventCard";
 
 interface RouteParams {
   [0]: string;
@@ -155,7 +155,7 @@ class EventDetailPage extends React.Component<IProps, IState> {
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
               {event.children.map((childEvent: Event) => (
                 <div>
-                  <EventsCalenderItem part={{ event: childEvent }} />
+                  <EventCard part={{ event: childEvent }} />
                 </div>
               ))}
             </div>

@@ -9,8 +9,6 @@ import EventRelativeTime from './EventRelativeTime';
 import { Event, TicketType } from '~types/events';
 import { AspectRatio, OneImage } from '~components/OneImage';
 
-// import PropTypes from 'prop-types';
-
 function renderEventLocation(event: Event) {
   if (!event.venue) {
     if (event.locationDisplay === '') {
@@ -57,13 +55,13 @@ interface IProps {
   };
 }
 
-function EventsCalenderItem({
+export const EventCard = ({
   part,
   inline = false,
   showDay = false,
   relative = false,
   small = false,
-}: IProps) {
+}: IProps) => {
   const event = part.event;
   const treat = getTreat(event);
 
@@ -81,7 +79,7 @@ function EventsCalenderItem({
           href={`/whats-on/${event.slug}-${event.eventId}`}
         />
       )}
-      {has(part, 'event.featuredImage.resource') ? (
+      {event.featuredImage && has(part, 'event.featuredImage.resource') ? (
         <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
           <OneImage
             src={event.featuredImage.resource}
@@ -136,5 +134,3 @@ function EventsCalenderItem({
 //               {' '}- Starts in {distanceInWordsToNow(event.startDate)}
 //             </span>
 //   : null}
-
-export default EventsCalenderItem;

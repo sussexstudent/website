@@ -8,10 +8,8 @@ interface FalmerSplashProps {
 export const FalmerSplash: React.SFC<FalmerSplashProps> = (props) => {
   return (
     <div className="FalmerSplash">
-      <div className="FalmerSplash__image">
-        {props.image}
-      </div>
+      <div className="FalmerSplash__image">{props.image}</div>
       <div className="FalmerSplash__text">{props.text}</div>
     </div>
   );
-}
+};

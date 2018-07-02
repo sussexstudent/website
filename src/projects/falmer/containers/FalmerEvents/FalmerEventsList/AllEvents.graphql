@@ -1,6 +1,6 @@
 #import "../EventStuff.graphql"
 
-query AllEvents($filter: EventFilter) {
+query AllEvents($filter: EventFilterInput) {
   allEvents(filter: $filter) {
     edges {
       node {

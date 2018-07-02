@@ -6,7 +6,7 @@ import {
   splitEventsInToParts,
 } from '~website/containers/EventsApplication/utils';
 import { Event, EventPart } from '~types/events';
-import EventsCalenderItem from '~website/containers/EventsCalender/EventsCalenderItem';
+import {EventCard} from "~components/EventCard";
 
 interface EventListingsProps {
   events: any;
@@ -39,7 +39,7 @@ export function EventListings(props: EventListingsProps) {
                 {chunk.map((part: EventPart, index: number) => {
                   return (
                     <div className="EventsCalender__part-container" key={index}>
-                      <EventsCalenderItem part={part} />
+                      <EventCard part={part} />
                     </div>
                   );
                 })}

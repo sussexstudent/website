@@ -3,11 +3,11 @@ import isBefore from 'date-fns/isBefore';
 import startOfDay from 'date-fns/startOfDay';
 import subDays from 'date-fns/subDays';
 import HydroLeaf from '~components/HydroLeaf';
-import EventsCalenderItem from '../../projects/website/containers/EventsCalender/EventsCalenderItem';
 import Loader from '../Loader/index';
 import EventListQuery from './EventList.graphql';
 import { GranuleChildProps } from '@brudil/granule';
 import { GranuleQuery } from '~components/Query';
+import {EventCard} from "~components/EventCard";
 
 interface Result {
   allEvents: {
@@ -45,7 +45,7 @@ function EventList() {
               )
               .map((edge) => (
                 <li key={edge.node.eventId}>
-                  <EventsCalenderItem
+                  <EventCard
                     part={{ event: edge.node }}
                     inline
                     showDay

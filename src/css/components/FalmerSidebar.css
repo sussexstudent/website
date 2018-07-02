@@ -1,3 +1,31 @@
 .FalmerSidebar {
-  max-width: 220px;
+  max-width: 360px;
+  padding-left: 1rem;
+  margin-left: 1rem;
+  border-left: 2px solid var(--color__grey-spring);
+
+  &__field {
+    margin-bottom: 1em;
+
+    &-label {
+      display: block;
+      font-family: var(--type__primary);
+      @mixin type minion;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--color__grey-winter);
+    }
+
+    &-input {
+      border-radius: 2px;
+      -webkit-appearance: none;
+      @mixin type long-primer;
+      padding: 0.4em;
+      box-sizing: border-box;
+      display: block;
+      border: 0;
+      background-color: var(--color__grey-summer);
+      color: var(--color__grey-winter);
+    }
+  }
 }

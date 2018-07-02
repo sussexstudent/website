@@ -8,7 +8,9 @@ import FalmerDataList, {
   HeaderCell,
 } from '~falmer/components/FalmerDataList/index';
 import FalmerSidebar from '~falmer/components/FalmerSidebar';
-import FalmerSubSections, { SubSection } from '~falmer/components/FalmerSubSections';
+import FalmerSubSections, {
+  SubSection,
+} from '~falmer/components/FalmerSubSections';
 import FalmerListView from '~falmer/components/FalmerListView';
 import { Connection } from '~types/falmer';
 import { Venue } from '~types/events';

@@ -10,7 +10,9 @@ import FalmerDataList, {
 } from '~falmer/components/FalmerDataList';
 import FalmerSidebar from '~falmer/components/FalmerSidebar';
 import FalmerListView from '~falmer/components/FalmerListView';
-import FalmerSubSections, { SubSection } from '~falmer/components/FalmerSubSections';
+import FalmerSubSections, {
+  SubSection,
+} from '~falmer/components/FalmerSubSections';
 import { Event } from '~types/events';
 import { Connection } from '~types/falmer';
 import { HandledQuery } from '~components/HandledQuery';
@@ -99,10 +101,7 @@ function FalmerEvents() {
                         )}
                       </Cell>
                       <Cell>
-                        {formatDate(
-                          new Date(item.endTime),
-                          'EEE do MMM HH:mm',
-                        )}
+                        {formatDate(new Date(item.endTime), 'EEE do MMM HH:mm')}
                       </Cell>
                       <Cell>
                         {item.studentGroup ? (

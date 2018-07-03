@@ -103,7 +103,7 @@ const GroupDetailScreen: React.SFC = ({ data: { group, loading } }) => {
       )}
     </View>
   );
-}
+};
 
 export default graphql(
   gql`

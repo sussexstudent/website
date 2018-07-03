@@ -12,10 +12,10 @@ import MOVE_EVENT_MUTATION from './MoveEvent.graphql';
 import { Event } from '~types/events';
 import { HandledQuery } from '~components/HandledQuery';
 import { adopt } from '~components/Adopt';
-import {Modal} from "~components/Modal";
-import {Tag, Tags} from "~components/Tags";
-import {formatDistance} from 'date-fns';
-import {FalmerDetailHeader} from "~falmer/components/FalmerDetailHeader";
+import { Modal } from '~components/Modal';
+import { Tag, Tags } from '~components/Tags';
+import { formatDistance } from 'date-fns';
+import { FalmerDetailHeader } from '~falmer/components/FalmerDetailHeader';
 
 interface RouteParams {
   eventId: number;
@@ -80,13 +80,24 @@ function FalmerEventsDetail(props: Props) {
                 tags={() => (
                   <Tags>
                     {event.mslEvent !== null ? <Tag>MSL linked</Tag> : null}
-                    {event.mslEvent ? <Tag>last sync {formatDistance(new Date(), new Date(event.mslEvent.lastSync))} ago</Tag> : null}
+                    {event.mslEvent ? (
+                      <Tag>
+                        last sync{' '}
+                        {formatDistance(
+                          new Date(),
+                          new Date(event.mslEvent.lastSync),
+                        )}{' '}
+                        ago
+                      </Tag>
+                    ) : null}
                   </Tags>
                 )}
                 actions={() => (
                   <div>
                     <CopyToClipboardButton
-                      value={`https://falmer.sussexstudent.com/o/e/${event.eventId}`}
+                      value={`https://falmer.sussexstudent.com/o/e/${
+                        event.eventId
+                      }`}
                     >
                       Copy sharing link
                     </CopyToClipboardButton>
@@ -97,7 +108,6 @@ function FalmerEventsDetail(props: Props) {
                     >
                       Move under
                     </button>
-
                   </div>
                 )}
               />

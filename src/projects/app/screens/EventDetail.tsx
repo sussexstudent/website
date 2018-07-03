@@ -119,7 +119,7 @@ const EventDetailsScreen: React.SFC = ({ data: { event, loading } }) => {
       )}
     </View>
   );
-}
+};
 
 export default graphql(
   gql`

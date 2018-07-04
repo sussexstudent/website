@@ -8,4 +8,9 @@
     height: auto;
     max-width: 80px;
   }
+
+  &--small {
+    max-width: 600px;
+    margin: 0 auto;
+  }
 }

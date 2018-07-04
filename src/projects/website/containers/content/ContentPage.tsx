@@ -3,6 +3,7 @@ import CONTENT_PAGE_QUERY from './ContentPageQuery.graphql';
 import pageMap from '~website/containers/content/pageMap';
 import { HandledQuery } from '~components/HandledQuery';
 import Helmet from 'react-helmet';
+import {FourOhFourPage} from "./FourOhFourPage";
 
 interface OwnProps {
   path: string;
@@ -34,6 +35,11 @@ const ContentPage: React.SFC<IProps> = (props: IProps) => {
         }
 
         const page = data.page;
+
+        if (page === null) {
+          return <FourOhFourPage />;
+        }
+
         const Component = pageMap.hasOwnProperty(page.type)
           ? pageMap[page.type]
           : null;

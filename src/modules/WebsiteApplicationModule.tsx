@@ -3,7 +3,7 @@ import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 import HydroRootApollo from '~components/HydroRootApollo';
 import HydroRootRouter from '~components/HydroRootRouter';
-import WebsiteApplication from '~components/../projects/website/containers/WebsiteApplication';
+import WebsiteApplication from '~website/containers/WebsiteApplication';
 import { store } from '../projects/website/redux/store';
 import { AppMountState } from '../projects/website/ducks/router';
 

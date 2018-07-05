@@ -14,6 +14,9 @@ interface Result {
     title: string;
     data: any;
     type: string;
+
+    seoTitle: string;
+    searchDescription: string;
   };
 }
 
@@ -47,7 +50,9 @@ const ContentPage: React.SFC<IProps> = (props: IProps) => {
         if (Component) {
           return (
             <React.Fragment>
-              <Helmet title={page.title} />
+              <Helmet title={page.seoTitle || page.title}>
+                {page.searchDescription && <meta name="description" content={page.searchDescription} />}
+              </Helmet>
 
               <Component page={page} />
             </React.Fragment>

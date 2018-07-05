@@ -2,6 +2,10 @@ query ContentPage($path: String) {
   page(path: $path) {
     title
     slug
+
+    seoTitle
+    searchDescription
+
     type
     data
   }

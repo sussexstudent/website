@@ -6,6 +6,7 @@ export default new PreRouter([
   '/book-market',
   '/freshers',
   '/kb',
+  '/content-root-example',
   '/search',
   /^\/get-involved$/,
   /^\/support$/,

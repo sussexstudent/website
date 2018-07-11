@@ -131,6 +131,7 @@
     "graphql": "^0.13.2",
     "history": "^4.7.2",
     "howler": "^2.0.12",
+    "htmr": "^0.7.0",
     "lazysizes": "^4.0.4",
     "lodash": "^4.17.10",
     "lottie-web": "^5.1.17",

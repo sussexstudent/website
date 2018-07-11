@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { StreamFieldBlock } from '~website/containers/content/types';
 import { normaliseContentLink } from '~website/containers/content/utils';
+import {BlockLink} from "~components/BlockLink";
 
 export const ExternalLink: StreamFieldBlock<{
   link: string;
@@ -9,9 +9,9 @@ export const ExternalLink: StreamFieldBlock<{
   title: string;
 }> = ({ block: { link, title } }) => {
   return (
-    <a className="Button" href={normaliseContentLink(link)}>
+    <BlockLink to={normaliseContentLink(link)} external>
       {title}
-    </a>
+    </BlockLink>
   );
 };
 
@@ -23,8 +23,8 @@ export const InternalLink: StreamFieldBlock<{
   title: string;
 }> = ({ block: { link, title } }) => {
   return (
-    <Link className="Button" to={link.path}>
+    <BlockLink to={link.path}>
       {title}
-    </Link>
+    </BlockLink>
   );
 };

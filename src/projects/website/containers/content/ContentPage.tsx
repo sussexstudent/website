@@ -13,7 +13,7 @@ interface Result {
   page: {
     title: string;
     data: any;
-    type: string;
+    contentType: string;
 
     seoTitle: string;
     searchDescription: string;
@@ -43,8 +43,8 @@ const ContentPage: React.SFC<IProps> = (props: IProps) => {
           return <FourOhFourPage />;
         }
 
-        const Component = pageMap.hasOwnProperty(page.type)
-          ? pageMap[page.type]
+        const Component = pageMap.hasOwnProperty(page.contentType)
+          ? pageMap[page.contentType]
           : null;
 
         if (Component) {
@@ -61,7 +61,7 @@ const ContentPage: React.SFC<IProps> = (props: IProps) => {
 
         return (
           <div className="Layout">
-            <h1>Page type can't be found: "{page.type}"</h1>
+            <h1>Page type can't be found: "{page.contentType}"</h1>
           </div>
         );
       }}

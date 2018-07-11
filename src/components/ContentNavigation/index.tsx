@@ -1,14 +1,17 @@
 import React from 'react';
 import cx from 'classnames';
 import slugify from '~libs/slugify';
+import {InternalAppLink} from '~components/InternalAppLink';
 
 interface Section {
   anchor: string;
+  to?: string;
   name: string;
   children: Section[];
 }
 
 interface IProps {
+  title?: string;
   items: Section[];
   activeKey?: string;
   onlyShowSubMenuWhenChildActive?: boolean;
@@ -37,13 +40,14 @@ function canDisplaySubMenu(
 // TODO: Tidy this up. Should technically support unlimited levels
 // TODO: this component's name doesn't match the css component
 const ContentNavigation: React.SFC<IProps> = ({
+  title,
   items,
   activeKey = '',
   onlyShowSubMenuWhenChildActive = false,
 }) => {
   return (
     <div className="NavigationCard">
-      <h3 className="NavigationCard__title">Navigation</h3>
+      <h3 className="NavigationCard__title">{title || 'Navigation'}</h3>
       <ul className="NavigationCard__list">
         {items.map((item) => (
           <li
@@ -51,9 +55,20 @@ const ContentNavigation: React.SFC<IProps> = ({
               'NavigationCard__item--active': item.anchor === activeKey,
             })}
           >
-            <a className="NavigationCard__anchor" href={`#${item.anchor}`}>
-              {item.name}
-            </a>
+            {item.to !== undefined ? (
+                <InternalAppLink
+                  to={item.to}
+                  className="NavigationCard__anchor"
+                >
+                  {item.name}
+                </InternalAppLink>
+              )
+              : <a
+                className="NavigationCard__anchor"
+                href={`#${item.anchor}`}
+              >
+                {item.name}
+              </a>}
             {item.children &&
             item.children.length > 0 &&
             (canDisplaySubMenu(
@@ -70,12 +85,20 @@ const ContentNavigation: React.SFC<IProps> = ({
                         itemInner.anchor === activeKey,
                     })}
                   >
-                    <a
-                      className="NavigationCard__anchor"
-                      href={`#${itemInner.anchor}`}
-                    >
-                      {itemInner.name}
-                    </a>
+                    {itemInner.to !== undefined ? (
+                      <InternalAppLink
+                        to={itemInner.to}
+                        className="NavigationCard__anchor"
+                      >
+                        {itemInner.name}
+                      </InternalAppLink>
+                      )
+                     : <a
+                        className="NavigationCard__anchor"
+                        href={`#${itemInner.anchor}`}
+                      >
+                        {itemInner.name}
+                      </a>}
                   </li>
                 ))}
               </ul>

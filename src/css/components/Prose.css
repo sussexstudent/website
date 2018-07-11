@@ -1,14 +1,26 @@
 .Prose {
-  & > p {
+  & > p, ul, ol {
     padding: 0;
-    margin: 0;
-    margin-bottom: 1em;
+    margin: 1em 0;
+  }
+
+  & > h2 {
+    margin-top: 2em;
+    margin-bottom: 0;
+  }
+
+  & > p:first-child {
+    margin-top: 0;
   }
 
   ul,
   ol {
     padding-left: 0.7rem;
     margin-left: 0.5rem;
+  }
+
+  li {
+    margin-bottom: 0.3em;
   }
 
   img {

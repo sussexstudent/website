@@ -74,6 +74,7 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
             />
             <Route path="/freshers" component={FreshersContentAPI} />
             <Route path="/get-involved" component={ContentAPI} exact />
+            <Route path="/content-root-example" component={ContentAPI} />
             <Route path="/support" component={ContentAPI} exact />
             <Route path="/content-explorer" component={ContentExplorer} exact />
           </Switch>

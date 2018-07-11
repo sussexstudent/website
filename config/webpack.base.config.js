@@ -34,7 +34,7 @@ function generateConfig() {
     },
 
     resolve: {
-      plugins: [new TsConfigPathsPlugin({ /*configFile: "./path/to/tsconfig.json" */ })],
+      plugins: [new TsConfigPathsPlugin({ configFile: path.resolve(path.join(baseDir, 'tsconfig.json')) })],
       modules: ['node_modules', './src/images'],
       alias: {
         '~icons': path.resolve(path.join(__dirname, '../src/icons')),

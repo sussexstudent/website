@@ -1,11 +1,3 @@
 .ContentBlock {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1lh;
-
-  &__heading {
-    font-family: var(--type__primary);
-    font-weight: bold;
-    @mixin type double-pica;
-  }
+  margin-bottom: 2rem;
 }

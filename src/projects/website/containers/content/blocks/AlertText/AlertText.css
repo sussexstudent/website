@@ -1,0 +1,20 @@
+.AlertText {
+  display: flex;
+  font-family: var(--type__primary);
+  font-weight: 600;
+
+  &__icon {
+    width: 40%;
+    max-width: 42px;
+    padding-right: 1em;
+  }
+
+  &__content {
+    flex: 1 1 auto;
+
+    & p {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}

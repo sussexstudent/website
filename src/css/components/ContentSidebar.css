@@ -1,0 +1,14 @@
+.ContentSidebar {
+  font-family: var(--type__primary);
+  font-weight: 600;
+
+  & ul {
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
+  }
+
+  & a {
+    text-decoration: none;
+  }
+}

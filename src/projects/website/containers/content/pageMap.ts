@@ -3,6 +3,9 @@ import { LoadableLoading } from '~components/LoadableLoading';
 import GenericContentStreamPage from './pages/GenericContentStreamPage';
 import HomePage from './pages/HomePage';
 import { SectionContentPage } from '~website/containers/content/pages/SectionContentPage';
+import AnswerPage from "~website/containers/content/pages/AnswerPage";
+import ReferencePage from "./pages/ReferencePage";
+import DetailedGuidePage from "./pages/DetailedGuidePage";
 
 const StaffPage = Loadable({
   loading: LoadableLoading,
@@ -27,6 +30,10 @@ export default {
 
   // FRESHERS
   FreshersHomepage,
+
+  AnswerPage,
+  ReferencePage,
+  DetailedGuidePage,
 
   SelectionGridPage: GenericContentStreamPage,
 } as PageComponentMap;

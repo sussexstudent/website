@@ -203,8 +203,8 @@ const standard = {
       'line-height': '24px',
     },
     'group-d': {
-      'font-size': '16px',
-      'line-height': '22px',
+      'font-size': '19px',
+      'line-height': '28px',
     },
   },
 };

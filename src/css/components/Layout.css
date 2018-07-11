@@ -1,3 +1,4 @@
+
 .Layout {
   /* TODO: think about me */
   padding-bottom: 1rem;
@@ -47,5 +48,32 @@
     box-sizing: border-box;
     border-left: 1px solid var(--color__grey-spring);
     padding-left: 1rem;
+  }
+}
+
+.LayoutContent {
+  display: flex;
+  flex-direction: column;
+
+  @media (--medium) {
+    flex-direction: row;
+
+    &__toc {
+      max-width: 348px;
+      flex: 1 1 auto;
+      padding-right: 48px;
+    }
+
+    &__main {
+      flex: 3 1 auto;
+      max-width: 648px;
+      padding-right: 48px;
+    }
+
+    &__aside {
+      max-width: 300px;
+      flex: 1 1 auto;
+    }
+
   }
 }

@@ -1,12 +1,23 @@
 query ContentPage($path: String) {
   page(path: $path) {
-    title
-    slug
-
-    seoTitle
-    searchDescription
-
-    type
-    data
+    path
+    assumptionPath
+    ...ContentPageGenerals
+    ... on DetailedGuidePage {
+      subPages {
+        ...ContentPageGenerals
+      }
+    }
   }
+}
+
+fragment ContentPageGenerals on Page {
+  title
+  slug
+
+  seoTitle
+  searchDescription
+
+  contentType
+  data
 }

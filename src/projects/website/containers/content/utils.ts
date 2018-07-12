@@ -1,19 +1,24 @@
-import {isString, flatten} from 'lodash';
+import {isString, flatten, castArray} from 'lodash';
 import htmr from 'htmr';
 import {
   StreamFieldBlockData,
   StreamFieldData
 } from "~website/containers/content/types";
 
-export function normaliseContentLink(link: string) {
+export function normaliseContentLink(link: string | null) {
+  if (link === null) {
+    return '';
+  }
+
   return link
     .replace('https://www.sussexstudent.com/', '/')
     .replace('https://sussexstudent.com/', '/');
 }
 
 export function getTextFromElementChildren(children: any | any[]): string {
-  const elementChildren = Array.isArray(children) ? children : [children];
-  return elementChildren.map((e: any) => isString(e) ? e : getTextFromElement(e)).join(' ');
+  return castArray(children)
+    .map((e: any) => isString(e) ? e : getTextFromElement(e))
+    .join(' ');
 }
 
 export function getTextFromElement(element: React.ReactElement<any>) {
@@ -26,9 +31,9 @@ export function getTextFromElement(element: React.ReactElement<any>) {
 export function getHeadingsFromHtmlString(html: string): string[] {
   const res = htmr(html);
 
-  const elements = Array.isArray(res) ? res : [res];
-
-  return elements.filter(e => e && e.type === 'h2').map(getTextFromElement)
+  return castArray(res)
+    .filter(e => e && e.type === 'h2')
+    .map(getTextFromElement);
 }
 
 export function getHeadingsFromStreamField(stream: StreamFieldData) {

@@ -56,9 +56,9 @@ export default {
     map: assets,
   },
   providers: CompProviders,
-  contentApi: {
-    endpoint: 'https://falmer.sussexstudent.com/graphql/',
+  contentApix: {
+    endpoint: 'http://localhost:8000/graphql/',
     template: require('./src/projects/website/layouts/ContentPage').default,
-    skipPaths: ['/'],
+    skipPaths: ['/', '/get-involved'],
   },
 };

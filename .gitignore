@@ -25,3 +25,4 @@ npm-debug.log
 /.awcache
 /stats.json
 /storybook-static
+fragmentTypes.json

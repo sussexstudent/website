@@ -43,7 +43,7 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
   };
 
   render() {
-    const { to, history, innerRef } = this.props;
+    const { to, history, innerRef, navigateTo, ...props } = this.props;
     const isClientRendered = routes.matches(to);
 
     if (isClientRendered) {
@@ -57,7 +57,7 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
 
         return (
           <a
-            {...this.props}
+            {...props}
             ref={innerRef}
             onClick={this.handleClick}
             href={href}
@@ -75,7 +75,7 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
       // );
     }
 
-    return <a {...this.props} ref={innerRef} href={to} />;
+    return <a {...props} ref={innerRef} href={to} />;
   }
 }
 

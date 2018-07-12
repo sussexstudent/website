@@ -1,4 +1,4 @@
-query EventsListings($filter: EventFilter, $brandSlug: String) {
+query EventsListings($filter: EventFilterInput, $brandSlug: String) {
   allEvents(filter: $filter) {
     edges {
       node {

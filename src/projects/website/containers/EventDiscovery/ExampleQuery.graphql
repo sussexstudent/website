@@ -1,0 +1,51 @@
+query EventsListings($filter: EventFilterInput, $brandSlug: String) {
+  allEvents(filter: $filter) {
+    edges {
+      node {
+        eventId
+        slug
+        title
+        startTime
+        endTime
+        locationDisplay
+        kicker
+        shortDescription
+        url
+        cost
+        ticketLevel
+        ticketType
+        bundle {
+          name
+          __typename
+        }
+        venue {
+          name
+          websiteLink
+          __typename
+        }
+        featuredImage {
+          resource
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+  brandingPeriod(slug: $brandSlug) {
+    name
+    logo {
+      resource
+      __typename
+    }
+    logoVector {
+      resource
+      __typename
+    }
+    description
+    accent
+    websiteLink
+    __typename
+  }
+}

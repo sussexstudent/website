@@ -8,6 +8,7 @@ export default new PreRouter([
   '/kb',
   '/content-root-example',
   '/search',
+  '/event-discovery',
   /^\/get-involved$/,
   /^\/support$/,
 ]);

@@ -14,6 +14,7 @@ import { LoadableLoading } from '~components/LoadableLoading';
 import Loadable from 'react-loadable';
 import Helmet from 'react-helmet';
 import ErrorBoundary from "../../../../components/ErrorBoundary";
+import EventDiscovery from '~website/containers/EventDiscovery';
 
 interface WebsiteApplicationProps {
   setRouter: typeof routerActions.setRouter;
@@ -73,6 +74,7 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
               component={LoadableStudentGroupsDiscovery}
             />
             <Route path="/freshers" component={FreshersContentAPI} />
+            <Route path="/event-discovery" component={EventDiscovery} />
             <Route path="/get-involved" component={ContentAPI} exact />
             <Route path="/content-root-example" component={ContentAPI} />
             <Route path="/support" component={ContentAPI} exact />

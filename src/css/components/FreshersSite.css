@@ -24,3 +24,105 @@
   width: 100%;
   height: auto;
 }
+
+.FreshersHomepage {
+
+  & h2 {
+    @mixin type canon;
+  }
+
+  & h3 {
+    @mixin type paragon;
+  }
+
+  & p {
+    @mixin type body-copy;
+    max-width: 660px;
+  }
+
+  &__slice {
+    padding: 2rem 0;
+  }
+
+  &__slice--events {
+    background: #4bc1c2;
+
+    h2 {
+      color: #1E1C50;
+    }
+
+    p {
+      color: #1A686A;
+    }
+  }
+
+  &__slice--gt {
+    background: #ec5453;
+
+    h2 {
+      color: #1E1C50;
+    }
+  }
+
+  &__slice--preview {
+    padding: 20vh 0;
+    text-align: center;
+    color: #1E1C50;
+    text-shadow: 3px 3px 0 var(--color__f18-teal), 6px 6px 0 var(--color__f18-pink), 9px 9px 0 var(--color__f18-orange), 12px 12px 0 var(--color__f18-purple);
+
+    h1 {
+      @mixin type canon;
+    }
+  }
+
+  &__slice--union {
+    background: #fff;
+
+    h2 {
+      color: #1E1C50;
+    }
+
+    h3 {
+      color: var(--color__f18-purple);
+    }
+
+    p {
+      color: var(--color__grey-sad-slate);
+    }
+  }
+}
+
+.FGT {
+  &__header {
+    @media (--medium) {
+      display: flex;
+    }
+  }
+
+  &__heading {
+    flex: 1 1 auto;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+
+  &__ticket {
+    transform: rotate(4deg);
+    width: 100%;
+
+    @media (--medium) {
+      max-width: 40%;
+      transform: rotate(12deg);
+      margin-right: -6%;
+      margin-top: -40px;
+    }
+  }
+}
+
+.FUnion {
+  &__areas {
+
+    @media (--medium) {
+      gg: columns(1/3 1/3 1/3);
+    }
+  }
+}

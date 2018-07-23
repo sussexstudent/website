@@ -1,0 +1,32 @@
+.master-root {
+  margin: 20px auto;
+  position: relative;
+  min-height: 400px;
+  max-height: 100px;
+  width: 400px;
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+}
+
+.card {
+  border-radius: 6px;
+  background-color: white;
+  background-size: cover;
+  position: absolute;
+  background: #F8F3F3;
+  height: 200px;
+  width: 180px;
+  margin: 0 auto;
+  transition: box-shadow .3s;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.animate {
+  transition: transform .3s;
+  box-shadow: none;
+}
+
+.inactive {
+  box-shadow: none;
+}

@@ -1,23 +1,26 @@
 import React from 'react';
-import {ErrorState} from "~components/ErrorState";
-import {withRouter, RouteComponentProps} from 'react-router';
+import { ErrorState } from '~components/ErrorState';
+import { withRouter, RouteComponentProps } from 'react-router';
 
 interface ErrorBoundaryProps extends RouteComponentProps<any> {
-  children?: any,
-  FallbackComponent?: any,
-  onError?: (error: Error, componentStack: string) => void,
+  children?: any;
+  FallbackComponent?: any;
+  onError?: (error: Error, componentStack: string) => void;
 }
 
 interface ErrorInfo {
-  componentStack: string,
+  componentStack: string;
 }
 
 interface ErrorBoundaryState {
-  error: Error | null,
-  info: ErrorInfo | null,
+  error: Error | null;
+  info: ErrorInfo | null;
 }
 
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBoundary extends React.Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   static defaultProps = {
     FallbackComponent: ErrorState,
   };
@@ -36,7 +39,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 
   componentDidCatch(error: Error, info: ErrorInfo): void {
-    const {onError} = this.props;
+    const { onError } = this.props;
 
     if (typeof onError === 'function') {
       try {
@@ -48,8 +51,8 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 
   render() {
-    const {children, FallbackComponent} = this.props;
-    const {error, info} = this.state;
+    const { children, FallbackComponent } = this.props;
+    const { error, info } = this.state;
 
     if (error !== null) {
       return (

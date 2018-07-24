@@ -1,8 +1,8 @@
 .FreshersSite {
   background-color: var(--color__f18-blue);
   color: #ffffff;
+  overflow: hidden;
   margin-top: -1rem;
-  padding-top: 2rem;
 }
 
 .FreshersLogoContainer {
@@ -26,6 +26,17 @@
 }
 
 .FreshersHomepage {
+  .SplashSlice {
+    margin-top: -1rem;
+    padding-top: 2rem;
+    min-height: 70vh;
+  }
+
+  &__attend {
+    a {
+      color: #ffffff;
+    }
+  }
 
   & h2 {
     @mixin type canon;
@@ -48,11 +59,11 @@
     background: #4bc1c2;
 
     h2 {
-      color: #1E1C50;
+      color: #1e1c50;
     }
 
     p {
-      color: #1A686A;
+      color: #1a686a;
     }
   }
 
@@ -60,15 +71,16 @@
     background: #ec5453;
 
     h2 {
-      color: #1E1C50;
+      color: #1e1c50;
     }
   }
 
   &__slice--preview {
     padding: 20vh 0;
     text-align: center;
-    color: #1E1C50;
-    text-shadow: 3px 3px 0 var(--color__f18-teal), 6px 6px 0 var(--color__f18-pink), 9px 9px 0 var(--color__f18-orange), 12px 12px 0 var(--color__f18-purple);
+    color: var(--color__f18-teal);
+    text-shadow: 3px 3px 0 #1e1c50, 6px 6px 0 var(--color__f18-pink),
+      9px 9px 0 var(--color__f18-orange), 12px 12px 0 var(--color__f18-purple);
 
     h1 {
       @mixin type canon;
@@ -79,7 +91,7 @@
     background: #fff;
 
     h2 {
-      color: #1E1C50;
+      color: #1e1c50;
     }
 
     h3 {
@@ -116,13 +128,40 @@
       margin-top: -40px;
     }
   }
+
+  &__countdown {
+    font-family: var(--type__primary);
+    color: var(--color__grey-slate);
+    text-transform: uppercase;
+    @mixin type trafalgar;
+    text-align: center;
+    font-weight: bold;
+  }
 }
 
 .FUnion {
   &__areas {
-
     @media (--medium) {
       gg: columns(1/3 1/3 1/3);
+    }
+
+    & a {
+      font-family: var(--type__primary);
+      font-weight: 600;
+      text-decoration: none;
+
+      color: #ffffff;
+      background-color: var(--color__f18-purple);
+      padding: 0.4em 0.8em;
+      font-size: 1rem;
+      line-height: 1rem;
+      margin-bottom: 0.5em;
+
+      &::after {
+        content: '>';
+        padding-left: 0.2em;
+        display: inline;
+      }
     }
   }
 }

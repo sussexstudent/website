@@ -3,7 +3,7 @@ import CONTENT_PAGE_QUERY from './ContentPageQuery.graphql';
 import pageMap from '~website/containers/content/pageMap';
 import { HandledQuery } from '~components/HandledQuery';
 import Helmet from 'react-helmet';
-import {FourOhFourPage} from "./FourOhFourPage";
+import { FourOhFourPage } from './FourOhFourPage';
 
 interface OwnProps {
   path: string;
@@ -51,7 +51,9 @@ const ContentPage: React.SFC<IProps> = (props: IProps) => {
           return (
             <React.Fragment>
               <Helmet title={page.seoTitle || page.title}>
-                {page.searchDescription && <meta name="description" content={page.searchDescription} />}
+                {page.searchDescription && (
+                  <meta name="description" content={page.searchDescription} />
+                )}
               </Helmet>
 
               <Component page={page} />

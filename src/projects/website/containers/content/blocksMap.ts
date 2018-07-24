@@ -11,8 +11,8 @@ import {
 } from '~website/containers/content/blocks/Links';
 import { ImageBlock } from '~website/containers/content/blocks/Image';
 import { ButtonGroupBlock } from '~website/containers/content/blocks/ButtonGroup';
-import {StartButtonBlock} from "~website/containers/content/blocks/StartButton";
-import {AlertTextBlock} from "~website/containers/content/blocks/AlertText";
+import { StartButtonBlock } from '~website/containers/content/blocks/StartButton';
+import { AlertTextBlock } from '~website/containers/content/blocks/AlertText';
 
 interface BlockComponentMap {
   [blockName: string]: StreamFieldBlock<any>; // todo

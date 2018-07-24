@@ -1,11 +1,10 @@
 import React from 'react';
-import {InternalAppLink} from "~components/InternalAppLink";
-import {StreamFieldData} from "~website/containers/content/types";
+import { InternalAppLink } from '~components/InternalAppLink';
+import { StreamFieldData } from '~website/containers/content/types';
 
 interface StaffOwnersProps {
-  staff: StreamFieldData
+  staff: StreamFieldData;
 }
-
 
 export const StaffOwners = ({ staff }: StaffOwnersProps) => (
   <div>
@@ -13,7 +12,9 @@ export const StaffOwners = ({ staff }: StaffOwnersProps) => (
     <ul>
       {staff.map((staffMember: any) => (
         <li>
-          <InternalAppLink to="">Contact {staffMember.value.name}</InternalAppLink>
+          <InternalAppLink to="">
+            Contact {staffMember.value.name}
+          </InternalAppLink>
         </li>
       ))}
     </ul>

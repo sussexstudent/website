@@ -9,7 +9,7 @@ import { IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import introspectionQueryResultData from '../../fragmentTypes.json';
 
 const fragmentMatcher = new IntrospectionFragmentMatcher({
-  introspectionQueryResultData: (introspectionQueryResultData as any)
+  introspectionQueryResultData: introspectionQueryResultData as any,
 });
 
 const link = new HttpLink({

@@ -13,7 +13,7 @@ import ContentExplorer from '~website/layouts/ContentExplorer';
 import { LoadableLoading } from '~components/LoadableLoading';
 import Loadable from 'react-loadable';
 import Helmet from 'react-helmet';
-import ErrorBoundary from "../../../../components/ErrorBoundary";
+import ErrorBoundary from '../../../../components/ErrorBoundary';
 import EventDiscovery from '~website/containers/EventDiscovery';
 
 interface WebsiteApplicationProps {

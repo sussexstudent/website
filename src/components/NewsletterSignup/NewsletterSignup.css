@@ -7,7 +7,8 @@
   font-size: 1.6rem;
   max-width: 660px;
   font-family: var(--type__primary);
-  margin: 2rem auto 0;
+  margin: 0 auto;
+  padding: 2rem 0;
 
   &__input {
     font-family: var(--type__primary);

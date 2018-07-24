@@ -13,17 +13,17 @@
   background-color: white;
   background-size: cover;
   position: absolute;
-  background: #F8F3F3;
+  background: #f8f3f3;
   height: 200px;
   width: 180px;
   margin: 0 auto;
-  transition: box-shadow .3s;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
 
 .animate {
-  transition: transform .3s;
+  transition: transform 0.3s;
   box-shadow: none;
 }
 

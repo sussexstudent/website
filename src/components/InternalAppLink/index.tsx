@@ -56,12 +56,7 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
         const href = history.createHref(location);
 
         return (
-          <a
-            {...props}
-            ref={innerRef}
-            onClick={this.handleClick}
-            href={href}
-          />
+          <a {...props} ref={innerRef} onClick={this.handleClick} href={href} />
         );
       }
 

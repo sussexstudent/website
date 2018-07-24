@@ -12,16 +12,11 @@ const OPTIONS_MERGE: {
 } = {
   LEVEL: {
     Undergraduate: 'Undergraduate',
-    'Taught postgraduate': 'Taught postgraduate',
-    'Research postgraduate': 'Research postgraduate',
-    'Not a Sussex/BSMS student': 'Not a Sussex/BSMS student',
+    Postgraduate: 'Postgraduate',
   },
-  FEE: {
-    'Home (UK) student': 'Home (UK) student',
-    'EU student': 'EU student',
-    'International student': 'International student',
-    'Visiting/exchange student': 'Visiting/exchange student',
-    'Not a Sussex/BSMS student': 'Not a Sussex/BSMS student',
+  GENRE: {
+    quirky: 'Quirky',
+    exciting: 'Exciting',
   },
 };
 
@@ -58,7 +53,7 @@ const RESPONSE_TEXT: {
   [FormState.AddressSuccess]: () =>
     "Check your inbox to confirm! But first, what's your name?",
   [FormState.NameSuccess]: () => `Thanks! What will you be?`,
-  [FormState.LevelSuccess]: () => `Great. Where are you coming from?`,
+  [FormState.LevelSuccess]: () => `What sort of week would you prefer?`,
   [FormState.FeeSuccess]: (data) => `See you in September, ${data.name}!`,
   [FormState.Complete]: () => `See you in September!`,
   [FormState.Error]: () =>
@@ -73,7 +68,7 @@ class NewsletterSignup extends React.Component<IProps, IState> {
   private handleNameSubmit: () => void;
   private handleStatusSubmit: () => void;
   private handleLevel: (level: string) => void;
-  private handleFee: (fee: string) => void;
+  private handleGenre: (fee: string) => void;
 
   constructor(props: IProps) {
     super(props);
@@ -182,9 +177,9 @@ class NewsletterSignup extends React.Component<IProps, IState> {
       });
     };
 
-    this.handleFee = (fee: string) => {
+    this.handleGenre = (genre: string) => {
       fieldUpdate(FormState.FeeSuccess, {
-        FEE: fee,
+        GENRE: genre,
       });
     };
 
@@ -277,14 +272,14 @@ class NewsletterSignup extends React.Component<IProps, IState> {
           {currentState === FormState.LevelSuccess ? (
             <div className="NewsletterSignup__form">
               <ul className="NewsletterSignup__options">
-                {Object.keys(OPTIONS_MERGE.FEE).map((key) => (
+                {Object.keys(OPTIONS_MERGE.GENRE).map((key) => (
                   <li className="NewsletterSignup__options-item">
                     <button
                       type="button"
                       className="NewsletterSignup__options-button"
-                      onClick={this.handleFee.bind(this, key)}
+                      onClick={this.handleGenre.bind(this, key)}
                     >
-                      {OPTIONS_MERGE.FEE[key]}
+                      {OPTIONS_MERGE.GENRE[key]}
                     </button>
                   </li>
                 ))}

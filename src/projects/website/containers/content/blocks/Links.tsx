@@ -1,7 +1,7 @@
 import React from 'react';
 import { StreamFieldBlock } from '~website/containers/content/types';
 import { normaliseContentLink } from '~website/containers/content/utils';
-import {BlockLink} from "~components/BlockLink";
+import { BlockLink } from '~components/BlockLink';
 
 export const ExternalLink: StreamFieldBlock<{
   link: string;
@@ -22,9 +22,5 @@ export const InternalLink: StreamFieldBlock<{
   target: any;
   title: string;
 }> = ({ block: { link, title } }) => {
-  return (
-    <BlockLink to={link.path}>
-      {title}
-    </BlockLink>
-  );
+  return <BlockLink to={link.path}>{title}</BlockLink>;
 };

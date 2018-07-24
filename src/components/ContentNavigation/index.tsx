@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import slugify from '~libs/slugify';
-import {InternalAppLink} from '~components/InternalAppLink';
+import { InternalAppLink } from '~components/InternalAppLink';
 
 interface Section {
   anchor: string;
@@ -56,19 +56,14 @@ const ContentNavigation: React.SFC<IProps> = ({
             })}
           >
             {item.to !== undefined ? (
-                <InternalAppLink
-                  to={item.to}
-                  className="NavigationCard__anchor"
-                >
-                  {item.name}
-                </InternalAppLink>
-              )
-              : <a
-                className="NavigationCard__anchor"
-                href={`#${item.anchor}`}
-              >
+              <InternalAppLink to={item.to} className="NavigationCard__anchor">
                 {item.name}
-              </a>}
+              </InternalAppLink>
+            ) : (
+              <a className="NavigationCard__anchor" href={`#${item.anchor}`}>
+                {item.name}
+              </a>
+            )}
             {item.children &&
             item.children.length > 0 &&
             (canDisplaySubMenu(
@@ -92,13 +87,14 @@ const ContentNavigation: React.SFC<IProps> = ({
                       >
                         {itemInner.name}
                       </InternalAppLink>
-                      )
-                     : <a
+                    ) : (
+                      <a
                         className="NavigationCard__anchor"
                         href={`#${itemInner.anchor}`}
                       >
                         {itemInner.name}
-                      </a>}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

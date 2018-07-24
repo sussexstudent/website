@@ -1,11 +1,10 @@
 import React from 'react';
-import {InternalAppLink} from "~components/InternalAppLink";
-import {StreamFieldData} from "~website/containers/content/types";
+import { InternalAppLink } from '~components/InternalAppLink';
+import { StreamFieldData } from '~website/containers/content/types';
 
 interface RelatedContentProps {
-  relatedContent: StreamFieldData
+  relatedContent: StreamFieldData;
 }
-
 
 export const RelatedContent = ({ relatedContent }: RelatedContentProps) => (
   <div>
@@ -15,7 +14,9 @@ export const RelatedContent = ({ relatedContent }: RelatedContentProps) => (
         <ul>
           {linkSection.value.links.map((link: any) => (
             <li>
-              <InternalAppLink key={link.id} to={link.value.link.path}>{link.value.link.title}</InternalAppLink>
+              <InternalAppLink key={link.id} to={link.value.link.path}>
+                {link.value.link.title}
+              </InternalAppLink>
             </li>
           ))}
         </ul>

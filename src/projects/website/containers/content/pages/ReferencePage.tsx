@@ -1,14 +1,18 @@
 import React from 'react';
 import { Page, StreamFieldData } from '~website/containers/content/types';
 import StreamField from '~website/containers/content/StreamField';
-import {getHeadingsFromStreamField} from "~website/containers/content/utils";
-import ContentNavigation from "~components/ContentNavigation";
-import slugify from "~libs/slugify";
-import {RelatedContent} from "~website/components/RelatedContent";
-import {StaffOwners} from "~website/components/StaffOwners";
+import { getHeadingsFromStreamField } from '~website/containers/content/utils';
+import ContentNavigation from '~components/ContentNavigation';
+import slugify from '~libs/slugify';
+import { RelatedContent } from '~website/components/RelatedContent';
+import { StaffOwners } from '~website/components/StaffOwners';
 
 interface IProps {
-  page: Page<{ content: StreamFieldData, relatedLinks: StreamFieldData, staffOwners: StreamFieldData }>; // todo
+  page: Page<{
+    content: StreamFieldData;
+    relatedLinks: StreamFieldData;
+    staffOwners: StreamFieldData;
+  }>; // todo
 }
 
 class ReferencePage extends React.Component<IProps> {
@@ -27,7 +31,14 @@ class ReferencePage extends React.Component<IProps> {
         <h1 className="type-trafalgar">{page.title}</h1>
         <div className="LayoutContent">
           <div className="LayoutContent__toc">
-            <ContentNavigation title="Sections" items={headings.map(heading => ({ name: heading, anchor: slugify(heading), children: [] }))} />
+            <ContentNavigation
+              title="Sections"
+              items={headings.map((heading) => ({
+                name: heading,
+                anchor: slugify(heading),
+                children: [],
+              }))}
+            />
           </div>
           <div className="LayoutContent__main">
             <StreamField items={content} page={page} />

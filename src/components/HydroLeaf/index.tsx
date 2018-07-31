@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
-import { ContextToPropsMap, HydroLeafOptions } from '../../types/hydro';
+import { ContextToPropsMap, HydroLeafOptions } from '~types/hydro';
 
 let hydroId: number = 0;
 
@@ -38,7 +38,7 @@ interface ISerialProps {
 function HydroLeaf({
   contextToProps = {},
   className = '',
-  name = null,
+  name = undefined,
   container = DefaultContainer,
   disableSSR = false,
   providers = [],
@@ -123,7 +123,7 @@ function HydroLeaf({
 
           return container({
             className: `${className} Hydro`,
-            'data-component': name !== null ? name : Component.name,
+            'data-component': name !== undefined ? name : Component.name,
             ...hydroIdSpread,
             dangerouslySetInnerHTML: {
               __html: `${componentMarkup}${dataAc}`,

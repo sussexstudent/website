@@ -1,17 +1,22 @@
 import React from 'react';
 import routes from '../../projects/website/routes';
 import * as routerActions from '../../projects/website/ducks/router';
-import { WebsiteRootState } from '../../types/website';
+import { WebsiteRootState } from '~types/website';
 import { connect } from 'react-redux';
 import { History, createLocation } from 'history';
 
-interface InternalAppLinkProps extends React.HTMLProps<HTMLAnchorElement> {
+interface InternalAppLinkComponentProps {
   to: string;
-  history: History;
   replace?: boolean;
   innerRef?: any;
+}
+
+interface InternalAppLinkAmbientProps {
+  history: null | History;
   navigateTo: typeof routerActions.navigateTo;
 }
+
+type InternalAppLinkProps = InternalAppLinkAmbientProps & InternalAppLinkComponentProps & React.HTMLProps<HTMLAnchorElement>;
 
 const isModifiedEvent = (event: React.MouseEvent<HTMLAnchorElement>) =>
   !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
@@ -70,7 +75,11 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
       // );
     }
 
-    return <a {...props} ref={innerRef} href={to} />;
+    return React.createElement('a', {
+      ...props,
+      ref: innerRef,
+      href: to,
+    })
   }
 }
 

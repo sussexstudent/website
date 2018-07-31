@@ -19,7 +19,7 @@ interface IProps {
 }
 
 const NewsBlock = ({
-  item: { title, link, publishedDate, led, imageURL = null },
+  item: { title, link, publishedDate, led, imageURL },
 }: IProps) => (
   <li className="NewsGrid__item NewsBlock">
     <a className="NewsBlock__link" href={link}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { render, Simulate } from 'react-testing-library';
+import { render, fireEvent } from 'react-testing-library';
 
 import CookieMessage from './index';
 
@@ -13,7 +13,7 @@ it('hides on close', () => {
   const { getByText, container } = render(<CookieMessage />);
   const closeButton = getByText('Close');
 
-  Simulate.click(closeButton);
+  fireEvent(closeButton, new MouseEvent('click'));
 
   expect(container.firstChild).toBeNull();
 });

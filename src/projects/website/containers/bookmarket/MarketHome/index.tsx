@@ -28,7 +28,7 @@ interface Result {
   allMarketSections: MarketSection[];
 }
 
-type IProps = ComponentProps & CurrentUserProps;
+type IProps = ComponentProps;
 
 class MarketHomeQuery extends HandledQuery<Result, {}> {}
 
@@ -147,8 +147,8 @@ const MarketHomeComponent: React.SFC<IProps> = (props) => {
   );
 };
 
-const MarketHome = compose<ComponentProps, IProps>(
+const MarketHome = compose<ComponentProps, {}>(
   withState('query', 'setQuery', ''),
-)(MarketHomeComponent as any); // todo
+)(MarketHomeComponent);
 
 export { MarketHome };

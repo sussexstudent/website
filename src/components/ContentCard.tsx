@@ -7,9 +7,9 @@ interface IProps {
   bleed?: boolean;
 }
 
-const ContentCard = ({ anchor = null, children, bleed = false }: IProps) => (
+const ContentCard = ({ anchor = undefined, children, bleed = false }: IProps) => (
   <div className={cx('ContentCard', { 'ContentCard--bleed': bleed })}>
-    {anchor !== null ? (
+    {anchor !== undefined ? (
       <span className="u-position-anchor" id={anchor} />
     ) : null}
     {children}

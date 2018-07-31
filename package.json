@@ -210,7 +210,8 @@
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
-      "!src/**/*.{svg,d.ts,stories.tsx}"
+      "!src/**/*.{svg,d.ts,stories.tsx}",
+      "!src/projects/app/**/*"
     ],
     "transform": {
       "^.+\\.tsx?$": "ts-jest",

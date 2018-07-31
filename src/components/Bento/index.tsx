@@ -1,16 +1,16 @@
 import React from 'react';
 import { BentoBoxImpulse } from '~components/Bento/BentoBoxImpulse';
 import { HighlightTextBox } from '~components/Bento/treatments/HighlightTextBox';
-import { StudentAwardsBox } from '~components/Bento/treatments/StudentAwardsBox';
+import { F18Box } from '~components/Bento/treatments/F18Box';
 
 const Bento: React.SFC<{}> = () => (
   <div className="Bento Trail">
     <div className="Trail__row Trail__row--21 Bento__main-row">
-      <StudentAwardsBox />
+      <F18Box link={"/freshers"} />
       <HighlightTextBox
-        link="https://www.surveymonkey.co.uk/r/MW22Y5Y"
-        imageUrl="original_images/e8236f9aa8194f56a17b90764bd6aadd"
-        heading="Rate the union in our survey"
+        link="/eastslope"
+        imageUrl="original_images/1aa86c330010462297bac8ee679b5aa3"
+        heading="East Slope Merchandise available now!"
       />
     </div>
     <div className="Trail__row Trail__row--111">

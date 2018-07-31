@@ -7,8 +7,10 @@ const Footer = () => (
       <div className="Footer__contact">
         <h3>Contact us</h3>
         <p>
-          01273 678152<br />
-          info@sussexstudent.com<br />
+          01273 678152
+          <br />
+          info@sussexstudent.com
+          <br />
           Falmer House, Falmer, East Sussex, BN1 9QF
         </p>
 

@@ -86,10 +86,8 @@ function FalmerEvents() {
                           {item.children.length > 0 ? (
                             <small>
                               {' '}
-                              ({item.children.length} sub-{plural(
-                                item.children.length,
-                                'event',
-                              )})
+                              ({item.children.length} sub-
+                              {plural(item.children.length, 'event')})
                             </small>
                           ) : null}
                         </Link>

@@ -16,7 +16,9 @@ interface InternalAppLinkAmbientProps {
   navigateTo: typeof routerActions.navigateTo;
 }
 
-type InternalAppLinkProps = InternalAppLinkAmbientProps & InternalAppLinkComponentProps & React.HTMLProps<HTMLAnchorElement>;
+type InternalAppLinkProps = InternalAppLinkAmbientProps &
+  InternalAppLinkComponentProps &
+  React.HTMLProps<HTMLAnchorElement>;
 
 const isModifiedEvent = (event: React.MouseEvent<HTMLAnchorElement>) =>
   !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
@@ -79,7 +81,7 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
       ...props,
       ref: innerRef,
       href: to,
-    })
+    });
   }
 }
 

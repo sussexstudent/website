@@ -26,9 +26,12 @@ const StaffPage = () => (
             <p>
               {"University of Sussex Students' Union"}
               <br />
-              Falmer House<br />
-              Falmer<br />
-              East Sussex<br />
+              Falmer House
+              <br />
+              Falmer
+              <br />
+              East Sussex
+              <br />
               BN1 9QF
             </p>
           </ContentCard>
@@ -69,7 +72,8 @@ const StaffPage = () => (
                     press@sussexstudent.com&nbsp;
                   </a>
                   <br />
-                  01273 87 2636<br />
+                  01273 87 2636
+                  <br />
                   07738 40 6823
                 </p>
               </div>
@@ -82,7 +86,8 @@ const StaffPage = () => (
                     support@sussexstudent.com
                   </a>
                   <br />
-                  01273 87 2636<br />
+                  01273 87 2636
+                  <br />
                   &nbsp;
                 </p>
               </div>
@@ -90,7 +95,8 @@ const StaffPage = () => (
               <div className="col-sm-4">
                 <h3>Advertising and Sponsorship</h3>
                 <a href="http://marketingsponsorship@sussexstudent.com">
-                  marketingsponsorship<br />
+                  marketingsponsorship
+                  <br />
                   @sussexstudent.com
                 </a>
 
@@ -99,13 +105,16 @@ const StaffPage = () => (
 
               <div className="col-sm-4 col-sm-offset-2">
                 <h3>
-                  Finance Office<br />
+                  Finance Office
+                  <br />
                   &nbsp;
                 </h3>
 
                 <p>
-                  (For payment and invoice queries)<br />
-                  01273 67 8150<br />
+                  (For payment and invoice queries)
+                  <br />
+                  01273 67 8150
+                  <br />
                   &nbsp;
                 </p>
               </div>
@@ -127,7 +136,8 @@ const StaffPage = () => (
 
                 <p>
                   <a href="mailto:welcometeam@ussu.sussex.ac.uk">
-                    welcometeam@<br />
+                    welcometeam@
+                    <br />
                     ussu.sussex.ac.uk
                   </a>
                   <br />

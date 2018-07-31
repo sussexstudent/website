@@ -173,7 +173,8 @@ class PolicyGenerator extends React.Component {
         <p>
           <strong>
             As a Sussex BSMS, IDS student or researcher you&#39;ve got great
-            ideas for things that should be different here.<br />
+            ideas for things that should be different here.
+            <br />
             That&#39;s all you need to be a candidate in our elections.
           </strong>
         </p>

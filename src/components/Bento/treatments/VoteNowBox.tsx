@@ -177,19 +177,35 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
             >
               <div style={timeBox}>
                 <span>{days}</span>
-                <span> day{days !== 1 ? 's' : null}</span>
+                <span>
+                  {' '}
+                  day
+                  {days !== 1 ? 's' : null}
+                </span>
               </div>
               <div style={timeBox}>
                 <span>{hours}</span>
-                <span> hour{hours !== 1 ? 's' : null}</span>
+                <span>
+                  {' '}
+                  hour
+                  {hours !== 1 ? 's' : null}
+                </span>
               </div>
               <div style={timeBox}>
                 <span>{minutes}</span>
-                <span> minute{minutes !== 1 ? 's' : null}</span>
+                <span>
+                  {' '}
+                  minute
+                  {minutes !== 1 ? 's' : null}
+                </span>
               </div>
               <div style={timeBox}>
                 <span>{seconds}</span>
-                <span> second{seconds !== 1 ? 's' : null}</span>
+                <span>
+                  {' '}
+                  second
+                  {seconds !== 1 ? 's' : null}
+                </span>
               </div>
             </h2>
           </div>

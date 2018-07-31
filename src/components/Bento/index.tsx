@@ -6,7 +6,7 @@ import { F18Box } from '~components/Bento/treatments/F18Box';
 const Bento: React.SFC<{}> = () => (
   <div className="Bento Trail">
     <div className="Trail__row Trail__row--21 Bento__main-row">
-      <F18Box link={"/freshers"} />
+      <F18Box link={'/freshers'} />
       <HighlightTextBox
         link="/eastslope"
         imageUrl="original_images/1aa86c330010462297bac8ee679b5aa3"

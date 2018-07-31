@@ -9,7 +9,9 @@ interface IProps {
 
 const NewsList = ({ items, fullWidth = false }: IProps) => (
   <ul className={cx('NewsGrid', { 'NewsGrid--full-width': fullWidth })}>
-    {items.map((item) => <NewsBlock item={item} key={item.id} />)}
+    {items.map((item) => (
+      <NewsBlock item={item} key={item.id} />
+    ))}
   </ul>
 );
 

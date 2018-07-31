@@ -48,7 +48,9 @@ class FreshersHomepage extends React.Component<{}, { showVideo: boolean }> {
           <div className="FreshersHomepage__slice FreshersHomepage__slice--events">
             <div className="LokiContainer">
               <h2>
-                With over 100 events,<br />Freshers Week is for everyone
+                With over 100 events,
+                <br />
+                Freshers Week is for everyone
               </h2>
               <p>
                 The Students’ Union put on over 100 events for you in Freshers
@@ -92,8 +94,9 @@ class FreshersHomepage extends React.Component<{}, { showVideo: boolean }> {
               <div className="FGT__header">
                 <div>
                   <h2 className="FGT__heading">
-                    Save on the biggest events<br />with the Freshers Golden
-                    Ticket
+                    Save on the biggest events
+                    <br />
+                    with the Freshers Golden Ticket
                   </h2>
                   <p>
                     The Golden Ticket gives you access to the week’s biggest and
@@ -121,7 +124,8 @@ class FreshersHomepage extends React.Component<{}, { showVideo: boolean }> {
               <NewsletterSignup />
 
               <h3 className="tac">
-                Limited Golden Tickets Available,<br />
+                Limited Golden Tickets Available,
+                <br />
                 Guaranteed to Sell Out!
               </h3>
             </div>

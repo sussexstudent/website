@@ -52,19 +52,35 @@ export class Countdown extends React.Component<CountdownProps, CountdownState> {
       <div>
         <div>
           <span>{days}</span>
-          <span> day{days !== 1 ? 's' : null}</span>
+          <span>
+            {' '}
+            day
+            {days !== 1 ? 's' : null}
+          </span>
         </div>
         <div>
           <span>{hours}</span>
-          <span> hour{hours !== 1 ? 's' : null}</span>
+          <span>
+            {' '}
+            hour
+            {hours !== 1 ? 's' : null}
+          </span>
         </div>
         <div>
           <span>{minutes}</span>
-          <span> minute{minutes !== 1 ? 's' : null}</span>
+          <span>
+            {' '}
+            minute
+            {minutes !== 1 ? 's' : null}
+          </span>
         </div>
         <div>
           <span>{seconds}</span>
-          <span> second{seconds !== 1 ? 's' : null}</span>
+          <span>
+            {' '}
+            second
+            {seconds !== 1 ? 's' : null}
+          </span>
         </div>
       </div>
     );

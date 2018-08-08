@@ -1,3 +1,9 @@
 .ContentBlock {
   margin-bottom: 2rem;
+
+  &__heading {
+    font-family: var(--type__primary);
+    font-weight: bold;
+    @mixin type double-pica;
+  }
 }

@@ -7,6 +7,7 @@ export interface AwardAuthority {
 export interface Award {
   id: string;
   name: string;
+  link: string;
   description: string;
   authority: AwardAuthority;
   icon: string;

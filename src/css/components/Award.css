@@ -2,6 +2,7 @@
   font-family: var(--type__primary);
   display: flex;
   flex-direction: column;
+  text-decoration: none;
 
   &__disc {
     border-radius: 50%;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { getGrade, Icon } from '~components/TrophyCabinet/utils';
 import { Award } from '~components/TrophyCabinet/Award';
-import { AwardPeriod } from '../../types/awards';
+import { AwardPeriod } from '~types/awards';
 
 export function PeriodList({ data }: { data: AwardPeriod[] }) {
   return (
@@ -16,6 +16,7 @@ export function PeriodList({ data }: { data: AwardPeriod[] }) {
               <li>
                 <Award
                   color={getGrade(awarded, awardPeriod.authority).color}
+                  link={awarded.award.link}
                   title={awarded.award.name}
                   description={
                     awarded.award.description || 'No description provided'

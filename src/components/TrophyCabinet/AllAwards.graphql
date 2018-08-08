@@ -13,8 +13,9 @@ query AllGroupAwards($slug: String) {
       awarded {
         grade
         award {
-          description
           name
+          description
+          link
           icon
         }
       }

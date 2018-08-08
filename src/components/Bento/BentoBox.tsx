@@ -1,13 +1,14 @@
 import React from 'react';
+import { InternalAppLink } from '~components/InternalAppLink';
 
 interface IProps {
   link: string;
 }
 
 const BentoBox: React.SFC<IProps> = (props) => (
-  <a className="BentoBox BentoBox--anchor" href={props.link}>
+  <InternalAppLink className="BentoBox BentoBox--anchor" to={props.link}>
     {props.children}
-  </a>
+  </InternalAppLink>
 );
 
 export { BentoBox };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { InternalAppLink } from '~components/InternalAppLink';
 
 interface IProps {
   link: string;
@@ -6,14 +7,14 @@ interface IProps {
 }
 
 const BentoBoxImpulse: React.SFC<IProps> = (props) => (
-  <a
+  <InternalAppLink
     className={`type-great-primer BentoBox BentoBox--anchor BentoBox--impulse BentoBox--color-${
       props.color
     }`}
-    href={props.link}
+    to={props.link}
   >
     {props.children}
-  </a>
+  </InternalAppLink>
 );
 
 export { BentoBoxImpulse };

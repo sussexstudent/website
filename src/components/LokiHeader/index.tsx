@@ -44,15 +44,15 @@ class LokiHeaderComponent extends React.Component<
             <span className="LokiHeader__button-mobile-label">Search</span>
           </InternalAppLink>
           <div className="LokiHeader__logo">
-            <a
+            <InternalAppLink
               className="LokiHeader__logo-link"
-              href="/"
+              to="/"
               style={{ color: '#ee534f' }}
               title="Sussex Students' Union"
             >
               <StudentsUnionLogoNoLogotype />
               <span className="u-h">Sussex Students' Union</span>
-            </a>
+            </InternalAppLink>
           </div>
           <div className="LokiHeader__parts">
             <div className="LokiHeader__top-row">

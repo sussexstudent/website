@@ -1,4 +1,4 @@
-query EventList($fromTime: String) {
+query EventList($fromTime: DateTime) {
   allEvents(filter: { fromTime: $fromTime }, first: 4) {
     edges {
       node {

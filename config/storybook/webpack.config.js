@@ -96,7 +96,7 @@ config.plugins = config.plugins.concat([
 config.module.rules = config.module.rules.concat([
   {
     test: /\.jsx?$/,
-    loaders: ['babel-loader?cacheDirectory&forceEnv=bundle'],
+    loaders: ['babel-loader?cacheDirectory&envName=bundle'],
     exclude: /node_modules/,
   },
   {

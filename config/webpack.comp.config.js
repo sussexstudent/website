@@ -31,7 +31,7 @@ config.plugins = [
 config.module.rules = config.module.rules.concat([
   {
     test: /\.js?$/,
-    loaders: ['babel-loader?forceEnv=comp'],
+    loaders: ['babel-loader?envName=comp'],
     exclude: /node_modules/,
   },
   {

@@ -4,8 +4,8 @@ import { StreamFieldBlock } from '~website/containers/content/types';
 import slugify from '~libs/slugify';
 import { getTextFromElementChildren } from '~website/containers/content/utils';
 
-export const TextBlock: StreamFieldBlock<string> = ({ block }) => {
-  const html = convert(block, {
+export const TextBlock: StreamFieldBlock<{ value: string }> = ({ block }) => {
+  const html = convert(block.value, {
     transform: {
       h2: (props) => (
         <h2 {...props} id={slugify(getTextFromElementChildren(props.children))}>

@@ -4,14 +4,14 @@ import { HandledQuery } from '~components/HandledQuery';
 import EXAMPLE_QUERY from './ExampleQuery.graphql';
 import './test.css';
 
-class EventQuery extends HandledQuery<any, { brandSlug: string }> {}
+class EventQuery extends HandledQuery<any, { brand: string }> {}
 
 export default class EventDiscovery extends React.Component {
   render() {
     return (
       <EventQuery
         query={EXAMPLE_QUERY}
-        variables={{ brandSlug: 'freshers-week-2017' }}
+        variables={{ brand: 'freshers-week-2017' }}
       >
         {(props) => {
           return (

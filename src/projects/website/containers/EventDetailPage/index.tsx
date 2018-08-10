@@ -1,21 +1,22 @@
 import React from 'react';
+import cx from 'classnames';
 import bind from 'bind-decorator';
-import { Helmet } from 'react-helmet';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 import { ChildProps, graphql } from 'react-apollo';
 import ContentCard from '~components/ContentCard';
-import JsonLd from '~components/JsonLd';
 import Loader from '~components/Loader';
 import DetailPageQuery from './EventsDetailPage.graphql';
 import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
 import { Event } from '~types/events';
 
 import apolloHandler from '~components/apolloHandler';
-import { generateStylesForBrand } from '~website/containers/EventsApplication/utils';
-import { AspectRatio, OneImage } from '~components/OneImage';
+import { AspectRatio, OneImageBackground } from '~components/OneImage';
 import { EventDetailDetails } from '~website/containers/EventDetailPage/EventDetailDetails';
 import { EventDetailSidebar } from '~website/containers/EventDetailPage/EventDetailSidebar';
 import { MSLEventCommunication } from '~website/containers/EventDetailPage/MSLEventCommunication';
+import { EventDetailMetadata } from '~website/containers/EventDetailPage/EventDetailMetadata';
+import PatternPlaceholder from '~components/PatternPlaceholder';
+import Button from "~components/Button";
 
 interface RouteParams {
   [0]: string;
@@ -59,73 +60,49 @@ class EventDetailPage extends React.Component<IProps, IState> {
     const event = this.props.data.event;
 
     return (
-      <div>
-        <Helmet>
-          <title>{`${event.title} | What's on | Sussex Students' Union`}</title>
-          <meta name="description" content={event.shortDescription} />
-          {event.featuredImage ? (
-            <meta
-              property="og:image"
-              content={`https://su.imgix.net/${
-                event.featuredImage.resource
-              }?h=1260&w=2400&fit=crop&crop=focal&auto=format`}
-            />
-          ) : null}
-          <meta property="og:description" content={event.shortDescription} />
+      <div
+        className={cx('EventDetail', {
+          'EventDetail--customImage': event.featuredImage,
+        })}
+      >
+        <EventDetailMetadata event={event} />
+        {event.featuredImage ? (
+          <div className="EventDetail__hero">
+            <div className="LokiContainer">
+              <OneImageBackground
+                className="EventDetail__hero-container"
+                aspectRatio={AspectRatio.r20by9}
+                src={event.featuredImage.resource}
+              >
+                <div className="EventDetail__details">
+                  <EventDetailDetails event={event} />
+                </div>
+              </OneImageBackground>
+            </div>
 
-          <meta
-            name="twitter:card"
-            content={event.featuredImage ? 'summary_large_image' : 'summary'}
-          />
-          <meta name="twitter:site" content="@ussu" />
-          <meta name="twitter:title" content={event.title} />
-          <meta name="twitter:description" content={event.shortDescription} />
-          {event.featuredImage ? (
-            <meta
-              name="twitter:image"
-              content={`https://su.imgix.net/${
-                event.featuredImage.resource
-              }?h=1200&w=2400&fit=crop&crop=focal&auto=format`}
+            <OneImageBackground
+              className="EventDetail__hero-bg"
+              aspectRatio={AspectRatio.r20by9}
+              src={event.featuredImage.resource}
             />
-          ) : null}
-        </Helmet>
-        <JsonLd
-          data={{
-            '@context': 'http://schema.org',
-            '@type': 'Event',
-            location: {
-              '@type': 'Place',
-              name:
-                event.venue === null ? event.locationDisplay : event.venue.name,
-            },
-            name: event.title,
-            startDate: event.startTime,
-            endDate: event.endTime,
-          }}
-        />
-        <div className="Layout Layout--sidebar-right EventDetail">
-          <div>
+          </div>
+        ) : (
+          <div className="EventDetail__hero">
+            <div className="EventDetail__hero-container">
+              <div className="EventDetail__details">
+                <div className="LokiContainer">
+                  <EventDetailDetails event={event} />
+                </div>
+              </div>
+            </div>
+            <div className="EventDetail__hero-bg">
+              <PatternPlaceholder />
+            </div>
+          </div>
+        )}
+        <div className="LokiContainer">
+          <div className="Layout--sidebar-right">
             <ContentCard bleed>
-              {event.featuredImage ? (
-                <OneImage
-                  aspectRatio={AspectRatio.r20by9}
-                  src={event.featuredImage.resource}
-                  alt=""
-                />
-              ) : null}
-              {event.brand !== null ? (
-                <Link
-                  to={`/whats-on/collections/${event.brand.slug}`}
-                  className="EventDetail__brand"
-                  style={generateStylesForBrand(event.brand)}
-                >
-                  {event.brand.name}
-                </Link>
-              ) : null}
-              {event.bundle !== null ? (
-                <div className="EventDetail__bundle">{event.bundle.name}</div>
-              ) : null}
-              <EventDetailDetails event={event} />
               <div className="ContentCard__content">
                 <div className="Prose type-body-copy">
                   {event.bodyHtml !== '' ? (
@@ -143,31 +120,42 @@ class EventDetailPage extends React.Component<IProps, IState> {
                     </div>
                   ) : null}
                 </div>
+
+                {event.venue ? (
+                  <div>
+                    <h3>{event.venue.name}</h3>
+                    {event.venue.websiteLink ? (
+                      <Button href={event.venue.websiteLink}>More information</Button>
+                    ) : null}
+                  </div>
+                ) : null}
               </div>
             </ContentCard>
-          </div>
-          <EventDetailSidebar event={event} msl={this.state.msl} />
-        </div>
-        {event.children.length > 0 ? (
-          <div>
-            <span className="u-position-anchor" id="sub-events" />
-            <h2 className="Heading Heading--tight">Part of this event</h2>
-            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              {event.children.map((childEvent: Event) => (
-                <div>
-                  <EventsCalenderItem part={{ event: childEvent }} />
-                </div>
-              ))}
+            <div>
+              <EventDetailSidebar event={event} msl={this.state.msl} />
             </div>
           </div>
-        ) : null}
+          {event.children.length > 0 ? (
+            <div>
+              <span className="u-position-anchor" id="sub-events" />
+              <h2 className="Heading Heading--tight">Part of this event</h2>
+              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                {event.children.map((childEvent: Event) => (
+                  <div>
+                    <EventsCalenderItem part={{ event: childEvent }} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
 
-        {event.mslEventId ? (
-          <MSLEventCommunication
-            mslEventId={event.mslEventId}
-            onData={this.handleMslCommunication}
-          />
-        ) : null}
+          {event.mslEventId ? (
+            <MSLEventCommunication
+              mslEventId={event.mslEventId}
+              onData={this.handleMslCommunication}
+            />
+          ) : null}
+        </div>
       </div>
     );
   }

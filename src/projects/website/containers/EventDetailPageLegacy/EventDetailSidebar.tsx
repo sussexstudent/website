@@ -4,7 +4,6 @@ import ContentCard from '~components/ContentCard';
 import Button from '~components/Button';
 // import { MSLTickets } from '~components/EventDetailPage/MSLTickets';
 import { SocialArray } from '~components/SocialArray';
-import { EventAccessSidebar } from '~website/containers/EventDetailPage/EventAccessSidebar';
 
 interface IProps {
   event: Event;
@@ -18,6 +17,7 @@ export const EventDetailSidebar = (props: IProps) => {
     <aside>
       {event.ticketType === TicketType.Native ? (
         <ContentCard>
+          <h3>Tickets</h3>
           <Button href={event.ticketData}>Buy tickets on Native</Button>
         </ContentCard>
       ) : null}
@@ -25,20 +25,31 @@ export const EventDetailSidebar = (props: IProps) => {
         <React.Fragment>
           {/*<MSLTickets msl={props.msl} />*/}
           <ContentCard>
-            <Button href={`${event.ticketData}#tickets`}>Tickets</Button>
+            <h3>Tickets</h3>
+            <Button href={`${event.ticketData}#tickets`}>Get tickets</Button>
           </ContentCard>
         </React.Fragment>
       ) : null}
-      <EventAccessSidebar event={event} />
+      <ContentCard>
+        For access requirements please contact{' '}
+        <a href="mailto:access@sussexstudent.com">access@sussexstudent.com</a>
+      </ContentCard>
       {event.socialFacebook ? (
-        <div>
+        <ContentCard>
           <h3>Social</h3>
           <SocialArray
             networks={{ facebook: { link: event.socialFacebook } }}
           />
-        </div>
+        </ContentCard>
       ) : null}
-
+      {event.venue ? (
+        <ContentCard>
+          <h3>{event.venue.name}</h3>
+          {event.venue.websiteLink ? (
+            <Button href={event.venue.websiteLink}>More information</Button>
+          ) : null}
+        </ContentCard>
+      ) : null}
     </aside>
   );
 };

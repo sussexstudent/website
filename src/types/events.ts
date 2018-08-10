@@ -45,12 +45,35 @@ export interface Venue {
 }
 
 export interface Brand {
+  name: string;
+  slug: string;
   accent?: string;
 }
 
 export interface MSLEvent {
   lastSync: string;
   disableSync: boolean;
+}
+
+export interface Category {
+  name: string;
+  slug: string;
+}
+
+export interface EventType {
+  name: string;
+  slug: string;
+}
+
+export enum PAValue {
+  NA = 'A_0',
+  Negative = 'A_1',
+  Positive = 'A_2',
+}
+export enum Alcohol {
+  Available = 'AV',
+  No = 'NO',
+  NotFocued = 'NF',
 }
 
 export interface Event {
@@ -84,12 +107,49 @@ export interface Event {
     name: string;
   };
 
+  brand: null | Brand;
+
   studentGroup: null | StudentGroup;
 
   children: Event[];
   parent: Event;
 
   mslEvent?: MSLEvent;
+
+  categories: Category[];
+  type: EventType;
+
+  isOver18Only: boolean;
+
+  alcohol: Alcohol;
+
+  audienceJustForPgs: boolean;
+  audienceSuitableKidsFamilies: boolean;
+  audienceGoodToMeetPeople: boolean;
+
+  containsLowLight: PAValue;
+  containsLowLightReasoning: string;
+
+  containsFlashingLights: PAValue;
+  containsFlashingLightsReasoning: string;
+
+  containsLoudMusic: PAValue;
+  containsLoudMusicReasoning: string;
+
+  containsUnevenGround: PAValue;
+  containsUnevenGroundReasoning: string;
+
+  hasGenderNeutralToilets: PAValue;
+  hasGenderNeutralToiletsReasoning: string;
+
+  hasAccessibleToilets: PAValue;
+  hasAccessibleToiletsReasoning: string;
+
+  hasChangingFacilities: PAValue;
+  hasChangingFacilitiesReasoning: string;
+
+  hasLevelAccess: PAValue;
+  hasLevelAccessReasoning: string;
 }
 
 export interface EventPart {

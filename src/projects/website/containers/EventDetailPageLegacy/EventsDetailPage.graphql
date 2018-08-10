@@ -14,56 +14,6 @@ query EventsDetailPage($eventId: Int) {
     ticketType
     ticketData
     mslEventId
-
-    # pa set
-    containsLowLight
-    containsLowLightReasoning
-
-    containsFlashingLights
-    containsFlashingLightsReasoning
-
-    containsLoudMusic
-    containsLoudMusicReasoning
-
-    containsUnevenGround
-    containsUnevenGroundReasoning
-
-    hasGenderNeutralToilets
-    hasGenderNeutralToiletsReasoning
-
-    hasAccessibleToilets
-    hasAccessibleToiletsReasoning
-
-    hasChangingFacilities
-    hasChangingFacilitiesReasoning
-
-    hasLevelAccess
-    hasLevelAccessReasoning
-
-    isOver18Only
-
-    # taxonomoy
-    audienceJustForPgs
-    audienceSuitableKidsFamilies
-    audienceGoodToMeetPeople
-
-    type {
-      name
-    }
-
-    categories {
-      name
-      slug
-      parent {
-        name
-        slug
-        parent {
-          name
-          slug
-        }
-      }
-    }
-
     bundle {
       name
     }

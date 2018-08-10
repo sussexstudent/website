@@ -25,29 +25,34 @@ export function EventListings(props: EventListingsProps) {
   // chunk by day
 
   return (
-    <div className="EventsCalender">
-      {uiEvents.map(({ sectionTitle, parts }) => (
-        // sectionTitle might not be unique in the future
-        <div className="EventsCalender__section" key={sectionTitle}>
-          <h2 className="EventsCalender__section-title">{sectionTitle}</h2>
-          {parts.map((chunk, index) => (
-            <div key={index}>
-              <h3 className={cx('EventsCalender__item-date-kicker')}>
-                {getSmartDate(chunk[0])}
-              </h3>
-              <div className="EventsCalender__section-items">
-                {chunk.map((part: EventPart, index: number) => {
-                  return (
-                    <div className="EventsCalender__part-container" key={index}>
-                      <EventsCalenderItem part={part} />
-                    </div>
-                  );
-                })}
+    <div className="LokiContainer">
+      <div className="EventsCalender">
+        {uiEvents.map(({ sectionTitle, parts }) => (
+          // sectionTitle might not be unique in the future
+          <div className="EventsCalender__section" key={sectionTitle}>
+            <h2 className="EventsCalender__section-title">{sectionTitle}</h2>
+            {parts.map((chunk, index) => (
+              <div key={index}>
+                <h3 className={cx('EventsCalender__item-date-kicker')}>
+                  {getSmartDate(chunk[0])}
+                </h3>
+                <div className="EventsCalender__section-items">
+                  {chunk.map((part: EventPart, index: number) => {
+                    return (
+                      <div
+                        className="EventsCalender__part-container"
+                        key={index}
+                      >
+                        <EventsCalenderItem part={part} />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      ))}
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

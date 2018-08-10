@@ -1,7 +1,7 @@
 {
   "schema": {
     "request": {
-      "url" : "http://localhost:8000/graphql",
+      "url": "https://falmer.sussexstudent.com/graphql/",
       "method" : "POST",
       "postIntrospectionQuery" : true,
       "options" : {
@@ -14,7 +14,16 @@
   "endpoints" : [
     {
       "name": "Default (http://localhost:8000/graphql)",
-      "url": "http://localhost:8000/graphql",
+      "url": "http://localhost:8000/graphql/",
+      "options": {
+        "headers": {
+          "user-agent": "JS GraphQL"
+        }
+      }
+    },
+    {
+      "name": "Production",
+      "url": "https://falmer.sussexstudent.com/graphql/",
       "options" : {
         "headers": {
           "user-agent" : "JS GraphQL"

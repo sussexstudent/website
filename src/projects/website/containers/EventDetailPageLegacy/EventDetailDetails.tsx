@@ -12,10 +12,7 @@ import CollectionParentIcon from '~icons/events-collection-parent.svg';
 import PinIcon from '~icons/events-pin.svg';
 import SocietyIcon from '~icons/events-society.svg';
 import { Link } from 'react-router-dom';
-import {
-  generateStylesForBrand,
-  getOrdinal,
-} from '~website/containers/EventsApplication/utils';
+import { getOrdinal } from '~website/containers/EventsApplication/utils';
 import { getDate } from 'date-fns';
 
 function isSameLogicalSleepDay(startDate: Date, endDate: Date) {
@@ -82,29 +79,9 @@ export const EventDetailDetails = (props: IProps) => {
   const { event } = props;
 
   return (
-    <React.Fragment>
+    <div className="EventDetail__details">
       <div className="ContentCard__content">
-        <ul className="List--reset EventDetail__tags">
-          {event.brand !== null ? (
-            <li className="EventDetail__tag-item">
-              <Link
-                to={`/whats-on/collections/${event.brand.slug}`}
-                className="EventDetail__tag EventDetail__brand"
-                style={generateStylesForBrand(event.brand)}
-              >
-                {event.brand.name}
-              </Link>
-            </li>
-          ) : null}
-          {event.bundle !== null ? (
-            <li className="EventDetail__tag-item">
-              <div className="EventDetail__bundle EventDetail__tag">
-                {event.bundle.name}
-              </div>
-            </li>
-          ) : null}
-        </ul>
-        <h2 className="EventDetail__title type-paragon">{event.title}</h2>
+        <h2 className="EventDetail__title">{event.title}</h2>
         <ul className="EventDetail__details-list">
           {event.parent ? (
             <li className="EventDetail__details-list-item">
@@ -145,6 +122,6 @@ export const EventDetailDetails = (props: IProps) => {
           ) : null}
         </ul>
       </div>
-    </React.Fragment>
+    </div>
   );
 };

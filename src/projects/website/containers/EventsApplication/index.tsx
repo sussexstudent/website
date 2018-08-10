@@ -100,30 +100,28 @@ class EventsApplication extends React.Component<
             </a>
           </SectionbarItem>
         </Sectionbar>
-        <div className="LokiContainer">
-          <Switch>
-            <Route path="/whats-on/" exact component={LoadableListings} />
-            <Redirect
-              from="/whats-on/period/:brandSlug"
-              to="/whats-on/periods/:brandSlug"
-            />
-            <Redirect
-              from="/whats-on/collections/:brandSlug"
-              to="/whats-on/periods/:brandSlug"
-            />
-            <Redirect
-              from="/whats-on/collection/:brandSlug"
-              to="/whats-on/periods/:brandSlug"
-            />
-            <Route
-              path="/whats-on/periods/:brandSlug"
-              exact
-              component={LoadableListingsBranding}
-            />
-            <Route path="/whats-on/**-:eventId" component={LoadableDetail} />
-            <Route path="/whats-on/:eventId" component={LoadableDetail} />
-          </Switch>
-        </div>
+        <Switch>
+          <Route path="/whats-on/" exact component={LoadableListings} />
+          <Redirect
+            from="/whats-on/period/:brandSlug"
+            to="/whats-on/periods/:brandSlug"
+          />
+          <Redirect
+            from="/whats-on/collections/:brandSlug"
+            to="/whats-on/periods/:brandSlug"
+          />
+          <Redirect
+            from="/whats-on/collection/:brandSlug"
+            to="/whats-on/periods/:brandSlug"
+          />
+          <Route
+            path="/whats-on/periods/:brandSlug"
+            exact
+            component={LoadableListingsBranding}
+          />
+          <Route path="/whats-on/**-:eventId" component={LoadableDetail} />
+          <Route path="/whats-on/:eventId" component={LoadableDetail} />
+        </Switch>
       </div>
     );
   }

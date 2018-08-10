@@ -63,7 +63,7 @@ export const EventBrandingPeriod = compose<OwnProps, OwnProps>(
         variables: {
           brandSlug,
           filter: {
-            brandSlug,
+            brand: brandSlug,
           },
         },
       };

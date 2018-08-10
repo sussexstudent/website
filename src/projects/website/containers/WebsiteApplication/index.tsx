@@ -15,6 +15,7 @@ import Loadable from 'react-loadable';
 import Helmet from 'react-helmet';
 import ErrorBoundary from '../../../../components/ErrorBoundary';
 import EventDiscovery from '~website/containers/EventDiscovery';
+import Homepage from '~website/layouts/homepage';
 
 interface WebsiteApplicationProps {
   setRouter: typeof routerActions.setRouter;
@@ -65,6 +66,7 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
         />
         <ErrorBoundary>
           <Switch>
+            <Route path="/" component={Homepage} exact />
             <Route path="/book-market" component={BookMarketApp} />
             <Route path="/whats-on" component={EventsApplication as any} />
             <Route path="/kb" component={KnowledgeBaseApp} />

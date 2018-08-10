@@ -14,7 +14,12 @@ export class PreRouter {
   }
 
   public matches(path: string) {
-    const normalisedPath = path.slice(-1) === '/' ? path.slice(0, -1) : path;
+    const normalisedPath =
+      path.length > 1
+        ? path.slice(-1) === '/'
+          ? path.slice(0, -1)
+          : path
+        : path;
 
     return this.routes.find((route) => route.test(normalisedPath));
   }

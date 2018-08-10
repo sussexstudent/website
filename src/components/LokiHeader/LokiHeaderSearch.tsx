@@ -18,9 +18,17 @@ class LokiHeaderSearchComponent extends React.Component<
   LokiHeaderSearchProps,
   LokiHeaderSearchState
 > {
+  private input?: null | HTMLInputElement;
+
   @bind
   onChange(e: React.ChangeEvent<HTMLInputElement>) {
     this.props.setSearchValue(e.target.value);
+  }
+
+  componentDidUpdate() {
+    if (this.input) {
+      this.input.focus();
+    }
   }
 
   render() {
@@ -32,6 +40,7 @@ class LokiHeaderSearchComponent extends React.Component<
           placeholder="Search"
           value={this.props.router.searchQuery}
           onChange={this.onChange}
+          ref={(ref) => (this.input = ref)}
         />
       </div>
     );

@@ -19,6 +19,8 @@
   }
 
   &__link {
+    transition: padding ease 300ms;
+
     display: block;
     text-decoration: none;
     font-weight: bold;

@@ -2,6 +2,20 @@
   border-bottom: 0 !important;
 }
 
+.html--miniheader .LokiHeader {
+  @media (--medium) {
+    margin-top: -71px;
+
+    &__logo {
+      margin-top: -5px;
+    }
+
+    .LokiMenu__link {
+      padding: 0.4rem 0 0.2rem 0.2rem;
+    }
+  }
+}
+
 .LokiHeader {
   background: #fff;
   box-shadow: 0 2px 8px 0 rgba(32, 31, 72, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.026);
@@ -19,6 +33,7 @@
   right: 0;
 
   @media (--medium) {
+    transition: margin-top ease 800ms;
     position: relative;
 
     &::before {
@@ -68,6 +83,7 @@
   &__logo {
     padding-right: 1rem;
     width: 100%;
+    transition: margin-top ease 300ms;
 
     @media (--up-to-medium) {
       flex: 1 1 auto;

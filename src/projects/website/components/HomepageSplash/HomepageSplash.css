@@ -1,0 +1,33 @@
+.HomepageSplash {
+  margin-top: -1rem;
+  background-size: cover;
+  background-position: center center;
+
+  &__inner {
+    min-height: 30vh;
+    padding: 2rem 0;
+    text-align: center;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    max-width: 660px;
+    margin: 0 auto;
+  }
+
+  &__search-input {
+    font-family: var(--type__primary);
+    font-weight: 600;
+    box-shadow: 0 2px 33px 0 rgba(0, 0, 0, 0.5);
+    background: #ffffff;
+    border-radius: 6px;
+    @mixin type great-primer;
+    padding: 0.5em;
+    border: 0;
+  }
+
+  &__logo {
+    max-width: 260px;
+    margin: 1rem auto 3rem;
+    display: block;
+  }
+}

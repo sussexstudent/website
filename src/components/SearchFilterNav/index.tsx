@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import qs from 'query-string';
-import { NavLink } from 'react-router-dom';
+import { Link } from '@reach/router';
 
 interface Option {
   key: any;
@@ -32,13 +32,10 @@ function SearchFilterItem(props: IItemProps) {
       key={option.key}
       onClick={option.count > 0 ? handleClick : () => {}}
     >
-      <NavLink
-        to={`/search?${qs.stringify({ q: query, area: option.key })}`}
-        exact
-      >
+      <Link to={`/search?${qs.stringify({ q: query, area: option.key })}`}>
         {option.title}
         {count}
-      </NavLink>
+      </Link>
     </li>
   );
 }

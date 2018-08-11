@@ -1,17 +1,13 @@
 import React from 'react';
-import bind from 'bind-decorator';
-import { debounce } from 'lodash';
-import {
-  NavLink,
-  Redirect,
-  Route,
-  RouteComponentProps,
-  Switch,
-} from 'react-router-dom';
+// import bind from 'bind-decorator';
+// import { debounce } from 'lodash';
+import { Link } from '@reach/router';
+import { Router, Redirect } from '@reach/router';
 import Loadable from 'react-loadable';
 import { LoadableLoading } from '~components/LoadableLoading';
 import { Sectionbar, SectionbarItem } from '~components/Sectionbar';
-import { removePageContainer } from '~libs/hacky';
+// import { removePageContainer } from '~libs/hacky';
+import { RouteComponent } from '~types/routes';
 
 const EventsListLoader = () =>
   import(/* webpackChunkName: "events.listings" */ '~website/containers/EventsCalender/index');
@@ -41,9 +37,7 @@ const LoadableDetail = Loadable({
     import(/* webpackChunkName: "events.detail" */ '~website/containers/EventDetailPage'),
 });
 
-interface Props {}
-
-type EventsApplicationProps = RouteComponentProps<{}> & Props;
+type EventsApplicationProps = RouteComponent;
 
 interface EventsApplicationState {
   currentListingsScrollPosition: number;
@@ -56,39 +50,37 @@ class EventsApplication extends React.Component<
   state = {
     currentListingsScrollPosition: -1,
   };
+  //
+  // componentDidMount() {
+  //   removePageContainer();
+  //   window.addEventListener('scroll', debounce(this.onScroll, 100));
+  // }
 
-  componentDidMount() {
-    removePageContainer();
-    window.addEventListener('scroll', debounce(this.onScroll, 100));
-  }
-
-  @bind
-  onScroll() {
-    if (this.props.location.pathname === '/whats-on' && window.scrollY !== 0) {
-      this.setState({ currentListingsScrollPosition: window.scrollY });
-    }
-  }
-
-  componentDidUpdate(prevProps: EventsApplicationProps) {
-    if (
-      this.props.location.pathname === '/whats-on' &&
-      this.props.location.pathname !== prevProps.location.pathname &&
-      this.state.currentListingsScrollPosition !== null
-    ) {
-      requestAnimationFrame(() =>
-        window.scrollTo({ top: this.state.currentListingsScrollPosition }),
-      );
-    }
-  }
+  // @bind
+  // onScroll() {
+  //   if (this.props.location.pathname === '/whats-on' && window.scrollY !== 0) {
+  //     this.setState({ currentListingsScrollPosition: window.scrollY });
+  //   }
+  // }
+  //
+  // componentDidUpdate(prevProps: EventsApplicationProps) {
+  //   if (
+  //     this.props.location.pathname === '/whats-on' &&
+  //     this.props.location.pathname !== prevProps.location.pathname &&
+  //     this.state.currentListingsScrollPosition !== null
+  //   ) {
+  //     requestAnimationFrame(() =>
+  //       window.scrollTo({ top: this.state.currentListingsScrollPosition }),
+  //     );
+  //   }
+  // }
 
   render() {
     return (
       <div className="u-keep-footer-down js-expand-container">
         <Sectionbar title="What's on">
           <SectionbarItem>
-            <NavLink to={'/whats-on'} exact>
-              Listings
-            </NavLink>
+            <Link to={'/whats-on'}>Listings</Link>
           </SectionbarItem>
           <SectionbarItem>
             <a
@@ -100,28 +92,24 @@ class EventsApplication extends React.Component<
             </a>
           </SectionbarItem>
         </Sectionbar>
-        <Switch>
-          <Route path="/whats-on/" exact component={LoadableListings} />
+        <Router>
+          <LoadableListings path="/" exact />
           <Redirect
-            from="/whats-on/period/:brandSlug"
+            from="period/:brandSlug"
             to="/whats-on/periods/:brandSlug"
           />
           <Redirect
-            from="/whats-on/collections/:brandSlug"
+            from="collections/:brandSlug"
             to="/whats-on/periods/:brandSlug"
           />
           <Redirect
-            from="/whats-on/collection/:brandSlug"
+            from="collection/:brandSlug"
             to="/whats-on/periods/:brandSlug"
           />
-          <Route
-            path="/whats-on/periods/:brandSlug"
-            exact
-            component={LoadableListingsBranding}
-          />
-          <Route path="/whats-on/**-:eventId" component={LoadableDetail} />
-          <Route path="/whats-on/:eventId" component={LoadableDetail} />
-        </Switch>
+          <LoadableListingsBranding path="periods/:brandSlug" exact />
+          <LoadableDetail path="*" />
+          <LoadableDetail path=":eventPath" />
+        </Router>
       </div>
     );
   }

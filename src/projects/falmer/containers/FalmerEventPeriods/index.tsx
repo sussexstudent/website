@@ -2,6 +2,7 @@ import React from 'react';
 import { FalmerSplash } from '~falmer/components/FalmerSplash';
 
 import CalenderImage from '~icons/calender.svg';
+import { SimpleLoadableRoute } from '~types/routes';
 
 function FalmerEventPeriods() {
   return (
@@ -12,4 +13,4 @@ function FalmerEventPeriods() {
   );
 }
 
-export default FalmerEventPeriods;
+export default FalmerEventPeriods as SimpleLoadableRoute;

@@ -4,26 +4,28 @@ import MEDIA_DETAIL_QUERY from './MediaDetail.graphql';
 import Loader from '~components/Loader';
 import ImageTreatmentPreview from '../../../components/ImageTreatmentPreview';
 import { FalmerImage } from '~types/events';
-import { RouteComponentProps } from 'react-router-dom';
 
-interface RouteParams {
+interface IProps {
   mediaId: number;
 }
-
-interface IProps extends RouteComponentProps<RouteParams> {}
 
 interface Result {
   image: FalmerImage;
 }
 
-class MediaDetailQuery extends Query<Result, RouteParams> {}
+class MediaDetailQuery extends Query<
+  Result,
+  {
+    mediaId: number;
+  }
+> {}
 
 function FalmerMediaDetail(props: IProps) {
   return (
     <MediaDetailQuery
       query={MEDIA_DETAIL_QUERY}
       variables={{
-        mediaId: props.match.params.mediaId,
+        mediaId: props.mediaId,
       }}
     >
       {({ loading, data }) => (
@@ -60,4 +62,4 @@ function FalmerMediaDetail(props: IProps) {
   );
 }
 
-export default FalmerMediaDetail;
+export default FalmerMediaDetail as any;

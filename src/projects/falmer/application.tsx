@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FalmerApplication from '~falmer/containers/FalmerApplication';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
@@ -11,7 +10,6 @@ import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import * as reducers from './reducers';
 import saga from './saga';
-import ScrollToTop from '../../components/ScrollToTop';
 
 const sagaMiddleware = createSagaMiddleware();
 const link = new HttpLink({
@@ -44,11 +42,7 @@ sagaMiddleware.run(saga);
 ReactDOM.render(
   <ApolloProvider client={client as any}>
     <Provider store={store}>
-      <Router>
-        <ScrollToTop>
-          <FalmerApplication />
-        </ScrollToTop>
-      </Router>
+      <FalmerApplication />
     </Provider>
   </ApolloProvider>,
   document.querySelector('.FalmerAppRoot'),

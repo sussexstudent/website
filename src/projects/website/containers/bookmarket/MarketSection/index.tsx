@@ -1,13 +1,15 @@
 import React from 'react';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
-import { Link, RouteComponentProps } from 'react-router-dom';
 import SECTION_LISTINGS_QUERY from './SectionListings.graphql';
 import { MarketListing, MarketSection } from '~types/market';
 import { ListingList } from '~website/containers/bookmarket/ListingList';
 import Helmet from 'react-helmet';
 import { HandledQuery } from '~components/HandledQuery';
+import { InternalAppLink } from '~components/InternalAppLink';
 
-interface OwnProps extends RouteComponentProps<{ sectionSlug: string }> {}
+interface OwnProps {
+  sectionSlug: string;
+}
 
 interface Result {
   allMarketListings: {
@@ -29,9 +31,9 @@ const MarketSection: React.SFC<IProps> = (props: IProps) => {
       query={SECTION_LISTINGS_QUERY}
       variables={{
         filters: {
-          section: props.match.params.sectionSlug,
+          section: props.sectionSlug,
         },
-        sectionSlug: props.match.params.sectionSlug,
+        sectionSlug: props.sectionSlug,
       }}
     >
       {({ data }) => {
@@ -45,13 +47,13 @@ const MarketSection: React.SFC<IProps> = (props: IProps) => {
             <Helmet title={data.marketSection && data.marketSection.title} />
 
             <BreadcrumbBar>
-              <Link to="/book-market/">Book Market</Link>
-              <Link
+              <InternalAppLink to="/book-market/">Book Market</InternalAppLink>
+              <InternalAppLink
                 to={`/book-market/section/${data.marketSection &&
                   data.marketSection.slug}`}
               >
                 {data.marketSection && data.marketSection.title}
-              </Link>
+              </InternalAppLink>
             </BreadcrumbBar>
             <div className="Layout Layout--sidebar-right">
               <ListingList items={edges.map((edge) => edge.node)} />

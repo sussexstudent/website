@@ -10,7 +10,7 @@ const baseDir = path.join(__dirname, '..');
 module.exports = {
   target: 'web',
   entry: {
-    main: ['babel-polyfill', './src/projects/common/lazysizes.ts', './src/projects/falmer/entry.ts'],
+    main: ['./src/projects/common/lazysizes.ts', './src/projects/falmer/entry.ts'],
   },
 
   output: {

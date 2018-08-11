@@ -1,7 +1,5 @@
 import React from 'react';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
-import { Link, RouteComponentProps } from 'react-router-dom';
-
 import MyListingsQuery from './MyListings.graphql';
 import { compose } from 'recompose';
 import { ChildProps, graphql } from 'react-apollo';
@@ -9,8 +7,11 @@ import Loader from '~components/Loader';
 import { MarketListing, MarketSection } from '~types/market';
 import { ListingList } from '~website/containers/bookmarket/ListingList';
 import Helmet from 'react-helmet';
+import { InternalAppLink } from '~components/InternalAppLink';
 
-interface OwnProps extends RouteComponentProps<{ sectionSlug: string }> {}
+interface OwnProps {
+  sectionSlug: string;
+}
 
 interface Result {
   allMarketListings: {
@@ -41,8 +42,10 @@ const MarketMyListingsComponent: React.SFC<IProps> = (props: IProps) => {
       <Helmet title="My Listings" />
 
       <BreadcrumbBar>
-        <Link to="/book-market/">Book Market</Link>
-        <Link to={`/book-market/my-listings/`}>My listings</Link>
+        <InternalAppLink to="/book-market/">Book Market</InternalAppLink>
+        <InternalAppLink to={`/book-market/my-listings/`}>
+          My listings
+        </InternalAppLink>
       </BreadcrumbBar>
       <div className="Layout Layout--sidebar-right">
         <ListingList items={edges.map((edge) => edge.node)} ownUser />

@@ -1,7 +1,6 @@
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';
-import { StaticRouter } from 'react-router';
-import { store } from '../projects/website/redux/store';
+import { store } from '~website/redux/store';
 import { Provider } from 'react-redux';
 
 export const HydroRootServer: React.SFC<{ apolloClient?: any }> = (props) => {
@@ -9,15 +8,11 @@ export const HydroRootServer: React.SFC<{ apolloClient?: any }> = (props) => {
     return (
       <Provider store={store}>
         <ApolloProvider client={props.apolloClient}>
-          <StaticRouter>{props.children}</StaticRouter>
+          {props.children}
         </ApolloProvider>
       </Provider>
     );
   }
 
-  return (
-    <Provider store={store}>
-      <StaticRouter>{props.children}</StaticRouter>
-    </Provider>
-  );
+  return <Provider store={store}>{props.children}</Provider>;
 };

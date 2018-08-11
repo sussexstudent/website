@@ -10,8 +10,7 @@ import SearchResult, {
 import SearchFilterNav from '~components/SearchFilterNav';
 import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import perf from '../../tracking/perf';
-import { RouteComponentProps } from 'react-router-dom';
-import { WebsiteRootState } from '../../types/website';
+import { WebsiteRootState } from '~types/website';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import * as routerActions from '../../projects/website/ducks/router';
@@ -81,7 +80,7 @@ function getPayloadMetadata(payload: { [key: string]: Object[] }) {
   };
 }
 
-interface IProps extends RouteComponentProps<{}> {
+interface IProps {
   query: string;
   setSearchValue: typeof routerActions.setSearchValue;
 }

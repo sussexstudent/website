@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Router } from '@reach/router';
 import FalmerEventsList from './FalmerEventsList';
 import FalmerEventsDetail from './FalmerEventsDetail';
 import FalmerVenues from '../FalmerVenues';
@@ -8,12 +8,12 @@ import FalmerEventPeriods from '../FalmerEventPeriods';
 function FalmerEvents() {
   return (
     <div>
-      <Switch>
-        <Route path="/events" exact component={FalmerEventsList} />
-        <Route path="/events/venues" exact component={FalmerVenues} />
-        <Route path="/events/periods" exact component={FalmerEventPeriods} />
-        <Route path="/events/:eventId" component={FalmerEventsDetail} />
-      </Switch>
+      <Router>
+        <FalmerEventsList path="/" exact />
+        <FalmerVenues path="venues" exact />
+        <FalmerEventPeriods path="periods" exact />
+        <FalmerEventsDetail path=":eventId" />
+      </Router>
     </div>
   );
 }

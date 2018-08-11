@@ -54,7 +54,6 @@
       hsla(0, 0%, 8%, 0.78) 100%
     );
 
-
     /*
 
         linear-gradient(
@@ -172,7 +171,6 @@
     }
   }
 }
-
 
 .EventSidebar {
   font-family: var(--type__primary);

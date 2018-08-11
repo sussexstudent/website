@@ -1,14 +1,14 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Router } from '@reach/router';
 import FalmerMediaList from './FalmerMediaList';
 import FalmerMediaDetail from './FalmerMediaDetail';
 
 function FalmerMedia() {
   return (
-    <Switch>
-      <Route path="/media" exact component={FalmerMediaList} />
-      <Route path="/media/:mediaId" component={FalmerMediaDetail} />
-    </Switch>
+    <Router>
+      <FalmerMediaList path="/" exact />
+      <FalmerMediaDetail path=":mediaId" />
+    </Router>
   );
 }
 

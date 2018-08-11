@@ -12,4 +12,4 @@ function FalmerGroupAwards() {
   );
 }
 
-export default FalmerGroupAwards;
+export default FalmerGroupAwards as any;

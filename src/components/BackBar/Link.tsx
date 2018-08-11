@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { Link } from 'react-router-dom';
+import { InternalAppLink } from '~components/InternalAppLink';
 
 interface IProps {
   color?: 'red' | 'blue' | 'green' | 'slate';
@@ -11,7 +11,7 @@ interface IProps {
 function BackBar({ color = 'blue', to, children }: IProps) {
   return (
     <div className={cx('BackBar', `BackBar--color-${color}`)}>
-      <Link to={to}>
+      <InternalAppLink to={to}>
         <svg
           className="BackBar__arrow"
           xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@ function BackBar({ color = 'blue', to, children }: IProps) {
           </g>
         </svg>
         {children}
-      </Link>
+      </InternalAppLink>
     </div>
   );
 }

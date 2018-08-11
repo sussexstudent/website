@@ -2,8 +2,6 @@ import React from 'react';
 import qs from 'query-string';
 import { compose, withState } from 'recompose';
 import HeadingHero from '~components/HeadingHero';
-import { Link } from 'react-router-dom';
-
 import MARKET_HOME_QUERY from './MarketHomeQuery.graphql';
 import { Field, Form } from 'react-final-form';
 import {
@@ -88,12 +86,12 @@ const MarketHomeComponent: React.SFC<IProps> = (props) => {
                     <ul className="BrickWall List--reset">
                       {data.allMarketSections.map((section) => (
                         <li className="BrickWall__item">
-                          <Link
+                          <InternalAppLink
                             className="BrickWall__anchor"
                             to={`/book-market/section/${section.slug}`}
                           >
                             {section.title}
-                          </Link>
+                          </InternalAppLink>
                         </li>
                       ))}
                     </ul>
@@ -104,21 +102,24 @@ const MarketHomeComponent: React.SFC<IProps> = (props) => {
                 <ul className="List--reset">
                   {user.isAuthenticated ? (
                     <li>
-                      <Link
+                      <InternalAppLink
                         className="Button Button--color-green"
                         to="/book-market/list"
                       >
                         List a book
-                      </Link>
+                      </InternalAppLink>
                     </li>
                   ) : (
                     <em>Log in to list book</em>
                   )}
                   {user.isAuthenticated ? (
                     <li>
-                      <Link className="Button" to="/book-market/my-listings">
+                      <InternalAppLink
+                        className="Button"
+                        to="/book-market/my-listings"
+                      >
                         Your listings
-                      </Link>
+                      </InternalAppLink>
                     </li>
                   ) : null}
 

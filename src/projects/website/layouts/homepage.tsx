@@ -5,8 +5,9 @@ import { ContentPage } from '~website/containers/content/ContentPage';
 import { Bento } from '~components/Bento';
 import { HomepageSplash } from '~website/components/HomepageSplash';
 import { UserWelcome } from '~website/components/UserWelcome';
+import { RouteComponent } from '~types/routes';
 
-const Homepage = () => (
+const Homepage: React.SFC<RouteComponent> = () => (
   <div>
     <HomepageSplash />
     <div className="LokiContainer">

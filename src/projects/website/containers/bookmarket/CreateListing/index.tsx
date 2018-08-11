@@ -11,8 +11,8 @@ import GetCategories from './GetCategories.graphql';
 import CreateListingMutation from './CreateListingMutation.graphql';
 import { MarketListing, MarketSection } from '~types/market';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
-import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
+import { InternalAppLink } from '~components/InternalAppLink';
 
 interface OwnProps {}
 
@@ -54,8 +54,10 @@ const CreateListingComponent: React.SFC<IProps> = (props) => {
       <Helmet title="Add a listing" />
 
       <BreadcrumbBar>
-        <Link to="/book-market/">Book Market</Link>
-        <Link to={`/book-market/list/`}>Add a listing</Link>
+        <InternalAppLink to="/book-market/">Book Market</InternalAppLink>
+        <InternalAppLink to={`/book-market/list/`}>
+          Add a listing
+        </InternalAppLink>
       </BreadcrumbBar>
 
       <h1>Add a listing</h1>

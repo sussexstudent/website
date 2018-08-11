@@ -1,6 +1,5 @@
 import React from 'react';
 import { FalmerSplash } from '../../components/FalmerSplash';
-import { withRouter } from 'react-router-dom';
 
 import BookImage from '~icons/book.svg';
 
@@ -10,4 +9,4 @@ function FalmerBookMarket() {
   );
 }
 
-export default withRouter(FalmerBookMarket);
+export default FalmerBookMarket;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { HoverTapTooltip } from '~components/HoverTapToolTip';
-import {InternalAppLink} from "~components/InternalAppLink";
+import { InternalAppLink } from '~components/InternalAppLink';
 
 interface AwardProps {
   color: string;
@@ -23,24 +23,29 @@ export function Award(props: AwardProps) {
   );
   return (
     <HoverTapTooltip content={() => <span>{props.description}</span>}>
-      {({ handleClose, handleOpen, ref }) => props.link === '' ? (<div
-          onMouseEnter={handleOpen}
-          onMouseLeave={handleClose}
-          ref={ref}
-          className="Award"
-          style={{ color: props.color }}
-        >
-          {inner}
-        </div>) : <InternalAppLink
-        to={props.link}
-        onMouseEnter={handleOpen}
-        onMouseLeave={handleClose}
-        ref={ref}
-        className="Award"
-        style={{ color: props.color }}
-      >
-        {inner}
-      </InternalAppLink>
+      {({ handleClose, handleOpen, ref }) =>
+        props.link === '' ? (
+          <div
+            onMouseEnter={handleOpen}
+            onMouseLeave={handleClose}
+            ref={ref}
+            className="Award"
+            style={{ color: props.color }}
+          >
+            {inner}
+          </div>
+        ) : (
+          <InternalAppLink
+            to={props.link}
+            onMouseEnter={handleOpen}
+            onMouseLeave={handleClose}
+            ref={ref}
+            className="Award"
+            style={{ color: props.color }}
+          >
+            {inner}
+          </InternalAppLink>
+        )
       }
     </HoverTapTooltip>
   );

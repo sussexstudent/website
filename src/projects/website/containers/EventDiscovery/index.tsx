@@ -3,10 +3,11 @@ import { CardDeck, Card } from '@ussu/react-swipe-card';
 import { HandledQuery } from '~components/HandledQuery';
 import EXAMPLE_QUERY from './ExampleQuery.graphql';
 import './test.css';
+import { RouteComponent } from '~types/routes';
 
 class EventQuery extends HandledQuery<any, { brand: string }> {}
 
-export default class EventDiscovery extends React.Component {
+export default class EventDiscovery extends React.Component<RouteComponent> {
   render() {
     return (
       <EventQuery

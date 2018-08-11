@@ -55,11 +55,6 @@ export default function() {
       (m) => m.default,
     );
 
-  providerLoaders[Provider.Router] = () =>
-    import(/* webpackChunkName: "root.router" */ '~components/HydroRootRouter').then(
-      (m) => m.default,
-    );
-
   const getRoot = (provider: Provider) => {
     if (rootCache[provider]) {
       return rootCache[provider];

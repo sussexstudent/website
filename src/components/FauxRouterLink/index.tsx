@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { InternalAppLink } from '~components/InternalAppLink';
 
 export default ({ href }: { href: string }) => (
-  <Link className="u-faux-link" to={href} />
+  <InternalAppLink className="u-faux-link" to={href} />
 );
 
 export const InnerLink = ({
@@ -12,7 +12,7 @@ export const InnerLink = ({
   to: string;
   [attr: string]: any;
 }) => (
-  <Link {...props} className={`u-faux-link-inner ${className}`}>
+  <InternalAppLink {...props} className={`u-faux-link-inner ${className}`}>
     {props.children}
-  </Link>
+  </InternalAppLink>
 );

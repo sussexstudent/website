@@ -10,20 +10,23 @@ import {
   transitionRootTo,
 } from '../../ducks/router';
 import qs from 'query-string';
-import { WebsiteRootState } from '../../../../types/website';
+import { WebsiteRootState } from '~types/website';
 import routes from '../../routes';
-import { debounce } from 'lodash';
-import { toggleMobileMenu } from '../../ducks/page';
+
+// todo
+// import { debounce } from 'lodash';
+// import { toggleMobileMenu } from '../../ducks/page';
+//
+//
+// function trackPageGA(path: string) {
+//   console.log('ga', path);
+//   ga('set', 'page', path);
+//   ga('send', 'pageview');
+// }
+//
+//  const onPageChange = debounce(trackPageGA, 350);
 
 let hasAttemptedRender = false;
-
-function trackPageGA(path: string) {
-  console.log('ga', path);
-  ga('set', 'page', path);
-  ga('send', 'pageview');
-}
-
-const onPageChange = debounce(trackPageGA, 350);
 
 export const appMountMiddleware = (store: any) => (next: any) => (
   action: any,
@@ -35,12 +38,12 @@ export const appMountMiddleware = (store: any) => (next: any) => (
     if (
       router.appMountState !== AppMountState.NotMounted &&
       router.location &&
-      router.history
+      router.navigate
     ) {
       if (router.location.pathname === '/search') {
-        router.history.replace(`/search?q=${result.payload.query}`);
+        router.navigate(`/search?q=${result.payload.query}`, { replace: true });
       } else {
-        router.history.push(`/search?q=${result.payload.query}`);
+        router.navigate(`/search?q=${result.payload.query}`);
       }
     } else {
       if (!hasAttemptedRender) {
@@ -58,7 +61,7 @@ export const appMountMiddleware = (store: any) => (next: any) => (
     const result = next(action);
     const { router } = store.getState() as WebsiteRootState;
 
-    if (!router.history || !router.location) {
+    if (!router.navigate || !router.location) {
       return next(action);
     }
 
@@ -78,51 +81,52 @@ export const appMountMiddleware = (store: any) => (next: any) => (
   if (action.type === ROUTER_ANNOUNCE_MOUNT) {
     const { router } = store.getState() as WebsiteRootState;
 
-    if (!router.history || !router.location) {
+    if (!router.navigate || !router.location) {
       return next(action);
     }
 
-    router.history.listen((location, action) => {
-      const initialDynamicPush =
-        location.state && location.state.initialDynamicPush === true;
-
-      if (initialDynamicPush && action === 'POP') {
-        store.dispatch(
-          transitionRootTo(ContentRoot.Natural, RootTransitionSource.Addition),
-        );
-      }
-
-      onPageChange(location.pathname + location.search);
-
-      const {
-        page: { isOpenMobileMenu },
-      } = store.getState() as WebsiteRootState;
-
-      if (isOpenMobileMenu) {
-        store.dispatch(toggleMobileMenu(false));
-      }
-
-      // something here to turn qs query and set the router var
-    });
+    // todo: history listener!
+    // router.history.listen((location, action) => {
+    //   const initialDynamicPush =
+    //     location.state && location.state.initialDynamicPush === true;
+    //
+    //   if (initialDynamicPush && action === 'POP') {
+    //     store.dispatch(
+    //       transitionRootTo(ContentRoot.Natural, RootTransitionSource.Addition),
+    //     );
+    //   }
+    //
+    //   onPageChange(location.pathname + location.search);
+    //
+    //   const {
+    //     page: { isOpenMobileMenu },
+    //   } = store.getState() as WebsiteRootState;
+    //
+    //   if (isOpenMobileMenu) {
+    //     store.dispatch(toggleMobileMenu(false));
+    //   }
+    //
+    //   // something here to turn qs query and set the router var
+    // });
 
     if (action.payload.appMountState === AppMountState.Addition) {
-      router.history.replace(
+      router.navigate(
         router.location.pathname +
           router.location.search +
           router.location.hash,
-        { initialDynamicPush: true },
+        { state: { initialDynamicPush: true }, replace: true },
       );
     }
 
-    if (router.searchQuery && router.location && router.history) {
+    if (router.searchQuery && router.location && router.navigate) {
       if (router.location.pathname === '/search') {
-        router.history.replace(`/search?q=${router.searchQuery}`);
+        router.navigate(`/search?q=${router.searchQuery}`, { replace: true });
       } else {
-        router.history.push(`/search?q=${router.searchQuery}`);
+        router.navigate(`/search?q=${router.searchQuery}`);
       }
     }
 
-    if (router.searchQuery === '' && router.location && router.history) {
+    if (router.searchQuery === '' && router.location && router.navigate) {
       const queryString = qs.parse(router.location.search).q;
 
       if (queryString !== undefined) {

@@ -1,5 +1,5 @@
-import { History, Location } from 'history';
 import { AnyAction } from 'redux';
+import { NavigateFn, WindowLocation } from '@reach/router';
 
 export enum AppMountState {
   NotMounted = 'NotMounted',
@@ -18,8 +18,8 @@ export enum RootTransitionSource {
 }
 
 export interface RouterState {
-  history: null | History;
-  location: null | Location;
+  navigate: null | NavigateFn;
+  location: null | WindowLocation;
   searchQuery: string;
   appMountState: AppMountState;
   currentContentRoot: ContentRoot;
@@ -32,9 +32,9 @@ export const ROUTER_SET_SEARCH_QUERY = 'ROUTER_SET_SEARCH_QUERY';
 export const ROUTER_ANNOUNCE_MOUNT = 'ROUTER_ANNOUNCE_MOUNT';
 export const ROUTER_NAVIGATE_TO = 'ROUTER_NAVIGATE_TO';
 
-export const setRouter = (history: History, location: Location) => ({
+export const setRouter = (navigate: NavigateFn, location: WindowLocation) => ({
   type: ROUTER_SET_ROUTER,
-  payload: { history, location },
+  payload: { navigate, location },
 });
 
 export const setSearchValue = (query: string) => ({
@@ -69,7 +69,7 @@ export const navigateTo = (to: string) => ({
 
 export default function reducer(
   state: RouterState = {
-    history: null,
+    navigate: null,
     location: null,
     searchQuery: '',
     appMountState: AppMountState.NotMounted,
@@ -81,7 +81,7 @@ export default function reducer(
     case ROUTER_SET_ROUTER: {
       return {
         ...state,
-        history: action.payload.history,
+        navigate: action.payload.navigate,
         location: action.payload.location,
       };
     }

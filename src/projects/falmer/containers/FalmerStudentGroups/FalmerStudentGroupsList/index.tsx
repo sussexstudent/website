@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '@reach/router';
 import FalmerDataList, {
   Cell,
   Row,
@@ -61,4 +61,4 @@ function FalmerStudentGroupsList() {
   );
 }
 
-export default FalmerStudentGroupsList;
+export default FalmerStudentGroupsList as any;

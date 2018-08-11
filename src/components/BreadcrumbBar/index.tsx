@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { compact, omit } from 'lodash';
 import cx from 'classnames';
 
 import ChevronForwardIcon from '~icons/chevron-forward.svg';
+import { InternalAppLink } from '~components/InternalAppLink';
 
 interface IProps {
   color?: 'red' | 'blue' | 'green' | 'slate';
@@ -40,9 +40,9 @@ function generateBreadcrumbsFromPage(page: any) {
     [...page.ancestors, page].map(
       (subPage) =>
         !!subPage.path ? (
-          <Link to={subPage.path} key={subPage.path}>
+          <InternalAppLink to={subPage.path} key={subPage.path}>
             {subPage.title}
-          </Link>
+          </InternalAppLink>
         ) : null,
     ),
   );

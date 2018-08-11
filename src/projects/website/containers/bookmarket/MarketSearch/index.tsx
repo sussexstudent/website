@@ -1,15 +1,19 @@
 import React from 'react';
 import qs from 'query-string';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
-import { Link, RouteComponentProps } from 'react-router-dom';
 import GET_SEARCH_QUERY from './GetSearch.graphql';
 import { MarketListing } from '~types/market';
 import { ListingList } from '~website/containers/bookmarket/ListingList';
 import { Field, Form } from 'react-final-form';
 import Helmet from 'react-helmet';
 import { HandledQuery } from '~components/HandledQuery';
+import { InternalAppLink } from '~components/InternalAppLink';
 
-interface OwnProps extends RouteComponentProps<{ sectionSlug?: string }> {}
+interface OwnProps {
+  sectionSlug?: string;
+  location: any;
+  navigate: any;
+} // todo
 
 interface Result {
   allMarketListings: {
@@ -37,8 +41,10 @@ const MarketSearchComponent: React.SFC<IProps> = (props: IProps) => {
   }
 
   const onSearchSubmit = (data: any) =>
-    (props as any).history.push(
+    props.navigate(
       `/book-market/search?${qs.stringify({ q: data.query })}`,
+      {},
+      true,
     );
 
   return (
@@ -46,8 +52,8 @@ const MarketSearchComponent: React.SFC<IProps> = (props: IProps) => {
       <Helmet title="Search" />
 
       <BreadcrumbBar>
-        <Link to="/book-market/">Book Market</Link>
-        <Link to="/book-market/search">Search</Link>
+        <InternalAppLink to="/book-market/">Book Market</InternalAppLink>
+        <InternalAppLink to="/book-market/search">Search</InternalAppLink>
       </BreadcrumbBar>
       <div className="Layout Layout--sidebar-right">
         <div>

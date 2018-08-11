@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 import bind from 'bind-decorator';
-import { RouteComponentProps } from 'react-router-dom';
 import { ChildProps, graphql } from 'react-apollo';
 import ContentCard from '~components/ContentCard';
 import Loader from '~components/Loader';
@@ -16,14 +15,27 @@ import { EventDetailSidebar } from '~website/containers/EventDetailPage/EventDet
 import { MSLEventCommunication } from '~website/containers/EventDetailPage/MSLEventCommunication';
 import { EventDetailMetadata } from '~website/containers/EventDetailPage/EventDetailMetadata';
 import PatternPlaceholder from '~components/PatternPlaceholder';
-import Button from "~components/Button";
+import Button from '~components/Button';
 
-interface RouteParams {
-  [0]: string;
-  eventId: number;
+function parseEventPath(path: string) {
+  const parts = path.split('-');
+
+  if (parts.length <= 1) {
+    return {
+      id: parts[0],
+      slug: null,
+    };
+  }
+
+  return {
+    id: parts.pop(),
+    slug: parts.join('-'),
+  };
 }
 
-interface OwnProps extends RouteComponentProps<RouteParams> {}
+interface OwnProps {
+  eventPath: number;
+}
 
 type IProps = OwnProps & ChildProps<OwnProps, any>;
 
@@ -41,10 +53,11 @@ class EventDetailPage extends React.Component<IProps, IState> {
       return;
     }
 
-    const event = this.props.data.event;
-    if (this.props.match.params[0] !== event.slug) {
-      this.props.history.replace(`/whats-on/${event.slug}-${event.eventId}`);
-    }
+    // todo: reach redirect to correct slug
+    // const event = this.props.data.event;
+    // if (this.props.match.params[0] !== event.slug) {
+    //   this.props.history.replace(`/whats-on/${event.slug}-${event.eventId}`);
+    // }
   }
 
   @bind
@@ -125,7 +138,9 @@ class EventDetailPage extends React.Component<IProps, IState> {
                   <div>
                     <h3>{event.venue.name}</h3>
                     {event.venue.websiteLink ? (
-                      <Button href={event.venue.websiteLink}>More information</Button>
+                      <Button href={event.venue.websiteLink}>
+                        More information
+                      </Button>
                     ) : null}
                   </div>
                 ) : null}
@@ -162,5 +177,7 @@ class EventDetailPage extends React.Component<IProps, IState> {
 }
 
 export default graphql<any, OwnProps>(DetailPageQuery, {
-  options: ({ match }) => ({ variables: { eventId: match.params.eventId } }),
+  options: ({ eventPath }) => ({
+    variables: { eventId: parseEventPath(eventPath).id },
+  }),
 })(apolloHandler()(EventDetailPage));

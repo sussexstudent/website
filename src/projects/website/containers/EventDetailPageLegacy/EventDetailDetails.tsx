@@ -11,7 +11,7 @@ import CollectionIcon from '~icons/events-collection.svg';
 import CollectionParentIcon from '~icons/events-collection-parent.svg';
 import PinIcon from '~icons/events-pin.svg';
 import SocietyIcon from '~icons/events-society.svg';
-import { Link } from 'react-router-dom';
+import { Link } from '@reach/router';
 import { getOrdinal } from '~website/containers/EventsApplication/utils';
 import { getDate } from 'date-fns';
 

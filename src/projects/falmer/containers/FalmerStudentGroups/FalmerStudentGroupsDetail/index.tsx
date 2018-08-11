@@ -1,5 +1,4 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 import formatDistance from 'date-fns/formatDistance';
 import GROUP_DETAIL_QUERY from './GroupDetail.graphql';
 import CopyToClipboardButton from '~components/CopyToClipboardButton';
@@ -10,11 +9,9 @@ import BackBar from '~components/BackBar/Link';
 import { Tags, Tag } from '~components/Tags';
 import { FalmerDetailHeader } from '~falmer/components/FalmerDetailHeader';
 
-interface RouteParams {
+interface IProps {
   groupId: number;
 }
-
-interface IProps extends RouteComponentProps<RouteParams> {}
 
 interface Result {
   group: StudentGroup;
@@ -29,11 +26,8 @@ interface RenderProps {
 }
 
 const Composed = adopt<RenderProps, IProps>({
-  query: ({ render, match }) => (
-    <GroupDetailQuery
-      query={GROUP_DETAIL_QUERY}
-      variables={{ groupId: match.params.groupId }}
-    >
+  query: ({ render, groupId }) => (
+    <GroupDetailQuery query={GROUP_DETAIL_QUERY} variables={{ groupId }}>
       {render}
     </GroupDetailQuery>
   ),
@@ -88,4 +82,4 @@ function FalmerStudentGroupsDetail(props: IProps) {
   );
 }
 
-export default FalmerStudentGroupsDetail;
+export default FalmerStudentGroupsDetail as any;

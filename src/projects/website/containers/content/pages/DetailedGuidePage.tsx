@@ -4,7 +4,8 @@ import ContentNavigation from '~components/ContentNavigation';
 import { RelatedContent } from '~website/components/RelatedContent';
 import { StaffOwners } from '~website/components/StaffOwners';
 import StreamField from '~website/containers/content/StreamField';
-import { Switch, Route } from 'react-router';
+import { Router } from '@reach/router';
+import { RouteComponent } from '~types/routes';
 
 interface DetailPageSection extends Page<{ content: StreamFieldData }> {}
 interface DetailPage
@@ -20,9 +21,11 @@ interface IProps {
   page: DetailPage; // todo
 }
 
-const DetailedGuideSection: React.SFC<{ page: DetailPageSection }> = (
-  props,
-) => <StreamField items={props.page.data.content} page={props.page} />;
+const DetailedGuideSection: React.SFC<
+  { page: DetailPageSection } & RouteComponent
+> = (props) => (
+  <StreamField items={props.page.data.content} page={props.page} />
+);
 
 class DetailedGuidePage extends React.Component<IProps> {
   render() {
@@ -51,21 +54,21 @@ class DetailedGuidePage extends React.Component<IProps> {
             />
           </div>
           <div className="LayoutContent__main">
-            <Switch>
-              <Route
+            <Router>
+              <DetailedGuideSection
                 key={subPages[0].slug}
                 path={path}
-                component={() => <DetailedGuideSection page={subPages[0]} />}
+                page={subPages[0]}
                 exact
               />
               {subPages.map((subPage) => (
-                <Route
+                <DetailedGuideSection
                   key={subPage.slug}
                   path={path + subPage.slug}
-                  component={() => <DetailedGuideSection page={subPage} />}
+                  page={subPage}
                 />
               ))}
-            </Switch>
+            </Router>
           </div>
 
           <aside className="LayoutContent__aside ContentSidebar">

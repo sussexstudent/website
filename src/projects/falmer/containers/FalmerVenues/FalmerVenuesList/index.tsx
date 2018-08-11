@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '@reach/router';
 import { Helmet } from 'react-helmet';
 import ALL_VENUES_QUERY from './AllVenues.graphql';
 import FalmerDataList, {
@@ -15,6 +15,7 @@ import FalmerListView from '~falmer/components/FalmerListView';
 import { Connection } from '~types/falmer';
 import { Venue } from '~types/events';
 import { HandledQuery } from '~components/HandledQuery';
+import { SimpleLoadableRoute } from '~types/routes';
 
 interface Result {
   allVenues: Connection<Venue>;
@@ -81,4 +82,4 @@ function FalmerVenuesList() {
   );
 }
 
-export default FalmerVenuesList;
+export default FalmerVenuesList as SimpleLoadableRoute;

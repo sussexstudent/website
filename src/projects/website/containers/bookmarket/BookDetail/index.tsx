@@ -1,6 +1,5 @@
 import React from 'react';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
-import { Link, RouteComponentProps } from 'react-router-dom';
 import REQUEST_CONTACT_DETAILS_MUTATION from './RequestContactDetails.graphql';
 import GET_LISTING_QUERY from './GetListing.graphql';
 import UPDATE_IMAGE_MUTATION from './UpdateImage.graphql';
@@ -19,8 +18,11 @@ import { HandledQuery } from '~components/HandledQuery';
 import { OwnerStatusBanner } from '~website/containers/bookmarket/BookDetail/OwnerStatusBanner';
 import { adopt } from '~components/Adopt';
 import { formatPrice } from '~libs/money';
+import { InternalAppLink } from '~components/InternalAppLink';
 
-interface OwnProps extends RouteComponentProps<{ listingId: string }> {}
+interface OwnProps {
+  listingId: string;
+}
 
 interface Result {
   marketListing: MarketListing;
@@ -46,11 +48,11 @@ interface RenderProps {
 
 const Composed = adopt<RenderProps, OwnProps>({
   user: CurrentUserQuery,
-  listingQuery: ({ render, match }) => (
+  listingQuery: ({ render, listingId }) => (
     <GetListingQuery
       query={GET_LISTING_QUERY}
       variables={{
-        listingId: parseInt(match.params.listingId, 10),
+        listingId: parseInt(listingId, 10),
       }}
     >
       {render}
@@ -123,16 +125,16 @@ const BookDetail: React.SFC<IProps> = (props: IProps) => {
             </Helmet>
             <JsonLd data={ldData} />
             <BreadcrumbBar>
-              <Link to="/book-market/">Book Market</Link>
-              <Link
+              <InternalAppLink to="/book-market/">Book Market</InternalAppLink>
+              <InternalAppLink
                 to={`/book-market/section/${listing.section &&
                   listing.section.slug}`}
               >
                 {listing.section.title}
-              </Link>
-              <Link to={`/book-market/listing/${listing.pk}`}>
+              </InternalAppLink>
+              <InternalAppLink to={`/book-market/listing/${listing.pk}`}>
                 {listing.bookTitle}
-              </Link>
+              </InternalAppLink>
             </BreadcrumbBar>
             {isOwner ? (
               listing.image ? (

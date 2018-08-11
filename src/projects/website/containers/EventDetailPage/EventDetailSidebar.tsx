@@ -38,7 +38,6 @@ export const EventDetailSidebar = (props: IProps) => {
           />
         </div>
       ) : null}
-
     </aside>
   );
 };

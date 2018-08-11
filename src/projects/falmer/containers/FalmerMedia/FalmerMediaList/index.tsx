@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import ALL_MEDIA_QUERY from './AllMedia.graphql';
 import FauxRouterLink from '~components/FauxRouterLink';
 import { Connection } from '~types/falmer';
@@ -7,6 +6,7 @@ import { FalmerImage } from '~types/events';
 import { OneImage } from '~components/OneImage';
 import { HandledQuery } from '~components/HandledQuery';
 import { adopt } from '~components/Adopt';
+import { SimpleLoadableRoute } from '~types/routes';
 
 interface IProps {}
 
@@ -72,4 +72,4 @@ function FalmerMediaList(props: IProps) {
   );
 }
 
-export default withRouter(FalmerMediaList);
+export default FalmerMediaList as SimpleLoadableRoute;

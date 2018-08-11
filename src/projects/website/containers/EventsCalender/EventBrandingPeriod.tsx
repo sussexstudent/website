@@ -2,17 +2,12 @@ import React from 'react';
 import apolloHandler from '~components/apolloHandler';
 import { EventListings } from '~website/containers/EventsCalender/EventListings';
 import Helmet from 'react-helmet';
-import { match } from 'react-router-dom';
 import { compose } from 'recompose';
 import EventListingsBrandingPeriodQuery from './EventListingsBrandingPeriod.graphql';
 import { graphql } from 'react-apollo';
 
-interface RouterParams {
-  brandSlug?: string;
-}
-
 interface OwnProps {
-  match: match<RouterParams>;
+  brandSlug: string;
   data: any; // todo
   filter: any; // todo
 }
@@ -23,7 +18,7 @@ class EventsCalender extends React.Component<IProps> {
   render() {
     const {
       data: { allEvents, brandingPeriod },
-      match,
+      brandSlug,
     } = this.props;
 
     return (
@@ -46,10 +41,7 @@ class EventsCalender extends React.Component<IProps> {
           />
         </div>
 
-        <EventListings
-          events={allEvents}
-          removePast={!match.params.brandSlug}
-        />
+        <EventListings events={allEvents} removePast={!brandSlug} />
       </div>
     );
   }
@@ -58,7 +50,7 @@ class EventsCalender extends React.Component<IProps> {
 export const EventBrandingPeriod = compose<OwnProps, OwnProps>(
   graphql<any, OwnProps>(EventListingsBrandingPeriodQuery, {
     options: (props) => {
-      const brandSlug = props.match.params.brandSlug;
+      const brandSlug = props.brandSlug;
       return {
         variables: {
           brandSlug,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import formatDate from 'date-fns/format';
-import { Link } from 'react-router-dom';
+import { Link } from '@reach/router';
 import ALL_EVENTS_QUERY from './AllEvents.graphql';
 import FalmerDataList, {
   Cell,
@@ -16,6 +16,7 @@ import FalmerSubSections, {
 import { Event } from '~types/events';
 import { Connection } from '~types/falmer';
 import { HandledQuery } from '~components/HandledQuery';
+import { SimpleLoadableRoute } from '~types/routes';
 
 function plural(
   length: number,
@@ -125,4 +126,4 @@ function FalmerEvents() {
   );
 }
 
-export default FalmerEvents;
+export default FalmerEvents as SimpleLoadableRoute;

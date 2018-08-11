@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mutation, MutationFunc } from 'react-apollo';
 import { Helmet } from 'react-helmet';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link } from '@reach/router';
 import { withState } from 'recompose';
 import CopyToClipboardButton from '~components/CopyToClipboardButton';
 import ImageTreatmentPreview from '../../../components/ImageTreatmentPreview';
@@ -17,10 +17,6 @@ import { Tag, Tags } from '~components/Tags';
 import { formatDistance } from 'date-fns';
 import { FalmerDetailHeader } from '~falmer/components/FalmerDetailHeader';
 
-interface RouteParams {
-  eventId: number;
-}
-
 interface Result {
   data: {
     event: Event;
@@ -35,19 +31,20 @@ interface RenderProps {
   };
 }
 
-interface Props extends RouteComponentProps<RouteParams> {
+interface Props {
   isMoveModalOpen: boolean;
   handleMoveModal(bool: boolean): void;
+  eventId: number;
 }
 
 class EventDetailQuery extends HandledQuery<Result, { eventId: number }> {}
 
 const Compose = adopt<RenderProps, Props>({
-  query: ({ render, match }) => (
+  query: ({ render, eventId }) => (
     <EventDetailQuery
       query={EVENT_DETAIL_QUERY}
       variables={{
-        eventId: match.params.eventId,
+        eventId,
       }}
     >
       {render}
@@ -174,4 +171,4 @@ function FalmerEventsDetail(props: Props) {
 
 export default withState('isMoveModalOpen', 'handleMoveModal', false)(
   FalmerEventsDetail as any,
-);
+) as any; // todo

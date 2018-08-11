@@ -1,19 +1,21 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
+import {
+  LocationProvider,
+  createMemorySource,
+  createHistory,
+} from '@reach/router';
 import { Provider as ReduxProvider } from 'react-redux';
-import ScrollToTop from '~components/ScrollToTop';
-import { store } from '../../projects/website/redux/store';
+import { store } from '~website/redux/store';
 import { ApolloProvider } from 'react-apollo';
 import getApolloClientForFalmer from '~libs/getApolloClientForFalmer';
 
-console.log(getApolloClientForFalmer);
+const source = createMemorySource('/');
+const history = createHistory(source);
 
-export const Storybase = (url: string = '/') => (story: () => any) => (
+export const Storybase = (_url: string = '/') => (story: () => any) => (
   <ReduxProvider store={store}>
     <ApolloProvider client={getApolloClientForFalmer}>
-      <MemoryRouter initialEntries={[url]}>
-        <ScrollToTop>{story()}</ScrollToTop>
-      </MemoryRouter>
+      <LocationProvider history={history}>{story()}</LocationProvider>
     </ApolloProvider>
   </ReduxProvider>
 );

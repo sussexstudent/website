@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import getHours from 'date-fns/getHours';
@@ -39,5 +38,4 @@ export default compose<IProps, {}>(
   connect((state: RootState) => ({
     user: state.auth.user,
   })),
-  withRouter,
 )(FalmerDashboard);

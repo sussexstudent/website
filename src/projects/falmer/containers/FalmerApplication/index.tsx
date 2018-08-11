@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { withRouter } from 'react-router';
-import { Switch, Route } from 'react-router-dom';
+import { Router } from '@reach/router';
 import Loadable from 'react-loadable';
 import { requestAuthToken } from '~falmer/ducks/auth';
 import FalmerHeader from '~falmer/components/FalmerHeader';
@@ -14,30 +13,30 @@ import { compose } from 'recompose';
 const LoadableMedia = Loadable({
   loader: () => import(/* webpackChunkName: "Media" */ '../FalmerMedia'),
   loading: LoadableLoading,
-});
+}) as any;
 
 const LoadableBookMarket = Loadable({
   loader: () =>
     import(/* webpackChunkName: "BookMarket" */ '../FalmerBookMarket'),
   loading: LoadableLoading,
-});
+}) as any;
 
 const LoadableStudentGroups = Loadable({
   loader: () =>
     import(/* webpackChunkName: "StudentGroups" */ '../FalmerStudentGroups'),
   loading: LoadableLoading,
-});
+}) as any;
 
 const LoadableEvents = Loadable({
   loader: () => import(/* webpackChunkName: "Events" */ '../FalmerEvents'),
   loading: LoadableLoading,
-});
+}) as any;
 
 const LoadableDashboard = Loadable({
   loader: () =>
     import(/* webpackChunkName: "Dashboard" */ '../FalmerDashboard'),
   loading: LoadableLoading,
-});
+}) as any;
 
 interface IProps {
   requestAuthToken(): void;
@@ -61,13 +60,13 @@ class FalmerApplication extends React.Component<IProps> {
         <Helmet titleTemplate="%s | Falmer" />
         <FalmerHeader />
         <main className="FalmerViewContainer">
-          <Switch>
-            <Route path="/" exact component={LoadableDashboard} />
-            <Route path="/events" component={LoadableEvents} />
-            <Route path="/groups" component={LoadableStudentGroups} />
-            <Route path="/media" component={LoadableMedia} />
-            <Route path="/book-market" component={LoadableBookMarket} />
-          </Switch>
+          <Router>
+            <LoadableDashboard path="/" exact />
+            <LoadableEvents path="/events/*" />
+            <LoadableStudentGroups path="/groups/*" />
+            <LoadableMedia path="/media/*" />
+            <LoadableBookMarket path="/book-market/*" />
+          </Router>
         </main>
       </section>
     );
@@ -75,7 +74,6 @@ class FalmerApplication extends React.Component<IProps> {
 }
 
 export default compose<IProps, {}>(
-  withRouter,
   connect(
     (state: RootState) => ({
       isAuthenticated: state.auth.user !== null,

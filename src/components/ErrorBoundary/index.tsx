@@ -1,8 +1,7 @@
 import React from 'react';
 import { ErrorState } from '~components/ErrorState';
-import { withRouter, RouteComponentProps } from 'react-router';
 
-interface ErrorBoundaryProps extends RouteComponentProps<any> {
+interface ErrorBoundaryProps {
   children?: any;
   FallbackComponent?: any;
   onError?: (error: Error, componentStack: string) => void;
@@ -33,9 +32,10 @@ class ErrorBoundary extends React.Component<
       info: null,
     };
 
-    props.history.listen(() => {
-      this.setState({ error: null, info: null });
-    });
+    // todo: history reset on route change
+    // props.history.listen(() => {
+    //   this.setState({ error: null, info: null });
+    // });
   }
 
   componentDidCatch(error: Error, info: ErrorInfo): void {
@@ -67,4 +67,4 @@ class ErrorBoundary extends React.Component<
   }
 }
 
-export default withRouter(ErrorBoundary as any);
+export default ErrorBoundary;

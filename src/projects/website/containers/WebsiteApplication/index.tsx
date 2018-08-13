@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, WindowLocation, NavigateFn } from '@reach/router';
+import { Router, WindowLocation, NavigateFn, Location } from '@reach/router';
 import { History } from 'history';
 import BookMarketApp from '~website/containers/bookmarket/BookMarketApp';
 import EventsApplication from '~website/containers/EventsApplication';
@@ -66,21 +66,27 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
           defaultTitle="Sussex Students' Union"
           titleTemplate="%s | Sussex Students' Union"
         />
-        <ErrorBoundary>
-          <Router>
-            <Homepage path="/" />
-            <BookMarketApp path="/book-market/*" />
-            <EventsApplication path="/whats-on/*" />
-            <LoadableSearchApp path="/search" />
-            <LoadableStudentGroupsDiscovery path="/sport-societies-media/discover" />
-            <FreshersContentAPI path="/freshers" />
-            <EventDiscovery path="/event-discovery" />
-            <ContentAPI path="/get-involved" exact />
-            <ContentAPI path="/content-root-example" />
-            <ContentAPI path="/support" exact />
-            <ContentExplorer path="/content-explorer" exact />
-          </Router>
-        </ErrorBoundary>
+        <Location>
+          {({ location }) => (
+            <ErrorBoundary location={location}>
+              <Router>
+                <Homepage path="/" />
+                <BookMarketApp path="/book-market/*" />
+                <LoadableContentBrowser path="/browse/*" />
+                <EventsApplication path="/whats-on/*" />
+                <LoadableSearchApp path="/search" />
+                <LoadableStudentGroupsDiscovery path="/sport-societies-media/discover" />
+                <FreshersContentAPI path="/freshers" />
+                <EventDiscovery path="/event-discovery" />
+                <ContentAPI path="/get-involved" exact />
+                <ContentAPI path="/content-root-example" />
+                <ContentAPI path="/services/*" />
+                <ContentAPI path="/support" exact />
+                <ContentExplorer path="/content-explorer" exact />
+              </Router>
+            </ErrorBoundary>
+          )}
+        </Location>
       </React.Fragment>
     );
   }

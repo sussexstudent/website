@@ -1,10 +1,12 @@
 import React from 'react';
 import { ErrorState } from '~components/ErrorState';
+import { WindowLocation } from '@reach/router';
 
 interface ErrorBoundaryProps {
   children?: any;
   FallbackComponent?: any;
   onError?: (error: Error, componentStack: string) => void;
+  location: WindowLocation;
 }
 
 interface ErrorInfo {
@@ -32,10 +34,11 @@ class ErrorBoundary extends React.Component<
       info: null,
     };
 
-    // todo: history reset on route change
-    // props.history.listen(() => {
-    //   this.setState({ error: null, info: null });
-    // });
+    this.handleRouteUpdate = this.handleRouteUpdate.bind(this);
+  }
+
+  handleRouteUpdate() {
+    this.setState({ error: null, info: null });
   }
 
   componentDidCatch(error: Error, info: ErrorInfo): void {
@@ -48,6 +51,12 @@ class ErrorBoundary extends React.Component<
     }
 
     this.setState({ error, info });
+  }
+
+  componentDidUpdate(prevProps: ErrorBoundaryProps) {
+    if (this.props.location !== prevProps.location) {
+      this.handleRouteUpdate();
+    }
   }
 
   render() {

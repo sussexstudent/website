@@ -2,7 +2,7 @@ import React from 'react';
 import bind from 'bind-decorator';
 import { keyBy } from 'lodash';
 import Fuse from 'fuse.js';
-import OrgansiationGrid, { StudentGroup } from '~components/OrganisationGrid';
+import OrganisationGrid, { StudentGroup } from '~components/OrganisationGrid';
 import STUDENT_GROUP_LISTING_QUERY from './StudentGroupListings.graphql';
 import { HandledQuery } from '~components/HandledQuery';
 import { removePageContainer } from '~libs/hacky';
@@ -110,7 +110,7 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
           </div>
           <div className="ActivitiesApp__main">
             <div className="ActivitiesApp__grid">
-              <OrgansiationGrid
+              <OrganisationGrid
                 organisations={displayIds.map((id) => map[id])}
               />
             </div>

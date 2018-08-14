@@ -45,7 +45,7 @@ class Offers extends React.Component<{}, OffersState> {
 
           return (
             <div>
-              <ul className="List List--reset OrgansiationGrid">
+              <ul className="List List--reset OrganisationGrid">
                 {data.allOffers.map((offer, index) => (
                   <li className="OrganisationCard">
                     <div

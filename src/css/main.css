@@ -93,6 +93,7 @@
 @import '../components/OrganisationCard/OrganisationCard.css';
 @import '../components/Deckchair/Deckchair.css';
 @import '../components/Loader/Loader.css';
+@import '../components/BannerOutlet/Banner.css';
 @import '../components/BlockLink/BlockLink.css';
 
 @import '../projects/website/containers/EventDetailPage/EventDetail.css';

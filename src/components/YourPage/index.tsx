@@ -6,6 +6,9 @@ import { UserState } from '../../projects/website/ducks/user';
 import { PageState } from '../../projects/website/ducks/page';
 import { Accordion } from '~components/Accordion';
 import { AccordionItem } from '~components/Accordion/AccordionItem';
+import getApolloClientForFalmer from "~libs/getApolloClientForFalmer";
+import {BannerOutlet} from "~components/BannerOutlet";
+import {ApolloProvider} from 'react-apollo';
 
 interface YourPageProps {
   user: UserState;
@@ -28,6 +31,10 @@ const YourPageComponent: React.SFC<YourPageProps & ReactModal.Props> = (
       <h2 className="Modal__heading">
         {props.user.profile.firstName} {props.user.profile.lastName}
       </h2>
+
+      <ApolloProvider client={getApolloClientForFalmer}>
+        <BannerOutlet outlet="yourpage.modal.top" />
+      </ApolloProvider>
 
       <Accordion className="ModalAccordion">
         {menu.admin.areas.length > 0 || menu.admin.orgs.length > 0 ? (
@@ -87,6 +94,10 @@ const YourPageComponent: React.SFC<YourPageProps & ReactModal.Props> = (
           Log out
         </button>
       </div>
+
+      <ApolloProvider client={getApolloClientForFalmer}>
+        <BannerOutlet outlet="yourpage.modal.bottom" />
+      </ApolloProvider>
     </Modal>
   );
 };

@@ -1,0 +1,9 @@
+query Banners {
+  allActiveBanners {
+    id
+    outlet
+    heading
+    body
+    purpose
+  }
+}

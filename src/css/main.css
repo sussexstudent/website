@@ -99,6 +99,7 @@
 @import '../projects/website/containers/EventsCalender/EventsCalender.css';
 
 @import '../projects/website/components/HomepageSplash/HomepageSplash.css';
+@import '../projects/website/components/ContentBrowser/ContentBrowser.css';
 
 /* Content */
 @import '../projects/website/containers/content/blocks/AlertText/AlertText.css';

@@ -2,10 +2,12 @@ import { PreRouter } from '~libs/PreRouter';
 
 export default new PreRouter([
   /^\/$/,
-  '/whats-on',
+  '/whats-on', // Events App
+  '/browse', // Content Browser App
   '/sport-societies-media/discover',
-  '/book-market',
-  '/freshers',
+  '/book-market', // Book Market App
+  '/freshers', // Content API Controlled
+  '/services', // Content API Controlled
   '/kb',
   '/content-root-example',
   '/search',

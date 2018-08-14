@@ -4,9 +4,11 @@ import pageMap from '~website/containers/content/pageMap';
 import { HandledQuery } from '~components/HandledQuery';
 import Helmet from 'react-helmet';
 import { FourOhFourPage } from './FourOhFourPage';
+import { NavigateFn } from '@reach/router';
 
 interface OwnProps {
   path: string;
+  navigate?: NavigateFn;
 }
 
 interface Result {
@@ -41,6 +43,11 @@ const ContentPage: React.SFC<IProps> = (props: IProps) => {
 
         if (page === null) {
           return <FourOhFourPage />;
+        }
+
+        if (page.contentType === 'StubPage' && props.navigate) {
+          props.navigate(`/browse${props.path}`, { replace: true });
+          return null;
         }
 
         const Component = pageMap.hasOwnProperty(page.contentType)

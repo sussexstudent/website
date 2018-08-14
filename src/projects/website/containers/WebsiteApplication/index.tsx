@@ -27,12 +27,12 @@ interface WebsiteApplicationProps {
 }
 
 const ContentAPI = (props: any) => (
-  <ContentPage path={props.location.pathname} />
+  <ContentPage path={props.location.pathname} navigate={props.navigate} />
 );
 
 const FreshersContentAPI = (props: any) => (
   <div className="FreshersSite u-keep-footer-down">
-    <ContentPage path={props.location.pathname} />
+    <ContentPage path={props.location.pathname} navigate={props.navigate} />
   </div>
 );
 
@@ -48,9 +48,14 @@ const LoadableStudentGroupsDiscovery = Loadable({
     import(/* webpackChunkName: "sgd" */ '~components/StudentGroupsDiscovery'),
 }) as React.SFC<RouteComponent>;
 
+const LoadableContentBrowser = Loadable({
+  loading: LoadableLoading,
+  loader: () =>
+    import(/* webpackChunkName: "ContentBrowser" */ '~website/containers/ContentBrowser'),
+}) as any;
+
 class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
   componentDidMount() {
-    console.log(this.props);
     this.props.setRouter(this.props.navigate, this.props.location);
     this.props.announceMount(this.props.appMountState);
   }

@@ -14,3 +14,12 @@ export interface StreamFieldBlockData<B = any> {
 }
 
 export type StreamFieldData = StreamFieldBlockData[];
+
+export interface ContentBrowserPage {
+  title: string;
+  contentType: string;
+  path: string;
+  slug: string;
+  searchDescription: string;
+  subPages: ContentBrowserPage[];
+}

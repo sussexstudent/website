@@ -1,8 +1,8 @@
-export interface Page<D = null> {
+export interface Page<S = null> {
   title: string;
   slug: string;
   path: string;
-  data: D;
+  subPages: S;
 }
 
 export type StreamFieldBlock<B> = React.SFC<{ page: Page; block: B }>;

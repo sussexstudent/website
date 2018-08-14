@@ -12,15 +12,17 @@ import { Page } from '~website/containers/content/types';
 import { FalmerImage } from '~types/events';
 import { OneImage } from '~components/OneImage';
 
+interface ISectionContentPage extends Page {
+  title: string;
+  sidebarBody: any;
+  body: any;
+  headingImage: FalmerImage;
+  headingImageAsHero: boolean;
+  contentsInSidebar: boolean;
+}
+
 interface IProps {
-  page: Page<{
-    title: string;
-    sidebarBody: any;
-    body: any;
-    headingImage: FalmerImage;
-    headingImageAsHero: boolean;
-    contentsInSidebar: boolean;
-  }>;
+  page: ISectionContentPage;
 }
 
 interface IState {
@@ -41,13 +43,11 @@ class SectionContentPage extends React.Component<IProps, IState> {
     const {
       page: {
         title,
-        data: {
           sidebarBody,
           body,
           headingImageAsHero,
           headingImage,
           contentsInSidebar,
-        },
       },
       page,
     } = this.props;

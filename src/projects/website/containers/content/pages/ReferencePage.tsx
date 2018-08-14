@@ -7,19 +7,23 @@ import slugify from '~libs/slugify';
 import { RelatedContent } from '~website/components/RelatedContent';
 import { StaffOwners } from '~website/components/StaffOwners';
 
+interface IReferencePage extends Page {
+  content: StreamFieldData;
+  relatedLinks: StreamFieldData;
+  staffOwners: StreamFieldData;
+}
+
 interface IProps {
-  page: Page<{
-    content: StreamFieldData;
-    relatedLinks: StreamFieldData;
-    staffOwners: StreamFieldData;
-  }>; // todo
+  page: IReferencePage
 }
 
 class ReferencePage extends React.Component<IProps> {
   render() {
     const {
       page: {
-        data: { content, relatedLinks, staffOwners },
+        content,
+        relatedLinks,
+        staffOwners
       },
       page,
     } = this.props;

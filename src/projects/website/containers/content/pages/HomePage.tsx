@@ -14,17 +14,20 @@ interface FigureCollectionBlock {
   };
 }
 
+interface IHomePage extends Page {
+  fullTimeOfficers: FigureCollectionBlock[];
+  partTimeOfficers: FigureCollectionBlock[];
+}
+
 interface IProps {
-  page: Page<{
-    fullTimeOfficers: FigureCollectionBlock[];
-    partTimeOfficers: FigureCollectionBlock[];
-  }>; // todo
+  page: IHomePage;
 }
 
 function HomePage(props: IProps) {
   const {
     page: {
-      data: { fullTimeOfficers, partTimeOfficers },
+      fullTimeOfficers,
+      partTimeOfficers,
     },
   } = props;
 

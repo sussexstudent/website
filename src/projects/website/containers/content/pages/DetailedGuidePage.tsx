@@ -7,14 +7,13 @@ import StreamField from '~website/containers/content/StreamField';
 import { Router } from '@reach/router';
 import { RouteComponent } from '~types/routes';
 
-interface DetailPageSection extends Page<{ content: StreamFieldData }> {}
-interface DetailPage
-  extends Page<{
-      content: StreamFieldData;
-      relatedLinks: StreamFieldData;
-      staffOwners: StreamFieldData;
-    }> {
-  subPages: DetailPageSection[];
+interface DetailPageSection extends Page {
+  content: StreamFieldData;
+}
+interface DetailPage extends Page<DetailPageSection[]> {
+  content: StreamFieldData;
+  relatedLinks: StreamFieldData;
+  staffOwners: StreamFieldData;
 }
 
 interface IProps {
@@ -24,14 +23,14 @@ interface IProps {
 const DetailedGuideSection: React.SFC<
   { page: DetailPageSection } & RouteComponent
 > = (props) => (
-  <StreamField items={props.page.data.content} page={props.page} />
+  <StreamField items={props.page.content} page={props.page} />
 );
 
 class DetailedGuidePage extends React.Component<IProps> {
   render() {
     const {
       page: {
-        data: { content, relatedLinks, staffOwners },
+        content, relatedLinks, staffOwners,
         subPages,
         path,
       },

@@ -2,15 +2,19 @@ import React from 'react';
 import { Page, StreamFieldData } from '~website/containers/content/types';
 import StreamField from '~website/containers/content/StreamField';
 
+interface GenericContentStreamPage extends Page {
+  body: StreamFieldData
+}
+
 interface IProps {
-  page: Page<{ body: StreamFieldData }>; // todo
+  page: GenericContentStreamPage
 }
 
 class GenericContentStreamPage extends React.Component<IProps> {
   render() {
     const {
       page: {
-        data: { body },
+        body,
       },
       page,
     } = this.props;

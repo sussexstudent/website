@@ -1,11 +1,68 @@
 query ContentPage($path: String) {
   page(path: $path) {
-    path
     assumptionPath
     ...ContentPageGenerals
     ... on DetailedGuidePage {
       subPages {
         ...ContentPageGenerals
+      }
+    }
+    ... on AnswerPage {
+      content
+      relatedLinks
+      staffOwners
+    }
+    ...on ReferencePage {
+      content
+      relatedLinks
+      staffOwners
+    }
+    ... on HomePage {
+      fullTimeOfficers
+      partTimeOfficers
+    }
+    ...on SectionContentPage {
+      sidebarBody
+      body
+      headingImageAsHero
+      headingImage {
+        ...FalmerImage
+      }
+      contentsInSidebar
+    }
+    ...on StaffPage {
+      body
+    }
+    ... on OutletIndexPage {
+      preamble
+      subPages {
+        ... on OutletPage {
+          ...ContentPageGenerals
+          heroImage {
+            ...FalmerImage
+          }
+        }
+      }
+      section: closestAncestorOfType(contentType: "OutletIndexPage", inclusive: true) {
+        ...ContentPageGenerals
+        subPages {
+          ...ContentPageGenerals
+        }
+      }
+    }
+    ... on OutletPage {
+      main
+      heroImage {
+        ...FalmerImage
+      }
+      openingTimes
+      menu
+      deals
+      section: closestAncestorOfType(contentType: "OutletIndexPage", inclusive: true) {
+        ...ContentPageGenerals
+        subPages {
+          ...ContentPageGenerals
+        }
       }
     }
   }
@@ -14,10 +71,16 @@ query ContentPage($path: String) {
 fragment ContentPageGenerals on Page {
   title
   slug
+  path
 
   seoTitle
   searchDescription
 
   contentType
-  data
+}
+
+fragment FalmerImage on Image {
+  width
+  height
+  resource
 }

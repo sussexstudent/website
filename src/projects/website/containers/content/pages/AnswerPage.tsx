@@ -7,19 +7,21 @@ import slugify from '~libs/slugify';
 import { RelatedContent } from '~website/components/RelatedContent';
 import { StaffOwners } from '~website/components/StaffOwners';
 
+interface IAnswerPage extends Page {
+  content: StreamFieldData;
+  relatedLinks: StreamFieldData;
+  staffOwners: StreamFieldData;
+}
+
 interface IProps {
-  page: Page<{
-    content: StreamFieldData;
-    relatedLinks: StreamFieldData;
-    staffOwners: StreamFieldData;
-  }>; // todo
+  page: IAnswerPage;
 }
 
 class AnswerPage extends React.Component<IProps> {
   render() {
     const {
       page: {
-        data: { content, relatedLinks, staffOwners },
+        content, relatedLinks, staffOwners,
       },
       page,
     } = this.props;

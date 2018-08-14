@@ -34,8 +34,12 @@ const levelMap = {
   staff_list: 1,
 };
 
+interface IStaffPage extends Page {
+  body: any;
+}
+
 interface IProps {
-  page: Page<{ body: any }>; // todo
+  page: IStaffPage; // todo
 }
 
 interface IState {
@@ -58,7 +62,7 @@ class StaffPage extends React.Component<IProps, IState> {
   render() {
     const {
       page: {
-        data: { body },
+        body
       },
       page,
     } = this.props;

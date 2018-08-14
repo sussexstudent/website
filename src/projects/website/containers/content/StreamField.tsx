@@ -9,7 +9,7 @@ interface IProps {
     children: any;
     key: string;
     block: StreamFieldBlock<any>;
-    page: Page<any>;
+    page: Page;
   }): any;
 }
 
@@ -26,14 +26,14 @@ class StreamField extends React.Component<IProps> {
           return renderItem({
             page,
             children: (
-              <Component page={page} block={item.value} key={item.key} />
+              <Component page={page} block={item.value} key={item.id} />
             ),
             block: item.value,
-            key: item.key,
+            key: item.id,
           });
         }
 
-        return <Component page={page} block={item.value} key={item.key} />;
+        return <Component page={page} block={item.value} key={item.id} />;
       }
 
       console.warn(`[content] missing block "${item.type}"`);

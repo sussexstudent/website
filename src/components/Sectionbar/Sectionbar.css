@@ -26,6 +26,15 @@
     @media (--medium) {
       text-align: left;
     }
+
+    & a {
+      text-decoration: none;
+      color: var(--color__grey-sad-slate);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   &__menu {

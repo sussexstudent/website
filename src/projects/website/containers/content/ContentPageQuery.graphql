@@ -6,16 +6,20 @@ query ContentPage($path: String) {
       subPages {
         ...ContentPageGenerals
       }
+      ...KBTypes
     }
     ... on AnswerPage {
       content
       relatedLinks
       staffOwners
+
+      ...KBTypes
     }
     ...on ReferencePage {
       content
       relatedLinks
       staffOwners
+      ...KBTypes
     }
     ... on HomePage {
       fullTimeOfficers
@@ -33,6 +37,9 @@ query ContentPage($path: String) {
     ...on StaffPage {
       body
     }
+    ...on SelectionGridPage {
+      body
+    }
     ... on OutletIndexPage {
       preamble
       subPages {
@@ -48,6 +55,19 @@ query ContentPage($path: String) {
         subPages {
           ...ContentPageGenerals
         }
+      }
+    }
+    ...on KBRootPage {
+      categories: subPages {
+        ...ContentPageGenerals
+      }
+    }
+    ...on KBCategoryPage {
+      rootPage: closestAncestorOfType(contentType: "KBRootPage") {
+        ...ContentPageGenerals
+      }
+      subPages {
+        ...ContentPageGenerals
       }
     }
     ... on OutletPage {
@@ -83,4 +103,15 @@ fragment FalmerImage on Image {
   width
   height
   resource
+}
+
+
+fragment KBTypes on Page {
+  root: closestAncestorOfType(contentType: "KBRootPage") {
+    ...ContentPageGenerals
+  }
+  category: closestAncestorOfType(contentType: "KBCategoryPage") {
+    ...ContentPageGenerals
+  }
+
 }

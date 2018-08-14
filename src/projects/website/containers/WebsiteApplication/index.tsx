@@ -87,6 +87,9 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
                 <ContentAPI path="/content-root-example" />
                 <ContentAPI path="/services/*" />
                 <ContentAPI path="/support" exact />
+                <ContentAPI path="/website-knowledge-base/*" />
+                <ContentAPI path="/get-involved-next/" />
+                <ContentAPI path="/about-us-next/" />
                 <ContentExplorer path="/content-explorer" exact />
               </Router>
             </ErrorBoundary>

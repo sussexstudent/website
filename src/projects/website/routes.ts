@@ -14,4 +14,7 @@ export default new PreRouter([
   '/event-discovery',
   /^\/get-involved$/,
   /^\/support$/,
+  '/website-knowledge-base',
+  '/get-involved-next',
+  '/about-us-next',
 ]);

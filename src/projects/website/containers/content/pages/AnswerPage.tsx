@@ -6,11 +6,15 @@ import ContentNavigation from '~components/ContentNavigation';
 import slugify from '~libs/slugify';
 import { RelatedContent } from '~website/components/RelatedContent';
 import { StaffOwners } from '~website/components/StaffOwners';
+import {KBContentBreadcrumbBar} from "~website/components/KBContentBreadcrumbBar";
 
 interface IAnswerPage extends Page {
   content: StreamFieldData;
   relatedLinks: StreamFieldData;
   staffOwners: StreamFieldData;
+
+  root: Page;
+  category: Page;
 }
 
 interface IProps {
@@ -30,6 +34,7 @@ class AnswerPage extends React.Component<IProps> {
 
     return (
       <div className="LokiContainer">
+        <KBContentBreadcrumbBar page={page} />
         <h1 className="type-trafalgar">{page.title}</h1>
         <div className="LayoutContent">
           <div className="LayoutContent__toc">

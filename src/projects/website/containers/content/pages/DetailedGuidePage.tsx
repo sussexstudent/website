@@ -6,6 +6,7 @@ import { StaffOwners } from '~website/components/StaffOwners';
 import StreamField from '~website/containers/content/StreamField';
 import { Router } from '@reach/router';
 import { RouteComponent } from '~types/routes';
+import {KBContentBreadcrumbBar} from "~website/components/KBContentBreadcrumbBar";
 
 interface DetailPageSection extends Page {
   content: StreamFieldData;
@@ -14,6 +15,9 @@ interface DetailPage extends Page<DetailPageSection[]> {
   content: StreamFieldData;
   relatedLinks: StreamFieldData;
   staffOwners: StreamFieldData;
+
+  root: Page;
+  category: Page;
 }
 
 interface IProps {
@@ -39,6 +43,8 @@ class DetailedGuidePage extends React.Component<IProps> {
     console.log({ content });
     return (
       <div className="LokiContainer">
+        <KBContentBreadcrumbBar page={page} />
+
         <h1 className="type-trafalgar">{page.title}</h1>
         <div className="LayoutContent">
           <div className="LayoutContent__toc">

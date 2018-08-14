@@ -6,6 +6,8 @@ import { SectionContentPage } from '~website/containers/content/pages/SectionCon
 import AnswerPage from '~website/containers/content/pages/AnswerPage';
 import ReferencePage from './pages/ReferencePage';
 import DetailedGuidePage from './pages/DetailedGuidePage';
+import {KBRootPage} from "~website/containers/content/pages/KBRootPage";
+import {KBCategoryPage} from "~website/containers/content/pages/KBCategoryPage";
 
 const StaffPage = Loadable({
   loading: LoadableLoading,
@@ -31,6 +33,9 @@ export default {
   // FRESHERS
   FreshersHomepage,
 
+  // Knowledge
+  KBRootPage,
+  KBCategoryPage,
   AnswerPage,
   ReferencePage,
   DetailedGuidePage,

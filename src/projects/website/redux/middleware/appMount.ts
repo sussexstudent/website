@@ -66,7 +66,6 @@ export const appMountMiddleware = (store: any) => (next: any) => (
     }
 
     const prerouterMatch = routes.matches(router.location.pathname);
-    console.log('setrouter', prerouterMatch, router.location.pathname);
     if (prerouterMatch) {
       if (router.currentContentRoot !== ContentRoot.App) {
         store.dispatch(

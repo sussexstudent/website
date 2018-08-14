@@ -45,7 +45,6 @@ export default function reducer(
       return { ...state, isOpenMobileMenu: action.payload.isOpen };
     }
     case PAGE_REPLACE_PAGE_ACTIONS: {
-      console.log(action);
       return { ...state, menu: { ...state.menu, page: action.payload } };
     }
     case 'PAGE_HYDRATION': {

@@ -27,7 +27,6 @@ function KbSectionComponent(props: IProps) {
   return (
     <div>
       <ContentBreadcrumbBar page={props.data.knowledgeBase.section} />
-
       <h1>{section.title}</h1>
       <ul>
         {section.topics.map((topic) => (

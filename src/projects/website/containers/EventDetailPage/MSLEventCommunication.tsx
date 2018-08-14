@@ -39,7 +39,6 @@ class MSLEventCommunicationComponent extends React.Component<IProps, IState> {
     const data = e.data;
     if (data.source === 'ussu-msl-frame-initial-data') {
       this.setState({ data: data.payload });
-      console.log(data.payload);
       this.props.onData(data.payload);
 
       if (data.payload.pageMenuOptions) {

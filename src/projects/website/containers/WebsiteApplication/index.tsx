@@ -75,7 +75,7 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
           {({ location }) => (
             <ErrorBoundary location={location}>
               <Router>
-                <Homepage path="/" />
+                <Homepage path="/homepage-next  " />
                 <BookMarketApp path="/book-market/*" />
                 <LoadableContentBrowser path="/browse/*" />
                 <EventsApplication path="/whats-on/*" />

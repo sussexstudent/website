@@ -2,7 +2,7 @@
   border-bottom: 0 !important;
 }
 
-.html--miniheader .LokiHeader {
+.html--miniheaderx .LokiHeader {
   @media (--medium) {
     margin-top: -71px;
 

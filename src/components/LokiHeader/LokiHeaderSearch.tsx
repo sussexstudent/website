@@ -26,9 +26,10 @@ class LokiHeaderSearchComponent extends React.Component<
   }
 
   componentDidUpdate() {
-    if (this.input) {
-      this.input.focus();
-    }
+    // todo: homepage search
+    // if (this.input) {
+    //   this.input.focus();
+    // }
   }
 
   render() {

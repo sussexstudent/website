@@ -8,6 +8,7 @@ import { LoadableLoading } from '~components/LoadableLoading';
 import { Sectionbar, SectionbarItem } from '~components/Sectionbar';
 // import { removePageContainer } from '~libs/hacky';
 import { RouteComponent } from '~types/routes';
+import {ScrollToTop} from "~components/ScrollToTop";
 
 const EventsListLoader = () =>
   import(/* webpackChunkName: "events.listings" */ '~website/containers/EventsCalender/index');
@@ -77,7 +78,8 @@ class EventsApplication extends React.Component<
 
   render() {
     return (
-      <div className="u-keep-footer-down js-expand-container">
+      <ScrollToTop>
+        <div className="u-keep-footer-down js-expand-container">
         <Sectionbar title="What's on">
           <SectionbarItem>
             <Link to={'/whats-on'}>Listings</Link>
@@ -111,6 +113,8 @@ class EventsApplication extends React.Component<
           <LoadableDetail path=":eventPath" />
         </Router>
       </div>
+      </ScrollToTop>
+
     );
   }
 }

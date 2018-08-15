@@ -12,14 +12,15 @@ interface SelectionGridItemData {
 }
 
 export const SelectionGridBlock: StreamFieldBlock<SelectionGridItemData[]> = ({
-  block,
-}) => {
+                                                                                block,
+                                                                              }) => {
   return (
     <SelectionGrid>
       {block.map((
         item: any, // todo
       ) => (
         <SelectionGridItem
+          key={item.link}
           title={item.title}
           link={normaliseContentLink(item.link)}
           imageURL={item.image.resource}

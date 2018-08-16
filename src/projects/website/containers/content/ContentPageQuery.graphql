@@ -8,6 +8,9 @@ query ContentPage($path: String) {
       }
       ...KBTypes
     }
+    ... on BasicContentPage {
+      content
+    }
     ... on AnswerPage {
       content
       relatedLinks

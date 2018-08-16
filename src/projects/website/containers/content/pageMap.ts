@@ -10,6 +10,7 @@ import { OutletIndexPage } from '~website/containers/content/pages/OutletIndexPa
 import {OutletPage} from "~website/containers/content/pages/OutletPage";
 import {KBRootPage} from "~website/containers/content/pages/KBRootPage";
 import {KBCategoryPage} from "~website/containers/content/pages/KBCategoryPage";
+import {BasicContentPage} from "~website/containers/content/pages/BasicContentPage";
 
 const StaffPage = Loadable({
   loading: LoadableLoading,
@@ -32,6 +33,8 @@ export default {
   SectionContentPage,
 
   HomePage,
+
+  BasicContentPage,
 
   // FRESHERS
   FreshersHomepage,

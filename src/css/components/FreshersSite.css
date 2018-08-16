@@ -27,9 +27,10 @@
 
 .FreshersHomepage {
   .SplashSlice {
-    margin-top: -1rem;
+    // margin-top: -1rem;
     padding-top: 2rem;
     min-height: 70vh;
+    background-size: cover;
   }
 
   &__attend {
@@ -163,5 +164,29 @@
         display: inline;
       }
     }
+  }
+}
+
+
+.FreshersMenu {
+  display: flex;
+  font-size: 1.3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: var(--type__primary);
+  align-items: flex-end;
+  flex-direction: column;
+
+  @media (--medium) {
+    flex-direction: row;
+  }
+
+  a {
+    color: #ffffff;
+    padding: 0 0.6rem;
+    text-decoration: none;
   }
 }

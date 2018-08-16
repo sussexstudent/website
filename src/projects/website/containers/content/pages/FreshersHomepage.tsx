@@ -73,7 +73,7 @@ class FreshersHomepage extends React.Component<{}, { showVideo: boolean }> {
             <div className="u-responsive-ratio u-responsive-ratio--r16by9">
               <iframe
                 className="u-responsive-inner"
-                src="https://www.youtube-nocookie.com/embed/RpjQI772cDo?rel=0&amp;controls=0&amp;showinfo=0"
+                src="https://www.youtube-nocookie.com/embed/R1KRavrc3wM?rel=0&amp;controls=0&amp;showinfo=0"
                 frameBorder="0"
                 allowFullScreen
               />

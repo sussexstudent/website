@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, WindowLocation, NavigateFn, Location } from '@reach/router';
+import { Router, WindowLocation, NavigateFn, Location, Link } from '@reach/router';
 import { History } from 'history';
 import BookMarketApp from '~website/containers/bookmarket/BookMarketApp';
 import EventsApplication from '~website/containers/EventsApplication';
@@ -32,6 +32,14 @@ const ContentAPI = (props: any) => (
 
 const FreshersContentAPI = (props: any) => (
   <div className="FreshersSite u-keep-footer-down">
+    <div className="LokiContainer">
+      <ul className="FreshersMenu">
+        <li><Link to="/freshers">Home</Link>        </li>
+
+        <li><Link to="/freshers/whats-on">What's on</Link></li>
+          <li><Link to="/freshers/events-info">Event info</Link></li>
+      </ul>
+    </div>
     <ContentPage path={props.location.pathname} navigate={props.navigate} />
   </div>
 );
@@ -75,22 +83,21 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
           {({ location }) => (
             <ErrorBoundary location={location}>
               <Router>
-                <Homepage path="/homepage-next  " />
+                <Homepage path="/homepage-next" />
                 <BookMarketApp path="/book-market/*" />
                 <LoadableContentBrowser path="/browse/*" />
                 <EventsApplication path="/whats-on/*" />
                 <LoadableSearchApp path="/search" />
                 <LoadableStudentGroupsDiscovery path="/sport-societies-media/discover" />
-                <FreshersContentAPI path="/freshers" />
+                <FreshersContentAPI path="/freshers/*" />
                 <EventDiscovery path="/event-discovery" />
                 <ContentAPI path="/get-involved" exact />
-                <ContentAPI path="/content-root-example" />
                 <ContentAPI path="/services/*" />
                 <ContentAPI path="/support" exact />
                 <ContentAPI path="/website-knowledge-base/*" />
                 <ContentAPI path="/get-involved-next/" />
-                <ContentAPI path="/about-us-next/" />
-                <ContentExplorer path="/content-explorer" exact />
+                <ContentAPI path="/about-us-next/*" />
+                <ContentExplorer path="/content-explorer/*" exact />
               </Router>
             </ErrorBoundary>
           )}

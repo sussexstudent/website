@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-
 const path = require('path');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
@@ -40,10 +39,7 @@ function generateConfig() {
         '~icons': path.resolve(path.join(__dirname, '../src/icons')),
         '~components': path.resolve(baseDir, 'src/components/'),
         '~libs': path.resolve(baseDir, 'src/libs/'),
-        'react-router-dom': 'react-router-dom/es',
-        'react-router': 'react-router/es',
         'react-helmet': 'react-helmet/es/Helmet.js',
-        history: 'history/es',
         'lodash.pick': 'lodash/pick',
         'lodash.flowright': 'lodash/flowright',
       },

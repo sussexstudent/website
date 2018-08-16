@@ -13,6 +13,8 @@ interface BasicContentPageProps {
 export const BasicContentPage: React.SFC<BasicContentPageProps> = ({ page }) => (
   <div className="LokiContainer">
     <h1>{page.title}</h1>
-    <StreamField page={page} items={page.content} />
+    <div style={{ maxWidth: '660px' }}>
+      <StreamField page={page} items={page.content} />
+    </div>
   </div>
 );

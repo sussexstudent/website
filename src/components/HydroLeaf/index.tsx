@@ -41,7 +41,6 @@ function HydroLeaf({
   name = undefined,
   container = DefaultContainer,
   disableSSR = false,
-  providers = [],
 }: HydroLeafOptions = {}) {
   return function HydroLeafHOC(Component: any) {
     if (process.env.COMP_NODE) {
@@ -80,10 +79,6 @@ function HydroLeaf({
             hydroKey = undefined;
           } else {
             hydroIdSpread = { 'data-id': hydroKey };
-          }
-
-          if (providers.length > 0) {
-            hydroIdSpread['data-providers'] = providers.join(',');
           }
 
           if (renderStatic) {

@@ -40,6 +40,7 @@ const EventsList = compose<OwnProps, OwnProps>(
     options: (props) => {
       return {
         variables: {
+          skipEmbargo: (typeof window !== 'undefined' && window.location.hash === '#skip-embargo'),
           filter: props.filter || {
             fromTime: startOfDay(new Date()).toISOString(),
             toTime: addMonths(startOfDay(new Date()), 6).toISOString(),

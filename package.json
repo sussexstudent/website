@@ -7,13 +7,13 @@
     "node": "10.x"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.56",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.56",
-    "@babel/plugin-transform-react-constant-elements": "^7.0.0-beta.56",
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-rc.1",
+    "@babel/plugin-transform-react-constant-elements": "^7.0.0-rc.1",
     "@storybook/addon-knobs": "^3.4.10",
     "@storybook/addon-options": "^3.4.10",
     "@storybook/react": "4.0.0-alpha.3",
-    "@svgr/webpack": "^2.1.1",
+    "@svgr/webpack": "^2.2.1",
     "@types/classnames": "^2.2.6",
     "@types/google.analytics": "^0.0.39",
     "@types/history": "^4.7.0",
@@ -111,8 +111,8 @@
     "@types/react": "16.4.7"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.0.0-beta.56",
-    "@babel/preset-react": "^7.0.0-beta.56",
+    "@babel/preset-env": "^7.0.0-rc.1",
+    "@babel/preset-react": "^7.0.0-rc.1",
     "@brudil/granule": "0.2.1",
     "@drafty/generation-game": "^2.0.0",
     "@reach/router": "^1.1.1",

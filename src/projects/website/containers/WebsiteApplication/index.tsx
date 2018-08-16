@@ -13,7 +13,7 @@ import { LoadableLoading } from '~components/LoadableLoading';
 import Loadable from 'react-loadable';
 import Helmet from 'react-helmet';
 import ErrorBoundary from '../../../../components/ErrorBoundary';
-import EventDiscovery from '~website/containers/EventDiscovery';
+// import EventDiscovery from '~website/containers/EventDiscovery';
 import Homepage from '~website/layouts/homepage';
 import { RouteComponent } from '~types/routes';
 
@@ -90,7 +90,7 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
                 <LoadableSearchApp path="/search" />
                 <LoadableStudentGroupsDiscovery path="/sport-societies-media/discover" />
                 <FreshersContentAPI path="/freshers/*" />
-                <EventDiscovery path="/event-discovery" />
+                {/*<EventDiscovery path="/event-discovery" />*/}
                 <ContentAPI path="/get-involved" exact />
                 <ContentAPI path="/services/*" />
                 <ContentAPI path="/support" exact />

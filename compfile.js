@@ -31,25 +31,25 @@ export default {
     },
   },
   pages: {
-    '/': require('./src/projects/website/layouts/homepage'),
-    '/policy-generator': require('./src/projects/website/layouts/PolicyIdeaGenerator'),
-    '/freshers': require('./src/projects/website/layouts/Freshers'),
-    '/discover-groups': require('./src/projects/website/layouts/SportsSocieties'),
-    // '/officer': require('./src/projects/components/OfficerPage/index'),
-
-    // ONE DAY REMOVED WITH CONTENT INTEGRATION
-    '/staff-page': require('./src/projects/website/layouts/StaffPage'),
-
-    // REMOVED WITH CONTENT INTEGRATION
-    '/support': require('./src/projects/website/layouts/Support'),
-    '/environment-feedback':
-      require('./src/projects/website/layouts/environment/student-feedback'),
-    '/environment': require('./src/projects/website/layouts/environment/environment'),
-    '/content-explorer': require('./src/projects/website/layouts/ContentExplorer'),
-    '/book-market': require('./src/projects/website/containers/bookmarket/BookMarketApp'),
-    '/horn': require('./src/projects/website/layouts/DemocracyAirHorn'),
-    '/kb': require('./src/projects/website/containers/kb/KnowledgeBaseApplication'),
-    '/kb-local': require('./src/projects/website/containers/kb/KnowledgeBaseApplication'),
+    // '/': require('./src/projects/website/layouts/homepage'),
+    // '/policy-generator': require('./src/projects/website/layouts/PolicyIdeaGenerator'),
+    // '/freshers': require('./src/projects/website/layouts/Freshers'),
+    // '/discover-groups': require('./src/projects/website/layouts/SportsSocieties'),
+    // // '/officer': require('./src/projects/components/OfficerPage/index'),
+    //
+    // // ONE DAY REMOVED WITH CONTENT INTEGRATION
+    // '/staff-page': require('./src/projects/website/layouts/StaffPage'),
+    //
+    // // REMOVED WITH CONTENT INTEGRATION
+    // '/support': require('./src/projects/website/layouts/Support'),
+    // '/environment-feedback':
+    //   require('./src/projects/website/layouts/environment/student-feedback'),
+    // '/environment': require('./src/projects/website/layouts/environment/environment'),
+    // '/content-explorer': require('./src/projects/website/layouts/ContentExplorer'),
+    // '/book-market': require('./src/projects/website/containers/bookmarket/BookMarketApp'),
+    // '/horn': require('./src/projects/website/layouts/DemocracyAirHorn'),
+    // '/kb': require('./src/projects/website/containers/kb/KnowledgeBaseApplication'),
+    // '/kb-local': require('./src/projects/website/containers/kb/KnowledgeBaseApplication'),
   },
   assets: {
     manifest,

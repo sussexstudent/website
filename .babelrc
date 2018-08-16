@@ -17,7 +17,7 @@
     "comp": {
       "presets": [["@babel/preset-env", {
         "targets": {
-          "node": ["9"]
+          "node": "10"
         },
         "useBuiltIns": false,
         "modules": false,

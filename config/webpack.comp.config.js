@@ -18,6 +18,8 @@ config.performance = {
   maxEntrypointSize: 500000,
 };
 
+config.mode = 'production';
+
 config.output = {
   path: path.resolve(path.join(baseDir, 'comp-dist')),
   publicPath: 'https://du9l8eemj97rm.cloudfront.net/',

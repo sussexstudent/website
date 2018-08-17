@@ -1,7 +1,7 @@
 module.exports = function(api) {
   api.cache(true);
 
-  const plugins = ["babel-plugin-lodash", "@babel/plugin-syntax-dynamic-import"];
+  const plugins = ["babel-plugin-lodash", "@babel/plugin-syntax-dynamic-import", "@babel/plugin-proposal-object-rest-spread"];
   const presets = ["@babel/preset-react"];
 
   if (process.env.BABEL_ENV === 'bundle') {

@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
+import getApolloClientForFalmer from "~libs/getApolloClientForFalmer";
 import { isFunction } from 'lodash';
 import { store } from '~website/redux/store';
 // import { VoteNowBox } from '~components/Bento/treatments/VoteNowBox';
 // import { CountdownBox } from '~components/Bento/treatments/CountdownBox';
 import { LokiHeader } from '~components/LokiHeader';
+import {ApolloProvider} from 'react-apollo';
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.SFC;
@@ -71,15 +73,20 @@ export default function() {
 
       if (shouldHydrate) {
         ReactDOM.hydrate(
-          <ReduxProvider store={store}>
-            <Component {...props} />
-          </ReduxProvider>,
+          <ApolloProvider client={getApolloClientForFalmer}>
+            <ReduxProvider store={store}>
+              <Component {...props} />
+            </ReduxProvider>
+          </ApolloProvider>,
           el,
         );
       } else {
-        ReactDOM.render(<ReduxProvider store={store}>
+        ReactDOM.render(
+          <ApolloProvider client={getApolloClientForFalmer}>
+            <ReduxProvider store={store}>
             <Component {...props} />
-          </ReduxProvider>,
+          </ReduxProvider>
+          </ApolloProvider>,
           el,
         );
       }

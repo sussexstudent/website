@@ -1,10 +1,11 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import HydroRootApollo from '~components/HydroRootApollo';
 import { Provider as ReduxProvider } from 'react-redux';
 import TrophyCabinet from '~components/TrophyCabinet';
 import { StudentGroupsSectionbar } from '~components/StudentGroupsSectionbar';
 import { store } from '~website/redux/store';
+import {ApolloProvider} from 'react-apollo';
+import getApolloClientForFalmer from '../libs/getApolloClientForFalmer';
 
 export default function ready() {
   const match = window.location.pathname.match(
@@ -17,11 +18,11 @@ export default function ready() {
     const sidebarBottom = document.createElement('div');
     sidebar.appendChild(sidebarBottom);
     ReactDOM.render(
-      <HydroRootApollo>
+      <ApolloProvider client={getApolloClientForFalmer}>
         <ReduxProvider store={store}>
           <TrophyCabinet slug={match[1]} />
         </ReduxProvider>
-      </HydroRootApollo>,
+      </ApolloProvider>,
       sidebarBottom,
     );
   }

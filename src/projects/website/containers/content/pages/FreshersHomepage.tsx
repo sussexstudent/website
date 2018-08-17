@@ -7,7 +7,7 @@ import {
   OneImageBackground,
   AspectRatio,
 } from '~components/OneImage';
-import { Countdown } from '~components/Countdown';
+// import { Countdown } from '~components/Countdown';
 
 class FreshersHomepage extends React.Component<{}, { showVideo: boolean }> {
   constructor(props: {}) {
@@ -119,7 +119,7 @@ class FreshersHomepage extends React.Component<{}, { showVideo: boolean }> {
                 </div>
               </div>
               <div className="FGT__countdown">
-                <Countdown targetDate={new Date(2018, 7, 17, 12, 0, 0)} />
+                {/*<Countdown targetDate={new Date(2018, 7, 17, 12, 0, 0)} />*/}
               </div>
               <NewsletterSignup />
 

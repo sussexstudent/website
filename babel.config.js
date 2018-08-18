@@ -1,10 +1,13 @@
 module.exports = function(api) {
   api.cache(true);
 
+  const TARGET_PLATFORM = process.env.BABEL_ENV;
+  const TARGET_ENV = process.env.BABEL_ENV;
+
   const plugins = ["babel-plugin-lodash", "@babel/plugin-syntax-dynamic-import", "@babel/plugin-proposal-object-rest-spread"];
   const presets = ["@babel/preset-react"];
 
-  if (process.env.BABEL_ENV === 'bundle') {
+  if (TARGET_PLATFORM=== 'bundle') {
     presets.push(["@babel/preset-env", {
       "targets": {
         "browsers": ["last 2 versions", "safari 7", "IE 11"]
@@ -15,7 +18,7 @@ module.exports = function(api) {
         "transform-regenerator"
       ]
     }]);
-  } else if (process.env.BABEL_ENV === 'comp') {
+  } else if (TARGET_PLATFORM === 'comp') {
     presets.push(["@babel/preset-env", {
       "targets": {
         "node": "10"
@@ -27,6 +30,8 @@ module.exports = function(api) {
       ]
     }]);
   }
+
+  plugins.push(TARGET_ENV === 'production' ? ["emotion", { "hoist": true }] : ["emotion", { "sourceMap": true, "autoLabel": true }])
 
   return {
     presets,

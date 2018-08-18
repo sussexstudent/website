@@ -1,21 +1,22 @@
 import React from 'react';
-import { Router, WindowLocation, NavigateFn, Location, Link } from '@reach/router';
-import { History } from 'history';
+import {Location, NavigateFn, Router, WindowLocation} from '@reach/router';
+import {History} from 'history';
 import BookMarketApp from '~website/containers/bookmarket/BookMarketApp';
 import EventsApplication from '~website/containers/EventsApplication';
 import * as routerActions from '~website/ducks/router';
-import { AppMountState } from '~website/ducks/router';
-import { connect } from 'react-redux';
-import { ContentPage } from '~website/containers/content/ContentPage';
-import { compose } from 'recompose';
+import {AppMountState} from '~website/ducks/router';
+import {connect} from 'react-redux';
+import {ContentPage} from '~website/containers/content/ContentPage';
+import {compose} from 'recompose';
 import ContentExplorer from '~website/layouts/ContentExplorer';
-import { LoadableLoading } from '~components/LoadableLoading';
+import {LoadableLoading} from '~components/LoadableLoading';
 import Loadable from 'react-loadable';
 import Helmet from 'react-helmet';
 import ErrorBoundary from '../../../../components/ErrorBoundary';
 // import EventDiscovery from '~website/containers/EventDiscovery';
 import Homepage from '~website/layouts/homepage';
-import { RouteComponent } from '~types/routes';
+import {RouteComponent} from '~types/routes';
+import {FreshersContentAPI} from "~website/containers/freshers/ContentAPIContainer";
 
 interface WebsiteApplicationProps {
   setRouter: typeof routerActions.setRouter;
@@ -28,20 +29,6 @@ interface WebsiteApplicationProps {
 
 const ContentAPI = (props: any) => (
   <ContentPage path={props.location.pathname} navigate={props.navigate} />
-);
-
-const FreshersContentAPI = (props: any) => (
-  <div className="FreshersSite u-keep-footer-down">
-    <div className="LokiContainer">
-      <ul className="FreshersMenu">
-        <li><Link to="/freshers">Home</Link>        </li>
-
-        <li><Link to="/freshers/whats-on">What's on</Link></li>
-          <li><Link to="/freshers/events-info">Event info</Link></li>
-      </ul>
-    </div>
-    <ContentPage path={props.location.pathname} navigate={props.navigate} />
-  </div>
 );
 
 const LoadableSearchApp = Loadable({

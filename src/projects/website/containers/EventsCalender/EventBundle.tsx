@@ -23,9 +23,7 @@ class EventsCalender extends React.Component<IProps> {
     return (
       <div className="LokiContainer">
         <Helmet>
-          <title>{`${
-            bundle.name
-          } | What's on | Sussex Students' Union`}</title>
+          <title>{`${bundle.name} | What's on | Sussex Students' Union`}</title>
         </Helmet>
         <h2 className="type-brevier">Event Bundle</h2>
         <h1>{bundle.name}</h1>

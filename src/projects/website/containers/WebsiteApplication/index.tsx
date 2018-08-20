@@ -18,7 +18,7 @@ import Homepage from '~website/layouts/homepage';
 import { RouteComponent } from '~types/routes';
 import { FreshersContentAPI } from '~website/containers/freshers/ContentAPIContainer';
 import { FreshersEvents } from '~website/containers/freshers/FreshersEvents';
-import {RouterAnalytics} from "~components/RouterAnalytics";
+import { RouterAnalytics } from '~components/RouterAnalytics';
 
 interface WebsiteApplicationProps {
   setRouter: typeof routerActions.setRouter;

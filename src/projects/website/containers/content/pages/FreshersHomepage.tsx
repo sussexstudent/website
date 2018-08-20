@@ -3,11 +3,40 @@ import { NewsletterSignup } from '~components/NewsletterSignup';
 import { Lottie } from '~components/Lottie';
 import logoAnimation from '../../freshers/logoAnimation.json';
 import {
+  AspectRatio,
   OneImage,
   OneImageBackground,
-  AspectRatio,
 } from '~components/OneImage';
+import { COLORS } from '~libs/style';
+import styled from 'react-emotion';
+import { css } from 'emotion';
+import { Link } from '@reach/router';
+import { type, Typeface, TypeSize } from '~libs/style/type';
 // import { Countdown } from '~components/Countdown';
+
+const buttonStyles = css({
+  display: 'inline-block',
+  ...type(TypeSize.DoublePica, Typeface.Secondary),
+  padding: '0.5rem',
+  fontWeight: 600,
+  textDecoration: 'none',
+});
+
+const EventsButton = styled(Link)(
+  {
+    background: COLORS.F18_BLUE,
+    color: COLORS.F18_TEAL,
+  },
+  buttonStyles,
+);
+
+const GTButton = styled(Link)(
+  {
+    background: COLORS.F18_PURPLE,
+    color: '#ffffff',
+  },
+  buttonStyles,
+);
 
 class FreshersHomepage extends React.Component<{}, { showVideo: boolean }> {
   constructor(props: {}) {
@@ -61,12 +90,9 @@ class FreshersHomepage extends React.Component<{}, { showVideo: boolean }> {
               <p>
                 Whether you’re into club nights, bar crawls, puzzles or
                 performances. We’ve got something for you! We have alcohol-free
-                events, events just for post-graduates, and family events.
+                events, events great for post-graduates, and family events.
               </p>
-              <p>
-                We’re announcing our events on the 20th of August, sign up to
-                our newsletter to hear about Fresher’s Week before anyone else!
-              </p>
+              <EventsButton to="whats-on">See the schedule ></EventsButton>
             </div>
           </div>
           {showVideo ? (
@@ -121,7 +147,8 @@ class FreshersHomepage extends React.Component<{}, { showVideo: boolean }> {
               <div className="FGT__countdown">
                 {/*<Countdown targetDate={new Date(2018, 7, 17, 12, 0, 0)} />*/}
               </div>
-              <NewsletterSignup />
+
+              <GTButton to="tickets">Get the Golden Ticket ></GTButton>
 
               <h3 className="tac">
                 Limited Golden Tickets Available,
@@ -138,9 +165,16 @@ class FreshersHomepage extends React.Component<{}, { showVideo: boolean }> {
                   You'll automatically become a member of the Students' Union
                 </h3>
                 <p>
-                  Your Students’ Union is responsible for running the on-campus
-                  shops and bars, putting on events throughout the year, and
-                  supporting you through your time at Sussex and beyond.
+                  We are a community of over 18,000 students and you're a member
+                  of that community when you study at Sussex or BSMS.
+                </p>
+                <p>
+                  Independent from the University, we are undergraduates,
+                  postgraduates, mature students, parents, international
+                  students, elected Students' Union officers, volunteers and
+                  staff. We're sports team members, Student Reps, campaigners,
+                  society committee members, event attendees, shoppers and
+                  bargain hunters. We're all of our 18,000 members.{' '}
                 </p>
               </div>
 

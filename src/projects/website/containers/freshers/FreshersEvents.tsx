@@ -1,12 +1,12 @@
 import React from 'react';
-import {FreshersContainer} from '~website/containers/freshers/FreshersContainer';
-import {EventsList} from '~website/containers/EventsCalender';
-import {addMonths, startOfDay} from 'date-fns';
+import { FreshersContainer } from '~website/containers/freshers/FreshersContainer';
+import { EventsList } from '~website/containers/EventsCalender';
+import { addMonths, startOfDay } from 'date-fns';
 import qs from 'query-string';
-import {mapValues, pickBy} from 'lodash';
-import {Link, RouteComponentProps} from '@reach/router';
+import { mapValues, pickBy } from 'lodash';
+import { Link, RouteComponentProps } from '@reach/router';
 import styled from 'react-emotion';
-import {type, Typeface, TypeSize} from '~libs/style/type';
+import { type, Typeface, TypeSize } from '~libs/style/type';
 
 interface FreshersEventsProps extends RouteComponentProps {
   path: string;
@@ -16,6 +16,7 @@ const filteringAcceptions = [
   'audienceJustForPgs',
   'audienceSuitableKidsFamilies',
   'audienceGoodToMeetPeople',
+  'cost',
 ];
 
 const filteringReplacements: { [k: string]: any } = {
@@ -34,12 +35,12 @@ const SimpleFilterList = styled('ul')({
   flexWrap: 'wrap',
   '& li': {
     display: 'block',
-    padding: '0.5rem',
+    padding: '0.6rem',
     textTransform: 'uppercase',
   },
   '& a': {
     textDecoration: 'none',
-  }
+  },
 });
 
 export const FreshersEvents: React.SFC<FreshersEventsProps> = ({
@@ -78,6 +79,12 @@ export const FreshersEvents: React.SFC<FreshersEventsProps> = ({
               <Link to={`?audienceJustForPgs=true${hash}`}>
                 Great for Postgrads
               </Link>
+            </li>
+            <li>
+              <Link to={`?cost=FREE${hash}`}>Free</Link>
+            </li>
+            <li>
+              <Link to={`?cost=PAID${hash}`}>Ticketed</Link>
             </li>
           </SimpleFilterList>
         </div>

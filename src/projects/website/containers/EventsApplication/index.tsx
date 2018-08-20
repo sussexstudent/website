@@ -38,9 +38,9 @@ const LoadableListingsBranding = Loadable({
 const LoadableBundle = Loadable({
   loading: LoadableLoading,
   loader: EventBundleLoader,
-  render: (({ EventBundle }: { EventBundle: any }, props: any) => {
+  render: ({ EventBundle }: { EventBundle: any }, props: any) => {
     return <EventBundle {...props} />;
-  }),
+  },
 }) as any;
 
 const LoadableDetail = Loadable({

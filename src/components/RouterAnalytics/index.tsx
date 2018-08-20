@@ -20,13 +20,6 @@ class Tracker extends React.Component<{ location: WindowLocation }> {
   }
 }
 
-
 export const RouterAnalytics = () => (
-  <Location>
-    {({ location }) => (
-      <Tracker
-        location={location}
-      />
-    )}
-  </Location>
+  <Location>{({ location }) => <Tracker location={location} />}</Location>
 );

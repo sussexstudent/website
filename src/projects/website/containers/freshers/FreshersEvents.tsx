@@ -76,7 +76,7 @@ export const FreshersEvents: React.SFC<FreshersEventsProps> = ({
             </li>
             <li>
               <Link to={`?audienceJustForPgs=true${hash}`}>
-                Just for Postgrads
+                Great for Postgrads
               </Link>
             </li>
           </SimpleFilterList>

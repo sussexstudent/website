@@ -61,9 +61,7 @@ class StaffPage extends React.Component<IProps, IState> {
 
   render() {
     const {
-      page: {
-        body
-      },
+      page: { body },
       page,
     } = this.props;
 

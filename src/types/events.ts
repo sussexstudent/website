@@ -1,5 +1,6 @@
 import { StudentGroup } from '~components/OrganisationGrid';
 import { Connection } from '~types/falmer';
+import { ClientAuth } from '~libs/user';
 
 export enum EventPartType {
   Contained,
@@ -10,6 +11,7 @@ export enum EventPartType {
 export enum TicketType {
   NA = 'NA',
   Native = 'NT',
+  Eventbrite = 'EB',
   MSL = 'MSL',
 }
 
@@ -47,6 +49,7 @@ export interface Venue {
 export interface Brand {
   name: string;
   slug: string;
+  overrideListingsRoot: string;
   accent?: string;
 }
 
@@ -105,6 +108,7 @@ export interface Event {
 
   bundle: null | {
     name: string;
+    slug: string;
   };
 
   brand: null | Brand;
@@ -157,4 +161,21 @@ export interface EventPart {
   eventId: number;
   date: Date;
   event: Event;
+}
+
+export interface MSLTicket {
+  currencySymbol: string;
+  ticketName: string;
+  maxQuantity: number;
+  value: number;
+  msl: {
+    hidden: string;
+    select: string;
+    button: string;
+  };
+}
+
+export interface MSLCommunicationEventData {
+  tickets: MSLTicket[];
+  pageMenuOptions: false | ClientAuth['menu']['page'];
 }

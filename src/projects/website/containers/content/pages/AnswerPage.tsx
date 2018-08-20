@@ -6,7 +6,7 @@ import ContentNavigation from '~components/ContentNavigation';
 import slugify from '~libs/slugify';
 import { RelatedContent } from '~website/components/RelatedContent';
 import { StaffOwners } from '~website/components/StaffOwners';
-import {KBContentBreadcrumbBar} from "~website/components/KBContentBreadcrumbBar";
+import { KBContentBreadcrumbBar } from '~website/components/KBContentBreadcrumbBar';
 
 interface IAnswerPage extends Page {
   content: StreamFieldData;
@@ -24,9 +24,7 @@ interface IProps {
 class AnswerPage extends React.Component<IProps> {
   render() {
     const {
-      page: {
-        content, relatedLinks, staffOwners,
-      },
+      page: { content, relatedLinks, staffOwners },
       page,
     } = this.props;
 

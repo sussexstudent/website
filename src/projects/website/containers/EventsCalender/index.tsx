@@ -35,12 +35,14 @@ class EventsCalender extends React.Component<IProps> {
   }
 }
 
-const EventsList = compose<OwnProps, OwnProps>(
+const EventsList = compose<OwnProps, { disableHeader: boolean; filter: any }>(
   graphql<any, OwnProps>(EventListingsQuery, {
     options: (props) => {
       return {
         variables: {
-          skipEmbargo: (typeof window !== 'undefined' && window.location.hash === '#skip-embargo'),
+          skipEmbargo:
+            typeof window !== 'undefined' &&
+            window.location.hash === '#skip-embargo',
           filter: props.filter || {
             fromTime: startOfDay(new Date()).toISOString(),
             toTime: addMonths(startOfDay(new Date()), 6).toISOString(),

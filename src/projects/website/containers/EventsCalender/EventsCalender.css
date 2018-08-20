@@ -181,3 +181,21 @@
   &__item-image {
   }
 }
+
+.FreshersSite .EventsCalender {
+  color: var(--color__f18-purple);
+
+  &__section-title,
+  &__item-date-kicker {
+    color: var(--color__f18-pink);
+    background: var(--color__f18-blue);
+  }
+
+  &__item {
+    border-radius: 0;
+    box-shadow: 4px 4px 0 var(--color__f18-pink);
+    &:hover {
+      box-shadow: 6px 6px 0 var(--color__f18-pink);
+    }
+  }
+}

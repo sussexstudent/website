@@ -6,7 +6,7 @@ import ContentNavigation from '~components/ContentNavigation';
 import slugify from '~libs/slugify';
 import { RelatedContent } from '~website/components/RelatedContent';
 import { StaffOwners } from '~website/components/StaffOwners';
-import {KBContentBreadcrumbBar} from "~website/components/KBContentBreadcrumbBar";
+import { KBContentBreadcrumbBar } from '~website/components/KBContentBreadcrumbBar';
 
 interface IReferencePage extends Page {
   content: StreamFieldData;
@@ -18,17 +18,13 @@ interface IReferencePage extends Page {
 }
 
 interface IProps {
-  page: IReferencePage
+  page: IReferencePage;
 }
 
 class ReferencePage extends React.Component<IProps> {
   render() {
     const {
-      page: {
-        content,
-        relatedLinks,
-        staffOwners
-      },
+      page: { content, relatedLinks, staffOwners },
       page,
     } = this.props;
 
@@ -41,14 +37,16 @@ class ReferencePage extends React.Component<IProps> {
         <h1 className="type-trafalgar">{page.title}</h1>
         <div className="LayoutContent">
           <div className="LayoutContent__toc">
-            {headings.length > 0 ? <ContentNavigation
-              title="Sections"
-              items={headings.map((heading) => ({
-                name: heading,
-                anchor: slugify(heading),
-                children: [],
-              }))}
-            /> : null}
+            {headings.length > 0 ? (
+              <ContentNavigation
+                title="Sections"
+                items={headings.map((heading) => ({
+                  name: heading,
+                  anchor: slugify(heading),
+                  children: [],
+                }))}
+              />
+            ) : null}
           </div>
           <div className="LayoutContent__main">
             <StreamField items={content} page={page} />

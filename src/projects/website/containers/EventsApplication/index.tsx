@@ -8,13 +8,16 @@ import { LoadableLoading } from '~components/LoadableLoading';
 import { Sectionbar, SectionbarItem } from '~components/Sectionbar';
 // import { removePageContainer } from '~libs/hacky';
 import { RouteComponent } from '~types/routes';
-import {ScrollToTop} from "~components/ScrollToTop";
+import { ScrollToTop } from '~components/ScrollToTop';
 
 const EventsListLoader = () =>
   import(/* webpackChunkName: "events.listings" */ '~website/containers/EventsCalender/index');
 
 const EventBrandingPeriodLoader = () =>
-  import(/* webpackChunkName: "events.listings" */ '~website/containers/EventsCalender/EventBrandingPeriod');
+  import(/* webpackChunkName: "events.listings.brand" */ '~website/containers/EventsCalender/EventBrandingPeriod');
+
+const EventBundleLoader = () =>
+  import(/* webpackChunkName: "events.listings.bundle" */ '~website/containers/EventsCalender/EventBundle');
 
 const LoadableListings = Loadable({
   loading: LoadableLoading,
@@ -30,6 +33,14 @@ const LoadableListingsBranding = Loadable({
   render({ EventBrandingPeriod }: { EventBrandingPeriod: any }, props) {
     return <EventBrandingPeriod {...props} />;
   },
+}) as any;
+
+const LoadableBundle = Loadable({
+  loading: LoadableLoading,
+  loader: EventBundleLoader,
+  render: (({ EventBundle }: { EventBundle: any }, props: any) => {
+    return <EventBundle {...props} />;
+  }),
 }) as any;
 
 const LoadableDetail = Loadable({
@@ -80,41 +91,41 @@ class EventsApplication extends React.Component<
     return (
       <ScrollToTop>
         <div className="u-keep-footer-down js-expand-container">
-        <Sectionbar title="What's on">
-          <SectionbarItem>
-            <Link to={'/whats-on'}>Listings</Link>
-          </SectionbarItem>
-          <SectionbarItem>
-            <a
-              href={
-                '/sport-societies-media/information-for-committee-members/events-trips/'
-              }
-            >
-              Hold an event
-            </a>
-          </SectionbarItem>
-        </Sectionbar>
-        <Router>
-          <LoadableListings path="/" exact />
-          <Redirect
-            from="period/:brandSlug"
-            to="/whats-on/periods/:brandSlug"
-          />
-          <Redirect
-            from="collections/:brandSlug"
-            to="/whats-on/periods/:brandSlug"
-          />
-          <Redirect
-            from="collection/:brandSlug"
-            to="/whats-on/periods/:brandSlug"
-          />
-          <LoadableListingsBranding path="periods/:brandSlug" exact />
-          <LoadableDetail path="*" />
-          <LoadableDetail path=":eventPath" />
-        </Router>
-      </div>
+          <Sectionbar title="What's on">
+            <SectionbarItem>
+              <Link to={'/whats-on'}>Listings</Link>
+            </SectionbarItem>
+            <SectionbarItem>
+              <a
+                href={
+                  '/sport-societies-media/information-for-committee-members/events-trips/'
+                }
+              >
+                Hold an event
+              </a>
+            </SectionbarItem>
+          </Sectionbar>
+          <Router>
+            <LoadableListings path="/" exact />
+            <LoadableBundle path="/bundle/:bundleSlug" exact />
+            <Redirect
+              from="period/:brandSlug"
+              to="/whats-on/periods/:brandSlug"
+            />
+            <Redirect
+              from="collections/:brandSlug"
+              to="/whats-on/periods/:brandSlug"
+            />
+            <Redirect
+              from="collection/:brandSlug"
+              to="/whats-on/periods/:brandSlug"
+            />
+            <LoadableListingsBranding path="periods/:brandSlug" exact />
+            <LoadableDetail path="*" />
+            <LoadableDetail path=":eventPath" />
+          </Router>
+        </div>
       </ScrollToTop>
-
     );
   }
 }

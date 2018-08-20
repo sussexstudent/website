@@ -1,22 +1,23 @@
 import React from 'react';
-import {Location, NavigateFn, Router, WindowLocation} from '@reach/router';
-import {History} from 'history';
+import { Location, NavigateFn, Router, WindowLocation } from '@reach/router';
+import { History } from 'history';
 import BookMarketApp from '~website/containers/bookmarket/BookMarketApp';
 import EventsApplication from '~website/containers/EventsApplication';
 import * as routerActions from '~website/ducks/router';
-import {AppMountState} from '~website/ducks/router';
-import {connect} from 'react-redux';
-import {ContentPage} from '~website/containers/content/ContentPage';
-import {compose} from 'recompose';
+import { AppMountState } from '~website/ducks/router';
+import { connect } from 'react-redux';
+import { ContentPage } from '~website/containers/content/ContentPage';
+import { compose } from 'recompose';
 import ContentExplorer from '~website/layouts/ContentExplorer';
-import {LoadableLoading} from '~components/LoadableLoading';
+import { LoadableLoading } from '~components/LoadableLoading';
 import Loadable from 'react-loadable';
 import Helmet from 'react-helmet';
 import ErrorBoundary from '../../../../components/ErrorBoundary';
 // import EventDiscovery from '~website/containers/EventDiscovery';
 import Homepage from '~website/layouts/homepage';
-import {RouteComponent} from '~types/routes';
-import {FreshersContentAPI} from "~website/containers/freshers/ContentAPIContainer";
+import { RouteComponent } from '~types/routes';
+import { FreshersContentAPI } from '~website/containers/freshers/ContentAPIContainer';
+import { FreshersEvents } from '~website/containers/freshers/FreshersEvents';
 
 interface WebsiteApplicationProps {
   setRouter: typeof routerActions.setRouter;
@@ -76,6 +77,7 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
                 <EventsApplication path="/whats-on/*" />
                 <LoadableSearchApp path="/search" />
                 <LoadableStudentGroupsDiscovery path="/sport-societies-media/discover" />
+                <FreshersEvents path="/freshers/whats-on" />
                 <FreshersContentAPI path="/freshers/*" />
                 {/*<EventDiscovery path="/event-discovery" />*/}
                 <ContentAPI path="/get-involved" exact />

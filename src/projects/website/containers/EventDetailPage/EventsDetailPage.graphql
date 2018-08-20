@@ -66,12 +66,15 @@ query EventsDetailPage($eventId: Int) {
 
     bundle {
       name
+      slug
     }
+
     brand {
       name
       slug
       eventAppend
       accent
+      overrideListingsRoot
     }
     venue {
       name

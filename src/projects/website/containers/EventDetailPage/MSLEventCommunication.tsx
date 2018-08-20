@@ -1,6 +1,5 @@
 import React from 'react';
 import bind from 'bind-decorator';
-import { Event } from '~types/events';
 import { connect } from 'react-redux';
 import { replacePageActions } from '~website/ducks/page';
 
@@ -9,7 +8,7 @@ interface Dispatchers {
 }
 
 interface IProps extends Dispatchers {
-  mslEventId: Event;
+  ticketData: string;
   onData(data: any): void;
 }
 
@@ -48,12 +47,12 @@ class MSLEventCommunicationComponent extends React.Component<IProps, IState> {
   }
 
   render() {
-    const { mslEventId } = this.props;
+    const { ticketData } = this.props;
 
     return (
       <iframe
         style={{ display: 'none' }}
-        src={`/ents/event/${mslEventId}#communication`}
+        src={`${ticketData}#communication`}
         frameBorder="0"
       />
     );

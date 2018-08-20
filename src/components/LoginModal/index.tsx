@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from '~components/Modal';
-import {BannerOutlet} from "~components/BannerOutlet";
-import {ApolloProvider} from 'react-apollo';
+import { BannerOutlet } from '~components/BannerOutlet';
+import { ApolloProvider } from 'react-apollo';
 import getApolloClientForFalmer from '~libs/getApolloClientForFalmer';
 
 interface LoginModalProps {}

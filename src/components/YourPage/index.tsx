@@ -6,9 +6,9 @@ import { UserState } from '../../projects/website/ducks/user';
 import { PageState } from '../../projects/website/ducks/page';
 import { Accordion } from '~components/Accordion';
 import { AccordionItem } from '~components/Accordion/AccordionItem';
-import getApolloClientForFalmer from "~libs/getApolloClientForFalmer";
-import {BannerOutlet} from "~components/BannerOutlet";
-import {ApolloProvider} from 'react-apollo';
+import getApolloClientForFalmer from '~libs/getApolloClientForFalmer';
+import { BannerOutlet } from '~components/BannerOutlet';
+import { ApolloProvider } from 'react-apollo';
 
 interface YourPageProps {
   user: UserState;

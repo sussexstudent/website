@@ -4,7 +4,6 @@
   overflow: hidden;
   margin-top: -1rem;
 
-
   & .BlockLink {
     color: var(--color__f18-orange);
     @mixin type paragon;
@@ -176,7 +175,6 @@
     }
   }
 }
-
 
 .FreshersMenu {
   display: flex;

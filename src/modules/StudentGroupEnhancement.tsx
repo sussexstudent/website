@@ -4,7 +4,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import TrophyCabinet from '~components/TrophyCabinet';
 import { StudentGroupsSectionbar } from '~components/StudentGroupsSectionbar';
 import { store } from '~website/redux/store';
-import {ApolloProvider} from 'react-apollo';
+import { ApolloProvider } from 'react-apollo';
 import getApolloClientForFalmer from '../libs/getApolloClientForFalmer';
 
 export default function ready() {

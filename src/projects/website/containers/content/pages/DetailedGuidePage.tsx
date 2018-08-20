@@ -6,7 +6,7 @@ import { StaffOwners } from '~website/components/StaffOwners';
 import StreamField from '~website/containers/content/StreamField';
 import { Router } from '@reach/router';
 import { RouteComponent } from '~types/routes';
-import {KBContentBreadcrumbBar} from "~website/components/KBContentBreadcrumbBar";
+import { KBContentBreadcrumbBar } from '~website/components/KBContentBreadcrumbBar';
 
 interface DetailPageSection extends Page {
   content: StreamFieldData;
@@ -26,18 +26,12 @@ interface IProps {
 
 const DetailedGuideSection: React.SFC<
   { page: DetailPageSection } & RouteComponent
-> = (props) => (
-  <StreamField items={props.page.content} page={props.page} />
-);
+> = (props) => <StreamField items={props.page.content} page={props.page} />;
 
 class DetailedGuidePage extends React.Component<IProps> {
   render() {
     const {
-      page: {
-        content, relatedLinks, staffOwners,
-        subPages,
-        path,
-      },
+      page: { content, relatedLinks, staffOwners, subPages, path },
       page,
     } = this.props;
     console.log({ content });

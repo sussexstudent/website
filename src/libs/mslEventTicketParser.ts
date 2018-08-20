@@ -1,4 +1,6 @@
-export function parseTickets() {
+import { MSLTicket } from '~types/events';
+
+export function parseTickets(): (undefined | MSLTicket)[] {
   const MSL_TICKET_STRING_REGEX = /^(.)([0-9]+)\.([0-9]+) \((...+)\)$/;
 
   return Array.from(
@@ -45,6 +47,6 @@ export function parseTickets() {
       };
     }
 
-    return 'Failed to parse';
+    return;
   });
 }

@@ -21,7 +21,7 @@ const OPTIONS_MERGE: {
   CUSTOMSOCI: {
     y: 'Yes please',
     n: 'No thanks',
-  }
+  },
 };
 
 enum FormState {
@@ -59,7 +59,8 @@ const RESPONSE_TEXT: {
     "Check your inbox to confirm! But first, what's your name?",
   [FormState.NameSuccess]: () => `Thanks! What will you be?`,
   [FormState.LevelSuccess]: () => `What sort of week would you prefer?`,
-  [FormState.GenreSuccess]: () => `Can we show you customised social media adverts?`,
+  [FormState.GenreSuccess]: () =>
+    `Can we show you customised social media adverts?`,
   [FormState.FeeSuccess]: (data) => `See you in September, ${data.name}!`,
   [FormState.Complete]: () => `See you in September!`,
   [FormState.Error]: () =>
@@ -189,7 +190,6 @@ class NewsletterSignup extends React.Component<IProps, IState> {
         GENRE: genre,
       });
     };
-
 
     this.handleCustomSoc = (r: string) => {
       fieldUpdate(FormState.FeeSuccess, {

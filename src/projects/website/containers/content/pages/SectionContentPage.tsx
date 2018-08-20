@@ -43,11 +43,11 @@ class SectionContentPage extends React.Component<IProps, IState> {
     const {
       page: {
         title,
-          sidebarBody,
-          body,
-          headingImageAsHero,
-          headingImage,
-          contentsInSidebar,
+        sidebarBody,
+        body,
+        headingImageAsHero,
+        headingImage,
+        contentsInSidebar,
       },
       page,
     } = this.props;

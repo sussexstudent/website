@@ -1,36 +1,9 @@
-import {Link} from "@reach/router";
-import {ContentPage} from "~website/containers/content/ContentPage";
-import React from "react";
-import {Query} from "react-apollo";
-
-import FRESHERS_MENU_QUERY from './FreshersMenuQuery.graphql';
-import {Page} from "~website/containers/content/types";
-
-class FreshersMenuQuery extends Query<{
-  page: {
-    root: {
-      subPages: Page[]
-    }
-  }
-}, {}> {}
+import { ContentPage } from '~website/containers/content/ContentPage';
+import React from 'react';
+import { FreshersContainer } from '~website/containers/freshers/FreshersContainer';
 
 export const FreshersContentAPI = (props: any) => (
-  <div className="FreshersSite u-keep-footer-down">
-    <div className="LokiContainer">
-      <ul className="FreshersMenu">
-        <li><Link to="/freshers">Home</Link></li>
-
-        <FreshersMenuQuery query={FRESHERS_MENU_QUERY}>{({ data }) => {
-          if (!data || !data.page) {
-            return null;
-          }
-
-          return data.page.root.subPages.map(item => (
-            <li><Link to={item.path}>{item.title}</Link></li>
-          ))
-        }}</FreshersMenuQuery>
-      </ul>
-    </div>
-    <ContentPage path={props.location.pathname} navigate={props.navigate}/>
-  </div>
+  <FreshersContainer>
+    <ContentPage path={props.location.pathname} navigate={props.navigate} />
+  </FreshersContainer>
 );

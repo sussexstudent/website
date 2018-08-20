@@ -1,37 +1,51 @@
 import React from 'react';
 import { compact, omit } from 'lodash';
-import cx from 'classnames';
+import styled from 'react-emotion';
 
 import ChevronForwardIcon from '~icons/chevron-forward.svg';
 import { InternalAppLink } from '~components/InternalAppLink';
 
-interface IProps {
-  color?: 'red' | 'blue' | 'green' | 'slate';
-}
+interface IProps {}
 
-const BreadcrumbBar: React.SFC<IProps> = ({ color = 'blue', children }) => {
+const BreadcrumbList = styled('ul')({
+  marginBottom: '1rem',
+  fontWeight: 700,
+  margin: 0,
+  padding: 0,
+  listStyle: 'none',
+});
+
+const BreadcrumbItem = styled('li')({
+  display: 'inline-block',
+});
+
+const IconContainer = styled('span')({
+  marginLeft: '0.5em',
+  marginRight: '0.5em',
+  verticalAlign: 'middle',
+  '& > svg': {
+    width: '1em',
+    height: '1em',
+  },
+});
+
+const BreadcrumbBar: React.SFC<IProps> = ({ children }) => {
   return (
-    <ul
-      className={cx(
-        'BackBar',
-        'BackBar--breadcrumb',
-        `BackBar--color-${color}`,
-      )}
-    >
+    <BreadcrumbList>
       {children &&
         (Array.isArray(children) ? children : [children]).map(
           (child: any, index: number) => (
-            <li key={child.key}>
+            <BreadcrumbItem key={child.key}>
               {child}
               {index < (children as any[]).length - 1 && (
-                <span className="BackBar__chevron">
+                <IconContainer>
                   <ChevronForwardIcon />
-                </span>
+                </IconContainer>
               )}
-            </li>
+            </BreadcrumbItem>
           ),
         )}
-    </ul>
+    </BreadcrumbList>
   );
 };
 

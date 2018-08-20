@@ -7,10 +7,10 @@ import AnswerPage from '~website/containers/content/pages/AnswerPage';
 import ReferencePage from './pages/ReferencePage';
 import DetailedGuidePage from './pages/DetailedGuidePage';
 import { OutletIndexPage } from '~website/containers/content/pages/OutletIndexPage';
-import {OutletPage} from "~website/containers/content/pages/OutletPage";
-import {KBRootPage} from "~website/containers/content/pages/KBRootPage";
-import {KBCategoryPage} from "~website/containers/content/pages/KBCategoryPage";
-import {BasicContentPage} from "~website/containers/content/pages/BasicContentPage";
+import { OutletPage } from '~website/containers/content/pages/OutletPage';
+import { KBRootPage } from '~website/containers/content/pages/KBRootPage';
+import { KBCategoryPage } from '~website/containers/content/pages/KBCategoryPage';
+import { BasicContentPage } from '~website/containers/content/pages/BasicContentPage';
 
 const StaffPage = Loadable({
   loading: LoadableLoading,
@@ -56,12 +56,10 @@ export default {
   // TODO: OfficerIndexPage
   // TODO: OfficerPage
 
-
   // Volunteering
   // TODO: VolunteeringPage
 
   // Policy
-
 
   SelectionGridPage: GenericContentStreamPage,
 } as PageComponentMap;

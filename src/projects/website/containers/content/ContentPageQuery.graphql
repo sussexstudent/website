@@ -18,7 +18,7 @@ query ContentPage($path: String) {
 
       ...KBTypes
     }
-    ...on ReferencePage {
+    ... on ReferencePage {
       content
       relatedLinks
       staffOwners
@@ -28,7 +28,7 @@ query ContentPage($path: String) {
       fullTimeOfficers
       partTimeOfficers
     }
-    ...on SectionContentPage {
+    ... on SectionContentPage {
       sidebarBody
       body
       headingImageAsHero
@@ -37,10 +37,10 @@ query ContentPage($path: String) {
       }
       contentsInSidebar
     }
-    ...on StaffPage {
+    ... on StaffPage {
       body
     }
-    ...on SelectionGridPage {
+    ... on SelectionGridPage {
       body
     }
     ... on OutletIndexPage {
@@ -53,19 +53,22 @@ query ContentPage($path: String) {
           }
         }
       }
-      section: closestAncestorOfType(contentType: "OutletIndexPage", inclusive: true) {
+      section: closestAncestorOfType(
+        contentType: "OutletIndexPage"
+        inclusive: true
+      ) {
         ...ContentPageGenerals
         subPages {
           ...ContentPageGenerals
         }
       }
     }
-    ...on KBRootPage {
+    ... on KBRootPage {
       categories: subPages {
         ...ContentPageGenerals
       }
     }
-    ...on KBCategoryPage {
+    ... on KBCategoryPage {
       rootPage: closestAncestorOfType(contentType: "KBRootPage") {
         ...ContentPageGenerals
       }
@@ -81,7 +84,10 @@ query ContentPage($path: String) {
       openingTimes
       menu
       deals
-      section: closestAncestorOfType(contentType: "OutletIndexPage", inclusive: true) {
+      section: closestAncestorOfType(
+        contentType: "OutletIndexPage"
+        inclusive: true
+      ) {
         ...ContentPageGenerals
         subPages {
           ...ContentPageGenerals
@@ -108,7 +114,6 @@ fragment FalmerImage on Image {
   resource
 }
 
-
 fragment KBTypes on Page {
   root: closestAncestorOfType(contentType: "KBRootPage") {
     ...ContentPageGenerals
@@ -116,5 +121,4 @@ fragment KBTypes on Page {
   category: closestAncestorOfType(contentType: "KBCategoryPage") {
     ...ContentPageGenerals
   }
-
 }

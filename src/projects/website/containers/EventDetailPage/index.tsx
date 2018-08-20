@@ -6,7 +6,7 @@ import ContentCard from '~components/ContentCard';
 import Loader from '~components/Loader';
 import DetailPageQuery from './EventsDetailPage.graphql';
 import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
-import { Event } from '~types/events';
+import { Event, TicketType } from '~types/events';
 
 import apolloHandler from '~components/apolloHandler';
 import { AspectRatio, OneImageBackground } from '~components/OneImage';
@@ -16,6 +16,7 @@ import { MSLEventCommunication } from '~website/containers/EventDetailPage/MSLEv
 import { EventDetailMetadata } from '~website/containers/EventDetailPage/EventDetailMetadata';
 import PatternPlaceholder from '~components/PatternPlaceholder';
 import Button from '~components/Button';
+import { TicketsModal } from '~website/containers/EventDetailPage/TicketsModal';
 
 function parseEventPath(path: string) {
   const parts = path.split('-');
@@ -41,11 +42,13 @@ type IProps = OwnProps & ChildProps<OwnProps, any>;
 
 interface IState {
   msl: any;
+  ticketModalOpen: boolean;
 }
 
 class EventDetailPage extends React.Component<IProps, IState> {
   state = {
     msl: null,
+    ticketModalOpen: false,
   };
 
   componentDidUpdate() {
@@ -63,6 +66,16 @@ class EventDetailPage extends React.Component<IProps, IState> {
   @bind
   handleMslCommunication(data: any) {
     this.setState({ msl: data });
+  }
+
+  @bind
+  handleOpenTicketModal() {
+    this.setState({ ticketModalOpen: true });
+  }
+
+  @bind
+  handleCloseTicketModal() {
+    this.setState({ ticketModalOpen: false });
   }
 
   render() {
@@ -124,7 +137,7 @@ class EventDetailPage extends React.Component<IProps, IState> {
                     <div>{event.shortDescription}</div>
                   )}
                   {event.brand && event.brand.eventAppend ? (
-                    <div>
+                    <div className="type-long-primer">
                       <div
                         dangerouslySetInnerHTML={{
                           __html: event.brand.eventAppend,
@@ -147,7 +160,11 @@ class EventDetailPage extends React.Component<IProps, IState> {
               </div>
             </ContentCard>
             <div>
-              <EventDetailSidebar event={event} msl={this.state.msl} />
+              <EventDetailSidebar
+                event={event}
+                msl={this.state.msl}
+                onTicketButton={this.handleOpenTicketModal}
+              />
             </div>
           </div>
           {event.children.length > 0 ? (
@@ -164,10 +181,18 @@ class EventDetailPage extends React.Component<IProps, IState> {
             </div>
           ) : null}
 
-          {event.mslEventId ? (
+          {event.ticketType === TicketType.MSL ? (
             <MSLEventCommunication
-              mslEventId={event.mslEventId}
+              ticketData={event.ticketData}
               onData={this.handleMslCommunication}
+            />
+          ) : null}
+
+          {event.ticketType === TicketType.MSL ? (
+            <TicketsModal
+              isOpen={this.state.ticketModalOpen}
+              onRequestClose={this.handleCloseTicketModal}
+              msl={this.state.msl}
             />
           ) : null}
         </div>

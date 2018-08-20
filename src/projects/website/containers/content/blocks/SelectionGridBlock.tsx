@@ -12,8 +12,8 @@ interface SelectionGridItemData {
 }
 
 export const SelectionGridBlock: StreamFieldBlock<SelectionGridItemData[]> = ({
-                                                                                block,
-                                                                              }) => {
+  block,
+}) => {
   return (
     <SelectionGrid>
       {block.map((

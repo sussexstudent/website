@@ -88,7 +88,11 @@ export const EventDetailDetails = (props: IProps) => {
           {event.brand !== null ? (
             <li className="EventDetail__tag-item">
               <Link
-                to={`/whats-on/collections/${event.brand.slug}`}
+                to={
+                  event.brand.overrideListingsRoot !== ''
+                    ? event.brand.overrideListingsRoot
+                    : `/whats-on/collections/${event.brand.slug}`
+                }
                 className="EventDetail__tag EventDetail__brand"
                 style={generateStylesForBrand(event.brand)}
               >
@@ -98,9 +102,12 @@ export const EventDetailDetails = (props: IProps) => {
           ) : null}
           {event.bundle !== null ? (
             <li className="EventDetail__tag-item">
-              <div className="EventDetail__bundle EventDetail__tag">
+              <Link
+                className="EventDetail__bundle EventDetail__tag"
+                to={`/whats-on/bundle/${event.bundle.slug}`}
+              >
                 {event.bundle.name}
-              </div>
+              </Link>
             </li>
           ) : null}
         </ul>

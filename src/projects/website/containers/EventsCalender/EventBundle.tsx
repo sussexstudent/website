@@ -3,7 +3,7 @@ import apolloHandler from '~components/apolloHandler';
 import { EventListings } from '~website/containers/EventsCalender/EventListings';
 import Helmet from 'react-helmet';
 import { compose } from 'recompose';
-import EventListingsBrandingPeriodQuery from './EventListingsBrandingPeriod.graphql';
+import EventListingsBrandingPeriodQuery from './EventListingsBundle.graphql';
 import { graphql } from 'react-apollo';
 
 interface OwnProps {
@@ -17,45 +17,34 @@ type IProps = OwnProps;
 class EventsCalender extends React.Component<IProps> {
   render() {
     const {
-      data: { allEvents, brandingPeriod },
-      brandSlug,
+      data: { allEvents, bundle },
     } = this.props;
 
     return (
       <div className="LokiContainer">
         <Helmet>
           <title>{`${
-            brandingPeriod.name
+            bundle.name
           } | What's on | Sussex Students' Union`}</title>
         </Helmet>
-        <h2 className="type-brevier">Event Period</h2>
-        <div>
-          {brandingPeriod.logoVector ? (
-            <img src={brandingPeriod.logoVector.resource} height="160" />
-          ) : (
-            <h1>{brandingPeriod.name}</h1>
-          )}
-          <div
-            className="type-body-copy"
-            dangerouslySetInnerHTML={{ __html: brandingPeriod.description }}
-          />
-        </div>
+        <h2 className="type-brevier">Event Bundle</h2>
+        <h1>{bundle.name}</h1>
 
-        <EventListings events={allEvents} removePast={!brandSlug} />
+        <EventListings events={allEvents} removePast={false} />
       </div>
     );
   }
 }
 
-export const EventBrandingPeriod = compose<OwnProps, OwnProps>(
+export const EventBundle = compose<OwnProps, OwnProps>(
   graphql<any, OwnProps>(EventListingsBrandingPeriodQuery, {
     options: (props) => {
-      const brandSlug = props.brandSlug;
+      const bundleSlug = props.bundleSlug;
       return {
         variables: {
-          brandSlug,
+          bundleSlug,
           filter: {
-            brand: brandSlug,
+            bundle: bundleSlug,
           },
         },
       };

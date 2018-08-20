@@ -25,10 +25,7 @@ interface IProps {
 
 function HomePage(props: IProps) {
   const {
-    page: {
-      fullTimeOfficers,
-      partTimeOfficers,
-    },
+    page: { fullTimeOfficers, partTimeOfficers },
   } = props;
 
   return (

@@ -187,7 +187,7 @@
 
   &__section-title,
   &__item-date-kicker {
-    color: var(--color__f18-pink);
+    color: var(--color__f18-teal);
     background: var(--color__f18-blue);
   }
 

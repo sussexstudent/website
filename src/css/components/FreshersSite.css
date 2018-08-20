@@ -1,7 +1,6 @@
 .FreshersSite {
   background-color: var(--color__f18-blue);
   color: #ffffff;
-  overflow: hidden;
   margin-top: -1rem;
 
   & .BlockLink {
@@ -79,6 +78,10 @@
 
   &__slice--gt {
     background: #ec5453;
+    overflow-x: hidden;
+    overflow-y: visible;
+    width: 100%;
+    box-sizing: border-box;
 
     h2 {
       color: #1e1c50;

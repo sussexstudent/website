@@ -24,13 +24,13 @@ class EventsCalender extends React.Component<IProps> {
     } = this.props;
 
     return (
-      <div>
+      <React.Fragment>
         <Helmet>
           <title>{`What's on | Sussex Students' Union`}</title>
         </Helmet>
 
         <EventListings events={allEvents} removePast={true} />
-      </div>
+      </React.Fragment>
     );
   }
 }

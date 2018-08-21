@@ -4,6 +4,7 @@ import { Event, TicketType } from '~types/events';
 import { SocialArray } from '~components/SocialArray';
 import { EventAccessSidebar } from '~website/containers/EventDetailPage/EventAccessSidebar';
 import { BuyButton } from '~website/containers/EventDetailPage/BuyButton';
+import { formatPrice } from '~libs/money';
 
 interface IProps {
   event: Event;
@@ -29,7 +30,7 @@ function mslSubtitle(msl: any) {
     return 'Free!';
   }
 
-  return min === max ? `£${min}` : `from £${min}`;
+  return min === max ? `£${formatPrice(min)}` : `from £${formatPrice(min)}`;
 }
 
 export const EventDetailSidebar = (props: IProps) => {

@@ -4,10 +4,10 @@ import styled from 'react-emotion';
 import { COLORS } from '~libs/style';
 import { cardActionable } from '~libs/style/cards';
 
-const Button = styled('button')(
-  {
+const Button = styled('button')<{ disabled: boolean }>(
+  ({ disabled }) => ({
     textAlign: 'center',
-    background: COLORS.BRAND_RED,
+    background: disabled ? COLORS.GREY_WINTER : COLORS.BRAND_RED,
     borderRadius: 6,
     padding: '0.5rem',
     display: 'block',
@@ -16,7 +16,7 @@ const Button = styled('button')(
     textDecoration: 'none',
     marginTop: '1rem',
     boxSizing: 'border-box',
-  },
+  }),
   cardActionable,
 );
 
@@ -39,6 +39,7 @@ interface BuyButtonProps {
   onClick?(e: React.MouseEvent<HTMLButtonElement>): void;
   title: string;
   subtitle?: string;
+  disabled?: boolean;
 }
 
 export const BuyButton: React.SFC<BuyButtonProps> = ({
@@ -46,14 +47,15 @@ export const BuyButton: React.SFC<BuyButtonProps> = ({
   subtitle,
   href,
   onClick,
+  disabled,
 }) => {
   return href ? (
-    <ButtonLink href={href}>
+    <ButtonLink href={href} disabled={!!disabled}>
       <Title>{title}</Title>
       {subtitle && <Subtitle>{subtitle}</Subtitle>}
     </ButtonLink>
   ) : (
-    <Button onClick={onClick}>
+    <Button onClick={onClick} disabled={!!disabled}>
       <Title>{title}</Title>
       {subtitle && <Subtitle>{subtitle}</Subtitle>}
     </Button>

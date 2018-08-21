@@ -3,6 +3,10 @@ import { Location, WindowLocation } from '@reach/router';
 
 class Tracker extends React.Component<{ location: WindowLocation }> {
   track(path: string) {
+    if (typeof ga === 'undefined') {
+      return;
+    }
+
     ga('set', 'page', path);
     ga('send', 'pageview');
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Event, TicketType } from '~types/events';
+import { Event, TicketCost, TicketType } from '~types/events';
 // import { MSLTickets } from '~components/EventDetailPage/MSLTickets';
 import { SocialArray } from '~components/SocialArray';
 import { EventAccessSidebar } from '~website/containers/EventDetailPage/EventAccessSidebar';
@@ -36,19 +36,22 @@ function mslSubtitle(msl: any) {
 export const EventDetailSidebar = (props: IProps) => {
   const { event, msl } = props;
 
+  const ticketCta =
+    event.cost === TicketCost.Free ? 'Reserve your space' : 'Get Tickets';
+
   return (
     <aside>
       {event.ticketType === TicketType.Native ? (
         <BuyButton
           href={event.ticketData}
-          title="Tickets"
+          title={ticketCta}
           subtitle="via native.fm"
         />
       ) : null}
       {event.ticketType === TicketType.Eventbrite ? (
         <BuyButton
           href={event.ticketData}
-          title="Tickets"
+          title={ticketCta}
           subtitle="via Eventbrite"
         />
       ) : null}
@@ -57,8 +60,9 @@ export const EventDetailSidebar = (props: IProps) => {
           {/*<BuyButton onClick={onTicketButton} title="Tickets" subtitle={mslSubtitle(msl)} />*/}
           <BuyButton
             href={event.ticketData}
-            title="Get Tickets"
+            title={ticketCta}
             subtitle={mslSubtitle(msl)}
+            disabled={msl && msl.tickets <= 0}
           />
         </React.Fragment>
       ) : null}

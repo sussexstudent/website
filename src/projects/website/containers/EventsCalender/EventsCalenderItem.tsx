@@ -103,7 +103,9 @@ function EventsCalenderItem({
       event.ticketType !== TicketType.NA &&
       event.ticketLevel !== 'SO' ? (
         <div className="EventsCalender__item-banner EventsCalender__item-banner--tickets">
-          {event.cost === TicketCost.Free ? 'Reserve your space' : 'Buy Tickets'}
+          {event.cost === TicketCost.Free
+            ? 'Reserve your space'
+            : 'Buy Tickets'}
         </div>
       ) : null}
       <div className="EventsCalender__item-container">

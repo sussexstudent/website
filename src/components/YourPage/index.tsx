@@ -1,9 +1,9 @@
 import React from 'react';
 import { Modal } from '~components/Modal';
 import { connect } from 'react-redux';
-import { WebsiteRootState } from '../../types/website';
-import { UserState } from '../../projects/website/ducks/user';
-import { PageState } from '../../projects/website/ducks/page';
+import { WebsiteRootState } from '~types/website';
+import { UserState } from '~website/ducks/user';
+import { PageState } from '~website/ducks/page';
 import { Accordion } from '~components/Accordion';
 import { AccordionItem } from '~components/Accordion/AccordionItem';
 import getApolloClientForFalmer from '~libs/getApolloClientForFalmer';

@@ -6,7 +6,7 @@ import FauxLink from '~components/FauxLink';
 import FauxInternalAppLink from '~components/FauxInternalAppLink';
 import minimalisticTimeRenderer from '~libs/minimalisticTimeRenderer';
 import EventRelativeTime from './EventRelativeTime';
-import { Event, TicketType } from '~types/events';
+import { Event, TicketCost, TicketType } from '~types/events';
 import { AspectRatio, OneImage } from '~components/OneImage';
 
 // import PropTypes from 'prop-types';
@@ -103,7 +103,7 @@ function EventsCalenderItem({
       event.ticketType !== TicketType.NA &&
       event.ticketLevel !== 'SO' ? (
         <div className="EventsCalender__item-banner EventsCalender__item-banner--tickets">
-          Buy Tickets
+          {event.cost === TicketCost.Free ? 'Reserve your space' : 'Buy Tickets'}
         </div>
       ) : null}
       <div className="EventsCalender__item-container">

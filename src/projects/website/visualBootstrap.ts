@@ -2,8 +2,12 @@ import 'what-input';
 import currentUser from '~libs/user';
 import hydro from '../../modules/hydro';
 import Modal from 'react-modal';
+import objectAssign from 'object-assign';
 
 export function setup() {
+  Object.assign = objectAssign;
+
+
   Modal.setAppElement('.Body');
 
   if (currentUser && currentUser.fundraising.blocking) {

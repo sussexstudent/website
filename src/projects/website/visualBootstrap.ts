@@ -2,7 +2,6 @@ import 'what-input';
 import currentUser from '~libs/user';
 import hydro from '../../modules/hydro';
 import Modal from 'react-modal';
-import 'core-js/fn/object/assign';
 
 export function setup() {
 

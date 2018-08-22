@@ -7,10 +7,10 @@ module.exports = function(api) {
   const plugins = ["babel-plugin-lodash", "@babel/plugin-syntax-dynamic-import", "@babel/plugin-proposal-object-rest-spread"];
   const presets = ["@babel/preset-react"];
 
-  if (TARGET_PLATFORM=== 'bundle') {
+  if (TARGET_PLATFORM === 'comp') {
     presets.push(["@babel/preset-env", {
       "targets": {
-        "browsers": ["last 2 versions", "safari 7", "IE 11"]
+        "node": "10"
       },
       "useBuiltIns": false,
       "modules": false,
@@ -18,10 +18,10 @@ module.exports = function(api) {
         "transform-regenerator"
       ]
     }]);
-  } else if (TARGET_PLATFORM === 'comp') {
+  } else {
     presets.push(["@babel/preset-env", {
       "targets": {
-        "node": "10"
+        "browsers": ["last 2 versions", "safari 7", "IE 11"]
       },
       "useBuiltIns": false,
       "modules": false,

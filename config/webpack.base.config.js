@@ -82,6 +82,7 @@ function generateConfig() {
               options: {
                 useBabel: true,
                 useCache: true,
+                babelCore: "@babel/core",
                 reportFiles: ['src/**/*.{ts,tsx}'],
               },
             },

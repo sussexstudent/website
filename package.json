@@ -189,7 +189,7 @@
     "falmer:prod": "export NODE_ENV=production && export BABEL_ENV=bundle && `yarn bin`/webpack --config ./config/falmer.prod.config.js",
     "gen": "BABEL_ENV=comp `yarn bin`/comp",
     "deploy": "uncommitted && yarn run prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run gen",
-    "serve": "node --trace-warnings ./devserver.js",
+    "serve": "BABEL_ENV=bundle node --trace-warnings ./devserver.js",
     "format": "`yarn bin`/prettier \"src/**/*.{ts,tsx,js,css,graphql}\" --write",
     "test": "NODE_ENV=test && jest",
     "testc": "NODE_ENV=test && jest --coverage",

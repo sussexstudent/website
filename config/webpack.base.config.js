@@ -112,6 +112,10 @@ function generateConfig() {
             },
           ],
         },
+        {
+          test: /\.js?$/,
+          loaders: ['babel-loader?envName=bundle'],
+        },
       ],
     },
   };

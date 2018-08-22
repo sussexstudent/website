@@ -88,11 +88,6 @@ config.plugins = config.plugins.concat([
 
 config.module.rules = config.module.rules.concat([
   {
-    test: /\.js?$/,
-    loaders: ['babel-loader?envName=bundle'],
-//    exclude: /node_modules/,
-  },
-  {
     test: /\.css$/,
     loader: [MiniCssExtractPlugin.loader, 'css-loader?importLoaders=1', 'postcss-loader'],
   },

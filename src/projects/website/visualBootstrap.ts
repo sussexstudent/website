@@ -4,7 +4,6 @@ import hydro from '../../modules/hydro';
 import Modal from 'react-modal';
 
 export function setup() {
-
   Modal.setAppElement('.Body');
 
   if (currentUser && currentUser.fundraising.blocking) {

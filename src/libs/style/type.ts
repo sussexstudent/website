@@ -286,6 +286,5 @@ export function type(
       typeface === Typeface.Secondary ? TYPE_SECONDARY : TYPE_PRIMARY;
   }
 
-  console.log(fontMap, typeface);
   return fontMap;
 }

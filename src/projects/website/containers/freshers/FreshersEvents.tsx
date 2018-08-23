@@ -17,6 +17,8 @@ const filteringAcceptions = [
   'audienceSuitableKidsFamilies',
   'audienceGoodToMeetPeople',
   'cost',
+  'isOver18Only',
+  'ticketLevel',
 ];
 
 const filteringReplacements: { [k: string]: any } = {

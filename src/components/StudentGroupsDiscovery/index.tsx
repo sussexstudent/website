@@ -65,7 +65,6 @@ class StudentGroupsDiscovery extends React.Component<IProps, IState> {
     }
 
     const searchValue = e.target.value;
-    console.log({ searchValue, d: fuse.search(searchValue) });
     this.setState({
       searchValue,
       displayIds: searchValue

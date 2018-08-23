@@ -34,7 +34,6 @@ class DetailedGuidePage extends React.Component<IProps> {
       page: { content, relatedLinks, staffOwners, subPages, path },
       page,
     } = this.props;
-    console.log({ content });
     return (
       <div className="LokiContainer">
         <KBContentBreadcrumbBar page={page} />

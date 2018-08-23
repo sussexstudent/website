@@ -26,7 +26,6 @@ export function parseTickets(): (undefined | MSLTicket)[] {
     }
 
     const ticketMatch = ticketString.trim().match(MSL_TICKET_STRING_REGEX);
-    console.log({ ticketString, ticketMatch, eventTicketEl });
 
     if (ticketMatch) {
       const [, currencySymbol, main, fractional, ticketName] = ticketMatch;

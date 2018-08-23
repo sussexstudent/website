@@ -1,5 +1,6 @@
 import React from 'react';
 import { sample } from 'lodash';
+import styled from 'react-emotion';
 
 type patternMethod = (color: string) => string;
 // Taken from http://www.heropatterns.com/
@@ -41,6 +42,12 @@ interface IState {
   swatch: string[];
 }
 
+const Container = styled('div')({
+  width: '100%',
+  height: '100%',
+  backgroundRepeat: 'repeat',
+});
+
 class PatternPlaceholder extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
@@ -53,8 +60,7 @@ class PatternPlaceholder extends React.Component<IProps, IState> {
   render() {
     const { pattern, swatch } = this.state;
     return (
-      <div
-        className="PatternPlaceholder"
+      <Container
         style={{
           backgroundImage: `url("${pattern(swatch[1])}")`,
           backgroundColor: `#${swatch[0]}`,

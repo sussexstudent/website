@@ -1,4 +1,24 @@
 import React from 'react';
+import { COLORS } from '~libs/style';
+import styled from 'react-emotion';
+
+const Root = styled('div')({
+  position: 'fixed',
+  bottom: 0,
+  left: 0,
+  padding: '0.1rem',
+  background: 'rgba(30, 30, 30, 0.8)',
+  opacity: 0.6,
+  color: COLORS.WHITE,
+  textShadow: '1px 0 2px rgba(30, 30, 30, 0.6)',
+  '&:hover .content': {
+    display: 'block',
+    paddingBottom: '1rem',
+  },
+  '& .content': {
+    display: 'none',
+  },
+});
 
 enum FalmerAPIOptions {
   Production = 'production',
@@ -45,8 +65,8 @@ export default class CompOptionsPanel extends React.Component<{}, IState> {
   render() {
     const { api } = this.state;
     return (
-      <div className="CompOptionsPanel">
-        <div className="CompOptionsPanel__content">
+      <Root>
+        <div className="content">
           <div>
             Falmer API
             <div>
@@ -72,7 +92,7 @@ export default class CompOptionsPanel extends React.Component<{}, IState> {
           </div>
         </div>
         comp
-      </div>
+      </Root>
     );
   }
 }

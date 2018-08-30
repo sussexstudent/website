@@ -25,7 +25,7 @@ export class LoginModal extends React.Component<
               className="LoginActions__item-anchor"
               href={`https://www.sussexstudent.com/sso/login.ashx?idp=SUSSEX_SHIB&ReturnUrl=${currentPath}`}
             >
-              Sussex SSO
+              Sussex Students
             </a>
           </li>
           <li>
@@ -33,7 +33,7 @@ export class LoginModal extends React.Component<
               className="LoginActions__item-anchor"
               href={`https://www.sussexstudent.com/sso/login.ashx?idp=BSMS_SHIB&ReturnUrl=${currentPath}`}
             >
-              BSMS SSO
+              BSMS Students
             </a>
           </li>
           <li>
@@ -53,7 +53,6 @@ export class LoginModal extends React.Component<
             </a>
           </li>
         </ul>
-        <a href="https://www.sussexstudent.com/login">Register</a>
 
         <ApolloProvider client={getApolloClientForFalmer}>
           <BannerOutlet outlet="login.modal.bottom" />

@@ -31,7 +31,7 @@ const DetailedGuideSection: React.SFC<
 class DetailedGuidePage extends React.Component<IProps> {
   render() {
     const {
-      page: { content, relatedLinks, staffOwners, subPages, path },
+      page: { relatedLinks, staffOwners, subPages, path },
       page,
     } = this.props;
     return (

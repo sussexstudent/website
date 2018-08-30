@@ -1,11 +1,11 @@
 query ContentBrowser {
   page(path: "/") {
     ...PageParts
-    subPages {
+    subPages(inMenu: true) {
       ...PageParts
-      subPages {
+      subPages(inMenu: true) {
         ...PageParts
-        subPages {
+        subPages(inMenu: true) {
           ...PageParts
         }
       }

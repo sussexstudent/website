@@ -47,17 +47,9 @@ export class LoginModal extends React.Component<
           <li>
             <a
               className="LoginActions__item-anchor"
-              href={`https://www.sussexstudent.com/account/register/freshers`}
-            >
-              2018 Students Registration
-            </a>
-          </li>
-          <li>
-            <a
-              className="LoginActions__item-anchor"
               href={`https://www.sussexstudent.com/login`}
             >
-              2018 Student Login + other users
+              Other users
             </a>
           </li>
         </ul>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Location, NavigateFn, Router, WindowLocation } from '@reach/router';
+import { Location, NavigateFn, Router, WindowLocation, Redirect } from '@reach/router';
 import { History } from 'history';
 import BookMarketApp from '~website/containers/bookmarket/BookMarketApp';
 import EventsApplication from '~website/containers/EventsApplication';
@@ -79,6 +79,7 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
                 <EventsApplication path="/whats-on/*" />
                 <LoadableSearchApp path="/search" />
                 <LoadableStudentGroupsDiscovery path="/sport-societies-media/discover" />
+                <Redirect from="/freshers/freshers-week-events/" to="/freshers" replace />
                 <FreshersEvents path="/freshers/whats-on" />
                 <FreshersContentAPI path="/freshers/*" />
                 {/*<EventDiscovery path="/event-discovery" />*/}

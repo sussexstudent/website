@@ -22,6 +22,18 @@ const store = createStore(
   ),
 );
 
+const createSanguineStore = () => createStore(
+  combineReducers(reducers) as any, // fix me
+  {},
+  compose(
+    applyMiddleware(
+      appMountMiddleware,
+      rootTransitionMiddleware,
+      sideMenuMiddleware,
+    ),
+  ),
+);
+
 store.dispatch({
   type: ROUTER_INITIAL,
 });
@@ -33,4 +45,4 @@ if (user && user.auth) {
   });
 }
 
-export { store };
+export { store, createSanguineStore };

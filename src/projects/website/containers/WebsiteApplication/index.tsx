@@ -19,14 +19,15 @@ import { RouteComponent } from '~types/routes';
 import { FreshersContentAPI } from '~website/containers/freshers/ContentAPIContainer';
 import { FreshersEvents } from '~website/containers/freshers/FreshersEvents';
 import { RouterAnalytics } from '~components/RouterAnalytics';
+import {FourOhFourPage} from "~website/containers/content/FourOhFourPage";
 
 interface WebsiteApplicationProps {
   setRouter: typeof routerActions.setRouter;
   announceMount: typeof routerActions.announceMount;
   history: History;
   appMountState: AppMountState;
-  location: WindowLocation;
-  navigate: NavigateFn;
+  location?: WindowLocation;
+  navigate?: NavigateFn;
 }
 
 const ContentAPI = (props: any) => (
@@ -51,14 +52,20 @@ const LoadableContentBrowser = Loadable({
     import(/* webpackChunkName: "ContentBrowser" */ '~website/containers/ContentBrowser'),
 }) as any;
 
+const FourOhFourPageRoute = FourOhFourPage as any;
+
 class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
   componentDidMount() {
-    this.props.setRouter(this.props.navigate, this.props.location);
+    if (this.props.navigate && this.props.location) {
+      this.props.setRouter(this.props.navigate, this.props.location);
+    }
     this.props.announceMount(this.props.appMountState);
   }
 
   componentDidUpdate() {
-    this.props.setRouter(this.props.navigate, this.props.location);
+    if (this.props.navigate && this.props.location) {
+      this.props.setRouter(this.props.navigate, this.props.location);
+    }
   }
 
   render() {
@@ -90,6 +97,7 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
                 <ContentAPI path="/get-involved-next/" />
                 <ContentAPI path="/about-us-next/*" />
                 <ContentExplorer path="/content-explorer/*" exact />
+                <FourOhFourPageRoute default />
               </Router>
             </ErrorBoundary>
           )}
@@ -103,8 +111,8 @@ export default compose<
   WebsiteApplicationProps,
   {
     appMountState: AppMountState;
-    location: WindowLocation;
-    navigate: NavigateFn;
+    location?: WindowLocation;
+    navigate?: NavigateFn;
   }
 >(
   connect(

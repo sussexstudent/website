@@ -4,7 +4,7 @@ module.exports = function(api) {
   const TARGET_PLATFORM = process.env.BABEL_ENV;
   const TARGET_ENV = process.env.NODE_ENV;
 
-  const plugins = ["babel-plugin-lodash", "@babel/plugin-syntax-dynamic-import", "@babel/plugin-proposal-object-rest-spread"];
+  const plugins = ["babel-plugin-lodash", "@babel/plugin-syntax-dynamic-import", "@babel/plugin-proposal-object-rest-spread", "react-loadable/babel"];
   const presets = ["@babel/preset-react"];
 
   if (TARGET_PLATFORM === 'comp') {

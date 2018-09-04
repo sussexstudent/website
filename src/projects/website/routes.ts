@@ -1,7 +1,7 @@
 import { PreRouter } from '~libs/PreRouter';
 
 export default new PreRouter([
-  '/homepage-next',
+  '/homepage',
   '/whats-on', // Events App
   '/browse', // Content Browser App
   '/sport-societies-media/discover',

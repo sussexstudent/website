@@ -1,6 +1,6 @@
 import React from 'react';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 
 interface KBContentBreadcrumbBarProps {
   page: any;

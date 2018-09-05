@@ -1,12 +1,11 @@
 import React from 'react';
 import { ErrorState } from '~components/ErrorState';
-import { WindowLocation } from '@reach/router';
+import { withRouter, RouteComponentProps } from 'react-router';
 
-interface ErrorBoundaryProps {
+interface ErrorBoundaryProps extends RouteComponentProps<any> {
   children?: any;
   FallbackComponent?: any;
   onError?: (error: Error, componentStack: string) => void;
-  location: WindowLocation;
 }
 
 interface ErrorInfo {
@@ -21,7 +20,7 @@ interface ErrorBoundaryState {
 class ErrorBoundary extends React.Component<
   ErrorBoundaryProps,
   ErrorBoundaryState
-> {
+  > {
   static defaultProps = {
     FallbackComponent: ErrorState,
   };
@@ -34,11 +33,9 @@ class ErrorBoundary extends React.Component<
       info: null,
     };
 
-    this.handleRouteUpdate = this.handleRouteUpdate.bind(this);
-  }
-
-  handleRouteUpdate() {
-    this.setState({ error: null, info: null });
+    props.history.listen(() => {
+      this.setState({ error: null, info: null });
+    });
   }
 
   componentDidCatch(error: Error, info: ErrorInfo): void {
@@ -51,12 +48,6 @@ class ErrorBoundary extends React.Component<
     }
 
     this.setState({ error, info });
-  }
-
-  componentDidUpdate(prevProps: ErrorBoundaryProps) {
-    if (this.props.location !== prevProps.location) {
-      this.handleRouteUpdate();
-    }
   }
 
   render() {
@@ -76,4 +67,4 @@ class ErrorBoundary extends React.Component<
   }
 }
 
-export default ErrorBoundary;
+export default withRouter(ErrorBoundary as any);

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { Router } from '@reach/router';
 import Loadable from 'react-loadable';
 import { requestAuthToken } from '~falmer/ducks/auth';
 import FalmerHeader from '~falmer/components/FalmerHeader';
@@ -9,6 +8,7 @@ import Loader from '~components/Loader';
 import LoadableLoading from '~components/LoadableLoading';
 import { RootState } from '~types/falmer';
 import { compose } from 'recompose';
+import {Switch, Route} from 'react-router-dom';
 
 const LoadableMedia = Loadable({
   loader: () => import(/* webpackChunkName: "Media" */ '../FalmerMedia'),
@@ -60,13 +60,13 @@ class FalmerApplication extends React.Component<IProps> {
         <Helmet titleTemplate="%s | Falmer" />
         <FalmerHeader />
         <main className="FalmerViewContainer">
-          <Router>
-            <LoadableDashboard path="/" exact />
-            <LoadableEvents path="/events/*" />
-            <LoadableStudentGroups path="/groups/*" />
-            <LoadableMedia path="/media/*" />
-            <LoadableBookMarket path="/book-market/*" />
-          </Router>
+          <Switch>
+            <Route component={LoadableDashboard} path="/" exact />
+            <Route component={LoadableEvents} path="/events/*" />
+            <Route component={LoadableStudentGroups} path="/groups/*" />
+            <Route component={LoadableMedia} path="/media/*" />
+            <Route component={LoadableBookMarket} path="/book-market/*" />
+          </Switch>
         </main>
       </section>
     );

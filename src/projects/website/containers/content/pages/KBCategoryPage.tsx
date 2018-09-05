@@ -1,7 +1,7 @@
 import React from 'react';
 import { Page } from '~website/containers/content/types';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 
 interface IKBRoot extends Page {}
 

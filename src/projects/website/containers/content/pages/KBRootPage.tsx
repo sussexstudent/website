@@ -1,6 +1,6 @@
 import React from 'react';
 import { Page } from '~website/containers/content/types';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
 
 interface IKBCatPage extends Page {}

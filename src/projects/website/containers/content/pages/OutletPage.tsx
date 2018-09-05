@@ -9,7 +9,7 @@ import {
   openingTimesBlockParser,
 } from '~libs/streamFieldStructures';
 import { Sectionbar, SectionbarItem } from '~components/Sectionbar';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 
 interface IOutletIndex extends Page<Page[]> {}
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 import { COLORS, MQ, TYPE_SECONDARY } from '~libs/style';
 import styled from 'react-emotion';
 

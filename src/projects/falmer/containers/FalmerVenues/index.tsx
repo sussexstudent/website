@@ -1,16 +1,15 @@
 import React from 'react';
-import { Router } from '@reach/router';
+import { Switch, Route } from 'react-router-dom';
 import FalmerVenueList from './FalmerVenuesList';
-import { SimpleLoadableRoute } from '~types/routes';
 
 function FalmerVenues() {
   return (
     <div>
-      <Router>
-        <FalmerVenueList path="/" exact />
-      </Router>
+      <Switch>
+        <Route path="" exact component={FalmerVenueList} />
+      </Switch>
     </div>
   );
 }
 
-export default FalmerVenues as SimpleLoadableRoute;
+export default FalmerVenues;

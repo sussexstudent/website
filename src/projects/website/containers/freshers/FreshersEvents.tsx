@@ -4,12 +4,12 @@ import { EventsList } from '~website/containers/EventsCalender';
 import { addMonths, startOfDay } from 'date-fns';
 import qs from 'query-string';
 import { mapValues, pickBy } from 'lodash';
-import { Link, RouteComponentProps } from '@reach/router';
+import { Link, RouteComponentProps } from 'react-router-dom';
 import styled from 'react-emotion';
 import { type, Typeface, TypeSize } from '~libs/style/type';
 
-interface FreshersEventsProps extends RouteComponentProps {
-  path: string;
+interface FreshersEventsProps extends RouteComponentProps<{path: string;}> {
+
 }
 
 const filteringAcceptions = [

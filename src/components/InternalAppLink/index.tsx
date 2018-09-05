@@ -1,9 +1,10 @@
 import React from 'react';
+import { History } from 'history';
 import routes from '../../projects/website/routes';
 import * as routerActions from '../../projects/website/ducks/router';
 import { WebsiteRootState } from '~types/website';
 import { connect } from 'react-redux';
-import { Link, NavigateFn } from '@reach/router';
+import {Link} from 'react-router-dom';
 
 interface InternalAppLinkComponentProps {
   to: string;
@@ -12,7 +13,7 @@ interface InternalAppLinkComponentProps {
 }
 
 interface InternalAppLinkAmbientProps {
-  navigate: null | NavigateFn;
+  history: null | History;
   navigateTo: typeof routerActions.navigateTo;
 }
 
@@ -22,11 +23,11 @@ type InternalAppLinkProps = InternalAppLinkAmbientProps &
 
 class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
   render() {
-    const { to, navigate, innerRef, navigateTo, ref, ...props } = this.props;
+    const { to, history, innerRef, navigateTo, ref, ...props } = this.props;
     const isClientRendered = routes.matches(to);
 
     if (isClientRendered) {
-      if (navigate) {
+      if (history) {
         return <Link to={to} {...props} />;
       }
     }
@@ -41,7 +42,7 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
 
 export const InternalAppLink = connect(
   (state: WebsiteRootState) => ({
-    navigate: state.router.navigate,
+    history: state.router.history
   }),
   {
     navigateTo: routerActions.navigateTo,

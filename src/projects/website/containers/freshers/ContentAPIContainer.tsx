@@ -4,6 +4,6 @@ import { FreshersContainer } from '~website/containers/freshers/FreshersContaine
 
 export const FreshersContentAPI = (props: any) => (
   <FreshersContainer>
-    <ContentPage path={props.location.pathname} navigate={props.navigate} />
+    <ContentPage path={props.location.pathname} history={props.history} />
   </FreshersContainer>
 );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import formatDate from 'date-fns/format';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 import ALL_EVENTS_QUERY from './AllEvents.graphql';
 import FalmerDataList, {
   Cell,

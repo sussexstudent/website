@@ -4,9 +4,9 @@ import ContentNavigation from '~components/ContentNavigation';
 import { RelatedContent } from '~website/components/RelatedContent';
 import { StaffOwners } from '~website/components/StaffOwners';
 import StreamField from '~website/containers/content/StreamField';
-import { Router } from '@reach/router';
 import { RouteComponent } from '~types/routes';
 import { KBContentBreadcrumbBar } from '~website/components/KBContentBreadcrumbBar';
+import {Switch, Route} from 'react-router-dom';
 
 interface DetailPageSection extends Page {
   content: StreamFieldData;
@@ -52,21 +52,23 @@ class DetailedGuidePage extends React.Component<IProps> {
             />
           </div>
           <div className="LayoutContent__main">
-            <Router>
-              <DetailedGuideSection
+            <Switch>
+              <Route
+                component={DetailedGuideSection}
                 key={subPages[0].slug}
                 path={path}
                 page={subPages[0]}
                 exact
               />
               {subPages.map((subPage) => (
-                <DetailedGuideSection
+                <Route
+                  component={DetailedGuideSection}
                   key={subPage.slug}
                   path={path + subPage.slug}
                   page={subPage}
                 />
               ))}
-            </Router>
+            </Switch>
           </div>
 
           <aside className="LayoutContent__aside ContentSidebar">

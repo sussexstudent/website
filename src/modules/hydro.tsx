@@ -8,6 +8,7 @@ import { store } from '~website/redux/store';
 // import { CountdownBox } from '~components/Bento/treatments/CountdownBox';
 import { LokiHeader } from '~components/LokiHeader';
 import { ApolloProvider } from 'react-apollo';
+import {BrowserRouter} from '~components/BrowserRouter';
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.SFC;
@@ -73,21 +74,25 @@ export default function() {
 
       if (shouldHydrate) {
         ReactDOM.hydrate(
-          <ApolloProvider client={getApolloClientForFalmer}>
-            <ReduxProvider store={store}>
-              <Component {...props} />
-            </ReduxProvider>
-          </ApolloProvider>,
+          <BrowserRouter>
+            <ApolloProvider client={getApolloClientForFalmer}>
+              <ReduxProvider store={store}>
+                <Component {...props} />
+              </ReduxProvider>
+            </ApolloProvider>
+          </BrowserRouter>,
           el,
         );
       } else {
         ReactDOM.render(
-          <ApolloProvider client={getApolloClientForFalmer}>
-            <ReduxProvider store={store}>
-              <Component {...props} />
-            </ReduxProvider>
-          </ApolloProvider>,
-          el,
+          <BrowserRouter>
+            <ApolloProvider client={getApolloClientForFalmer}>
+              <ReduxProvider store={store}>
+                <Component {...props} />
+              </ReduxProvider>
+            </ApolloProvider>
+          </BrowserRouter>,
+            el,
         );
       }
     }

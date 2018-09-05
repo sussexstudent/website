@@ -1,20 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, LinkGetProps } from '@reach/router';
+import { withRouter, NavLink } from 'react-router-dom';
 import { FalmerUser, RootState } from '~types/falmer';
 import { compose } from 'recompose';
 import StudentsUnionLogoNoLogotype from '~icons/students-union-logo-no-logotype.svg';
 
 interface IProps {
   user: FalmerUser;
-}
-
-function navProps({ isPartiallyCurrent }: LinkGetProps) {
-  return isPartiallyCurrent
-    ? {
-        className: 'FalmerHeader__nav-link--active',
-      }
-    : {};
 }
 
 const FalmerHeader: React.SFC<IProps> = ({ user }) => {
@@ -32,29 +24,45 @@ const FalmerHeader: React.SFC<IProps> = ({ user }) => {
       <nav className="FalmerHeader__nav">
         <ul className="FalmerHeader__nav-list">
           <li className="FalmerHeader__nav-item">
-            <Link to="/" getProps={navProps}>
+            <NavLink
+              to="/"
+              exact
+              activeClassName="FalmerHeader__nav-link--active"
+            >
               Dashboard
-            </Link>
+            </NavLink>
           </li>
           <li className="FalmerHeader__nav-item">
-            <Link to="/events" getProps={navProps}>
+            <NavLink
+              to="/events"
+              activeClassName="FalmerHeader__nav-link--active"
+            >
               Events
-            </Link>
+            </NavLink>
           </li>
           <li className="FalmerHeader__nav-item">
-            <Link to="/groups" getProps={navProps}>
+            <NavLink
+              to="/groups"
+              activeClassName="FalmerHeader__nav-link--active"
+            >
               Groups
-            </Link>
+            </NavLink>
           </li>
           <li className="FalmerHeader__nav-item">
-            <Link to="/media" getProps={navProps}>
+            <NavLink
+              to="/media"
+              activeClassName="FalmerHeader__nav-link--active"
+            >
               Images
-            </Link>
+            </NavLink>
           </li>
           <li className="FalmerHeader__nav-item">
-            <Link to="/book-market" getProps={navProps}>
+            <NavLink
+              to="/book-market"
+              activeClassName="FalmerHeader__nav-link--active"
+            >
               Book Market
-            </Link>
+            </NavLink>
           </li>
           {user.hasCmsAccess ? (
             <li className="FalmerHeader__nav-item">
@@ -89,6 +97,7 @@ const FalmerHeader: React.SFC<IProps> = ({ user }) => {
 */
 
 export default compose<IProps, {}>(
+  withRouter,
   connect((state: RootState) => ({
     user: state.auth.user,
   })),

@@ -2,7 +2,7 @@ import React from 'react';
 import { Page, StreamFieldData } from '~website/containers/content/types';
 import StreamField from '~website/containers/content/StreamField';
 import { FalmerImage } from '~types/events';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 import { Sectionbar, SectionbarItem } from '~components/Sectionbar';
 import { OneImageBackground } from '~components/OneImage';
 

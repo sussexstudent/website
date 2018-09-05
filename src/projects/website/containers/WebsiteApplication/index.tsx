@@ -1,6 +1,5 @@
 import React from 'react';
-import { Location, NavigateFn, Router, WindowLocation, Redirect } from '@reach/router';
-import { History } from 'history';
+import { History, Location } from 'history';
 import BookMarketApp from '~website/containers/bookmarket/BookMarketApp';
 import EventsApplication from '~website/containers/EventsApplication';
 import * as routerActions from '~website/ducks/router';
@@ -13,25 +12,25 @@ import { LoadableLoading } from '~components/LoadableLoading';
 import Loadable from 'react-loadable';
 import Helmet from 'react-helmet';
 import ErrorBoundary from '../../../../components/ErrorBoundary';
-// import EventDiscovery from '~website/containers/EventDiscovery';
 import Homepage from '~website/layouts/homepage';
 import { RouteComponent } from '~types/routes';
 import { FreshersContentAPI } from '~website/containers/freshers/ContentAPIContainer';
 import { FreshersEvents } from '~website/containers/freshers/FreshersEvents';
 import { RouterAnalytics } from '~components/RouterAnalytics';
 import {FourOhFourPage} from "~website/containers/content/FourOhFourPage";
+import {Route, Switch, Redirect, withRouter} from 'react-router';
+import {ScrollToTop} from "~components/ScrollToTop";
 
 interface WebsiteApplicationProps {
   setRouter: typeof routerActions.setRouter;
   announceMount: typeof routerActions.announceMount;
   history: History;
   appMountState: AppMountState;
-  location?: WindowLocation;
-  navigate?: NavigateFn;
+  location: Location;
 }
 
 const ContentAPI = (props: any) => (
-  <ContentPage path={props.location.pathname} navigate={props.navigate} />
+  <ContentPage path={props.location.pathname} history={props.history} />
 );
 
 const LoadableSearchApp = Loadable({
@@ -56,53 +55,44 @@ const FourOhFourPageRoute = FourOhFourPage as any;
 
 class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
   componentDidMount() {
-    if (this.props.navigate && this.props.location) {
-      this.props.setRouter(this.props.navigate, this.props.location);
-    }
+    this.props.setRouter(this.props.history, this.props.location);
     this.props.announceMount(this.props.appMountState);
   }
 
   componentDidUpdate() {
-    if (this.props.navigate && this.props.location) {
-      this.props.setRouter(this.props.navigate, this.props.location);
-    }
+    this.props.setRouter(this.props.history, this.props.location);
   }
 
   render() {
     return (
-      <React.Fragment>
+      <ScrollToTop>
         <Helmet
           defaultTitle="Sussex Students' Union"
           titleTemplate="%s | Sussex Students' Union"
         />
         <RouterAnalytics />
-        <Location>
-          {({ location }) => (
-            <ErrorBoundary location={location}>
-              <Router>
-                <Homepage path="/homepage" />
-                <BookMarketApp path="/book-market/*" />
-                <LoadableContentBrowser path="/browse/*" />
-                <EventsApplication path="/whats-on/*" />
-                <LoadableSearchApp path="/search" />
-                <LoadableStudentGroupsDiscovery path="/sport-societies-media/discover" />
-                <Redirect from="/freshers/freshers-week-events/" to="/freshers" replace />
-                <FreshersEvents path="/freshers/whats-on" />
-                <FreshersContentAPI path="/freshers/*" />
+            <ErrorBoundary>
+              <Switch>
+                <Route component={Homepage} path="/homepage" />
+                <Route component={BookMarketApp} path="/book-market" />
+                <Route component={LoadableContentBrowser} path="/browse" />
+                <Route component={EventsApplication} path="/whats-on" />
+                <Route component={LoadableSearchApp} path="/search" />
+                <Route component={LoadableStudentGroupsDiscovery} path="/sport-societies-media/discover" />
+                <Redirect from="/freshers/freshers-week-events/" to="/freshers" />
+                <Route component={FreshersEvents} path="/freshers/whats-on" />
+                <Route component={FreshersContentAPI} path="/freshers" />
                 {/*<EventDiscovery path="/event-discovery" />*/}
-                <ContentAPI path="/get-involved" exact />
-                <ContentAPI path="/services/*" />
-                <ContentAPI path="/support" exact />
-                <ContentAPI path="/website-knowledge-base/*" />
-                <ContentAPI path="/get-involved-next/" />
-                <ContentAPI path="/about-us-next/*" />
-                <ContentExplorer path="/content-explorer/*" exact />
-                <FourOhFourPageRoute default />
-              </Router>
+                <Route component={ContentAPI} path="/get-involved" exact />
+                <Route component={ContentAPI} path="/services" />
+                <Route component={ContentAPI} path="/support" exact />
+                <Route component={ContentAPI} path="/get-involved-next" />
+                <Route component={ContentAPI} path="/about-us-next" />
+                <Route component={ContentExplorer} path="/content-explorer" exact />
+                <Route component={FourOhFourPageRoute} default />
+              </Switch>
             </ErrorBoundary>
-          )}
-        </Location>
-      </React.Fragment>
+      </ScrollToTop>
     );
   }
 }
@@ -111,10 +101,9 @@ export default compose<
   WebsiteApplicationProps,
   {
     appMountState: AppMountState;
-    location?: WindowLocation;
-    navigate?: NavigateFn;
   }
 >(
+  withRouter,
   connect(
     null,
     {

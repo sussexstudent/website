@@ -10,7 +10,7 @@ import {
 import { COLORS } from '~libs/style';
 import styled from 'react-emotion';
 import { css } from 'emotion';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 import { type, Typeface, TypeSize } from '~libs/style/type';
 // import { Countdown } from '~components/Countdown';
 

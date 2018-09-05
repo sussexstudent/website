@@ -17,26 +17,15 @@ import { EventDetailMetadata } from '~website/containers/EventDetailPage/EventDe
 import PatternPlaceholder from '~components/PatternPlaceholder';
 import Button from '~components/Button';
 import { TicketsModal } from '~website/containers/EventDetailPage/TicketsModal';
+import {RouteComponentProps} from 'react-router-dom';
 
-function parseEventPath(path: string) {
-  const parts = path.split('-');
-
-  if (parts.length <= 1) {
-    return {
-      id: parts[0],
-      slug: null,
-    };
-  }
-
-  return {
-    id: parts.pop(),
-    slug: parts.join('-'),
-  };
+interface RouteParams {
+  [0]: string;
+  eventId: number;
 }
 
-interface OwnProps {
-  eventPath: number;
-}
+interface OwnProps extends RouteComponentProps<RouteParams> {}
+
 
 type IProps = OwnProps & ChildProps<OwnProps, any>;
 
@@ -56,11 +45,10 @@ class EventDetailPage extends React.Component<IProps, IState> {
       return;
     }
 
-    // todo: reach redirect to correct slug
-    // const event = this.props.data.event;
-    // if (this.props.match.params[0] !== event.slug) {
-    //   this.props.history.replace(`/whats-on/${event.slug}-${event.eventId}`);
-    // }
+    const event = this.props.data.event;
+    if (this.props.match.params[0] !== event.slug) {
+      this.props.history.replace(`/whats-on/${event.slug}-${event.eventId}`);
+    }
   }
 
   @bind
@@ -202,7 +190,5 @@ class EventDetailPage extends React.Component<IProps, IState> {
 }
 
 export default graphql<any, OwnProps>(DetailPageQuery, {
-  options: ({ eventPath }) => ({
-    variables: { eventId: parseEventPath(eventPath).id },
-  }),
+  options: ({ match }) => ({ variables: { eventId: match.params.eventId } }),
 })(apolloHandler()(EventDetailPage));

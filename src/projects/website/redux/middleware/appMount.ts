@@ -12,21 +12,18 @@ import {
 import qs from 'query-string';
 import { WebsiteRootState } from '~types/website';
 import routes from '../../routes';
-
-// todo
-// import { debounce } from 'lodash';
-// import { toggleMobileMenu } from '../../ducks/page';
-//
-//
-// function trackPageGA(path: string) {
-//   console.log('ga', path);
-//   ga('set', 'page', path);
-//   ga('send', 'pageview');
-// }
-//
-//  const onPageChange = debounce(trackPageGA, 350);
+import { debounce } from 'lodash';
+import { toggleMobileMenu } from '../../ducks/page';
 
 let hasAttemptedRender = false;
+
+function trackPageGA(path: string) {
+  console.log('ga', path);
+  ga('set', 'page', path);
+  ga('send', 'pageview');
+}
+
+const onPageChange = debounce(trackPageGA, 350);
 
 export const appMountMiddleware = (store: any) => (next: any) => (
   action: any,
@@ -38,12 +35,12 @@ export const appMountMiddleware = (store: any) => (next: any) => (
     if (
       router.appMountState !== AppMountState.NotMounted &&
       router.location &&
-      router.navigate
+      router.history
     ) {
       if (router.location.pathname === '/search') {
-        router.navigate(`/search?q=${result.payload.query}`, { replace: true });
+        router.history.replace(`/search?q=${result.payload.query}`);
       } else {
-        router.navigate(`/search?q=${result.payload.query}`);
+        router.history.push(`/search?q=${result.payload.query}`);
       }
     } else {
       if (!hasAttemptedRender) {
@@ -61,11 +58,12 @@ export const appMountMiddleware = (store: any) => (next: any) => (
     const result = next(action);
     const { router } = store.getState() as WebsiteRootState;
 
-    if (!router.navigate || !router.location) {
+    if (!router.history || !router.location) {
       return next(action);
     }
 
     const prerouterMatch = routes.matches(router.location.pathname);
+    console.log('setrouter', prerouterMatch, router.location.pathname);
     if (prerouterMatch) {
       if (router.currentContentRoot !== ContentRoot.App) {
         store.dispatch(
@@ -80,52 +78,51 @@ export const appMountMiddleware = (store: any) => (next: any) => (
   if (action.type === ROUTER_ANNOUNCE_MOUNT) {
     const { router } = store.getState() as WebsiteRootState;
 
-    if (!router.navigate || !router.location) {
+    if (!router.history || !router.location) {
       return next(action);
     }
 
-    // todo: history listener!
-    // router.history.listen((location, action) => {
-    //   const initialDynamicPush =
-    //     location.state && location.state.initialDynamicPush === true;
-    //
-    //   if (initialDynamicPush && action === 'POP') {
-    //     store.dispatch(
-    //       transitionRootTo(ContentRoot.Natural, RootTransitionSource.Addition),
-    //     );
-    //   }
-    //
-    //   onPageChange(location.pathname + location.search);
-    //
-    //   const {
-    //     page: { isOpenMobileMenu },
-    //   } = store.getState() as WebsiteRootState;
-    //
-    //   if (isOpenMobileMenu) {
-    //     store.dispatch(toggleMobileMenu(false));
-    //   }
-    //
-    //   // something here to turn qs query and set the router var
-    // });
+    router.history.listen((location, action) => {
+      const initialDynamicPush =
+        location.state && location.state.initialDynamicPush === true;
+
+      if (initialDynamicPush && action === 'POP') {
+        store.dispatch(
+          transitionRootTo(ContentRoot.Natural, RootTransitionSource.Addition),
+        );
+      }
+
+      onPageChange(location.pathname + location.search);
+
+      const {
+        page: { isOpenMobileMenu },
+      } = store.getState() as WebsiteRootState;
+
+      if (isOpenMobileMenu) {
+        store.dispatch(toggleMobileMenu(false));
+      }
+
+      // something here to turn qs query and set the router var
+    });
 
     if (action.payload.appMountState === AppMountState.Addition) {
-      router.navigate(
+      router.history.replace(
         router.location.pathname +
           router.location.search +
           router.location.hash,
-        { state: { initialDynamicPush: true }, replace: true },
+        { initialDynamicPush: true },
       );
     }
 
-    if (router.searchQuery && router.location && router.navigate) {
+    if (router.searchQuery && router.location && router.history) {
       if (router.location.pathname === '/search') {
-        router.navigate(`/search?q=${router.searchQuery}`, { replace: true });
+        router.history.replace(`/search?q=${router.searchQuery}`);
       } else {
-        router.navigate(`/search?q=${router.searchQuery}`);
+        router.history.push(`/search?q=${router.searchQuery}`);
       }
     }
 
-    if (router.searchQuery === '' && router.location && router.navigate) {
+    if (router.searchQuery === '' && router.location && router.history) {
       const queryString = qs.parse(router.location.search).q;
 
       if (queryString !== undefined) {

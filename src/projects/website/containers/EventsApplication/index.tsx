@@ -1,8 +1,7 @@
 import React from 'react';
 // import bind from 'bind-decorator';
 // import { debounce } from 'lodash';
-import { Link } from '@reach/router';
-import { Router, Redirect } from '@reach/router';
+import { Link, Switch, Redirect, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { LoadableLoading } from '~components/LoadableLoading';
 import { Sectionbar, SectionbarItem } from '~components/Sectionbar';
@@ -105,25 +104,25 @@ class EventsApplication extends React.Component<
               </a>
             </SectionbarItem>
           </Sectionbar>
-          <Router>
-            <LoadableListings path="/" exact />
-            <LoadableBundle path="/bundle/:bundleSlug" exact />
+          <Switch>
+            <Route component={LoadableListings} path="/whats-on" exact />
+            <Route comonent={LoadableBundle} path="/whats-on/bundle/:bundleSlug" exact />
             <Redirect
-              from="period/:brandSlug"
+              from="/whats-on/period/:brandSlug"
               to="/whats-on/periods/:brandSlug"
             />
             <Redirect
-              from="collections/:brandSlug"
+              from="/whats-on/collections/:brandSlug"
               to="/whats-on/periods/:brandSlug"
             />
             <Redirect
-              from="collection/:brandSlug"
+              from="/whats-on/collection/:brandSlug"
               to="/whats-on/periods/:brandSlug"
             />
-            <LoadableListingsBranding path="periods/:brandSlug" exact />
-            <LoadableDetail path="*" />
-            <LoadableDetail path=":eventPath" />
-          </Router>
+            <Route comonent={LoadableListingsBranding} path="/whats-on/periods/:brandSlug" exact />
+            <Route path="/whats-on/**-:eventId" component={LoadableDetail} />
+            <Route path="/whats-on/:eventId" component={LoadableDetail} />
+          </Switch>
         </div>
       </ScrollToTop>
     );

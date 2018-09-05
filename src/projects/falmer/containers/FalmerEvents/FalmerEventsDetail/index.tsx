@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mutation, MutationFunc } from 'react-apollo';
 import { Helmet } from 'react-helmet';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 import { withState } from 'recompose';
 import CopyToClipboardButton from '~components/CopyToClipboardButton';
 import ImageTreatmentPreview from '../../../components/ImageTreatmentPreview';

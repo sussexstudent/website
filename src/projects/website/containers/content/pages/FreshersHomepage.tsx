@@ -92,7 +92,7 @@ class FreshersHomepage extends React.Component<{}, { showVideo: boolean }> {
                 performances. We’ve got something for you! We have alcohol-free
                 events, events great for post-graduates, and family events.
               </p>
-              <EventsButton to="whats-on">See the schedule ></EventsButton>
+              <EventsButton to="/freshers/whats-on">See the schedule ></EventsButton>
             </div>
           </div>
           {showVideo ? (

@@ -6,9 +6,10 @@ import { ListingList } from '~website/containers/bookmarket/ListingList';
 import Helmet from 'react-helmet';
 import { HandledQuery } from '~components/HandledQuery';
 import { InternalAppLink } from '~components/InternalAppLink';
+import {RouteComponentProps} from 'react-router';
 
-interface OwnProps {
-  sectionSlug: string;
+interface OwnProps extends RouteComponentProps<{  sectionSlug: string; }>{
+
 }
 
 interface Result {
@@ -31,9 +32,9 @@ const MarketSection: React.SFC<IProps> = (props: IProps) => {
       query={SECTION_LISTINGS_QUERY}
       variables={{
         filters: {
-          section: props.sectionSlug,
+          section: props.match.params.sectionSlug,
         },
-        sectionSlug: props.sectionSlug,
+        sectionSlug: props.match.params.sectionSlug,
       }}
     >
       {({ data }) => {

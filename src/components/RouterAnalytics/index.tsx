@@ -1,7 +1,8 @@
 import React from 'react';
-import { Location, WindowLocation } from '@reach/router';
+import { withRouter } from 'react-router';
+import { Location } from 'history';
 
-class Tracker extends React.Component<{ location: WindowLocation }> {
+class Tracker extends React.Component<{ location: Location }> {
   track(path: string) {
     if (typeof ga === 'undefined') {
       return;
@@ -24,6 +25,6 @@ class Tracker extends React.Component<{ location: WindowLocation }> {
   }
 }
 
-export const RouterAnalytics = () => (
-  <Location>{({ location }) => <Tracker location={location} />}</Location>
-);
+export const RouterAnalytics = withRouter(({ location }) => (
+  <Tracker location={location} />
+));

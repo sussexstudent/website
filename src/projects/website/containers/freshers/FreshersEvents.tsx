@@ -8,9 +8,7 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import styled from 'react-emotion';
 import { type, Typeface, TypeSize } from '~libs/style/type';
 
-interface FreshersEventsProps extends RouteComponentProps<{path: string;}> {
-
-}
+interface FreshersEventsProps extends RouteComponentProps<{ path: string }> {}
 
 const filteringAcceptions = [
   'audienceJustForPgs',

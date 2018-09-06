@@ -59,10 +59,7 @@ export const OutletPage: React.SFC<OutletPageProps> = ({ page }) => (
     </Sectionbar>
     <OneImageBackground
       className="Layout--content-top-bleed"
-      src={
-        'original_images/0d329172c2604133b4559d6e953a7ea5' ||
-        page.heroImage.resource
-      }
+      src={page.heroImage.resource}
     >
       <div className="LokiContainer">
         <h1>{page.title}</h1>

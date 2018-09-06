@@ -17,9 +17,9 @@ import { RouteComponent } from '~types/routes';
 import { FreshersContentAPI } from '~website/containers/freshers/ContentAPIContainer';
 import { FreshersEvents } from '~website/containers/freshers/FreshersEvents';
 import { RouterAnalytics } from '~components/RouterAnalytics';
-import {FourOhFourPage} from "~website/containers/content/FourOhFourPage";
-import {Route, Switch, Redirect, withRouter} from 'react-router';
-import {ScrollToTop} from "~components/ScrollToTop";
+import { FourOhFourPage } from '~website/containers/content/FourOhFourPage';
+import { Route, Switch, Redirect, withRouter } from 'react-router';
+import { ScrollToTop } from '~components/ScrollToTop';
 
 interface WebsiteApplicationProps {
   setRouter: typeof routerActions.setRouter;
@@ -71,27 +71,30 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
           titleTemplate="%s | Sussex Students' Union"
         />
         <RouterAnalytics />
-            <ErrorBoundary>
-              <Switch>
-                <Route component={Homepage} path="/homepage" />
-                <Route component={BookMarketApp} path="/book-market" />
-                <Route component={LoadableContentBrowser} path="/browse" />
-                <Route component={EventsApplication} path="/whats-on" />
-                <Route component={LoadableSearchApp} path="/search" />
-                <Route component={LoadableStudentGroupsDiscovery} path="/sport-societies-media/discover" />
-                <Redirect from="/freshers/freshers-week-events/" to="/freshers" />
-                <Route component={FreshersEvents} path="/freshers/whats-on" />
-                <Route component={FreshersContentAPI} path="/freshers" />
-                {/*<EventDiscovery path="/event-discovery" />*/}
-                <Route component={ContentAPI} path="/get-involved" exact />
-                <Route component={ContentAPI} path="/services" />
-                <Route component={ContentAPI} path="/support" exact />
-                <Route component={ContentAPI} path="/get-involved-next" />
-                <Route component={ContentAPI} path="/about-us-next" />
-                <Route component={ContentExplorer} path="/content-explorer" exact />
-                <Route component={FourOhFourPageRoute} default />
-              </Switch>
-            </ErrorBoundary>
+        <ErrorBoundary>
+          <Switch>
+            <Route component={Homepage} path="/homepage" />
+            <Route component={BookMarketApp} path="/book-market" />
+            <Route component={LoadableContentBrowser} path="/browse" />
+            <Route component={EventsApplication} path="/whats-on" />
+            <Route component={LoadableSearchApp} path="/search" />
+            <Route
+              component={LoadableStudentGroupsDiscovery}
+              path="/sport-societies-media/discover"
+            />
+            <Redirect from="/freshers/freshers-week-events/" to="/freshers" />
+            <Route component={FreshersEvents} path="/freshers/whats-on" />
+            <Route component={FreshersContentAPI} path="/freshers" />
+            {/*<EventDiscovery path="/event-discovery" />*/}
+            <Route component={ContentAPI} path="/get-involved" exact />
+            <Route component={ContentAPI} path="/services" />
+            <Route component={ContentAPI} path="/support" exact />
+            <Route component={ContentAPI} path="/get-involved-next" />
+            <Route component={ContentAPI} path="/about-us-next" />
+            <Route component={ContentExplorer} path="/content-explorer" exact />
+            <Route component={FourOhFourPageRoute} default />
+          </Switch>
+        </ErrorBoundary>
       </ScrollToTop>
     );
   }

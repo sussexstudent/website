@@ -31,7 +31,7 @@ export default {
     },
   },
   pages: {
-    // '/': require('./src/projects/website/layouts/homepage'),
+    '/': require('./src/projects/website/layouts/homepage'),
     // '/policy-generator': require('./src/projects/website/layouts/PolicyIdeaGenerator'),
     // '/freshers': require('./src/projects/website/layouts/Freshers'),
     // '/discover-groups': require('./src/projects/website/layouts/SportsSocieties'),

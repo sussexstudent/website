@@ -16,6 +16,9 @@ import { compose } from 'recompose';
 import * as routerActions from '../../projects/website/ducks/router';
 import Helmet from 'react-helmet';
 import { NoListItems } from '~website/containers/bookmarket/NoListItems';
+import { Page } from '~website/containers/content/types';
+import { Event } from '~types/events';
+import { StudentGroup } from '~components/OrganisationGrid';
 
 enum SearchAreas {
   Top = 'top',
@@ -23,25 +26,56 @@ enum SearchAreas {
   News = 'news',
   Events = 'events',
   Pages = 'pages',
+  Content = 'content',
 }
 
-function getPayloadMetadata(payload: { [key: string]: Object[] }) {
+interface Payload {
+  data: {
+    search: {
+      combined: string[];
+      content: Page[];
+      events: Event[];
+      groups: StudentGroup[];
+    };
+  };
+}
+enum GraphQLAreas {
+  Content = 'content',
+  Events = 'events',
+  Groups = 'groups',
+}
+
+function generateKeyMap(search: Payload['data']['search']) {
+  const m: { [key: string]: any } = {};
+
+  Object.values(GraphQLAreas).forEach((key: GraphQLAreas) => {
+    (search[key] as any[]).forEach((item: any) => {
+      m[`${item.__typename}_${item.id}`] = item;
+    });
+  });
+
+  return m;
+}
+
+function getPayloadMetadata({ data: { search } }: Payload) {
+  const payload = search;
   const areaTitlesMap: { [key: string]: string } = {
     [SearchAreas.Top]: 'Top results',
     [SearchAreas.Groups]: 'Sports & Societies',
     [SearchAreas.News]: 'News',
     [SearchAreas.Events]: 'Events',
-    [SearchAreas.Pages]: 'Content',
+    [SearchAreas.Content]: 'Content',
   };
 
-  const calcWeight = (area: SearchAreas) => {
-    if (area === SearchAreas.Top) {
-      return Infinity;
-    }
+  const calcWeight = (area: GraphQLAreas) => {
+    // if (area === SearchAreas.Top) {
+    //   return Infinity;
+    // }
 
-    if (area === SearchAreas.News) {
-      return -1;
-    }
+    // if (area === SearchAreas.News) {
+    //   return -1;
+    // }
+
     const count = payload[area].length;
     if (count <= 0) {
       return -Infinity;
@@ -50,7 +84,7 @@ function getPayloadMetadata(payload: { [key: string]: Object[] }) {
     return count;
   };
 
-  const mk = (key: SearchAreas) => ({
+  const mk = (key: GraphQLAreas) => ({
     key,
     weight: calcWeight(key),
     count: payload[key].length,
@@ -59,24 +93,26 @@ function getPayloadMetadata(payload: { [key: string]: Object[] }) {
 
   const orderedAreas = orderBy(
     [
-      SearchAreas.Top,
-      SearchAreas.Groups,
-      SearchAreas.News,
-      SearchAreas.Events,
-      SearchAreas.Pages,
+      // SearchAreas.Top,
+      GraphQLAreas.Groups,
+      // SearchAreas.News,
+      GraphQLAreas.Events,
+      GraphQLAreas.Content,
+      // SearchAreas.Pages,
     ].map(mk),
     [(i) => i.weight, (i) => i.title],
     ['desc', 'asc'],
   );
 
   const hasResults =
-    Object.keys(areaTitlesMap).reduce(
-      (acc, key) => payload[key].length + acc,
+    Object.values(GraphQLAreas).reduce(
+      (acc, key: GraphQLAreas) => payload[key].length + acc,
       0,
     ) > 0;
   return {
     orderedAreas,
     hasResults,
+    resultKeyMap: generateKeyMap(payload),
   };
 }
 
@@ -92,11 +128,11 @@ interface IState {
   } | null;
   resultItems: ISearchResult[];
   isLoading: boolean;
-  currentArea: SearchAreas;
+  currentArea: GraphQLAreas;
   orderedAreas: {
     weight: number;
     count: number;
-    key: SearchAreas;
+    key: GraphQLAreas;
     title: string;
   }[]; // todo
   hasResults: boolean;
@@ -115,7 +151,7 @@ class SearchApp extends React.Component<IProps, IState> {
       results: null,
       resultItems: [],
       isLoading: false,
-      currentArea: SearchAreas.Top,
+      currentArea: GraphQLAreas.Content,
       hasResults: false,
       orderedAreas: [],
     };
@@ -149,10 +185,42 @@ class SearchApp extends React.Component<IProps, IState> {
 
     const t = perf.recordTime('Search', 'fetchResults', { query });
     window
-      .fetch(`${getFalmerEndpoint()}/search/?q=${query}`, {
+      .fetch(`${getFalmerEndpoint()}/graphql/`, {
+        method: 'post',
         headers: {
-          Accept: 'application/json, text/plain, */*',
+          Accept: 'application/json',
+          'content-type': 'application/json',
         },
+        body: JSON.stringify({
+          query: `
+            query Search($query: String) {
+              search(query: $query) {
+                content {
+                  __typename
+                  pageId
+                  title
+                  searchDescription
+                }
+                events {
+                  __typename
+                  id
+                  title
+                  shortDescription
+                }
+                groups {
+                  __typename
+                  id
+                  name
+                  description
+                }
+                combined
+              }
+            }
+          `,
+          variables: {
+            query,
+          },
+        }),
       })
       .then((res) => {
         t.done();
@@ -162,12 +230,14 @@ class SearchApp extends React.Component<IProps, IState> {
         if (query === query) {
           // === current query
           didFinish = true;
-          const { orderedAreas, hasResults } = getPayloadMetadata(payload);
+          const { orderedAreas, hasResults, resultKeyMap } = getPayloadMetadata(
+            payload,
+          );
           this.setState({
             orderedAreas,
             hasResults,
-            results: payload,
-            resultItems: payload.results,
+            results: resultKeyMap,
+            resultItems: payload.data.search.combined,
             currentArea: orderedAreas[0].key,
             isLoading: false,
           });
@@ -204,7 +274,7 @@ class SearchApp extends React.Component<IProps, IState> {
   }
 
   @bind
-  handleAreaChange(area: SearchAreas) {
+  handleAreaChange(area: GraphQLAreas) {
     this.setState({ currentArea: area });
   }
 
@@ -256,6 +326,7 @@ class SearchApp extends React.Component<IProps, IState> {
       'SearchApp__container--is-loading': isLoading === true,
     });
 
+    console.log({ results, resultItems });
     return (
       <div className={containerclassNamees}>
         {results !== null && results[currentArea].length > 0 ? (

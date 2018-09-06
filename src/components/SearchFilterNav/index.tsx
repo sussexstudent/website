@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import qs from 'query-string';
 import { Link } from 'react-router-dom';
+import { SectionbarItem } from '~components/Sectionbar';
 
 interface Option {
   key: any;
@@ -24,7 +25,7 @@ function SearchFilterItem(props: IItemProps) {
   const count = itemKey !== 'top' ? <span>{`(${option.count})`}</span> : null;
 
   return (
-    <li
+    <SectionbarItem
       className={cx('Sectionbar__menu-item', {
         'Sectionbar__menu-item--active': currentValue === option.key,
         'Sectionbar__menu-item--disabled': option.count <= 0,
@@ -36,7 +37,7 @@ function SearchFilterItem(props: IItemProps) {
         {option.title}
         {count}
       </Link>
-    </li>
+    </SectionbarItem>
   );
 }
 

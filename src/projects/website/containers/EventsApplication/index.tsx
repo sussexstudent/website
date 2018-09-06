@@ -106,7 +106,11 @@ class EventsApplication extends React.Component<
           </Sectionbar>
           <Switch>
             <Route component={LoadableListings} path="/whats-on" exact />
-            <Route comonent={LoadableBundle} path="/whats-on/bundle/:bundleSlug" exact />
+            <Route
+              comonent={LoadableBundle}
+              path="/whats-on/bundle/:bundleSlug"
+              exact
+            />
             <Redirect
               from="/whats-on/period/:brandSlug"
               to="/whats-on/periods/:brandSlug"
@@ -119,7 +123,11 @@ class EventsApplication extends React.Component<
               from="/whats-on/collection/:brandSlug"
               to="/whats-on/periods/:brandSlug"
             />
-            <Route comonent={LoadableListingsBranding} path="/whats-on/periods/:brandSlug" exact />
+            <Route
+              comonent={LoadableListingsBranding}
+              path="/whats-on/periods/:brandSlug"
+              exact
+            />
             <Route path="/whats-on/**-:eventId" component={LoadableDetail} />
             <Route path="/whats-on/:eventId" component={LoadableDetail} />
           </Switch>

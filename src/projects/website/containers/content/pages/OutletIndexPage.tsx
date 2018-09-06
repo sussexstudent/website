@@ -35,12 +35,7 @@ export const OutletIndexPage: React.SFC<OutletIndexPageProps> = ({ page }) => (
       <ul className="List--reset">
         {page.subPages.map((page) => (
           <li key={page.path}>
-            <OneImageBackground
-              src={
-                'original_images/0d329172c2604133b4559d6e953a7ea5' ||
-                page.heroImage.resource
-              }
-            >
+            <OneImageBackground src={page.heroImage.resource}>
               <h3>
                 <Link to={page.path}>{page.title}</Link>
               </h3>

@@ -19,10 +19,9 @@ import { OwnerStatusBanner } from '~website/containers/bookmarket/BookDetail/Own
 import { adopt } from '~components/Adopt';
 import { formatPrice } from '~libs/money';
 import { InternalAppLink } from '~components/InternalAppLink';
-import {RouteComponentProps} from 'react-router';
+import { RouteComponentProps } from 'react-router';
 
-interface OwnProps extends RouteComponentProps<{ listingId: string;  }> {
-}
+interface OwnProps extends RouteComponentProps<{ listingId: string }> {}
 
 interface Result {
   marketListing: MarketListing;
@@ -48,7 +47,12 @@ interface RenderProps {
 
 const Composed = adopt<RenderProps, OwnProps>({
   user: CurrentUserQuery,
-  listingQuery: ({ render, match: { params: { listingId }} }) => (
+  listingQuery: ({
+    render,
+    match: {
+      params: { listingId },
+    },
+  }) => (
     <GetListingQuery
       query={GET_LISTING_QUERY}
       variables={{

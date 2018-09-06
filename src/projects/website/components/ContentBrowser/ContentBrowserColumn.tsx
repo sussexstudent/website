@@ -2,9 +2,9 @@ import React from 'react';
 import { ContentBrowserPage } from '~website/containers/content/types';
 import { COLORS } from '~libs/style';
 import { ContentBrowserItem } from '~website/components/ContentBrowser/ContentBrowserItem';
-import styled, {cx} from 'react-emotion';
+import styled, { cx } from 'react-emotion';
 
-export const Column = styled('ul')<{ active: boolean }>(({ }) => ({
+export const Column = styled('ul')<{ active: boolean }>(({}) => ({
   maxWidth: '300px',
   listStyle: 'none',
   margin: 0,
@@ -30,7 +30,10 @@ export const ContentBrowserColumn: React.SFC<ContentBrowserColumnProps> = ({
   position,
   currentColumn,
 }) => (
-  <Column active={position === currentColumn} className={cx({[`m--active`]: position === currentColumn})}>
+  <Column
+    active={position === currentColumn}
+    className={cx({ [`m--active`]: position === currentColumn })}
+  >
     {pages.map((page) => (
       <ContentBrowserItem
         key={page.path}

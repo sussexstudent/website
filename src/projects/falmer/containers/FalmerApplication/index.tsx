@@ -8,7 +8,7 @@ import Loader from '~components/Loader';
 import LoadableLoading from '~components/LoadableLoading';
 import { RootState } from '~types/falmer';
 import { compose } from 'recompose';
-import {Switch, Route} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 const LoadableMedia = Loadable({
   loader: () => import(/* webpackChunkName: "Media" */ '../FalmerMedia'),

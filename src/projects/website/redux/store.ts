@@ -22,17 +22,18 @@ const store = createStore(
   ),
 );
 
-const createSanguineStore = () => createStore(
-  combineReducers(reducers) as any, // fix me
-  {},
-  compose(
-    applyMiddleware(
-      appMountMiddleware,
-      rootTransitionMiddleware,
-      sideMenuMiddleware,
+const createSanguineStore = () =>
+  createStore(
+    combineReducers(reducers) as any, // fix me
+    {},
+    compose(
+      applyMiddleware(
+        appMountMiddleware,
+        rootTransitionMiddleware,
+        sideMenuMiddleware,
+      ),
     ),
-  ),
-);
+  );
 
 store.dispatch({
   type: ROUTER_INITIAL,

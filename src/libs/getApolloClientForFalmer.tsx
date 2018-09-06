@@ -8,39 +8,54 @@ import { getMslJwt } from '~libs/getMslJwt';
 import { IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import introspectionQueryResultData from '../../fragmentTypes.json';
 
-const fragmentMatcher = new IntrospectionFragmentMatcher({
-  introspectionQueryResultData: introspectionQueryResultData as any,
-});
+function createClient() {
+  const fragmentMatcher = new IntrospectionFragmentMatcher({
+    introspectionQueryResultData: introspectionQueryResultData as any,
+  });
 
-const link = new HttpLink({
-  uri: `${getFalmerEndpoint()}/graphql/`,
-});
-const cache = new InMemoryCache({ fragmentMatcher });
+  let link;
 
-if (typeof window !== 'undefined' && (window as any).apolloPartials) {
-  const fullState = Object.assign({}, ...(window as any).apolloPartials);
-  fullState.ROOT_QUERY = Object.assign(
-    {},
-    ...(window as any).apolloPartials.map((state: any) => state.ROOT_QUERY),
-  );
-  cache.restore(fullState);
+  if (typeof fetch === 'undefined') {
+    const fetch = require('node-fetch');
+    link = new HttpLink({
+      fetch,
+      uri: `${getFalmerEndpoint()}/graphql/`,
+    });
+  } else {
+    link = new HttpLink({
+      uri: `${getFalmerEndpoint()}/graphql/`,
+    });
+  }
+
+  const cache = new InMemoryCache({ fragmentMatcher });
+
+  if (typeof window !== 'undefined' && (window as any).apolloPartials) {
+    const fullState = Object.assign({}, ...(window as any).apolloPartials);
+    fullState.ROOT_QUERY = Object.assign(
+      {},
+      ...(window as any).apolloPartials.map((state: any) => state.ROOT_QUERY),
+    );
+    cache.restore(fullState);
+  }
+
+  const authLink = setContext((_, { headers }) => {
+    const token = getMslJwt();
+
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : '',
+      },
+    };
+  });
+
+  return new ApolloClient({
+    cache,
+    link: authLink.concat(link),
+    connectToDevTools: true,
+  });
 }
 
-const authLink = setContext((_, { headers }) => {
-  const token = getMslJwt();
-
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
-
-const client = new ApolloClient({
-  cache,
-  link: authLink.concat(link),
-  connectToDevTools: true,
-});
+const client = createClient();
 
 export default client;

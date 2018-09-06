@@ -1,10 +1,10 @@
 import React from 'react';
 import ProfileIcon from '~icons/user.svg';
 import UserChevronIcon from '~icons/user-chevron.svg';
-import { WebsiteRootState } from '../../types/website';
+import { WebsiteRootState } from '~types/website';
 import { connect } from 'react-redux';
 import * as userActions from '../../projects/website/ducks/user';
-import { UserState } from '../../projects/website/ducks/user';
+import { UserState } from '~website/ducks/user';
 import { LoginModal } from '~components/LoginModal';
 import { YourPage } from '~components/YourPage';
 
@@ -18,6 +18,7 @@ interface ProfileLabelProps {
 }
 
 const ProfileLabelComponent = (props: ProfileLabelProps) => {
+  console.log(props);
   if (!props.user.isLoaded) {
     return null;
   }

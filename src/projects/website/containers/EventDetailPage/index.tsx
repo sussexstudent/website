@@ -17,7 +17,7 @@ import { EventDetailMetadata } from '~website/containers/EventDetailPage/EventDe
 import PatternPlaceholder from '~components/PatternPlaceholder';
 import Button from '~components/Button';
 import { TicketsModal } from '~website/containers/EventDetailPage/TicketsModal';
-import {RouteComponentProps} from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 
 interface RouteParams {
   [0]: string;
@@ -25,7 +25,6 @@ interface RouteParams {
 }
 
 interface OwnProps extends RouteComponentProps<RouteParams> {}
-
 
 type IProps = OwnProps & ChildProps<OwnProps, any>;
 

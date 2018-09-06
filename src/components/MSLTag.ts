@@ -1,5 +1,5 @@
 interface PropertyMap {
-  [key: string]: string | number;
+  [key: string]: string | number | undefined;
 }
 
 const MSLTag = (name: string, properties: PropertyMap | null = null) => {

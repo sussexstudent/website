@@ -6,7 +6,7 @@ import { StaffOwners } from '~website/components/StaffOwners';
 import StreamField from '~website/containers/content/StreamField';
 import { RouteComponent } from '~types/routes';
 import { KBContentBreadcrumbBar } from '~website/components/KBContentBreadcrumbBar';
-import {Switch, Route} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 interface DetailPageSection extends Page {
   content: StreamFieldData;

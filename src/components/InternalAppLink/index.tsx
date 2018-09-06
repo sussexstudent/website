@@ -4,7 +4,7 @@ import routes from '../../projects/website/routes';
 import * as routerActions from '../../projects/website/ducks/router';
 import { WebsiteRootState } from '~types/website';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface InternalAppLinkComponentProps {
   to: string;
@@ -42,7 +42,7 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
 
 export const InternalAppLink = connect(
   (state: WebsiteRootState) => ({
-    history: state.router.history
+    history: state.router.history,
   }),
   {
     navigateTo: routerActions.navigateTo,

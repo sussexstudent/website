@@ -33,8 +33,8 @@ config.mode = 'production';
 config.output = {
   path: path.resolve(path.join(baseDir, 'dist')),
   publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
-  filename: 'union.[name].[hash].js',
-  chunkFilename: 'union.[name].[hash].js',
+  filename: 'sf.[name].[hash].js',
+  chunkFilename: 'sf.[name].[hash].js',
 };
 
 config.optimization = {
@@ -80,7 +80,7 @@ config.plugins = config.plugins.concat([
   // new webpack.HashedModuleIdsPlugin(),
   extractCSS,
   new ChunkManifestPlugin({
-    filename: 'manifest.json',
+    filename: 'manifest-sanguine.json',
     manifestVariable: 'chunkManifest',
   }),
   new CopyWebpackPlugin([{ from: './src/img/favicons', to: './branding' }]),

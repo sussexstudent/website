@@ -1,5 +1,5 @@
 import React from 'react';
-import { store } from '../projects/website/redux/store';
+import { store } from '~website/redux/store';
 import { Provider } from 'react-redux';
 
 const CompProvider: React.SFC = ({ children }) => (

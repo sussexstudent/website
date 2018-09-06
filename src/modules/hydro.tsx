@@ -8,7 +8,7 @@ import { store } from '~website/redux/store';
 // import { CountdownBox } from '~components/Bento/treatments/CountdownBox';
 import { LokiHeader } from '~components/LokiHeader';
 import { ApolloProvider } from 'react-apollo';
-import {BrowserRouter} from '~components/BrowserRouter';
+import { BrowserRouter } from '~components/BrowserRouter';
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.SFC;
@@ -92,7 +92,7 @@ export default function() {
               </ReduxProvider>
             </ApolloProvider>
           </BrowserRouter>,
-            el,
+          el,
         );
       }
     }

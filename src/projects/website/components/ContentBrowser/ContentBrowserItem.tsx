@@ -2,15 +2,15 @@ import React from 'react';
 import { ContentBrowserPage } from '~website/containers/content/types';
 import { InternalAppLink } from '~components/InternalAppLink';
 import { COLORS } from '~libs/style';
-import styled, {css, cx} from 'react-emotion';
+import styled, { css, cx } from 'react-emotion';
 import { type, Typeface, TypeSize } from '~libs/style/type';
-import {Column} from "~website/components/ContentBrowser/ContentBrowserColumn";
+import { Column } from '~website/components/ContentBrowser/ContentBrowserColumn';
 
 const Item = styled('li')({
   display: 'block',
   [`${Column}--active &`]: css({
-    opacity: 0.6
-  })
+    opacity: 0.6,
+  }),
 });
 
 const linkActive = css({
@@ -40,7 +40,10 @@ export const ContentBrowserItem: React.SFC<{
   isActive: boolean;
 }> = ({ page: { path, contentType, title }, isActive }) => (
   <Item>
-    <Link to={contentType === 'StubPage' ? `/browse${path}` : path} className={cx({[linkActive]: isActive})}>
+    <Link
+      to={contentType === 'StubPage' ? `/browse${path}` : path}
+      className={cx({ [linkActive]: isActive })}
+    >
       <PageTitle>{title}</PageTitle>
       <PageDescription className="ContentBrowser__page-description" />
     </Link>

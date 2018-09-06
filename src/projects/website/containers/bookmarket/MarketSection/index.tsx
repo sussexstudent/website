@@ -6,11 +6,9 @@ import { ListingList } from '~website/containers/bookmarket/ListingList';
 import Helmet from 'react-helmet';
 import { HandledQuery } from '~components/HandledQuery';
 import { InternalAppLink } from '~components/InternalAppLink';
-import {RouteComponentProps} from 'react-router';
+import { RouteComponentProps } from 'react-router';
 
-interface OwnProps extends RouteComponentProps<{  sectionSlug: string; }>{
-
-}
+interface OwnProps extends RouteComponentProps<{ sectionSlug: string }> {}
 
 interface Result {
   allMarketListings: {

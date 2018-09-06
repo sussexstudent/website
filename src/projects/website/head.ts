@@ -11,7 +11,7 @@ const branding = `<link rel="apple-touch-icon" sizes="180x180" href="https://du9
 <meta name="application-name" content="Students' Union">
 <meta name="theme-color" content="#ffffff">`;
 
-function manifestHandler(assets) {
+function manifestHandler(assets: any) {
   if (Object.hasOwnProperty.call(assets, 'manifest')) {
     return `
       window['chunkManifest'] = ${JSON.stringify(assets.manifest)};
@@ -22,7 +22,7 @@ function manifestHandler(assets) {
   return '';
 }
 
-export const headContent = (assets, ...more) => `
+export const headContent = (assets: any, ...more: any[]) => `
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" >
 <link rel="dns-prefetch" href="//falmer.sussexstudent.com">
@@ -66,4 +66,5 @@ const legacyScripts = `
 <script src="https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>
 `;
 
-export const headContentLegacy = (assets) => headContent(assets, legacyScripts);
+export const headContentLegacy = (assets: any) =>
+  headContent(assets, legacyScripts);

@@ -6,22 +6,20 @@ import { store } from '~website/redux/store';
 import { AppMountState } from '~website/ducks/router';
 import getApolloClientForFalmer from '~libs/getApolloClientForFalmer';
 import { ApolloProvider } from 'react-apollo';
-import { BrowserRouter } from "~components/BrowserRouter";
+import { BrowserRouter } from '~components/BrowserRouter';
 
 export default function ready(
   container: any,
   appMountState: AppMountState = AppMountState.Initial,
 ) {
   ReactDOM.render(
-    (<BrowserRouter>
+    <BrowserRouter>
       <ApolloProvider client={getApolloClientForFalmer}>
         <ReduxProvider store={store}>
-          <WebsiteApplication
-            appMountState={appMountState}
-          />
+          <WebsiteApplication appMountState={appMountState} />
         </ReduxProvider>
       </ApolloProvider>
-    </BrowserRouter>),
+    </BrowserRouter>,
     container,
   );
 }

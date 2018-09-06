@@ -102,3 +102,9 @@ export const LokiHeader = HydroLeaf({
     },
   )(LokiHeaderComponent as any),
 );
+
+export const LokiHeaderServer = () => (
+  <header className="LokiHeader">
+    <LokiHeader />
+  </header>
+);

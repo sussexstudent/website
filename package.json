@@ -198,7 +198,7 @@
     "san:server-dev": "NODE_ENV=development `yarn bin`/webpack --config ./config/webpack.sanguine.config",
     "san:front-dev": "NODE_ENV=development `yarn bin`/webpack-dev-server --config ./config/webpack.dev-sanguine-front.config",
     "san:server-prod": "NODE_ENV=production `yarn bin`/webpack --config ./config/webpack.sanguine.config",
-    "san:front-prod": "NODE_ENV=production `yarn bin`/webpack--config ./config/webpack.prod-sanguine-front.config",
+    "san:front-prod": "NODE_ENV=production `yarn bin`/webpack --config ./config/webpack.prod-sanguine-front.config",
     "heroku-postbuild": "yarn san:front-prod && yarn san:server-prod",
     "format": "`yarn bin`/prettier \"src/**/*.{ts,tsx,js,css,graphql}\" --write",
     "test": "NODE_ENV=test && jest",

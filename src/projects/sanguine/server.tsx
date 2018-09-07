@@ -15,9 +15,12 @@ import { Provider as ReduxProvider } from 'react-redux';
 import Loadable from 'react-loadable';
 import proxy from 'http-proxy-middleware';
 import introspectionQueryResultData from '../../../fragmentTypes.json';
-// import { getBundles } from 'react-loadable/webpack'
-// import stats from '../../../sanguine-dist/react-loadable.json';
+import { getBundles } from 'react-loadable/webpack';
+import stats from '../../../sanguine-dist/react-loadable-dev.json';
 import { Website } from './Website';
+import { extractCritical } from 'emotion-server';
+import {Branding, manifestHandler} from '~website/head';
+import Helmet, { HelmetData } from 'react-helmet';
 
 const fragmentMatcher = new IntrospectionFragmentMatcher({
   introspectionQueryResultData: introspectionQueryResultData as any,
@@ -47,6 +50,97 @@ const localAssetsStub = {
   ),
 };
 
+const ga = `!function(u,s,S,U){u.GoogleAnalyticsObject=S;u[S]||(u[S]=function(){
+(u[S].q=u[S].q||[]).push(arguments)});u[S].l=+new Date;U=s.createElement('script');
+var e=s.scripts[0];U.src='//www.google-analytics.com/analytics.js';
+e.parentNode.insertBefore(U,e)}(window,document,'ga');
+
+ga('create', 'UA-258929-3', 'auto');
+ga('send', 'pageview');`;
+
+interface Bundle {
+  id: number;
+  name: string;
+  file: string;
+  publicPath: string;
+}
+
+const createBundleTag = ({ publicPath }: Bundle) => <script src={publicPath} />;
+
+function createBaseHtml(
+  assets: any,
+  helmet: HelmetData,
+  apolloExtract: any,
+  css: string,
+  ids: string[],
+  bundles: Bundle[],
+  body: string,
+) {
+  const markup = (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="dns-prefetch" href="//falmer.sussexstudent.com" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {helmet.title.toComponent()}
+        {helmet.meta.toComponent()}
+        {helmet.link.toComponent()}
+        <Branding />
+        {assets.manifest && (
+          <link href="${assets.map.main.css}" rel="stylesheet" />
+        )}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `${manifestHandler(assets)}
+                window.releaseMetadata = {gitRev: "${assets.gitRev || 'dev'}"};
+                try {
+                if (JSON.parse(localStorage.getItem('blocking')).enabled) {
+                var css = '.AdvertBar { display: none; }';
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                if (style.styleSheet){
+                style.styleSheet.cssText = css;
+              } else {
+                style.appendChild(document.createTextNode(css));
+              }
+                document.head.appendChild(style);
+              }
+              } catch (e) {}`,
+          }}
+        />
+        <style dangerouslySetInnerHTML={{ __html: css }} />
+      </head>
+      <body>
+        <div className="Body" id="top">
+          <div className="Site" dangerouslySetInnerHTML={{ __html: body }} />
+          <div className="js__modal" />
+          <div className="js-side-menu" />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+      window.__APOLLO_STATE__=${JSON.stringify(apolloExtract).replace(
+        /</g,
+        '\\\\\u003c',
+      )};
+        window.emotionIds = ${JSON.stringify(ids)};`,
+            }}
+          />
+          <script src="https://cdn.polyfill.io/v2/polyfill.min.js?rum=0&features=es6,es7,default-3.6,performance.now,Object.entries,Object.values&flags=gated&callback=hasPolyfilled&unknown=polyfill" />
+          {bundles.map(createBundleTag)}
+          {assets.map.main &&
+            assets.map.vendor.js && <script src={assets.map.vendor.js} />}
+          {assets.map.main &&
+            assets.map.main.js && <script src={assets.map.main.js} />}
+          <script dangerouslySetInnerHTML={{ __html: ga }} />
+        </div>
+      </body>
+    </html>
+  );
+
+  return `<!doctype html>${ReactDOM.renderToString(markup)}`;
+}
+
 export default function server({ port }: { port: number }) {
   const app = express();
 
@@ -63,33 +157,49 @@ export default function server({ port }: { port: number }) {
 
     const store = createSanguineStore();
 
-    const modules: any[] = [];
     const context = {};
     const App = (
       <StaticRouter location={req.url} context={context}>
         <ApolloProvider client={client}>
           <ReduxProvider store={store}>
-            <Loadable.Capture report={(moduleName) => modules.push(moduleName)}>
-              <Website assets={localAssetsStub as any} loggedIn={false} />
-            </Loadable.Capture>
+            <Website assets={localAssetsStub as any} loggedIn={false} />
           </ReduxProvider>
         </ApolloProvider>
       </StaticRouter>
     );
 
-    // const bundles = getBundles(stats as any, modules);
     getDataFromTree(App).then(() => {
-      const html = ReactDOM.renderToString(
-        <StaticRouter location={req.url} context={context}>
-          <ApolloProvider client={client}>
-            <ReduxProvider store={store}>
-              <Website assets={localAssetsStub as any} loggedIn={false} />
-            </ReduxProvider>
-          </ApolloProvider>
-        </StaticRouter>,
-      );
+      const modules: any[] = [];
 
-      res.send(html);
+      const finalMarkup = ReactDOM.renderToString(
+        <Loadable.Capture report={(moduleName) => modules.push(moduleName)}>
+          <StaticRouter location={req.url} context={context}>
+            <ApolloProvider client={client}>
+              <ReduxProvider store={store}>
+                <Website assets={localAssetsStub as any} loggedIn={false} />
+              </ReduxProvider>
+            </ApolloProvider>
+          </StaticRouter>
+        </Loadable.Capture>,
+      );
+      const { html, css, ids } = extractCritical(finalMarkup);
+      const bundles = getBundles(stats as any, modules);
+      console.log(bundles, modules);
+
+      const helmet = Helmet.renderStatic();
+      const apolloExtract = client.extract();
+      console.log(bundles);
+      res.send(
+        createBaseHtml(
+          localAssetsStub,
+          helmet,
+          apolloExtract,
+          css,
+          ids,
+          bundles as Bundle[],
+          html,
+        ),
+      );
     });
   }
 

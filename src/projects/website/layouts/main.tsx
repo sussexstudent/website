@@ -67,7 +67,7 @@ const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => {
       <script src="https://cdn.polyfill.io/v2/polyfill.min.js?rum=0&features=es6,es7,default-3.6,performance.now,Object.entries,Object.values&flags=gated&callback=hasPolyfilled&unknown=polyfill" />
       <script src={assets.map.vendor && assets.map.vendor.js} />
       <script src={assets.map.main && assets.map.main.js} />
-      <script type="text/javascript" dangerouslySetInnerHTML={{ __html: ga }} />
+      <script dangerouslySetInnerHTML={{ __html: ga }} />
       <noscript>
         <img
           alt=""

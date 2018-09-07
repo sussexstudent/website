@@ -19,7 +19,7 @@
       <% } %>
   </head>
   <body class="FalmerSite">
-    <script type="text/javascript">window.CSRF = "{csrf_token}";</script>
+    <script>window.CSRF = "{csrf_token}";</script>
     <div class="FalmerAppRoot"></div>
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
     <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>

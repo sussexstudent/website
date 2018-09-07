@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const { generateConfig } = require('./webpack.base.config.js');
+const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
 const config = generateConfig();
 
@@ -31,9 +32,13 @@ config.plugins = config.plugins.concat([
     'process.env': {
       HYDROLEAF_MODE: JSON.stringify('RENDER_COMPONENT'),
       COMP_NODE: '0',
+      TARGET_ENV: '"SANGUINE"'
     },
   }),
   new webpack.HotModuleReplacementPlugin(),
+  new ReactLoadablePlugin({
+    filename: './sanguine-dist/react-loadable-dev.json',
+  }),
 ]);
 
 config.module.rules = config.module.rules.concat([

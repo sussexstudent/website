@@ -71,6 +71,11 @@ export const rootTransitionMiddleware = (store: any) => (next: any) => (
   const {
     router: { currentContentRoot, appMountState },
   } = store.getState() as WebsiteRootState;
+
+  if (appMountState === AppMountState.Sanguine) {
+    return next(action);
+  }
+
   if (action.type === ROUTER_INITIAL) {
     if (typeof window === 'undefined') {
       return next(action);

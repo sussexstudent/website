@@ -19,6 +19,9 @@ import { store } from '~website/redux/store';
 import { Provider as ReduxProvider } from 'react-redux';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter } from '~components/BrowserRouter';
+import { hydrate } from 'emotion';
+import Loadable from 'react-loadable';
+
 addClassesForFeatures();
 
 // Install raven for sentry error  reporting
@@ -44,9 +47,7 @@ const App = () => (
     <AdvertBar className="AdvertBar--top" position="TopBanner" />
     <LokiHeaderServer />
     <main className={cx('Site__content u-keep-footer-down')}>
-      <div className={cx('LokiContainer', 'js-page-container')}>
-        <WebsiteApplication appMountState={AppMountState.Initial} />
-      </div>
+      <WebsiteApplication appMountState={AppMountState.Sanguine} />
     </main>
     <MobileFooterTreats />
     <PrefooterMenu />
@@ -62,13 +63,17 @@ const App = () => (
   </React.Fragment>
 );
 
-ReactDOM.hydrate(
-  <BrowserRouter>
-    <ApolloProvider client={getApolloClientForFalmer}>
-      <ReduxProvider store={store}>
-        <App />
-      </ReduxProvider>
-    </ApolloProvider>
-  </BrowserRouter>,
-  document.querySelector('.Site'),
-);
+hydrate((window as any).emotionIds);
+
+Loadable.preloadReady().then(() => {
+  ReactDOM.hydrate(
+    <BrowserRouter>
+      <ApolloProvider client={getApolloClientForFalmer}>
+        <ReduxProvider store={store}>
+          <App />
+        </ReduxProvider>
+      </ApolloProvider>
+    </BrowserRouter>,
+    document.querySelector('.Site'),
+  );
+});

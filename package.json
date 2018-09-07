@@ -136,6 +136,7 @@
     "core-js": "^2.5.7",
     "date-fns": "2.0.0-alpha.10",
     "emotion": "^9.2.8",
+    "emotion-server": "^9.2.8",
     "es6-shim": "^0.35.1",
     "final-form": "^4.10.0",
     "fuse.js": "^3.2.1",

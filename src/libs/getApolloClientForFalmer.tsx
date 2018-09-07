@@ -29,13 +29,17 @@ function createClient() {
 
   const cache = new InMemoryCache({ fragmentMatcher });
 
-  if (typeof window !== 'undefined' && (window as any).apolloPartials) {
-    const fullState = Object.assign({}, ...(window as any).apolloPartials);
-    fullState.ROOT_QUERY = Object.assign(
-      {},
-      ...(window as any).apolloPartials.map((state: any) => state.ROOT_QUERY),
-    );
-    cache.restore(fullState);
+  if (typeof window !== 'undefined') {
+    if ((window as any).apolloPartials) {
+      const fullState = Object.assign({}, ...(window as any).apolloPartials);
+      fullState.ROOT_QUERY = Object.assign(
+        {},
+        ...(window as any).apolloPartials.map((state: any) => state.ROOT_QUERY),
+      );
+      cache.restore(fullState);
+    } else if (window.hasOwnProperty('__APOLLO_STATE__')) {
+      cache.restore((window as any).__APOLLO_STATE__);
+    }
   }
 
   const authLink = setContext((_, { headers }) => {

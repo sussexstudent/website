@@ -2,6 +2,7 @@ import { History, Location } from 'history';
 import { AnyAction } from 'redux';
 
 export enum AppMountState {
+  Sanguine = 'Sanguine',
   NotMounted = 'NotMounted',
   Initial = 'Initial',
   Addition = 'Addition',
@@ -72,8 +73,14 @@ export default function reducer(
     history: null,
     location: null,
     searchQuery: '',
-    appMountState: AppMountState.NotMounted,
-    currentContentRoot: ContentRoot.Natural,
+    appMountState:
+      process.env.TARGET_ENV === 'SANGUINE'
+        ? AppMountState.Sanguine
+        : AppMountState.NotMounted,
+    currentContentRoot:
+      process.env.TARGET_ENV === 'SANGUINE'
+        ? ContentRoot.App
+        : ContentRoot.Natural,
   },
   action: AnyAction,
 ) {

@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const { generateConfig, baseDir } = require('./webpack.base.config.js');
 const nodeExternals = require('webpack-node-externals');
 const SaveAssetsJson = require('assets-webpack-plugin');
@@ -34,6 +35,11 @@ config.node = {
 };
 
 config.plugins = [
+  new webpack.DefinePlugin({
+    'process.env': {
+      TARGET_ENV: '"SANGUINE"'
+    },
+  }),
   new SaveAssetsJson({
     path: process.cwd(),
     filename: 'server-assets.json',

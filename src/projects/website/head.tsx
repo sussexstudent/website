@@ -1,6 +1,7 @@
+import React from 'react';
 import MSLTag from '~components/MSLTag';
 
-const branding = `<link rel="apple-touch-icon" sizes="180x180" href="https://du9l8eemj97rm.cloudfront.net/branding-s18/apple-touch-icon.png">
+export const branding = `<link rel="apple-touch-icon" sizes="180x180" href="https://du9l8eemj97rm.cloudfront.net/branding-s18/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="https://du9l8eemj97rm.cloudfront.net/branding-s18/favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="https://du9l8eemj97rm.cloudfront.net/branding-s18/favicon-16x16.png" sizes="16x16">
 <link rel="manifest" href="https://du9l8eemj97rm.cloudfront.net/branding-s18/manifest.json">
@@ -11,7 +12,22 @@ const branding = `<link rel="apple-touch-icon" sizes="180x180" href="https://du9
 <meta name="application-name" content="Students' Union">
 <meta name="theme-color" content="#ffffff">`;
 
-function manifestHandler(assets: any) {
+export const Branding = () => (
+  <React.Fragment>
+    <link rel="apple-touch-icon" sizes="180x180" href="https://du9l8eemj97rm.cloudfront.net/branding-s18/apple-touch-icon.png" />
+      <link rel="icon" type="image/png" href="https://du9l8eemj97rm.cloudfront.net/branding-s18/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="https://du9l8eemj97rm.cloudfront.net/branding-s18/favicon-16x16.png" sizes="16x16" />
+          <link rel="manifest" href="https://du9l8eemj97rm.cloudfront.net/branding-s18/manifest.json" />
+            <link rel="mask-icon" href="https://du9l8eemj97rm.cloudfront.net/branding-s18/safari-pinned-tab.svg" color="#1db8a4" />
+              <link rel="shortcut icon" href="https://du9l8eemj97rm.cloudfront.net/branding-s18/favicon.ico" />
+                <meta name="apple-mobile-web-app-title" content="Students' Union" />
+                  <meta name="msapplication-TileColor" content="#2b5797" />
+                    <meta name="application-name" content="Students' Union" />
+                      <meta name="theme-color" content="#ffffff" />
+  </React.Fragment>
+);
+
+export function manifestHandler(assets: any) {
   if (Object.hasOwnProperty.call(assets, 'manifest')) {
     return `
       window['chunkManifest'] = ${JSON.stringify(assets.manifest)};
@@ -40,7 +56,7 @@ ${MSLTag('JsonUserInfo', {
   JwtSecret: process.env.MSL_JWT_SECRET,
 })}
 {head_content}
-<script type="text/javascript">
+<script>
   ${manifestHandler(assets)}
   window.releaseMetadata = {gitRev: "${assets.gitRev || 'dev'}"};
   try {

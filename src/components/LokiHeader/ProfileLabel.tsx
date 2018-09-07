@@ -18,7 +18,6 @@ interface ProfileLabelProps {
 }
 
 const ProfileLabelComponent = (props: ProfileLabelProps) => {
-  console.log(props);
   if (!props.user.isLoaded) {
     return null;
   }

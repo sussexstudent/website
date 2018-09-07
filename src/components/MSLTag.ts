@@ -3,6 +3,10 @@ interface PropertyMap {
 }
 
 const MSLTag = (name: string, properties: PropertyMap | null = null) => {
+  if (process.env.TARGET_ENV === 'SANGUINE') {
+    return '';
+  }
+
   let props = '';
 
   if (properties !== null) {

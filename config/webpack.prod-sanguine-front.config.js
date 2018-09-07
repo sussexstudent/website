@@ -12,7 +12,6 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
-
 const config = generateConfig();
 
 const extractCSS = new MiniCssExtractPlugin({
@@ -72,6 +71,7 @@ config.plugins = config.plugins.concat([
     'process.env': {
       HYDROLEAF_MODE: JSON.stringify('RENDER_COMPONENT'),
       COMP_NODE: '0',
+      TARGET_ENV: '"SANGUINE"'
     },
   }),
   new CleanWebpackPlugin(['dist'], {

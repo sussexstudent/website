@@ -107,7 +107,7 @@ function HydroLeaf({
           if (hydroKey === undefined) {
             dataAc = '';
           } else {
-            dataAc = `<script type="text/javascript" id="hydroscript-${hydroKey}">${dataAc}${
+            dataAc = `<script id="hydroscript-${hydroKey}">${dataAc}${
               this.context.client
                 ? `window.apolloPartials.push(${JSON.stringify(
                     this.context.client.extract(),

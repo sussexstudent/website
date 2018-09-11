@@ -18,9 +18,12 @@ import { toggleMobileMenu } from '../../ducks/page';
 let hasAttemptedRender = false;
 
 function trackPageGA(path: string) {
-  console.log('ga', path);
-  ga('set', 'page', path);
-  ga('send', 'pageview');
+  if (process.env.NODE_ENV === 'production') {
+    ga('set', 'page', path);
+    ga('send', 'pageview');
+  } else {
+    console.log('[ga dev] page view', path)
+  }
 }
 
 const onPageChange = debounce(trackPageGA, 350);
@@ -63,7 +66,6 @@ export const appMountMiddleware = (store: any) => (next: any) => (
     }
 
     const prerouterMatch = routes.matches(router.location.pathname);
-    console.log('setrouter', prerouterMatch, router.location.pathname);
     if (prerouterMatch) {
       if (router.currentContentRoot !== ContentRoot.App) {
         store.dispatch(

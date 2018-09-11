@@ -27,7 +27,7 @@ export const EventAccessSidebar: React.SFC<EventAccessSidebarProps> = ({
           <h4 className="EventSidebar__heading">Categories</h4>
           <ul className="EventSidebar__value">
             {event.categories.map((cat) => (
-              <li>{cat.name}</li>
+              <li key={cat.slug}>{cat.name}</li>
             ))}
           </ul>
         </div>

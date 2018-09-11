@@ -51,6 +51,7 @@ const ContentNavigation: React.SFC<IProps> = ({
       <ul className="NavigationCard__list">
         {items.map((item) => (
           <li
+            key={item.anchor}
             className={cx('NavigationCard__item', {
               'NavigationCard__item--active': item.anchor === activeKey,
             })}
@@ -75,6 +76,7 @@ const ContentNavigation: React.SFC<IProps> = ({
               <ul className="NavigationCard__sub-list">
                 {item.children.map((itemInner) => (
                   <li
+                    key={itemInner.anchor}
                     className={cx('NavigationCard__item', {
                       'NavigationCard__item--active':
                         itemInner.anchor === activeKey,

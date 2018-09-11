@@ -4,14 +4,12 @@ import { InternalAppLink } from '~components/InternalAppLink';
 import { COLORS } from '~libs/style';
 import styled, { css, cx } from 'react-emotion';
 import { type, Typeface, TypeSize } from '~libs/style/type';
-import { Column } from '~website/components/ContentBrowser/ContentBrowserColumn';
 
-const Item = styled('li')({
+export const Item = styled('li')({
   display: 'block',
-  [`${Column}--active &`]: css({
-    opacity: 0.6,
-  }),
 });
+
+export const itemActive = css();
 
 const linkActive = css({
   backgroundColor: COLORS.WHITE,
@@ -39,7 +37,7 @@ export const ContentBrowserItem: React.SFC<{
   page: ContentBrowserPage;
   isActive: boolean;
 }> = ({ page: { path, contentType, title }, isActive }) => (
-  <Item>
+  <Item className={cx({ [linkActive]: isActive })}>
     <Link
       to={contentType === 'StubPage' ? `/browse${path}` : path}
       className={cx({ [linkActive]: isActive })}

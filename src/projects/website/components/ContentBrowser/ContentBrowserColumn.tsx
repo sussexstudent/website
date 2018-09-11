@@ -1,10 +1,16 @@
 import React from 'react';
 import { ContentBrowserPage } from '~website/containers/content/types';
 import { COLORS } from '~libs/style';
-import { ContentBrowserItem } from '~website/components/ContentBrowser/ContentBrowserItem';
+import {
+  ContentBrowserItem,
+  Item,
+  itemActive
+} from '~website/components/ContentBrowser/ContentBrowserItem';
 import styled, { cx } from 'react-emotion';
 
-export const Column = styled('ul')<{ active: boolean }>(({}) => ({
+
+console.log(`${Item} .${itemActive}`);
+export const Column = styled('ul')<{ active: boolean }>(({ active }) => ({
   maxWidth: '300px',
   listStyle: 'none',
   margin: 0,
@@ -13,6 +19,9 @@ export const Column = styled('ul')<{ active: boolean }>(({}) => ({
   '&:first-child': {
     borderLeft: 0,
   },
+  [`${Item} .${itemActive}`]: {
+    opacity: active ? 1 : 0.6,
+  }
 }));
 
 interface ContentBrowserColumnProps {

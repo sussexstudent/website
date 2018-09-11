@@ -50,6 +50,8 @@ interface TyperState {
 }
 
 export class Typer extends React.Component<TyperProps, TyperState> {
+  private timer?: number;
+
   constructor(props: TyperProps) {
     super(props);
 
@@ -65,7 +67,13 @@ export class Typer extends React.Component<TyperProps, TyperState> {
   }
 
   componentDidMount() {
-    setTimeout(this.handleFrame, this.props.timer(FrameType.CompleteHold, 0));
+    this.timer = window.setTimeout(this.handleFrame, this.props.timer(FrameType.CompleteHold, 0));
+  }
+
+  componentWillUnmount() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
   }
 
   handleFrame() {

@@ -19,23 +19,18 @@ import { NoListItems } from '~website/containers/bookmarket/NoListItems';
 import { Page } from '~website/containers/content/types';
 import { Event } from '~types/events';
 import { StudentGroup } from '~components/OrganisationGrid';
-
-enum SearchAreas {
-  Top = 'top',
-  Groups = 'groups',
-  News = 'news',
-  Events = 'events',
-  Pages = 'pages',
-  Content = 'content',
-}
+import { Location } from 'history';
+import { RouteComponentProps } from 'react-router';
 
 interface Payload {
   data: {
     search: {
-      combined: string[];
+      top: string[];
       content: Page[];
       events: Event[];
       groups: StudentGroup[];
+      news: any[];
+      pages: any[];
     };
   };
 }
@@ -43,38 +38,53 @@ enum GraphQLAreas {
   Content = 'content',
   Events = 'events',
   Groups = 'groups',
+  News = 'news',
+  Pages = 'pages',
+  Top = 'top',
 }
 
 function generateKeyMap(search: Payload['data']['search']) {
   const m: { [key: string]: any } = {};
 
-  Object.values(GraphQLAreas).forEach((key: GraphQLAreas) => {
-    (search[key] as any[]).forEach((item: any) => {
-      m[`${item.__typename}_${item.id}`] = item;
+  Object.values(GraphQLAreas)
+    .filter((a) => a !== GraphQLAreas.Top)
+    .forEach((key: GraphQLAreas) => {
+      (search[key] as any[]).forEach((item: any) => {
+        console.log(item);
+        m[`${item.__typename}_${item.id}`] = item;
+      });
     });
-  });
 
   return m;
 }
 
 function getPayloadMetadata({ data: { search } }: Payload) {
   const payload = search;
+
+  payload.events.map((event) => (event.id = event.eventId));
+  payload.groups.map((group) => (group.id = group.groupId));
+  payload.pages.map((page) => (page.id = page.uuid));
+  payload.news.map((news) => (news.id = news.uuid));
+  payload.groups.map((group) => (group.id = group.groupId));
+  payload.content = payload.content.concat(payload.pages);
+
   const areaTitlesMap: { [key: string]: string } = {
-    [SearchAreas.Top]: 'Top results',
-    [SearchAreas.Groups]: 'Sports & Societies',
-    [SearchAreas.News]: 'News',
-    [SearchAreas.Events]: 'Events',
-    [SearchAreas.Content]: 'Content',
+    [GraphQLAreas.Top]: 'Top results',
+    [GraphQLAreas.Groups]: 'Sports & Societies',
+    [GraphQLAreas.News]: 'News',
+    [GraphQLAreas.Events]: 'Events',
+    [GraphQLAreas.Content]: 'Content',
+    [GraphQLAreas.Pages]: 'Pages',
   };
 
   const calcWeight = (area: GraphQLAreas) => {
-    // if (area === SearchAreas.Top) {
-    //   return Infinity;
-    // }
+    if (area === GraphQLAreas.Top) {
+      return Infinity;
+    }
 
-    // if (area === SearchAreas.News) {
-    //   return -1;
-    // }
+    if (area === GraphQLAreas.News) {
+      return -1;
+    }
 
     const count = payload[area].length;
     if (count <= 0) {
@@ -93,12 +103,11 @@ function getPayloadMetadata({ data: { search } }: Payload) {
 
   const orderedAreas = orderBy(
     [
-      // SearchAreas.Top,
       GraphQLAreas.Groups,
-      // SearchAreas.News,
       GraphQLAreas.Events,
       GraphQLAreas.Content,
-      // SearchAreas.Pages,
+      GraphQLAreas.News,
+      GraphQLAreas.Top,
     ].map(mk),
     [(i) => i.weight, (i) => i.title],
     ['desc', 'asc'],
@@ -109,14 +118,26 @@ function getPayloadMetadata({ data: { search } }: Payload) {
       (acc, key: GraphQLAreas) => payload[key].length + acc,
       0,
     ) > 0;
+
+  const map = generateKeyMap(payload);
+
   return {
+    payload,
     orderedAreas,
     hasResults,
-    resultKeyMap: generateKeyMap(payload),
+    resultKeyMap: map,
+    itemsByArea: {
+      top: payload.top.map((key) => map[key]),
+      events: payload.events,
+      groups: payload.groups,
+      content: payload.content,
+      news: payload.news,
+      pages: payload.pages,
+    },
   };
 }
 
-interface IProps {
+interface IProps extends RouteComponentProps<{}> {
   query: string;
   setSearchValue: typeof routerActions.setSearchValue;
 }
@@ -128,7 +149,6 @@ interface IState {
   } | null;
   resultItems: ISearchResult[];
   isLoading: boolean;
-  currentArea: GraphQLAreas;
   orderedAreas: {
     weight: number;
     count: number;
@@ -136,6 +156,23 @@ interface IState {
     title: string;
   }[]; // todo
   hasResults: boolean;
+  itemsByArea: null | {
+    [GraphQLAreas.Top]: any[];
+    [GraphQLAreas.Content]: any[];
+    [GraphQLAreas.Groups]: any[];
+    [GraphQLAreas.News]: any[];
+    [GraphQLAreas.Pages]: any[];
+    [GraphQLAreas.Events]: any[];
+  };
+}
+
+function getParams(location: Location): { area: GraphQLAreas } {
+  const q = qs.parse(location.search);
+  return {
+    area: Object.values(GraphQLAreas).includes(q.area)
+      ? q.area
+      : GraphQLAreas.Top,
+  };
 }
 
 class SearchApp extends React.Component<IProps, IState> {
@@ -151,9 +188,9 @@ class SearchApp extends React.Component<IProps, IState> {
       results: null,
       resultItems: [],
       isLoading: false,
-      currentArea: GraphQLAreas.Content,
       hasResults: false,
       orderedAreas: [],
+      itemsByArea: null,
     };
   }
   UNSAFE_componentWillMount() {
@@ -197,23 +234,40 @@ class SearchApp extends React.Component<IProps, IState> {
               search(query: $query) {
                 content {
                   __typename
-                  pageId
+                  id
                   title
+                  path
                   searchDescription
                 }
                 events {
                   __typename
-                  id
+                  eventId
                   title
+                  slug
                   shortDescription
                 }
                 groups {
                   __typename
-                  id
+                  groupId
                   name
                   description
+                  link
                 }
-                combined
+                pages {
+                  __typename
+                  uuid
+                  link
+                  title
+                  description
+                }
+                news {
+                  __typename
+                  uuid
+                  link
+                  title
+                  description
+                }
+                top
               }
             }
           `,
@@ -230,15 +284,17 @@ class SearchApp extends React.Component<IProps, IState> {
         if (query === query) {
           // === current query
           didFinish = true;
-          const { orderedAreas, hasResults, resultKeyMap } = getPayloadMetadata(
-            payload,
-          );
-          this.setState({
+          const {
             orderedAreas,
             hasResults,
+            resultKeyMap,
+            itemsByArea,
+          } = getPayloadMetadata(payload);
+          this.setState({
+            orderedAreas,
+            itemsByArea,
+            hasResults,
             results: resultKeyMap,
-            resultItems: payload.data.search.combined,
-            currentArea: orderedAreas[0].key,
             isLoading: false,
           });
         }
@@ -274,17 +330,13 @@ class SearchApp extends React.Component<IProps, IState> {
   }
 
   @bind
-  handleAreaChange(area: GraphQLAreas) {
-    this.setState({ currentArea: area });
-  }
-
-  @bind
   handleSearchInput(e: React.ChangeEvent<HTMLInputElement>) {
     this.props.setSearchValue(e.currentTarget.value);
   }
 
   renderMeta() {
-    const { isLoading, hasResults, orderedAreas, currentArea } = this.state;
+    const { area } = getParams(this.props.location);
+    const { isLoading, hasResults, orderedAreas } = this.state;
     const { query } = this.props;
     let content;
     if (isLoading) {
@@ -293,12 +345,7 @@ class SearchApp extends React.Component<IProps, IState> {
       content = null;
     } else if (orderedAreas.length > 0) {
       content = (
-        <SearchFilterNav
-          query={query}
-          value={currentArea}
-          options={orderedAreas}
-          onSelect={this.handleAreaChange}
-        />
+        <SearchFilterNav query={query} value={area} options={orderedAreas} />
       );
     } else {
       content = <span className="SearchMeta__note">No results found.</span>;
@@ -320,27 +367,31 @@ class SearchApp extends React.Component<IProps, IState> {
   }
 
   renderResults() {
-    const { results, resultItems, isLoading, currentArea } = this.state;
+    const { area } = getParams(this.props.location);
+    const { itemsByArea, isLoading } = this.state;
 
     const containerclassNamees = cx('SearchApp__container', {
       'SearchApp__container--is-loading': isLoading === true,
     });
 
-    console.log({ results, resultItems });
     return (
       <div className={containerclassNamees}>
-        {results !== null && results[currentArea].length > 0 ? (
+        {itemsByArea !== null && itemsByArea[area].length > 0 ? (
           <ul
             className={cx('ResultsList', {
               'ResultsList--stale': isLoading,
             })}
           >
-            {results[currentArea].map((item) => (
-              <SearchResult key={item} item={resultItems[item]} />
+            {itemsByArea[area].map((item) => (
+              <SearchResult
+                key={`${item.__typename}_${item.id}`}
+                type={item.__typename}
+                item={item}
+              />
             ))}
           </ul>
         ) : null}
-        {results !== null && results[currentArea].length === 0 ? (
+        {itemsByArea !== null && itemsByArea[area].length === 0 ? (
           <NoListItems />
         ) : null}
       </div>
@@ -348,6 +399,7 @@ class SearchApp extends React.Component<IProps, IState> {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <Helmet

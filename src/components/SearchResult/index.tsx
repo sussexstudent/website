@@ -1,60 +1,116 @@
 import React from 'react';
+import { Event } from '~types/events';
+import { StudentGroup } from '~components/OrganisationGrid';
+import { ContentBrowserPage } from '~website/containers/content/types';
 
-function getKicker(link: string) {
-  if (link.indexOf('/organisation') >= 0) {
-    return 'Sports & Societies';
-  }
+const EventSearchResult = ({
+  item: { slug, id, title, shortDescription },
+}: {
+  item: Event;
+}) => (
+  <li className="ResultsList__result">
+    <a className="ResultsList__link" href={`/whats-on/${slug}-${id}`}>
+      <div className="ResultsList__kicker">Event</div>
+      <h1 className="ResultsList__title">{title}</h1>
+      <p className="ResultsList__snippet">{shortDescription}</p>
+    </a>
+  </li>
+);
 
-  if (link.indexOf('/event') >= 0) {
-    return 'Event';
-  }
+const StudentGroupSearchResult = ({
+  item: { name, link, description },
+}: {
+  item: StudentGroup;
+}) => (
+  <li className="ResultsList__result">
+    <a className="ResultsList__link" href={link}>
+      <div className="ResultsList__kicker">Sports & Societies</div>
+      <h1 className="ResultsList__title">{name}</h1>
+      <p className="ResultsList__snippet">{description}</p>
+    </a>
+  </li>
+);
 
-  if (link.indexOf('/ents/event') >= 0) {
-    return 'Event';
-  }
+const ContentSearchResult = ({
+  item: { path, title, searchDescription },
+}: {
+  item: ContentBrowserPage;
+}) => (
+  <li className="ResultsList__result">
+    <a className="ResultsList__link" href={path}>
+      <div className="ResultsList__kicker">Page</div>
+      <h1 className="ResultsList__title">{title}</h1>
+      <p className="ResultsList__snippet">{searchDescription}</p>
+    </a>
+  </li>
+);
 
-  if (link.endsWith('.pdf')) {
-    return 'PDF Document';
-  }
+const MSLPageSearchResult = ({
+  item: { link, title, description },
+}: {
+  item: any;
+}) => (
+  <li className="ResultsList__result">
+    <a className="ResultsList__link" href={link}>
+      <div className="ResultsList__kicker">Page</div>
+      <h1 className="ResultsList__title">{title}</h1>
+      <p className="ResultsList__snippet">{description}</p>
+    </a>
+  </li>
+);
 
-  if (link.indexOf('/elections/manifesto') >= 0) {
-    return 'Manifesto';
-  }
-
-  if (link.indexOf('/news/article') >= 0) {
-    return 'Article';
-  }
-
-  return 'Page';
-}
-
-function formatTitle(title: string) {
-  const pageTitleEnding = /\| Sussex Students' Union$/;
-  return title.replace(pageTitleEnding, '');
-}
+const MSLNewsResult = ({
+  item: { link, title, searchDescription },
+}: {
+  item: any;
+}) => (
+  <li className="ResultsList__result">
+    <a className="ResultsList__link" href={link}>
+      <div className="ResultsList__kicker">Article</div>
+      <h1 className="ResultsList__title">{title}</h1>
+      <p className="ResultsList__snippet">{searchDescription}</p>
+    </a>
+  </li>
+);
 
 export interface SearchResult {
-  link: string;
+  id: string;
+  __typename: string;
   title: string;
+  slug: string;
   description: string;
 }
 
 interface IProps {
+  type: string;
   item: SearchResult;
 }
 
 function SearchResult(props: IProps) {
-  const { link, title, description } = props.item;
+  const { type } = props;
 
-  return (
-    <li className="ResultsList__result">
-      <a className="ResultsList__link" href={link}>
-        <div className="ResultsList__kicker">{getKicker(link)}</div>
-        <h1 className="ResultsList__title">{formatTitle(title)}</h1>
-        <p className="ResultsList__snippet">{description}</p>
-      </a>
-    </li>
-  );
+  if (type === 'Event') {
+    return <EventSearchResult item={props.item as any} />;
+  }
+
+  if (type === 'StudentGroup') {
+    return <StudentGroupSearchResult item={props.item as any} />;
+  }
+
+  if (type === 'PageResult') {
+    return <ContentSearchResult item={props.item as any} />;
+  }
+
+  if (type === 'MSLPageResult') {
+    return <MSLPageSearchResult item={props.item as any} />;
+  }
+
+  if (type === 'MSLNewsResult') {
+    return <MSLNewsResult item={props.item as any} />;
+  }
+
+  console.log('Search result render fell through');
+  return null;
 }
 
 export default SearchResult;

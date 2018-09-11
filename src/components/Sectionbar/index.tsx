@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import { COLORS, MQ, TYPE_SECONDARY } from '~libs/style';
 import styled from 'react-emotion';
 
-export const SectionbarItem = styled('li')({
+export const SectionbarItem = styled('li')<{
+  disabled?: boolean;
+  active?: boolean;
+}>(({ active, disabled }) => ({
   display: 'flex',
   alignItems: 'center',
 
@@ -15,9 +18,11 @@ export const SectionbarItem = styled('li')({
     },
   },
 
-  '& > a, & > button': {
+  opacity: disabled ? 0.6 : 1,
+
+  '& > a, & > button, & > span': {
     fontFamily: TYPE_SECONDARY,
-    color: COLORS.GREY_SLATE,
+    color: active ? COLORS.BRAND_BLUE : COLORS.GREY_SLATE,
     textDecoration: 'none',
     fontWeight: 600,
     padding: '0.2rem',
@@ -30,7 +35,7 @@ export const SectionbarItem = styled('li')({
       color: COLORS.BRAND_BLUE,
     },
   },
-});
+}));
 
 interface SectionbarProps {
   title: string;

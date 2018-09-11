@@ -11,7 +11,6 @@ interface Option {
 }
 
 interface IItemProps {
-  onSelect(key: any): void;
   currentValue: any;
   itemKey: any;
   option: Option;
@@ -19,36 +18,39 @@ interface IItemProps {
 }
 
 function SearchFilterItem(props: IItemProps) {
-  const { currentValue, option, query, onSelect, itemKey } = props;
-  const handleClick = onSelect.bind(null, option.key);
+  const { currentValue, option, query, itemKey } = props;
 
-  const count = itemKey !== 'top' ? <span>{`(${option.count})`}</span> : null;
+  const count = itemKey !== 'top' ? <span> {`(${option.count})`}</span> : null;
 
   return (
     <SectionbarItem
-      className={cx('Sectionbar__menu-item', {
-        'Sectionbar__menu-item--active': currentValue === option.key,
-        'Sectionbar__menu-item--disabled': option.count <= 0,
-      })}
+      className={cx('Sectionbar__menu-item')}
+      active={currentValue === option.key}
+      disabled={option.count <= 0}
       key={option.key}
-      onClick={option.count > 0 ? handleClick : () => {}}
     >
-      <Link to={`/search?${qs.stringify({ q: query, area: option.key })}`}>
-        {option.title}
-        {count}
-      </Link>
+      {option.count > 0 ? (
+        <Link to={`/search?${qs.stringify({ q: query, area: option.key })}`}>
+          {option.title}
+          {count}
+        </Link>
+      ) : (
+        <span>
+          {option.title}
+          {count}
+        </span>
+      )}
     </SectionbarItem>
   );
 }
 
 interface IProps {
-  onSelect(key: any): void;
   value: any;
   options: Option[];
   query: string;
 }
 
-function SearchFilterNav({ onSelect, value, options, query }: IProps) {
+function SearchFilterNav({ value, options, query }: IProps) {
   return (
     <React.Fragment>
       {options.map((option) => (
@@ -58,7 +60,6 @@ function SearchFilterNav({ onSelect, value, options, query }: IProps) {
           query={query}
           option={option}
           currentValue={value}
-          onSelect={onSelect}
         />
       ))}
     </React.Fragment>

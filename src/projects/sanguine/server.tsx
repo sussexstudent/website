@@ -19,7 +19,7 @@ import { getBundles } from 'react-loadable/webpack';
 import stats from '../../../sanguine-dist/react-loadable-dev.json';
 import { Website } from './Website';
 import { extractCritical } from 'emotion-server';
-import {Branding, manifestHandler} from '~website/head';
+import { Branding, manifestHandler } from '~website/head';
 import Helmet, { HelmetData } from 'react-helmet';
 
 const fragmentMatcher = new IntrospectionFragmentMatcher({

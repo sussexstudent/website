@@ -1,12 +1,12 @@
 import React from 'react';
 import bind from 'bind-decorator';
 import SULogoWhite from '../../../../img/SUlogowhite.svg';
-import { OneImageBackground } from '~components/OneImage';
-import { basicTimer, Typer } from '~components/Typer';
-import { WebsiteRootState } from '~types/website';
+import {OneImageBackground} from '~components/OneImage';
+import {basicTimer, Typer} from '~components/Typer';
+import {WebsiteRootState} from '~types/website';
 import * as routerActions from '~website/ducks/router';
-import { connect } from 'react-redux';
-import { RouterState } from '~website/ducks/router';
+import {RouterState, SearchChangeSource} from '~website/ducks/router';
+import {connect} from 'react-redux';
 
 const placeholderHints = [
   'Search',
@@ -23,7 +23,7 @@ interface HomepageSplashProps {
 class HomepageSplashComponent extends React.Component<HomepageSplashProps> {
   @bind
   onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    this.props.setSearchValue(e.target.value);
+    this.props.setSearchValue(e.target.value, SearchChangeSource.Elsewhere);
   }
 
   componentDidMount() {

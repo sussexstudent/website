@@ -1,9 +1,9 @@
 import React from 'react';
 import bind from 'bind-decorator';
-import { WebsiteRootState } from '../../types/website';
+import { WebsiteRootState } from '~types/website';
 import { connect } from 'react-redux';
 import * as routerActions from '../../projects/website/ducks/router';
-import { RouterState } from '../../projects/website/ducks/router';
+import { RouterState } from '~website/ducks/router';
 
 interface LokiHeaderSearchProps {
   router: RouterState;
@@ -25,17 +25,11 @@ class LokiHeaderSearchComponent extends React.Component<
     this.props.setSearchValue(e.target.value);
   }
 
-  componentDidUpdate() {
-    // todo: homepage search
-    // if (this.input) {
-    //   this.input.focus();
-    // }
-  }
-
   render() {
     return (
       <div className="LokiHeader__search">
         <input
+          id="HP_QUERY_ELEMENT_SIDE_EFFECT"
           className="LokiHeader__search-input"
           type="search"
           placeholder="Search"

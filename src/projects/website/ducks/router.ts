@@ -18,6 +18,11 @@ export enum RootTransitionSource {
   Addition = 'Addition',
 }
 
+export enum SearchChangeSource {
+  HeaderInput,
+  Elsewhere,
+}
+
 export interface RouterState {
   history: null | History;
   location: null | Location;
@@ -38,10 +43,22 @@ export const setRouter = (history: History, location: Location) => ({
   payload: { history, location },
 });
 
-export const setSearchValue = (query: string) => ({
-  type: ROUTER_SET_SEARCH_QUERY,
-  payload: { query },
-});
+export const setSearchValue = (query: string, source: SearchChangeSource = SearchChangeSource.HeaderInput) => {
+  if (source !== SearchChangeSource.HeaderInput) {
+    if (typeof window !== "undefined") {
+      // this is naughty
+      const element = document.querySelector<HTMLInputElement>('#HP_QUERY_ELEMENT_SIDE_EFFECT');
+      if (element) {
+        element.focus();
+      }
+    }
+  }
+
+  return ({
+    type: ROUTER_SET_SEARCH_QUERY,
+    payload: {query},
+  });
+};
 
 export const announceMount = (appMountState: AppMountState) => ({
   type: ROUTER_ANNOUNCE_MOUNT,

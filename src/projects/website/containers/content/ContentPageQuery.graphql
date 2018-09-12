@@ -64,8 +64,14 @@ query ContentPage($path: String) {
       }
     }
     ... on KBRootPage {
+      introduction
       categories: subPages {
         ...ContentPageGenerals
+        ... on KBCategoryPage {
+          pageIcon {
+            url
+          }
+        }
       }
     }
     ... on KBCategoryPage {

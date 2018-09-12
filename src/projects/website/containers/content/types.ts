@@ -23,3 +23,7 @@ export interface ContentBrowserPage {
   searchDescription: string;
   subPages: ContentBrowserPage[];
 }
+
+export interface FalmerFile {
+  url: string;
+}

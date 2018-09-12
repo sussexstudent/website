@@ -7,6 +7,7 @@ import { HomepageSplash } from '~website/components/HomepageSplash';
 import { UserWelcome } from '~website/components/UserWelcome';
 import { RouteComponent } from '~types/routes';
 import { ScrollToTop } from '~components/ScrollToTop';
+import {AboutTheUnion} from "~website/components/AboutTheUnion";
 
 const Homepage: React.SFC<RouteComponent> = () => (
   <ScrollToTop>
@@ -36,9 +37,11 @@ const Homepage: React.SFC<RouteComponent> = () => (
             />
           </div>
         </div>
-
-        <ContentPage path={'/homepage'} />
       </div>
+    </div>
+    <AboutTheUnion />
+    <div className="LokiContainer">
+      <ContentPage path={'/homepage'} />
     </div>
   </ScrollToTop>
 );

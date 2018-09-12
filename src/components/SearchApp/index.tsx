@@ -50,7 +50,6 @@ function generateKeyMap(search: Payload['data']['search']) {
     .filter((a) => a !== GraphQLAreas.Top)
     .forEach((key: GraphQLAreas) => {
       (search[key] as any[]).forEach((item: any) => {
-        console.log(item);
         m[`${item.__typename}_${item.id}`] = item;
       });
     });
@@ -399,7 +398,6 @@ class SearchApp extends React.Component<IProps, IState> {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <Helmet

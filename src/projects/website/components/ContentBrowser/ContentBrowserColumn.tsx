@@ -9,7 +9,6 @@ import {
 import styled, { cx } from 'react-emotion';
 
 
-console.log(`${Item} .${itemActive}`);
 export const Column = styled('ul')<{ active: boolean }>(({ active }) => ({
   maxWidth: '300px',
   listStyle: 'none',
@@ -32,7 +31,6 @@ interface ContentBrowserColumnProps {
 }
 
 // pos = active = opacity: 1, else 0.6
-console.log(Column);
 export const ContentBrowserColumn: React.SFC<ContentBrowserColumnProps> = ({
   pages,
   activeSlug,

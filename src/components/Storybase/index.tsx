@@ -6,8 +6,6 @@ import { store } from '~website/redux/store';
 import { ApolloProvider } from 'react-apollo';
 import getApolloClientForFalmer from '~libs/getApolloClientForFalmer';
 
-console.log(getApolloClientForFalmer);
-
 export const Storybase = (url: string = '/') => (story: () => any) => (
   <ReduxProvider store={store}>
     <ApolloProvider client={getApolloClientForFalmer}>

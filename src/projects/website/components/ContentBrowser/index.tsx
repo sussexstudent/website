@@ -20,7 +20,6 @@ export class ContentBrowser extends React.Component<
 > {
   render() {
     const { segments, pages } = this.props;
-    console.log(segments);
     const segOne = pages.subPages.find((page) => page.slug === segments[0]);
     const segTwo =
       segOne && segOne.subPages.find((page) => page.slug === segments[1]);

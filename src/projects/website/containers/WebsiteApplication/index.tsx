@@ -73,7 +73,7 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
         <RouterAnalytics />
         <ErrorBoundary>
           <Switch>
-            <Route component={Homepage} path="/homepage" />
+            <Route component={Homepage} path="/" exact />
             <Route component={BookMarketApp} path="/book-market" />
             <Route component={LoadableContentBrowser} path="/browse" />
             <Route component={EventsApplication} path="/whats-on" />

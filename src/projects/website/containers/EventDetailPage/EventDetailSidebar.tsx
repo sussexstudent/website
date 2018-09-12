@@ -34,7 +34,7 @@ function mslSubtitle(msl: any) {
 }
 
 export const EventDetailSidebar = (props: IProps) => {
-  const { event, msl, onTicketButton } = props;
+  const { event, msl } = props;
 
   const ticketCta =
     event.cost === TicketCost.Free ? 'Reserve your space' : 'Get Tickets';
@@ -57,18 +57,18 @@ export const EventDetailSidebar = (props: IProps) => {
       ) : null}
       {event.ticketType === TicketType.MSL ? (
         <React.Fragment>
-          <BuyButton
-            onClick={onTicketButton}
-            title={ticketCta}
-            subtitle={mslSubtitle(msl)}
-            disabled={msl && msl.tickets <= 0}
-          />
           {/*<BuyButton*/}
-          {/*href={event.ticketData}*/}
-          {/*title={ticketCta}*/}
-          {/*subtitle={mslSubtitle(msl)}*/}
-          {/*disabled={msl && msl.tickets <= 0}*/}
+            {/*onClick={onTicketButton}*/}
+            {/*title={ticketCta}*/}
+            {/*subtitle={mslSubtitle(msl)}*/}
+            {/*disabled={msl && msl.tickets <= 0}*/}
           {/*/>*/}
+          <BuyButton
+          href={event.ticketData}
+          title={ticketCta}
+          subtitle={mslSubtitle(msl)}
+          disabled={msl && msl.tickets <= 0}
+          />
         </React.Fragment>
       ) : null}
       <EventAccessSidebar event={event} />

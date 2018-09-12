@@ -9,7 +9,7 @@ import {
 import styled, { cx } from 'react-emotion';
 
 
-export const Column = styled('ul')<{ active: boolean }>(({ active }) => ({
+export const Column = styled.ul<{ active: boolean }>(({ active }) => ({
   maxWidth: '300px',
   listStyle: 'none',
   margin: 0,

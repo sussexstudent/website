@@ -25,7 +25,7 @@ const filteringReplacements: { [k: string]: any } = {
   null: null,
 };
 
-const SimpleFilterList = styled('ul')({
+const SimpleFilterList = styled.ul({
   listStyle: 'none',
   padding: 0,
   margin: 0,

@@ -11,7 +11,7 @@ interface IState {
   hidden: boolean;
 }
 
-const MessageContainer = styled('div')({
+const MessageContainer = styled.div({
   position: 'fixed',
   bottom: '10px',
   zIndex: Layers.GlobalNotice,
@@ -23,7 +23,7 @@ const MessageContainer = styled('div')({
   },
 });
 
-const MessageBlimp = styled('div')(
+const MessageBlimp = styled.div(
   {
     ...type(TypeSize.LongPrimer, Typeface.Secondary),
     textAlign: 'center',
@@ -39,7 +39,7 @@ const MessageBlimp = styled('div')(
   cardRaised,
 );
 
-const MessageAction = styled('div')({
+const MessageAction = styled.div({
   paddingTop: '1rem',
 });
 

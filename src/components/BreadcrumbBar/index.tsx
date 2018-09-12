@@ -7,7 +7,7 @@ import { InternalAppLink } from '~components/InternalAppLink';
 
 interface IProps {}
 
-const BreadcrumbList = styled('ul')({
+const BreadcrumbList = styled.ul({
   marginBottom: '1rem',
   fontWeight: 700,
   margin: 0,
@@ -15,11 +15,14 @@ const BreadcrumbList = styled('ul')({
   listStyle: 'none',
 });
 
-const BreadcrumbItem = styled('li')({
+const BreadcrumbItem = styled.li({
   display: 'inline-block',
+  '& > a': {
+    textDecoration: 'none',
+  }
 });
 
-const IconContainer = styled('span')({
+const IconContainer = styled.span({
   marginLeft: '0.5em',
   marginRight: '0.5em',
   verticalAlign: 'middle',

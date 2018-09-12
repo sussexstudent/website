@@ -4,7 +4,7 @@ import styled from 'react-emotion';
 import { COLORS } from '~libs/style';
 import { cardActionable } from '~libs/style/cards';
 
-const Button = styled('button')<{ disabled: boolean }>(
+const Button = styled.button<{ disabled: boolean }>(
   ({ disabled }) => ({
     textAlign: 'center',
     background: disabled ? COLORS.GREY_WINTER : COLORS.BRAND_RED,
@@ -22,13 +22,13 @@ const Button = styled('button')<{ disabled: boolean }>(
 
 const ButtonLink = Button.withComponent('a');
 
-const Title = styled('div')({
+const Title = styled.div({
   ...type(TypeSize.DoublePica, Typeface.Secondary),
   fontWeight: 600,
   color: '#ffffff',
 });
 
-const Subtitle = styled('div')({
+const Subtitle = styled.div({
   opacity: 0.6,
   ...type(TypeSize.LongPrimer),
   color: '#ffffff',

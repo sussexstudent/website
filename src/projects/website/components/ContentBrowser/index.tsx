@@ -3,7 +3,7 @@ import { ContentBrowserPage } from '~website/containers/content/types';
 import { ContentBrowserColumn } from '~website/components/ContentBrowser/ContentBrowserColumn';
 import styled from 'react-emotion';
 
-const Root = styled('div')({
+const Root = styled.div({
   display: 'flex',
 });
 

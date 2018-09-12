@@ -42,7 +42,7 @@ interface IState {
   swatch: string[];
 }
 
-const Container = styled('div')({
+const Container = styled.div({
   width: '100%',
   height: '100%',
   backgroundRepeat: 'repeat',

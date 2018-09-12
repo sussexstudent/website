@@ -2,7 +2,7 @@ import React from 'react';
 import { COLORS } from '~libs/style';
 import styled from 'react-emotion';
 
-const Root = styled('div')({
+const Root = styled.div({
   position: 'fixed',
   bottom: 0,
   left: 0,

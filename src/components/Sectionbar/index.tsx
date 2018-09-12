@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { COLORS, MQ, TYPE_SECONDARY } from '~libs/style';
 import styled from 'react-emotion';
 
-export const SectionbarItem = styled('li')<{
+export const SectionbarItem = styled.li<{
   disabled?: boolean;
   active?: boolean;
 }>(({ active, disabled }) => ({
@@ -42,7 +42,7 @@ interface SectionbarProps {
   titleLink?: string;
 }
 
-const Root = styled('div')({
+const Root = styled.div({
   fontFamily: TYPE_SECONDARY,
   padding: '0.6rem 0 0.3rem',
   marginBottom: '1rem',
@@ -51,7 +51,7 @@ const Root = styled('div')({
   marginTop: '-1rem',
 });
 
-const Container = styled('div')({
+const Container = styled.div({
   display: 'flex',
   flexDirection: 'column',
   [MQ.Medium]: {
@@ -59,7 +59,7 @@ const Container = styled('div')({
   },
 });
 
-const Title = styled('h2')({
+const Title = styled.h2({
   margin: '0 1rem 0 0',
   color: COLORS.GREY_SAD_SLATE,
   textAlign: 'center',
@@ -75,7 +75,7 @@ const Title = styled('h2')({
   },
 });
 
-const Menu = styled('ul')({
+const Menu = styled.ul({
   display: 'flex',
   padding: 0,
   margin: 0,

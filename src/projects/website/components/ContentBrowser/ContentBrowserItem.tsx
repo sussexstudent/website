@@ -5,7 +5,7 @@ import { COLORS } from '~libs/style';
 import styled, { css, cx } from 'react-emotion';
 import { type, Typeface, TypeSize } from '~libs/style/type';
 
-export const Item = styled('li')({
+export const Item = styled.li({
   display: 'block',
 });
 
@@ -24,12 +24,12 @@ const Link = styled(InternalAppLink)({
   textDecoration: 'none',
 });
 
-const PageTitle = styled('div')({
+const PageTitle = styled.div({
   ...type(TypeSize.DoublePica, Typeface.Secondary),
   fontWeight: 600,
 });
 
-const PageDescription = styled('div')({
+const PageDescription = styled.div({
   ...type(TypeSize.BodyCopy, Typeface.Primary),
 });
 

@@ -8,6 +8,20 @@ query ContentPage($path: String) {
       }
       ...KBTypes
     }
+    ... on DetailedGuideSectionPage {
+      content
+      parentPage {
+        ...ContentPageGenerals
+        ...on DetailedGuidePage {
+          relatedLinks
+          staffOwners
+        }
+        ...KBTypes
+        subPages {
+          ...ContentPageGenerals
+        }
+      }
+    }
     ... on BasicContentPage {
       content
     }

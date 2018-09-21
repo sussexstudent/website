@@ -20,7 +20,7 @@ export function OwnerStatusBanner({ state, listingId }: IProps) {
           {state === MarketListingState.Draft ? (
             <Deckchair
               header="This is a draft"
-              about="You need to publish your listing students can see it!"
+              about="You need to publish your listing so students can see it!"
               color="red"
             >
               <button

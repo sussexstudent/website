@@ -40,7 +40,7 @@ export const EventDetailSidebar = (props: IProps) => {
     event.cost === TicketCost.Free ? 'Reserve your space' : 'Get Tickets';
 
   return (
-    <aside>
+    <aside style={{ paddingBottom: '1rem' }}>
       {event.ticketType === TicketType.Native ? (
         <BuyButton
           href={event.ticketData}

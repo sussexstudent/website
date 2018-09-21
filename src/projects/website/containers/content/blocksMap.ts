@@ -6,6 +6,7 @@ import { SelectionGridBlock } from '~website/containers/content/blocks/Selection
 import StaffList from '~components/StaffList';
 import { TextBlock } from '~website/containers/content/blocks/TextBlock';
 import {
+  DocumentLink,
   ExternalLink,
   InternalLink,
 } from '~website/containers/content/blocks/Links';
@@ -30,5 +31,6 @@ export default {
   button_group_links: ButtonGroupBlock,
   staff_list: StaffList,
   external_link: ExternalLink,
+  document_link: DocumentLink,
   internal_link: InternalLink,
 } as BlockComponentMap;

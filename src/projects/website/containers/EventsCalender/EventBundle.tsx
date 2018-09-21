@@ -37,7 +37,7 @@ class EventsCalender extends React.Component<IProps> {
 export const EventBundle = compose<OwnProps, OwnProps>(
   graphql<any, OwnProps>(EventListingsBrandingPeriodQuery, {
     options: (props) => {
-      const bundleSlug = props.bundleSlug;
+      const bundleSlug = props.match.params.bundleSlug;
       return {
         variables: {
           bundleSlug,

@@ -107,7 +107,7 @@ class EventsApplication extends React.Component<
           <Switch>
             <Route component={LoadableListings} path="/whats-on" exact />
             <Route
-              comonent={LoadableBundle}
+              component={LoadableBundle}
               path="/whats-on/bundle/:bundleSlug"
               exact
             />
@@ -124,7 +124,7 @@ class EventsApplication extends React.Component<
               to="/whats-on/periods/:brandSlug"
             />
             <Route
-              comonent={LoadableListingsBranding}
+              component={LoadableListingsBranding}
               path="/whats-on/periods/:brandSlug"
               exact
             />

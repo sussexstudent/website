@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import { SectionContentPage } from '~website/containers/content/pages/SectionContentPage';
 import AnswerPage from '~website/containers/content/pages/AnswerPage';
 import ReferencePage from './pages/ReferencePage';
+import DetailedGuideSectionPage from './pages/DetailedGuideSectionPage';
 import DetailedGuidePage from './pages/DetailedGuidePage';
 import { OutletIndexPage } from '~website/containers/content/pages/OutletIndexPage';
 import { OutletPage } from '~website/containers/content/pages/OutletPage';
@@ -45,6 +46,7 @@ export default {
   AnswerPage,
   ReferencePage,
   DetailedGuidePage,
+  DetailedGuideSectionPage,
 
   // TODO: BasicContentPage
 

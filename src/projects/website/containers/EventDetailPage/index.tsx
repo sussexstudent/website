@@ -18,6 +18,7 @@ import PatternPlaceholder from '~components/PatternPlaceholder';
 import Button from '~components/Button';
 import { TicketsModal } from '~website/containers/EventDetailPage/TicketsModal';
 import { RouteComponentProps } from 'react-router-dom';
+import {ScrollToTop} from "~components/ScrollToTop";
 
 interface RouteParams {
   [0]: string;
@@ -73,117 +74,119 @@ class EventDetailPage extends React.Component<IProps, IState> {
     const event = this.props.data.event;
 
     return (
-      <div
-        className={cx('EventDetail', {
-          'EventDetail--customImage': event.featuredImage,
-        })}
-      >
-        <EventDetailMetadata event={event} />
-        {event.featuredImage ? (
-          <div className="EventDetail__hero">
-            <div className="LokiContainer">
+      <ScrollToTop>
+        <div
+          className={cx('EventDetail', {
+            'EventDetail--customImage': event.featuredImage,
+          })}
+        >
+          <EventDetailMetadata event={event} />
+          {event.featuredImage ? (
+            <div className="EventDetail__hero">
+              <div className="LokiContainer">
+                <OneImageBackground
+                  className="EventDetail__hero-container"
+                  aspectRatio={AspectRatio.r20by9}
+                  src={event.featuredImage.resource}
+                >
+                  <div className="EventDetail__details">
+                    <EventDetailDetails event={event} />
+                  </div>
+                </OneImageBackground>
+              </div>
+
               <OneImageBackground
-                className="EventDetail__hero-container"
+                className="EventDetail__hero-bg"
                 aspectRatio={AspectRatio.r20by9}
                 src={event.featuredImage.resource}
-              >
-                <div className="EventDetail__details">
-                  <EventDetailDetails event={event} />
-                </div>
-              </OneImageBackground>
+              />
             </div>
-
-            <OneImageBackground
-              className="EventDetail__hero-bg"
-              aspectRatio={AspectRatio.r20by9}
-              src={event.featuredImage.resource}
-            />
-          </div>
-        ) : (
-          <div className="EventDetail__hero">
-            <div className="EventDetail__hero-container">
-              <div className="EventDetail__details">
-                <div className="LokiContainer">
-                  <EventDetailDetails event={event} />
+          ) : (
+            <div className="EventDetail__hero">
+              <div className="EventDetail__hero-container">
+                <div className="EventDetail__details">
+                  <div className="LokiContainer">
+                    <EventDetailDetails event={event} />
+                  </div>
                 </div>
               </div>
+              <div className="EventDetail__hero-bg">
+                <PatternPlaceholder />
+              </div>
             </div>
-            <div className="EventDetail__hero-bg">
-              <PatternPlaceholder />
-            </div>
-          </div>
-        )}
-        <div className="LokiContainer">
-          <div className="Layout--sidebar-right">
-            <ContentCard bleed>
-              <div className="ContentCard__content">
-                <div className="Prose type-body-copy">
-                  {event.bodyHtml !== '' ? (
-                    <div dangerouslySetInnerHTML={{ __html: event.bodyHtml }} />
-                  ) : (
-                    <div>{event.shortDescription}</div>
-                  )}
-                  {event.brand && event.brand.eventAppend ? (
-                    <div className="type-long-primer">
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: event.brand.eventAppend,
-                        }}
-                      />
+          )}
+          <div className="LokiContainer">
+            <div className="Layout--sidebar-right">
+              <ContentCard bleed>
+                <div className="ContentCard__content">
+                  <div className="Prose type-body-copy">
+                    {event.bodyHtml !== '' ? (
+                      <div dangerouslySetInnerHTML={{ __html: event.bodyHtml }} />
+                    ) : (
+                      <div>{event.shortDescription}</div>
+                    )}
+                    {event.brand && event.brand.eventAppend ? (
+                      <div className="type-long-primer">
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: event.brand.eventAppend,
+                          }}
+                        />
+                      </div>
+                    ) : null}
+                  </div>
+
+                  {event.venue ? (
+                    <div>
+                      <h3>{event.venue.name}</h3>
+                      {event.venue.websiteLink ? (
+                        <Button href={event.venue.websiteLink}>
+                          More information
+                        </Button>
+                      ) : null}
                     </div>
                   ) : null}
                 </div>
-
-                {event.venue ? (
-                  <div>
-                    <h3>{event.venue.name}</h3>
-                    {event.venue.websiteLink ? (
-                      <Button href={event.venue.websiteLink}>
-                        More information
-                      </Button>
-                    ) : null}
-                  </div>
-                ) : null}
+              </ContentCard>
+              <div>
+                <EventDetailSidebar
+                  event={event}
+                  msl={this.state.msl}
+                  onTicketButton={this.handleOpenTicketModal}
+                />
               </div>
-            </ContentCard>
-            <div>
-              <EventDetailSidebar
-                event={event}
-                msl={this.state.msl}
-                onTicketButton={this.handleOpenTicketModal}
+            </div>
+            {event.children.length > 0 ? (
+              <div>
+                <span className="u-position-anchor" id="sub-events" />
+                <h2 className="Heading Heading--tight">Part of this event</h2>
+                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                  {event.children.map((childEvent: Event) => (
+                    <div>
+                      <EventsCalenderItem part={{ event: childEvent }} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+
+            {event.ticketType === TicketType.MSL ? (
+              <MSLEventCommunication
+                ticketData={event.ticketData}
+                onData={this.handleMslCommunication}
               />
-            </div>
+            ) : null}
+
+            {event.ticketType === TicketType.MSL ? (
+              <TicketsModal
+                isOpen={this.state.ticketModalOpen}
+                onRequestClose={this.handleCloseTicketModal}
+                msl={this.state.msl}
+              />
+            ) : null}
           </div>
-          {event.children.length > 0 ? (
-            <div>
-              <span className="u-position-anchor" id="sub-events" />
-              <h2 className="Heading Heading--tight">Part of this event</h2>
-              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                {event.children.map((childEvent: Event) => (
-                  <div>
-                    <EventsCalenderItem part={{ event: childEvent }} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : null}
-
-          {event.ticketType === TicketType.MSL ? (
-            <MSLEventCommunication
-              ticketData={event.ticketData}
-              onData={this.handleMslCommunication}
-            />
-          ) : null}
-
-          {event.ticketType === TicketType.MSL ? (
-            <TicketsModal
-              isOpen={this.state.ticketModalOpen}
-              onRequestClose={this.handleCloseTicketModal}
-              msl={this.state.msl}
-            />
-          ) : null}
         </div>
-      </div>
+      </ScrollToTop>
     );
   }
 }

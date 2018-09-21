@@ -2,6 +2,8 @@ import React from 'react';
 import { Page } from '~website/containers/content/types';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
 import { Link } from 'react-router-dom';
+import {Typeface, TypeSize, type} from "~libs/style/type";
+import styled from 'react-emotion';
 
 interface IKBRoot extends Page {}
 
@@ -15,6 +17,15 @@ interface KBCategoryPageProps {
   page: IKBCategoryPage;
 }
 
+const PageList = styled.ul({
+});
+
+const PageLink = styled(Link)({
+  textDecoration: 'none',
+  fontWeight: 600,
+  ...type(TypeSize.BodyCopy, Typeface.Secondary),
+});
+
 export const KBCategoryPage: React.SFC<KBCategoryPageProps> = ({ page }) => (
   <div className="LokiContainer">
     <BreadcrumbBar>
@@ -27,12 +38,12 @@ export const KBCategoryPage: React.SFC<KBCategoryPageProps> = ({ page }) => (
     </BreadcrumbBar>
     <h1>{page.title}</h1>
 
-    <ul>
+    <PageList>
       {page.subPages.map((contentPage) => (
         <li key={contentPage.path}>
-          <Link to={contentPage.path}>{contentPage.title}</Link>
+          <PageLink to={contentPage.path}>{contentPage.title}</PageLink>
         </li>
       ))}
-    </ul>
+    </PageList>
   </div>
 );

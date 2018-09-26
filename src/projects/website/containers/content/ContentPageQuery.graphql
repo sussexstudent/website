@@ -1,6 +1,5 @@
 query ContentPage($path: String) {
   page(path: $path) {
-    assumptionPath
     ...ContentPageGenerals
     ... on DetailedGuidePage {
       subPages {

@@ -1,10 +1,11 @@
 import React from 'react';
 import { History } from 'history';
 import CONTENT_PAGE_QUERY from './ContentPageQuery.graphql';
-import pageMap from '~website/containers/content/pageMap';
+import ctRoutes from '~website/containers/content/contentTypeRoutes';
 import { HandledQuery } from '~components/HandledQuery';
 import Helmet from 'react-helmet';
 import { FourOhFourPage } from './FourOhFourPage';
+import {Switch} from 'react-router';
 
 interface OwnProps {
   path: string;
@@ -50,11 +51,11 @@ const ContentPage: React.SFC<IProps> = (props: IProps) => {
           return null;
         }
 
-        const Component = pageMap.hasOwnProperty(page.contentType)
-          ? pageMap[page.contentType]
+        const RoutesForContentType = ctRoutes.hasOwnProperty(page.contentType)
+          ? ctRoutes[page.contentType]
           : null;
 
-        if (Component) {
+        if (RoutesForContentType) {
           return (
             <React.Fragment>
               <Helmet title={page.seoTitle || page.title}>
@@ -63,7 +64,9 @@ const ContentPage: React.SFC<IProps> = (props: IProps) => {
                 )}
               </Helmet>
 
-              <Component page={page} />
+              <Switch>
+                <RoutesForContentType page={page} />
+              </Switch>
             </React.Fragment>
           );
         }

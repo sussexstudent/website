@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import slugify from '~libs/slugify';
-import { InternalAppLink } from '~components/InternalAppLink';
+import {NavLink} from 'react-router-dom';
 
 interface Section {
   anchor: string;
@@ -57,9 +57,12 @@ const ContentNavigation: React.SFC<IProps> = ({
             })}
           >
             {item.to !== undefined ? (
-              <InternalAppLink to={item.to} className="NavigationCard__anchor">
+              <NavLink to={item.to} className="NavigationCard__anchor"
+                               activeClassName="NavigationCard__anchor--active"
+                               exact
+              >
                 {item.name}
-              </InternalAppLink>
+              </NavLink>
             ) : (
               <a className="NavigationCard__anchor" href={`#${item.anchor}`}>
                 {item.name}
@@ -83,12 +86,14 @@ const ContentNavigation: React.SFC<IProps> = ({
                     })}
                   >
                     {itemInner.to !== undefined ? (
-                      <InternalAppLink
+                      <NavLink
                         to={itemInner.to}
                         className="NavigationCard__anchor"
+                        activeClassName="NavigationCard__anchor--active"
+                        exact
                       >
                         {itemInner.name}
-                      </InternalAppLink>
+                      </NavLink>
                     ) : (
                       <a
                         className="NavigationCard__anchor"

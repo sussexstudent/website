@@ -39,7 +39,7 @@ class ReferencePage extends React.Component<IProps> {
           <div className="LayoutContent__toc">
             {headings.length > 0 ? (
               <ContentNavigation
-                title="Sections"
+                title="Navigation"
                 items={headings.map((heading) => ({
                   name: heading,
                   anchor: slugify(heading),

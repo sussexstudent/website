@@ -1,4 +1,4 @@
-import { isString, flatten, castArray } from 'lodash';
+import { isString, castArray } from 'lodash';
 import htmr from 'htmr';
 import {
   StreamFieldBlockData,
@@ -36,13 +36,13 @@ export function getHeadingsFromHtmlString(html: string): string[] {
     .map(getTextFromElement);
 }
 
-export function getHeadingsFromStreamField(stream: StreamFieldData) {
-  return flatten(
+export function getHeadingsFromStreamField(stream: StreamFieldData): string[] {
+  return [].concat.apply([],
     stream
       .filter((block) => block.type === 'text')
       .map((block: StreamFieldBlockData<{ value: string }>) =>
         getHeadingsFromHtmlString(block.value.value),
-      ),
+      )
   );
 }
 

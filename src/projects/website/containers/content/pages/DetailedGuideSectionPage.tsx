@@ -58,8 +58,8 @@ class DetailedGuideSectionPage extends React.Component<IProps> {
           </Link>
         </BreadcrumbBar>
 
-        <h2 className="type-long-primer">{page.parentPage.title}</h2>
-        <h1 className="type-trafalgar">{page.title}</h1>
+        <h2 className="type-great-primer">{page.parentPage.title}</h2>
+        <h1 className="type-trafalgar" style={{ marginTop: '0.5rem', }}>{page.title}</h1>
         <div className="LayoutContent">
           <div className="LayoutContent__toc">
             <ContentNavigation

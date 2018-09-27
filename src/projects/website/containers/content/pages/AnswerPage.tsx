@@ -37,8 +37,8 @@ class AnswerPage extends React.Component<IProps> {
         <div className="LayoutContent">
           <div className="LayoutContent__toc">
             <ContentNavigation
-              title="Sections"
-              items={headings.map((heading) => ({
+              title="Navigation"
+                items={headings.map((heading) => ({
                 name: heading,
                 anchor: slugify(heading),
                 children: [],

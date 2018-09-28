@@ -7,7 +7,7 @@ const Bento: React.SFC<{}> = () => (
   <div className="Bento Trail">
     <div className="Trail__row Trail__row--21 Bento__main-row">
       <VoteNowBox link="/vote"         imageUrl="original_images/23748e8e475049fe8e49162ccd827b44"
-                  targetDate={new Date(2018, 9, 8, 12, 0,0)}
+                  targetDate={new Date(2018, 9, 1, 17, 0,0)}
       />
       <HighlightTextBox
         link="/services/outlets"

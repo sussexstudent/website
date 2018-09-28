@@ -7,7 +7,6 @@ import {
   differenceInHours,
   differenceInSeconds,
 } from 'date-fns';
-import HydroLeaf from '~components/HydroLeaf';
 import CountUp from 'react-countup';
 import { OneImageBackground } from '~components/OneImage';
 
@@ -32,7 +31,7 @@ interface IState {
 
 const timeBox = { width: '100%', flex: '1 1 auto' };
 
-class VoteNowBoxComponent extends React.Component<IProps, IState> {
+export class VoteNowBox extends React.Component<IProps, IState> {
   interval: number | undefined;
 
   private socket?: WebSocket;
@@ -215,8 +214,3 @@ class VoteNowBoxComponent extends React.Component<IProps, IState> {
   }
 }
 
-const VoteNowBox = HydroLeaf({ name: 'VoteNowBox', disableSSR: true })(
-  VoteNowBoxComponent,
-);
-
-export { VoteNowBox };

@@ -55,6 +55,20 @@ export const EventDetailSidebar = (props: IProps) => {
           subtitle="via Eventbrite"
         />
       ) : null}
+      {event.ticketType === TicketType.Generic ? (
+        <BuyButton
+          href={event.ticketData}
+          title={ticketCta}
+          subtitle=""
+        />
+      ) : null}
+      {event.ticketType === TicketType.ACCA ? (
+        <BuyButton
+          href={event.ticketData}
+          title={ticketCta}
+          subtitle="via attenboroughcentre.com"
+        />
+      ) : null}
       {event.ticketType === TicketType.MSL ? (
         <React.Fragment>
           {/*<BuyButton*/}
@@ -64,7 +78,7 @@ export const EventDetailSidebar = (props: IProps) => {
             {/*disabled={msl && msl.tickets <= 0}*/}
           {/*/>*/}
           <BuyButton
-          href={event.ticketData}
+          href={`${event.ticketData}#tickets`}
           title={ticketCta}
           subtitle={mslSubtitle(msl)}
           disabled={msl && msl.tickets <= 0}

@@ -12,6 +12,8 @@ export enum TicketType {
   NA = 'NA',
   Native = 'NT',
   Eventbrite = 'EB',
+  ACCA = 'AC',
+  Generic = 'GN',
   MSL = 'MSL',
 }
 

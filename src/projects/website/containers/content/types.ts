@@ -3,6 +3,8 @@ export interface Page<S = null> {
   slug: string;
   path: string;
   subPages: S;
+
+  lastPublishedAt: string;
 }
 
 export type StreamFieldBlock<B> = React.SFC<{ page: Page; block: B }>;

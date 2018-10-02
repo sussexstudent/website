@@ -6,6 +6,7 @@ import { StaffOwners } from '~website/components/StaffOwners';
 import StreamField from '~website/containers/content/StreamField';
 import {BreadcrumbBar} from "~components/BreadcrumbBar";
 import {Link} from 'react-router-dom';
+import {format} from 'date-fns';
 
 interface DetailPage extends Page<DetailPageSection[]> {
   content: StreamFieldData;
@@ -71,6 +72,9 @@ class DetailedGuideSectionPage extends React.Component<IProps> {
                 children: [],
               }))}
             />
+            <div>
+              Last updated at {format(new Date(page.lastPublishedAt), 'dd/MM/YY')}
+            </div>
           </div>
           <div className="LayoutContent__main">
             <DetailedGuideSection page={page} />

@@ -125,6 +125,7 @@ fragment ContentPageGenerals on Page {
   searchDescription
 
   contentType
+  lastPublishedAt
 }
 
 fragment FalmerImage on Image {

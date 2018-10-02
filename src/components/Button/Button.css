@@ -54,7 +54,7 @@
   }
 
   &--start {
-    @mixin type great-primer no-line-height;
+    @mixin type double-pica no-line-height;
     color: white;
     background-color: var(--color__brand-green);
     font-family: var(--type__primary);

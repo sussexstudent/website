@@ -5,12 +5,14 @@ import StreamField from '~website/containers/content/StreamField';
 import ContentCard from '~components/ContentCard';
 import { OneImageBackground } from '~components/OneImage';
 import {
-  OpeningTimeData,
   openingTimesBlockParser,
 } from '~libs/streamFieldStructures';
 import { Sectionbar, SectionbarItem } from '~components/Sectionbar';
 import { Link } from 'react-router-dom';
 import {cx, css} from 'emotion';
+import {isOpenNow, OpeningTimeInterval, parseOpeningTimesToIntervals} from "~libs/openingTimes";
+import {format} from 'date-fns';
+import minimalisticTimeRenderer from "~libs/minimalisticTimeRenderer";
 
 interface IOutletIndex extends Page<Page[]> {}
 
@@ -31,18 +33,15 @@ interface OutletPageProps {
 function OpeningTimesCard({
   openingTimes,
 }: {
-  openingTimes: OpeningTimeData | null;
+  openingTimes: OpeningTimeInterval[];
 }) {
-  if (!openingTimes) {
-    return null;
-  }
 
   return (
     <ContentCard>
       <h3>Opening Times</h3>
       <ul>
-        {openingTimes.times.map((time) => (
-          <li>{time}</li>
+        {openingTimes.map((interval) => (
+          <li>{format(interval.start, 'eeee ')} {minimalisticTimeRenderer(interval.start)} - {minimalisticTimeRenderer(interval.end)}</li>
         ))}
       </ul>
     </ContentCard>
@@ -85,48 +84,54 @@ const headerStyles = css({
   display: 'flex',
 });
 
-export const OutletPage: React.SFC<OutletPageProps> = ({ page }) => (
-  <div>
-    <Sectionbar title={page.section.title} titleLink={page.section.path}>
-      {page.section.subPages.map((page) => (
-        <SectionbarItem key={page.path}>
-          <Link to={page.path}>{page.title}</Link>
-        </SectionbarItem>
-      ))}
-    </Sectionbar>
-    <OneImageBackground
-      className={cx('Layout--content-top-bleed', headerStyles)}
-      src={page.heroImage.resource}
-    >
-      <div className={heroContainerStyles}>
-        <div className={cx('LokiContainer')}>
-          <h1>{page.title}</h1>
+export const OutletPage: React.SFC<OutletPageProps> = ({ page }) => {
+  const openingTimes = openingTimesBlockParser(page.openingTimes);
+  const openingTimesIntervals = parseOpeningTimesToIntervals(openingTimes ? openingTimes.times : []);
+
+  return (
+    <div>
+      <Sectionbar title={page.section.title} titleLink={page.section.path}>
+        {page.section.subPages.map((page) => (
+          <SectionbarItem key={page.path}>
+            <Link to={page.path}>{page.title}</Link>
+          </SectionbarItem>
+        ))}
+      </Sectionbar>
+      <OneImageBackground
+        className={cx('Layout--content-top-bleed', headerStyles)}
+        src={page.heroImage.resource}
+      >
+        <div className={heroContainerStyles}>
+          <div className={cx('LokiContainer')}>
+            <h1>{page.title}</h1>
+            <h2>{isOpenNow(openingTimesIntervals) ? 'Open now' : 'Closed'}</h2>
+          </div>
         </div>
-      </div>
-    </OneImageBackground>
+      </OneImageBackground>
 
-    <div className="LokiContainer">
-      <div className="Layout Layout--sidebar-right">
-        <div>
-          <StreamField page={page} items={page.main} />
+      <div className="LokiContainer">
+        <div className="Layout Layout--sidebar-right">
+          <div>
+            <StreamField page={page} items={page.main}/>
+          </div>
+          <aside>
+            <OpeningTimesCard
+              openingTimes={openingTimesIntervals}
+            />
+
+            {page.menu.length > 0 && <ContentCard>
+              <h3>Menus</h3>
+              <StreamField page={page} items={page.menu}/>
+            </ContentCard>}
+
+            {page.deals.length > 0 && <ContentCard>
+              <h3>Deals</h3>
+              <StreamField page={page} items={page.deals}/>
+            </ContentCard>}
+
+          </aside>
         </div>
-        <aside>
-          <OpeningTimesCard
-            openingTimes={openingTimesBlockParser(page.openingTimes)}
-          />
-
-          {page.menu.length > 0 && <ContentCard>
-            <h3>Menus</h3>
-            <StreamField page={page} items={page.menu} />
-          </ContentCard>}
-
-          {page.deals.length > 0 && <ContentCard>
-            <h3>Deals</h3>
-            <StreamField page={page} items={page.deals} />
-          </ContentCard>}
-
-        </aside>
       </div>
     </div>
-  </div>
-);
+  );
+};

@@ -70,7 +70,7 @@ class StaffPage extends React.Component<IProps, IState> {
       body,
     );
     return (
-      <div>
+      <div className="LokiContainer">
         <div className="Legacy">
           <div className="row">
             <div className="col-md-6">

@@ -49,17 +49,13 @@ export const AboutTheUnion = () => (<div className="FreshersHomepage__slice Fres
           </a>
         </div>
         <div>
-          <h3>Campus Services</h3>
+          <h3>Outlets</h3>
           <p>
-            We run all the shops and bars on campus with students in
+            We run shops and bars on campus with students in
             mind. We’re for students, not for profit, so there are
             always great deals.
           </p>
-          <p>
-            We also run support services, so if you’re struggling to
-            cope with anything, we’re here to help.
-          </p>
-          <a href="https://www.sussexstudent.com/our-campus-services/">
+          <a href="/services/outlets/">
             View our shops {'&'} bars
           </a>
         </div>

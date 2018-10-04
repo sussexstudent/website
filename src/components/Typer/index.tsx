@@ -67,7 +67,10 @@ export class Typer extends React.Component<TyperProps, TyperState> {
   }
 
   componentDidMount() {
-    this.timer = window.setTimeout(this.handleFrame, this.props.timer(FrameType.CompleteHold, 0));
+    this.timer = window.setTimeout(
+      this.handleFrame,
+      this.props.timer(FrameType.CompleteHold, 0),
+    );
   }
 
   componentWillUnmount() {

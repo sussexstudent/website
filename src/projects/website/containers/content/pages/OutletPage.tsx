@@ -4,15 +4,17 @@ import { FalmerImage } from '~types/events';
 import StreamField from '~website/containers/content/StreamField';
 import ContentCard from '~components/ContentCard';
 import { OneImageBackground } from '~components/OneImage';
-import {
-  openingTimesBlockParser,
-} from '~libs/streamFieldStructures';
+import { openingTimesBlockParser } from '~libs/streamFieldStructures';
 import { Sectionbar, SectionbarItem } from '~components/Sectionbar';
 import { Link } from 'react-router-dom';
-import {cx, css} from 'emotion';
-import {isOpenNow, OpeningTimeInterval, parseOpeningTimesToIntervals} from "~libs/openingTimes";
-import {format} from 'date-fns';
-import minimalisticTimeRenderer from "~libs/minimalisticTimeRenderer";
+import { cx, css } from 'emotion';
+import {
+  isOpenNow,
+  OpeningTimeInterval,
+  parseOpeningTimesToIntervals,
+} from '~libs/openingTimes';
+import { format } from 'date-fns';
+import minimalisticTimeRenderer from '~libs/minimalisticTimeRenderer';
 
 interface IOutletIndex extends Page<Page[]> {}
 
@@ -35,13 +37,16 @@ function OpeningTimesCard({
 }: {
   openingTimes: OpeningTimeInterval[];
 }) {
-
   return (
     <ContentCard>
       <h3>Opening Times</h3>
       <ul>
         {openingTimes.map((interval) => (
-          <li>{format(interval.start, 'eeee ')} {minimalisticTimeRenderer(interval.start)} - {minimalisticTimeRenderer(interval.end)}</li>
+          <li>
+            {format(interval.start, 'eeee ')}{' '}
+            {minimalisticTimeRenderer(interval.start)} -{' '}
+            {minimalisticTimeRenderer(interval.end)}
+          </li>
         ))}
       </ul>
     </ContentCard>
@@ -71,7 +76,7 @@ const heroContainerStyles = css({
     hsla(0, 0%, 8%, 0.742) 84.5%,
     hsla(0, 0%, 8%, 0.77) 91.9%,
     hsla(0, 0%, 8%, 0.78) 100%
-  )`
+  )`,
 });
 
 const headerStyles = css({
@@ -86,7 +91,9 @@ const headerStyles = css({
 
 export const OutletPage: React.SFC<OutletPageProps> = ({ page }) => {
   const openingTimes = openingTimesBlockParser(page.openingTimes);
-  const openingTimesIntervals = parseOpeningTimesToIntervals(openingTimes ? openingTimes.times : []);
+  const openingTimesIntervals = parseOpeningTimesToIntervals(
+    openingTimes ? openingTimes.times : [],
+  );
 
   return (
     <div>
@@ -112,23 +119,24 @@ export const OutletPage: React.SFC<OutletPageProps> = ({ page }) => {
       <div className="LokiContainer">
         <div className="Layout Layout--sidebar-right">
           <div>
-            <StreamField page={page} items={page.main}/>
+            <StreamField page={page} items={page.main} />
           </div>
           <aside>
-            <OpeningTimesCard
-              openingTimes={openingTimesIntervals}
-            />
+            <OpeningTimesCard openingTimes={openingTimesIntervals} />
 
-            {page.menu.length > 0 && <ContentCard>
-              <h3>Menus</h3>
-              <StreamField page={page} items={page.menu}/>
-            </ContentCard>}
+            {page.menu.length > 0 && (
+              <ContentCard>
+                <h3>Menus</h3>
+                <StreamField page={page} items={page.menu} />
+              </ContentCard>
+            )}
 
-            {page.deals.length > 0 && <ContentCard>
-              <h3>Deals</h3>
-              <StreamField page={page} items={page.deals}/>
-            </ContentCard>}
-
+            {page.deals.length > 0 && (
+              <ContentCard>
+                <h3>Deals</h3>
+                <StreamField page={page} items={page.deals} />
+              </ContentCard>
+            )}
           </aside>
         </div>
       </div>

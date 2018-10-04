@@ -1,11 +1,11 @@
 import React from 'react';
-import {FalmerFile, Page} from '~website/containers/content/types';
-import {Link} from 'react-router-dom';
-import {BreadcrumbBar} from '~components/BreadcrumbBar';
+import { FalmerFile, Page } from '~website/containers/content/types';
+import { Link } from 'react-router-dom';
+import { BreadcrumbBar } from '~components/BreadcrumbBar';
 import styled from 'react-emotion';
-import {COLORS, MQ} from "~libs/style";
-import {type, Typeface, TypeSize} from "~libs/style/type";
-import convert from "htmr";
+import { COLORS, MQ } from '~libs/style';
+import { type, Typeface, TypeSize } from '~libs/style/type';
+import convert from 'htmr';
 
 interface IKBCatPage extends Page {
   pageIcon: FalmerFile;
@@ -36,7 +36,7 @@ const CategoryItem = styled.li({
 
   [MQ.Medium]: {
     width: 180,
-  }
+  },
 });
 
 const CategoryIcon = styled.img({
@@ -55,7 +55,7 @@ const CategoryLink = styled(Link)({
   transition: 'transform ease 300ms',
   '&:hover': {
     transform: 'scale(1.05)',
-  }
+  },
 });
 
 const CategoryTitle = styled.span({

@@ -5,7 +5,7 @@ import ctRoutes from '~website/containers/content/contentTypeRoutes';
 import { HandledQuery } from '~components/HandledQuery';
 import Helmet from 'react-helmet';
 import { FourOhFourPage } from './FourOhFourPage';
-import {Switch} from 'react-router';
+import { Switch } from 'react-router';
 
 interface OwnProps {
   path: string;

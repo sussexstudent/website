@@ -22,7 +22,7 @@ function trackPageGA(path: string) {
     ga('set', 'page', path);
     ga('send', 'pageview');
   } else {
-    console.log('[ga dev] page view', path)
+    console.log('[ga dev] page view', path);
   }
 }
 

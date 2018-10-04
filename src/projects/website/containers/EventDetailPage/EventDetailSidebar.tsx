@@ -56,11 +56,7 @@ export const EventDetailSidebar = (props: IProps) => {
         />
       ) : null}
       {event.ticketType === TicketType.Generic ? (
-        <BuyButton
-          href={event.ticketData}
-          title={ticketCta}
-          subtitle=""
-        />
+        <BuyButton href={event.ticketData} title={ticketCta} subtitle="" />
       ) : null}
       {event.ticketType === TicketType.ACCA ? (
         <BuyButton
@@ -72,16 +68,16 @@ export const EventDetailSidebar = (props: IProps) => {
       {event.ticketType === TicketType.MSL ? (
         <React.Fragment>
           {/*<BuyButton*/}
-            {/*onClick={onTicketButton}*/}
-            {/*title={ticketCta}*/}
-            {/*subtitle={mslSubtitle(msl)}*/}
-            {/*disabled={msl && msl.tickets <= 0}*/}
+          {/*onClick={onTicketButton}*/}
+          {/*title={ticketCta}*/}
+          {/*subtitle={mslSubtitle(msl)}*/}
+          {/*disabled={msl && msl.tickets <= 0}*/}
           {/*/>*/}
           <BuyButton
-          href={`${event.ticketData}#tickets`}
-          title={ticketCta}
-          subtitle={mslSubtitle(msl)}
-          disabled={msl && msl.tickets <= 0}
+            href={`${event.ticketData}#tickets`}
+            title={ticketCta}
+            subtitle={mslSubtitle(msl)}
+            disabled={msl && msl.tickets <= 0}
           />
         </React.Fragment>
       ) : null}

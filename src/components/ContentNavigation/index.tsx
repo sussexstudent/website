@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import slugify from '~libs/slugify';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 interface Section {
   anchor: string;
@@ -57,9 +57,11 @@ const ContentNavigation: React.SFC<IProps> = ({
             })}
           >
             {item.to !== undefined ? (
-              <NavLink to={item.to} className="NavigationCard__anchor"
-                               activeClassName="NavigationCard__anchor--active"
-                               exact
+              <NavLink
+                to={item.to}
+                className="NavigationCard__anchor"
+                activeClassName="NavigationCard__anchor--active"
+                exact
               >
                 {item.name}
               </NavLink>

@@ -5,8 +5,8 @@ import { FalmerImage } from '~types/events';
 import { Link } from 'react-router-dom';
 import { Sectionbar, SectionbarItem } from '~components/Sectionbar';
 import { OneImageBackground } from '~components/OneImage';
-import styled, {css} from 'react-emotion';
-import {Typeface, TypeSize, type} from "~libs/style/type";
+import styled, { css } from 'react-emotion';
+import { Typeface, TypeSize, type } from '~libs/style/type';
 
 // import {css} from 'react-emotion';
 
@@ -82,11 +82,12 @@ export const OutletIndexPage: React.SFC<OutletIndexPageProps> = ({ page }) => (
       <ul className="List--reset">
         {page.subPages.map((page) => (
           <OutletItem key={page.path}>
-            <OneImageBackground src={page.heroImage.resource} className={backgroundStyles}>
+            <OneImageBackground
+              src={page.heroImage.resource}
+              className={backgroundStyles}
+            >
               <Link className={heroContainerStyles} to={page.path}>
-                <h3 className={titleStyles}>
-                  {page.title}
-                </h3>
+                <h3 className={titleStyles}>{page.title}</h3>
               </Link>
             </OneImageBackground>
           </OutletItem>

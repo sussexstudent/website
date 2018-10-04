@@ -18,7 +18,7 @@ import PatternPlaceholder from '~components/PatternPlaceholder';
 import Button from '~components/Button';
 import { TicketsModal } from '~website/containers/EventDetailPage/TicketsModal';
 import { RouteComponentProps } from 'react-router-dom';
-import {ScrollToTop} from "~components/ScrollToTop";
+import { ScrollToTop } from '~components/ScrollToTop';
 
 interface RouteParams {
   [0]: string;
@@ -121,7 +121,9 @@ class EventDetailPage extends React.Component<IProps, IState> {
                 <div className="ContentCard__content">
                   <div className="Prose type-body-copy">
                     {event.bodyHtml !== '' ? (
-                      <div dangerouslySetInnerHTML={{ __html: event.bodyHtml }} />
+                      <div
+                        dangerouslySetInnerHTML={{ __html: event.bodyHtml }}
+                      />
                     ) : (
                       <div>{event.shortDescription}</div>
                     )}

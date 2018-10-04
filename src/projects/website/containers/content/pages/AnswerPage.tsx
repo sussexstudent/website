@@ -7,7 +7,7 @@ import slugify from '~libs/slugify';
 import { RelatedContent } from '~website/components/RelatedContent';
 import { StaffOwners } from '~website/components/StaffOwners';
 import { KBContentBreadcrumbBar } from '~website/components/KBContentBreadcrumbBar';
-import {format} from 'date-fns';
+import { format } from 'date-fns';
 
 interface IAnswerPage extends Page {
   content: StreamFieldData;
@@ -37,16 +37,19 @@ class AnswerPage extends React.Component<IProps> {
         <h1 className="type-trafalgar">{page.title}</h1>
         <div className="LayoutContent">
           <div className="LayoutContent__toc">
-            {headings.length > 0 && <ContentNavigation
-              title="Navigation"
+            {headings.length > 0 && (
+              <ContentNavigation
+                title="Navigation"
                 items={headings.map((heading) => ({
-                name: heading,
-                anchor: slugify(heading),
-                children: [],
-              }))}
-            />}
+                  name: heading,
+                  anchor: slugify(heading),
+                  children: [],
+                }))}
+              />
+            )}
             <div>
-              Last updated at {format(new Date(page.lastPublishedAt), 'dd/MM/YY')}
+              Last updated at{' '}
+              {format(new Date(page.lastPublishedAt), 'dd/MM/YY')}
             </div>
           </div>
           <div className="LayoutContent__main">

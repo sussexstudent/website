@@ -13,7 +13,7 @@ import { OutletPage } from '~website/containers/content/pages/OutletPage';
 import { KBRootPage } from '~website/containers/content/pages/KBRootPage';
 import { KBCategoryPage } from '~website/containers/content/pages/KBCategoryPage';
 import { BasicContentPage } from '~website/containers/content/pages/BasicContentPage';
-import {Route} from 'react-router';
+import { Route } from 'react-router';
 
 const StaffPage = Loadable({
   loading: LoadableLoading,
@@ -31,13 +31,29 @@ interface PageComponentMap {
   [wagtailModel: string]: any; // todo
 }
 
-const pageComponent = (Component: any, page: any) => (routeProps: any) => <Component page={page} {...routeProps} />;
+const pageComponent = (Component: any, page: any) => (routeProps: any) => (
+  <Component page={page} {...routeProps} />
+);
 
-const pageRouter = (indexComponent: any, additionalRoutes: { path: string, component: any }[] = []) => ({ page }: { page: any }) => {
+const pageRouter = (
+  indexComponent: any,
+  additionalRoutes: { path: string; component: any }[] = [],
+) => ({ page }: { page: any }) => {
   return (
     <React.Fragment>
-      <Route path={page.path} component={pageComponent(indexComponent, page)} exact />
-      {additionalRoutes.map(route => <Route key={route.path} path={page.path + route.path} component={pageComponent(route.component, page)} exact /> )}
+      <Route
+        path={page.path}
+        component={pageComponent(indexComponent, page)}
+        exact
+      />
+      {additionalRoutes.map((route) => (
+        <Route
+          key={route.path}
+          path={page.path + route.path}
+          component={pageComponent(route.component, page)}
+          exact
+        />
+      ))}
     </React.Fragment>
   );
 };
@@ -64,7 +80,9 @@ export default {
   // TODO: BasicContentPage
 
   // Outlets
-  OutletIndexPage: pageRouter(OutletIndexPage, [{ path: 'archive', component: () => <h1>Archive page whoa!</h1> }]),
+  OutletIndexPage: pageRouter(OutletIndexPage, [
+    { path: 'archive', component: () => <h1>Archive page whoa!</h1> },
+  ]),
   OutletPage: pageRouter(OutletPage),
 
   // Officers

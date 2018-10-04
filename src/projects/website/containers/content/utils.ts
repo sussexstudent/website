@@ -37,12 +37,13 @@ export function getHeadingsFromHtmlString(html: string): string[] {
 }
 
 export function getHeadingsFromStreamField(stream: StreamFieldData): string[] {
-  return [].concat.apply([],
+  return [].concat.apply(
+    [],
     stream
       .filter((block) => block.type === 'text')
       .map((block: StreamFieldBlockData<{ value: string }>) =>
         getHeadingsFromHtmlString(block.value.value),
-      )
+      ),
   );
 }
 

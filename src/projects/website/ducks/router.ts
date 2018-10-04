@@ -43,21 +43,26 @@ export const setRouter = (history: History, location: Location) => ({
   payload: { history, location },
 });
 
-export const setSearchValue = (query: string, source: SearchChangeSource = SearchChangeSource.HeaderInput) => {
+export const setSearchValue = (
+  query: string,
+  source: SearchChangeSource = SearchChangeSource.HeaderInput,
+) => {
   if (source !== SearchChangeSource.HeaderInput) {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       // this is naughty
-      const element = document.querySelector<HTMLInputElement>('#HP_QUERY_ELEMENT_SIDE_EFFECT');
+      const element = document.querySelector<HTMLInputElement>(
+        '#HP_QUERY_ELEMENT_SIDE_EFFECT',
+      );
       if (element) {
         element.focus();
       }
     }
   }
 
-  return ({
+  return {
     type: ROUTER_SET_SEARCH_QUERY,
-    payload: {query},
-  });
+    payload: { query },
+  };
 };
 
 export const announceMount = (appMountState: AppMountState) => ({

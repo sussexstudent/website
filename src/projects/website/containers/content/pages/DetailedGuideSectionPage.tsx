@@ -4,9 +4,9 @@ import ContentNavigation from '~components/ContentNavigation';
 import { RelatedContent } from '~website/components/RelatedContent';
 import { StaffOwners } from '~website/components/StaffOwners';
 import StreamField from '~website/containers/content/StreamField';
-import {BreadcrumbBar} from "~components/BreadcrumbBar";
-import {Link} from 'react-router-dom';
-import {format} from 'date-fns';
+import { BreadcrumbBar } from '~components/BreadcrumbBar';
+import { Link } from 'react-router-dom';
+import { format } from 'date-fns';
 
 interface DetailPage extends Page<DetailPageSection[]> {
   content: StreamFieldData;
@@ -15,31 +15,27 @@ interface DetailPage extends Page<DetailPageSection[]> {
 
   root: Page;
   category: Page;
-
 }
 
 interface DetailPageSection extends Page {
   content: StreamFieldData;
-  parentPage: DetailPage
+  parentPage: DetailPage;
 }
-
 
 interface IProps {
   page: DetailPageSection; // todo
 }
 
-const DetailedGuideSection: React.SFC<
-  { page: DetailPageSection }
-> = (props) => <StreamField items={props.page.content} page={props.page} />;
+const DetailedGuideSection: React.SFC<{ page: DetailPageSection }> = (
+  props,
+) => <StreamField items={props.page.content} page={props.page} />;
 
 class DetailedGuideSectionPage extends React.Component<IProps> {
   render() {
     const {
-      page: { parentPage: {
-        subPages,
-        relatedLinks,
-        staffOwners,
-      } },
+      page: {
+        parentPage: { subPages, relatedLinks, staffOwners },
+      },
       page,
     } = this.props;
     return (
@@ -48,7 +44,10 @@ class DetailedGuideSectionPage extends React.Component<IProps> {
           <Link key={page.parentPage.root.path} to={page.parentPage.root.path}>
             {page.parentPage.root.title}
           </Link>
-          <Link key={page.parentPage.category.path} to={page.parentPage.category.path}>
+          <Link
+            key={page.parentPage.category.path}
+            to={page.parentPage.category.path}
+          >
             {page.parentPage.category.title}
           </Link>
           <Link key={page.parentPage.path} to={page.parentPage.path}>
@@ -60,7 +59,9 @@ class DetailedGuideSectionPage extends React.Component<IProps> {
         </BreadcrumbBar>
 
         <h2 className="type-great-primer">{page.parentPage.title}</h2>
-        <h1 className="type-trafalgar" style={{ marginTop: '0.5rem', }}>{page.title}</h1>
+        <h1 className="type-trafalgar" style={{ marginTop: '0.5rem' }}>
+          {page.title}
+        </h1>
         <div className="LayoutContent">
           <div className="LayoutContent__toc">
             <ContentNavigation
@@ -73,7 +74,8 @@ class DetailedGuideSectionPage extends React.Component<IProps> {
               }))}
             />
             <div>
-              Last updated at {format(new Date(page.lastPublishedAt), 'dd/MM/YY')}
+              Last updated at{' '}
+              {format(new Date(page.lastPublishedAt), 'dd/MM/YY')}
             </div>
           </div>
           <div className="LayoutContent__main">

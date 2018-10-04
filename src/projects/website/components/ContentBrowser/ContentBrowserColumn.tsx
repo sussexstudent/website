@@ -4,10 +4,9 @@ import { COLORS } from '~libs/style';
 import {
   ContentBrowserItem,
   Item,
-  itemActive
+  itemActive,
 } from '~website/components/ContentBrowser/ContentBrowserItem';
 import styled, { cx } from 'react-emotion';
-
 
 export const Column = styled.ul<{ active: boolean }>(({ active }) => ({
   maxWidth: '300px',
@@ -20,7 +19,7 @@ export const Column = styled.ul<{ active: boolean }>(({ active }) => ({
   },
   [`${Item} .${itemActive}`]: {
     opacity: active ? 1 : 0.6,
-  }
+  },
 }));
 
 interface ContentBrowserColumnProps {

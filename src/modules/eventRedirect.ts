@@ -1,6 +1,6 @@
 import { parseTickets } from '~libs/mslEventTicketParser';
 import user from '~libs/user';
-import getFalmerEndpoint from "~libs/getFalmerEndpoint";
+import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 
 const pathRegEx = /^\/ents\/event\/([0-9]+)\/?/;
 

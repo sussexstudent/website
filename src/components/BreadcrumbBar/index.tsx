@@ -19,7 +19,7 @@ const BreadcrumbItem = styled.li({
   display: 'inline-block',
   '& > a': {
     textDecoration: 'none',
-  }
+  },
 });
 
 const IconContainer = styled.span({

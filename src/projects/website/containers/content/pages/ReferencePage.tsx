@@ -7,7 +7,7 @@ import slugify from '~libs/slugify';
 import { RelatedContent } from '~website/components/RelatedContent';
 import { StaffOwners } from '~website/components/StaffOwners';
 import { KBContentBreadcrumbBar } from '~website/components/KBContentBreadcrumbBar';
-import {format} from 'date-fns';
+import { format } from 'date-fns';
 
 interface IReferencePage extends Page {
   content: StreamFieldData;
@@ -49,7 +49,8 @@ class ReferencePage extends React.Component<IProps> {
               />
             ) : null}
             <div>
-              Last updated at {format(new Date(page.lastPublishedAt), 'dd/MM/YY')}
+              Last updated at{' '}
+              {format(new Date(page.lastPublishedAt), 'dd/MM/YY')}
             </div>
           </div>
           <div className="LayoutContent__main">

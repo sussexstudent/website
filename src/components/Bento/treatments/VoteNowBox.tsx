@@ -213,4 +213,3 @@ export class VoteNowBox extends React.Component<IProps, IState> {
     );
   }
 }
-

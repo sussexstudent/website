@@ -23,9 +23,7 @@ class DetailedGuideSectionPage extends React.Component<IProps> {
     const {
       page: { subPages },
     } = this.props;
-    return (
-      <Redirect from={'/'} to={subPages[0].path} />
-    );
+    return <Redirect from={'/'} to={subPages[0].path} />;
   }
 }
 

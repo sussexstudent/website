@@ -2,7 +2,7 @@ import React from 'react';
 import { Page } from '~website/containers/content/types';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
 import { Link } from 'react-router-dom';
-import {Typeface, TypeSize, type} from "~libs/style/type";
+import { Typeface, TypeSize, type } from '~libs/style/type';
 import styled from 'react-emotion';
 
 interface IKBRoot extends Page {}
@@ -17,8 +17,7 @@ interface KBCategoryPageProps {
   page: IKBCategoryPage;
 }
 
-const PageList = styled.ul({
-});
+const PageList = styled.ul({});
 
 const PageLink = styled(Link)({
   textDecoration: 'none',

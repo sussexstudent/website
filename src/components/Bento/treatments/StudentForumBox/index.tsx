@@ -21,7 +21,7 @@ const StudentForumBox: React.SFC<IProps> = () => (
       >
         <OneImage
           src="original_images/b2f0101a0cce4daba48e4c0503b60066"
-          alt="Student Awards"
+          alt="Student Forum, October 17th"
           aspectRatio={{ width: 542, height: 346 }}
         />
       </div>

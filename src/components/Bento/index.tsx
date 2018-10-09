@@ -1,8 +1,12 @@
 import React from 'react';
 import { BentoBoxImpulse } from '~components/Bento/BentoBoxImpulse';
+import {StudentForumBox} from "~components/Bento/treatments/StudentForumBox";
 
 const Bento: React.SFC<{}> = () => (
   <div className="Bento Trail">
+    <div className="Trail__row">
+      <StudentForumBox />
+    </div>
     <div className="Trail__row Trail__row--111">
       <BentoBoxImpulse link="/sport-societies-media/discover" color="blue">
         Discover student groups

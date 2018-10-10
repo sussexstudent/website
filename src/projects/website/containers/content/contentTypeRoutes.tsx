@@ -59,10 +59,9 @@ const pageRouter = (
 };
 
 export default {
+  HomePage,
   StaffPage: pageRouter(StaffPage),
   SectionContentPage: pageRouter(SectionContentPage),
-
-  HomePage,
 
   BasicContentPage: pageRouter(BasicContentPage),
 

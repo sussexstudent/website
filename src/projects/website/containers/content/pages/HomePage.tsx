@@ -3,6 +3,7 @@ import { Page } from '~website/containers/content/types';
 import { FalmerImage } from '~types/events';
 import FigureCollection from '~components/FigureCollection';
 import FigureCollectionFigure from '~components/FigureCollection/FigureCollectionFigure';
+import Helmet from 'react-helmet';
 
 interface FigureCollectionBlock {
   id: string;
@@ -30,6 +31,7 @@ function HomePage(props: IProps) {
 
   return (
     <div>
+      <Helmet title={undefined} />
       <div className="ContentBlock">
         <div className="ContentBlock__heading">Your full-time officers</div>
         <FigureCollection>

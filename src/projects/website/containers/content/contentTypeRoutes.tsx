@@ -62,7 +62,7 @@ export default {
   StaffPage: pageRouter(StaffPage),
   SectionContentPage: pageRouter(SectionContentPage),
 
-  HomePage: pageRouter(HomePage),
+  HomePage,
 
   BasicContentPage: pageRouter(BasicContentPage),
 

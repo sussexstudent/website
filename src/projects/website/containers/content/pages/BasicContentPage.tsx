@@ -15,7 +15,7 @@ export const BasicContentPage: React.SFC<BasicContentPageProps> = ({
 }) => (
   <div className="LokiContainer">
     <h1>{page.title}</h1>
-    <div style={{ maxWidth: '660px' }}>
+    <div style={{ maxWidth: '660px' }} className="type-body-copy">
       <StreamField page={page} items={page.content} />
     </div>
   </div>

@@ -78,7 +78,7 @@ class DetailedGuideSectionPage extends React.Component<IProps> {
               {format(new Date(page.lastPublishedAt), 'dd/MM/YY')}
             </div>
           </div>
-          <div className="LayoutContent__main">
+          <div className="LayoutContent__main type-body-copy">
             <DetailedGuideSection page={page} />
           </div>
 

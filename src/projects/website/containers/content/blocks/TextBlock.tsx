@@ -19,5 +19,5 @@ export const TextBlock: StreamFieldBlock<{ value: string }> = ({ block }) => {
       p: (props) => (props.children === null ? null : <p>{props.children}</p>),
     },
   });
-  return <div className="Prose type-body-copy ContentBlock">{html}</div>;
+  return <div className="Prose ContentBlock">{html}</div>;
 };

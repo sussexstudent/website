@@ -78,7 +78,9 @@ export const OutletIndexPage: React.SFC<OutletIndexPageProps> = ({ page }) => (
       ))}
     </Sectionbar>
     <div className="LokiContainer">
-      <StreamField page={page} items={page.preamble} />
+      <div className="type-body-copy">
+        <StreamField page={page} items={page.preamble} />
+      </div>
       <ul className="List--reset">
         {page.subPages.map((page) => (
           <OutletItem key={page.path}>

@@ -34,9 +34,12 @@ function getDaysFromDays(days: string): number[] {
       const fill = [];
       const startDay = daysMap.indexOf(range[0]);
       const endDay = daysMap.indexOf(range[1]);
-      for(let i = startDay; i <= endDay; i = i + 1) {
+
+      for(let i = startDay; (i % 7) !== endDay; i = i + 1) {
         fill.push(i)
       }
+
+      fill.push(endDay);
 
       return fill;
     }

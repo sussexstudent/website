@@ -1,6 +1,6 @@
 import React from 'react';
 import { BentoBoxImpulse } from '~components/Bento/BentoBoxImpulse';
-import {StudentForumBox} from "~components/Bento/treatments/StudentForumBox";
+import { StudentForumBox } from '~components/Bento/treatments/StudentForumBox';
 
 const Bento: React.SFC<{}> = () => (
   <div className="Bento Trail">

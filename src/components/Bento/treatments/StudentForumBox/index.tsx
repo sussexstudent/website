@@ -6,9 +6,18 @@ interface IProps {}
 
 const StudentForumBox: React.SFC<IProps> = () => (
   <div className="BentoBox">
-    <OneImageBackground src="original_images/6b1d022261d648a199e3a3607705e559" style={{     display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-end', height: '300px', width: '100%', backgroundSize: 'cover', backgroundPosition: 'center right' }}>
+    <OneImageBackground
+      src="original_images/6b1d022261d648a199e3a3607705e559"
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        height: '300px',
+        width: '100%',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center right',
+      }}
+    >
       <FauxLink href="/whats-on/sussex-student-forums-2018-2133" />
       <div
         style={{

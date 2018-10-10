@@ -87,10 +87,16 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
             <Route component={FreshersContentAPI} path="/freshers" />
             {/*<EventDiscovery path="/event-discovery" />*/}
             <Route component={ContentAPI} path="/get-involved" exact />
-            <Route component={ContentAPI} path="/get-involved/societies-and-student-media" />
+            <Route
+              component={ContentAPI}
+              path="/get-involved/societies-and-student-media"
+            />
             <Route component={ContentAPI} path="/get-involved/officers" />
             <Route component={ContentAPI} path="/get-involved/sports-clubs" />
-            <Route component={ContentAPI} path="/get-involved/decision-making" />
+            <Route
+              component={ContentAPI}
+              path="/get-involved/decision-making"
+            />
             <Route component={ContentAPI} path="/services" />
             <Route component={ContentAPI} path="/support" exact />
             <Route component={ContentAPI} path="/get-involved-next" />

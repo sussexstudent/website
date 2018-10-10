@@ -15,6 +15,7 @@ import {
 } from '~libs/openingTimes';
 import { format } from 'date-fns';
 import minimalisticTimeRenderer from '~libs/minimalisticTimeRenderer';
+import convert from "htmr";
 
 interface IOutletIndex extends Page<Page[]> {}
 
@@ -24,6 +25,9 @@ interface IOutletPage extends Page {
   openingTimes: StreamFieldData;
   menu: StreamFieldData;
   deals: StreamFieldData;
+
+  googleMapsPlaceId: string;
+  contactDetails: string;
 
   section: IOutletIndex;
 }
@@ -119,7 +123,20 @@ export const OutletPage: React.SFC<OutletPageProps> = ({ page }) => {
       <div className="LokiContainer">
         <div className="Layout Layout--sidebar-right">
           <div>
-            <StreamField page={page} items={page.main} />
+
+            <div className="type-body-copy">
+              <StreamField page={page} items={page.main} />
+            </div>
+            <div className={cx('Trail', page.contactDetails !== '' && page.googleMapsPlaceId !== '' ? 'Trail__row--11' : '')}>
+              {page.googleMapsPlaceId !== '' && <div>
+                <h4>Find us</h4>
+                <iframe width="100%" height="400" src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBIl5pxXAz1mDL3BBYocb_pWOMkLcaJDMk&q=place_id:${page.googleMapsPlaceId}`} frameBorder="0" />
+              </div>}
+              {page.contactDetails !== '' && <div>
+                <h4>Contact us</h4>
+                {convert(page.contactDetails)}
+              </div>}
+            </div>
           </div>
           <aside>
             <OpeningTimesCard openingTimes={openingTimesIntervals} />

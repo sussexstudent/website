@@ -103,6 +103,8 @@ query ContentPage($path: String) {
       openingTimes
       menu
       deals
+      googleMapsPlaceId
+      contactDetails
       section: closestAncestorOfType(
         contentType: "OutletIndexPage"
         inclusive: true

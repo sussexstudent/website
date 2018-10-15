@@ -16,7 +16,7 @@ import { MSLEventCommunication } from '~website/containers/EventDetailPage/MSLEv
 import { EventDetailMetadata } from '~website/containers/EventDetailPage/EventDetailMetadata';
 import PatternPlaceholder from '~components/PatternPlaceholder';
 import Button from '~components/Button';
-import { TicketsModal } from '~website/containers/EventDetailPage/TicketsModal';
+// import { TicketsModal } from '~website/containers/EventDetailPage/TicketsModal';
 import { RouteComponentProps } from 'react-router-dom';
 import { ScrollToTop } from '~components/ScrollToTop';
 
@@ -179,13 +179,13 @@ class EventDetailPage extends React.Component<IProps, IState> {
               />
             ) : null}
 
-            {event.ticketType === TicketType.MSL ? (
-              <TicketsModal
-                isOpen={this.state.ticketModalOpen}
-                onRequestClose={this.handleCloseTicketModal}
-                msl={this.state.msl}
-              />
-            ) : null}
+            {/*{event.ticketType === TicketType.MSL ? (*/}
+              {/*<TicketsModal*/}
+                {/*isOpen={this.state.ticketModalOpen}*/}
+                {/*onRequestClose={this.handleCloseTicketModal}*/}
+                {/*msl={this.state.msl}*/}
+              {/*/>*/}
+            {/*) : null}*/}
           </div>
         </div>
       </ScrollToTop>

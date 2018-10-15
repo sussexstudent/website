@@ -5,6 +5,7 @@ import { SocialArray } from '~components/SocialArray';
 import { EventAccessSidebar } from '~website/containers/EventDetailPage/EventAccessSidebar';
 import { BuyButton } from '~website/containers/EventDetailPage/BuyButton';
 import { formatPrice } from '~libs/money';
+import {every} from 'lodash';
 
 interface IProps {
   event: Event;
@@ -19,6 +20,12 @@ function mslSubtitle(msl: any) {
 
   if (msl.tickets.length <= 0) {
     return 'Not currently on sale';
+  }
+
+  const withoutUndefined = every(msl.tickets, ticket => ticket !== undefined);
+
+  if (!withoutUndefined) {
+    return '';
   }
 
   const costs = msl.tickets.map((ticket: any) => ticket.value);

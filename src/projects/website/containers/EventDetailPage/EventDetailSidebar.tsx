@@ -5,7 +5,7 @@ import { SocialArray } from '~components/SocialArray';
 import { EventAccessSidebar } from '~website/containers/EventDetailPage/EventAccessSidebar';
 import { BuyButton } from '~website/containers/EventDetailPage/BuyButton';
 import { formatPrice } from '~libs/money';
-import {every} from 'lodash';
+import { every } from 'lodash';
 
 interface IProps {
   event: Event;
@@ -22,7 +22,7 @@ function mslSubtitle(msl: any) {
     return 'Not currently on sale';
   }
 
-  const withoutUndefined = every(msl.tickets, ticket => ticket !== undefined);
+  const withoutUndefined = every(msl.tickets, (ticket) => ticket !== undefined);
 
   if (!withoutUndefined) {
     return '';
@@ -81,7 +81,7 @@ export const EventDetailSidebar = (props: IProps) => {
           {/*disabled={msl && msl.tickets <= 0}*/}
           {/*/>*/}
           <BuyButton
-            href={`${event.ticketData}#tickets`}
+            href={`${event.ticketData}/tickets`}
             title={ticketCta}
             subtitle={mslSubtitle(msl)}
             disabled={msl && msl.tickets <= 0}

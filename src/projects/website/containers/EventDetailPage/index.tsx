@@ -180,11 +180,11 @@ class EventDetailPage extends React.Component<IProps, IState> {
             ) : null}
 
             {/*{event.ticketType === TicketType.MSL ? (*/}
-              {/*<TicketsModal*/}
-                {/*isOpen={this.state.ticketModalOpen}*/}
-                {/*onRequestClose={this.handleCloseTicketModal}*/}
-                {/*msl={this.state.msl}*/}
-              {/*/>*/}
+            {/*<TicketsModal*/}
+            {/*isOpen={this.state.ticketModalOpen}*/}
+            {/*onRequestClose={this.handleCloseTicketModal}*/}
+            {/*msl={this.state.msl}*/}
+            {/*/>*/}
             {/*) : null}*/}
           </div>
         </div>

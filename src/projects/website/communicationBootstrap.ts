@@ -3,11 +3,12 @@ import user from '~libs/user';
 
 function eventPage() {
   const pathRegEx = /^\/ents\/event\/([0-9]+)\/?/;
+  const ticketsEndRegEx = /tickets\/?$/;
 
   const match = window.location.pathname.match(pathRegEx);
 
   if (match !== null) {
-    if (window.location.hash === '#tickets') {
+    if (window.location.pathname.match(ticketsEndRegEx) !== null) {
       return;
     }
 

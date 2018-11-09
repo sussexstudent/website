@@ -14,9 +14,12 @@ export const RelatedContent = ({ relatedContent }: RelatedContentProps) => (
         <ul>
           {linkSection.value.links.map((link: any) => (
             <li>
-              <InternalAppLink key={link.id} to={link.value.link.path}>
-                {link.value.link.title}
-              </InternalAppLink>
+              {link.type === 'internal_link' && <InternalAppLink key={link.id} to={link.value.link.path}>
+                {link.value.title || link.value.link.title}
+              </InternalAppLink>}
+              {link.type === 'external_link' && <a key={link.id} href={link.value.link.path} target={link.value.target}>
+                {link.value.title}
+              </a>}
             </li>
           ))}
         </ul>

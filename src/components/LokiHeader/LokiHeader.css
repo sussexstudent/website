@@ -132,16 +132,6 @@
     }
   }
 
-  &__dropover {
-    position: absolute;
-    left: 0;
-    right: 0;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background: var(--color__brand-red);
-    color: #fff;
-  }
-
   &__search {
     flex: 1 1 auto;
     padding-right: 1rem;

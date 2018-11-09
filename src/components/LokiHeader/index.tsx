@@ -12,6 +12,7 @@ import * as pageActions from '../../projects/website/ducks/page';
 import { WebsiteRootState } from '~types/website';
 import { connect } from 'react-redux';
 import { InternalAppLink } from '~components/InternalAppLink';
+// import {LokiMenuDropover} from "~components/LokiHeader/LokiMenuDropover";
 
 interface LokiHeaderProps {
   isOpenMobileMenu: boolean;
@@ -80,9 +81,7 @@ class LokiHeaderComponent extends React.Component<
             onBackdropClick={() => toggleMobileMenu(!isOpenMobileMenu)}
           />
         </div>
-        <div className="LokiHeader__dropover" style={{ display: 'none' }}>
-          <div className="LokiContainer">hello this is a drop over</div>
-        </div>
+        {/*<LokiMenuDropover />*/}
       </React.Fragment>
     );
   }

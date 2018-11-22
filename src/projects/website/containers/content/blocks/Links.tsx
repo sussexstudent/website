@@ -19,11 +19,12 @@ export const ExternalLink: StreamFieldBlock<{
 export const InternalLink: StreamFieldBlock<{
   link: {
     path: string;
+    title: string;
   };
   target: any;
   title: string;
 }> = ({ block: { link, title } }) => {
-  return <BlockLink to={link.path}>{title}</BlockLink>;
+  return <BlockLink to={link.path}>{title || link.title }</BlockLink>;
 };
 
 export const DocumentLink: StreamFieldBlock<{

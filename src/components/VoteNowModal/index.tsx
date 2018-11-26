@@ -48,7 +48,8 @@ class VoteNowModal extends React.Component<IProps, IState> {
         <VoteNowBox
           link="/vote/"
           imageUrl="original_images/23748e8e475049fe8e49162ccd827b44"
-          targetDate={new Date(2018, 2, 23, 17, 0, 0)}
+          votingStartsDate={new Date(2018, 10, 22, 12, 0,0)}
+          votingEndsDate={new Date(2018, 10, 27, 12, 0,0)}
         />
       </Modal>
     );

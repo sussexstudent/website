@@ -6,6 +6,8 @@ import {
   differenceInMinutes,
   differenceInHours,
   differenceInSeconds,
+  isBefore,
+  isAfter,
 } from 'date-fns';
 import CountUp from 'react-countup';
 import { OneImageBackground } from '~components/OneImage';
@@ -18,7 +20,8 @@ export enum HighlightTheme {
 interface IProps {
   link: string;
   imageUrl: string;
-  targetDate: Date;
+  votingStartsDate: Date;
+  votingEndsDate: Date;
   theme?: HighlightTheme;
   liveCounting?: boolean;
 }
@@ -88,9 +91,19 @@ export class VoteNowBox extends React.Component<IProps, IState> {
     }
   }
 
-  render() {
-    const { targetDate, link, imageUrl } = this.props;
+  renderVotingClosed() {
+    return (
+      <h1>Voting closed</h1>
+    )
+  }
+
+  renderVotingCountdown() {
+    const { votingEndsDate, votingStartsDate } = this.props;
     const { now, voterCountStart, voterCountEnd } = this.state;
+
+    const isVotingOpen = isAfter(now, votingStartsDate);
+
+    const targetDate = isVotingOpen ? votingEndsDate : votingStartsDate;
 
     const days = differenceInDays(targetDate, now);
     const hours = differenceInHours(targetDate, now) - days * 24;
@@ -101,6 +114,108 @@ export class VoteNowBox extends React.Component<IProps, IState> {
       days * 24 * 60 * 60 -
       hours * 60 * 60 -
       minutes * 60;
+
+    return (
+      <React.Fragment>
+        {this.props.liveCounting ? (
+          <div>
+            <div
+              className="type-long-primer type-primary"
+              style={{
+                display: 'inline-block',
+                background: '#fff',
+                color: '#000',
+                padding: '0.3em',
+                textTransform: 'uppercase',
+                fontWeight: 600,
+                border: '3px solid #000',
+              }}
+            >
+              {
+                <span>
+                      Join the{' '}
+                  <CountUp
+                    start={voterCountStart}
+                    end={voterCountEnd}
+                    duration={4}
+                  />{' '}
+                  students who have already voted
+                    </span>
+              }
+            </div>
+          </div>
+        ) : null}
+        <h1
+          className={cx('type-canon')}
+          style={{
+            backgroundColor: '#000',
+            color: '#fff',
+            marginTop: '0.2rem',
+            padding: '0.2em',
+            paddingBottom: '0.1em',
+            fontWeight: 600,
+            display: 'inline-block',
+            textTransform: 'uppercase',
+          }}
+        >
+          Referenda
+        </h1>
+        <h2
+          className={cx('type-trafalgar')}
+          style={{ marginBottom: '1rem' }}
+        >
+          Voting {isVotingOpen ? 'closes' : 'opens'} in
+        </h2>
+        <h2
+          className={cx('type-double-pica')}
+          style={{
+            marginBottom: '1rem',
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
+          <div style={timeBox}>
+            <span>{days}</span>
+            <span>
+                  {' '}
+              day
+              {days !== 1 ? 's' : null}
+                </span>
+          </div>
+          <div style={timeBox}>
+            <span>{hours}</span>
+            <span>
+                  {' '}
+              hour
+              {hours !== 1 ? 's' : null}
+                </span>
+          </div>
+          <div style={timeBox}>
+            <span>{minutes}</span>
+            <span>
+                  {' '}
+              minute
+              {minutes !== 1 ? 's' : null}
+                </span>
+          </div>
+          <div style={timeBox}>
+            <span>{seconds}</span>
+            <span>
+                  {' '}
+              second
+              {seconds !== 1 ? 's' : null}
+                </span>
+          </div>
+        </h2>
+      </React.Fragment>
+    )
+  }
+
+  render() {
+    const { votingEndsDate, link, imageUrl } = this.props;
+    const { now } = this.state;
+
+    const hasVotingClosed = isBefore(votingEndsDate, now);
 
     return (
       <div className="BentoBox" style={{ backgroundColor: '#e95452' }}>
@@ -117,96 +232,7 @@ export class VoteNowBox extends React.Component<IProps, IState> {
               width: '100%',
             }}
           >
-            {this.props.liveCounting ? (
-              <div>
-                <div
-                  className="type-long-primer type-primary"
-                  style={{
-                    display: 'inline-block',
-                    background: '#fff',
-                    color: '#000',
-                    padding: '0.3em',
-                    textTransform: 'uppercase',
-                    fontWeight: 600,
-                    border: '3px solid #000',
-                  }}
-                >
-                  {
-                    <span>
-                      Join the{' '}
-                      <CountUp
-                        start={voterCountStart}
-                        end={voterCountEnd}
-                        duration={4}
-                      />{' '}
-                      students who have already voted
-                    </span>
-                  }
-                </div>
-              </div>
-            ) : null}
-            <h1
-              className={cx('type-canon')}
-              style={{
-                backgroundColor: '#000',
-                color: '#fff',
-                marginTop: '0.2rem',
-                padding: '0.2em',
-                paddingBottom: '0.1em',
-                fontWeight: 600,
-                display: 'inline-block',
-                textTransform: 'uppercase',
-              }}
-            >
-              Vote now
-            </h1>
-            <h2
-              className={cx('type-trafalgar')}
-              style={{ marginBottom: '1rem' }}
-            >
-              Voting closes in
-            </h2>
-            <h2
-              className={cx('type-double-pica')}
-              style={{
-                marginBottom: '1rem',
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}
-            >
-              <div style={timeBox}>
-                <span>{days}</span>
-                <span>
-                  {' '}
-                  day
-                  {days !== 1 ? 's' : null}
-                </span>
-              </div>
-              <div style={timeBox}>
-                <span>{hours}</span>
-                <span>
-                  {' '}
-                  hour
-                  {hours !== 1 ? 's' : null}
-                </span>
-              </div>
-              <div style={timeBox}>
-                <span>{minutes}</span>
-                <span>
-                  {' '}
-                  minute
-                  {minutes !== 1 ? 's' : null}
-                </span>
-              </div>
-              <div style={timeBox}>
-                <span>{seconds}</span>
-                <span>
-                  {' '}
-                  second
-                  {seconds !== 1 ? 's' : null}
-                </span>
-              </div>
-            </h2>
+            {hasVotingClosed ? this.renderVotingClosed() : this.renderVotingCountdown()}
           </div>
         </OneImageBackground>
       </div>

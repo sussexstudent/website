@@ -1,17 +1,12 @@
 import React from 'react';
 import { BentoBoxImpulse } from '~components/Bento/BentoBoxImpulse';
-import {VoteNowBox} from "~components/Bento/treatments/VoteNowBox";
+// import {F18Box} from "~components/Bento/treatments/F18Box";
 
 const Bento: React.SFC<{}> = () => (
   <div className="Bento Trail">
-    <div className="Trail__row">
-      <VoteNowBox
-        link="/vote"
-        imageUrl="original_images/23748e8e475049fe8e49162ccd827b44"
-        votingStartsDate={new Date(2018, 10, 27, 9, 0,0)}
-        votingEndsDate={new Date(2018, 10, 30, 17, 0,0)}
-      />
-    </div>
+    {/*<div className="Trail__row">*/}
+      {/*<F18Box link={"/freshers"} />*/}
+    {/*</div>*/}
     <div className="Trail__row Trail__row--111">
       <BentoBoxImpulse link="/sport-societies-media/discover" color="blue">
         Discover student groups

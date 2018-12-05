@@ -24,7 +24,7 @@ export const InternalLink: StreamFieldBlock<{
   target: any;
   title: string;
 }> = ({ block: { link, title } }) => {
-  return <BlockLink to={link.path}>{title || link.title }</BlockLink>;
+  return <BlockLink to={link.path}>{title || link.title}</BlockLink>;
 };
 
 export const DocumentLink: StreamFieldBlock<{

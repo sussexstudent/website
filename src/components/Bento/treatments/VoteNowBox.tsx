@@ -92,9 +92,7 @@ export class VoteNowBox extends React.Component<IProps, IState> {
   }
 
   renderVotingClosed() {
-    return (
-      <h1>Voting closed</h1>
-    )
+    return <h1>Voting closed</h1>;
   }
 
   renderVotingCountdown() {
@@ -133,14 +131,14 @@ export class VoteNowBox extends React.Component<IProps, IState> {
             >
               {
                 <span>
-                      Join the{' '}
+                  Join the{' '}
                   <CountUp
                     start={voterCountStart}
                     end={voterCountEnd}
                     duration={4}
                   />{' '}
                   students who have already voted
-                    </span>
+                </span>
               }
             </div>
           </div>
@@ -160,10 +158,7 @@ export class VoteNowBox extends React.Component<IProps, IState> {
         >
           Referenda
         </h1>
-        <h2
-          className={cx('type-trafalgar')}
-          style={{ marginBottom: '1rem' }}
-        >
+        <h2 className={cx('type-trafalgar')} style={{ marginBottom: '1rem' }}>
           Voting {isVotingOpen ? 'closes' : 'opens'} in
         </h2>
         <h2
@@ -177,38 +172,38 @@ export class VoteNowBox extends React.Component<IProps, IState> {
           <div style={timeBox}>
             <span>{days}</span>
             <span>
-                  {' '}
+              {' '}
               day
               {days !== 1 ? 's' : null}
-                </span>
+            </span>
           </div>
           <div style={timeBox}>
             <span>{hours}</span>
             <span>
-                  {' '}
+              {' '}
               hour
               {hours !== 1 ? 's' : null}
-                </span>
+            </span>
           </div>
           <div style={timeBox}>
             <span>{minutes}</span>
             <span>
-                  {' '}
+              {' '}
               minute
               {minutes !== 1 ? 's' : null}
-                </span>
+            </span>
           </div>
           <div style={timeBox}>
             <span>{seconds}</span>
             <span>
-                  {' '}
+              {' '}
               second
               {seconds !== 1 ? 's' : null}
-                </span>
+            </span>
           </div>
         </h2>
       </React.Fragment>
-    )
+    );
   }
 
   render() {
@@ -232,7 +227,9 @@ export class VoteNowBox extends React.Component<IProps, IState> {
               width: '100%',
             }}
           >
-            {hasVotingClosed ? this.renderVotingClosed() : this.renderVotingCountdown()}
+            {hasVotingClosed
+              ? this.renderVotingClosed()
+              : this.renderVotingCountdown()}
           </div>
         </OneImageBackground>
       </div>

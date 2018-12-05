@@ -18,7 +18,6 @@ class LokiHeaderSearchComponent extends React.Component<
   LokiHeaderSearchProps,
   LokiHeaderSearchState
 > {
-
   @bind
   onChange(e: React.ChangeEvent<HTMLInputElement>) {
     this.props.setSearchValue(e.target.value);

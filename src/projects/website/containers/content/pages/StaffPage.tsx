@@ -198,36 +198,35 @@ class StaffPage extends React.Component<IProps, IState> {
 
                     <p>
                       <a href="mailto:welcometeam@ussu.sussex.ac.uk">
-                        welcometeam@
-                        <br />
-                        ussu.sussex.ac.uk
+                        welcometeam@ussu.sussex.ac.uk
                       </a>
-                      <br />
-                      &nbsp;
                     </p>
                   </div>
 
                   <div className="col-sm-4">
                     <h3>The Union Shop</h3>
-
                     <p>01273 67 8147</p>
                   </div>
 
                   <div className="col-sm-4 col-sm-offset-2">
                     <h3>Falmer Bar</h3>
-
-                    <p>01273 678351</p>
+                    <p>01273 678148</p>
+                    <p>thebars@sussexstudent.com</p>
                   </div>
-
                   <div className="col-sm-4">
-                    <h3>East Slope Bar</h3>
-
-                    <p>
-                      <br />
-                      01273 68 9453&nbsp;
-                    </p>
-
-                    <p>&nbsp;</p>
+                    <h3>Room 76</h3>
+                    <p>01273 678148</p>
+                    <p>thebars@sussexstudent.com</p>
+                  </div>
+                  <div className="col-sm-4">
+                    <h3>The Clubhouse</h3>
+                    <p>01273 678148</p>
+                    <p>thebars@sussexstudent.com</p>
+                  </div>
+                  <div className="col-sm-4">
+                    <h3>Northfield Bar</h3>
+                    <p>01273 877294</p>
+                    <p>thebars@sussexstudent.com</p>
                   </div>
                 </div>
               </ContentCard>

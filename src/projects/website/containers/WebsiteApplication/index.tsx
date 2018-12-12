@@ -101,6 +101,7 @@ class WebsiteApplication extends React.Component<WebsiteApplicationProps> {
             <Route component={ContentAPI} path="/support" exact />
             <Route component={ContentAPI} path="/get-involved-next" />
             <Route component={ContentAPI} path="/about-us-next" />
+            <Route component={ContentAPI} path="/get-involved/campaigns-toolkit" />
             <Route component={ContentAPI} path="/about-us/contact" />
             <Route component={ContentExplorer} path="/content-explorer" exact />
             <Route component={FourOhFourPageRoute} default />

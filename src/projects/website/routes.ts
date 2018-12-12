@@ -20,5 +20,6 @@ export default new PreRouter([
   /^\/about-us\/contact/,
   /^\/support$/,
   '/get-involved-next',
+  '/get-involved/campaigns-toolkit',
   '/about-us-next',
 ]);

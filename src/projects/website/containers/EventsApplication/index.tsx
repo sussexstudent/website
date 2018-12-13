@@ -97,7 +97,7 @@ class EventsApplication extends React.Component<
             <SectionbarItem>
               <a
                 href={
-                  '/sport-societies-media/information-for-committee-members/events-trips/'
+                  'https://www.sussexstudent.com/get-involved/societies-and-student-media/guides/events/hold-event'
                 }
               >
                 Hold an event

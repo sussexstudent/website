@@ -5,8 +5,8 @@ import Footer from '~components/Footer';
 import Main from '~components/Main';
 import AdvertBar from '~components/AdvertBar';
 import MSLTag from '~components/MSLTag';
-import DonatelloBanner from '~icons/donatello.svg';
 import { LokiHeader } from '~components/LokiHeader';
+import {MSLAdvert} from "~components/AdvertBar/MSLAdvert";
 
 const ga = `!function(u,s,S,U){u.GoogleAnalyticsObject=S;u[S]||(u[S]=function(){
 (u[S].q=u[S].q||[]).push(arguments)});u[S].l=+new Date;U=s.createElement('script');
@@ -47,20 +47,20 @@ const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => {
         }}
       />
       <div className="Site">
-        <AdvertBar className="AdvertBar--top" position="TopBanner" />
+        <AdvertBar className="AdvertBar--top">
+          <MSLAdvert position="TopBanner" />
+          <a
+            className="AdvertBar__advert"
+            href="https://zugarznap.com/insurance/gadget-ga-sussex/get-cover?utm_source=sussexuniversity&utm_medium=cpc&utm_campaign=gadgetsussex"
+          >
+            <img src="https://su.imgix.net/original_images/77f38e7e1f094974b0a9c3f9e6e8ed8c?w=960&h=138&auto=format&q=60" alt="ZugarZnap Insurance (ad)" />
+          </a>
+        </AdvertBar>
         <LokiHeader />
         <Main legacy={legacy} />
         <MobileFooterTreats />
         {/* <PrefooterMenu /> */}
         <Footer />
-        <div className="AdvertBar AdvertBar--donatello">
-          <a
-            className="AdvertBar__advert"
-            href="http://www.donatello.co.uk/?utm_source=ussu&utm_medium=footer"
-          >
-            <DonatelloBanner />
-          </a>
-        </div>
       </div>
       <div className="js__modal" />
       <div className="js-side-menu" />

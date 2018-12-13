@@ -1,8 +1,6 @@
 import React from 'react';
 import MobileFooterTreats from '~components/MobileFooterTreats';
 import Footer from '~components/Footer';
-import AdvertBar from '~components/AdvertBar';
-import DonatelloBanner from '~icons/donatello.svg';
 import { LokiHeaderServer } from '~components/LokiHeader';
 import PrefooterMenu from '~components/PrefooterMenu';
 import WebsiteApplication from '~website/containers/WebsiteApplication';
@@ -26,7 +24,7 @@ interface IProps {
 const Website: React.SFC<IProps> = () => {
   return (
     <React.Fragment>
-      <AdvertBar className="AdvertBar--top" position="TopBanner" />
+      {/*<AdvertBar className="AdvertBar--top" position="TopBanner" />*/}
       <LokiHeaderServer />
       <main className={cx('Site__content u-keep-footer-down')}>
         <WebsiteApplication appMountState={AppMountState.Sanguine} />
@@ -39,7 +37,7 @@ const Website: React.SFC<IProps> = () => {
           className="AdvertBar__advert"
           href="http://www.donatello.co.uk/?utm_source=ussu&utm_medium=footer"
         >
-          <DonatelloBanner />
+          {/*<DonatelloBanner />*/}
         </a>
       </div>
     </React.Fragment>

@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 import Raven from 'raven-js';
 import mitt from 'mitt';
 import { addClassesForFeatures } from '~libs/features';
-import AdvertBar from '~components/AdvertBar';
 import { LokiHeaderServer } from '~components/LokiHeader';
 import WebsiteApplication from '~website/containers/WebsiteApplication';
 import { AppMountState } from '~website/ducks/router';
@@ -44,7 +43,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const App = () => (
   <React.Fragment>
-    <AdvertBar className="AdvertBar--top" position="TopBanner" />
+    {/*<AdvertBar className="AdvertBar--top" position="TopBanner" />*/}
     <LokiHeaderServer />
     <main className={cx('Site__content u-keep-footer-down')}>
       <WebsiteApplication appMountState={AppMountState.Sanguine} />

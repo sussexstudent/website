@@ -1,25 +1,19 @@
 import React from 'react';
 import cx from 'classnames';
-import MSLTag from '../MSLTag';
 
 interface IProps {
   className?: string;
-  position: string;
   dark?: boolean;
+  children: any;
 }
 
-const AdvertBar = ({ className = '', position, dark = false }: IProps) => (
+const AdvertBar = ({ children, className = '', dark = false }: IProps) => (
   <div
     className={cx('AdvertBar', 'advert', className, {
       'AdvertBar--dark': dark,
     })}
   >
-    <div
-      className="AdvertBar__advert"
-      dangerouslySetInnerHTML={{
-        __html: MSLTag('Advert', { Position: position }),
-      }}
-    />
+    {children}
   </div>
 );
 

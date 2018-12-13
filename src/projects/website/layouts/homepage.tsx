@@ -8,9 +8,20 @@ import { UserWelcome } from '~website/components/UserWelcome';
 import { RouteComponent } from '~types/routes';
 import { ScrollToTop } from '~components/ScrollToTop';
 import { AboutTheUnion } from '~website/components/AboutTheUnion';
+import AdvertBar from "~components/AdvertBar";
+import {MSLAdvert} from "~components/AdvertBar/MSLAdvert";
 
 const Homepage: React.SFC<RouteComponent> = () => (
   <ScrollToTop>
+    <AdvertBar className="AdvertBar--mobile-home">
+      <MSLAdvert position="TopBanner" />
+      <a
+        className="AdvertBar__advert"
+        href="https://zugarznap.com/insurance/gadget-ga-sussex/get-cover?utm_source=sussexuniversity&utm_medium=cpc&utm_campaign=gadgetsussex"
+      >
+        <img src="https://su.imgix.net/original_images/77f38e7e1f094974b0a9c3f9e6e8ed8c?w=960&h=138&auto=format&q=60" alt="ZugarZnap Insurance (ad)" />
+      </a>
+    </AdvertBar>
     <HomepageSplash />
     <div className="LokiContainer">
       <UserWelcome />

@@ -13,48 +13,51 @@ import {MSLAdvert} from "~components/AdvertBar/MSLAdvert";
 
 const Homepage: React.SFC<RouteComponent> = () => (
   <ScrollToTop>
-    <AdvertBar className="AdvertBar--mobile-home">
-      <MSLAdvert position="TopBanner" />
-      <a
-        className="AdvertBar__advert"
-        href="https://zugarznap.com/insurance/gadget-ga-sussex/get-cover?utm_source=sussexuniversity&utm_medium=cpc&utm_campaign=gadgetsussex"
-      >
-        <img src="https://su.imgix.net/original_images/77f38e7e1f094974b0a9c3f9e6e8ed8c?w=960&h=138&auto=format&q=60" alt="ZugarZnap Insurance (ad)" />
-      </a>
-    </AdvertBar>
-    <HomepageSplash />
-    <div className="LokiContainer">
-      <UserWelcome />
-      <Bento />
-      {/*<div className="Trail">*/}
-      {/*<div className="Trail__row Trail__row--211">*/}
-      {/*<div className="ContentBlock">*/}
-      {/*<div className="ContentBlock__heading">News</div>*/}
-      {/*<div className="u-h">{'{unionnewslist}'}</div>*/}
-      {/*<div className="app__news" />*/}
-      {/*<a className="NewsViewMore type-brevier" href="/news">*/}
-      {/*Read more news stories*/}
-      {/*</a>*/}
-      {/*</div>*/}
-      {/*<div className="ContentBlock">*/}
-      {/*<div className="ContentBlock__heading">{"What's on"}</div>*/}
-      {/*<HomepageEventsList />*/}
-      {/*</div>*/}
-      {/*<div className="ContentBlock">*/}
-      {/*<div className="ContentBlock__heading">Twitter</div>*/}
-      {/*<TweetList*/}
-      {/*query="list/ussu,ussu"*/}
-      {/*signature="f1b9176fddbe7114295eb4bfc65070c5a130a94d"*/}
-      {/*/>*/}
-      {/*</div>*/}
-      {/*</div>*/}
-      {/*</div>*/}
-    </div>
-    <AboutTheUnion />
-    <div className="LokiContainer">
-      <ContentPage path={'/homepage'} />
+    <div className="u-header-bleed">
+      <AdvertBar className="AdvertBar--mobile-home">
+        <MSLAdvert position="TopBanner" />
+        <a
+          className="AdvertBar__advert"
+          href="https://zugarznap.com/insurance/gadget-ga-sussex/get-cover?utm_source=sussexuniversity&utm_medium=cpc&utm_campaign=gadgetsussex"
+        >
+          <img src="https://su.imgix.net/original_images/77f38e7e1f094974b0a9c3f9e6e8ed8c?w=960&h=138&auto=format&q=60" alt="ZugarZnap Insurance (ad)" />
+        </a>
+      </AdvertBar>
+      <HomepageSplash />
+      <div className="LokiContainer">
+        <UserWelcome />
+        <Bento />
+        {/*<div className="Trail">*/}
+        {/*<div className="Trail__row Trail__row--211">*/}
+        {/*<div className="ContentBlock">*/}
+        {/*<div className="ContentBlock__heading">News</div>*/}
+        {/*<div className="u-h">{'{unionnewslist}'}</div>*/}
+        {/*<div className="app__news" />*/}
+        {/*<a className="NewsViewMore type-brevier" href="/news">*/}
+        {/*Read more news stories*/}
+        {/*</a>*/}
+        {/*</div>*/}
+        {/*<div className="ContentBlock">*/}
+        {/*<div className="ContentBlock__heading">{"What's on"}</div>*/}
+        {/*<HomepageEventsList />*/}
+        {/*</div>*/}
+        {/*<div className="ContentBlock">*/}
+        {/*<div className="ContentBlock__heading">Twitter</div>*/}
+        {/*<TweetList*/}
+        {/*query="list/ussu,ussu"*/}
+        {/*signature="f1b9176fddbe7114295eb4bfc65070c5a130a94d"*/}
+        {/*/>*/}
+        {/*</div>*/}
+        {/*</div>*/}
+        {/*</div>*/}
+      </div>
+      <AboutTheUnion />
+      <div className="LokiContainer">
+        <ContentPage path={'/homepage'} />
+      </div>
     </div>
   </ScrollToTop>
+
 );
 
 export default Homepage;

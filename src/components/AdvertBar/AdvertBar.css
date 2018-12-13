@@ -50,9 +50,14 @@
 
   & img {
     display: block;
-    max-width: 764px;
-    max-height: 90px;
+    max-width: 100%;
+    max-height: auto;
     width: auto;
+
+    @media (--medium) {
+      max-width: 764px;
+      max-height: 90px;
+    }
   }
 
   &--top {
@@ -62,7 +67,6 @@
   }
 
   &--mobile-home {
-   margin-top: -1rem;
     @media (--medium) {
       display: none;
     }

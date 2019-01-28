@@ -22,7 +22,7 @@ interface Result {
 
 class BannerQuery extends Query<Result> {}
 
-export const BannerOutlet: React.SFC<BannerOutletProps> = ({ outlet }) => (
+export const BannerOutlet: React.FC<BannerOutletProps> = ({ outlet }) => (
   <BannerQuery query={BANNER_QUERY}>
     {({ data, loading }) => {
       if (loading || !data) {

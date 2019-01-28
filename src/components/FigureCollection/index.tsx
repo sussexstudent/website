@@ -5,7 +5,7 @@ interface IProps {
   items?: FigureData[];
 }
 
-const FigureCollection: React.SFC<IProps> = ({ children, items = null }) => (
+const FigureCollection: React.FC<IProps> = ({ children, items = null }) => (
   <ul className="FigureCollection">
     {items === null
       ? children

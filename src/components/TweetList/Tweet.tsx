@@ -11,7 +11,7 @@ interface IProps {
   data: TweetData;
 }
 
-const Tweet: React.SFC<IProps> = ({ isQuoted = false, data }) => {
+const Tweet: React.FC<IProps> = ({ isQuoted = false, data }) => {
   const isRetweet = Object.hasOwnProperty.call(data, 'retweeted_status');
   const tweet: TweetData =
     data.retweeted_status !== undefined ? data.retweeted_status : data;

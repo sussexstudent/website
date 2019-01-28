@@ -3,7 +3,7 @@ import { Page } from '~website/containers/content/types';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
 import { Link } from 'react-router-dom';
 import { Typeface, TypeSize, type } from '~libs/style/type';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 interface IKBRoot extends Page {}
 
@@ -25,7 +25,7 @@ const PageLink = styled(Link)({
   ...type(TypeSize.BodyCopy, Typeface.Secondary),
 });
 
-export const KBCategoryPage: React.SFC<KBCategoryPageProps> = ({ page }) => (
+export const KBCategoryPage: React.FC<KBCategoryPageProps> = ({ page }) => (
   <div className="LokiContainer">
     <BreadcrumbBar>
       <Link key={page.rootPage.path} to={page.rootPage.path}>

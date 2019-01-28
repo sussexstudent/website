@@ -15,7 +15,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import Loadable from 'react-loadable';
 import proxy from 'http-proxy-middleware';
 import introspectionQueryResultData from '../../../fragmentTypes.json';
-import { getBundles } from 'react-loadable/webpack';
+import { getBundles, Bundle } from 'react-loadable/webpack';
 import stats from '../../../sanguine-dist/react-loadable-dev.json';
 import { Website } from './Website';
 import { extractCritical } from 'emotion-server';
@@ -57,13 +57,6 @@ e.parentNode.insertBefore(U,e)}(window,document,'ga');
 
 ga('create', 'UA-258929-3', 'auto');
 ga('send', 'pageview');`;
-
-interface Bundle {
-  id: number;
-  name: string;
-  file: string;
-  publicPath: string;
-}
 
 const createBundleTag = ({ publicPath }: Bundle) => <script src={publicPath} />;
 

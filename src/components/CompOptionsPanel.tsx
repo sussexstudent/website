@@ -1,6 +1,6 @@
 import React from 'react';
 import { COLORS } from '~libs/style';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 const Root = styled.div({
   position: 'fixed',

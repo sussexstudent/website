@@ -18,7 +18,7 @@ const stateLangMap = {
   [MarketListingState.Unlisted]: 'Unlisted',
 };
 
-const ListingList: React.SFC<IProps> = (props: IProps) => {
+const ListingList: React.FC<IProps> = (props: IProps) => {
   if (props.items.length <= 0) {
     return <NoListItems />;
   }

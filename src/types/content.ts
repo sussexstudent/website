@@ -13,5 +13,5 @@ export interface CMSDocument {
 }
 
 export interface ComponentMap {
-  [componentType: string]: React.SFC<{ value: any; document: CMSDocument }>;
+  [componentType: string]: React.FC<{ value: any; document: CMSDocument }>;
 }

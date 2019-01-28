@@ -1,6 +1,6 @@
 import { type, Typeface, TypeSize } from '~libs/style/type';
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { COLORS } from '~libs/style';
 import { cardActionable } from '~libs/style/cards';
 
@@ -42,7 +42,7 @@ interface BuyButtonProps {
   disabled?: boolean;
 }
 
-export const BuyButton: React.SFC<BuyButtonProps> = ({
+export const BuyButton: React.FC<BuyButtonProps> = ({
   title,
   subtitle,
   href,

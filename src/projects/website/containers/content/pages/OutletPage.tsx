@@ -93,7 +93,7 @@ const headerStyles = css({
   display: 'flex',
 });
 
-export const OutletPage: React.SFC<OutletPageProps> = ({ page }) => {
+export const OutletPage: React.FC<OutletPageProps> = ({ page }) => {
   const openingTimes = openingTimesBlockParser(page.openingTimes);
   const openingTimesIntervals = parseOpeningTimesToIntervals(
     openingTimes ? openingTimes.times : [],

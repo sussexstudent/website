@@ -37,13 +37,13 @@ const LoadableSearchApp = Loadable({
   loading: LoadableLoading,
   loader: () =>
     import(/* webpackChunkName: "searchapp" */ '~components/SearchApp'),
-}) as React.SFC<RouteComponent>;
+}) as React.FC<RouteComponent>;
 
 const LoadableStudentGroupsDiscovery = Loadable({
   loading: LoadableLoading,
   loader: () =>
     import(/* webpackChunkName: "sgd" */ '~components/StudentGroupsDiscovery'),
-}) as React.SFC<RouteComponent>;
+}) as React.FC<RouteComponent>;
 
 const LoadableContentBrowser = Loadable({
   loading: LoadableLoading,

@@ -28,7 +28,7 @@ class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
 
     if (isClientRendered) {
       if (history) {
-        return <Link to={to} {...props} />;
+        return <Link to={to} {...props as any} />; // todo
       }
     }
 

@@ -2,7 +2,8 @@ import React from 'react';
 import { ContentBrowserPage } from '~website/containers/content/types';
 import { InternalAppLink } from '~components/InternalAppLink';
 import { COLORS } from '~libs/style';
-import styled, { css, cx } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css, cx } from 'emotion';
 import { type, Typeface, TypeSize } from '~libs/style/type';
 
 export const Item = styled.li({
@@ -33,7 +34,7 @@ const PageDescription = styled.div({
   ...type(TypeSize.BodyCopy, Typeface.Primary),
 });
 
-export const ContentBrowserItem: React.SFC<{
+export const ContentBrowserItem: React.FC<{
   page: ContentBrowserPage;
   isActive: boolean;
 }> = ({ page: { path, contentType, title }, isActive }) => (

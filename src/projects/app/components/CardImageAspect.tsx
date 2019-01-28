@@ -29,7 +29,7 @@ interface CardImageProps {
   image: FalmerImage;
 }
 
-export const CardImageAspect: React.SFC<CardImageProps> = ({ image }) => {
+export const CardImageAspect: React.FC<CardImageProps> = ({ image }) => {
   const displayWidth = getSize().width - 40;
   const displayHeight = displayWidth * (image.height / image.width);
 

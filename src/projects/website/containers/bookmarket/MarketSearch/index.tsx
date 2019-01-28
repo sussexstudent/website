@@ -25,7 +25,7 @@ type IProps = OwnProps & { data: Result };
 
 class MarketSearchQuery extends HandledQuery<Result, {}> {}
 
-const MarketSearchComponent: React.SFC<IProps> = (props: IProps) => {
+const MarketSearchComponent: React.FC<IProps> = (props: IProps) => {
   function renderList() {
     if (
       !props.data ||

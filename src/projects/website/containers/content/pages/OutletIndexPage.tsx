@@ -5,10 +5,9 @@ import { FalmerImage } from '~types/events';
 import { Link } from 'react-router-dom';
 import { Sectionbar, SectionbarItem } from '~components/Sectionbar';
 import { OneImageBackground } from '~components/OneImage';
-import styled, { css } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from 'emotion';
 import { Typeface, TypeSize, type } from '~libs/style/type';
-
-// import {css} from 'react-emotion';
 
 interface IOutletIndex extends Page<Page[]> {}
 
@@ -68,7 +67,7 @@ const OutletItem = styled.div({
   marginBottom: '1rem',
 });
 
-export const OutletIndexPage: React.SFC<OutletIndexPageProps> = ({ page }) => (
+export const OutletIndexPage: React.FC<OutletIndexPageProps> = ({ page }) => (
   <React.Fragment>
     <Sectionbar title={page.section.title} titleLink={page.section.path}>
       {page.section.subPages.map((page) => (

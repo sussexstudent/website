@@ -7,7 +7,7 @@ interface BlockLinkProps {
   external?: boolean;
 }
 
-export const BlockLink: React.SFC<BlockLinkProps> = (props) => (
+export const BlockLink: React.FC<BlockLinkProps> = (props) => (
   <InternalAppLink
     className={cx('BlockLink', {
       'BlockLink--external': props.external,

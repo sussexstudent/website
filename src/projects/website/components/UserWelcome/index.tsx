@@ -7,7 +7,7 @@ interface UserWelcomeProps {
   user: UserState;
 }
 
-const UserWelcomeComponent: React.SFC<UserWelcomeProps> = ({ user }) =>
+const UserWelcomeComponent: React.FC<UserWelcomeProps> = ({ user }) =>
   user.isLoggedIn && user.profile ? (
     <h2 className="type-canon">Hello, {user.profile.firstName}!</h2>
   ) : (

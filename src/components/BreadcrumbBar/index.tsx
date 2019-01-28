@@ -1,6 +1,6 @@
 import React from 'react';
 import { compact, omit } from 'lodash';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 import ChevronForwardIcon from '~icons/chevron-forward.svg';
 import { InternalAppLink } from '~components/InternalAppLink';
@@ -32,7 +32,7 @@ const IconContainer = styled.span({
   },
 });
 
-const BreadcrumbBar: React.SFC<IProps> = ({ children }) => {
+const BreadcrumbBar: React.FC<IProps> = ({ children }) => {
   return (
     <BreadcrumbList>
       {children &&

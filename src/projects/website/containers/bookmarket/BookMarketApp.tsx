@@ -54,7 +54,7 @@ const LoadableMarketCreateListing = Loadable({
     ),
 });
 
-const BookMarketApplication: React.SFC<{}> = () => (
+const BookMarketApplication: React.FC<{}> = () => (
   <Route
     path={`/book-market/`}
     component={() => (

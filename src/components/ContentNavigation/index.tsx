@@ -39,7 +39,7 @@ function canDisplaySubMenu(
 
 // TODO: Tidy this up. Should technically support unlimited levels
 // TODO: this component's name doesn't match the css component
-const ContentNavigation: React.SFC<IProps> = ({
+const ContentNavigation: React.FC<IProps> = ({
   title,
   items,
   activeKey = '',

@@ -237,14 +237,17 @@ class UserBar extends React.Component<IProps, IState> {
   }
 }
 
-const UserBarContainer: React.SFC<{ page: PageState; user: UserState }> = (
+const UserBarContainer: React.FC<{ page: PageState; user: UserState }> = (
   props,
 ) => <UserBar {...props} />;
 
-const UserBarConnected = connect((state: WebsiteRootState) => ({
+
+const mapStateToProps = (state: WebsiteRootState) => ({
   page: state.page,
   user: state.user,
-}))(UserBarContainer);
+});
+
+const UserBarConnected = connect(mapStateToProps)(UserBarContainer);
 
 export default UserBarConnected;
 

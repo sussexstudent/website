@@ -27,7 +27,7 @@ class ContentPageQuery extends HandledQuery<Result, {}> {}
 
 type IProps = OwnProps;
 
-const ContentPage: React.SFC<IProps> = (props: IProps) => {
+const ContentPage: React.FC<IProps> = (props: IProps) => {
   return (
     <ContentPageQuery
       query={CONTENT_PAGE_QUERY}

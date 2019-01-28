@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const CardDescription: React.SFC = ({ children }) => {
+export const CardDescription: React.FC = ({ children }) => {
   return (
     <View>
       <Text style={styles.text}>{children}</Text>

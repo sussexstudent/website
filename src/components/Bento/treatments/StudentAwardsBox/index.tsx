@@ -4,7 +4,7 @@ import { AspectRatio, OneImage } from '~components/OneImage';
 
 interface IProps {}
 
-const StudentAwardsBox: React.SFC<IProps> = () => (
+const StudentAwardsBox: React.FC<IProps> = () => (
   <div className="BentoBox">
     <FauxLink href="/studentawards" />
     <div

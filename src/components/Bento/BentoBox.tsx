@@ -5,7 +5,7 @@ interface IProps {
   link: string;
 }
 
-const BentoBox: React.SFC<IProps> = (props) => (
+const BentoBox: React.FC<IProps> = (props) => (
   <InternalAppLink className="BentoBox BentoBox--anchor" to={props.link}>
     {props.children}
   </InternalAppLink>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ContentBrowserPage } from '~website/containers/content/types';
 import { ContentBrowserColumn } from '~website/components/ContentBrowser/ContentBrowserColumn';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 const Root = styled.div({
   display: 'flex',

@@ -7,7 +7,7 @@ interface EventDetailMetadataProps {
   event: Event;
 }
 
-export const EventDetailMetadata: React.SFC<EventDetailMetadataProps> = ({
+export const EventDetailMetadata: React.FC<EventDetailMetadataProps> = ({
   event,
 }) => (
   <React.Fragment>

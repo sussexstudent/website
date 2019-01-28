@@ -23,7 +23,7 @@ interface DetailItemProps {
   image: FalmerImage;
 }
 
-export const DetailItem: React.SFC<DetailItemProps> = ({ image, children }) => {
+export const DetailItem: React.FC<DetailItemProps> = ({ image, children }) => {
   return (
     <View style={styles.detailItem}>
       <Image

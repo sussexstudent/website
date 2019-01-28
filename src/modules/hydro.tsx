@@ -11,7 +11,7 @@ import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter } from '~components/BrowserRouter';
 
 interface ComponentMap {
-  [componentName: string]: () => Promise<any> | React.SFC;
+  [componentName: string]: () => Promise<any> | React.FC;
 }
 
 export default function() {
@@ -62,7 +62,7 @@ export default function() {
       return;
     }
 
-    function handleComponent(Component: React.SFC) {
+    function handleComponent(Component: React.FC) {
       if (!Component) {
         console.warn(
           `[hydro] ${componentName} should have been rendered, but it is "${Component}"`,

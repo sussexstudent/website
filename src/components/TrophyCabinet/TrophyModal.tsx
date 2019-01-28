@@ -8,7 +8,7 @@ interface TrophyModalProps {
   data: AwardPeriod[];
 }
 
-export const TrophyModal: React.SFC<TrophyModalProps & ReactModal.Props> = (
+export const TrophyModal: React.FC<TrophyModalProps & ReactModal.Props> = (
   props,
 ) => {
   return (

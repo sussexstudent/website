@@ -7,7 +7,7 @@ interface HTMLContentRendererProps {
   content: string;
 }
 
-export const HTMLContentRenderer: React.SFC<HTMLContentRendererProps> = ({
+export const HTMLContentRenderer: React.FC<HTMLContentRendererProps> = ({
   content,
 }) => {
   const tagsStyles = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { sample } from 'lodash';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 type patternMethod = (color: string) => string;
 // Taken from http://www.heropatterns.com/

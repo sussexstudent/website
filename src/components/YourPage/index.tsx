@@ -16,7 +16,7 @@ interface YourPageProps {
   isOpen: boolean;
 }
 
-const YourPageComponent: React.SFC<YourPageProps & ReactModal.Props> = (
+const YourPageComponent: React.FC<YourPageProps & ReactModal.Props> = (
   props,
 ) => {
   if (!props.user || !props.user.profile) {

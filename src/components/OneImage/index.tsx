@@ -147,10 +147,10 @@ interface IBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
   mslResource?: boolean;
 }
 
-const OneImageBackground: React.SFC<IBackgroundProps> = (props) => {
+const OneImageBackground: React.FC<IBackgroundProps> = (props) => {
   return (
     <div
-      {...props}
+      {...props as any} // todo
       className={`lazyload ${props.className}`}
       data-sizes="auto"
       data-bgset={defaultSizes.map(

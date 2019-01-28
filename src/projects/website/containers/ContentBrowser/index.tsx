@@ -14,7 +14,7 @@ interface Result {
 
 class ContentBrowserQuery extends HandledQuery<Result, {}> {}
 
-const ContentBrowserContainer: React.SFC<ContentBrowserProps> = (props) => (
+const ContentBrowserContainer: React.FC<ContentBrowserProps> = (props) => (
   <div className="LokiContainer">
     <ContentBrowserQuery query={CONTENT_BROWSER_QUERY}>
       {({ data }) => {

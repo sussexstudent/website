@@ -7,7 +7,7 @@ interface TicketsModalProps {
   msl: null | MSLCommunicationEventData;
 }
 
-export const TicketsModal: React.SFC<TicketsModalProps & ReactModal.Props> = (
+export const TicketsModal: React.FC<TicketsModalProps & ReactModal.Props> = (
   props,
 ) => (
   <Modal size="small" {...props} footerClose>

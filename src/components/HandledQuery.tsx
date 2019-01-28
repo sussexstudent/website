@@ -19,7 +19,7 @@ export class HandledQuery<TData, TVariables> extends React.Component<
 
   render() {
     return (
-      <Query {...this.props}>
+      <Query {...this.props as any}> // todo: apollo
         {(queryProps) => {
           if (queryProps.loading) {
             return React.createElement(this.props.loader);
@@ -28,8 +28,7 @@ export class HandledQuery<TData, TVariables> extends React.Component<
           if (queryProps.error || queryProps.data === undefined) {
             return React.createElement(this.props.error);
           }
-
-          return this.props.children(queryProps);
+          return this.props.children(queryProps as any); // todo: apollo
         }}
       </Query>
     );

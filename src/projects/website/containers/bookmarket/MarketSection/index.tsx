@@ -24,7 +24,7 @@ class SectionListingsQuery extends HandledQuery<
   { filters: { section: string }; sectionSlug: string }
 > {}
 
-const MarketSection: React.SFC<IProps> = (props: IProps) => {
+const MarketSection: React.FC<IProps> = (props: IProps) => {
   return (
     <SectionListingsQuery
       query={SECTION_LISTINGS_QUERY}

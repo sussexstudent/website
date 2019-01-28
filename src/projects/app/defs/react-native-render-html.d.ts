@@ -11,6 +11,6 @@ module 'react-native-render-html' {
     onLinkPress(event: any, href: string): void;
     renderers?: RendererMap;
   }
-  const component: React.SFC<Props> = () => {};
+  const component: React.FC<Props> = () => {};
   export default component;
 }

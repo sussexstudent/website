@@ -9,7 +9,7 @@ interface IProps {
   user: FalmerUser;
 }
 
-const FalmerHeader: React.SFC<IProps> = ({ user }) => {
+const FalmerHeader: React.FC<IProps> = ({ user }) => {
   return (
     <header className="FalmerHeader">
       <div

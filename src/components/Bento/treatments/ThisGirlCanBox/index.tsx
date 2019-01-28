@@ -4,7 +4,7 @@ import { OneImage, OneImageBackground } from '~components/OneImage';
 
 interface IProps {}
 
-const ThisGirlCanBox: React.SFC<IProps> = () => (
+const ThisGirlCanBox: React.FC<IProps> = () => (
   <div className="BentoBox">
     <OneImageBackground
       src="original_images/e0a9095d06d54f3d95a38fc8f030a079"

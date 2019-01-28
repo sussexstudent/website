@@ -26,7 +26,7 @@ interface IProps {
   page: DetailPageSection; // todo
 }
 
-const DetailedGuideSection: React.SFC<{ page: DetailPageSection }> = (
+const DetailedGuideSection: React.FC<{ page: DetailPageSection }> = (
   props,
 ) => <StreamField items={props.page.content} page={props.page} />;
 

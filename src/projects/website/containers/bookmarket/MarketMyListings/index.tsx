@@ -22,7 +22,7 @@ interface Result {
 
 type IProps = OwnProps & ChildProps<{}, Result>;
 
-const MarketMyListingsComponent: React.SFC<IProps> = (props: IProps) => {
+const MarketMyListingsComponent: React.FC<IProps> = (props: IProps) => {
   if (props.data && props.data.loading) {
     return <Loader />;
   }

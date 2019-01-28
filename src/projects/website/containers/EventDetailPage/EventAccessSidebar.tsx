@@ -5,7 +5,7 @@ interface EventAccessSidebarProps {
   event: Event;
 }
 
-export const EventAccessSidebar: React.SFC<EventAccessSidebarProps> = ({
+export const EventAccessSidebar: React.FC<EventAccessSidebarProps> = ({
   event,
 }) => {
   const hasAnyAudience =

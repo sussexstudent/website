@@ -6,7 +6,8 @@ import {
   Item,
   itemActive,
 } from '~website/components/ContentBrowser/ContentBrowserItem';
-import styled, { cx } from 'react-emotion';
+import { cx } from 'emotion';
+import styled from '@emotion/styled';
 
 export const Column = styled.ul<{ active: boolean }>(({ active }) => ({
   maxWidth: '300px',
@@ -30,7 +31,7 @@ interface ContentBrowserColumnProps {
 }
 
 // pos = active = opacity: 1, else 0.6
-export const ContentBrowserColumn: React.SFC<ContentBrowserColumnProps> = ({
+export const ContentBrowserColumn: React.FC<ContentBrowserColumnProps> = ({
   pages,
   activeSlug,
   position,

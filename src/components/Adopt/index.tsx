@@ -24,13 +24,13 @@ const isFn = (val: any): boolean => Boolean(val) && typeof val === 'function';
 const isValidRenderProp = (prop: ReactNode | ChildrenFn<any>): boolean =>
   React.isValidElement(prop) || isFn(prop);
 
-export type RPC<RP, P = {}> = React.SFC<
+export type RPC<RP, P = {}> = React.FC<
   P & {
     children: ChildrenFn<RP>;
   }
 >;
 
-export type MapperComponent<_RP, P = {}> = React.SFC<
+export type MapperComponent<_RP, P = {}> = React.FC<
   P & {
     render: ChildrenFn<any>;
   }

@@ -11,7 +11,7 @@ import { AboutTheUnion } from '~website/components/AboutTheUnion';
 import AdvertBar from "~components/AdvertBar";
 import {MSLAdvert} from "~components/AdvertBar/MSLAdvert";
 
-const Homepage: React.SFC<RouteComponent> = () => (
+const Homepage: React.FC<RouteComponent> = () => (
   <ScrollToTop>
     <div className="u-header-bleed">
       <AdvertBar className="AdvertBar--mobile-home">

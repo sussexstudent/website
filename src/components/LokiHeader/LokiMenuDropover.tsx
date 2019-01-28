@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { COLORS } from '~libs/style';
 import { InternalAppLink } from '~components/InternalAppLink';
 import { type, Typeface, TypeSize } from '~libs/style/type';

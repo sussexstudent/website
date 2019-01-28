@@ -21,6 +21,7 @@ import { Event } from '~types/events';
 import { StudentGroup } from '~components/OrganisationGrid';
 import { Location } from 'history';
 import { RouteComponentProps } from 'react-router';
+import {getFirstItemOrValue} from "~libs/qs";
 
 interface Payload {
   data: {
@@ -167,9 +168,10 @@ interface IState {
 
 function getParams(location: Location): { area: GraphQLAreas } {
   const q = qs.parse(location.search);
+  const area = getFirstItemOrValue(q.area);
   return {
-    area: Object.values(GraphQLAreas).includes(q.area)
-      ? q.area
+    area: Object.values(GraphQLAreas).includes(area)
+      ? area
       : GraphQLAreas.Top,
   };
 }
@@ -183,7 +185,7 @@ class SearchApp extends React.Component<IProps, IState> {
     this.loadQueryResultsDebounced = debounce(this.loadQueryResults, 350);
 
     this.state = {
-      page: parseInt(qs.parse(location.search).page, 10) || 1,
+      page: parseInt(getFirstItemOrValue(qs.parse(location.search).page), 10) || 1,
       results: null,
       resultItems: [],
       isLoading: false,

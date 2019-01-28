@@ -4,6 +4,6 @@ import { createBrowserHistory } from 'history';
 
 const history = createBrowserHistory();
 
-export const BrowserRouter: React.SFC = ({ children }) => (
+export const BrowserRouter: React.FC = ({ children }) => (
   <Router history={history}>{children}</Router>
 );

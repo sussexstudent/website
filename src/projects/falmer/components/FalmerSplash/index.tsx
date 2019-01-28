@@ -5,7 +5,7 @@ interface FalmerSplashProps {
   text: string;
 }
 
-export const FalmerSplash: React.SFC<FalmerSplashProps> = (props) => {
+export const FalmerSplash: React.FC<FalmerSplashProps> = (props) => {
   return (
     <div className="FalmerSplash">
       <div className="FalmerSplash__image">{props.image}</div>

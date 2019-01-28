@@ -24,7 +24,7 @@ interface CardImageProps {
   image: FalmerImage;
 }
 
-export const CardImage: React.SFC<CardImageProps> = ({ image }) => {
+export const CardImage: React.FC<CardImageProps> = ({ image }) => {
   return (
     <View style={styles.eventImageContainer}>
       <Image

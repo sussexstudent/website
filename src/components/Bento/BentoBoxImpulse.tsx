@@ -6,7 +6,7 @@ interface IProps {
   color: 'blue' | 'red' | 'green' | 'yellow';
 }
 
-const BentoBoxImpulse: React.SFC<IProps> = (props) => (
+const BentoBoxImpulse: React.FC<IProps> = (props) => (
   <InternalAppLink
     className={`type-great-primer BentoBox BentoBox--anchor BentoBox--impulse BentoBox--color-${
       props.color

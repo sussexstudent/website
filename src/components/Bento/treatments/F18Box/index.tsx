@@ -6,7 +6,7 @@ interface IProps {
   link: string;
 }
 
-const F18Box: React.SFC<IProps> = () => (
+const F18Box: React.FC<IProps> = () => (
   <div
     className="BentoBox"
     style={{

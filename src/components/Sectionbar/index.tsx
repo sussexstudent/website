@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS, MQ, TYPE_SECONDARY } from '~libs/style';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 export const SectionbarItem = styled.li<{
   disabled?: boolean;
@@ -86,7 +86,7 @@ const Menu = styled.ul({
   },
 });
 
-export const Sectionbar: React.SFC<SectionbarProps> = (props) => {
+export const Sectionbar: React.FC<SectionbarProps> = (props) => {
   return (
     <Root>
       <Container className="LokiContainer">

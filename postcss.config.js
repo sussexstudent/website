@@ -8,6 +8,7 @@ module.exports = {
     }),
     require('postcss-nested'),
     require('postcss-ant')(),
+    require('lost'),
     require('postcss-lh'),
     require('postcss-cssnext'),
     require('postcss-pxtorem'),

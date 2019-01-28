@@ -8,7 +8,7 @@ import {
   OneImageBackground,
 } from '~components/OneImage';
 import { COLORS } from '~libs/style';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { css } from 'emotion';
 import { Link } from 'react-router-dom';
 import { type, Typeface, TypeSize } from '~libs/style/type';

@@ -74,7 +74,7 @@ function getSize() {
   };
 }
 
-const EventDetailsScreen: React.SFC = ({ data: { event, loading } }) => {
+const EventDetailsScreen: React.FC = ({ data: { event, loading } }) => {
   return (
     <View style={styles.container}>
       {loading ? (

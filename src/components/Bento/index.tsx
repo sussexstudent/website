@@ -2,7 +2,7 @@ import React from 'react';
 import { BentoBoxImpulse } from '~components/Bento/BentoBoxImpulse';
 // import {F18Box} from "~components/Bento/treatments/F18Box";
 
-const Bento: React.SFC<{}> = () => (
+const Bento: React.FC<{}> = () => (
   <div className="Bento Trail">
     {/*<div className="Trail__row">*/}
       {/*<F18Box link={"/freshers"} />*/}

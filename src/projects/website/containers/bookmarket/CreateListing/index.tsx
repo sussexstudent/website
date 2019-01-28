@@ -27,7 +27,7 @@ type IProps = OwnProps &
     categoryQuery: QueryProps & Partial<{ allMarketSections: MarketSection[] }>;
   };
 
-const CreateListingComponent: React.SFC<IProps> = (props) => {
+const CreateListingComponent: React.FC<IProps> = (props) => {
   const onSubmit = (formData: any) => {
     props.mutate &&
       props
@@ -41,11 +41,13 @@ const CreateListingComponent: React.SFC<IProps> = (props) => {
           },
         })
         .then((response) => {
-          (props as any).history.push(
-            `/book-market/listing/${
-              response.data.createMarketListing.listing.pk
-            }`,
-          );
+          if (response && response.data) {
+            (props as any).history.push(
+              `/book-market/listing/${
+                response.data.createMarketListing.listing.pk
+                }`,
+            );
+          }
         });
   };
 

@@ -13,7 +13,7 @@ export function getGrade(award: GroupAward, authority: AwardAuthority) {
   return gradeMap['leaves'][award.grade];
 }
 
-export const Icon: React.SFC<{ name: string }> = ({ name }) => {
+export const Icon: React.FC<{ name: string }> = ({ name }) => {
   if (!iconMap.hasOwnProperty(name)) {
     return null;
   }

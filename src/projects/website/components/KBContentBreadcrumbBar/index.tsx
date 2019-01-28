@@ -6,7 +6,7 @@ interface KBContentBreadcrumbBarProps {
   page: any;
 }
 
-export const KBContentBreadcrumbBar: React.SFC<KBContentBreadcrumbBarProps> = ({
+export const KBContentBreadcrumbBar: React.FC<KBContentBreadcrumbBarProps> = ({
   page,
 }) => (
   <BreadcrumbBar>

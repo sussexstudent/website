@@ -21,7 +21,7 @@ interface IProps {
   };
 }
 
-const Website: React.SFC<IProps> = () => {
+const Website: React.FC<IProps> = () => {
   return (
     <React.Fragment>
       {/*<AdvertBar className="AdvertBar--top" position="TopBanner" />*/}

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const FalmerSubSections: React.SFC<{}> = (props) => {
+const FalmerSubSections: React.FC<{}> = (props) => {
   return <ul className="FalmerSubSections">{props.children}</ul>;
 };
 
-const FalmerSubSection: React.SFC<{ to: string; back?: boolean }> = (props) => {
+const FalmerSubSection: React.FC<{ to: string; back?: boolean }> = (props) => {
   return (
     <li className="FalmerSubSections__item">
       <Link to={props.to}>{props.children} »</Link>

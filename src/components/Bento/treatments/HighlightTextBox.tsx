@@ -15,7 +15,7 @@ interface IProps {
   theme?: HighlightTheme;
 }
 
-const HighlightTextBox: React.SFC<IProps> = (props) => (
+const HighlightTextBox: React.FC<IProps> = (props) => (
   <div className="BentoBox">
     <FauxLink href={props.link} />
     <OneImageBackground

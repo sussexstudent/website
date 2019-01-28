@@ -5,7 +5,7 @@ export interface AccordionItemProps {
   name: string;
 }
 
-export const AccordionItem: React.SFC<AccordionItemProps> = () => {
+export const AccordionItem: React.FC<AccordionItemProps> = () => {
   return null;
 };
 
@@ -15,7 +15,7 @@ interface AccordionItemInternalProps {
   className: string;
 }
 
-export const AccordionItemInternal: React.SFC<
+export const AccordionItemInternal: React.FC<
   AccordionItemProps & AccordionItemInternalProps
 > = (props) => {
   return (

@@ -67,11 +67,11 @@ class FalmerDataList extends React.Component<IProps, IState> {
   }
 }
 
-export const HeaderCell: React.SFC<{}> = (props) => {
+export const HeaderCell: React.FC<{}> = (props) => {
   return <th>{props.children}</th>;
 };
 
-export const Row: React.SFC<IRowProps> = (props) => {
+export const Row: React.FC<IRowProps> = (props) => {
   return (
     <tr className="FalmerDataList__row" key={props.id}>
       {props.selectable ? (
@@ -88,7 +88,7 @@ export const Row: React.SFC<IRowProps> = (props) => {
   );
 };
 
-export const Cell: React.SFC<{}> = (props) => {
+export const Cell: React.FC<{}> = (props) => {
   return <td>{props.children}</td>;
 };
 

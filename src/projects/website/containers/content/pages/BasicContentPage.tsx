@@ -10,7 +10,7 @@ interface BasicContentPageProps {
   page: IBasicContentPage;
 }
 
-export const BasicContentPage: React.SFC<BasicContentPageProps> = ({
+export const BasicContentPage: React.FC<BasicContentPageProps> = ({
   page,
 }) => (
   <div className="LokiContainer">

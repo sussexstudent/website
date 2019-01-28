@@ -6,7 +6,7 @@ interface FalmerDetailHeaderProps {
   actions?: any;
 }
 
-export const FalmerDetailHeader: React.SFC<FalmerDetailHeaderProps> = (
+export const FalmerDetailHeader: React.FC<FalmerDetailHeaderProps> = (
   props,
 ) => (
   <div className="FalmerDetailHeader">

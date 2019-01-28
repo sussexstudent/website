@@ -107,7 +107,7 @@ const EventDetailItem = ({ image, children }) => (
   </View>
 );
 
-const EventDetailOrginalScreen: React.SFC = ({ data: { event, loading } }) => {
+const EventDetailOrginalScreen: React.FC = ({ data: { event, loading } }) => {
   return (
     <View style={styles.tabContent}>
       {loading ? (

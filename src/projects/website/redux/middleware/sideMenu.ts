@@ -6,6 +6,10 @@ export const sideMenuMiddleware = () => (next: any) => (action: any) => {
       return next(action);
     }
 
+    if (!document.documentElement) {
+      return;
+    }
+
     if (action.payload.isOpen) {
       document.documentElement.classList.add('html--modal', 'html--side-menu');
     } else {

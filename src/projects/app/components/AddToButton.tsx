@@ -32,7 +32,7 @@ interface AddToButton {
   text: string;
 }
 
-export const AddToButton: React.SFC<AddToButton> = ({ text }) => {
+export const AddToButton: React.FC<AddToButton> = ({ text }) => {
   return (
     <View style={styles.button}>
       <Image style={styles.icon} source={require('../img/WhitePlus.png')} />

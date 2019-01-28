@@ -3,7 +3,7 @@ import { ApolloProvider } from 'react-apollo';
 import { store } from '~website/redux/store';
 import { Provider } from 'react-redux';
 
-export const HydroRootServer: React.SFC<{ apolloClient?: any }> = (props) => {
+export const HydroRootServer: React.FC<{ apolloClient?: any }> = (props) => {
   if (props.apolloClient) {
     return (
       <Provider store={store}>

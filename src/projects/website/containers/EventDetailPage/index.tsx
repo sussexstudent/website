@@ -22,7 +22,7 @@ import { ScrollToTop } from '~components/ScrollToTop';
 
 interface RouteParams {
   [0]: string;
-  eventId: number;
+  eventId: string;
 }
 
 interface OwnProps extends RouteComponentProps<RouteParams> {}

@@ -26,7 +26,7 @@ interface IState {
   searchValue: string;
   displayIds: number[];
   groups: StudentGroup[];
-  fuse: Fuse | null;
+  fuse: Fuse<number> | null;
 }
 
 class StudentGroupListingsQuery extends HandledQuery<Result, {}> {}

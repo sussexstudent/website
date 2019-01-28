@@ -37,7 +37,7 @@ interface IProps {
   };
 }
 
-const mainLayout: React.SFC<IProps> = ({ assets, legacy }) => {
+const mainLayout: React.FC<IProps> = ({ assets, legacy }) => {
   return (
     <div className="Body" id="top">
       <div

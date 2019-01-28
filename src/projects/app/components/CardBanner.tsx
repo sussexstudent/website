@@ -16,7 +16,7 @@ interface CardBannerProps {
   color: string;
 }
 
-export const CardBanner: React.SFC<CardBannerProps> = ({ color, children }) => {
+export const CardBanner: React.FC<CardBannerProps> = ({ color, children }) => {
   return (
     <View style={{ backgroundColor: color }}>
       <Text style={styles.text}>{children}</Text>

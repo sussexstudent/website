@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FalmerListView: React.SFC<{}> = (props) => {
+const FalmerListView: React.FC<{}> = (props) => {
   return <div className="FalmerListView">{props.children}</div>;
 };
 

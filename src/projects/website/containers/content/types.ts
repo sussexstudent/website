@@ -7,7 +7,7 @@ export interface Page<S = null> {
   lastPublishedAt: string;
 }
 
-export type StreamFieldBlock<B> = React.SFC<{ page: Page; block: B }>;
+export type StreamFieldBlock<B> = React.FC<{ page: Page; block: B }>;
 
 export interface StreamFieldBlockData<B = any> {
   id: any;

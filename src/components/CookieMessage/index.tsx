@@ -1,7 +1,7 @@
 import React from 'react';
 import bind from 'bind-decorator';
 import { COLORS, Layers } from '~libs/style';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { type, Typeface, TypeSize } from '~libs/style/type';
 import { cardRaised } from '~libs/style/cards';
 

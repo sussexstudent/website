@@ -15,7 +15,7 @@ interface IProps {
   };
 }
 
-export const SocialArray: React.SFC<IProps> = ({ networks }) => (
+export const SocialArray: React.FC<IProps> = ({ networks }) => (
   <ul className={cx('Social')}>
     {networks.facebook ? (
       <li>

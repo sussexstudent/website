@@ -2,7 +2,7 @@ import React from 'react';
 import { FalmerFile, Page } from '~website/containers/content/types';
 import { Link } from 'react-router-dom';
 import { BreadcrumbBar } from '~components/BreadcrumbBar';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { COLORS, MQ } from '~libs/style';
 import { type, Typeface, TypeSize } from '~libs/style/type';
 import convert from 'htmr';
@@ -75,7 +75,7 @@ const Introduction = styled.div({
   ...type(TypeSize.GreatPrimer, Typeface.Secondary),
 });
 
-export const KBRootPage: React.SFC<KBRootPageProps> = ({ page }) => (
+export const KBRootPage: React.FC<KBRootPageProps> = ({ page }) => (
   <div className="LokiContainer">
     <BreadcrumbBar>
       <Link key={page.path} to={page.path}>

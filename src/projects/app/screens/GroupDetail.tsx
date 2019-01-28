@@ -68,7 +68,7 @@ function getSize() {
   };
 }
 
-const GroupDetailScreen: React.SFC = ({ data: { group, loading } }) => {
+const GroupDetailScreen: React.FC = ({ data: { group, loading } }) => {
   return (
     <View style={styles.tabContent}>
       {loading ? (

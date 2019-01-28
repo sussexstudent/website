@@ -30,7 +30,6 @@
 
   &__details {
     color: #ffffff;
-    // background-color: var(--color__brand-green);
     align-self: flex-end;
     width: 100%;
     padding-top: 6rem;
@@ -78,7 +77,6 @@
 */
 
     @media (--medium) {
-      // width: 60%;
     }
   }
 

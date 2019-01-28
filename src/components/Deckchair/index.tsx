@@ -8,7 +8,7 @@ interface IProps {
   children?: any;
 }
 
-const Deckchair: React.SFC<IProps> = ({
+const Deckchair: React.FC<IProps> = ({
   header,
   about,
   chairKey,

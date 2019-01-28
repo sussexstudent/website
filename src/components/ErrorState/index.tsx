@@ -4,7 +4,7 @@ import SadFaceIcon from '~icons/sad-face.svg';
 const refreshPage = () =>
   typeof window !== 'undefined' && window.location.reload();
 
-const ErrorState: React.SFC<{}> = () => (
+const ErrorState: React.FC<{}> = () => (
   <div className="Stonewall">
     <SadFaceIcon className="Stonewall__image" />
     <h1 className="type-canon">Something went wrong.</h1>

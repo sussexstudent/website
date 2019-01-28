@@ -7,7 +7,7 @@ interface IProps {
   link: string;
 }
 
-const RefreshersBox: React.SFC<IProps> = () => (
+const RefreshersBox: React.FC<IProps> = () => (
   <div
     className="BentoBox"
     style={{

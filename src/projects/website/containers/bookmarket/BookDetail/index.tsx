@@ -74,7 +74,7 @@ const Composed = adopt<RenderProps, OwnProps>({
   ),
 });
 
-const BookDetail: React.SFC<IProps> = (props: IProps) => {
+const BookDetail: React.FC<IProps> = (props: IProps) => {
   return (
     <Composed {...props}>
       {({ listingQuery, user, updateImage, requestContactDetails }) => {

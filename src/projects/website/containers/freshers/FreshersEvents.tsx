@@ -5,8 +5,9 @@ import { addMonths, startOfDay } from 'date-fns';
 import qs from 'query-string';
 import { mapValues, pickBy } from 'lodash';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { type, Typeface, TypeSize } from '~libs/style/type';
+import {getFirstItemOrValue} from "~libs/qs";
 
 interface FreshersEventsProps extends RouteComponentProps<{ path: string }> {}
 
@@ -43,12 +44,12 @@ const SimpleFilterList = styled.ul({
   },
 });
 
-export const FreshersEvents: React.SFC<FreshersEventsProps> = ({
+export const FreshersEvents: React.FC<FreshersEventsProps> = ({
   location,
 }) => {
   const filtering = location
     ? pickBy(
-        qs.parse(location.search),
+      getFirstItemOrValue(qs.parse(location.search)),
         (_v, k) => filteringAcceptions.indexOf(k) >= 0,
       )
     : {};

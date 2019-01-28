@@ -42,7 +42,7 @@ const Compose = adopt<RenderProps>({
   ),
 });
 
-const MarketHomeComponent: React.SFC<IProps> = (props) => {
+const MarketHomeComponent: React.FC<IProps> = (props) => {
   return (
     <Compose>
       {(rProps) => {

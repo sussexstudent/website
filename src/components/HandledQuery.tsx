@@ -19,7 +19,9 @@ export class HandledQuery<TData, TVariables> extends React.Component<
 
   render() {
     return (
-      <Query {...this.props as any}> // todo: apollo
+      <Query {...this.props as any}>
+        {' '}
+        // todo: apollo
         {(queryProps) => {
           if (queryProps.loading) {
             return React.createElement(this.props.loader);

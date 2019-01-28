@@ -5,7 +5,7 @@ import { BentoBoxImpulse } from '~components/Bento/BentoBoxImpulse';
 const Bento: React.FC<{}> = () => (
   <div className="Bento Trail">
     {/*<div className="Trail__row">*/}
-      {/*<F18Box link={"/freshers"} />*/}
+    {/*<F18Box link={"/freshers"} />*/}
     {/*</div>*/}
     <div className="Trail__row Trail__row--111">
       <BentoBoxImpulse link="/sport-societies-media/discover" color="blue">

@@ -128,7 +128,11 @@ export const appMountMiddleware = (store: any) => (next: any) => (
       const queryString = qs.parse(router.location.search).q;
 
       if (queryString !== undefined) {
-        store.dispatch(setSearchValue(Array.isArray(queryString) ? queryString[0] : queryString));
+        store.dispatch(
+          setSearchValue(
+            Array.isArray(queryString) ? queryString[0] : queryString,
+          ),
+        );
       }
     }
   }

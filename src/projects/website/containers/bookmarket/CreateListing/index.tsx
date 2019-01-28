@@ -45,7 +45,7 @@ const CreateListingComponent: React.FC<IProps> = (props) => {
             (props as any).history.push(
               `/book-market/listing/${
                 response.data.createMarketListing.listing.pk
-                }`,
+              }`,
             );
           }
         });
@@ -75,12 +75,11 @@ const CreateListingComponent: React.FC<IProps> = (props) => {
                 <div className="BasicForm__field">
                   <label htmlFor="bookTitle">
                     Book Title{' '}
-                    {meta.error &&
-                      meta.touched && (
-                        <span className="BasicForm__requirement">
-                          {meta.error}
-                        </span>
-                      )}
+                    {meta.error && meta.touched && (
+                      <span className="BasicForm__requirement">
+                        {meta.error}
+                      </span>
+                    )}
                   </label>
                   <input
                     {...input}
@@ -101,12 +100,11 @@ const CreateListingComponent: React.FC<IProps> = (props) => {
                 <div className="BasicForm__field">
                   <label htmlFor="bookAuthor">
                     Book Author(s){' '}
-                    {meta.error &&
-                      meta.touched && (
-                        <span className="BasicForm__requirement">
-                          {meta.error}
-                        </span>
-                      )}
+                    {meta.error && meta.touched && (
+                      <span className="BasicForm__requirement">
+                        {meta.error}
+                      </span>
+                    )}
                   </label>
                   <input
                     {...input}
@@ -124,12 +122,11 @@ const CreateListingComponent: React.FC<IProps> = (props) => {
                 <div className="BasicForm__field">
                   <label htmlFor="description">
                     Description{' '}
-                    {meta.error &&
-                      meta.touched && (
-                        <span className="BasicForm__requirement">
-                          {meta.error}
-                        </span>
-                      )}
+                    {meta.error && meta.touched && (
+                      <span className="BasicForm__requirement">
+                        {meta.error}
+                      </span>
+                    )}
                   </label>
                   <textarea
                     {...input}
@@ -146,12 +143,11 @@ const CreateListingComponent: React.FC<IProps> = (props) => {
                 <div className="BasicForm__field">
                   <label htmlFor="contactDetails">
                     Contact Details{' '}
-                    {meta.error &&
-                      meta.touched && (
-                        <span className="BasicForm__requirement">
-                          {meta.error}
-                        </span>
-                      )}
+                    {meta.error && meta.touched && (
+                      <span className="BasicForm__requirement">
+                        {meta.error}
+                      </span>
+                    )}
                   </label>
                   <textarea
                     {...input}
@@ -168,12 +164,11 @@ const CreateListingComponent: React.FC<IProps> = (props) => {
                 <div className="BasicForm__field">
                   <label htmlFor="price">
                     List price{' '}
-                    {meta.error &&
-                      meta.touched && (
-                        <span className="BasicForm__requirement">
-                          {meta.error}
-                        </span>
-                      )}
+                    {meta.error && meta.touched && (
+                      <span className="BasicForm__requirement">
+                        {meta.error}
+                      </span>
+                    )}
                   </label>
                   <span className="BasicForm__input-prefix">£</span>
                   <input
@@ -193,12 +188,11 @@ const CreateListingComponent: React.FC<IProps> = (props) => {
                 <div className="BasicForm__field">
                   <label htmlFor="sectionId">
                     School{' '}
-                    {meta.error &&
-                      meta.touched && (
-                        <span className="BasicForm__requirement">
-                          {meta.error}
-                        </span>
-                      )}
+                    {meta.error && meta.touched && (
+                      <span className="BasicForm__requirement">
+                        {meta.error}
+                      </span>
+                    )}
                   </label>
                   <select {...input} id="sectionId">
                     <option selected hidden>

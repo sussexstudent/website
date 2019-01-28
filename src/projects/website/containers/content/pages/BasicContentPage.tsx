@@ -10,9 +10,7 @@ interface BasicContentPageProps {
   page: IBasicContentPage;
 }
 
-export const BasicContentPage: React.FC<BasicContentPageProps> = ({
-  page,
-}) => (
+export const BasicContentPage: React.FC<BasicContentPageProps> = ({ page }) => (
   <div className="LokiContainer">
     <h1>{page.title}</h1>
     <div style={{ maxWidth: '660px' }} className="type-body-copy">

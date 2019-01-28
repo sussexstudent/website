@@ -54,13 +54,12 @@ const BreadcrumbBar: React.FC<IProps> = ({ children }) => {
 
 function generateBreadcrumbsFromPage(page: any) {
   return compact(
-    [...page.ancestors, page].map(
-      (subPage) =>
-        !!subPage.path ? (
-          <InternalAppLink to={subPage.path} key={subPage.path}>
-            {subPage.title}
-          </InternalAppLink>
-        ) : null,
+    [...page.ancestors, page].map((subPage) =>
+      !!subPage.path ? (
+        <InternalAppLink to={subPage.path} key={subPage.path}>
+          {subPage.title}
+        </InternalAppLink>
+      ) : null,
     ),
   );
 }

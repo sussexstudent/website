@@ -4,9 +4,11 @@ import cx from 'classnames';
 import { Popper, Manager, Reference } from 'react-popper';
 
 interface HoverTapTooltipProps {
-  children: (
-    handlers: { ref: any; handleOpen(): void; handleClose(): void },
-  ) => any;
+  children: (handlers: {
+    ref: any;
+    handleOpen(): void;
+    handleClose(): void;
+  }) => any;
   content: any;
 }
 

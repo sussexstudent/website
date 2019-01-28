@@ -6,7 +6,7 @@ import Main from '~components/Main';
 import AdvertBar from '~components/AdvertBar';
 import MSLTag from '~components/MSLTag';
 import { LokiHeader } from '~components/LokiHeader';
-import {MSLAdvert} from "~components/AdvertBar/MSLAdvert";
+import { MSLAdvert } from '~components/AdvertBar/MSLAdvert';
 
 const ga = `!function(u,s,S,U){u.GoogleAnalyticsObject=S;u[S]||(u[S]=function(){
 (u[S].q=u[S].q||[]).push(arguments)});u[S].l=+new Date;U=s.createElement('script');
@@ -53,7 +53,10 @@ const mainLayout: React.FC<IProps> = ({ assets, legacy }) => {
             className="AdvertBar__advert"
             href="https://zugarznap.com/insurance/gadget-ga-sussex/get-cover?utm_source=sussexuniversity&utm_medium=cpc&utm_campaign=gadgetsussex"
           >
-            <img src="https://su.imgix.net/original_images/77f38e7e1f094974b0a9c3f9e6e8ed8c?w=960&h=138&auto=format&q=60" alt="ZugarZnap Insurance (ad)" />
+            <img
+              src="https://su.imgix.net/original_images/77f38e7e1f094974b0a9c3f9e6e8ed8c?w=960&h=138&auto=format&q=60"
+              alt="ZugarZnap Insurance (ad)"
+            />
           </a>
         </AdvertBar>
         <LokiHeader />

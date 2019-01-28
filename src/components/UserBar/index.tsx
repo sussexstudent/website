@@ -241,7 +241,6 @@ const UserBarContainer: React.FC<{ page: PageState; user: UserState }> = (
   props,
 ) => <UserBar {...props} />;
 
-
 const mapStateToProps = (state: WebsiteRootState) => ({
   page: state.page,
   user: state.user,

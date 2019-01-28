@@ -7,7 +7,7 @@ import { ImageSourcePurpose } from '~types/upload';
 import { FalmerImage } from '~types/events';
 import AddImageIcon from '~icons/add-image.svg';
 import { AspectRatio, OneImage } from '~components/OneImage';
-import {cx} from 'emotion';
+import { cx } from 'emotion';
 
 interface IProps {
   onUploadComplete(data: FalmerImage): void;
@@ -100,22 +100,24 @@ class ImageUpload extends React.Component<IProps, IState> {
           multiple={false}
           maxSize={8000000}
         >
-         {({ isDragActive }) => (<div className={cx({ 'ImageUpload--active': isDragActive})}>
-            {this.props.image ? (
-              <OneImage
-                src={this.props.image.resource}
-                aspectRatio={AspectRatio.r3by4}
-                alt=""
-              />
-            ) : (
-              <div className="ImageUpload__no-image">
-                <div className="ImageUpload__icon">
-                  <AddImageIcon />
+          {({ isDragActive }) => (
+            <div className={cx({ 'ImageUpload--active': isDragActive })}>
+              {this.props.image ? (
+                <OneImage
+                  src={this.props.image.resource}
+                  aspectRatio={AspectRatio.r3by4}
+                  alt=""
+                />
+              ) : (
+                <div className="ImageUpload__no-image">
+                  <div className="ImageUpload__icon">
+                    <AddImageIcon />
+                  </div>
+                  <div>Add an image</div>
                 </div>
-                <div>Add an image</div>
-              </div>
-            )}
-          </div>)}
+              )}
+            </div>
+          )}
         </Dropzone>
         {this.renderStatus()}
       </div>

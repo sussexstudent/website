@@ -121,10 +121,12 @@ function createBaseHtml(
           />
           <script src="https://cdn.polyfill.io/v2/polyfill.min.js?rum=0&features=es6,es7,default-3.6,performance.now,Object.entries,Object.values&flags=gated&callback=hasPolyfilled&unknown=polyfill" />
           {bundles.map(createBundleTag)}
-          {assets.map.main &&
-            assets.map.vendor.js && <script src={assets.map.vendor.js} />}
-          {assets.map.main &&
-            assets.map.main.js && <script src={assets.map.main.js} />}
+          {assets.map.main && assets.map.vendor.js && (
+            <script src={assets.map.vendor.js} />
+          )}
+          {assets.map.main && assets.map.main.js && (
+            <script src={assets.map.main.js} />
+          )}
           <script dangerouslySetInnerHTML={{ __html: ga }} />
         </div>
       </body>

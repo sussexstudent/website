@@ -7,7 +7,7 @@ import { mapValues, pickBy } from 'lodash';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { type, Typeface, TypeSize } from '~libs/style/type';
-import {getFirstItemOrValue} from "~libs/qs";
+import { getFirstItemOrValue } from '~libs/qs';
 
 interface FreshersEventsProps extends RouteComponentProps<{ path: string }> {}
 
@@ -44,12 +44,10 @@ const SimpleFilterList = styled.ul({
   },
 });
 
-export const FreshersEvents: React.FC<FreshersEventsProps> = ({
-  location,
-}) => {
+export const FreshersEvents: React.FC<FreshersEventsProps> = ({ location }) => {
   const filtering = location
     ? pickBy(
-      getFirstItemOrValue(qs.parse(location.search)),
+        getFirstItemOrValue(qs.parse(location.search)),
         (_v, k) => filteringAcceptions.indexOf(k) >= 0,
       )
     : {};
@@ -94,12 +92,10 @@ export const FreshersEvents: React.FC<FreshersEventsProps> = ({
             brand: 'freshers-week-2018',
             fromTime: startOfDay(new Date()).toISOString(),
             toTime: addMonths(startOfDay(new Date()), 6).toISOString(),
-            ...mapValues(
-              filtering,
-              (v) =>
-                filteringReplacements.hasOwnProperty(v)
-                  ? filteringReplacements[v]
-                  : v,
+            ...mapValues(filtering, (v) =>
+              filteringReplacements.hasOwnProperty(v)
+                ? filteringReplacements[v]
+                : v,
             ),
           }}
           disableHeader

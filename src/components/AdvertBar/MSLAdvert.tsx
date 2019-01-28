@@ -6,11 +6,10 @@ interface IProps {
 }
 
 export const MSLAdvert = ({ position }: IProps) => (
-    <div
-      className="AdvertBar__advert"
-      dangerouslySetInnerHTML={{
-        __html: MSLTag('Advert', { Position: position }),
-      }}
-    />
+  <div
+    className="AdvertBar__advert"
+    dangerouslySetInnerHTML={{
+      __html: MSLTag('Advert', { Position: position }),
+    }}
+  />
 );
-

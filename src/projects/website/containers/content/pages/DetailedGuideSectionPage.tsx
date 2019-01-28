@@ -26,9 +26,9 @@ interface IProps {
   page: DetailPageSection; // todo
 }
 
-const DetailedGuideSection: React.FC<{ page: DetailPageSection }> = (
-  props,
-) => <StreamField items={props.page.content} page={props.page} />;
+const DetailedGuideSection: React.FC<{ page: DetailPageSection }> = (props) => (
+  <StreamField items={props.page.content} page={props.page} />
+);
 
 class DetailedGuideSectionPage extends React.Component<IProps> {
   render() {

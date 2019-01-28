@@ -100,9 +100,8 @@ export default function() {
     const getComponent = componentMap[componentName];
 
     Promise.resolve(getComponent())
-      .then(
-        (component: any) =>
-          !isFunction(component) ? component.default : component,
+      .then((component: any) =>
+        !isFunction(component) ? component.default : component,
       )
       .then(handleComponent);
   });

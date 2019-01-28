@@ -9,6 +9,6 @@ export function hasTouch() {
         navigator.msMaxTouchPoints))
     ? !0
     : 'ontouchstart' in window
-      ? !0
-      : !1;
+    ? !0
+    : !1;
 }

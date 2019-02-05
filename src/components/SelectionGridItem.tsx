@@ -8,7 +8,10 @@ interface IProps {
 }
 
 const SelectionGridItem = ({ link, imageURL, title }: IProps) => (
-  <li className="SelectionGrid__item SelectionGrid--underneath" key={link}>
+  <li
+    className="SelectionGrid__item SelectionGrid--underneath TrailGrid__item"
+    key={link}
+  >
     <a className="SelectionGrid__link" href={link}>
       <OneImageBackground className="SelectionGrid__image" src={imageURL}>
         <div className="SelectionGrid__image-inside">

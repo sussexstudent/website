@@ -1,43 +1,113 @@
-@ant-gutters 13.5px;
-
 .Trail {
   &__row {
-    margin-bottom: 0.5lh;
+    margin-bottom: 1rem;
+    display: flex;
 
     @media (--small) {
-      &--211 {
-        gg: columns(1/1, 1/2 1/2);
-      }
+      /*&--211 {*/
+      /*gg: columns(1/1, 1/2 1/2);*/
+      /*}*/
 
-      &--121 {
-        gg: columns(1/4 1/2 1/4);
-      }
+      /*&--121 {*/
+      /*gg: columns(1/4 1/2 1/4);*/
+      /*}*/
 
-      &--112 {
-        gg: columns(1/4 1/4 1/2);
-      }
+      /*&--112 {*/
+      /*gg: columns(1/4 1/4 1/2);*/
+      /*}*/
 
       &--111 {
-        gg: columns(1/3 1/3 1/3);
+        /*gg: columns(1/3 1/3 1/3);*/
+        & > * {
+          lost-column: 1/3;
+        }
       }
 
       &--11 {
-        gg: columns(1/2 1/2);
+        display: flex;
+        & > * {
+          lost-column: 1/2;
+        }
       }
 
       &--21 {
-        gg: columns(2/3 1/3);
+        display: flex;
+        & > *:nth-child(1) {
+          lost-column: 2/3;
+        }
+
+        & > *:nth-child(2) {
+          lost-column: 1/3;
+        }
       }
 
-      &--12 {
-        gg: columns(1/3 2/3);
-      }
+      /*&--12 {*/
+      /*gg: columns(1/3 2/3);*/
+      /*}*/
     }
 
     @media (--large) {
       &--211 {
-        gg: columns(1/2 1/4 1/4);
+        & > *:nth-child(1) {
+          lost-column: 1/2;
+        }
+        & > *:nth-child(2) {
+          lost-column: 1/4;
+        }
+        & > *:nth-child(3) {
+          lost-column: 1/4;
+        }
       }
+    }
+  }
+}
+
+.TrailGrid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    lost-column: 1/1;
+    margin-bottom: 1rem;
+    display: flex;
+  }
+
+  &--large &__item {
+    @media (--medium) {
+      lost-column: 1/2;
+    }
+    @media (--large) {
+      lost-column: 1/3;
+    }
+    @media (--extra-large) {
+      lost-column: 1/4;
+    }
+  }
+
+  &--medium &__item {
+    @media (--small) {
+      lost-column: 1/2;
+    }
+
+    @media (--medium) {
+      lost-column: 1/3;
+    }
+
+    @media (--large) {
+      lost-column: 1/4;
+    }
+  }
+
+  &--three &__item {
+    @media (--medium) {
+      lost-column: 1/2;
+    }
+
+    @media (--extra-large) {
+      lost-column: 1/3;
     }
   }
 }

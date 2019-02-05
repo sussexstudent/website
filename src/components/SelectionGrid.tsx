@@ -5,7 +5,7 @@ interface IProps {
 }
 
 const SelectionGrid = ({ children }: IProps) => (
-  <ul className="SelectionGrid">{children}</ul>
+  <ul className="SelectionGrid TrailGrid TrailGrid--three">{children}</ul>
 );
 
 export default SelectionGrid;

@@ -1,7 +1,6 @@
 .QuoteSlips {
   @media (--medium) {
     & {
-      gg: columns(2/3 1/3);
     }
   }
 

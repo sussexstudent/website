@@ -25,7 +25,7 @@ interface IProps {
 export default function OrganisationGrid(props: IProps) {
   const { organisations } = props;
   return (
-    <ul className="OrganisationGrid">
+    <ul className="TrailGrid TrailGrid--large">
       {organisations.map((org) => (
         <OrganisationCard org={org} key={org.groupId} />
       ))}

@@ -6,7 +6,7 @@ interface IProps {
 }
 
 const FigureCollection: React.FC<IProps> = ({ children, items = null }) => (
-  <ul className="FigureCollection">
+  <ul className="FigureCollection TrailGrid TrailGrid--medium">
     {items === null
       ? children
       : items.map((item) => <FigureCollectionFigure {...item} />)}

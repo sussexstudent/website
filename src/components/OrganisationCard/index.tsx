@@ -10,7 +10,7 @@ interface IProps {
 function OrganisationCard(props: IProps) {
   const org = props.org;
   return (
-    <li className="OrganisationCard">
+    <li className="TrailGrid__item">
       <a className="OrganisationCard__link" href={org.link || '#'}>
         {org.logo !== null ? (
           <div className="OrganisationCard__image-container">

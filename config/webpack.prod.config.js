@@ -89,7 +89,11 @@ config.plugins = config.plugins.concat([
 config.module.rules = config.module.rules.concat([
   {
     test: /\.css$/,
-    loader: [MiniCssExtractPlugin.loader, 'css-loader?importLoaders=1', 'postcss-loader'],
+    use: [MiniCssExtractPlugin.loader, {
+      loader: 'css-loader',
+      options: {importLoaders: 1},
+    },
+    'postcss-loader'],
   },
 ]);
 

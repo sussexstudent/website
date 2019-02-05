@@ -114,8 +114,14 @@ function generateConfig() {
           ],
         },
         {
-          test: /\.js?$/,
-          loaders: ['babel-loader?envName=bundle'],
+          test: /\.m?jsx?$/,
+          use: [{
+            loader: 'babel-loader',
+            options: {
+              envName: 'bundle'
+            }
+          }
+          ],
         },
       ],
     },

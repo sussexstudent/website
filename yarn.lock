@@ -1962,6 +1962,13 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
+"@ussu/chunk-manifest-webpack-plugin@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@ussu/chunk-manifest-webpack-plugin/-/chunk-manifest-webpack-plugin-1.1.2.tgz#613b15a4070236bfc656a4b0623cb14858067f05"
+  integrity sha512-p49bgswtCcFLs+oIzn5fEIuPr1VxHAGa3VyagPQ14gxiDhhKkPDhsO9qLQrpaI3kjRqR3WCOVCvzo3p+L2sp/w==
+  dependencies:
+    webpack-core "^0.6.9"
+
 "@ussu/comp@^4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@ussu/comp/-/comp-4.1.0.tgz#d67da5b0b418a393b9d37553c026460dfd85a665"

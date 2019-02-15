@@ -5,17 +5,15 @@ import FalmerEventsDetail from './FalmerEventsDetail';
 import FalmerVenues from '../FalmerVenues';
 import FalmerEventPeriods from '../FalmerEventPeriods';
 
-function FalmerEvents() {
-  return (
-    <div>
-      <Switch>
-        <Route path="/events" exact component={FalmerEventsList} />
-        <Route path="/events/venues" exact component={FalmerVenues} />
-        <Route path="/events/periods" exact component={FalmerEventPeriods} />
-        <Route path="/events/:eventId" component={FalmerEventsDetail} />
-      </Switch>
-    </div>
-  );
-}
+const FalmerEvents: React.FC = () => (
+  <div>
+    <Switch>
+      <Route path="/events" exact component={FalmerEventsList} />
+      <Route path="/events/venues" exact component={FalmerVenues} />
+      <Route path="/events/periods" exact component={FalmerEventPeriods} />
+      <Route path="/events/:eventId" component={FalmerEventsDetail} />
+    </Switch>
+  </div>
+);
 
 export default FalmerEvents;

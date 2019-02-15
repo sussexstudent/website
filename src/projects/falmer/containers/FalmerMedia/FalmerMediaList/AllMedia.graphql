@@ -8,7 +8,9 @@ query AllMedia($cursor: String) {
       node {
         id
         mediaId
-        file
+        file {
+          url
+        }
         width
         height
         title

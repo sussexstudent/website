@@ -1,15 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter, NavLink } from 'react-router-dom';
-import { FalmerUser, RootState } from '~types/falmer';
-import { compose } from 'recompose';
+import React, { useCallback } from 'react';
+import { NavLink } from 'react-router-dom';
+import { RootState } from '~types/falmer';
 import StudentsUnionLogoNoLogotype from '~icons/students-union-logo-no-logotype.svg';
+import { useMappedState } from 'redux-react-hook';
 
-interface IProps {
-  user: FalmerUser;
-}
+const FalmerHeader: React.FC = () => {
+  const mapState = useCallback(
+    (state: RootState) => ({
+      user: state.auth.user,
+    }),
+    [],
+  );
 
-const FalmerHeader: React.FC<IProps> = ({ user }) => {
+  const { user } = useMappedState(mapState);
+
   return (
     <header className="FalmerHeader">
       <div
@@ -84,21 +88,4 @@ const FalmerHeader: React.FC<IProps> = ({ user }) => {
   );
 };
 
-/*
- <li className="FalmerHeader__nav-item">
- <Link to="/content">Content</Link>
- </li>
- <li className="FalmerHeader__nav-item">
- <Link to="/events">Images</Link>
- </li>
- <li className="FalmerHeader__nav-item">
- <Link to="/events">Events</Link>
- </li>
-*/
-
-export default compose<IProps, {}>(
-  withRouter,
-  connect((state: RootState) => ({
-    user: state.auth.user,
-  })),
-)(FalmerHeader);
+export default FalmerHeader;

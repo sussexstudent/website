@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 
 interface IRowProps {
   id?: number;
@@ -19,53 +19,48 @@ interface IProps {
   children(item: Item, props: IRowProps): any;
 }
 
-interface IState {
-  checked: {
-    [id: number]: boolean;
-  };
-}
+const FalmerDataList: React.FC<IProps> = ({
+  header,
+  selectable,
+  items,
+  children,
+}) => {
+  const [checked, setChecked] = useState<{ [id: number]: boolean }>({});
 
-class FalmerDataList extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
+  const handleRowSelect = useCallback(
+    (id: number, event: React.KeyboardEvent<HTMLInputElement>) => {
+      setChecked((checked) => ({
+        ...checked,
+        [id]: event.currentTarget.checked,
+      }));
+    },
+    [],
+  );
 
-    this.state = {
-      checked: {},
-    };
-  }
-
-  handleRowSelect(id: number, event: React.KeyboardEvent<HTMLInputElement>) {
-    this.setState({
-      checked: { ...this.state.checked, [id]: event.currentTarget.checked },
-    });
-  }
-
-  render() {
-    return (
-      <div className="FalmerDataList">
-        <table className="FalmerDataList__list">
-          <thead>
-            {this.props.header({
-              selectable: this.props.selectable,
-              isSelected: false,
-              onChange: () => null,
-            })}
-          </thead>
-          <tbody>
-            {this.props.items.map((item) =>
-              this.props.children(item, {
-                key: item.id,
-                isSelected: this.state.checked[item.id] === true,
-                selectable: this.props.selectable,
-                onChange: this.handleRowSelect.bind(this),
-              }),
-            )}
-          </tbody>
-        </table>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="FalmerDataList">
+      <table className="FalmerDataList__list">
+        <thead>
+          {header({
+            selectable,
+            isSelected: false,
+            onChange: () => null,
+          })}
+        </thead>
+        <tbody>
+          {items.map((item) =>
+            children(item, {
+              selectable,
+              key: item.id,
+              isSelected: checked[item.id],
+              onChange: handleRowSelect,
+            }),
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 export const HeaderCell: React.FC<{}> = (props) => {
   return <th>{props.children}</th>;

@@ -1,8 +1,8 @@
-import { SFC } from 'react';
+import { FC } from 'react';
 
 export interface RouteComponent {
   path: string;
   exact?: boolean;
 }
 
-export type SimpleLoadableRoute = SFC<RouteComponent>;
+export type SimpleLoadableRoute = FC<RouteComponent>;

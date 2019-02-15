@@ -2,7 +2,9 @@ query MediaDetail($mediaId: Int) {
   image(mediaId: $mediaId) {
     id
     mediaId
-    file
+    file {
+      url
+    }
     width
     height
     title

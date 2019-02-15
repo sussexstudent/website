@@ -3,13 +3,13 @@ import { FalmerSplash } from '../../components/FalmerSplash';
 
 import AwardImage from '~icons/award.svg';
 
-function FalmerGroupAwards() {
+const FalmerGroupAwards: React.FC = () => {
   return (
     <FalmerSplash
       image={<AwardImage />}
       text="Group Awards within Falmer is coming soon."
     />
   );
-}
+};
 
-export default FalmerGroupAwards as any;
+export default FalmerGroupAwards;

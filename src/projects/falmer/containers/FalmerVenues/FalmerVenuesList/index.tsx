@@ -14,72 +14,60 @@ import FalmerSubSections, {
 import FalmerListView from '~falmer/components/FalmerListView';
 import { Connection } from '~types/falmer';
 import { Venue } from '~types/events';
-import { HandledQuery } from '~components/HandledQuery';
-import { SimpleLoadableRoute } from '~types/routes';
+import { useQuery } from 'react-apollo-hooks';
 
 interface Result {
   allVenues: Connection<Venue>;
 }
 
-class AllVenuesQuery extends HandledQuery<Result, {}> {}
+const FalmerVenuesList: React.FC = () => {
+  const { data, loading } = useQuery<Result>(ALL_VENUES_QUERY);
+  if (loading || !data) {
+    return null;
+  }
 
-function FalmerVenuesList() {
+  const allVenues = data.allVenues;
+
   return (
-    <AllVenuesQuery query={ALL_VENUES_QUERY}>
-      {({ data }) => {
-        if (!data) {
-          return;
-        }
+    <div>
+      <Helmet>
+        <title>Events</title>
+      </Helmet>
 
-        const allVenues = data.allVenues;
-
-        return (
-          <div>
-            <Helmet>
-              <title>Events</title>
-            </Helmet>
-
-            <FalmerListView>
-              <div className="FalmerListView__main">
-                <FalmerSubSections>
-                  <SubSection to="/events/" back>
-                    Events
-                  </SubSection>
-                  <SubSection to="/events/periods/">
-                    Branding Periods
-                  </SubSection>
-                </FalmerSubSections>
-                <FalmerDataList
-                  items={allVenues.edges.map((edge) => edge.node)}
-                  header={(rowState) => (
-                    <Row {...rowState}>
-                      <HeaderCell>Name</HeaderCell>
-                    </Row>
-                  )}
-                  selectable
-                >
-                  {(item: Venue, rowState) => (
-                    <Row {...rowState} id={item.venueId}>
-                      <Cell>
-                        <Link to={`/events/venues/${item.venueId}`}>
-                          {item.name}
-                        </Link>
-                      </Cell>
-                    </Row>
-                  )}
-                </FalmerDataList>
-              </div>
-              <FalmerSidebar>
-                <Link className="Button" to="new">
-                  New Venue
-                </Link>
-              </FalmerSidebar>
-            </FalmerListView>
-          </div>
-        );
-      }}
-    </AllVenuesQuery>
+      <FalmerListView>
+        <div className="FalmerListView__main">
+          <FalmerSubSections>
+            <SubSection to="/events/" back>
+              Events
+            </SubSection>
+            <SubSection to="/events/periods/">Branding Periods</SubSection>
+          </FalmerSubSections>
+          <FalmerDataList
+            items={allVenues.edges.map((edge) => edge.node)}
+            header={(rowState) => (
+              <Row {...rowState}>
+                <HeaderCell>Name</HeaderCell>
+              </Row>
+            )}
+            selectable
+          >
+            {(item: Venue, rowState) => (
+              <Row {...rowState} id={item.venueId}>
+                <Cell>
+                  <Link to={`/events/venues/${item.venueId}`}>{item.name}</Link>
+                </Cell>
+              </Row>
+            )}
+          </FalmerDataList>
+        </div>
+        <FalmerSidebar>
+          <Link className="Button" to="new">
+            New Venue
+          </Link>
+        </FalmerSidebar>
+      </FalmerListView>
+    </div>
   );
-}
+};
 
-export default FalmerVenuesList as SimpleLoadableRoute;
+export default FalmerVenuesList;

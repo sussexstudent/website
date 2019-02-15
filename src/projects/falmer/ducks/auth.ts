@@ -79,11 +79,11 @@ export default function reducer(
 }
 
 // Action Creators
-export function requestAuthToken() {
+export const requestAuthToken = () => {
   return {
     type: REQUEST_AUTH_TOKEN,
   };
-}
+};
 
 // Async IO
 function* getClientData() {

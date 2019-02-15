@@ -15,7 +15,8 @@ import NewsList from '~components/NewsList';
 import { parseNews } from 'msl-utils';
 
 const Homepage: React.FC<RouteComponent> = () => {
-  let articles = typeof document === undefined ? [] : parseNews(document.body);
+  let articles =
+    typeof window === 'undefined' ? [] : parseNews(window.document.body);
   if (articles.length > 4) {
     articles = articles.slice(0, 4);
   }

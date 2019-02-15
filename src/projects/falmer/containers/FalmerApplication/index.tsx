@@ -1,5 +1,4 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useCallback, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import Loadable from 'react-loadable';
 import { requestAuthToken } from '~falmer/ducks/auth';
@@ -7,8 +6,8 @@ import FalmerHeader from '~falmer/components/FalmerHeader';
 import Loader from '~components/Loader';
 import LoadableLoading from '~components/LoadableLoading';
 import { RootState } from '~types/falmer';
-import { compose } from 'recompose';
 import { Switch, Route } from 'react-router-dom';
+import { useMappedState, useDispatch } from 'redux-react-hook';
 
 const LoadableMedia = Loadable({
   loader: () => import(/* webpackChunkName: "Media" */ '../FalmerMedia'),
@@ -38,48 +37,35 @@ const LoadableDashboard = Loadable({
   loading: LoadableLoading,
 }) as any;
 
-interface IProps {
-  requestAuthToken(): void;
-  isAuthenticated: boolean;
-}
+export const FalmerApplication: React.FC = () => {
+  const mapState = useCallback(
+    (state: RootState) => state.auth.user !== null,
+    [],
+  );
+  const isAuthenticated = useMappedState(mapState);
+  const dispatch = useDispatch();
 
-class FalmerApplication extends React.Component<IProps> {
-  componentDidMount() {
-    this.props.requestAuthToken();
+  useEffect(() => {
+    dispatch(requestAuthToken());
+  }, []);
+
+  if (!isAuthenticated) {
+    return <Loader />;
   }
 
-  render() {
-    const { isAuthenticated } = this.props;
-
-    if (!isAuthenticated) {
-      return <Loader />;
-    }
-
-    return (
-      <section>
-        <Helmet titleTemplate="%s | Falmer" />
-        <FalmerHeader />
-        <main className="FalmerViewContainer">
-          <Switch>
-            <Route component={LoadableDashboard} path="/" exact />
-            <Route component={LoadableEvents} path="/events/*" />
-            <Route component={LoadableStudentGroups} path="/groups/*" />
-            <Route component={LoadableMedia} path="/media/*" />
-            <Route component={LoadableBookMarket} path="/book-market/*" />
-          </Switch>
-        </main>
-      </section>
-    );
-  }
-}
-
-export default compose<IProps, {}>(
-  connect(
-    (state: RootState) => ({
-      isAuthenticated: state.auth.user !== null,
-    }),
-    {
-      requestAuthToken,
-    },
-  ),
-)(FalmerApplication);
+  return (
+    <section>
+      <Helmet titleTemplate="%s | Falmer" />
+      <FalmerHeader />
+      <main className="FalmerViewContainer">
+        <Switch>
+          <Route component={LoadableDashboard} path="/" exact />
+          <Route component={LoadableEvents} path="/events" />
+          <Route component={LoadableStudentGroups} path="/groups" />
+          <Route component={LoadableMedia} path="/media" />
+          <Route component={LoadableBookMarket} path="/book-market" />
+        </Switch>
+      </main>
+    </section>
+  );
+};

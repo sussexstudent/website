@@ -27,6 +27,7 @@ export enum TicketCost {
 }
 
 export interface ImageLabel {
+  id: string;
   confidence: number;
   name: string;
 }

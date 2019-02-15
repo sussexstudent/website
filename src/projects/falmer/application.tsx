@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FalmerApplication from '~falmer/containers/FalmerApplication';
+import { FalmerApplication } from '~falmer/containers/FalmerApplication';
 import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { StoreContext } from 'redux-react-hook';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import * as reducers from './reducers';
 import saga from './saga';
+import { BrowserRouter } from '~components/BrowserRouter';
 
 const sagaMiddleware = createSagaMiddleware();
 const link = new HttpLink({
@@ -41,9 +44,15 @@ sagaMiddleware.run(saga);
 
 ReactDOM.render(
   <ApolloProvider client={client as any}>
-    <Provider store={store}>
-      <FalmerApplication />
-    </Provider>
+    <ApolloHooksProvider client={client}>
+      <BrowserRouter>
+        <Provider store={store}>
+          <StoreContext.Provider value={store}>
+            <FalmerApplication />
+          </StoreContext.Provider>
+        </Provider>
+      </BrowserRouter>
+    </ApolloHooksProvider>
   </ApolloProvider>,
   document.querySelector('.FalmerAppRoot'),
 );

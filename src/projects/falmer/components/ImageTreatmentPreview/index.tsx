@@ -6,7 +6,7 @@ interface IProps {
   image: FalmerImage;
 }
 
-function ImageTreatmentPreview({ image }: IProps) {
+const ImageTreatmentPreview: React.FC<IProps> = ({ image }) => {
   const treatments = [
     {
       size: AspectRatio.r1by1,
@@ -25,7 +25,7 @@ function ImageTreatmentPreview({ image }: IProps) {
     <div className="ImageTreatmentPreview">
       <ul className="ImageTreatmentPreview__list">
         {treatments.map((treatment) => (
-          <li>
+          <li key={treatment.name}>
             <figure className="ImageTreatmentPreview__figure">
               <OneImage
                 aspectRatio={treatment.size}
@@ -41,6 +41,6 @@ function ImageTreatmentPreview({ image }: IProps) {
       </ul>
     </div>
   );
-}
+};
 
 export default ImageTreatmentPreview;

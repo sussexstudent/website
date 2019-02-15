@@ -1,9 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import getHours from 'date-fns/getHours';
-import { RootState } from '~types/falmer';
-import { compose } from 'recompose';
 
 function getGreeting() {
   const hour = getHours(new Date());
@@ -23,7 +20,12 @@ function getGreeting() {
 
 interface IProps {}
 
-function FalmerDashboard({  }: IProps) {
+export default function FalmerDashboard({  }: IProps) {
+  // const mapState = useCallback((state: RootState) => ({
+  //   user: state.auth.user,
+  // });
+  // const { user } = useMappedState(mapState);
+
   return (
     <div>
       <Helmet>
@@ -33,9 +35,3 @@ function FalmerDashboard({  }: IProps) {
     </div>
   );
 }
-
-export default compose<IProps, {}>(
-  connect((state: RootState) => ({
-    user: state.auth.user,
-  })),
-)(FalmerDashboard);

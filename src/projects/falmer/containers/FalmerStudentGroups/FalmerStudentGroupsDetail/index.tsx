@@ -3,11 +3,10 @@ import formatDistance from 'date-fns/formatDistance';
 import GROUP_DETAIL_QUERY from './GroupDetail.graphql';
 import CopyToClipboardButton from '~components/CopyToClipboardButton';
 import { StudentGroup } from '~components/OrganisationGrid';
-import { HandledQuery } from '~components/HandledQuery';
-import { adopt } from '~components/Adopt';
 import BackBar from '~components/BackBar/Link';
 import { Tags, Tag } from '~components/Tags';
 import { FalmerDetailHeader } from '~falmer/components/FalmerDetailHeader';
+import { useQuery } from 'react-apollo-hooks';
 
 interface IProps {
   groupId: number;
@@ -17,69 +16,50 @@ interface Result {
   group: StudentGroup;
 }
 
-class GroupDetailQuery extends HandledQuery<Result, {}> {}
+const FalmerStudentGroupsDetail: React.FC<IProps> = ({ groupId }) => {
+  const { data, loading } = useQuery<Result>(GROUP_DETAIL_QUERY, {
+    variables: { groupId },
+  });
+  if (loading || !data) {
+    return null;
+  }
 
-interface RenderProps {
-  query: {
-    data: Result;
-  };
-}
+  const group = data.group;
 
-const Composed = adopt<RenderProps, IProps>({
-  query: ({ render, groupId }) => (
-    <GroupDetailQuery query={GROUP_DETAIL_QUERY} variables={{ groupId }}>
-      {render}
-    </GroupDetailQuery>
-  ),
-});
-
-function FalmerStudentGroupsDetail(props: IProps) {
   return (
-    <Composed {...props}>
-      {({
-        query: {
-          data: { group },
-        },
-      }) => {
-        return (
-          <div>
-            <BackBar to="/groups">Groups</BackBar>
+    <div>
+      <BackBar to="/groups">Groups</BackBar>
+      <div>
+        <FalmerDetailHeader
+          title={group.name}
+          tags={() => (
+            <Tags>
+              {group.mslGroup ? <Tag>MSL</Tag> : null}
+              {group.mslGroup ? (
+                <Tag>
+                  last sync:{' '}
+                  {formatDistance(
+                    new Date(),
+                    new Date(group.mslGroup.lastSync),
+                  )}{' '}
+                  ago
+                </Tag>
+              ) : null}
+            </Tags>
+          )}
+          actions={() => (
             <div>
-              <FalmerDetailHeader
-                title={group.name}
-                tags={() => (
-                  <Tags>
-                    {group.mslGroup ? <Tag>MSL</Tag> : null}
-                    {group.mslGroup ? (
-                      <Tag>
-                        last sync:{' '}
-                        {formatDistance(
-                          new Date(),
-                          new Date(group.mslGroup.lastSync),
-                        )}{' '}
-                        ago
-                      </Tag>
-                    ) : null}
-                  </Tags>
-                )}
-                actions={() => (
-                  <div>
-                    <CopyToClipboardButton
-                      value={`https://falmer.sussexstudent.com/o/g/${
-                        group.groupId
-                      }`}
-                    >
-                      Copy sharing link
-                    </CopyToClipboardButton>
-                  </div>
-                )}
-              />
+              <CopyToClipboardButton
+                value={`https://falmer.sussexstudent.com/o/g/${group.groupId}`}
+              >
+                Copy sharing link
+              </CopyToClipboardButton>
             </div>
-          </div>
-        );
-      }}
-    </Composed>
+          )}
+        />
+      </div>
+    </div>
   );
-}
+};
 
 export default FalmerStudentGroupsDetail as any;

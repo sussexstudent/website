@@ -1,15 +1,8 @@
-import React from 'react';
-import bind from 'bind-decorator';
+import React, { useState } from 'react';
 import { COLORS, Layers } from '~libs/style';
 import styled from '@emotion/styled';
 import { type, Typeface, TypeSize } from '~libs/style/type';
 import { cardRaised } from '~libs/style/cards';
-
-interface IProps {}
-
-interface IState {
-  hidden: boolean;
-}
 
 const MessageContainer = styled.div({
   position: 'fixed',
@@ -43,40 +36,33 @@ const MessageAction = styled.div({
   paddingTop: '1rem',
 });
 
-class CookieMessage extends React.Component<IProps, IState> {
-  state = { hidden: false };
+const CookieMessage = () => {
+  const [hidden, setHidden] = useState(false);
 
-  @bind
-  handleHide() {
-    this.setState({ hidden: true });
+  if (hidden) {
+    return null;
   }
 
-  render() {
-    if (this.state.hidden) {
-      return null;
-    }
-
-    return (
-      <MessageContainer>
-        <MessageBlimp>
-          {
-            'This site uses cookies. By continuing to browse, you agree to our use of cookies on the site. '
-          }
-          <a href="/cookie-policy">Learn more</a>.
-          <MessageAction>
-            <button
-              className="Button"
-              title="Close"
-              onClick={this.handleHide}
-              type="button"
-            >
-              Close
-            </button>
-          </MessageAction>
-        </MessageBlimp>
-      </MessageContainer>
-    );
-  }
-}
+  return (
+    <MessageContainer>
+      <MessageBlimp>
+        {
+          'This site uses cookies. By continuing to browse, you agree to our use of cookies on the site. '
+        }
+        <a href="/cookie-policy">Learn more</a>.
+        <MessageAction>
+          <button
+            className="Button"
+            title="Close"
+            onClick={() => setHidden(true)}
+            type="button"
+          >
+            Close
+          </button>
+        </MessageAction>
+      </MessageBlimp>
+    </MessageContainer>
+  );
+};
 
 export default CookieMessage;

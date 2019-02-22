@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { sample } from 'lodash';
 import styled from '@emotion/styled';
 
@@ -35,39 +35,24 @@ const SWATCHES = [
   ['00a850', '009246'],
 ];
 
-interface IProps {}
-
-interface IState {
-  pattern: patternMethod;
-  swatch: string[];
-}
-
 const Container = styled.div({
   width: '100%',
   height: '100%',
   backgroundRepeat: 'repeat',
 });
 
-class PatternPlaceholder extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
+const PatternPlaceholder = () => {
+  const [pattern] = useState<patternMethod>(sample(PATTERNS) || PATTERNS[0]);
+  const [swatch] = useState(sample(SWATCHES) || SWATCHES[0]);
 
-    this.state = {
-      pattern: sample(PATTERNS) || PATTERNS[0],
-      swatch: sample(SWATCHES) || SWATCHES[0],
-    };
-  }
-  render() {
-    const { pattern, swatch } = this.state;
-    return (
-      <Container
-        style={{
-          backgroundImage: `url("${pattern(swatch[1])}")`,
-          backgroundColor: `#${swatch[0]}`,
-        }}
-      />
-    );
-  }
-}
+  return (
+    <Container
+      style={{
+        backgroundImage: `url("${pattern(swatch[1])}")`,
+        backgroundColor: `#${swatch[0]}`,
+      }}
+    />
+  );
+};
 
 export default PatternPlaceholder;

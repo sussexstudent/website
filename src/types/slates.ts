@@ -8,6 +8,7 @@ export enum BoxType {
   NA = 'na',
   ImpulseButton = 'impulsebutton',
   SimpleBranded = 'simplebranded',
+  SimpleText = 'simpletext',
   VoteNow = 'votenow',
 }
 

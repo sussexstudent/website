@@ -1,8 +1,9 @@
 import React from 'react';
 import FauxLink from '~components/FauxLink';
-import { OneImage, OneImageBackground } from '~components/OneImage';
+import { OneImage } from '~components/OneImage';
 import { SlateBox } from '~types/slates';
 import { FalmerImage } from '~types/events';
+import { SlateBoxBackground, SlateBoxContainer } from '~components/Slate/Box';
 
 interface IProps {
   srt: string;
@@ -18,11 +19,8 @@ const component: React.FC<IProps> = ({
   foregroundImage,
 }) => {
   return (
-    <div className="BentoBox">
-      <OneImageBackground
-        className="BentoBox__background-image"
-        src={backgroundImage.resource}
-      >
+    <SlateBoxContainer>
+      <SlateBoxBackground src={backgroundImage.resource}>
         <FauxLink href={link} />
         <div
           style={{
@@ -41,8 +39,8 @@ const component: React.FC<IProps> = ({
             alt={srt}
           />
         </div>
-      </OneImageBackground>
-    </div>
+      </SlateBoxBackground>
+    </SlateBoxContainer>
   );
 };
 

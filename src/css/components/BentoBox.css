@@ -23,18 +23,6 @@
     justify-content: center;
   }
 
-  &__background-image {
-    overflow: auto;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    padding-top: 1rem;
-    box-sizing: border-box;
-    background-size: cover;
-    background-position: center;
-  }
-
   &--color-blue {
     color: #ffffff;
     background-color: var(--color__brand-blue);

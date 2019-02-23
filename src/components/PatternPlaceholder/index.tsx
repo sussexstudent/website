@@ -42,7 +42,7 @@ const Container = styled.div({
 });
 
 const PatternPlaceholder = () => {
-  const [pattern] = useState<patternMethod>(sample(PATTERNS) || PATTERNS[0]);
+  const [pattern] = useState(() => sample(PATTERNS) || PATTERNS[0]);
   const [swatch] = useState(sample(SWATCHES) || SWATCHES[0]);
 
   return (

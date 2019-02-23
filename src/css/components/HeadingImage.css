@@ -3,6 +3,8 @@
 
   background-size: cover;
   padding: 1lh;
+  padding-top: 230px;
+  font-family: var(--type__primary);
   margin-bottom: 1.5lh;
   padding-top: 230px;
   font-family: var(--type__primary);

@@ -109,7 +109,7 @@ function SearchResult(props: IProps) {
     return <MSLNewsResult item={props.item as any} />;
   }
 
-  console.log('Search result render fell through');
+  console.warn('Search result render fell through', type);
   return null;
 }
 

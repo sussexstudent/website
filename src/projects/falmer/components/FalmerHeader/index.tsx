@@ -3,6 +3,13 @@ import { NavLink } from 'react-router-dom';
 import { RootState } from '~types/falmer';
 import StudentsUnionLogoNoLogotype from '~icons/students-union-logo-no-logotype.svg';
 import { useMappedState } from 'redux-react-hook';
+import { type, Typeface, TypeSize } from '~libs/style/type';
+import { css } from 'emotion';
+
+const logotypeStyle = css({
+  margin: 0,
+  ...type(TypeSize.Pica, Typeface.Secondary, true),
+});
 
 const FalmerHeader: React.FC = () => {
   const mapState = useCallback(
@@ -24,7 +31,7 @@ const FalmerHeader: React.FC = () => {
         <StudentsUnionLogoNoLogotype />
         <span className="u-h">Sussex Students' Union</span>
       </div>
-      <h1 className="FalmerHeader__logotype">Falmer</h1>
+      <h1 className={logotypeStyle}>Falmer</h1>
       <nav className="FalmerHeader__nav">
         <ul className="FalmerHeader__nav-list">
           <li className="FalmerHeader__nav-item">

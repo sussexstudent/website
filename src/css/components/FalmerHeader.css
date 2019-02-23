@@ -12,13 +12,8 @@
 
   display: flex;
 
-  &__logotype {
-    margin: 0;
-    @mixin type great-primer;
-  }
-
   &__user {
-    @mixin type pica;
+    @mixin type long-primer without-line-height;
     color: var(--color__grey-winter);
     font-weight: 500;
   }

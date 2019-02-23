@@ -7,7 +7,7 @@ import { AppMountState } from '~website/ducks/router';
 import { connect } from 'react-redux';
 import { ContentPage } from '~website/containers/content/ContentPage';
 import { compose } from 'recompose';
-import ContentExplorer from '~website/layouts/ContentExplorer';
+import { ContentExplorer } from '~website/layouts/ContentExplorer';
 import { LoadableLoading } from '~components/LoadableLoading';
 import Loadable from 'react-loadable';
 import Helmet from 'react-helmet';

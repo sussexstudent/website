@@ -1,7 +1,6 @@
 import React from 'react';
 import qs from 'query-string';
 import { ContentPage } from '~website/containers/content/ContentPage';
-import HydroLeaf from '~components/HydroLeaf';
 import { bind } from 'bind-decorator';
 
 interface IState {
@@ -9,7 +8,7 @@ interface IState {
   pathInput: string;
 }
 
-class ContentExplorer extends React.Component<{}, IState> {
+export class ContentExplorer extends React.Component<{}, IState> {
   constructor(props: {}) {
     super(props);
 
@@ -70,5 +69,3 @@ class ContentExplorer extends React.Component<{}, IState> {
     );
   }
 }
-
-export default HydroLeaf()(ContentExplorer);

@@ -3,7 +3,6 @@ import bind from 'bind-decorator';
 import cx from 'classnames';
 import ClickOutside from 'react-onclickout';
 import client, { ClientAuth } from '~libs/user';
-import Hydroleaf from '~components/HydroLeaf';
 import { shuffle } from 'lodash';
 import { connect } from 'react-redux';
 import { WebsiteRootState } from '../../types/website';
@@ -249,16 +248,3 @@ const mapStateToProps = (state: WebsiteRootState) => ({
 const UserBarConnected = connect(mapStateToProps)(UserBarContainer);
 
 export default UserBarConnected;
-
-function DesktopContainer() {
-  return (
-    <div className="Container UserBar__container">
-      <UserBarConnected />
-    </div>
-  );
-}
-
-export const DesktopUserBar = Hydroleaf({
-  className: 'UserBar UserBar--desktop',
-  name: 'UserBar',
-})(DesktopContainer);

@@ -13,6 +13,8 @@ import { Provider } from 'react-redux';
 import * as reducers from './reducers';
 import saga from './saga';
 import { BrowserRouter } from '~components/BrowserRouter';
+import { addClassesForFeatures } from '~libs/features';
+addClassesForFeatures();
 
 const sagaMiddleware = createSagaMiddleware();
 const link = new HttpLink({

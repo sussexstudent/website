@@ -9,21 +9,22 @@ import Loader from '~components/Loader';
 import { ErrorState } from '~components/ErrorState';
 
 interface Result {
-  allImages: Connection<FalmerImage>;
+  allImages?: Connection<FalmerImage>;
 }
 
 const FalmerMediaList: React.FC = () => {
-  const { data, loading, error } = useQuery<Result>(ALL_MEDIA_QUERY);
+  const { data, loading, error, fetchMore } = useQuery<Result>(
+    ALL_MEDIA_QUERY,
+    {},
+  );
 
   if (loading) {
     return <Loader />;
   }
 
-  if (error || !data) {
+  if (error || !data || !data.allImages) {
     return <ErrorState />;
   }
-
-  console.log(data);
 
   const { allImages } = data;
   return (
@@ -54,7 +55,39 @@ const FalmerMediaList: React.FC = () => {
         ))}
       </ul>
       {allImages.pageInfo.hasNextPage ? (
-        <button className="Button">Load more</button>
+        <button
+          className="Button"
+          onClick={() =>
+            fetchMore({
+              query: ALL_MEDIA_QUERY,
+              variables: {
+                cursor: data.allImages && data.allImages.pageInfo.endCursor,
+              },
+              updateQuery: (previousResult, { fetchMoreResult }) => {
+                if (
+                  !fetchMoreResult ||
+                  !fetchMoreResult.allImages ||
+                  !previousResult.allImages
+                ) {
+                  return {};
+                }
+                const newEdges = fetchMoreResult.allImages.edges;
+                const pageInfo = fetchMoreResult.allImages.pageInfo;
+                return {
+                  // Put the new comments at the end of the list and update `pageInfo`
+                  // so we have the new `endCursor` and `hasNextPage` values
+                  allImages: {
+                    ...previousResult.allImages,
+                    pageInfo,
+                    edges: [...previousResult.allImages.edges, ...newEdges],
+                  },
+                };
+              },
+            })
+          }
+        >
+          Load more
+        </button>
       ) : (
         <em>{`That's your lot!`}</em>
       )}

@@ -4,7 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const { generateConfig, baseDir } = require('./webpack.base.config.js');
 const ChunkManifestPlugin = require('@ussu/chunk-manifest-webpack-plugin');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -38,11 +38,7 @@ config.output = {
 
 config.optimization = {
   minimizer: [
-    new UglifyJsPlugin({
-      cache: true,
-      parallel: true,
-      sourceMap: true
-    }),
+    new TerserPlugin(),
     new OptimizeCSSAssetsPlugin({})
   ]
 };

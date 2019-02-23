@@ -13,7 +13,10 @@ const Modal = (
   props: ReactModal.Props & EnchancedModalProps & { children: any },
 ) => (
   <ReactModal
-    className={cx('Modal', { 'Modal--small': props.size === 'small' })}
+    className={cx('Modal', {
+      'Modal--small': props.size === 'small',
+      'Modal--full': props.size === 'full',
+    })}
     overlayClassName="Overlay"
     {...omit(props, ['size']) as ReactModal.Props}
   >

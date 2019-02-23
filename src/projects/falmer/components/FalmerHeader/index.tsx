@@ -60,14 +60,16 @@ const FalmerHeader: React.FC = () => {
               Images
             </NavLink>
           </li>
-          <li className="FalmerHeader__nav-item">
-            <NavLink
-              to="/book-market"
-              activeClassName="FalmerHeader__nav-link--active"
-            >
-              Book Market
-            </NavLink>
-          </li>
+          {user.isStaff ? (
+            <li className="FalmerHeader__nav-item">
+              <NavLink
+                to="/featured-areas"
+                activeClassName="FalmerHeader__nav-link--active"
+              >
+                Featured Areas
+              </NavLink>
+            </li>
+          ) : null}
           {user.hasCmsAccess ? (
             <li className="FalmerHeader__nav-item">
               <a href="/cms">

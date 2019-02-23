@@ -7,12 +7,12 @@ interface IProps {
   endOfCard?: boolean;
 }
 
-function Button({ href, endOfCard = false, children }: IProps) {
+const Button: React.FC<IProps> = ({ href, endOfCard = false, children }) => {
   return (
     <a className={cx('Button', { 'Button--endOfCard': endOfCard })} href={href}>
       {children}
     </a>
   );
-}
+};
 
 export default Button;

@@ -8,6 +8,9 @@ import LoadableLoading from '~components/LoadableLoading';
 import { RootState } from '~types/falmer';
 import { Switch, Route } from 'react-router-dom';
 import { useMappedState, useDispatch } from 'redux-react-hook';
+import Modal from 'react-modal';
+
+Modal.setAppElement('.FalmerAppRoot');
 
 const LoadableMedia = Loadable({
   loader: () => import(/* webpackChunkName: "Media" */ '../FalmerMedia'),
@@ -37,6 +40,12 @@ const LoadableDashboard = Loadable({
   loading: LoadableLoading,
 }) as any;
 
+const LoadableFeaturedAreas = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: "FeaturedAreas" */ '../FalmerFeaturedAreas'),
+  loading: LoadableLoading,
+});
+
 export const FalmerApplication: React.FC = () => {
   const mapState = useCallback(
     (state: RootState) => state.auth.user !== null,
@@ -64,6 +73,7 @@ export const FalmerApplication: React.FC = () => {
           <Route component={LoadableStudentGroups} path="/groups" />
           <Route component={LoadableMedia} path="/media" />
           <Route component={LoadableBookMarket} path="/book-market" />
+          <Route component={LoadableFeaturedAreas} path="/featured-areas" />
         </Switch>
       </main>
     </section>

@@ -2,7 +2,6 @@ import React from 'react';
 // import TweetList from '~components/TweetList';
 // import HomepageEventsList from '~components/HomepageEventsList';
 import { ContentPage } from '~website/containers/content/ContentPage';
-import { Bento } from '~components/Bento';
 import { HomepageSplash } from '~website/components/HomepageSplash';
 import { UserWelcome } from '~website/components/UserWelcome';
 import { RouteComponent } from '~types/routes';
@@ -13,6 +12,7 @@ import { MSLAdvert } from '~components/AdvertBar/MSLAdvert';
 import NewsList from '~components/NewsList';
 // @ts-ignore
 import { parseNews } from 'msl-utils';
+import { SlateContainer } from '~components/Slate/SlateContainer';
 
 const Homepage: React.FC<RouteComponent> = () => {
   let articles =
@@ -39,7 +39,7 @@ const Homepage: React.FC<RouteComponent> = () => {
         <HomepageSplash />
         <div className="LokiContainer">
           <UserWelcome />
-          <Bento />
+          <SlateContainer />
           <div>
             <h2 className="type-double-pica">Latest news</h2>
             <NewsList items={articles} fullWidth />

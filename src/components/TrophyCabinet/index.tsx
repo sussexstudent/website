@@ -3,7 +3,7 @@ import ContentCard from '~components/ContentCard';
 import { HandledQuery } from '~components/HandledQuery';
 import AllAwardsQuery from './AllAwards.graphql';
 import { TrophyModal } from '~components/TrophyCabinet/TrophyModal';
-import { Group } from '../../types/awards';
+import { Group } from '~types/awards';
 import { isWithinInterval } from 'date-fns';
 import { PeriodList } from '~components/TrophyCabinet/PeriodList';
 

@@ -20,6 +20,7 @@
 @import '../projects/falmer/Site.css';
 @import '../projects/falmer/FalmerViewContainer.css';
 @import './components/Layout.css';
+@import './components/Trail.css';
 
 /* components */
 @import './components/List.css';
@@ -40,3 +41,5 @@
 @import '../components/BackBar/BackBar.css';
 @import '../components/Tags/Tags.css';
 @import '../components/ContentCard/ContentCard.css';
+@import './components/Bento.css';
+@import './components/BentoBox.css';

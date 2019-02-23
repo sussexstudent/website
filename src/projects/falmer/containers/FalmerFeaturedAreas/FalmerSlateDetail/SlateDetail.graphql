@@ -1,0 +1,8 @@
+query SlateDetail($slateId: Int) {
+  slate(slateId: $slateId) {
+    id
+    slateId
+    data
+    displayFrom
+  }
+}

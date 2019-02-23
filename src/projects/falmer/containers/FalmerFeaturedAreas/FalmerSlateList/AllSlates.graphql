@@ -1,0 +1,13 @@
+query {
+  allSlates {
+    edges {
+      node {
+        id
+        slateId
+        data
+        displayFrom
+        notes
+      }
+    }
+  }
+}

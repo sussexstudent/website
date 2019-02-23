@@ -12,7 +12,11 @@ interface Result {
   allImages?: Connection<FalmerImage>;
 }
 
-const FalmerMediaList: React.FC = () => {
+interface Props {
+  onSelect?(id: number, node: FalmerImage): void;
+}
+
+const FalmerMediaList: React.FC<Props> = ({ onSelect }) => {
   const { data, loading, error, fetchMore } = useQuery<Result>(
     ALL_MEDIA_QUERY,
     {},
@@ -31,7 +35,11 @@ const FalmerMediaList: React.FC = () => {
     <div>
       <ul className="FalmerMediaGrid">
         {allImages.edges.map((edge) => (
-          <li className="FalmerMediaGrid__item" key={edge.node.mediaId}>
+          <li
+            className="FalmerMediaGrid__item"
+            key={edge.node.mediaId}
+            onClick={() => onSelect && onSelect(edge.node.mediaId, edge.node)}
+          >
             <div
               className="u-responsive-fit"
               style={{
@@ -41,7 +49,9 @@ const FalmerMediaList: React.FC = () => {
                 )}px`,
               }}
             >
-              <FauxRouterLinkNonIAL href={`/media/${edge.node.mediaId}`} />
+              {onSelect ? null : (
+                <FauxRouterLinkNonIAL href={`/media/${edge.node.mediaId}`} />
+              )}
               <OneImage
                 src={edge.node.resource}
                 aspectRatio={{

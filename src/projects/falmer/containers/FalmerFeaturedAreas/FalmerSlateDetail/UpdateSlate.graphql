@@ -1,0 +1,8 @@
+mutation UpdateSlate($slateId: Int!, $data: SlateInput!) {
+  updateSlate(slateId: $slateId, data: $data) {
+    slate {
+      data
+    }
+    ok
+  }
+}

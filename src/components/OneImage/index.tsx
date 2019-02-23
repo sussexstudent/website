@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import classToggle from '~libs/dom/classToggle';
-import * as ReactDOM from 'react-dom';
 
 const FALMER_ENDPOINT = 'https://su.imgix.net/';
 const MSL_ENDPOINT = 'https://ussu.imgix.net/';
@@ -93,53 +92,50 @@ const defaultSizes = [
   1680,
 ];
 
-class OneImage extends React.Component<IProps> {
-  componentDidUpdate(prevProps: IProps) {
-    if (this.props.src !== prevProps.src) {
-      const el = ReactDOM.findDOMNode(this as any) as HTMLElement;
-      if (el) {
-        classToggle(el, 'lazyloaded', false);
-        classToggle(el, 'lazyload', true);
-      }
+const OneImage: React.FC<IProps> = (props) => {
+  const containerRef = useRef<null | HTMLImageElement>(null);
+
+  useLayoutEffect(() => {
+    if (containerRef.current !== null) {
+      classToggle(containerRef.current, 'lazyloaded', false);
+      classToggle(containerRef.current, 'lazyload', true);
     }
+  }, [props.src]);
+
+  const { withoutContainer, className, mediaSizes, aspectRatio } = props;
+  const sizes = props.sizes || defaultSizes;
+
+  const img = (
+    <img
+      className={`ResponsiveImage lazyload ${className}`}
+      src={generateUrl(props, { width: sizes[0] })}
+      data-sizes={mediaSizes || 'auto'}
+      ref={containerRef}
+      srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+      data-srcset={sizes.map(
+        (width: number) => `${generateUrl(props, { width })} ${width}w`,
+      )}
+    />
+  );
+
+  if (withoutContainer) {
+    return img;
   }
 
-  render() {
-    const { withoutContainer, className, mediaSizes, aspectRatio } = this.props;
-    const sizes = this.props.sizes || defaultSizes;
+  const containerProps =
+    typeof aspectRatio === 'string'
+      ? {
+          className: `u-responsive-ratio u-responsive-ratio--${aspectRatio}`,
+        }
+      : {
+          className: 'u-responsive-ratio',
+          style: {
+            paddingBottom: `${(aspectRatio.height / aspectRatio.width) * 100}%`,
+          },
+        };
 
-    const img = (
-      <img
-        className={`ResponsiveImage lazyload ${className}`}
-        src={generateUrl(this.props, { width: sizes[0] })}
-        data-sizes={mediaSizes || 'auto'}
-        srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-        data-srcset={sizes.map(
-          (width: number) => `${generateUrl(this.props, { width })} ${width}w`,
-        )}
-      />
-    );
-
-    if (withoutContainer) {
-      return img;
-    }
-
-    const containerProps =
-      typeof aspectRatio === 'string'
-        ? {
-            className: `u-responsive-ratio u-responsive-ratio--${aspectRatio}`,
-          }
-        : {
-            className: 'u-responsive-ratio',
-            style: {
-              paddingBottom: `${(aspectRatio.height / aspectRatio.width) *
-                100}%`,
-            },
-          };
-
-    return <div {...containerProps}>{img}</div>;
-  }
-}
+  return <div {...containerProps}>{img}</div>;
+};
 
 interface IBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
   aspectRatio?: AspectRatioInput;
@@ -148,10 +144,20 @@ interface IBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const OneImageBackground: React.FC<IBackgroundProps> = (props) => {
+  const containerRef = useRef<null | HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    if (containerRef.current !== null) {
+      classToggle(containerRef.current, 'lazyloaded', false);
+      classToggle(containerRef.current, 'lazyload', true);
+    }
+  }, [props.src]);
+
   return (
     <div
       {...props as any} // todo
       className={`lazyload ${props.className}`}
+      ref={containerRef}
       data-sizes="auto"
       data-bgset={defaultSizes.map(
         (width) => `${generateUrl(props, { width })} ${width}w`,

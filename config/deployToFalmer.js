@@ -33,6 +33,7 @@ readFileAsync('./dist-falmer/index.html', {
       process.exit(0);
     } else {
       console.error('Failed to deploy!', res.status);
+      console.log(res)
     }
   })
   .catch(e => console.error('Failed to deploy!', e));

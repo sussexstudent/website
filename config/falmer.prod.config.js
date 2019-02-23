@@ -6,6 +6,7 @@ const config = require('./falmer.base.config.js');
 const MiniCSSExtract = require('mini-css-extract-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 
 const extractCSS = new MiniCSSExtract({
   filename: 'falmer.[contenthash].[name].css',
@@ -28,11 +29,7 @@ config.output = {
 
 config.optimization = {
   minimizer: [
-    new UglifyJsPlugin({
-      cache: true,
-      parallel: true,
-      sourceMap: true
-    }),
+    new TerserPlugin(),
     new OptimizeCSSAssetsPlugin({})
   ]
 };
@@ -56,7 +53,12 @@ config.module.rules = config.module.rules.concat([
   },
   {
     test: /\.css$/,
-    loader: [MiniCSSExtract.loader, 'css-loader?importLoaders=1', 'postcss-loader'],
+    loader: [MiniCSSExtract.loader, {
+      loader: 'css-loader',
+      options: {
+        importLoaders: 1,
+      },
+    }, 'postcss-loader'],
   },
 ]);
 

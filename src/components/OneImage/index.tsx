@@ -1,5 +1,6 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import classToggle from '~libs/dom/classToggle';
+import { omit } from 'lodash';
 
 const FALMER_ENDPOINT = 'https://su.imgix.net/';
 const MSL_ENDPOINT = 'https://ussu.imgix.net/';
@@ -144,7 +145,7 @@ interface IBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const OneImageBackground: React.FC<IBackgroundProps> = (props) => {
-  const containerRef = useRef<null | HTMLElement>(null);
+  const containerRef = useRef<null | HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (containerRef.current !== null) {
@@ -155,7 +156,7 @@ const OneImageBackground: React.FC<IBackgroundProps> = (props) => {
 
   return (
     <div
-      {...props as any} // todo
+      {...omit(props, ['aspectRatio', 'src', 'mslResource'])} // todo
       className={`lazyload ${props.className}`}
       ref={containerRef}
       data-sizes="auto"

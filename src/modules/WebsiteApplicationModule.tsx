@@ -7,6 +7,7 @@ import { AppMountState } from '~website/ducks/router';
 import getApolloClientForFalmer from '~libs/getApolloClientForFalmer';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter } from '~components/BrowserRouter';
+import { ApolloProvider as APHooks } from 'react-apollo-hooks';
 
 export default function ready(
   container: any,
@@ -15,9 +16,11 @@ export default function ready(
   ReactDOM.render(
     <BrowserRouter>
       <ApolloProvider client={getApolloClientForFalmer}>
-        <ReduxProvider store={store}>
-          <WebsiteApplication appMountState={appMountState} />
-        </ReduxProvider>
+        <APHooks client={getApolloClientForFalmer}>
+          <ReduxProvider store={store}>
+            <WebsiteApplication appMountState={appMountState} />
+          </ReduxProvider>
+        </APHooks>
       </ApolloProvider>
     </BrowserRouter>,
     container,

@@ -41,6 +41,7 @@ function apiGetClientData() {
         identifier
         isStaff
         hasCmsAccess
+        permissions
       }
     }
   `);

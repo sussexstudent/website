@@ -1,11 +1,8 @@
 import React from 'react';
-// import bind from 'bind-decorator';
-// import { debounce } from 'lodash';
 import { Link, Switch, Redirect, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { LoadableLoading } from '~components/LoadableLoading';
 import { Sectionbar, SectionbarItem } from '~components/Sectionbar';
-// import { removePageContainer } from '~libs/hacky';
 import { RouteComponent } from '~types/routes';
 import { ScrollToTop } from '~components/ScrollToTop';
 
@@ -50,91 +47,78 @@ const LoadableDetail = Loadable({
 
 type EventsApplicationProps = RouteComponent;
 
-interface EventsApplicationState {
-  currentListingsScrollPosition: number;
-}
+// componentDidMount() {
+//   removePageContainer();
+//   window.addEventListener('scroll', debounce(this.onScroll, 100));
+// }
 
-class EventsApplication extends React.Component<
-  EventsApplicationProps,
-  EventsApplicationState
-> {
-  state = {
-    currentListingsScrollPosition: -1,
-  };
-  //
-  // componentDidMount() {
-  //   removePageContainer();
-  //   window.addEventListener('scroll', debounce(this.onScroll, 100));
-  // }
+// @bind
+// onScroll() {
+//   if (this.props.location.pathname === '/whats-on' && window.scrollY !== 0) {
+//     this.setState({ currentListingsScrollPosition: window.scrollY });
+//   }
+// }
+//
+// componentDidUpdate(prevProps: EventsApplicationProps) {
+//   if (
+//     this.props.location.pathname === '/whats-on' &&
+//     this.props.location.pathname !== prevProps.location.pathname &&
+//     this.state.currentListingsScrollPosition !== null
+//   ) {
+//     requestAnimationFrame(() =>
+//       window.scrollTo({ top: this.state.currentListingsScrollPosition }),
+//     );
+//   }
+// }
 
-  // @bind
-  // onScroll() {
-  //   if (this.props.location.pathname === '/whats-on' && window.scrollY !== 0) {
-  //     this.setState({ currentListingsScrollPosition: window.scrollY });
-  //   }
-  // }
-  //
-  // componentDidUpdate(prevProps: EventsApplicationProps) {
-  //   if (
-  //     this.props.location.pathname === '/whats-on' &&
-  //     this.props.location.pathname !== prevProps.location.pathname &&
-  //     this.state.currentListingsScrollPosition !== null
-  //   ) {
-  //     requestAnimationFrame(() =>
-  //       window.scrollTo({ top: this.state.currentListingsScrollPosition }),
-  //     );
-  //   }
-  // }
-
-  render() {
-    return (
-      <ScrollToTop>
-        <div className="u-keep-footer-down js-expand-container">
-          <Sectionbar title="What's on">
-            <SectionbarItem>
-              <Link to={'/whats-on'}>Listings</Link>
-            </SectionbarItem>
-            <SectionbarItem>
-              <a
-                href={
-                  'https://www.sussexstudent.com/get-involved/societies-and-student-media/guides/events/hold-event'
-                }
-              >
-                Hold an event
-              </a>
-            </SectionbarItem>
-          </Sectionbar>
-          <Switch>
-            <Route component={LoadableListings} path="/whats-on" exact />
-            <Route
-              component={LoadableBundle}
-              path="/whats-on/bundle/:bundleSlug"
-              exact
-            />
-            <Redirect
-              from="/whats-on/period/:brandSlug"
-              to="/whats-on/periods/:brandSlug"
-            />
-            <Redirect
-              from="/whats-on/collections/:brandSlug"
-              to="/whats-on/periods/:brandSlug"
-            />
-            <Redirect
-              from="/whats-on/collection/:brandSlug"
-              to="/whats-on/periods/:brandSlug"
-            />
-            <Route
-              component={LoadableListingsBranding}
-              path="/whats-on/periods/:brandSlug"
-              exact
-            />
-            <Route path="/whats-on/**-:eventId" component={LoadableDetail} />
-            <Route path="/whats-on/:eventId" component={LoadableDetail} />
-          </Switch>
-        </div>
-      </ScrollToTop>
-    );
-  }
-}
+const EventsApplication: React.FC<EventsApplicationProps> = () => {
+  return (
+    <ScrollToTop>
+      <div className="u-keep-footer-down js-expand-container">
+        <Sectionbar title="What's on">
+          <SectionbarItem>
+            <Link to={'/whats-on'}>Listings</Link>
+          </SectionbarItem>
+          <SectionbarItem>
+            <a
+              href={
+                'https://www.sussexstudent.com/get-involved/societies-and-student-media/guides/events/hold-event'
+              }
+            >
+              Hold an event
+            </a>
+          </SectionbarItem>
+        </Sectionbar>
+        <Switch>
+          <Route component={LoadableListings} path="/whats-on" exact />
+          <Route
+            component={LoadableBundle}
+            path="/whats-on/bundle/:bundleSlug"
+            exact
+          />
+          <Redirect
+            from="/whats-on/period/:brandSlug"
+            to="/whats-on/periods/:brandSlug"
+          />
+          <Redirect
+            from="/whats-on/collections/:brandSlug"
+            to="/whats-on/periods/:brandSlug"
+          />
+          <Redirect
+            from="/whats-on/collection/:brandSlug"
+            to="/whats-on/periods/:brandSlug"
+          />
+          <Route
+            component={LoadableListingsBranding}
+            path="/whats-on/periods/:brandSlug"
+            exact
+          />
+          <Route path="/whats-on/**-:eventId" component={LoadableDetail} />
+          <Route path="/whats-on/:eventId" component={LoadableDetail} />
+        </Switch>
+      </div>
+    </ScrollToTop>
+  );
+};
 
 export default EventsApplication;

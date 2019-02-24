@@ -1,57 +1,46 @@
-import React from 'react';
-import { graphql } from 'react-apollo';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import startOfDay from 'date-fns/startOfDay';
 import addMonths from 'date-fns/addMonths';
 import EventListingsQuery from './EventListings.graphql';
-import apolloHandler from '~components/apolloHandler';
-
-import { compose } from 'recompose';
 import { EventListings } from '~website/containers/EventsCalender/EventListings';
+import { useQuery } from 'react-apollo-hooks';
+import Loader from '~components/Loader';
 
 interface OwnProps {
   disableHeader: boolean;
-  data: any; // todo
   filter: any; // todo
 }
 
 type IProps = OwnProps;
 
-class EventsCalender extends React.Component<IProps> {
-  render() {
-    const {
-      data: { allEvents },
-    } = this.props;
-
-    return (
-      <React.Fragment>
-        <Helmet>
-          <title>{`What's on | Sussex Students' Union`}</title>
-        </Helmet>
-
-        <EventListings events={allEvents} removePast={true} />
-      </React.Fragment>
-    );
-  }
-}
-
-const EventsList = compose<OwnProps, { disableHeader: boolean; filter: any }>(
-  graphql<any, OwnProps>(EventListingsQuery, {
-    options: (props) => {
-      return {
-        variables: {
-          skipEmbargo:
-            typeof window !== 'undefined' &&
-            window.location.hash === '#skip-embargo',
-          filter: props.filter || {
-            fromTime: startOfDay(new Date()).toISOString(),
-            toTime: addMonths(startOfDay(new Date()), 6).toISOString(),
-          },
-        },
-      };
+const EventsList: React.FC<IProps> = ({ filter }) => {
+  const [now] = useState(new Date());
+  const { data, loading } = useQuery(EventListingsQuery, {
+    variables: {
+      skipEmbargo:
+        typeof window !== 'undefined' &&
+        window.location.hash === '#skip-embargo',
+      filter: filter || {
+        fromTime: startOfDay(now).toISOString(),
+        toTime: addMonths(startOfDay(now), 6).toISOString(),
+      },
     },
-  }),
-  apolloHandler(),
-)(EventsCalender);
+  });
+
+  if (loading) {
+    return <Loader dark />;
+  }
+
+  return (
+    <React.Fragment>
+      <Helmet>
+        <title>{`What's on | Sussex Students' Union`}</title>
+      </Helmet>
+
+      <EventListings events={data.allEvents} removePast={true} />
+    </React.Fragment>
+  );
+};
 
 export { EventsList };

@@ -13,7 +13,7 @@ interface EventListingsProps {
   removePast: boolean;
 }
 
-export function EventListings(props: EventListingsProps) {
+export const EventListings: React.FC<EventListingsProps> = (props) => {
   const events = props.events.edges.map(({ node }: { node: Event }) => ({
     ...node,
     startDate: new Date(node.startTime),
@@ -55,4 +55,4 @@ export function EventListings(props: EventListingsProps) {
       </div>
     </div>
   );
-}
+};

@@ -57,13 +57,13 @@ interface IProps {
   };
 }
 
-function EventsCalenderItem({
+const EventsCalenderItem: React.FC<IProps> = ({
   part,
   inline = false,
   showDay = false,
   relative = false,
   small = false,
-}: IProps) {
+}) => {
   const event = part.event;
   const treat = getTreat(event);
 
@@ -129,7 +129,7 @@ function EventsCalenderItem({
       </div>
     </div>
   );
-}
+};
 
 // TODO: Add relative date if near or started and not ended
 // const nearDate = addHours(new Date(), 10);

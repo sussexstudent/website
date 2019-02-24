@@ -8,7 +8,7 @@ interface IProps {
   event: Event;
 }
 
-export default function EventRelativeTime({ event }: IProps) {
+const EventRelativeTime: React.FC<IProps> = ({ event }) => {
   const startsSoon = isWithinInterval(new Date(), {
     start: subMinutes(new Date(event.startTime), 90),
     end: new Date(event.startTime),
@@ -31,4 +31,5 @@ export default function EventRelativeTime({ event }: IProps) {
       {onNow ? 'On now' : ''}
     </div>
   );
-}
+};
+export default EventRelativeTime;

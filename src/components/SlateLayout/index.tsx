@@ -10,6 +10,7 @@ export const AreasMap = {
   [Layout.Single]: 1,
   [Layout.TwoHalves]: 2,
   [Layout.TwoThirdsOne]: 2,
+  [Layout.SplashImpulse]: 4,
 };
 
 export const SlateLayout: React.FC<Props> = ({ layout, areas }) => {
@@ -30,6 +31,17 @@ export const SlateLayout: React.FC<Props> = ({ layout, areas }) => {
           {areas[0]}
           {areas[1]}
         </div>
+      );
+    case Layout.SplashImpulse:
+      return (
+        <React.Fragment>
+          <div className="Trail__row">{areas[0]}</div>
+          <div className="Trail__row Trail__row--111">
+            {areas[1]}
+            {areas[2]}
+            {areas[3]}
+          </div>
+        </React.Fragment>
       );
   }
 };

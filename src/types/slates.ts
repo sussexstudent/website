@@ -2,6 +2,8 @@ export enum Layout {
   Single,
   TwoHalves,
   TwoThirdsOne,
+
+  SplashImpulse,
 }
 
 export enum BoxType {

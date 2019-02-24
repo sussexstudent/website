@@ -13,7 +13,7 @@ import Select from 'react-select';
 import { enumValues } from '~libs/enumValues';
 import produce from 'immer';
 import { getAreaBox, slateBoxes } from '~components/Slate/Boxes/boxes';
-import { mapValues, keyBy } from 'lodash';
+import { mapValues, keyBy, groupBy, map } from 'lodash';
 import { FalmerImageSelector } from '~falmer/components/FalmerImageSelector';
 import { BoxError } from '~falmer/containers/FalmerFeaturedAreas/BoxError';
 import { useDispatch, useMappedState } from 'redux-react-hook';
@@ -75,6 +75,30 @@ const editableStyleOverlaySelected = css({
   animation: `${pulsingSelected} 3s ease infinite`,
 });
 
+const groupStyles = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+};
+const groupBadgeStyles = css({
+  backgroundColor: '#EBECF0',
+  borderRadius: '2em',
+  color: '#172B4D',
+  display: 'inline-block',
+  fontSize: 12,
+  lineHeight: 1,
+  minWidth: 1,
+  padding: '0.16666666666667em 0.5em',
+  textAlign: 'center',
+});
+
+const formatGroupLabel = (data: any) => (
+  <div style={groupStyles}>
+    <span>{data.label}</span>
+    <span className={groupBadgeStyles}>{data.options.length}</span>
+  </div>
+);
+
 const EditableArea: React.FC<{
   area: InternalArea;
   onSelect: () => void;
@@ -130,7 +154,11 @@ const EditableArea: React.FC<{
 const boxNameMap = mapValues(slateBoxes, (box) => box.displayName);
 
 function getBoxValue(value: BoxType) {
-  return { value, label: boxNameMap[value] };
+  return {
+    value,
+    label: boxNameMap[value],
+    category: slateBoxes[value].category,
+  };
 }
 
 const widgets = {
@@ -191,6 +219,14 @@ export const SlateEditor: React.FC<Props> = ({ data, onSave }) => {
     return null;
   }
 
+  const options = map(
+    groupBy(Object.values(BoxType).map(getBoxValue), 'category'),
+    (key, v) => ({
+      label: v,
+      options: key,
+    }),
+  );
+
   return (
     <div className="Layout Layout--sidebar-thin Layout--sidebar-right">
       <div>
@@ -221,8 +257,9 @@ export const SlateEditor: React.FC<Props> = ({ data, onSave }) => {
             <Select
               value={getBoxValue(editorData.areas[selectedArea][0].type)}
               onChange={(v: any) => changeBox(selectedArea, v.value)}
-              options={Object.values(BoxType).map(getBoxValue)}
+              options={options}
               isMulti={false}
+              formatGroupLabel={formatGroupLabel}
             />
 
             <Form

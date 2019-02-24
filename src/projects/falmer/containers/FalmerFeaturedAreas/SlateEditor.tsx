@@ -18,6 +18,7 @@ import { FalmerImageSelector } from '~falmer/components/FalmerImageSelector';
 import { BoxError } from '~falmer/containers/FalmerFeaturedAreas/BoxError';
 import { useDispatch, useMappedState } from 'redux-react-hook';
 import { requestImage } from '~falmer/ducks/images';
+import { SlateLayoutSelector } from '~falmer/containers/FalmerFeaturedAreas/SlateLayoutSelector';
 
 interface Props {
   data: InternalSlateData;
@@ -126,16 +127,6 @@ const EditableArea: React.FC<{
   );
 };
 
-const layoutNameMap = {
-  [Layout.Single]: 'Single',
-  [Layout.TwoHalves]: 'Two Halves',
-  [Layout.TwoThirdsOne]: 'Two Thirds, One Third',
-};
-
-function getLayoutValue(value: Layout) {
-  return { value, label: layoutNameMap[value] };
-}
-
 const boxNameMap = mapValues(slateBoxes, (box) => box.displayName);
 
 function getBoxValue(value: BoxType) {
@@ -220,13 +211,11 @@ export const SlateEditor: React.FC<Props> = ({ data, onSave }) => {
         <button className="Button" onClick={handleSave}>
           Save slate
         </button>
-        <Select
-          value={getLayoutValue(editorData.layout)}
-          onChange={(v: any) => changeLayout(v.value)}
-          options={enumValues(Layout).map(getLayoutValue)}
-          isMulti={false}
+        <SlateLayoutSelector
+          value={editorData.layout}
+          layouts={enumValues(Layout)}
+          onChange={(l: Layout) => changeLayout(l)}
         />
-        editing {selectedArea}
         {selectedArea !== null ? (
           <div>
             <Select

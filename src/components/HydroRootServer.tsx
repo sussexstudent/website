@@ -20,7 +20,9 @@ export const HydroRootServer: React.FC<{ apolloClient?: any }> = (props) => {
 
   return (
     <Provider store={store}>
-      <APHooks client={props.apolloClient}>{props.children}</APHooks>
+      <ProviderHooks.Provider value={store}>
+        {props.children}
+      </ProviderHooks.Provider>
     </Provider>
   );
 };

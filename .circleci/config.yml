@@ -39,8 +39,6 @@ workflows:
     jobs:
       - build
       - cypress/run:
-          requires:
-            - cypress/install
           yarn: true
           start: yarn localrequired && yarn prep && yarn serve
           wait-on: 'http://localhost:3002'

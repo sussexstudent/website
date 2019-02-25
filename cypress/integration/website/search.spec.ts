@@ -1,4 +1,4 @@
-describe('Site Search', () => {
+describe('Search', () => {
   it('searches on homepage', () => {
     cy.visit('/');
 

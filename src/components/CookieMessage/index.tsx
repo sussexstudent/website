@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { COLORS, Layers } from '~libs/style';
 import styled from '@emotion/styled';
 import { type, Typeface, TypeSize } from '~libs/style/type';
-import { cardRaised } from '~libs/style/cards';
 
 const MessageContainer = styled.div({
   position: 'fixed',
@@ -16,27 +15,24 @@ const MessageContainer = styled.div({
   },
 });
 
-const MessageBlimp = styled.div(
-  {
-    ...type(TypeSize.LongPrimer, Typeface.Secondary),
-    textAlign: 'center',
-    padding: '0.6rem',
-    backgroundColor: COLORS.WHITE,
-    maxWidth: '300px',
-    width: '100%',
-    margin: '0 auto',
-    boxSizing: 'border-box',
-    borderRadius: '2px',
-    fontWeight: 600,
-  },
-  cardRaised,
-);
+const MessageBlimp = styled.div({
+  ...type(TypeSize.LongPrimer, Typeface.Secondary),
+  textAlign: 'center',
+  padding: '0.6rem',
+  backgroundColor: COLORS.WHITE,
+  maxWidth: '300px',
+  width: '100%',
+  margin: '0 auto',
+  boxSizing: 'border-box',
+  borderRadius: '2px',
+  fontWeight: 600,
+});
 
 const MessageAction = styled.div({
   paddingTop: '1rem',
 });
 
-const CookieMessage = () => {
+const CookieMessage: React.FC = () => {
   const [hidden, setHidden] = useState(false);
 
   if (hidden) {
@@ -56,6 +52,7 @@ const CookieMessage = () => {
             title="Close"
             onClick={() => setHidden(true)}
             type="button"
+            data-testid="close"
           >
             Close
           </button>

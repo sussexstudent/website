@@ -1,30 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a snapshot 1`] = `
-<div
-  className="CookieNotice"
->
+.emotion-4 {
+  position: fixed;
+  bottom: 10px;
+  z-index: 65;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.emotion-4 a {
+  color: #000000;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.emotion-2 {
+  font-size: 15px;
+  line-height: 18px;
+  font-family: 'Larsseit','Helvetica Neue','Helvetica','Arial',sans-serif;
+  text-align: center;
+  padding: 0.6rem;
+  background-color: #ffffff;
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+@media screen and (min-width:600px) {
+  .emotion-2 {
+    line-height: 20px;
+  }
+}
+
+.feature-no-touch .emotion-2 {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.emotion-0 {
+  padding-top: 1rem;
+}
+
+<div>
   <div
-    className="CookieNotice__blimp"
+    class="emotion-4 emotion-5"
   >
-    This site uses cookies. By continuing to browse, you agree to our use of cookies on the site. 
-    <a
-      href="/cookie-policy"
-    >
-      Learn more
-    </a>
-    .
     <div
-      className="CookieNotice__action"
+      class="emotion-2 emotion-3"
     >
-      <button
-        className="Button"
-        onClick={[Function]}
-        title="Close"
-        type="button"
+      This site uses cookies. By continuing to browse, you agree to our use of cookies on the site. 
+      <a
+        href="/cookie-policy"
       >
-        Close
-      </button>
+        Learn more
+      </a>
+      .
+      <div
+        class="emotion-0 emotion-1"
+      >
+        <button
+          class="Button"
+          data-testid="close"
+          title="Close"
+          type="button"
+        >
+          Close
+        </button>
+      </div>
     </div>
   </div>
 </div>

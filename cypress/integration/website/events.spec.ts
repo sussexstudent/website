@@ -28,8 +28,13 @@ describe('Events', () => {
   });
 
   describe('Listings', () => {
-    it('displays event detail', () => {
+    it('listings have events', () => {
       cy.visit('/whats-on');
+      cy.on('uncaught:exception', (err, runnable) => {
+        // returning false here prevents Cypress from
+        // failing the test
+        return false;
+      });
 
       cy.get('.EventsCalender__item').should('exist');
     });

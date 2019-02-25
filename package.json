@@ -11,6 +11,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-react-constant-elements": "^7.2.0",
+    "@cypress/webpack-preprocessor": "^4.0.3",
     "@emotion/babel-preset-css-prop": "^10.0.7",
     "@storybook/addon-knobs": "^4.1.13",
     "@storybook/addon-options": "^4.1.13",
@@ -59,6 +60,7 @@
     "connect-history-api-fallback": "1.6.0",
     "copy-webpack-plugin": "^5.0.0",
     "css-loader": "^2.1.0",
+    "cypress": "^3.1.5",
     "dotenv": "^6.2.0",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "express": "^4.16.4",
@@ -275,7 +277,13 @@
         "useBabelrc": true
       }
     },
-    "testURL": "http://localhost/"
+    "testURL": "http://localhost/",
+    "snapshotSerializers": [
+      "jest-emotion"
+    ]
+  },
+  "cypress": {
+    "baseUrl": "http://localhost:3002"
   },
   "prettier": {
     "printWidth": 80,

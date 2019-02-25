@@ -245,7 +245,8 @@
     },
     "testPathIgnorePatterns": [
       "<rootDir>/(build|docs|node_modules)/",
-      "/src/projects/app/"
+      "/src/projects/app/",
+      "/cypress"
     ],
     "testEnvironment": "jsdom",
     "coverageDirectory": "coverage",

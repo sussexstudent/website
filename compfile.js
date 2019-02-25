@@ -15,10 +15,6 @@ export default {
       head: headContent,
       template: require('./src/projects/website/layouts/main'),
     },
-    'main-containerless': {
-      head: headContent,
-      template: require('./src/projects/website/layouts/main'),
-    },
     legacy: {
       head: headContent,
       templatePublic: require('./src/projects/website/layouts/MainLegacy'),

@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "node": "11.x"
+    "node": ">=10.x"
   },
   "devDependencies": {
     "@babel/core": "^7.3.3",

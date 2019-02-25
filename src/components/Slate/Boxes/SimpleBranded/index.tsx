@@ -28,6 +28,7 @@ const component: React.FC<IProps> = ({
             maxWidth: '400px',
             display: 'block',
             margin: '0 auto',
+            padding: '1rem',
           }}
         >
           <OneImage

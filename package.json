@@ -217,6 +217,7 @@
     "heroku-postbuild": "yarn san:front-prod && yarn san:server-prod",
     "format": "`yarn bin`/prettier \"src/**/*.{ts,tsx,js,css,graphql}\" --write",
     "prep": "node ./config/apolloIntrospection.js && node ./config/permissionTypes.js",
+    "localrequired": "echo \"{}\" > webpack-assets.json && echo \"{}\" > dist/manifest.json",
     "test": "NODE_ENV=test && jest",
     "testc": "NODE_ENV=test && jest --coverage",
     "falmer:serve": "webpack-dev-server --config ./config/falmer.dev.config.js",

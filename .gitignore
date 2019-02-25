@@ -29,3 +29,4 @@ fragmentTypes.json
 /sanguine-dist
 /server-assets.json
 /src/types/permissions.generated.ts
+/deploy.json

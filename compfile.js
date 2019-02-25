@@ -30,6 +30,7 @@ export default {
       templateLoggedIn: require('./src/projects/website/layouts/MainLegacy'),
     },
   },
+  skin: 'union',
   pages: {
     // '/': require('./src/projects/website/layouts/homepage'),
     // '/policy-generator': require('./src/projects/website/layouts/PolicyIdeaGenerator'),

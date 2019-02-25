@@ -82,11 +82,11 @@ const BookMarketApplication: React.FC<{}> = () => (
             />
             <Route
               path={`/book-market/my-listings`}
-              component={LoadableMarketMyListings}
+              component={LoadableMarketMyListings as any}
             />
             <Route
               path={`/book-market/search`}
-              component={LoadableMarketSearch}
+              component={LoadableMarketSearch as any}
             />
             <Route
               path={`/book-market/section/:sectionSlug`}

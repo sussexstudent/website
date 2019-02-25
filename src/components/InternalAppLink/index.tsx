@@ -1,10 +1,8 @@
-import React from 'react';
-import { History } from 'history';
+import React, { useCallback } from 'react';
 import routes from '../../projects/website/routes';
-import * as routerActions from '../../projects/website/ducks/router';
 import { WebsiteRootState } from '~types/website';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useMappedState } from 'redux-react-hook';
 
 interface InternalAppLinkComponentProps {
   to: string;
@@ -12,39 +10,32 @@ interface InternalAppLinkComponentProps {
   innerRef?: any;
 }
 
-interface InternalAppLinkAmbientProps {
-  history: null | History;
-  navigateTo: typeof routerActions.navigateTo;
-}
+type Props = InternalAppLinkComponentProps & React.HTMLProps<HTMLAnchorElement>;
 
-type InternalAppLinkProps = InternalAppLinkAmbientProps &
-  InternalAppLinkComponentProps &
-  React.HTMLProps<HTMLAnchorElement>;
+export const InternalAppLink: React.FC<Props> = ({
+  to,
+  innerRef,
+  ...props
+}) => {
+  const mapState = useCallback(
+    (state: WebsiteRootState) => ({
+      history: state.router.history,
+    }),
+    [],
+  );
+  const { history } = useMappedState(mapState);
 
-class InternalAppLinkComponent extends React.Component<InternalAppLinkProps> {
-  render() {
-    const { to, history, innerRef, navigateTo, ref, ...props } = this.props;
-    const isClientRendered = routes.matches(to);
+  const isClientRendered = routes.matches(to);
 
-    if (isClientRendered) {
-      if (history) {
-        return <Link to={to} {...props as any} />; // todo
-      }
+  if (isClientRendered) {
+    if (history) {
+      return <Link to={to} {...props as any} />; // todo
     }
-
-    return React.createElement('a', {
-      ...props,
-      ref: innerRef,
-      href: to,
-    });
   }
-}
 
-export const InternalAppLink = connect(
-  (state: WebsiteRootState) => ({
-    history: state.router.history,
-  }),
-  {
-    navigateTo: routerActions.navigateTo,
-  },
-)(InternalAppLinkComponent);
+  return React.createElement('a', {
+    ...props,
+    ref: innerRef,
+    href: to,
+  });
+};

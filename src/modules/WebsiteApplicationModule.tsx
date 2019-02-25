@@ -8,6 +8,7 @@ import getApolloClientForFalmer from '~libs/getApolloClientForFalmer';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter } from '~components/BrowserRouter';
 import { ApolloProvider as APHooks } from 'react-apollo-hooks';
+import { StoreContext } from 'redux-react-hook';
 
 export default function ready(
   container: any,
@@ -18,7 +19,9 @@ export default function ready(
       <ApolloProvider client={getApolloClientForFalmer}>
         <APHooks client={getApolloClientForFalmer}>
           <ReduxProvider store={store}>
-            <WebsiteApplication appMountState={appMountState} />
+            <StoreContext.Provider value={store}>
+              <WebsiteApplication appMountState={appMountState} />
+            </StoreContext.Provider>
           </ReduxProvider>
         </APHooks>
       </ApolloProvider>

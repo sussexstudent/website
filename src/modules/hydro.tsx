@@ -10,6 +10,7 @@ import { store } from '~website/redux/store';
 import { LokiHeader } from '~components/LokiHeader';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter } from '~components/BrowserRouter';
+import { StoreContext as ReduxHooks } from 'redux-react-hook';
 
 interface ComponentMap {
   [componentName: string]: () => Promise<any> | React.FC;
@@ -76,9 +77,11 @@ export default function() {
           <BrowserRouter>
             <ApolloProvider client={getApolloClientForFalmer}>
               <APHook client={getApolloClientForFalmer}>
-                <ReduxProvider store={store}>
-                  <Component {...props} />
-                </ReduxProvider>
+                <ReduxHooks.Provider value={store}>
+                  <ReduxProvider store={store}>
+                    <Component {...props} />
+                  </ReduxProvider>
+                </ReduxHooks.Provider>
               </APHook>
             </ApolloProvider>
           </BrowserRouter>,
@@ -89,9 +92,11 @@ export default function() {
           <BrowserRouter>
             <ApolloProvider client={getApolloClientForFalmer}>
               <APHook client={getApolloClientForFalmer}>
-                <ReduxProvider store={store}>
-                  <Component {...props} />
-                </ReduxProvider>
+                <ReduxHooks.Provider value={store}>
+                  <ReduxProvider store={store}>
+                    <Component {...props} />
+                  </ReduxProvider>
+                </ReduxHooks.Provider>
               </APHook>
             </ApolloProvider>
           </BrowserRouter>,

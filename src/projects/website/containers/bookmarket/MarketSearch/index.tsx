@@ -79,25 +79,23 @@ const MarketSearchComponent: React.FC<IProps> = (props: IProps) => {
   );
 };
 
-function MarketSearch(props: OwnProps) {
-  return (
-    <MarketSearchQuery
-      query={GET_SEARCH_QUERY}
-      variables={{
-        filters: {
-          q: qs.parse(props.location.search).q,
-        },
-      }}
-    >
-      {({ data }) => {
-        if (!data) {
-          return;
-        }
+const MarketSearch: React.FC<OwnProps> = (props) => (
+  <MarketSearchQuery
+    query={GET_SEARCH_QUERY}
+    variables={{
+      filters: {
+        q: qs.parse(props.location.search).q,
+      },
+    }}
+  >
+    {({ data }) => {
+      if (!data) {
+        return;
+      }
 
-        return <MarketSearchComponent {...props} data={data} />;
-      }}
-    </MarketSearchQuery>
-  );
-}
+      return <MarketSearchComponent {...props} data={data} />;
+    }}
+  </MarketSearchQuery>
+);
 
 export { MarketSearch };

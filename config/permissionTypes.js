@@ -2,10 +2,10 @@ const path = require('path');
 const fetch = require('node-fetch');
 const fs = require('fs');
 
-const LOCAL = 'http://localhost:8000';
-// const FALMER = 'https://falmer.sussexstudent.com';
+// const LOCAL = 'http://localhost:8000';
+const FALMER = 'https://falmer.sussexstudent.com';
 
-fetch(`${LOCAL}/graphql/`, {
+fetch(`${FALMER}/graphql/`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({

@@ -1,4 +1,6 @@
 version: 2
+orbs:
+  cypress: cypress-io/cypress@1
 jobs:
   build:
     docker:
@@ -31,3 +33,19 @@ jobs:
 
       # run tests!
       - run: yarn test
+
+      - run:
+          command: yarn serve
+          background: true
+
+      - run:
+          shell: /bin/sh
+          command: |
+            wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 http://localhost:3002/
+            :
+
+workflows:
+  test:
+    jobs:
+      - build
+      - cypress/run

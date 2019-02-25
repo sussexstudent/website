@@ -13,7 +13,6 @@ describe('Site Search', () => {
   it('searches via search bar', () => {
     cy.visit('/');
 
-    // single letter due to https://github.com/cypress-io/cypress/issues/2240
     cy.get('#HP_QUERY_ELEMENT_SIDE_EFFECT').type('comedy');
 
     cy.url().should('contain', '/search?q=comedy');

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
+import { ApolloProvider as APHook } from 'react-apollo-hooks';
 import getApolloClientForFalmer from '~libs/getApolloClientForFalmer';
 import { isFunction } from 'lodash';
 import { store } from '~website/redux/store';
@@ -74,9 +75,11 @@ export default function() {
         ReactDOM.hydrate(
           <BrowserRouter>
             <ApolloProvider client={getApolloClientForFalmer}>
-              <ReduxProvider store={store}>
-                <Component {...props} />
-              </ReduxProvider>
+              <APHook client={getApolloClientForFalmer}>
+                <ReduxProvider store={store}>
+                  <Component {...props} />
+                </ReduxProvider>
+              </APHook>
             </ApolloProvider>
           </BrowserRouter>,
           el,
@@ -85,9 +88,11 @@ export default function() {
         ReactDOM.render(
           <BrowserRouter>
             <ApolloProvider client={getApolloClientForFalmer}>
-              <ReduxProvider store={store}>
-                <Component {...props} />
-              </ReduxProvider>
+              <APHook client={getApolloClientForFalmer}>
+                <ReduxProvider store={store}>
+                  <Component {...props} />
+                </ReduxProvider>
+              </APHook>
             </ApolloProvider>
           </BrowserRouter>,
           el,

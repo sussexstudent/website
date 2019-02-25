@@ -48,7 +48,7 @@
     "@types/url-parse": "^1.4.3",
     "@types/webpack-env": "^1.13.7",
     "@ussu/chunk-manifest-webpack-plugin": "^1.1.2",
-    "@ussu/comp": "^4.2.0",
+    "@ussu/comp": "^5.0.0",
     "assets-webpack-plugin": "^3.9.7",
     "autoprefixer": "^9.4.8",
     "awesome-typescript-loader": "5.2.1",

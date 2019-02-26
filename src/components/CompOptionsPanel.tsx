@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { COLORS } from '~libs/style';
 import styled from '@emotion/styled';
 
@@ -25,30 +25,21 @@ enum FalmerAPIOptions {
   Local = 'local',
 }
 
-interface IState {
-  api: FalmerAPIOptions;
-}
+export const CompOptionsPanel = () => {
+  const [api, setApi] = useState(FalmerAPIOptions.Local);
 
-export default class CompOptionsPanel extends React.Component<{}, IState> {
-  state = {
-    api: FalmerAPIOptions.Local,
-  };
-
-  componentDidMount() {
+  useEffect(() => {
     const endpoint = localStorage.getItem('falmerEndpoint');
-    this.setState({
-      api:
-        endpoint === 'https://falmer.sussexstudent.com'
-          ? FalmerAPIOptions.Production
-          : FalmerAPIOptions.Local,
-    });
-  }
+    setApi(
+      endpoint === 'https://falmer.sussexstudent.com'
+        ? FalmerAPIOptions.Production
+        : FalmerAPIOptions.Local,
+    );
+  });
 
-  handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.currentTarget.value as FalmerAPIOptions;
-    this.setState({
-      api: value,
-    });
+    setApi(value);
 
     if (value === FalmerAPIOptions.Local) {
       localStorage.setItem('falmerEndpoint', 'http://localhost:8000');
@@ -60,39 +51,36 @@ export default class CompOptionsPanel extends React.Component<{}, IState> {
     }
 
     window.location.reload();
-  };
+  }, []);
 
-  render() {
-    const { api } = this.state;
-    return (
-      <Root>
-        <div className="content">
+  return (
+    <Root>
+      <div className="content">
+        <div>
+          Falmer API
           <div>
-            Falmer API
-            <div>
-              <label htmlFor="apiFalmer">Production</label>
-              <input
-                onChange={this.handleChange}
-                type="radio"
-                name="api"
-                value={FalmerAPIOptions.Production}
-                checked={api === FalmerAPIOptions.Production}
-              />
-            </div>
-            <div>
-              <label htmlFor="apiFalmer">Local</label>
-              <input
-                onChange={this.handleChange}
-                type="radio"
-                name="api"
-                value={FalmerAPIOptions.Local}
-                checked={api === FalmerAPIOptions.Local}
-              />
-            </div>
+            <label htmlFor="apiFalmer">Production</label>
+            <input
+              onChange={handleChange}
+              type="radio"
+              name="api"
+              value={FalmerAPIOptions.Production}
+              checked={api === FalmerAPIOptions.Production}
+            />
+          </div>
+          <div>
+            <label htmlFor="apiFalmer">Local</label>
+            <input
+              onChange={handleChange}
+              type="radio"
+              name="api"
+              value={FalmerAPIOptions.Local}
+              checked={api === FalmerAPIOptions.Local}
+            />
           </div>
         </div>
-        comp
-      </Root>
-    );
-  }
-}
+      </div>
+      comp
+    </Root>
+  );
+};

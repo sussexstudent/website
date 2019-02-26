@@ -1,49 +1,28 @@
-import React from 'react';
-import bind from 'bind-decorator';
+import React, { useCallback } from 'react';
 import { WebsiteRootState } from '~types/website';
-import { connect } from 'react-redux';
 import * as routerActions from '../../projects/website/ducks/router';
-import { RouterState } from '~website/ducks/router';
+import { useMappedState, useDispatch } from 'redux-react-hook';
 
-interface LokiHeaderSearchProps {
-  router: RouterState;
-  setSearchValue: typeof routerActions.setSearchValue;
-}
+export const LokiHeaderSearch: React.FC = () => {
+  const mapState = useCallback(
+    (state: WebsiteRootState) => ({
+      router: state.router,
+    }),
+    [],
+  );
+  const { router } = useMappedState(mapState);
+  const dispatch = useDispatch();
 
-interface LokiHeaderSearchState {
-  query: string;
-}
-
-class LokiHeaderSearchComponent extends React.Component<
-  LokiHeaderSearchProps,
-  LokiHeaderSearchState
-> {
-  @bind
-  onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    this.props.setSearchValue(e.target.value);
-  }
-
-  render() {
-    return (
-      <div className="LokiHeader__search">
-        <input
-          id="HP_QUERY_ELEMENT_SIDE_EFFECT"
-          className="LokiHeader__search-input"
-          type="search"
-          placeholder="Search"
-          value={this.props.router.searchQuery}
-          onChange={this.onChange}
-        />
-      </div>
-    );
-  }
-}
-
-export const LokiHeaderSearch = connect(
-  (state: WebsiteRootState) => ({
-    router: state.router,
-  }),
-  {
-    setSearchValue: routerActions.setSearchValue,
-  },
-)(LokiHeaderSearchComponent as any);
+  return (
+    <div className="LokiHeader__search">
+      <input
+        id="HP_QUERY_ELEMENT_SIDE_EFFECT"
+        className="LokiHeader__search-input"
+        type="search"
+        placeholder="Search"
+        value={router.searchQuery}
+        onChange={(e) => dispatch(routerActions.setSearchValue(e.target.value))}
+      />
+    </div>
+  );
+};

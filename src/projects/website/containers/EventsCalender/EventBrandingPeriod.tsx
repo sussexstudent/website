@@ -14,38 +14,34 @@ interface OwnProps {
 
 type IProps = OwnProps;
 
-class EventsCalender extends React.Component<IProps> {
-  render() {
-    const {
-      data: { allEvents, brandingPeriod },
-      brandSlug,
-    } = this.props;
-
-    return (
-      <div className="LokiContainer">
-        <Helmet>
-          <title>{`${
-            brandingPeriod.name
-          } | What's on | Sussex Students' Union`}</title>
-        </Helmet>
-        <h2 className="type-brevier">Event Period</h2>
-        <div>
-          {brandingPeriod.logoVector ? (
-            <img src={brandingPeriod.logoVector.resource} height="160" />
-          ) : (
-            <h1>{brandingPeriod.name}</h1>
-          )}
-          <div
-            className="type-body-copy"
-            dangerouslySetInnerHTML={{ __html: brandingPeriod.description }}
-          />
-        </div>
-
-        <EventListings events={allEvents} removePast={!brandSlug} />
+const EventsCalender: React.FC<IProps> = ({
+  data: { allEvents, brandingPeriod },
+  brandSlug,
+}) => {
+  return (
+    <div className="LokiContainer">
+      <Helmet>
+        <title>{`${
+          brandingPeriod.name
+        } | What's on | Sussex Students' Union`}</title>
+      </Helmet>
+      <h2 className="type-brevier">Event Period</h2>
+      <div>
+        {brandingPeriod.logoVector ? (
+          <img src={brandingPeriod.logoVector.resource} height="160" />
+        ) : (
+          <h1>{brandingPeriod.name}</h1>
+        )}
+        <div
+          className="type-body-copy"
+          dangerouslySetInnerHTML={{ __html: brandingPeriod.description }}
+        />
       </div>
-    );
-  }
-}
+
+      <EventListings events={allEvents} removePast={!brandSlug} />
+    </div>
+  );
+};
 
 export const EventBrandingPeriod = compose<OwnProps, OwnProps>(
   graphql<any, OwnProps>(EventListingsBrandingPeriodQuery, {

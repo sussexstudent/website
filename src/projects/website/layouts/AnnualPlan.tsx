@@ -1,18 +1,14 @@
 import React from 'react';
 import AnnualPlan from '~components/AnnualPlan';
 
-class AnnualPlanPage extends React.Component {
-  render() {
-    return (
+const AnnualPlanPage: React.FC = () => (
+  <div>
+    <div className="Layout">
       <div>
-        <div className="Layout">
-          <div>
-            <AnnualPlan />
-          </div>
-        </div>
+        <AnnualPlan />
       </div>
-    );
-  }
-}
+    </div>
+  </div>
+);
 
 export default AnnualPlanPage;

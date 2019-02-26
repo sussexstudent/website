@@ -11,7 +11,7 @@ interface AwardProps {
   children: React.ReactNode;
 }
 
-export function Award(props: AwardProps) {
+export const Award: React.FC<AwardProps> = (props) => {
   const inner = (
     <React.Fragment>
       <div className="Award__disc" style={{ backgroundColor: props.color }}>
@@ -49,4 +49,4 @@ export function Award(props: AwardProps) {
       }
     </HoverTapTooltip>
   );
-}
+};

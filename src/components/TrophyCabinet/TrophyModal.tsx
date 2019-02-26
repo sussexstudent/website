@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from '~components/Modal';
-import { AwardPeriod } from '../../types/awards';
+import { AwardPeriod } from '~types/awards';
 import { PeriodList } from '~components/TrophyCabinet/PeriodList';
 
 interface TrophyModalProps {

@@ -1,4 +1,4 @@
-import { GradeMap } from '../../types/awards';
+import { GradeMap } from '~types/awards';
 
 import LeafCommunity from '../../icons/awards/leaf-community.svg';
 import LeafDevelopment from '../../icons/awards/leaf-development.svg';

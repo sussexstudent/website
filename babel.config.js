@@ -27,7 +27,8 @@ module.exports = function(api) {
       "modules": false,
       "exclude": [
         "transform-regenerator"
-      ]
+      ],
+      loose: true,
     }]);
   }
 

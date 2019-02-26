@@ -12,7 +12,6 @@ import getFalmerEndpoint from '~libs/getFalmerEndpoint';
 import perf from '../../tracking/perf';
 import { WebsiteRootState } from '~types/website';
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
 import * as routerActions from '../../projects/website/ducks/router';
 import Helmet from 'react-helmet';
 import { NoListItems } from '~website/containers/bookmarket/NoListItems';
@@ -413,13 +412,11 @@ class SearchApp extends React.Component<IProps, IState> {
   }
 }
 
-export default compose<IProps, {}>(
-  connect(
-    (state: WebsiteRootState) => ({
-      query: state.router.searchQuery,
-    }),
-    {
-      setSearchValue: routerActions.setSearchValue,
-    },
-  ),
-)(SearchApp as any);
+export default connect(
+  (state: WebsiteRootState) => ({
+    query: state.router.searchQuery,
+  }),
+  {
+    setSearchValue: routerActions.setSearchValue,
+  },
+)(SearchApp) as any;

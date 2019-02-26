@@ -1,6 +1,5 @@
 import React from 'react';
 import qs from 'query-string';
-import { compose, withState } from 'recompose';
 import HeadingHero from '~components/HeadingHero';
 import MARKET_HOME_QUERY from './MarketHomeQuery.graphql';
 import { Field, Form } from 'react-final-form';
@@ -12,10 +11,7 @@ import { HandledQuery } from '~components/HandledQuery';
 import { adopt } from '~components/Adopt';
 import { InternalAppLink } from '~components/InternalAppLink';
 
-interface ComponentProps {
-  query: string;
-  setQuery(s: string): void;
-}
+interface ComponentProps {}
 
 interface MarketSection {
   title: string;
@@ -148,8 +144,6 @@ const MarketHomeComponent: React.FC<IProps> = (props) => {
   );
 };
 
-const MarketHome = compose<ComponentProps, {}>(
-  withState('query', 'setQuery', ''),
-)(MarketHomeComponent);
+const MarketHome = MarketHomeComponent;
 
 export { MarketHome };

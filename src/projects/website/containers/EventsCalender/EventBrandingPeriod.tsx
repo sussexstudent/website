@@ -1,23 +1,40 @@
 import React from 'react';
-import apolloHandler from '~components/apolloHandler';
 import { EventListings } from '~website/containers/EventsCalender/EventListings';
 import Helmet from 'react-helmet';
-import { compose } from 'recompose';
 import EventListingsBrandingPeriodQuery from './EventListingsBrandingPeriod.graphql';
-import { graphql } from 'react-apollo';
+import { ErrorState } from '~components/ErrorState';
+import { RouteComponentProps } from 'react-router';
+import { useQuery } from 'react-apollo-hooks';
+import Loader from '~components/Loader';
 
-interface OwnProps {
-  brandSlug: string;
-  data: any; // todo
-  filter: any; // todo
+interface Props extends RouteComponentProps<{ brandSlug: string }> {
+  filter: any;
 }
 
-type IProps = OwnProps;
-
-const EventsCalender: React.FC<IProps> = ({
-  data: { allEvents, brandingPeriod },
-  brandSlug,
+export const EventBrandingPeriod: React.FC<Props> = ({
+  match: {
+    params: { brandSlug },
+  },
 }) => {
+  const { data, loading, error } = useQuery(EventListingsBrandingPeriodQuery, {
+    variables: {
+      brandSlug,
+      filter: {
+        brand: brandSlug,
+      },
+    },
+  });
+
+  if (loading) {
+    return <Loader dark />;
+  }
+
+  if (error || !data) {
+    return <ErrorState />;
+  }
+
+  const { allEvents, brandingPeriod } = data;
+
   return (
     <div className="LokiContainer">
       <Helmet>
@@ -42,20 +59,3 @@ const EventsCalender: React.FC<IProps> = ({
     </div>
   );
 };
-
-export const EventBrandingPeriod = compose<OwnProps, OwnProps>(
-  graphql<any, OwnProps>(EventListingsBrandingPeriodQuery, {
-    options: (props) => {
-      const brandSlug = props.match.params.brandSlug;
-      return {
-        variables: {
-          brandSlug,
-          filter: {
-            brand: brandSlug,
-          },
-        },
-      };
-    },
-  }),
-  apolloHandler(),
-)(EventsCalender);

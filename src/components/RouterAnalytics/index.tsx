@@ -1,30 +1,21 @@
-import React from 'react';
-import { withRouter } from 'react-router';
-import { Location } from 'history';
+import React, { useEffect } from 'react';
+import { withRouter, RouteComponentProps } from 'react-router';
 
-class Tracker extends React.Component<{ location: Location }> {
-  track(path: string) {
-    if (typeof ga === 'undefined') {
-      return;
-    }
-
-    ga('set', 'page', path);
-    ga('send', 'pageview');
+const track = (path: string) => {
+  if (typeof ga === 'undefined') {
+    return;
   }
 
-  componentDidMount() {
-    this.track(this.props.location.pathname);
-  }
+  ga('set', 'page', path);
+  ga('send', 'pageview');
+};
 
-  componentDidUpdate() {
-    this.track(this.props.location.pathname);
-  }
+const Tracker: React.FC<RouteComponentProps> = ({ location }) => {
+  useEffect(() => {
+    track(location.pathname);
+  }, [location.pathname]);
 
-  render() {
-    return null;
-  }
-}
+  return null;
+};
 
-export const RouterAnalytics = withRouter(({ location }) => (
-  <Tracker location={location} />
-));
+export const RouterAnalytics = withRouter(Tracker);

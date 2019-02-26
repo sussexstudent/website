@@ -18,13 +18,8 @@ interface IProps {
   page: DetailPage; // todo
 }
 
-class DetailedGuideSectionPage extends React.Component<IProps> {
-  render() {
-    const {
-      page: { subPages },
-    } = this.props;
-    return <Redirect from={'/'} to={subPages[0].path} />;
-  }
-}
+const DetailedGuideSectionPage: React.FC<IProps> = ({ page: { subPages } }) => {
+  return <Redirect from={'/'} to={subPages[0].path} />;
+};
 
 export default DetailedGuideSectionPage;

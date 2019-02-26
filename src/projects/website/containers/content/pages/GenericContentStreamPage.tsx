@@ -10,20 +10,17 @@ interface IProps {
   page: GenericContentStreamPage;
 }
 
-class GenericContentStreamPage extends React.Component<IProps> {
-  render() {
-    const {
-      page: { body },
-      page,
-    } = this.props;
-    return (
-      <div className="LokiContainer">
-        <div className="Layout">
-          <StreamField items={body} page={page} />
-        </div>
+const GenericContentStreamPage: React.FC<IProps> = ({
+  page: { body },
+  page,
+}) => {
+  return (
+    <div className="LokiContainer">
+      <div className="Layout">
+        <StreamField items={body} page={page} />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default GenericContentStreamPage;

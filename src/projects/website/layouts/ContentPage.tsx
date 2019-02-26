@@ -1,11 +1,12 @@
 import React from 'react';
 import { ContentPage } from '~website/containers/content/ContentPage';
 
-class ContentPageContainer extends React.Component<{ path: string }> {
-  render() {
-    const { path } = this.props;
-    return <ContentPage path={path} />;
-  }
+interface Props {
+  path: string;
 }
+
+const ContentPageContainer: React.FC<Props> = ({ path }) => {
+  return <ContentPage path={path} />;
+};
 
 export default ContentPageContainer;

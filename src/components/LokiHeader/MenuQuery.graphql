@@ -1,0 +1,22 @@
+query MenuQuery {
+  page(path: "/") {
+    ...PageParts
+    subPages(inMenu: true) {
+      ...PageParts
+      subPages(inMenu: true) {
+        ...PageParts
+        subPages(inMenu: true) {
+          ...PageParts
+        }
+      }
+    }
+  }
+}
+
+fragment PageParts on Page {
+  title
+  contentType
+  path
+  slug
+  searchDescription
+}

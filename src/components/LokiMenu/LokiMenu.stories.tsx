@@ -5,4 +5,6 @@ import { Storybase } from '~components/Storybase';
 
 storiesOf('LokiMenu', module)
   .addDecorator(Storybase())
-  .add('standard', () => <LokiMenu />);
+  .add('standard', () => (
+    <LokiMenu setCurrentHover={(e) => console.log('hovered', e)} />
+  ));

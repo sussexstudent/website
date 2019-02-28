@@ -1,16 +1,19 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { COLORS } from '~libs/style';
 import { InternalAppLink } from '~components/InternalAppLink';
 import { type, Typeface, TypeSize } from '~libs/style/type';
+import { css } from 'emotion';
+import { MenuItem } from '~types/skeleton';
+import { COLORS } from '~libs/style';
+import MENU_QUERY from './MenuQuery.graphql';
+import { useQuery } from 'react-apollo-hooks';
 
-const Dropover = styled.div({
+const dropoverStyles = css({
   position: 'absolute',
   left: 0,
   right: 0,
   paddingTop: '1rem',
   paddingBottom: '1rem',
-  background: COLORS.BRAND_GREEN,
   color: '#fff',
   boxShadow: '0 16px 16px rgba(30, 30, 30, 0.3)',
 });
@@ -43,97 +46,48 @@ const SectionSubItem = styled(InternalAppLink)({
   ...type(TypeSize.Pica, Typeface.Secondary),
 });
 
-const LokiMenuDropover = () => {
+const menuItemColorMap = {
+  [MenuItem.GetInvolved]: COLORS.BRAND_BLUE,
+  [MenuItem.WhatsOn]: COLORS.BRAND_GREEN,
+  [MenuItem.Support]: COLORS.BRAND_RED,
+  [MenuItem.AboutUs]: COLORS.GREY_SLATE,
+};
+
+const LokiMenuDropover = React.forwardRef<
+  HTMLDivElement,
+  { isOpen: boolean; currentItem: MenuItem }
+>(({ isOpen, currentItem }, ref) => {
+  const { data, loading } = useQuery(MENU_QUERY);
+
+  if (!data || loading) {
+    return null;
+  }
+
+  const sections = data.page.subPages[currentItem].subPages;
+
   return (
-    <Dropover>
+    <div
+      ref={ref}
+      className={dropoverStyles}
+      style={{
+        display: isOpen ? 'block' : 'none',
+        backgroundColor: menuItemColorMap[currentItem],
+      }}
+    >
       <div className="LokiContainer">
         <Items>
-          <Section>
-            <SectionHeader to="/get-involved/societies-student-media">
-              Societies, student media & sports
-            </SectionHeader>
-            <SectionSubItem to="/get-involved/societies-student-media/discover">
-              Find and discover groups
-            </SectionSubItem>
-            <SectionSubItem to="/get-involved/societies-student-media/yours">
-              Your groups
-            </SectionSubItem>
-            <SectionSubItem to="/get-involved/societies-student-media/guides">
-              Guides for committees
-            </SectionSubItem>
-            <SectionSubItem to="/get-involved/societies-student-media/guides">
-              ActiveUS
-            </SectionSubItem>
-          </Section>
-          <Section>
-            <SectionHeader to="/get-involved/volunteering">
-              Campaigns & Volunteering
-            </SectionHeader>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Good Night Owls
-            </SectionSubItem>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Role Models Project
-            </SectionSubItem>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Students' Union Ambassador
-            </SectionSubItem>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Language Café
-            </SectionSubItem>
-          </Section>
-          <Section>
-            <SectionHeader to="/get-involved/volunteering">
-              Democracy
-            </SectionHeader>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Vote
-            </SectionSubItem>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Hold an elected position
-            </SectionSubItem>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Your elected officers
-            </SectionSubItem>
-          </Section>
-          <Section>
-            <SectionHeader to="/get-involved/volunteering">
-              Volunteering
-            </SectionHeader>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Good Night Owls
-            </SectionSubItem>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Good Night Owls
-            </SectionSubItem>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Good Night Owls
-            </SectionSubItem>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Good Night Owls
-            </SectionSubItem>
-          </Section>
-          <Section>
-            <SectionHeader to="/get-involved/volunteering">
-              Volunteering
-            </SectionHeader>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Good Night Owls
-            </SectionSubItem>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Good Night Owls
-            </SectionSubItem>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Good Night Owls
-            </SectionSubItem>
-            <SectionSubItem to="/get-involved/volunteering/good-night-owls">
-              Good Night Owls
-            </SectionSubItem>
-          </Section>
+          {sections.map((section: any) => (
+            <Section>
+              <SectionHeader to={section.path}>{section.title}</SectionHeader>
+              {section.subPages.map((sub: any) => (
+                <SectionSubItem to={sub.path}>{sub.title}</SectionSubItem>
+              ))}
+            </Section>
+          ))}
         </Items>
       </div>
-    </Dropover>
+    </div>
   );
-};
+});
 
 export { LokiMenuDropover };

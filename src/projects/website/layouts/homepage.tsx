@@ -68,10 +68,10 @@ const Homepage: React.FC<RouteComponent> = () => {
           {/*</div>*/}
           {/*</div>*/}
         </div>
-        <AboutTheUnion />
         <div className="LokiContainer">
           <ContentPage path={'/homepage'} />
         </div>
+        <AboutTheUnion />
       </div>
     </ScrollToTop>
   );

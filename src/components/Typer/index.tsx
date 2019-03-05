@@ -22,11 +22,11 @@ export const basicTimer = (frameType: FrameType): number => {
   }
 
   if (frameType === FrameType.Addition) {
-    return 60;
+    return 90;
   }
 
   if (frameType === FrameType.Deletion) {
-    return 110;
+    return 80;
   }
 
   return 0;

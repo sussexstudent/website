@@ -3,7 +3,6 @@ import React from 'react';
 // import HomepageEventsList from '~components/HomepageEventsList';
 import { ContentPage } from '~website/containers/content/ContentPage';
 import { HomepageSplash } from '~website/components/HomepageSplash';
-import { UserWelcome } from '~website/components/UserWelcome';
 import { RouteComponent } from '~types/routes';
 import { ScrollToTop } from '~components/ScrollToTop';
 import { AboutTheUnion } from '~website/components/AboutTheUnion';
@@ -38,8 +37,9 @@ const Homepage: React.FC<RouteComponent> = () => {
         </AdvertBar>
         <HomepageSplash />
         <div className="LokiContainer">
-          <UserWelcome />
-          <SlateContainer />
+          <div className="HomepageSplashLower">
+            <SlateContainer />
+          </div>
           <div>
             <h2 className="type-double-pica">Latest news</h2>
             <NewsList items={articles} fullWidth />

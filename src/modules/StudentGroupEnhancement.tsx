@@ -5,6 +5,7 @@ import TrophyCabinet from '~components/TrophyCabinet';
 import { StudentGroupsSectionbar } from '~components/StudentGroupsSectionbar';
 import { store } from '~website/redux/store';
 import { ApolloProvider } from 'react-apollo';
+import { StoreContext } from 'redux-react-hook';
 import getApolloClientForFalmer from '../libs/getApolloClientForFalmer';
 
 export default function ready() {
@@ -19,9 +20,11 @@ export default function ready() {
     sidebar.appendChild(sidebarBottom);
     ReactDOM.render(
       <ApolloProvider client={getApolloClientForFalmer}>
-        <ReduxProvider store={store}>
-          <TrophyCabinet slug={match[1]} />
-        </ReduxProvider>
+        <StoreContext.Provider value={store}>
+          <ReduxProvider store={store}>
+            <TrophyCabinet slug={match[1]} />
+          </ReduxProvider>
+        </StoreContext.Provider>
       </ApolloProvider>,
       sidebarBottom,
     );
@@ -36,7 +39,9 @@ export default function ready() {
 
     ReactDOM.render(
       <ReduxProvider store={store}>
-        <StudentGroupsSectionbar />
+        <StoreContext.Provider value={store}>
+          <StudentGroupsSectionbar />
+        </StoreContext.Provider>
       </ReduxProvider>,
       topOfContent,
     );

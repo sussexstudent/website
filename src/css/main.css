@@ -77,6 +77,7 @@
 @import '../components/Button/Button.css';
 @import '../components/AdvertBar/AdvertBar.css';
 @import '../components/FigureCollection/FigureCollection.css';
+@import '../components/PersonCollection/PersonCollection.css';
 @import '../components/BackBar/BackBar.css';
 @import '../components/PaginationNavigation/PaginationNavigation.css';
 @import '../components/Peekable/Peekable.css';

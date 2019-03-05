@@ -1,9 +1,10 @@
 import React from 'react';
 import { Page } from '~website/containers/content/types';
 import { FalmerImage } from '~types/events';
-import FigureCollection from '~components/FigureCollection';
-import FigureCollectionFigure from '~components/FigureCollection/FigureCollectionFigure';
 import Helmet from 'react-helmet';
+import { PersonCollectionFigure } from '~components/PersonCollection/PersonCollectionFigure';
+import { PersonCollection } from '~components/PersonCollection';
+import { shuffle } from 'lodash';
 
 interface FigureCollectionBlock {
   id: string;
@@ -34,9 +35,9 @@ function HomePage(props: IProps) {
       <Helmet title={undefined} />
       <div className="ContentBlock">
         <div className="ContentBlock__heading">Your full-time officers</div>
-        <FigureCollection>
-          {fullTimeOfficers.map((item) => (
-            <FigureCollectionFigure
+        <PersonCollection size="small">
+          {shuffle(fullTimeOfficers).map((item) => (
+            <PersonCollectionFigure
               key={item.id}
               title={item.value.title}
               sub={item.value.subtitle}
@@ -44,13 +45,13 @@ function HomePage(props: IProps) {
               imageResource={item.value.image.resource}
             />
           ))}
-        </FigureCollection>
+        </PersonCollection>
       </div>
       <div className="ContentBlock">
         <div className="ContentBlock__heading">Your part-time officers</div>
-        <FigureCollection>
-          {partTimeOfficers.map((item) => (
-            <FigureCollectionFigure
+        <PersonCollection size="small">
+          {shuffle(partTimeOfficers).map((item) => (
+            <PersonCollectionFigure
               key={item.id}
               title={item.value.title}
               sub={item.value.subtitle}
@@ -58,7 +59,7 @@ function HomePage(props: IProps) {
               imageResource={item.value.image.resource}
             />
           ))}
-        </FigureCollection>
+        </PersonCollection>
       </div>
     </div>
   );

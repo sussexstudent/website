@@ -101,6 +101,28 @@
     }
   }
 
+  &--small &__item {
+    @media (--extra-small) {
+      lost-column: 1/2;
+    }
+
+    @media (--small) {
+      lost-column: 1/3;
+    }
+
+    @media (--medium) {
+      lost-column: 1/4;
+    }
+
+    @media (--large) {
+      lost-column: 1/5;
+    }
+
+    @media (--extra-large) {
+      lost-column: 1/6;
+    }
+  }
+
   &--three &__item {
     @media (--medium) {
       lost-column: 1/2;

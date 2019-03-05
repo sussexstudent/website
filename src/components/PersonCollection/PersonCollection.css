@@ -1,0 +1,42 @@
+.PersonCollection {
+  font-family: var(--type__primary);
+  justify-content: center;
+
+  &__link {
+    display: block;
+    margin-bottom: 1rem;
+    color: black;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  &__image {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__img {
+    border-radius: 50%;
+  }
+
+  &__title {
+    padding-top: 0.4rem;
+    display: block;
+    box-sizing: border-box;
+    color: var(--color__grey-slate);
+  }
+
+  &__secondary {
+    display: block;
+    color: var(--color__grey-winter);
+  }
+
+  &__title,
+  &__secondary {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    font-weight: bold;
+    text-align: center;
+  }
+}

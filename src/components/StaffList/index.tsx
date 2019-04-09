@@ -23,9 +23,9 @@ const StaffList: StreamFieldBlock<{
     <div>
       <span className="u-position-anchor" id={slugify(heading)} />
       <h2 className="Heading Heading--highlight">{heading}</h2>
-      <ul className="StaffList">
+      <ul className="StaffList TrailGrid TrailGrid--medium">
         {body.map((member) => (
-          <li className="StaffList__item">
+          <li className="StaffList__item TrailGrid__item">
             <div className="StaffList__imagecreds">
               <div className="StaffList__image">
                 <div className="u-responsive-ratio u-responsive-ratio--square">

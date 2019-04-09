@@ -4,6 +4,7 @@ import flatStreamToLevels from '~libs/flatStreamToLevels';
 import ContentCard from '~components/ContentCard';
 import StreamField from '~website/containers/content/StreamField';
 import { Page } from '~website/containers/content/types';
+import ContentNavigation from '~components/ContentNavigation';
 
 const fromText = (text: string) => ({ name: text, anchor: slugify(text) });
 
@@ -42,15 +43,24 @@ interface IProps {
   page: IStaffPage; // todo
 }
 
-function getComponent(_a: any, _b: any, _c: any) {
-  return null;
-}
-
 const StaffPage: React.FC<IProps> = ({ page: { body }, page }) => {
   const levels = flatStreamToLevels(
     (item) => (levelMap as any)[item.type],
     body,
   );
+
+  const menuItems = levels.map((level) => ({
+    name: level.value,
+    anchor: slugify(level.value),
+    children: level._children
+      ? level._children.map((l) => ({
+          name: l.value.heading,
+          anchor: slugify(l.value.heading),
+          children: [],
+        }))
+      : [],
+  }));
+
   return (
     <div className="LokiContainer">
       <div className="Legacy">
@@ -273,18 +283,21 @@ const StaffPage: React.FC<IProps> = ({ page: { body }, page }) => {
         <div>
           <div className="Layout Layout--sidebar-left Layout--sidebar-thin">
             <div>
-              <aside />
+              <aside>
+                <ContentNavigation
+                  title="Departments"
+                  items={menuItems}
+                  activeKey="x"
+                  onlyShowSubMenuWhenChildActive
+                />
+              </aside>
             </div>
             <div>
               {levels.map((
-                {
-                  value,
-                  _children = null,
-                  ...partData
-                }: { value: any; _children?: any }, // todo
+                { value, _children = null }: { value: any; _children?: any }, // todo
               ) => (
-                <ContentCard>
-                  {getComponent(value, partData as any, slugify(value))}
+                <ContentCard anchor={slugify(value)}>
+                  <h1>{value}</h1>
                   {_children !== null ? (
                     <StreamField page={page} items={_children} />
                   ) : null}

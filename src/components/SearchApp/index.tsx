@@ -390,7 +390,9 @@ class SearchApp extends React.Component<IProps, IState> {
             ))}
           </ul>
         ) : null}
-        {itemsByArea !== null && itemsByArea[area].length === 0 ? (
+        {!isLoading &&
+        itemsByArea !== null &&
+        itemsByArea[area].length === 0 ? (
           <NoListItems />
         ) : null}
       </div>

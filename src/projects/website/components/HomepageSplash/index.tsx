@@ -1,8 +1,9 @@
 import React from 'react';
 import { OneImageBackground } from '~components/OneImage';
 import { basicTimer, Typer } from '~components/Typer';
+import { shuffle } from 'lodash';
 
-const placeholderHints = [
+const placeholderHints = shuffle([
   'support',
   'events',
   'freshers',
@@ -10,7 +11,8 @@ const placeholderHints = [
   'sports',
   'language café',
   'buddy scheme',
-];
+  'jobs',
+]);
 
 const HomepageSplashComponent = () => (
   <OneImageBackground

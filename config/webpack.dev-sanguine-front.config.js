@@ -2,8 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const { generateConfig } = require('./webpack.base.config.js');
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = generateConfig();
+
+const extractCSS = new MiniCssExtractPlugin({
+  filename: '[name].css',
+});
 
 config.entry.main = ['./src/projects/sanguine/client.tsx'];
 
@@ -39,6 +44,7 @@ config.plugins = config.plugins.concat([
   new ReactLoadablePlugin({
     filename: './sanguine-dist/react-loadable-dev.json',
   }),
+  extractCSS,
 ]);
 
 config.module.rules = config.module.rules.concat([
@@ -49,17 +55,11 @@ config.module.rules = config.module.rules.concat([
   },
   {
     test: /\.css$/,
-    // fallback: 'style-loader',
-    use: [
-      'style-loader',
-      {
-        loader: 'css-loader',
-        options: {
-          importLoaders: 1,
-        },
-      },
-      'postcss-loader',
-    ],
+    use: [MiniCssExtractPlugin.loader, {
+      loader: 'css-loader',
+      options: {importLoaders: 1},
+    },
+      'postcss-loader'],
   },
 ]);
 

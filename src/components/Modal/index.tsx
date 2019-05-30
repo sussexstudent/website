@@ -25,9 +25,7 @@ const Modal = (
     {props.footerClose ? (
       <button
         className="Modal__footerClose"
-        onClick={(e) =>
-          props.onRequestClose ? props.onRequestClose(e.nativeEvent) : null
-        }
+        onClick={(e) => (props.onRequestClose ? props.onRequestClose(e) : null)}
       >
         close
       </button>

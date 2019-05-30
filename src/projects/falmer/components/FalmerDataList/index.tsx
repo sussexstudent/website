@@ -5,7 +5,10 @@ interface IRowProps {
   key?: number;
   selectable: boolean;
   isSelected: boolean;
-  onChange(id: number, event: React.KeyboardEvent<HTMLInputElement>): void;
+  onChange(
+    id: number | undefined,
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void;
 }
 
 interface Item {
@@ -28,7 +31,7 @@ const FalmerDataList: React.FC<IProps> = ({
   const [checked, setChecked] = useState<{ [id: number]: boolean }>({});
 
   const handleRowSelect = useCallback(
-    (id: number, event: React.KeyboardEvent<HTMLInputElement>) => {
+    (id: number, event: React.ChangeEvent<HTMLInputElement>) => {
       setChecked((checked) => ({
         ...checked,
         [id]: event.currentTarget.checked,

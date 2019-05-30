@@ -41,7 +41,7 @@ export type MapperValue<RP, P> = ReactElement<any> | MapperComponent<RP, P>;
 export type Mapper<RP, P> = Record<keyof RP, MapperValue<RP, P>>;
 
 export function adopt<RP, P = {}>(mapper: Mapper<RP, P>): RPC<RP, P> {
-  if (!values(mapper).some(isValidRenderProp)) {
+  if (!values(mapper).some(isValidRenderProp as any)) {
     throw new Error(
       'The render props object mapper just accept valid elements as value',
     );
@@ -74,5 +74,5 @@ export function adopt<RP, P = {}>(mapper: Mapper<RP, P>): RPC<RP, P> {
     </Component>
   );
 
-  return keys(mapper).reduce(reducer, Children);
+  return keys(mapper).reduce(reducer, Children) as any;
 }

@@ -157,7 +157,6 @@ function getBoxValue(value: BoxType) {
   return {
     value,
     label: boxNameMap[value],
-    category: slateBoxes[value].category,
   };
 }
 
@@ -255,7 +254,7 @@ export const SlateEditor: React.FC<Props> = ({ data, onSave }) => {
         {selectedArea !== null ? (
           <div>
             <Select
-              value={getBoxValue(editorData.areas[selectedArea][0].type)}
+              value={getBoxValue(editorData.areas[selectedArea][0].type) as any}
               onChange={(v: any) => changeBox(selectedArea, v.value)}
               options={options}
               isMulti={false}

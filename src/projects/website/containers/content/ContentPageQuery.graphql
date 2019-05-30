@@ -95,6 +95,7 @@ query ContentPage($path: String) {
         ...ContentPageGenerals
       }
     }
+
     ... on OutletPage {
       main
       heroImage {

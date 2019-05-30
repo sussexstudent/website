@@ -10,23 +10,23 @@ const LoadableMarketHome = Loadable({
   loading: LoadableLoading,
   loader: () =>
     import(/* webpackChunkName: "MarketHome" */ './MarketHome').then(
-      (m) => m.MarketHome,
+      (m) => m.MarketHome as any,
     ),
 });
 
 const LoadableMarketMyListings = Loadable({
   loading: LoadableLoading,
   loader: () =>
-    import(/* webpackChunkName: "MarketMyListings" */ './MarketMyListings').then(
-      (m) => m.MarketMyListings,
-    ),
+    import(
+      /* webpackChunkName: "MarketMyListings" */ './MarketMyListings'
+    ).then((m) => m.MarketMyListings as any),
 });
 
 const LoadableMarketSearch = Loadable({
   loading: LoadableLoading,
   loader: () =>
     import(/* webpackChunkName: "MarketSearch" */ './MarketSearch').then(
-      (m) => m.MarketSearch,
+      (m) => m.MarketSearch as any,
     ),
 });
 
@@ -34,7 +34,7 @@ const LoadableMarketSection = Loadable({
   loading: LoadableLoading,
   loader: () =>
     import(/* webpackChunkName: "MarketSection" */ './MarketSection').then(
-      (m) => m.MarketSection,
+      (m) => m.MarketSection as any,
     ),
 });
 
@@ -42,16 +42,16 @@ const LoadableMarketBookDetail = Loadable({
   loading: LoadableLoading,
   loader: () =>
     import(/* webpackChunkName: "MarketBookDetail" */ './BookDetail').then(
-      (m) => m.BookDetail,
+      (m) => m.BookDetail as any,
     ),
 });
 
 const LoadableMarketCreateListing = Loadable({
   loading: LoadableLoading,
   loader: () =>
-    import(/* webpackChunkName: "MarketCreateListing" */ './CreateListing').then(
-      (m) => m.CreateListing,
-    ),
+    import(
+      /* webpackChunkName: "MarketCreateListing" */ './CreateListing'
+    ).then((m) => m.CreateListing as any),
 });
 
 const BookMarketApplication: React.FC<{}> = () => (

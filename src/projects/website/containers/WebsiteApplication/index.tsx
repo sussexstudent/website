@@ -4,13 +4,11 @@ import EventsApplication from '~website/containers/EventsApplication';
 import * as routerActions from '~website/ducks/router';
 import { AppMountState } from '~website/ducks/router';
 import { ContentPage } from '~website/containers/content/ContentPage';
-import { ContentExplorer } from '~website/layouts/ContentExplorer';
 import { LoadableLoading } from '~components/LoadableLoading';
 import Loadable from 'react-loadable';
 import Helmet from 'react-helmet';
 import ErrorBoundary from '../../../../components/ErrorBoundary';
 import Homepage from '~website/layouts/homepage';
-import { RouteComponent } from '~types/routes';
 import { FreshersContentAPI } from '~website/containers/freshers/ContentAPIContainer';
 import { FreshersEvents } from '~website/containers/freshers/FreshersEvents';
 import { RouterAnalytics } from '~components/RouterAnalytics';
@@ -37,19 +35,21 @@ const LoadableSearchApp = Loadable({
   loading: LoadableLoading,
   loader: () =>
     import(/* webpackChunkName: "searchapp" */ '~components/SearchApp'),
-}) as React.FC<RouteComponent>;
+});
 
 const LoadableStudentGroupsDiscovery = Loadable({
   loading: LoadableLoading,
   loader: () =>
     import(/* webpackChunkName: "sgd" */ '~components/StudentGroupsDiscovery'),
-}) as React.FC<RouteComponent>;
+});
 
 const LoadableContentBrowser = Loadable({
   loading: LoadableLoading,
   loader: () =>
-    import(/* webpackChunkName: "ContentBrowser" */ '~website/containers/ContentBrowser'),
-}) as any;
+    import(
+      /* webpackChunkName: "ContentBrowser" */ '~website/containers/ContentBrowser'
+    ),
+});
 
 const FourOhFourPageRoute = FourOhFourPage as any;
 
@@ -105,7 +105,6 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
             path="/get-involved/campaigns-toolkit"
           />
           <Route component={ContentAPI} path="/about-us/contact" />
-          <Route component={ContentExplorer} path="/content-explorer" exact />
           <Route component={FourOhFourPageRoute} default />
         </Switch>
       </ErrorBoundary>

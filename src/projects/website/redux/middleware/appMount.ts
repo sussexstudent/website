@@ -127,7 +127,7 @@ export const appMountMiddleware = (store: any) => (next: any) => (
     if (router.searchQuery === '' && router.location && router.history) {
       const queryString = qs.parse(router.location.search).q;
 
-      if (queryString !== undefined) {
+      if (queryString !== undefined && queryString !== null) {
         store.dispatch(
           setSearchValue(
             Array.isArray(queryString) ? queryString[0] : queryString,

@@ -1,25 +1,19 @@
-import '../../css/main.css';
+import '../../css/sanguine.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Raven from 'raven-js';
 import mitt from 'mitt';
 import { addClassesForFeatures } from '~libs/features';
-import { LokiHeaderServer } from '~components/LokiHeader';
-import WebsiteApplication from '~website/containers/WebsiteApplication';
-import { AppMountState } from '~website/ducks/router';
-import MobileFooterTreats from '~components/MobileFooterTreats';
-import PrefooterMenu from '~components/PrefooterMenu';
-import Footer from '~components/Footer';
-import { cx } from 'emotion';
-import DonatelloBanner from '~icons/donatello.svg';
+import { ApolloProvider as ApolloProviderHooks } from 'react-apollo-hooks';
+import { StoreContext } from 'redux-react-hook';
 import getApolloClientForFalmer from '~libs/getApolloClientForFalmer';
 import { store } from '~website/redux/store';
 import { Provider as ReduxProvider } from 'react-redux';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter } from '~components/BrowserRouter';
-import { hydrate } from 'emotion';
 import Loadable from 'react-loadable';
+import { Website } from './Website';
 
 addClassesForFeatures();
 
@@ -41,36 +35,17 @@ if (process.env.NODE_ENV === 'production') {
   swap() {},
 };
 
-const App = () => (
-  <React.Fragment>
-    {/*<AdvertBar className="AdvertBar--top" position="TopBanner" />*/}
-    <LokiHeaderServer />
-    <main className={cx('Site__content u-keep-footer-down')}>
-      <WebsiteApplication appMountState={AppMountState.Sanguine} />
-    </main>
-    <MobileFooterTreats />
-    <PrefooterMenu />
-    <Footer />
-    <div className="AdvertBar AdvertBar--donatello">
-      <a
-        className="AdvertBar__advert"
-        href="http://www.donatello.co.uk/?utm_source=ussu&utm_medium=footer"
-      >
-        <DonatelloBanner />
-      </a>
-    </div>
-  </React.Fragment>
-);
-
-hydrate((window as any).emotionIds);
-
 Loadable.preloadReady().then(() => {
   ReactDOM.hydrate(
     <BrowserRouter>
       <ApolloProvider client={getApolloClientForFalmer}>
-        <ReduxProvider store={store}>
-          <App />
-        </ReduxProvider>
+        <ApolloProviderHooks client={getApolloClientForFalmer}>
+          <ReduxProvider store={store}>
+            <StoreContext.Provider value={store}>
+              <Website />
+            </StoreContext.Provider>
+          </ReduxProvider>
+        </ApolloProviderHooks>
       </ApolloProvider>
     </BrowserRouter>,
     document.querySelector('.Site'),

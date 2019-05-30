@@ -6,13 +6,13 @@ import {
   ROUTER_TRANSITION_ROOT,
   transitionRootTo,
 } from '../../ducks/router';
-import { WebsiteRootState } from '../../../../types/website';
+import { WebsiteRootState } from '~types/website';
 import routes from '../../routes';
 
 function createAppRoot(source: RootTransitionSource) {
-  const currentContent: HTMLMainElement = document.querySelector(
+  const currentContent: HTMLDivElement = document.querySelector(
     '.Site__content',
-  ) as HTMLMainElement;
+  ) as HTMLDivElement;
   const newContent = document.createElement('main');
   newContent.classList.add('newContent', 'Site__content', 'u-keep-footer-down');
 
@@ -28,38 +28,39 @@ function createAppRoot(source: RootTransitionSource) {
   currentContent.classList.add('oldContent');
   currentContent.style.display = 'none';
 
-  import(/* webpackChunkName: "WebsiteApplicationModule" */ '../../../../modules/WebsiteApplicationModule').then(
-    (module) =>
-      module.default(
-        newContent,
-        source === RootTransitionSource.Initial
-          ? AppMountState.Initial
-          : AppMountState.Addition,
-      ),
+  import(
+    /* webpackChunkName: "WebsiteApplicationModule" */ '../../../../modules/WebsiteApplicationModule'
+  ).then((module) =>
+    module.default(
+      newContent,
+      source === RootTransitionSource.Initial
+        ? AppMountState.Initial
+        : AppMountState.Addition,
+    ),
   );
 }
 
 function transitionToNaturalRoot() {
-  const nativeContent: HTMLMainElement = document.querySelector(
+  const nativeContent: HTMLDivElement = document.querySelector(
     '.oldContent',
-  ) as HTMLMainElement;
+  ) as HTMLDivElement;
 
-  const dynamicContent: HTMLMainElement = document.querySelector(
+  const dynamicContent: HTMLDivElement = document.querySelector(
     '.newContent',
-  ) as HTMLMainElement;
+  ) as HTMLDivElement;
 
   nativeContent.style.display = 'block';
   dynamicContent.style.display = 'none';
 }
 
 function transitionToAppRoot() {
-  const nativeContent: HTMLMainElement = document.querySelector(
+  const nativeContent: HTMLDivElement = document.querySelector(
     '.oldContent',
-  ) as HTMLMainElement;
+  ) as HTMLDivElement;
 
-  const dynamicContent: HTMLMainElement = document.querySelector(
+  const dynamicContent: HTMLDivElement = document.querySelector(
     '.newContent',
-  ) as HTMLMainElement;
+  ) as HTMLDivElement;
 
   dynamicContent.style.display = 'block';
   nativeContent.style.display = 'none';

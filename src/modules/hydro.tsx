@@ -20,15 +20,6 @@ export default function() {
   const componentMap: ComponentMap = {
     /* Core Template Components */
     LokiHeader: () => LokiHeader,
-
-    TweetList: () =>
-      import(/* webpackChunkName: "TweetList" */ '~components/TweetList'),
-    EventList: () =>
-      import(/* webpackChunkName: "EventList" */ '~components/EventList'),
-    // VoteNowBox: () => VoteNowBox,
-    // CountdownBox: () => CountdownBox,
-    AnnualPlan: () =>
-      import(/* webpackChunkName: "AnnualPlan" */ '~components/AnnualPlan'),
     ContentPage: () =>
       import(
         /* webpackChunkName: "ContentPage" */ '../projects/website/layouts/ContentPage'

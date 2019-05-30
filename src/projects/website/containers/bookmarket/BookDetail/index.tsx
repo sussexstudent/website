@@ -16,10 +16,10 @@ import {
 import Helmet from 'react-helmet';
 import { HandledQuery } from '~components/HandledQuery';
 import { OwnerStatusBanner } from '~website/containers/bookmarket/BookDetail/OwnerStatusBanner';
-import { adopt } from '~components/Adopt';
 import { formatPrice } from '~libs/money';
 import { InternalAppLink } from '~components/InternalAppLink';
 import { RouteComponentProps } from 'react-router';
+import { adopt } from '~components/Adopt';
 
 interface OwnProps extends RouteComponentProps<{ listingId: string }> {}
 

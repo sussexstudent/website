@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { NewsletterSignup } from '~components/NewsletterSignup';
-import { Lottie } from '~components/Lottie';
-import logoAnimation from '../../freshers/logoAnimation.json';
 import {
   AspectRatio,
   OneImage,
@@ -48,14 +46,7 @@ const FreshersHomepage: React.FC = () => {
           aspectRatio={AspectRatio.r16by9}
         >
           <div className="FreshersLogoContainer">
-            <div className="u-responsive-ratio u-responsive-ratio--r23by8">
-              <Lottie
-                loop={false}
-                autoplay={true}
-                data={logoAnimation}
-                renderer="svg"
-              />
-            </div>
+            <div className="u-responsive-ratio u-responsive-ratio--r23by8" />
           </div>
           <NewsletterSignup />
         </OneImageBackground>

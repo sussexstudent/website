@@ -4,9 +4,6 @@
 @import './core/layers.css';
 @import './core/colors.css';
 
-/* msl */
-@import './msl/index.css';
-
 /* general */
 @import '../components/Footer/Footer.css';
 @import './components/Container.css';
@@ -45,8 +42,6 @@
 @import './components/ActivitiesApp.css';
 @import './components/Award.css';
 @import './components/SearchResult.css';
-@import './components/PolicyGenerator.css';
-@import './components/Legacy.css';
 @import './components/Trail.css';
 @import './components/HeaderSearch.css';
 @import './components/PageHeader.css';

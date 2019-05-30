@@ -30,7 +30,7 @@ config.performance = {
 config.mode = 'production';
 
 config.output = {
-  path: path.resolve(path.join(baseDir, 'dist')),
+  path: path.resolve(path.join(baseDir, 'sf-dist')),
   publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
   filename: 'sf.[name].[hash].js',
   chunkFilename: 'sf.[name].[hash].js',
@@ -93,7 +93,11 @@ config.plugins = config.plugins.concat([
 config.module.rules = config.module.rules.concat([
   {
     test: /\.css$/,
-    loader: [MiniCssExtractPlugin.loader, 'css-loader?importLoaders=1', 'postcss-loader'],
+    use: [MiniCssExtractPlugin.loader, {
+      loader: 'css-loader',
+      options: {importLoaders: 1},
+    },
+      'postcss-loader'],
   },
 ]);
 

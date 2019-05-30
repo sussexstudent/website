@@ -9,8 +9,6 @@ import EventRelativeTime from './EventRelativeTime';
 import { Event, TicketCost, TicketType } from '~types/events';
 import { AspectRatio, OneImage } from '~components/OneImage';
 
-// import PropTypes from 'prop-types';
-
 function renderEventLocation(event: Event) {
   if (!event.venue) {
     if (event.locationDisplay === '') {

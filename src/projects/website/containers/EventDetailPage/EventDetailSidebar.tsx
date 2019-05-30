@@ -1,6 +1,5 @@
 import React from 'react';
 import { Event, TicketCost, TicketType } from '~types/events';
-// import { MSLTickets } from '~components/EventDetailPage/MSLTickets';
 import { SocialArray } from '~components/SocialArray';
 import { EventAccessSidebar } from '~website/containers/EventDetailPage/EventAccessSidebar';
 import { BuyButton } from '~website/containers/EventDetailPage/BuyButton';

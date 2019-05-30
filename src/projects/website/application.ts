@@ -2,8 +2,6 @@ import Raven from 'raven-js';
 import mitt from 'mitt';
 import { addClassesForFeatures } from '~libs/features';
 addClassesForFeatures();
-
-// import { grooves } from '~libs/grooves';
 import '../../modules/eventRedirect';
 import { getSiteMode, Mode } from '~libs/siteModeDectector';
 
@@ -34,7 +32,7 @@ if (siteMode === Mode.Top || siteMode === Mode.ExternalFrame) {
   );
 } else if (siteMode === Mode.InternalFrame) {
   console.log(`[mode] ${siteMode}, loading communicationBootstrap`);
-  import(/* webpackChunkName: "communicationBootstrap" */ './communicationBootstrap').then(
-    (module) => module.setup(),
-  );
+  import(
+    /* webpackChunkName: "communicationBootstrap" */ './communicationBootstrap'
+  ).then((module) => module.setup());
 }

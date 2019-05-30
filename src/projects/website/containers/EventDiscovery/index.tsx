@@ -1,5 +1,4 @@
 import React from 'react';
-// import { CardDeck, Card } from '@ussu/react-swipe-card';
 import { HandledQuery } from '~components/HandledQuery';
 import EXAMPLE_QUERY from './ExampleQuery.graphql';
 import './test.css';

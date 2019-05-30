@@ -1,6 +1,5 @@
 import React from 'react';
 import MobileFooterTreats from '~components/MobileFooterTreats';
-// import PrefooterMenu from '~components/PrefooterMenu';
 import Footer from '~components/Footer';
 import Main from '~components/Main';
 import AdvertBar from '~components/AdvertBar';

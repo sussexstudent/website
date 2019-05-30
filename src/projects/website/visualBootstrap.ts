@@ -4,7 +4,11 @@ import hydro from '../../modules/hydro';
 import Modal from 'react-modal';
 
 export function setup() {
-  Modal.setAppElement('.Body');
+  if (document.querySelector('.Body')) {
+    Modal.setAppElement('.Body');
+  } else if (document.querySelector('#root')) {
+    Modal.setAppElement('#root');
+  }
 
   if (currentUser && currentUser.fundraising.blocking) {
     Array.from(document.querySelectorAll('.AdvertBar')).forEach((advert) => {

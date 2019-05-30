@@ -29,10 +29,6 @@ export default function() {
     // CountdownBox: () => CountdownBox,
     AnnualPlan: () =>
       import(/* webpackChunkName: "AnnualPlan" */ '~components/AnnualPlan'),
-    PolicyGenerator: () =>
-      import(
-        /* webpackChunkName: "PolicyGenerator" */ '~components/PolicyGenerator'
-      ),
     ContentPage: () =>
       import(
         /* webpackChunkName: "ContentPage" */ '../projects/website/layouts/ContentPage'

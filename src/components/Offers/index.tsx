@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import OFFERS_QUERY from './OffersQuery.graphql';
 import { Offer } from '~types/commercial';
-import HydroLeaf from '~components/HydroLeaf';
 import Loader from '~components/Loader';
 import { AspectRatio, OneImage } from '~components/OneImage';
 import PatternPlaceholder from '~components/PatternPlaceholder';
@@ -79,4 +78,4 @@ const Offers: React.FC = () => {
   );
 };
 
-export default HydroLeaf({ name: 'Offers' })(Offers);
+export default Offers;

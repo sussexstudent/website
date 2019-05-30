@@ -7,7 +7,6 @@ import {
   differenceInHours,
   differenceInSeconds,
 } from 'date-fns';
-import HydroLeaf from '~components/HydroLeaf';
 import { OneImageBackground } from '~components/OneImage';
 
 export enum HighlightTheme {
@@ -124,8 +123,6 @@ class CountdownBoxComponent extends React.Component<IProps, IState> {
   }
 }
 
-const CountdownBox = HydroLeaf({ name: 'CountdownBox', disableSSR: true })(
-  CountdownBoxComponent,
-);
+const CountdownBox = CountdownBoxComponent;
 
 export { CountdownBox };

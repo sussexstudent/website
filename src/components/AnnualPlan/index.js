@@ -1,5 +1,4 @@
 import React from 'react';
-import HydroLeaf from '~components/HydroLeaf';
 import { AspectRatio, OneImage } from '~components/OneImage';
 import { Modal } from '~components/Modal';
 
@@ -294,4 +293,4 @@ function AnnualPlan() {
   );
 }
 
-export default HydroLeaf({ disableSSR: true, name: 'AnnualPlan' })(AnnualPlan);
+export default AnnualPlan;

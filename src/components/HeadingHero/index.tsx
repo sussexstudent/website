@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-import HydroLeaf from '../HydroLeaf';
 import { OneImageBackground } from '~components/OneImage';
 
 interface IProps {
@@ -30,4 +29,3 @@ const HeadingHero = ({
 );
 
 export default HeadingHero;
-export const Hydro = HydroLeaf()(HeadingHero);

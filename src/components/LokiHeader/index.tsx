@@ -3,7 +3,6 @@ import StudentsUnionLogoNoLogotype from '~icons/students-union-logo-no-logotype.
 import { LokiHeaderSearch } from '~components/LokiHeader/LokiHeaderSearch';
 import { LokiMenu } from '~components/LokiMenu';
 import { ProfileLabel } from '~components/LokiHeader/ProfileLabel';
-import HydroLeaf from '~components/HydroLeaf';
 import { LokiSideMenu } from '~components/LokiSideMenu';
 import MenuIcon from '~components/MenuIcon';
 import CrossIcon from '~components/CrossIcon';
@@ -44,7 +43,7 @@ const LokiHeaderComponent: React.FC<LokiHeaderProps> = ({
   const showDropover = currentHover !== null || isDropoverHovering;
 
   return (
-    <React.Fragment>
+    <header className="LokiHeader">
       <div className="LokiContainer LokiHeader__container">
         <InternalAppLink
           className="LokiHeader__button-mobile LokiHeader__button-mobile--search"
@@ -99,24 +98,18 @@ const LokiHeaderComponent: React.FC<LokiHeaderProps> = ({
           currentItem={latestItem}
         />
       ) : null}
-    </React.Fragment>
+    </header>
   );
 };
 
-export const LokiHeader = HydroLeaf({
-  name: 'LokiHeader',
-  className: 'LokiHeader',
-  container: (props) => <header {...props} />,
-})(
-  connect(
-    (state: WebsiteRootState) => ({
-      isOpenMobileMenu: state.page.isOpenMobileMenu,
-    }),
-    {
-      toggleMobileMenu: pageActions.toggleMobileMenu,
-    },
-  )(LokiHeaderComponent as any),
-);
+export const LokiHeader = connect(
+  (state: WebsiteRootState) => ({
+    isOpenMobileMenu: state.page.isOpenMobileMenu,
+  }),
+  {
+    toggleMobileMenu: pageActions.toggleMobileMenu,
+  },
+)(LokiHeaderComponent as any);
 
 export const LokiHeaderServer = () => (
   <header className="LokiHeader">

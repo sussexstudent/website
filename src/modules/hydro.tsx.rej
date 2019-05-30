@@ -1,6 +1,0 @@
-diff a/src/modules/hydro.tsx b/src/modules/hydro.tsx	(rejected hunks)
-@@ -33 +33,3 @@ export default function() {
--      import(/* webpackChunkName: "PolicyGenerator" */ '~components/PolicyGenerator'),
-+      import(
-+        /* webpackChunkName: "PolicyGenerator" */ '~components/PolicyGenerator'
-+      ),

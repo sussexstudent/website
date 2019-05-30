@@ -18,13 +18,17 @@ import { Route } from 'react-router';
 const StaffPage = Loadable({
   loading: LoadableLoading,
   loader: () =>
-    import(/* webpackChunkName: "page.staff" */ '~website/containers/content/pages/StaffPage'),
+    import(
+      /* webpackChunkName: "page.staff" */ '~website/containers/content/pages/StaffPage'
+    ),
 });
 
 const FreshersHomepage = Loadable({
   loading: LoadableLoading,
   loader: () =>
-    import(/* webpackChunkName: "page.freshers.homepage" */ '~website/containers/content/pages/FreshersHomepage'),
+    import(
+      /* webpackChunkName: "page.freshers.homepage" */ '~website/containers/content/pages/FreshersHomepage'
+    ),
 });
 
 interface PageComponentMap {

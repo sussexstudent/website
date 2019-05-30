@@ -7,13 +7,19 @@ import { RouteComponent } from '~types/routes';
 import { ScrollToTop } from '~components/ScrollToTop';
 
 const EventsListLoader = () =>
-  import(/* webpackChunkName: "events.listings" */ '~website/containers/EventsCalender/index');
+  import(
+    /* webpackChunkName: "events.listings" */ '~website/containers/EventsCalender/index'
+  );
 
 const EventBrandingPeriodLoader = () =>
-  import(/* webpackChunkName: "events.listings.brand" */ '~website/containers/EventsCalender/EventBrandingPeriod');
+  import(
+    /* webpackChunkName: "events.listings.brand" */ '~website/containers/EventsCalender/EventBrandingPeriod'
+  );
 
 const EventBundleLoader = () =>
-  import(/* webpackChunkName: "events.listings.bundle" */ '~website/containers/EventsCalender/EventBundle');
+  import(
+    /* webpackChunkName: "events.listings.bundle" */ '~website/containers/EventsCalender/EventBundle'
+  );
 
 const LoadableListings = Loadable({
   loading: LoadableLoading,
@@ -42,7 +48,9 @@ const LoadableBundle = Loadable({
 const LoadableDetail = Loadable({
   loading: LoadableLoading,
   loader: () =>
-    import(/* webpackChunkName: "events.detail" */ '~website/containers/EventDetailPage'),
+    import(
+      /* webpackChunkName: "events.detail" */ '~website/containers/EventDetailPage'
+    ),
 });
 
 type EventsApplicationProps = RouteComponent;

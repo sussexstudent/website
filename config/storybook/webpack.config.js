@@ -6,38 +6,39 @@ const baseDir = path.join(__dirname, '../..');
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 
-const config = {
-  target: 'web',
+const setup = ({ config }) => {
+  config = {
+    target: 'web',
 
-  entry: {
+      entry: {
     main: ['unfetch/polyfill', './src/projects/common/lazysizes.ts', './src/projects/website/entry.ts'],
-    devFonts: './src/projects/website/env-dev.ts',
-    productionFonts: './src/projects/website/env-production.ts',
+      devFonts: './src/projects/website/env-dev.ts',
+      productionFonts: './src/projects/website/env-production.ts',
   },
 
-  resolve: {
-    plugins: [new TsConfigPathsPlugin({ /*configFile: "./path/to/tsconfig.json" */ })],
-    modules: ['node_modules', './src/images'],
-    alias: {
-      '~components': path.resolve(baseDir, 'src/components/'),
-      '~libs': path.resolve(baseDir, 'src/libs/'),
-    },
-    extensions: ['.ts', '.tsx', '.js', '.svg'],
-  },
-
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(NODE_ENV),
-        FALMER_ENDPOINT: JSON.stringify(
-          NODE_ENV === 'production'
-            ? 'https://falmer.sussexstudent.com'
-            : 'http://localhost:8000'
-        ),
+    resolve: {
+      plugins: [new TsConfigPathsPlugin({ /*configFile: "./path/to/tsconfig.json" */ })],
+        modules: ['node_modules', './src/images'],
+        alias: {
+        '~components': path.resolve(baseDir, 'src/components/'),
+          '~libs': path.resolve(baseDir, 'src/libs/'),
       },
-    }),
-  ],
-  module: {
+      extensions: ['.ts', '.tsx', '.js', '.svg'],
+    },
+
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify(NODE_ENV),
+          FALMER_ENDPOINT: JSON.stringify(
+            NODE_ENV === 'production'
+              ? 'https://falmer.sussexstudent.com'
+              : 'http://localhost:8000'
+          ),
+        },
+      }),
+    ],
+      module: {
     rules: [
       {
         test: /\.(graphql|gql)$/,
@@ -82,36 +83,39 @@ const config = {
       },
     ],
   },
+  };
+
+  config.plugins = config.plugins.concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        HYDROLEAF_MODE: JSON.stringify('RENDER_COMPONENT'),
+        COMP_NODE: '0',
+      },
+    }),
+  ]);
+
+  config.module.rules = config.module.rules.concat([
+    {
+      test: /\.jsx?$/,
+      loaders: ['babel-loader?cacheDirectory&envName=bundle'],
+      exclude: /node_modules/,
+    },
+    {
+      test: /\.css$/,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+          },
+        },
+        'postcss-loader',
+      ],
+    },
+  ]);
+
+  return config;
 };
 
-config.plugins = config.plugins.concat([
-  new webpack.DefinePlugin({
-    'process.env': {
-      HYDROLEAF_MODE: JSON.stringify('RENDER_COMPONENT'),
-      COMP_NODE: '0',
-    },
-  }),
-]);
-
-config.module.rules = config.module.rules.concat([
-  {
-    test: /\.jsx?$/,
-    loaders: ['babel-loader?cacheDirectory&envName=bundle'],
-    exclude: /node_modules/,
-  },
-  {
-    test: /\.css$/,
-    use: [
-      'style-loader',
-      {
-        loader: 'css-loader',
-        options: {
-          importLoaders: 1,
-        },
-      },
-      'postcss-loader',
-    ],
-  },
-]);
-
-module.exports = config;
+module.exports = setup;

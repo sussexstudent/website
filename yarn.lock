@@ -1259,13 +1259,6 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@drafty/generation-game@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@drafty/generation-game/-/generation-game-2.0.0.tgz#1b8ba11820a1d03bc35c7a6bea85a92809018367"
-  integrity sha512-m0Ulvuqh3UVthtCaDbU8CJAKWhGmAecndh/97JYLH4nEFEqKGJaAy8uR0YLzUTGKVr6JPmhXJ51ga3YzSLLAaA==
-  dependencies:
-    lodash "^4.17.4"
-
 "@emotion/babel-plugin-jsx-pragmatic@^0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin-jsx-pragmatic/-/babel-plugin-jsx-pragmatic-0.1.2.tgz#bb98bbef8effe83418307563c34e784deae57a1a"
@@ -2422,11 +2415,6 @@
   dependencies:
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
-
-"@types/howler@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@types/howler/-/howler-2.1.0.tgz#a525727788dd941aaab0dfde937e374c0f37cf95"
-  integrity sha512-FQiZRxGbBoOEe35dg1BOIQ+YHEYO3SldrnaPuKJJVuaxJJ/7NwEah87tyWxoTgunLlj6p4kkDKYcQH0aAXliQw==
 
 "@types/http-proxy-middleware@^0.19.2":
   version "0.19.2"
@@ -8022,11 +8010,6 @@ hosted-git-info@^2.1.4:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
   integrity sha512-7T/BxH19zbcCTa8XkMlbK5lTo1WtgkFi3GvdWEyNuc4Vex7/9Dqbnpsf4JMydcfj9HCg4zUWFTL3Za6lapg5/w==
-
-howler@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/howler/-/howler-2.1.2.tgz#8433a09d8fe84132a3e726e05cb2bd352ef8bd49"
-  integrity sha512-oKrTFaVXsDRoB/jik7cEpWKTj7VieoiuzMYJ7E/EU5ayvmpRhumCv3YQ3823zi9VTJkSWAhbryHnlZAionGAJg==
 
 hpack.js@^2.1.6:
   version "2.1.6"

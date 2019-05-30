@@ -43,7 +43,7 @@ const LokiHeaderComponent: React.FC<LokiHeaderProps> = ({
   const showDropover = currentHover !== null || isDropoverHovering;
 
   return (
-    <header className="LokiHeader">
+    <React.Fragment>
       <div className="LokiContainer LokiHeader__container">
         <InternalAppLink
           className="LokiHeader__button-mobile LokiHeader__button-mobile--search"
@@ -98,11 +98,11 @@ const LokiHeaderComponent: React.FC<LokiHeaderProps> = ({
           currentItem={latestItem}
         />
       ) : null}
-    </header>
+    </React.Fragment>
   );
 };
 
-export const LokiHeader = connect(
+export const LokiHeaderInner = connect(
   (state: WebsiteRootState) => ({
     isOpenMobileMenu: state.page.isOpenMobileMenu,
   }),
@@ -111,8 +111,8 @@ export const LokiHeader = connect(
   },
 )(LokiHeaderComponent as any);
 
-export const LokiHeaderServer = () => (
+export const LokiHeader = () => (
   <header className="LokiHeader">
-    <LokiHeader />
+    <LokiHeaderInner />
   </header>
 );

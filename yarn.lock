@@ -10377,11 +10377,6 @@ ms@2.1.1, ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
-msl-utils@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/msl-utils/-/msl-utils-0.3.0.tgz#76300c98f9f96b3bb0d93c585dbe0a3bd4607184"
-  integrity sha1-djAMmPn5azuw2TxYXb4KO9RgcYQ=
-
 multicast-dns-service-types@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/multicast-dns-service-types/-/multicast-dns-service-types-1.1.0.tgz#899f11d9686e5e05cb91b35d5f0e63b773cfc901"

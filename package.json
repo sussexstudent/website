@@ -156,7 +156,6 @@
     "lazysizes": "^5.1.0",
     "lodash": "^4.17.11",
     "mitt": "^1.1.2",
-    "msl-utils": "^0.3.0",
     "node-fetch": "^2.6.0",
     "postcss-pxtorem": "^4.0.1",
     "promise-polyfill": "^8.1.0",

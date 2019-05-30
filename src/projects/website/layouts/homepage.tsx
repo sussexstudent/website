@@ -1,6 +1,4 @@
 import React from 'react';
-// import TweetList from '~components/TweetList';
-// import HomepageEventsList from '~components/HomepageEventsList';
 import { ContentPage } from '~website/containers/content/ContentPage';
 import { HomepageSplash } from '~website/components/HomepageSplash';
 import { RouteComponent } from '~types/routes';
@@ -9,9 +7,8 @@ import { AboutTheUnion } from '~website/components/AboutTheUnion';
 import AdvertBar from '~components/AdvertBar';
 import { MSLAdvert } from '~components/AdvertBar/MSLAdvert';
 import NewsList from '~components/NewsList';
-// @ts-ignore
-import { parseNews } from 'msl-utils';
 import { SlateContainer } from '~components/Slate/SlateContainer';
+import { parseNews } from '~libs/msl';
 
 const Homepage: React.FC<RouteComponent> = () => {
   let articles =

@@ -1,7 +1,7 @@
 import React from 'react';
-import { parseNews } from 'msl-utils';
 import ReactDOM from 'react-dom';
 import NewsList from '~components/NewsList';
+import {parseNews} from "~libs/msl";
 
 export default () => {
   let articles = parseNews(document.body);

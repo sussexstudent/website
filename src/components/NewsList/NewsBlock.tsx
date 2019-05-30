@@ -9,7 +9,7 @@ export interface NewsItem {
   id: number;
   title: string;
   link: string;
-  publishedDate: Date;
+  publishedDate: Date | null;
   led: string;
   imageURL?: string;
 }
@@ -46,11 +46,13 @@ const NewsBlock = ({
         </div>
         <p className="NewsBlock__standfirst">{led}</p>
         <div className="NewsBlock__meta">
-          <time className="NewsBlock__date">
-            {isSameDay(publishedDate, new Date())
-              ? 'Today'
-              : `${formatDistance(publishedDate, new Date())} ago`}
-          </time>
+          {publishedDate ? (
+            <time className="NewsBlock__date">
+              {isSameDay(publishedDate, new Date())
+                ? 'Today'
+                : `${formatDistance(publishedDate, new Date())} ago`}
+            </time>
+          ) : null}
         </div>
       </div>
     </a>

@@ -5,8 +5,6 @@ import { ApolloProvider as APHook } from 'react-apollo-hooks';
 import getApolloClientForFalmer from '~libs/getApolloClientForFalmer';
 import { isFunction } from 'lodash';
 import { store } from '~website/redux/store';
-// import { VoteNowBox } from '~components/Bento/treatments/VoteNowBox';
-// import { CountdownBox } from '~components/Bento/treatments/CountdownBox';
 import { LokiHeader } from '~components/LokiHeader';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter } from '~components/BrowserRouter';

@@ -29,12 +29,14 @@ export default function() {
     // CountdownBox: () => CountdownBox,
     AnnualPlan: () =>
       import(/* webpackChunkName: "AnnualPlan" */ '~components/AnnualPlan'),
-    DemocracyAirHorn: () =>
-      import(/* webpackChunkName: "DemocracyAirHorn" */ '~components/DemocracyAirHorn'),
     PolicyGenerator: () =>
-      import(/* webpackChunkName: "PolicyGenerator" */ '~components/PolicyGenerator'),
+      import(
+        /* webpackChunkName: "PolicyGenerator" */ '~components/PolicyGenerator'
+      ),
     ContentPage: () =>
-      import(/* webpackChunkName: "ContentPage" */ '../projects/website/layouts/ContentPage'),
+      import(
+        /* webpackChunkName: "ContentPage" */ '../projects/website/layouts/ContentPage'
+      ),
     Offers: () => import(/* webpackChunkName: "Offers" */ '~components/Offers'),
   };
 

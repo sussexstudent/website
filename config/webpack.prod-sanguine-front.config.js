@@ -69,7 +69,6 @@ config.plugins = config.plugins.concat([
   // new BundleAnalyzerPlugin(),
   new webpack.DefinePlugin({
     'process.env': {
-      HYDROLEAF_MODE: JSON.stringify('RENDER_COMPONENT'),
       COMP_NODE: '0',
       TARGET_ENV: '"SANGUINE"'
     },

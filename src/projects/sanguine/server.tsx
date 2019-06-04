@@ -21,7 +21,7 @@ import Loadable from 'react-loadable';
 import proxy from 'http-proxy-middleware';
 import introspectionQueryResultData from '../../../fragmentTypes.json';
 import { getBundles, Bundle } from 'react-loadable/webpack';
-import stats from '../../../sanguine-dist/react-loadable.json';
+import stats from '../../../sanguine-dist/backend/react-loadable.json';
 import { Website } from './Website';
 import { StoreContext } from 'redux-react-hook';
 import { Branding, manifestHandler } from '~website/head';
@@ -183,7 +183,7 @@ export default function server({ port }: { port: number }) {
     }),
   );
 
-  app.use('/dist', express.static(path.join(__dirname, '../sf-dist')));
+  app.use('/dist', express.static(path.join(__dirname, '../frontend')));
 
   app.use(handleRender);
 

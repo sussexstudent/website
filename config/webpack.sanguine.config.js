@@ -21,10 +21,11 @@ config.target = 'node';
 
 config.mode = isProd ? 'production' : 'development';
 
+config.optimization = { minimize: false };
+
 config.output = {
-  path: path.resolve(path.join(baseDir, 'sanguine-dist')),
+  path: path.resolve(path.join(baseDir, '/sanguine-dist/backend')),
   //publicPath: isProd ? 'https://du9l8eemj97rm.cloudfront.net/' : '/dist/',
-  publicPath: '/dist/',
   filename: 'sanguine.js',
 };
 

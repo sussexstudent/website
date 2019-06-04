@@ -84,6 +84,12 @@ async function localRequired() {
     await fs.mkdir('dist');
   }
 
+  try {
+    await fs.stat('sanguine-dist');
+  } catch (e) {
+    await fs.mkdir('sanguine-dist');
+  }
+
   await fs.writeFile('dist/manifest.json', '{}', 'utf-8');
 }
 

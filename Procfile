@@ -1,1 +1,1 @@
-web: node sanguine-dist/sanguine.js
+web: node sanguine-dist/backend/sanguine.js

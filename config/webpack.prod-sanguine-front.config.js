@@ -30,7 +30,7 @@ config.performance = {
 config.mode = 'production';
 
 config.output = {
-  path: path.resolve(path.join(baseDir, 'sf-dist')),
+  path: path.resolve(path.join(baseDir, 'sanguine-dist/frontend')),
   publicPath: '/dist/',
   filename: 'sf.[name].[hash].js',
   chunkFilename: 'sf.[name].[hash].js',
@@ -83,7 +83,7 @@ config.plugins = config.plugins.concat([
   new CopyWebpackPlugin([{ from: './src/img/favicons', to: './branding' }]),
   new AssetsWebpackPlugin({filename: 'sanguine-assets.json'}),
   new ReactLoadablePlugin({
-    filename: './sanguine-dist/react-loadable.json',
+    filename: './sanguine-dist/backend/react-loadable.json',
   }),
 ]);
 

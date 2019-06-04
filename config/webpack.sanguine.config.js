@@ -38,9 +38,7 @@ config.node = {
 
 config.plugins = [
   new webpack.DefinePlugin({
-    'process.env': {
-      TARGET_ENV: '"SANGUINE"'
-    },
+    'process.env.TARGET_ENV': '"SANGUINE"',
   }),
   new SaveAssetsJson({
     path: process.cwd(),

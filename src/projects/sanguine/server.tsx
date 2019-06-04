@@ -191,7 +191,7 @@ export default function server({ port }: { port: number }) {
 }
 
 Loadable.preloadAll().then(() => {
-  const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3003;
+  const port = (process.env.PORT as any) || 3003;
   server({ port });
 
   console.log('Sanguine - 0.1');

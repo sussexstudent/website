@@ -23,7 +23,8 @@ config.mode = isProd ? 'production' : 'development';
 
 config.output = {
   path: path.resolve(path.join(baseDir, 'sanguine-dist')),
-  publicPath: isProd ? 'https://du9l8eemj97rm.cloudfront.net/' : '/dist/',
+  //publicPath: isProd ? 'https://du9l8eemj97rm.cloudfront.net/' : '/dist/',
+  publicPath: '/dist/',
   filename: 'sanguine.js',
 };
 

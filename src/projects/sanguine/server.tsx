@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import express from 'express';
+import path from 'path';
 import fetch from 'node-fetch';
 import { StaticRouter } from 'react-router';
 import { ApolloProvider } from 'react-apollo';
@@ -25,6 +26,7 @@ import { Website } from './Website';
 import { StoreContext } from 'redux-react-hook';
 import { Branding, manifestHandler } from '~website/head';
 import Helmet, { HelmetData } from 'react-helmet';
+import assets from '../../../sanguine-assets.json';
 
 const fragmentMatcher = new IntrospectionFragmentMatcher({
   introspectionQueryResultData: introspectionQueryResultData as any,
@@ -151,7 +153,6 @@ export default function server({ port }: { port: number }) {
 
       const helmet = Helmet.renderStatic();
       const apolloExtract = client.extract();
-
       res.send(
         createBaseHtml(
           {
@@ -163,6 +164,7 @@ export default function server({ port }: { port: number }) {
                 js: '/assets/main.js',
                 css: '/assets/main.css',
               },
+              ...assets,
             },
           },
           helmet,
@@ -181,6 +183,8 @@ export default function server({ port }: { port: number }) {
     }),
   );
 
+  app.use('/dist', express.static(path.join(__dirname, '../sf-dist')));
+
   app.use(handleRender);
 
   app.listen(port);
@@ -190,6 +194,6 @@ Loadable.preloadAll().then(() => {
   const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3003;
   server({ port });
 
-  console.log('/SANGUINE/');
-  console.log(`/NOW LISTING AT http://localhost:${port}/`);
+  console.log('Sanguine - 0.1');
+  console.log(`serving at http://localhost:${port}`);
 });

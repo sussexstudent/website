@@ -57,7 +57,8 @@ async function createApolloTypes() {
       }
     `,
     }),
-  })
+  });
+
   const result = await req.json();
 
   // here we're filtering out any type information unrelated to unions or interfaces

@@ -31,7 +31,7 @@ config.mode = 'production';
 
 config.output = {
   path: path.resolve(path.join(baseDir, 'sf-dist')),
-  publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
+  publicPath: '/dist/',
   filename: 'sf.[name].[hash].js',
   chunkFilename: 'sf.[name].[hash].js',
 };
@@ -82,7 +82,7 @@ config.plugins = config.plugins.concat([
     manifestVariable: 'chunkManifest',
   }),
   new CopyWebpackPlugin([{ from: './src/img/favicons', to: './branding' }]),
-  new AssetsWebpackPlugin(),
+  new AssetsWebpackPlugin({filename: 'sanguine-assets.json'}),
   new ReactLoadablePlugin({
     filename: './sanguine-dist/react-loadable.json',
   }),

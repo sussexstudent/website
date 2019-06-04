@@ -42,7 +42,7 @@ config.plugins = config.plugins.concat([
   }),
   new webpack.HotModuleReplacementPlugin(),
   new ReactLoadablePlugin({
-    filename: './sanguine-dist/react-loadable-dev.json',
+    filename: './sanguine-dist/react-loadable.json',
   }),
   extractCSS,
 ]);

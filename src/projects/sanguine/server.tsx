@@ -20,7 +20,7 @@ import Loadable from 'react-loadable';
 import proxy from 'http-proxy-middleware';
 import introspectionQueryResultData from '../../../fragmentTypes.json';
 import { getBundles, Bundle } from 'react-loadable/webpack';
-import stats from '../../../sanguine-dist/react-loadable-dev.json';
+import stats from '../../../sanguine-dist/react-loadable.json';
 import { Website } from './Website';
 import { StoreContext } from 'redux-react-hook';
 import { Branding, manifestHandler } from '~website/head';

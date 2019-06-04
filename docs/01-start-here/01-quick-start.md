@@ -5,10 +5,15 @@ Install dependencies with
 $ yarn
 ```
 
+Setup a few things using
+```bash
+$ yarn setup
+```
+
 We've built `comp` to manage our build process. To start comp with the development server:
 
 ```bash
-$ yarn run serve
+$ yarn serve
 ```
 
 Woo! Have a gander at `http://localhost:3002`.

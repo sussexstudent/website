@@ -190,7 +190,7 @@
     "unfetch": "^4.1.0",
     "url-parse": "^1.4.7",
     "webpack-cli": "^3.3.2",
-    "what-input": "^5.2.1"
+    "what-input": "^5.2.3"
   },
   "scripts": {
     "storybook": "start-storybook -p 9001 -c ./config/storybook",

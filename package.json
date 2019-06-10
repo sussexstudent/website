@@ -184,7 +184,7 @@
     "recompose": "^0.30.0",
     "redux": "^4.0.1",
     "redux-react-hook": "^3.3.2",
-    "redux-saga": "^1.0.2",
+    "redux-saga": "^1.0.3",
     "redux-thunk": "^2.3.0",
     "typescript": "3.5.1",
     "unfetch": "^4.1.0",

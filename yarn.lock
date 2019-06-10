@@ -1132,14 +1132,14 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-transform-typescript" "^7.1.0"
 
-"@babel/runtime@7.3.1", "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.1":
+"@babel/runtime@7.3.1":
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.3.1.tgz#574b03e8e8a9898eaf4a872a92ea20b7846f6f2a"
   integrity sha512-7jGW8ppV0ant637pIqAcFfQDDH1orEPGJb8aXfUozuCU3QqX7rX4DA8iwrbPrR1hcH0FTTHz47yQnk+bl5xHQA==
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@babel/runtime@^7.2.0", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.3", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.3", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5":
   version "7.4.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.4.5.tgz#582bb531f5f9dc67d2fcb682979894f75e253f12"
   integrity sha512-TuI4qpWZP6lGOGIuGWtp9sPluqYICmbk8T/1vpSysqJxRPkudh/ofFWyqdcMsDf2s7KvDL4/YHgKyvcS3g9CJQ==
@@ -1288,16 +1288,6 @@
     find-root "^1.1.0"
     source-map "^0.7.2"
 
-"@emotion/cache@^10.0.7":
-  version "10.0.7"
-  resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.7.tgz#6221de2e939f62022c04b4df2c165ce577809f23"
-  integrity sha512-wscXuawG+nQhSNbDpJdAqvv5d2g1O+fpwf/wD/CAmW/wsuN8hNzahWh2ldSVakqO9sINewyQNFl74IeDeTkRZg==
-  dependencies:
-    "@emotion/sheet" "0.9.2"
-    "@emotion/stylis" "0.8.3"
-    "@emotion/utils" "0.11.1"
-    "@emotion/weak-memoize" "0.2.2"
-
 "@emotion/cache@^10.0.9":
   version "10.0.9"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.9.tgz#e0c7b7a289f7530edcfad4dcf3858bd2e5700a6f"
@@ -1308,7 +1298,7 @@
     "@emotion/utils" "0.11.1"
     "@emotion/weak-memoize" "0.2.2"
 
-"@emotion/core@^10.0.10", "@emotion/core@^10.0.9":
+"@emotion/core@^10.0.10", "@emotion/core@^10.0.7", "@emotion/core@^10.0.9":
   version "10.0.10"
   resolved "https://registry.yarnpkg.com/@emotion/core/-/core-10.0.10.tgz#8d3114e5a2f8b178a7067c603a2937516f180b08"
   integrity sha512-U1aE2cOWUscjc8ZJ3Cx32udOzLeRoJwGxBH93xQD850oQFpwPKZARzdUtdc9SByUOwzSFYxhDhrpXnV34FJmWg==
@@ -1318,26 +1308,6 @@
     "@emotion/serialize" "^0.11.6"
     "@emotion/sheet" "0.9.2"
     "@emotion/utils" "0.11.1"
-
-"@emotion/core@^10.0.7":
-  version "10.0.7"
-  resolved "https://registry.yarnpkg.com/@emotion/core/-/core-10.0.7.tgz#a894324b944cb06dcd36813afe35f07b0ed8d20d"
-  integrity sha512-f5ZeA8R5mTiD2VDFCy6kRTXrQXN/1s79WPvEZZSwROJIyy9mHBB0/Lxg9BSIXfFdXryVw76kHNehTcBkgDYS7A==
-  dependencies:
-    "@emotion/cache" "^10.0.7"
-    "@emotion/css" "^10.0.7"
-    "@emotion/serialize" "^0.11.4"
-    "@emotion/sheet" "0.9.2"
-    "@emotion/utils" "0.11.1"
-
-"@emotion/css@^10.0.7":
-  version "10.0.7"
-  resolved "https://registry.yarnpkg.com/@emotion/css/-/css-10.0.7.tgz#fbee607e07aeea444b147719b6472612fff9199b"
-  integrity sha512-r8JuPanNW0+ftBKFSna+6p5X7ewvU8d8NaNBlFjdPYl7xmtbDmoz8E7ceXqF4QgdRH4FBFIIRFzTA4Y05JwkIw==
-  dependencies:
-    "@emotion/serialize" "^0.11.4"
-    "@emotion/utils" "0.11.1"
-    babel-plugin-emotion "^10.0.7"
 
 "@emotion/css@^10.0.9":
   version "10.0.9"
@@ -12815,10 +12785,10 @@ react-select@^2.3.0:
     react-input-autosize "^2.2.1"
     react-transition-group "^2.2.1"
 
-react-select@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/react-select/-/react-select-3.0.3.tgz#f570b7b00e9b8b5bc938c3c834fdac0240e305d8"
-  integrity sha512-/WmzNDvATL2mFMLtZYlfUBHzg6YywglkmwJ52TCuvj2ALNu8gRKSlhkivPfKUWxxWKbolVCXSAh+xuwOQZJykg==
+react-select@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-select/-/react-select-3.0.4.tgz#16bde37c24fd4f6444914d4681e78f15ffbc86d3"
+  integrity sha512-fbVISKa/lSUlLsltuatfUiKcWCNvdLXxFFyrzVQCBUsjxJZH/m7UMPdw/ywmRixAmwXAP++MdbNNZypOsiDEfA==
   dependencies:
     "@babel/runtime" "^7.4.4"
     "@emotion/cache" "^10.0.9"

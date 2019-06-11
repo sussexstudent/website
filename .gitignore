@@ -31,3 +31,8 @@ fragmentTypes.json
 /src/types/permissions.generated.ts
 /deploy.json
 /sanguine-assets.json
+packages/website/webpack-assets.json
+packages/website/dist
+packages/website/.awcache
+packages/falmer/.awcache
+*.generated.ts

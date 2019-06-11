@@ -1,4 +1,4 @@
-var mixins = require('./src/css/mixins');
+const mixins = require('./packages/common/src/css/mixins');
 
 module.exports = {
   plugins: [
@@ -9,7 +9,6 @@ module.exports = {
     require('postcss-nested'),
     require('lost'),
     require('postcss-lh'),
-    require('postcss-cssnext'),
-    require('postcss-pxtorem'),
+    require('postcss-cssnext')
   ],
 };

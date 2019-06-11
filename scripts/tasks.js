@@ -31,7 +31,7 @@ async function createPermissionTypes() {
   );
 
   try {
-    await fs.writeFile(path.join(__dirname, '../src/types/permissions.generated.ts'), `export enum Permission {\n${permissions.join('\n')}\n}`);
+    await fs.writeFile(path.join(__dirname, '../packages/common/src/types/permissions.generated.ts'), `export enum Permission {\n${permissions.join('\n')}\n}`);
     console.log('Permission types generated!');
   } catch (e) {
     console.error('Error writing permissions types file', e);
@@ -76,12 +76,12 @@ async function createApolloTypes() {
 }
 
 async function localRequired() {
-  await fs.writeFile('webpack-assets.json', '{}', 'utf-8');
+  await fs.writeFile('packages/website/webpack-assets.json', '{}', 'utf-8');
 
   try {
-    await fs.stat('dist');
+    await fs.stat('packages/website/dist');
   } catch (e) {
-    await fs.mkdir('dist');
+    await fs.mkdir('packages/website/dist');
   }
 
   try {
@@ -90,7 +90,7 @@ async function localRequired() {
     await fs.mkdir('sanguine-dist');
   }
 
-  await fs.writeFile('dist/manifest.json', '{}', 'utf-8');
+  await fs.writeFile('packages/website/dist/manifest.json', '{}', 'utf-8');
 }
 
 

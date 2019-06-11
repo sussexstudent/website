@@ -1,0 +1,130 @@
+.InlineSearch {
+  &__content {
+    z-index: var(--layer__search);
+  }
+
+  &__header {
+    background: var(--color__brand-green);
+    height: 165px;
+    position: relative;
+    left: 0;
+    right: 0;
+    z-index: var(--layer__search-header);
+
+    @mixin card flat;
+  }
+
+  &__input {
+    transition: all 400ms ease-out;
+    display: flex;
+    position: relative;
+    z-index: var(--layer__search-input);
+    margin-bottom: 0;
+
+    @media (--medium) {
+      float: right;
+    }
+  }
+
+  &__input-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-top: 64px;
+  }
+
+  &__backdrop {
+    z-index: var(--layer__search-backdrop);
+    transition: background 200ms ease;
+  }
+
+  &__clear,
+  &__exit {
+    position: absolute;
+    top: 12px;
+    height: 20px;
+    width: 20px;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__clear {
+    right: 12px;
+    background-image: url('../img/cross-temp.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &__exit {
+    left: 12px;
+    background-image: url('../img/back.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &__backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: color(var(--color__grey-summer) alpha(95%));
+  }
+
+  &__content {
+    display: none;
+  }
+
+  &__content {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    botom: 0;
+  }
+
+  &--isOpen &__input {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+}
+
+.test-enter {
+  height: 0;
+}
+
+.test-enter.test-enter-active {
+  height: 165px;
+  transition: height 300ms ease;
+}
+
+.test-exit {
+  height: 165px;
+  transition: height 300ms ease;
+}
+
+.test-exit.test-exit-active {
+  height: 0;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.fade-exit {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0;
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@ussu/basil",
+  "version": "1.0.0",
+  "main": "src/*",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
+    "rollup": "^1.15.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.5.1"
+  }
+}

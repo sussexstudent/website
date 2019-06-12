@@ -1,6 +1,7 @@
 import 'what-input';
 import currentUser from '@ussu/common/src/libs/user';
 import Modal from 'react-modal';
+import hydro from "./modules/hydro";
 
 export function setup() {
   if (document.querySelector('.Body')) {
@@ -14,6 +15,8 @@ export function setup() {
       advert.remove();
     });
   }
+
+  hydro();
 
   if (window.location.pathname.match(/\/organisation\/([0-9a-z].)/)) {
     import(

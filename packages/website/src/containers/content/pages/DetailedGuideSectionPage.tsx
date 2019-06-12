@@ -72,7 +72,7 @@ const DetailedGuideSectionPage: React.FC<IProps> = ({
             }))}
           />
           <div>
-            Last updated at {format(new Date(page.lastPublishedAt), 'dd/MM/YY')}
+            Last updated at {format(new Date(page.lastPublishedAt), 'dd/MM/yy')}
           </div>
         </div>
         <div className="LayoutContent__main type-body-copy">

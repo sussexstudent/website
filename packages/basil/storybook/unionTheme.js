@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import {colors} from "../../src/projects/app/vars";
+import { colors } from '../dist/index.esm';
 
 export default create({
   base: 'light',

@@ -1,5 +1,5 @@
 {
-  "compileOnSave": false,
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "lib": [
@@ -11,16 +11,6 @@
     "target": "es2015",
     "module": "commonjs",
     "moduleResolution": "node",
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "removeComments": false,
-    "preserveConstEnums": true,
-    "sourceMap": false,
-    "skipLibCheck": true,
-    "allowJs": true,
     "outDir": "lib",
     "jsx": "react"
   }

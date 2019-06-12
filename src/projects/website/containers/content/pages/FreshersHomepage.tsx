@@ -10,7 +10,6 @@ const FreshersHomepage: React.FC = () => {
   return (
     <React.Fragment>
       <div className="FreshersHomepage">
-        g
         <OneImageBackground
           className="SplashSlice"
           src="original_images/aef7c351fec64f5eb14ba9e8823e7940"

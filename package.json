@@ -145,7 +145,7 @@
     "emotion": "^10.0.9",
     "emotion-server": "^10.0.9",
     "es6-shim": "^0.35.5",
-    "final-form": "^4.13.0",
+    "final-form": "^4.14.1",
     "fuse.js": "^3.4.5",
     "graphql": "^14.3.1",
     "history": "^4.9.0",

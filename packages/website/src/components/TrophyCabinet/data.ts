@@ -1,13 +1,13 @@
 import { GradeMap } from '@ussu/common/src/types/awards';
 
-import LeafCommunity from '../../icons/awards/leaf-community.svg';
-import LeafDevelopment from '../../icons/awards/leaf-development.svg';
-import LeafSocial from '../../icons/awards/leaf-social.svg';
-import LeafStudentVoice from '../../icons/awards/leaf-student-voice.svg';
-import LeafTeamSussex from '../../icons/awards/leaf-team-sussex.svg';
-import LeafCommunications from '../../icons/awards/leaf-communications.svg';
-import LeafFundraising from '../../icons/awards/leaf-fundraising.svg';
-import LeafInclusivity from '../../icons/awards/leaf-inclusivity.svg';
+import LeafCommunity from '@ussu/common/src/icons/awards/leaf-community.svg';
+import LeafDevelopment from '@ussu/common/src/icons/awards/leaf-development.svg';
+import LeafSocial from '@ussu/common/src/icons/awards/leaf-social.svg';
+import LeafStudentVoice from '@ussu/common/src/icons/awards/leaf-student-voice.svg';
+import LeafTeamSussex from '@ussu/common/src/icons/awards/leaf-team-sussex.svg';
+import LeafCommunications from '@ussu/common/src/icons/awards/leaf-communications.svg';
+import LeafFundraising from '@ussu/common/src/icons/awards/leaf-fundraising.svg';
+import LeafInclusivity from '@ussu/common/src/icons/awards/leaf-inclusivity.svg';
 
 export const gradeMap: GradeMap = {
   leaves: [

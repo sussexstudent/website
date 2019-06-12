@@ -41,7 +41,7 @@
   }
 
   &--search-icon {
-    background-image: url('../img/search.svg');
+    background-image: url('~@ussu/common/src/css/img/search.svg');
     background-position: left 12px center;
     background-repeat: no-repeat;
     background-size: 24px 24px;
@@ -53,7 +53,7 @@
     height: 45px;
     border: 0;
     background-color: var(--color__brand-yellow);
-    background-image: url('../img/search-white.svg');
+    background-image: url('~@ussu/common/src/css/img/search-white.svg');
     background-size: 24px 24px;
     background-repeat: no-repeat;
     background-position: 8px center;

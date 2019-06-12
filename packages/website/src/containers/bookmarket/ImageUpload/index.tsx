@@ -7,7 +7,7 @@ import { ImageSourcePurpose } from '@ussu/common/src/types/upload';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import AddImageIcon from '@ussu/common/src/icons/add-image.svg';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
-import classnames = require('classnames');
+import classnames from 'classnames';
 
 interface IProps {
   onUploadComplete(data: FalmerImage): void;

@@ -6,7 +6,7 @@ import getFalmerEndpoint from '@ussu/common/src/libs/getFalmerEndpoint';
 import { getMslJwt } from '@ussu/common/src/libs/getMslJwt';
 
 import { IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
-import introspectionQueryResultData from '../../fragmentTypes.json';
+import introspectionQueryResultData from '../../../../fragmentTypes.json';
 
 function createClient() {
   const fragmentMatcher = new IntrospectionFragmentMatcher({

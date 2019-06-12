@@ -84,19 +84,19 @@
     display: block;
 
     &--facebook {
-      background-image: url('@ussu/common/src/img/social-facebook.svg');
+      background-image: url('~@ussu/common/src/css/img/social-facebook.svg');
     }
 
     &--twitter {
-      background-image: url('@ussu/common/src/img/social-twitter.svg');
+      background-image: url('~@ussu/common/src/css/img/social-twitter.svg');
     }
 
     &--instagram {
-      background-image: url('@ussu/common/src/img/social-instagram.svg');
+      background-image: url('~@ussu/common/src/css/img/social-instagram.svg');
     }
 
     &--snapchat {
-      background-image: url('@ussu/common/src/img/social-snapchat.svg');
+      background-image: url('~@ussu/common/src/css/img/social-snapchat.svg');
     }
   }
 }

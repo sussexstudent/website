@@ -5,7 +5,7 @@ import { FalmerImage } from '@ussu/common/src/types/events';
 import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
 import { COLORS } from '@ussu/common/src/libs/style';
 import { SlateBoxBackground, SlateBoxContainer } from '../../Box';
-import {css} from '@emotion/core';
+import { css } from '@emotion/core';
 
 interface IProps {
   title: string;

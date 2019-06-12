@@ -15,7 +15,7 @@ import {
 import { format } from 'date-fns';
 import minimalisticTimeRenderer from '@ussu/common/src/libs/minimalisticTimeRenderer';
 import convert from 'htmr';
-import {css} from '@emotion/core';
+import { css } from '@emotion/core';
 import classnames from 'classnames';
 
 interface IOutletIndex extends Page<Page[]> {}
@@ -142,9 +142,7 @@ export const OutletPage: React.FC<OutletPageProps> = ({ page }) => {
                   <iframe
                     width="100%"
                     height="400"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBIl5pxXAz1mDL3BBYocb_pWOMkLcaJDMk&q=place_id:${
-                      page.googleMapsPlaceId
-                    }`}
+                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBIl5pxXAz1mDL3BBYocb_pWOMkLcaJDMk&q=place_id:${page.googleMapsPlaceId}`}
                     frameBorder="0"
                   />
                 </div>

@@ -5,7 +5,7 @@ import { MenuItem } from '@ussu/common/src/types/skeleton';
 import { COLORS } from '@ussu/common/src/libs/style';
 import MENU_QUERY from './MenuQuery.graphql';
 import { useQuery } from 'react-apollo-hooks';
-import {css} from '@emotion/core';
+import { css } from '@emotion/core';
 
 const dropoverStyles = css({
   position: 'absolute',
@@ -46,32 +46,44 @@ const LokiMenuDropover = React.forwardRef<
       }}
     >
       <div className="LokiContainer">
-        <div css={{
-          display: 'grid',
-          gridGap: 26,
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-        }}>
+        <div
+          css={{
+            display: 'grid',
+            gridGap: 26,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          }}
+        >
           {sections.map((section: any) => (
             <div>
-              <InternalAppLink css={{
-                color: COLORS.WHITE,
-                fontWeight: 600,
-                textDecoration: 'none',
-                display: 'block',
-                marginBottom: '0.5rem',
-
-                ...type(TypeSize.GreatPrimer, Typeface.Secondary),
-              }} to={section.path}>{section.title}</InternalAppLink>
-              {section.subPages.map((sub: any) => (
-                <InternalAppLink css={{
+              <InternalAppLink
+                css={{
                   color: COLORS.WHITE,
                   fontWeight: 600,
                   textDecoration: 'none',
                   display: 'block',
-                  marginBottom: '0.2rem',
+                  marginBottom: '0.5rem',
 
-                  ...type(TypeSize.Pica, Typeface.Secondary),
-                }} to={sub.path}>{sub.title}</InternalAppLink>
+                  ...type(TypeSize.GreatPrimer, Typeface.Secondary),
+                }}
+                to={section.path}
+              >
+                {section.title}
+              </InternalAppLink>
+              {section.subPages.map((sub: any) => (
+                <InternalAppLink
+                  css={{
+                    color: COLORS.WHITE,
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    display: 'block',
+                    marginBottom: '0.2rem',
+
+                    ...type(TypeSize.Pica, Typeface.Secondary),
+                  }}
+                  to={sub.path}
+                >
+                  {sub.title}
+                </InternalAppLink>
               ))}
             </div>
           ))}

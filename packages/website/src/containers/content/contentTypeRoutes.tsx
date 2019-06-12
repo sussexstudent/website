@@ -18,9 +18,7 @@ import { Route } from 'react-router';
 const StaffPage = Loadable({
   loading: LoadableLoading,
   loader: () =>
-    import(
-      /* webpackChunkName: "page.staff" */ '../content/pages/StaffPage'
-    ),
+    import(/* webpackChunkName: "page.staff" */ '../content/pages/StaffPage'),
 });
 
 const FreshersHomepage = Loadable({

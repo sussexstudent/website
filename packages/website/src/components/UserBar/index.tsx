@@ -6,7 +6,7 @@ import { shuffle } from 'lodash';
 import { connect } from 'react-redux';
 import { PageState } from '../../ducks/page';
 import { UserState } from '../../ducks/user';
-import {WebsiteRootState} from "../../types/website";
+import { WebsiteRootState } from '../../types/website';
 
 enum DropdownState {
   Page,
@@ -136,21 +136,21 @@ class UserBar extends React.Component<IProps, IState> {
                 Admin
               </button>
               {dropdownOpen === DropdownState.Admin ? (
-                  <div className={cx('UserBar__item-dropdown')}>
-                    <ul className="UserBar__dropdown-list">
-                      {menu.admin.areas.map((item) => (
-                        <li key={item.name}>
-                          <a href={item.link}>{item.name}</a>
-                        </li>
-                      ))}
-                      <hr />
-                      {menu.admin.orgs.map((item) => (
-                        <li key={item.name}>
-                          <a href={item.link}>{item.name}</a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <div className={cx('UserBar__item-dropdown')}>
+                  <ul className="UserBar__dropdown-list">
+                    {menu.admin.areas.map((item) => (
+                      <li key={item.name}>
+                        <a href={item.link}>{item.name}</a>
+                      </li>
+                    ))}
+                    <hr />
+                    {menu.admin.orgs.map((item) => (
+                      <li key={item.name}>
+                        <a href={item.link}>{item.name}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ) : null}
             </li>
           ) : null}
@@ -167,20 +167,19 @@ class UserBar extends React.Component<IProps, IState> {
                 Page
               </button>
               {dropdownOpen === DropdownState.Page ? (
-                  <div
-                    className={cx('UserBar__item-dropdown', {
-                      'UserBar__item--open':
-                        dropdownOpen === DropdownState.Page,
-                    })}
-                  >
-                    <ul className="UserBar__dropdown-list">
-                      {menu.page.actions.map((item) => (
-                        <li key={item.name}>
-                          <a href={item.link}>{item.name}</a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <div
+                  className={cx('UserBar__item-dropdown', {
+                    'UserBar__item--open': dropdownOpen === DropdownState.Page,
+                  })}
+                >
+                  <ul className="UserBar__dropdown-list">
+                    {menu.page.actions.map((item) => (
+                      <li key={item.name}>
+                        <a href={item.link}>{item.name}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ) : null}
             </li>
           ) : null}

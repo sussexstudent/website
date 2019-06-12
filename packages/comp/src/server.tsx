@@ -3,10 +3,7 @@ import * as express from 'express';
 import fetch from 'node-fetch';
 import * as jsdom from 'jsdom';
 import { renderHtml } from './renderer';
-import {
-  createCompfileWatcher,
-  resolveAllTemplates,
-} from './compfile';
+import { createCompfileWatcher, resolveAllTemplates } from './compfile';
 import * as ui from './generator/ui';
 import { Compfile, CompfileWatcher } from './types';
 import * as bodyParser from 'body-parser';

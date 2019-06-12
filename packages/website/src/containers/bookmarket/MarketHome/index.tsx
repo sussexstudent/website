@@ -3,10 +3,7 @@ import qs from 'query-string';
 import HeadingHero from '../../../components/HeadingHero';
 import MARKET_HOME_QUERY from './MarketHomeQuery.graphql';
 import { Field, Form } from 'react-final-form';
-import {
-  CurrentUserProps,
-  CurrentUserQuery,
-} from '../currentUserData';
+import { CurrentUserProps, CurrentUserQuery } from '../currentUserData';
 import { HandledQuery } from '../../../components/HandledQuery';
 import { adopt } from '../../../components/Adopt';
 import { InternalAppLink } from '../../../components/InternalAppLink';

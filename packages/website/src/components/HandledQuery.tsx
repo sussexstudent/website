@@ -19,7 +19,7 @@ export class HandledQuery<TData, TVariables> extends React.Component<
 
   render() {
     return (
-      <Query {...this.props as any}>
+      <Query {...(this.props as any)}>
         {(queryProps: any) => {
           if (queryProps.loading) {
             return React.createElement(this.props.loader);

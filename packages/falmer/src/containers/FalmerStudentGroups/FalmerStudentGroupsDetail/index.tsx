@@ -6,7 +6,7 @@ import BackBar from '@ussu/website/src/components/BackBar/Link';
 import { Tags, Tag } from '@ussu/website/src/components/Tags';
 import { FalmerDetailHeader } from '../../../components/FalmerDetailHeader';
 import { useQuery } from 'react-apollo-hooks';
-import {StudentGroup} from '@ussu/common/src/types/groups';
+import { StudentGroup } from '@ussu/common/src/types/groups';
 
 interface IProps {
   groupId: number;

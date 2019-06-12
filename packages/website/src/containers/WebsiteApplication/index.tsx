@@ -40,15 +40,15 @@ const LoadableSearchApp = Loadable({
 const LoadableStudentGroupsDiscovery = Loadable({
   loading: LoadableLoading,
   loader: () =>
-    import(/* webpackChunkName: "sgd" */ '../../components/StudentGroupsDiscovery'),
+    import(
+      /* webpackChunkName: "sgd" */ '../../components/StudentGroupsDiscovery'
+    ),
 });
 
 const LoadableContentBrowser = Loadable({
   loading: LoadableLoading,
   loader: () =>
-    import(
-      /* webpackChunkName: "ContentBrowser" */ '../ContentBrowser'
-    ),
+    import(/* webpackChunkName: "ContentBrowser" */ '../ContentBrowser'),
 });
 
 const FourOhFourPageRoute = FourOhFourPage as any;

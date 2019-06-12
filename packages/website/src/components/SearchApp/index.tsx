@@ -4,9 +4,7 @@ import { Sectionbar } from '../Sectionbar';
 import bind from 'bind-decorator';
 import cx from 'classnames';
 import { debounce, orderBy } from 'lodash';
-import SearchResult, {
-  SearchResult as ISearchResult,
-} from '../SearchResult';
+import SearchResult, { SearchResult as ISearchResult } from '../SearchResult';
 import SearchFilterNav from '../SearchFilterNav';
 import getFalmerEndpoint from '@ussu/common/src/libs/getFalmerEndpoint';
 import { connect } from 'react-redux';
@@ -18,8 +16,8 @@ import { Event } from '@ussu/common/src/types/events';
 import { Location } from 'history';
 import { RouteComponentProps } from 'react-router';
 import { getFirstItemOrValue } from '@ussu/common/src/libs/qs';
-import {WebsiteRootState} from "../../types/website";
-import {StudentGroup} from "@ussu/common/src/types/groups";
+import { WebsiteRootState } from '../../types/website';
+import { StudentGroup } from '@ussu/common/src/types/groups';
 
 interface Payload {
   data: {

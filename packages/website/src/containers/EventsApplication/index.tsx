@@ -7,9 +7,7 @@ import { RouteComponent } from '@ussu/common/src/types/routes';
 import { ScrollToTop } from '../../components/ScrollToTop';
 
 const EventsListLoader = () =>
-  import(
-    /* webpackChunkName: "events.listings" */ '../EventsCalender/index'
-  );
+  import(/* webpackChunkName: "events.listings" */ '../EventsCalender/index');
 
 const EventBrandingPeriodLoader = () =>
   import(
@@ -48,9 +46,7 @@ const LoadableBundle = Loadable({
 const LoadableDetail = Loadable({
   loading: LoadableLoading,
   loader: () =>
-    import(
-      /* webpackChunkName: "events.detail" */ '../EventDetailPage'
-    ),
+    import(/* webpackChunkName: "events.detail" */ '../EventDetailPage'),
 });
 
 type EventsApplicationProps = RouteComponent;

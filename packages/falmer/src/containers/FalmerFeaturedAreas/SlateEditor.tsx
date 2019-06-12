@@ -6,12 +6,18 @@ import {
   Layout,
 } from '@ussu/common/src/types/slates';
 import Form from 'react-jsonschema-form';
-import { AreasMap, SlateLayout } from '@ussu/website/src/components/SlateLayout';
+import {
+  AreasMap,
+  SlateLayout,
+} from '@ussu/website/src/components/SlateLayout';
 import { keyframes, css } from '@emotion/core';
 import Select from 'react-select';
 import { enumValues } from '@ussu/common/src/libs/enumValues';
 import produce from 'immer';
-import { getAreaBox, slateBoxes } from '@ussu/website/src/components/Slate/Boxes/boxes';
+import {
+  getAreaBox,
+  slateBoxes,
+} from '@ussu/website/src/components/Slate/Boxes/boxes';
 import { mapValues, keyBy, groupBy, map } from 'lodash';
 import { FalmerImageSelector } from '../../components/FalmerImageSelector';
 import { BoxError } from './BoxError';

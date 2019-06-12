@@ -1,11 +1,8 @@
 import React from 'react';
 import { ContentBrowserPage } from '../../containers/content/types';
 import { COLORS } from '@ussu/common/src/libs/style';
-import {
-  ContentBrowserItem,
-  itemActive,
-} from './ContentBrowserItem';
-import {css} from '@emotion/core';
+import { ContentBrowserItem, itemActive } from './ContentBrowserItem';
+import { css } from '@emotion/core';
 
 interface ContentBrowserColumnProps {
   pages: ContentBrowserPage[];

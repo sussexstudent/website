@@ -5,11 +5,7 @@ import { HeadingHeroBlock } from './blocks/HeadingHeroBlock';
 import { SelectionGridBlock } from './blocks/SelectionGridBlock';
 import StaffList from '../../components/StaffList';
 import { TextBlock } from './blocks/TextBlock';
-import {
-  DocumentLink,
-  ExternalLink,
-  InternalLink,
-} from './blocks/Links';
+import { DocumentLink, ExternalLink, InternalLink } from './blocks/Links';
 import { ImageBlock } from './blocks/Image';
 import { ButtonGroupBlock } from './blocks/ButtonGroup';
 import { StartButtonBlock } from './blocks/StartButton';

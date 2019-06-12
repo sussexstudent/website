@@ -4,19 +4,20 @@ import { COLORS } from '@ussu/common/src/libs/style';
 import { cardActionable } from '@ussu/common/src/libs/style/cards';
 import css from '@emotion/css';
 
-const buttonStyle = ({ disabled }: { disabled: boolean }) => css({
-  textAlign: 'center',
-  background: disabled ? COLORS.GREY_WINTER : COLORS.BRAND_RED,
-  borderRadius: 6,
-  padding: '0.5rem',
-  display: 'block',
-  width: '100%',
-  border: 0,
-  textDecoration: 'none',
-  marginTop: '1rem',
-  boxSizing: 'border-box',
-  cardActionable
-});
+const buttonStyle = ({ disabled }: { disabled: boolean }) =>
+  css({
+    textAlign: 'center',
+    background: disabled ? COLORS.GREY_WINTER : COLORS.BRAND_RED,
+    borderRadius: 6,
+    padding: '0.5rem',
+    display: 'block',
+    width: '100%',
+    border: 0,
+    textDecoration: 'none',
+    marginTop: '1rem',
+    boxSizing: 'border-box',
+    cardActionable,
+  });
 
 const titleStyles = css({
   ...type(TypeSize.DoublePica, Typeface.Secondary),

@@ -1,9 +1,6 @@
 import { isString, castArray } from 'lodash';
 import htmr from 'htmr';
-import {
-  StreamFieldBlockData,
-  StreamFieldData,
-} from './types';
+import { StreamFieldBlockData, StreamFieldData } from './types';
 
 export function normaliseContentLink(link: string | null) {
   if (link === null) {

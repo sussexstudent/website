@@ -13,7 +13,7 @@ import qs from 'query-string';
 import routes from '../../routes';
 import { debounce } from 'lodash';
 import { toggleMobileMenu } from '../../ducks/page';
-import {WebsiteRootState} from "../../types/website";
+import { WebsiteRootState } from '../../types/website';
 
 let hasAttemptedRender = false;
 
@@ -130,7 +130,9 @@ export const appMountMiddleware = (store: any) => (next: any) => (
       if (queryString !== undefined && queryString !== null) {
         store.dispatch(
           setSearchValue(
-            Array.isArray(queryString) ? queryString[0] as string : queryString as string,
+            Array.isArray(queryString)
+              ? (queryString[0] as string)
+              : (queryString as string),
           ),
         );
       }

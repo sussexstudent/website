@@ -21,8 +21,9 @@ export class ContentExplorer extends React.Component<{}, IState> {
   componentDidMount() {
     const query = qs.parse(window.location.search);
     if (Object.hasOwnProperty.call(query, 'path')) {
-      const path =
-        ((Array.isArray(query.path) ? query.path[0] : query.path) || '').toString();
+      const path = (
+        (Array.isArray(query.path) ? query.path[0] : query.path) || ''
+      ).toString();
       this.setState({
         path,
         pathInput: path,

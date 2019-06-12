@@ -14,11 +14,19 @@
 }
 
 .FreshersLogoContainer {
-  padding-top: 10vh;
+  padding: 2rem 0;
   color: #484598;
-  max-width: 800px;
+  max-width: 600px;
   width: 80%;
   margin: 0 auto;
+
+  h1 {
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+    padding-top: 1rem;
+    line-height: 3rem;
+  }
 }
 .FreshersLogoContainer svg {
   width: 100%;
@@ -140,6 +148,33 @@
     @mixin type trafalgar;
     text-align: center;
     font-weight: bold;
+  }
+
+  &__countdownFreshers {
+    color: white;
+    font-weight: normal;
+    text-transform: lowercase;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 5rem;
+    flex-direction: column;
+
+    @media (--medium) {
+      flex-direction: row;
+    }
+
+    .countdown_value {
+      font-size: 5rem;
+      line-height: 3rem;
+    }
+
+    .countdown_label {
+      font-size: 1rem;
+      text-transform: uppercase;
+      padding: 0 0 2rem;
+      line-height: 3rem;
+    }
   }
 }
 

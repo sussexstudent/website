@@ -1,13 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
 import FauxLink from '~components/FauxLink';
-import {
-  differenceInDays,
-  differenceInMinutes,
-  differenceInHours,
-  differenceInSeconds,
-} from 'date-fns';
 import { OneImageBackground } from '~components/OneImage';
+import { useCountdown } from 'src/hooks/useCountdown';
 
 export enum HighlightTheme {
   BlackOnYellow = 'b_y',
@@ -46,18 +41,8 @@ class CountdownBoxComponent extends React.Component<IProps, IState> {
   }
 
   render() {
-    const { targetDate, link, imageUrl } = this.props;
-    const { now } = this.state;
-
-    const days = differenceInDays(targetDate, now);
-    const hours = differenceInHours(targetDate, now) - days * 24;
-    const minutes =
-      differenceInMinutes(targetDate, now) - days * 24 * 60 - hours * 60;
-    const seconds =
-      differenceInSeconds(targetDate, now) -
-      days * 24 * 60 * 60 -
-      hours * 60 * 60 -
-      minutes * 60;
+    const { link, imageUrl } = this.props;
+    const countdown = useCountdown(new Date(2019, 9, 21, 12, 0, 0));
 
     return (
       <div className="BentoBox" style={{ backgroundColor: '#e95452' }}>
@@ -84,35 +69,35 @@ class CountdownBoxComponent extends React.Component<IProps, IState> {
               style={{ marginBottom: '1rem' }}
             >
               <div>
-                <span>{days}</span>
+                <span>{countdown.days}</span>
                 <span>
                   {' '}
                   day
-                  {days !== 1 ? 's' : null}
+                  {countdown.days !== 1 ? 's' : null}
                 </span>
               </div>
               <div>
-                <span>{hours}</span>
+                <span>{countdown.hours}</span>
                 <span>
                   {' '}
                   hour
-                  {hours !== 1 ? 's' : null}
+                  {countdown.hours !== 1 ? 's' : null}
                 </span>
               </div>
               <div>
-                <span>{minutes}</span>
+                <span>{countdown.minutes}</span>
                 <span>
                   {' '}
                   minute
-                  {minutes !== 1 ? 's' : null}
+                  {countdown.minutes !== 1 ? 's' : null}
                 </span>
               </div>
               <div>
-                <span>{seconds}</span>
+                <span>{countdown.seconds}</span>
                 <span>
                   {' '}
                   second
-                  {seconds !== 1 ? 's' : null}
+                  {countdown.seconds !== 1 ? 's' : null}
                 </span>
               </div>
             </h2>

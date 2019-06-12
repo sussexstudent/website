@@ -1,7 +1,10 @@
 import React from 'react';
 import { Layout } from '@ussu/common/src/types/slates';
 import { css, cx } from 'emotion';
-import { AreasMap, SlateLayout } from '@ussu/website/src/components/SlateLayout';
+import {
+  AreasMap,
+  SlateLayout,
+} from '@ussu/website/src/components/SlateLayout';
 import { COLORS } from '@ussu/common/src/libs/style';
 
 const selectedStyles = css({

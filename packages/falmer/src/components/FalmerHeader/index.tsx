@@ -4,7 +4,7 @@ import { RootState } from '@ussu/common/src/types/falmer';
 import StudentsUnionLogoNoLogotype from '@ussu/common/src/icons/students-union-logo-no-logotype.svg';
 import { useMappedState } from 'redux-react-hook';
 import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
-import {css} from '@emotion/core';
+import { css } from '@emotion/core';
 
 const logotypeStyle = css({
   margin: 0,

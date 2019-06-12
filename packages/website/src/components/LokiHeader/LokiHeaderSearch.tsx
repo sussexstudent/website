@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import * as routerActions from '../../ducks/router';
 import { useMappedState, useDispatch } from 'redux-react-hook';
-import {WebsiteRootState} from "../../types/website";
+import { WebsiteRootState } from '../../types/website';
 
 export const LokiHeaderSearch: React.FC = () => {
   const mapState = useCallback(

@@ -1,7 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
 import FauxInternalAppLink from '../../../components/FauxInternalAppLink';
-import { MarketListing, MarketListingState } from '@ussu/common/src/types/market';
+import {
+  MarketListing,
+  MarketListingState,
+} from '@ussu/common/src/types/market';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
 import { NoListItems } from '../NoListItems';
 import { formatPrice } from '@ussu/common/src/libs/money';

@@ -1,7 +1,6 @@
 import React from 'react';
 import OrganisationCard from '../OrganisationCard';
-import {StudentGroup} from "@ussu/common/src/types/groups";
-
+import { StudentGroup } from '@ussu/common/src/types/groups';
 
 interface IProps {
   organisations: StudentGroup[];

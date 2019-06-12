@@ -38,9 +38,7 @@ export const EventBrandingPeriod: React.FC<Props> = ({
   return (
     <div className="LokiContainer">
       <Helmet>
-        <title>{`${
-          brandingPeriod.name
-        } | What's on | Sussex Students' Union`}</title>
+        <title>{`${brandingPeriod.name} | What's on | Sussex Students' Union`}</title>
       </Helmet>
       <h2 className="type-brevier">Event Period</h2>
       <div>

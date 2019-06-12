@@ -7,7 +7,6 @@ import {
 } from '../../../components/OneImage';
 import { Link } from 'react-router-dom';
 
-
 const FreshersHomepage: React.FC = () => {
   const [showVideo, setShowVideo] = useState(true);
   return (
@@ -41,9 +40,7 @@ const FreshersHomepage: React.FC = () => {
               performances. We’ve got something for you! We have alcohol-free
               events, events great for post-graduates, and family events.
             </p>
-            <Link to="/freshers/whats-on">
-              See the schedule >
-            </Link>
+            <Link to="/freshers/whats-on">See the schedule ></Link>
           </div>
         </div>
         {showVideo ? (

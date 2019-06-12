@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  AccordionItemInternal,
-  AccordionItemProps,
-} from './AccordionItem';
+import { AccordionItemInternal, AccordionItemProps } from './AccordionItem';
 
 interface AccordionProps {
   children: (React.ReactElement<AccordionItemProps> | null)[];

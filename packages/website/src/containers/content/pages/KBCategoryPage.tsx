@@ -31,11 +31,16 @@ export const KBCategoryPage: React.FC<KBCategoryPageProps> = ({ page }) => (
     <ul>
       {page.subPages.map((contentPage) => (
         <li key={contentPage.path}>
-          <Link css={{
-            textDecoration: 'none',
-            fontWeight: 600,
-            ...type(TypeSize.BodyCopy, Typeface.Secondary),
-          }} to={contentPage.path}>{contentPage.title}</Link>
+          <Link
+            css={{
+              textDecoration: 'none',
+              fontWeight: 600,
+              ...type(TypeSize.BodyCopy, Typeface.Secondary),
+            }}
+            to={contentPage.path}
+          >
+            {contentPage.title}
+          </Link>
         </li>
       ))}
     </ul>

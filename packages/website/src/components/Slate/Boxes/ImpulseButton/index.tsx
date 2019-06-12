@@ -9,9 +9,7 @@ interface IProps {
 
 const SlateBoxImpulseButtonComponent: React.FC<IProps> = (props) => (
   <a
-    className={`type-great-primer BentoBox BentoBox--anchor BentoBox--impulse BentoBox--color-${
-      props.color
-    }`}
+    className={`type-great-primer BentoBox BentoBox--anchor BentoBox--impulse BentoBox--color-${props.color}`}
     href={props.link}
   >
     {props.text}

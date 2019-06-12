@@ -101,7 +101,9 @@ class ImageUpload extends React.Component<IProps, IState> {
           maxSize={8000000}
         >
           {({ isDragActive }) => (
-            <div className={classnames({ 'ImageUpload--active': isDragActive })}>
+            <div
+              className={classnames({ 'ImageUpload--active': isDragActive })}
+            >
               {this.props.image ? (
                 <OneImage
                   src={this.props.image.resource}

@@ -12,8 +12,8 @@ import { connect } from 'react-redux';
 import { InternalAppLink } from '../InternalAppLink';
 import { useHover } from './useHover';
 import { MenuItem } from '@ussu/common/src/types/skeleton';
-import {WebsiteRootState} from "../../types/website";
-import {LokiMenuDropover} from "./LokiMenuDropover";
+import { WebsiteRootState } from '../../types/website';
+import { LokiMenuDropover } from './LokiMenuDropover';
 
 interface LokiHeaderProps {
   isOpenMobileMenu: boolean;

@@ -18,7 +18,7 @@ const Modal = (
       'Modal--full': props.size === 'full',
     })}
     overlayClassName="Overlay"
-    {...omit(props, ['size']) as ReactModal.Props}
+    {...(omit(props, ['size']) as ReactModal.Props)}
   >
     <div className="Modal__content">{props.children}</div>
 

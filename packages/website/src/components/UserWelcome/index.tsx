@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { UserState } from '../../ducks/user';
-import {WebsiteRootState} from "../../types/website";
+import { WebsiteRootState } from '../../types/website';
 
 interface UserWelcomeProps {
   user: UserState;

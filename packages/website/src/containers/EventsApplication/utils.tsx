@@ -11,7 +11,12 @@ import isBefore from 'date-fns/isBefore';
 import isSameDay from 'date-fns/isSameDay';
 import formatDate from 'date-fns/format';
 
-import { Brand, Event, EventPart, EventPartType } from '@ussu/common/src/types/events';
+import {
+  Brand,
+  Event,
+  EventPart,
+  EventPartType,
+} from '@ussu/common/src/types/events';
 import { addWeeks, getDate, startOfWeek } from 'date-fns';
 
 const now = setHours(new Date(), 0);

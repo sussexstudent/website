@@ -16,9 +16,11 @@ export const ContentBrowser: React.FC<ContentBrowserProps> = ({
     segOne && segOne.subPages.find((page) => page.slug === segments[1]);
 
   return (
-    <div css={{
-      display: 'flex',
-    }}>
+    <div
+      css={{
+        display: 'flex',
+      }}
+    >
       {[pages, segOne, segTwo].map(
         (c, index) =>
           c && (

@@ -1,9 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
-import {
-  RenderedTemplateMap,
-  TemplateResultMap,
-} from './types';
+import { RenderedTemplateMap, TemplateResultMap } from './types';
 
 function render(
   Component: any,

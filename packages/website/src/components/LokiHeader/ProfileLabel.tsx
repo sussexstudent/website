@@ -6,7 +6,7 @@ import * as userActions from '../../ducks/user';
 import { UserState } from '../../ducks/user';
 import { LoginModal } from '../LoginModal';
 import { YourPage } from '../YourPage';
-import {WebsiteRootState} from "../../types/website";
+import { WebsiteRootState } from '../../types/website';
 
 interface ProfileLabelProps {
   user: UserState;

@@ -24,11 +24,8 @@
     "webpack": "^4.33.0"
   },
   "scripts": {
-    "prod": "export NODE_ENV=production && export BABEL_ENV=bundle && `yarn bin`/webpack --config ./config/webpack.prod.config.js",
-    "gen": "BABEL_ENV=comp `yarn bin`/comp",
-    "deploy": "uncommitted && yarn run prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run gen && yarn run msl-deploy deploy.json",
     "heroku-postbuild": "yarn setup && yarn san:front-prod && yarn san:server-prod",
-    "format": "`yarn bin`/prettier \"src/**/*.{ts,tsx,js,css,graphql}\" --write",
+    "format": "`yarn bin`/prettier \"packages/*/src/**/*.{ts,tsx,js,css,graphql}\" --write",
     "setup": "node ./scripts/initialSetup.js",
     "test": "NODE_ENV=test && jest",
     "testc": "NODE_ENV=test && jest --coverage"

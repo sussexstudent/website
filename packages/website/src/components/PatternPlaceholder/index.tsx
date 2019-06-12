@@ -39,14 +39,14 @@ const PatternPlaceholder = () => {
   const [swatch] = useState(sample(SWATCHES) || SWATCHES[0]);
 
   return (
-    <div css={{
-      width: '100%',
-      height: '100%',
-      backgroundRepeat: 'repeat',
-      backgroundImage: `url("${pattern(swatch[1])}")`,
-      backgroundColor: `#${swatch[0]}`,
-
-    }}
+    <div
+      css={{
+        width: '100%',
+        height: '100%',
+        backgroundRepeat: 'repeat',
+        backgroundImage: `url("${pattern(swatch[1])}")`,
+        backgroundColor: `#${swatch[0]}`,
+      }}
     />
   );
 };

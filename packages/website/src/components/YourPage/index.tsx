@@ -8,7 +8,7 @@ import { AccordionItem } from '../Accordion/AccordionItem';
 import getApolloClientForFalmer from '@ussu/common/src/libs/getApolloClientForFalmer';
 import { BannerOutlet } from '../BannerOutlet';
 import { ApolloProvider } from 'react-apollo';
-import {WebsiteRootState} from "../../types/website";
+import { WebsiteRootState } from '../../types/website';
 
 interface YourPageProps {
   user: UserState;

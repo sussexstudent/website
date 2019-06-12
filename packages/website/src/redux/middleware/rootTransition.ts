@@ -7,7 +7,7 @@ import {
   transitionRootTo,
 } from '../../ducks/router';
 import routes from '../../routes';
-import {WebsiteRootState} from "../../types/website";
+import { WebsiteRootState } from '../../types/website';
 
 function createAppRoot(source: RootTransitionSource) {
   const currentContent: HTMLDivElement = document.querySelector(

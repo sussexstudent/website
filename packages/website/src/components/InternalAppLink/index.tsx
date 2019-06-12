@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import routes from '../../routes';
 import { Link } from 'react-router-dom';
 import { useMappedState } from 'redux-react-hook';
-import {WebsiteRootState} from "../../types/website";
+import { WebsiteRootState } from '../../types/website';
 
 interface InternalAppLinkComponentProps {
   to: string;
@@ -29,7 +29,7 @@ export const InternalAppLink: React.FC<Props> = ({
 
   if (isClientRendered) {
     if (history) {
-      return <Link to={to} {...props as any} />; // todo
+      return <Link to={to} {...(props as any)} />; // todo
     }
   }
 

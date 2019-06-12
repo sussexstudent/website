@@ -10,7 +10,7 @@ import ALL_GROUPS_QUERY from './AllGroups.graphql';
 import FalmerSubSections, {
   SubSection,
 } from '../../../components/FalmerSubSections';
-import {StudentGroup} from '@ussu/common/src/types/groups';
+import { StudentGroup } from '@ussu/common/src/types/groups';
 
 interface Result {
   allGroups: {

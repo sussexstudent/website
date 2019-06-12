@@ -1,6 +1,6 @@
 import { Connection } from '@ussu/common/src/types/falmer';
 import { ClientAuth } from '@ussu/common/src/libs/user';
-import {StudentGroup} from './groups';
+import { StudentGroup } from './groups';
 
 export enum EventPartType {
   Contained,

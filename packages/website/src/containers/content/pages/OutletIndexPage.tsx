@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { Sectionbar, SectionbarItem } from '../../../components/Sectionbar';
 import { OneImageBackground } from '../../../components/OneImage';
 import { Typeface, TypeSize, type } from '@ussu/common/src/libs/style/type';
-import {css} from '@emotion/core';
+import { css } from '@emotion/core';
 
 interface IOutletIndex extends Page<Page[]> {}
 
@@ -77,9 +77,12 @@ export const OutletIndexPage: React.FC<OutletIndexPageProps> = ({ page }) => (
       </div>
       <ul className="List--reset">
         {page.subPages.map((page) => (
-          <div css={{
-            marginBottom: '1rem',
-          }} key={page.path}>
+          <div
+            css={{
+              marginBottom: '1rem',
+            }}
+            key={page.path}
+          >
             <OneImageBackground
               src={page.heroImage.resource}
               css={backgroundStyles}

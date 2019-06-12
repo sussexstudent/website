@@ -9,10 +9,7 @@ import { MarketListing } from '@ussu/common/src/types/market';
 import Deckchair from '../../../components/Deckchair';
 import { ImageUpload } from '../ImageUpload';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
-import {
-  CurrentUserProps,
-  CurrentUserQuery,
-} from '../currentUserData';
+import { CurrentUserProps, CurrentUserQuery } from '../currentUserData';
 import Helmet from 'react-helmet';
 import { HandledQuery } from '../../../components/HandledQuery';
 import { OwnerStatusBanner } from './OwnerStatusBanner';
@@ -111,9 +108,7 @@ const BookDetail: React.FC<IProps> = (props: IProps) => {
 
         if (listing.image) {
           ldData.image = [
-            `https://su.imgix.net/${
-              listing.image.resource
-            }?w=800&fit=crop&crop=focal&auto=format`,
+            `https://su.imgix.net/${listing.image.resource}?w=800&fit=crop&crop=focal&auto=format`,
           ];
         }
 
@@ -122,9 +117,7 @@ const BookDetail: React.FC<IProps> = (props: IProps) => {
             <Helmet title={listing.bookTitle}>
               <meta
                 name="description"
-                content={`${listing.bookTitle} by ${
-                  listing.bookAuthor
-                } is on the Sussex Book Market`}
+                content={`${listing.bookTitle} by ${listing.bookAuthor} is on the Sussex Book Market`}
               />
             </Helmet>
             <JsonLd data={ldData} />

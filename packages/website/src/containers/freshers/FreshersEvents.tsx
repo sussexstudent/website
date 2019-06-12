@@ -41,23 +41,25 @@ export const FreshersEvents: React.FC<FreshersEventsProps> = ({ location }) => {
         <h1>What's on</h1>
         <div>
           Filter to:
-          <ul css={{
-            listStyle: 'none',
-            padding: 0,
-            margin: 0,
-            display: 'flex',
-            ...type(TypeSize.GreatPrimer, Typeface.Secondary),
-            fontWeight: 'bold',
-            flexWrap: 'wrap',
-            '& li': {
-              display: 'block',
-              padding: '0.6rem',
-              textTransform: 'uppercase',
-            },
-            '& a': {
-              textDecoration: 'none',
-            },
-          }}>
+          <ul
+            css={{
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              display: 'flex',
+              ...type(TypeSize.GreatPrimer, Typeface.Secondary),
+              fontWeight: 'bold',
+              flexWrap: 'wrap',
+              '& li': {
+                display: 'block',
+                padding: '0.6rem',
+                textTransform: 'uppercase',
+              },
+              '& a': {
+                textDecoration: 'none',
+              },
+            }}
+          >
             <li>
               <Link to={`?${hash}`}>Everything</Link>
             </li>

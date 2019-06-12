@@ -17,8 +17,9 @@ function getWebpackInstance(compfilePath: string) {
       }),
       nodeExternals({
         whitelist: [/@ussu/],
-        modulesDir: path.join(process.cwd(), '../../node_modules')
-      })],
+        modulesDir: path.join(process.cwd(), '../../node_modules'),
+      }),
+    ],
     output: {
       ...prodOptions.output,
       library: 'CompApp',
@@ -44,8 +45,6 @@ if (!process.send) {
       if (!stats.hasErrors()) {
         process.send({ type: 'status', value: 'compiled' });
       } else {
-
-
         console.warn(stats.compilation.errors.join('\n'));
       }
     });

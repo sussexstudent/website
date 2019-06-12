@@ -17,9 +17,7 @@ export const EventDetailMetadata: React.FC<EventDetailMetadataProps> = ({
       {event.featuredImage ? (
         <meta
           property="og:image"
-          content={`https://su.imgix.net/${
-            event.featuredImage.resource
-          }?h=1260&w=2400&fit=crop&crop=focal&auto=format`}
+          content={`https://su.imgix.net/${event.featuredImage.resource}?h=1260&w=2400&fit=crop&crop=focal&auto=format`}
         />
       ) : null}
       <meta property="og:description" content={event.shortDescription} />
@@ -34,9 +32,7 @@ export const EventDetailMetadata: React.FC<EventDetailMetadataProps> = ({
       {event.featuredImage ? (
         <meta
           name="twitter:image"
-          content={`https://su.imgix.net/${
-            event.featuredImage.resource
-          }?h=1200&w=2400&fit=crop&crop=focal&auto=format`}
+          content={`https://su.imgix.net/${event.featuredImage.resource}?h=1200&w=2400&fit=crop&crop=focal&auto=format`}
         />
       ) : null}
     </Helmet>

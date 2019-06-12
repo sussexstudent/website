@@ -2,13 +2,13 @@ import React from 'react';
 import bind from 'bind-decorator';
 import { keyBy } from 'lodash';
 import Fuse from 'fuse.js';
-import OrganisationGrid  from '../OrganisationGrid';
+import OrganisationGrid from '../OrganisationGrid';
 import STUDENT_GROUP_LISTING_QUERY from './StudentGroupListings.graphql';
 import { HandledQuery } from '../HandledQuery';
 import { removePageContainer } from '@ussu/common/src/libs/hacky';
 import { StudentGroupsSectionbar } from '../StudentGroupsSectionbar';
 import Helmet from 'react-helmet';
-import {StudentGroup} from '@ussu/common/src/types/groups';
+import { StudentGroup } from '@ussu/common/src/types/groups';
 
 interface Result {
   allGroups: {

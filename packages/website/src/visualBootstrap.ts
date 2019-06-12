@@ -1,7 +1,7 @@
 import 'what-input';
 import currentUser from '@ussu/common/src/libs/user';
 import Modal from 'react-modal';
-import hydro from "./modules/hydro";
+import hydro from './modules/hydro';
 
 export function setup() {
   if (document.querySelector('.Body')) {
@@ -41,9 +41,9 @@ export function setup() {
   }
 
   if (document.querySelector('.app__news_page')) {
-    import(
-      /* webpackChunkName: "newsPage.module" */ './modules/newsPage'
-    ).then((module) => module.default());
+    import(/* webpackChunkName: "newsPage.module" */ './modules/newsPage').then(
+      (module) => module.default(),
+    );
   }
 
   // Module: cookie_message

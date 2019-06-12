@@ -2,11 +2,8 @@ import chalk from 'chalk';
 import * as ui from './generator/ui';
 import { renderTemplates } from './renderer';
 import { getCompfile, resolveAllTemplates } from './compfile';
-import {
-  Compfile,
-} from './types';
-import { writeFile } from "fs-extra";
-
+import { Compfile } from './types';
+import { writeFile } from 'fs-extra';
 
 export default async function() {
   ui.compTag();
@@ -37,9 +34,12 @@ export default async function() {
     return;
   }
 
-  await writeFile('./deploy.json', JSON.stringify({
-    [compfile.skin]: templates,
-  }));
+  await writeFile(
+    './deploy.json',
+    JSON.stringify({
+      [compfile.skin]: templates,
+    }),
+  );
 
   console.log('written to ./deploy.json');
 }

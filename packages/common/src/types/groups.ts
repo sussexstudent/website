@@ -1,4 +1,4 @@
-import {FalmerImage} from "./events";
+import { FalmerImage } from './events';
 
 export interface StudentGroup {
   link: string;

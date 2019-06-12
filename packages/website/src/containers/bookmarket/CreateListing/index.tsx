@@ -43,9 +43,7 @@ const CreateListingComponent: React.FC<IProps> = (props) => {
         .then((response) => {
           if (response && response.data) {
             (props as any).history.push(
-              `/book-market/listing/${
-                response.data.createMarketListing.listing.pk
-              }`,
+              `/book-market/listing/${response.data.createMarketListing.listing.pk}`,
             );
           }
         });

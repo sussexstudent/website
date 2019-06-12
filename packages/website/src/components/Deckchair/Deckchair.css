@@ -39,7 +39,7 @@
 
   &__close {
     display: block;
-    background: url('./img/cross-temp-white.svg');
+    background: url('~@ussu/common/src/css/img/cross-temp-white.svg');
     background-size: contain;
     width: 24px;
     height: 24px;

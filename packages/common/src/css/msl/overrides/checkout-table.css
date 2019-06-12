@@ -14,11 +14,11 @@
 }
 
 .msl_save {
-  background-image: url('../../img/star.svg');
+  background-image: url('~@ussu/common/src/css/img/star.svg');
 }
 
 .msl_delete {
-  background-image: url('../../img/cross.svg');
+  background-image: url('~@ussu/common/src/css/img/cross.svg');
 }
 
 .checkoutpage table.msl_table {

@@ -13,7 +13,7 @@ const env = {
 };
 env.build = env.production || env.staging;
 
-const baseDir = path.join(__dirname, '..');
+const baseDir = path.join(__dirname, '.');
 
 function generateConfig() {
   return {

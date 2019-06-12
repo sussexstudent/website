@@ -2,7 +2,7 @@ import Raven from 'raven-js';
 import mitt from 'mitt';
 import { addClassesForFeatures } from '@ussu/common/src/libs/features';
 addClassesForFeatures();
-import '../../modules/eventRedirect';
+import './modules/eventRedirect';
 import { getSiteMode, Mode } from '@ussu/common/src/libs/siteModeDectector';
 
 // Install raven for sentry error  reporting

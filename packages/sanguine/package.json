@@ -6,5 +6,11 @@
   "private": true,
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "scripts": {
+    "server-dev": "NODE_ENV=development `yarn bin`/webpack --config ./config/webpack.sanguine.config",
+    "front-dev": "NODE_ENV=development `yarn bin`/webpack-dev-server --config ./config/webpack.dev-sanguine-front.config",
+    "server-prod": "NODE_ENV=production `yarn bin`/webpack --config ./config/webpack.sanguine.config",
+    "front-prod": "NODE_ENV=production `yarn bin`/webpack --config ./config/webpack.prod-sanguine-front.config"
   }
 }

@@ -70,10 +70,15 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const parent = getNode(node.parent);
     let value = parent.relativePath.replace(parent.ext, "");
 
+    if (value.endsWith("/index")) {
+      value = value.slice(0, -6);
+    }
+
     if (value === "index") {
       value = "";
     }
 
+    console.log('node field', value);
     createNodeField({
       name: `slug`,
       node,

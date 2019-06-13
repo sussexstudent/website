@@ -4,9 +4,28 @@ root: '/docs/architecture'
 parents: ['Architecture']
 ---
 
-- TypeScript is preferred for large or longstanding projects.
+TypeScript is preferred for large or longstanding projects.
 
 ## React
+- We prefer to use named exports for components, these should be globally unique.
+- The props interface should be exported and called `[ComponentName]Props`
+- Use the arrow function syntax
+
+```typescript jsx
+import React from 'react';
+
+export interface ButtonProps {
+  name: string
+}
+
+export const ShoutyButton: React.FC<ButtonProps> = ({ name }) => {
+    
+    return (
+        <button>HELLO THERE {name.toUpperCase()}</button>
+    )
+}
+```
+
 
 
 ### Browser compatibility
@@ -14,5 +33,3 @@ We use Pollyfill.io a service created by the Financial Times that acts as a poly
 
 ## Linting & code style
 Prettier is used to auto format code styling. A pre-commit git hook should run prettier for you. You can also run prettier at anytime with `yarn run format`
-
-TSLint is used for non-stylistic linting. We follow style inspired by Airbnb's JavaScript style guide. 

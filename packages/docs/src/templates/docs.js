@@ -147,8 +147,8 @@ export const pageQuery = graphql`
         }
       }
       frontmatter {
-        metaTitle
-        metaDescription
+        title
+#        metaDescription
       }
     }
     allMdx {

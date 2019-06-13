@@ -1,7 +1,5 @@
 ---
 title: Quick start
-root: '/docs/start-here'
-parents: ['Start here']
 ---
 
 Install dependencies with

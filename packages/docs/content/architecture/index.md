@@ -1,7 +1,5 @@
 ---
-title: Architecture Overview
-root: '/docs/architecture'
-parents: ['Architecture']
+title: Architecture Overvie
 ---
 
 The main website (https://sussexstudent.com/) is hosted by MSL. We host own our API service we call Falmer (https://falmer.sussexstudent.com/).

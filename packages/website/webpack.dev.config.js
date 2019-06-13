@@ -10,8 +10,6 @@ config.devServer = {
   https: true,
 };
 
-config.mode = 'development';
-
 config.entry.vendor.push('webpack-hot-middleware/client');
 config.entry.main.push('webpack-hot-middleware/client');
 
@@ -25,20 +23,10 @@ config.output = {
 config.devtool = 'inline-source-map';
 
 config.plugins = config.plugins.concat([
-  new webpack.DefinePlugin({
-    'process.env': {
-      COMP_NODE: '0',
-    },
-  }),
   new webpack.HotModuleReplacementPlugin(),
 ]);
 
 config.module.rules = config.module.rules.concat([
-  {
-    test: /\.js?$/,
-    loaders: ['babel-loader?cacheDirectory&envName=bundle'],
-    exclude: /node_modules/,
-  },
   {
     test: /\.css$/,
     // fallback: 'style-loader',

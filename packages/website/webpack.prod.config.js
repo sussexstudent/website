@@ -27,8 +27,6 @@ config.performance = {
   maxEntrypointSize: 500000,
 };
 
-config.mode = 'production';
-
 config.output = {
   path: path.resolve(path.join(baseDir, 'dist')),
   publicPath: 'https://du9l8eemj97rm.cloudfront.net/',
@@ -63,11 +61,6 @@ config.optimization = {
 
 config.plugins = config.plugins.concat([
   // new BundleAnalyzerPlugin(),
-  new webpack.DefinePlugin({
-    'process.env': {
-      COMP_NODE: '0',
-    },
-  }),
   new CleanWebpackPlugin(['dist'], {
     root: path.resolve(baseDir),
   }),

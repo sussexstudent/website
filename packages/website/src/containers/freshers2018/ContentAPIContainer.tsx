@@ -1,6 +1,6 @@
-import { ContentPage } from '~website/containers/content/ContentPage';
+import { ContentPage } from '../content/ContentPage';
 import React from 'react';
-import { FreshersContainer } from '~website/containers/freshers/FreshersContainer';
+import { FreshersContainer } from '../freshers/FreshersContainer';
 
 export const FreshersContentAPI = (props: any) => (
   <FreshersContainer>

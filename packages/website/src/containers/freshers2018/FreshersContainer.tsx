@@ -3,7 +3,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 
 import FRESHERS_MENU_QUERY from './FreshersMenuQuery.graphql';
-import { Page } from '~website/containers/content/types';
+import { Page } from '../content/types';
 
 class FreshersMenuQuery extends Query<
   {

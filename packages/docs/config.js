@@ -1,7 +1,7 @@
 const config = {
 	"gatsby": {
 		"pathPrefix": "/",
-		"siteUrl": "https://learn.hasura.io",
+		"siteUrl": "https://docs.sussexstudent.com",
 		"gaTrackingId": null
 	},
 	"header": {
@@ -25,11 +25,11 @@ const config = {
 		]
 	},
 	"siteMetadata": {
-		"title": "Gatsby Gitbook Boilerplate | Hasura",
-		"description": "Documentation built with mdx. Powering learn.hasura.io ",
+    "title": "USSU Docs",
+		"description": "Documentation for Sussex Students' Union's digital services",
 		"ogImage": null,
-		"docsLocation": "https://github.com/hasura/gatsby-gitbook-boilerplate/tree/master/content",
-		"favicon": "https://graphql-engine-cdn.hasura.io/img/hasura_icon_black.svg"
+		"docsLocation": "https://github.com/sussexstudent/website/tree/master/packages/docs/content",
+		"favicon": "https://du9l8eemj97rm.cloudfront.net/branding-s18/favicon-32x32.png"
 	},
 };
 

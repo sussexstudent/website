@@ -2,8 +2,8 @@ import React from 'react';
 import getFalmerEndpoint from '@ussu/common/src/libs/getFalmerEndpoint';
 import { Store } from '@ussu/common/src/libs/store';
 
-const LS_KEY = 'newsletter:freshers18';
-const NEWSLETTER_ENDPOINT = `${getFalmerEndpoint()}/newsletters/freshers18/members`;
+const LS_KEY = 'newsletter:freshers19';
+const NEWSLETTER_ENDPOINT = `${getFalmerEndpoint()}/newsletters/freshers19/members`;
 
 const OPTIONS_MERGE: {
   [key: string]: {
@@ -13,15 +13,7 @@ const OPTIONS_MERGE: {
   LEVEL: {
     Undergraduate: 'Undergraduate',
     Postgraduate: 'Postgraduate',
-  },
-  GENRE: {
-    quirky: 'Quirky',
-    exciting: 'Exciting',
-  },
-  CUSTOMSOCI: {
-    y: 'Yes please',
-    n: 'No thanks',
-  },
+  }
 };
 
 enum FormState {
@@ -30,8 +22,6 @@ enum FormState {
   AddressSuccess = 'AddressSuccess',
   NameSuccess = 'NameSuccess',
   LevelSuccess = 'LevelSuccess',
-  FeeSuccess = 'FeeSuccess',
-  GenreSuccess = 'GenreSuccess',
   Complete = 'Complete',
   Error = 'Error',
 }
@@ -57,10 +47,7 @@ const RESPONSE_TEXT: {
   [FormState.AddressSuccess]: () =>
     "Check your inbox to confirm! But first, what's your name?",
   [FormState.NameSuccess]: () => `Thanks! What will you be?`,
-  [FormState.LevelSuccess]: () => `What sort of week would you prefer?`,
-  [FormState.GenreSuccess]: () =>
-    `Can we show you customised social media adverts?`,
-  [FormState.FeeSuccess]: (data) => `See you in September, ${data.name}!`,
+  [FormState.LevelSuccess]: (data) => `See you in September, ${data.name}!`,
   [FormState.Complete]: () => `See you in September!`,
   [FormState.Error]: () =>
     `We either haven't been able to add you or you might already be on there. Please try again later.`,
@@ -72,10 +59,7 @@ class NewsletterSignup extends React.Component<IProps, IState> {
   private handleName: (e: React.ChangeEvent<HTMLInputElement>) => void;
   private handleEmailSubmit: () => void;
   private handleNameSubmit: () => void;
-  private handleStatusSubmit: () => void;
   private handleLevel: (level: string) => void;
-  private handleGenre: (fee: string) => void;
-  private handleCustomSoc: (r: string) => void;
 
   constructor(props: IProps) {
     super(props);
@@ -173,26 +157,9 @@ class NewsletterSignup extends React.Component<IProps, IState> {
         NAME: this.state.data.name,
       });
 
-    this.handleStatusSubmit = () =>
-      fieldUpdate(FormState.Complete, {
-        STATUS: this.state.data.status,
-      });
-
     this.handleLevel = (level) => {
       fieldUpdate(FormState.LevelSuccess, {
         LEVEL: level,
-      });
-    };
-
-    this.handleGenre = (genre: string) => {
-      fieldUpdate(FormState.GenreSuccess, {
-        GENRE: genre,
-      });
-    };
-
-    this.handleCustomSoc = (r: string) => {
-      fieldUpdate(FormState.FeeSuccess, {
-        CUSTOMSOCI: r,
       });
     };
 
@@ -205,8 +172,6 @@ class NewsletterSignup extends React.Component<IProps, IState> {
         this.handleEmailSubmit();
       } else if (this.state.currentState === FormState.AddressSuccess) {
         this.handleNameSubmit();
-      } else if (this.state.currentState === FormState.NameSuccess) {
-        this.handleStatusSubmit();
       }
     };
   }
@@ -275,41 +240,6 @@ class NewsletterSignup extends React.Component<IProps, IState> {
                       onClick={this.handleLevel.bind(this, key)}
                     >
                       {OPTIONS_MERGE.LEVEL[key]}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-
-          {currentState === FormState.LevelSuccess ? (
-            <div className="NewsletterSignup__form">
-              <ul className="NewsletterSignup__options">
-                {Object.keys(OPTIONS_MERGE.GENRE).map((key) => (
-                  <li className="NewsletterSignup__options-item">
-                    <button
-                      type="button"
-                      className="NewsletterSignup__options-button"
-                      onClick={this.handleGenre.bind(this, key)}
-                    >
-                      {OPTIONS_MERGE.GENRE[key]}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-          {currentState === FormState.GenreSuccess ? (
-            <div className="NewsletterSignup__form">
-              <ul className="NewsletterSignup__options">
-                {Object.keys(OPTIONS_MERGE.CUSTOMSOCI).map((key) => (
-                  <li className="NewsletterSignup__options-item">
-                    <button
-                      type="button"
-                      className="NewsletterSignup__options-button"
-                      onClick={this.handleCustomSoc.bind(this, key)}
-                    >
-                      {OPTIONS_MERGE.CUSTOMSOCI[key]}
                     </button>
                   </li>
                 ))}

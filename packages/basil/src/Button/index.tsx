@@ -1,18 +1,15 @@
 import React from 'react';
-import cx from 'classnames';
 
 interface IProps {
   href: string;
   children: any;
-  endOfCard?: boolean;
 }
 
-const Button: React.FC<IProps> = ({ href, endOfCard = false, children }) => {
+export const ButtonLink: React.FC<IProps> = ({ href, children }) => {
   return (
-    <a className={cx('Button', { 'Button--endOfCard': endOfCard })} href={href}>
+    <a className={'Button'} href={href}>
       {children}
     </a>
   );
 };
 
-export default Button;

@@ -5,5 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "@emotion/core": "^10.0.10"
+  },
+  "scripts": {
+    "postinstall": ":"
   }
 }

@@ -2,7 +2,8 @@
   "extends": "../../tsconfig.json",
   "types": ["node", "@emotion/core"],
   "compilerOptions": {
-    "declaration": true
+    "declaration": true,
+    "allowJs": null
   },
   "include": [
     "./src/**/*"

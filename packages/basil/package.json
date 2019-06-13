@@ -20,7 +20,8 @@
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "storybook": "start-storybook -p 9001 -c ./storybook",
-    "storybook:build": "build-storybook -c ./storybook"
+    "storybook:build": "build-storybook -c ./storybook",
+    "postinstall": "yarn build"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.10"

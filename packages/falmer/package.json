@@ -18,6 +18,7 @@
     "redux-saga": "^1.0.3"
   },
   "scripts": {
+    "postinstall": ":",
     "falmer:prod": "export NODE_ENV=production && export BABEL_ENV=bundle && `yarn bin`/webpack --config ./falmer.prod.config.js",
     "falmer:serve": "webpack-dev-server --config ./falmer.dev.config.js",
     "falmer:_deploy": "node ./config/deployToFalmer.js",

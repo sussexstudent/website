@@ -28,7 +28,8 @@
     "format": "`yarn bin`/prettier \"packages/*/src/**/*.{ts,tsx,js,css,graphql}\" --write",
     "setup": "node ./scripts/initialSetup.js",
     "test": "NODE_ENV=test && jest",
-    "testc": "NODE_ENV=test && jest --coverage"
+    "testc": "NODE_ENV=test && jest --coverage",
+    "postinstall": "yarn workspaces run postinstall"
   },
   "husky": {
     "hooks": {

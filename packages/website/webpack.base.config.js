@@ -5,19 +5,14 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-const env = {
-  production: NODE_ENV === 'production',
-  staging: NODE_ENV === 'staging',
-  test: NODE_ENV === 'test',
-  development: NODE_ENV === 'development' || typeof NODE_ENV === 'undefined',
-};
-env.build = env.production || env.staging;
+const isProduction = NODE_ENV === 'production';
 
 const baseDir = path.join(__dirname, '.');
 
 function generateConfig() {
   return {
     target: 'web',
+    mode: isProduction ? 'production' : 'development',
 
     entry: {
       vendor: ['unfetch/polyfill', '../common/src/lazysizes.ts'],
@@ -32,12 +27,6 @@ function generateConfig() {
     },
 
     resolve: {
-      modules: ['node_modules', './src/images'],
-      alias: {
-        '~icons': path.resolve(path.join(__dirname, '../src/icons')),
-        '~components': path.resolve(baseDir, 'src/components/'),
-        '~libs': path.resolve(baseDir, 'src/libs/'),
-      },
       extensions: ['.ts', '.tsx', '.js', '.svg'],
     },
 
@@ -53,13 +42,10 @@ function generateConfig() {
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
         'process.env.FALMER_ENDPOINT': JSON.stringify(
-          env.production
+          isProduction
             ? 'https://falmer.sussexstudent.com'
             : 'http://localhost:8000'
-        ),
-        __DEV__: env.development,
-        __STAGING__: env.staging,
-        __PRODUCTION__: env.production,
+        )
       }),
       new DuplicatePackageCheckerPlugin(),
     ],

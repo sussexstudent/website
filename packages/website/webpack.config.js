@@ -1,5 +1,4 @@
-const isProduction = process.env.NODE_ENV === 'production';
-const config = isProduction
+const config = process.env.NODE_ENV === 'production'
   ? require('./webpack.prod.config.js')
   : require('./webpack.dev.config.js');
 

@@ -82,6 +82,7 @@
     "css-loader": "^3.0.0",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "file-loader": "^4.0.0",
+    "html-webpack-plugin": "^3.2.0",
     "lodash-webpack-plugin": "^0.11.5",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-preset-env": "^6.6.0",
@@ -92,6 +93,7 @@
     "webpack-hot-middleware": "^2.25.0"
   },
   "scripts": {
+    "generatepreview": "webpack --config ./webpack.preview.config.js && echo \"/*    /index.html   200\" > \"preview-dist/_redirects\"",
     "serve": "BABEL_ENV=bundle node --trace-warnings ./devserver.js",
     "prod": "export NODE_ENV=production && export BABEL_ENV=bundle && webpack --config ./webpack.prod.config.js",
     "gen": "BABEL_ENV=comp && node ../comp/lib/cli.js",

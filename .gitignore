@@ -33,3 +33,4 @@ packages/falmer/.awcache
 *.generated.ts
 *.code-workspace
 /packages/website/deploy.json
+/packages/website/preview-dist

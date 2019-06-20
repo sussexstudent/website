@@ -14,6 +14,7 @@ import { KBRootPage } from './pages/KBRootPage';
 import { KBCategoryPage } from './pages/KBCategoryPage';
 import { BasicContentPage } from './pages/BasicContentPage';
 import { Route } from 'react-router';
+import {OfficerOverviewPage} from "./pages/OfficerOverviewPage";
 
 const StaffPage = Loadable({
   loading: LoadableLoading,
@@ -85,6 +86,7 @@ export default {
     { path: 'archive', component: () => <h1>Archive page whoa!</h1> },
   ]),
   OutletPage: pageRouter(OutletPage),
+  OfficerOverviewPage: pageRouter(OfficerOverviewPage),
 
   // Officers
   // TODO: OfficerIndexPage

@@ -116,6 +116,26 @@ query ContentPage($path: String) {
         }
       }
     }
+
+    ... on OfficerOverviewPage {
+      role
+      roleDescription
+      officerImage {
+        ...FalmerImage
+      }
+      firstName
+      lastName
+
+      section: closestAncestorOfType(
+        contentType: "OfficersIndex"
+        inclusive: true
+      ) {
+        ...ContentPageGenerals
+        subPages {
+          ...ContentPageGenerals
+        }
+      }
+    }
   }
 }
 

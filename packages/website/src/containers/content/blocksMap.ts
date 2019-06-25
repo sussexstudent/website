@@ -10,6 +10,7 @@ import { ImageBlock } from './blocks/Image';
 import { ButtonGroupBlock } from './blocks/ButtonGroup';
 import { StartButtonBlock } from './blocks/StartButton';
 import { AlertTextBlock } from './blocks/AlertText';
+import { Pledge } from './blocks/Pledge';
 
 interface BlockComponentMap {
   [blockName: string]: StreamFieldBlock<any>; // todo
@@ -29,4 +30,5 @@ export default {
   external_link: ExternalLink,
   document_link: DocumentLink,
   internal_link: InternalLink,
+  pledge: Pledge,
 } as BlockComponentMap;

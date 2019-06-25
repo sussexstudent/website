@@ -125,7 +125,8 @@ query ContentPage($path: String) {
       }
       firstName
       lastName
-
+      pledges
+      twitterUsername
       section: closestAncestorOfType(
         contentType: "OfficersIndex"
         inclusive: true

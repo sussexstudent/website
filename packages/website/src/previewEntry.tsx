@@ -12,7 +12,6 @@ import { ApolloProvider as ApolloProviderHooks } from 'react-apollo-hooks';
 import { StoreContext } from 'redux-react-hook';
 import getApolloClientForFalmer from '@ussu/common/src/libs/getApolloClientForFalmer';
 import { store } from './redux/store';
-import { Provider as ReduxProvider } from 'react-redux';
 import { ApolloProvider } from 'react-apollo';
 import { Website } from './containers/Website';
 // Install raven for sentry error  reporting
@@ -44,11 +43,9 @@ ReactDOM.render(
   <BrowserRouter>
     <ApolloProvider client={getApolloClientForFalmer}>
       <ApolloProviderHooks client={getApolloClientForFalmer}>
-        <ReduxProvider store={store}>
           <StoreContext.Provider value={store}>
             <Website />
           </StoreContext.Provider>
-        </ReduxProvider>
       </ApolloProviderHooks>
     </ApolloProvider>
   </BrowserRouter>,

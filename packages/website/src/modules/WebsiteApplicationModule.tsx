@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { Provider as ReduxProvider } from 'react-redux';
 import WebsiteApplication from '../containers/WebsiteApplication';
 import { store } from '../redux/store';
 import { AppMountState } from '../ducks/router';
@@ -18,11 +17,9 @@ export default function ready(
     <BrowserRouter>
       <ApolloProvider client={getApolloClientForFalmer}>
         <APHooks client={getApolloClientForFalmer}>
-          <ReduxProvider store={store}>
-            <StoreContext.Provider value={store}>
-              <WebsiteApplication appMountState={appMountState} />
-            </StoreContext.Provider>
-          </ReduxProvider>
+          <StoreContext.Provider value={store}>
+            <WebsiteApplication appMountState={appMountState} />
+          </StoreContext.Provider>
         </APHooks>
       </ApolloProvider>
     </BrowserRouter>,

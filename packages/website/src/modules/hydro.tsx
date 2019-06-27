@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider as ReduxProvider } from 'react-redux';
 import { ApolloProvider as APHook } from 'react-apollo-hooks';
 import getApolloClientForFalmer from '@ussu/common/src/libs/getApolloClientForFalmer';
 import { store } from '../redux/store';
@@ -15,9 +14,7 @@ export default function() {
       <ApolloProvider client={getApolloClientForFalmer}>
         <APHook client={getApolloClientForFalmer}>
           <ReduxHooks.Provider value={store}>
-            <ReduxProvider store={store}>
               <LokiHeaderInner />
-            </ReduxProvider>
           </ReduxHooks.Provider>
         </APHook>
       </ApolloProvider>

@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { Provider as ReduxProvider } from 'react-redux';
 import TrophyCabinet from '../components/TrophyCabinet';
 import { StudentGroupsSectionbar } from '../components/StudentGroupsSectionbar';
 import { store } from '../redux/store';
@@ -21,9 +20,7 @@ export default function ready() {
     ReactDOM.render(
       <ApolloProvider client={getApolloClientForFalmer}>
         <StoreContext.Provider value={store}>
-          <ReduxProvider store={store}>
             <TrophyCabinet slug={match[1]} />
-          </ReduxProvider>
         </StoreContext.Provider>
       </ApolloProvider>,
       sidebarBottom,
@@ -38,11 +35,9 @@ export default function ready() {
     siteContent.insertBefore(topOfContent, siteContent.firstChild);
 
     ReactDOM.render(
-      <ReduxProvider store={store}>
         <StoreContext.Provider value={store}>
           <StudentGroupsSectionbar />
-        </StoreContext.Provider>
-      </ReduxProvider>,
+        </StoreContext.Provider>,
       topOfContent,
     );
   }

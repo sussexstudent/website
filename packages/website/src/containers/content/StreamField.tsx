@@ -10,13 +10,14 @@ interface IProps {
     key: string;
     block: StreamFieldBlock<any>;
     page: Page;
+    index: number;
   }): ReactElement | null;
 }
 
 const StreamField: React.FC<IProps> = ({ items, page, renderItem }) => {
   return (
     <React.Fragment>
-      {items.map((item) => {
+      {items.map((item, index) => {
         const Component = blocksMap.hasOwnProperty(item.type)
           ? blocksMap[item.type]
           : null;
@@ -26,14 +27,14 @@ const StreamField: React.FC<IProps> = ({ items, page, renderItem }) => {
             return renderItem({
               page,
               children: (
-                <Component page={page} block={item.value} key={item.id} />
+                <Component page={page} block={item.value} index={index} key={item.id} />
               ),
               block: item.value,
               key: item.id,
+              index: index
             });
           }
-
-          return <Component page={page} block={item.value} key={item.id} />;
+          return <Component page={page} block={item.value} index={index} key={item.id} />;
         }
 
         console.warn(`[content] missing block "${item.type}"`);

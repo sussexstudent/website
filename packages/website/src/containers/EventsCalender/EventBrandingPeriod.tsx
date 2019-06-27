@@ -7,11 +7,11 @@ import { RouteComponentProps } from 'react-router';
 import { useQuery } from 'react-apollo-hooks';
 import Loader from '../../components/Loader';
 
-interface Props extends RouteComponentProps<{ brandSlug: string }> {
+export interface EventBrandingPeriod extends RouteComponentProps<{ brandSlug: string }> {
   filter: any;
 }
 
-export const EventBrandingPeriod: React.FC<Props> = ({
+export const EventBrandingPeriod: React.FC<EventBrandingPeriod> = ({
   match: {
     params: { brandSlug },
   },

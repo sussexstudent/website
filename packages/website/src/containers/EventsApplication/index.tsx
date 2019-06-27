@@ -5,48 +5,50 @@ import { LoadableLoading } from '../../components/LoadableLoading';
 import { Sectionbar, SectionbarItem } from '../../components/Sectionbar';
 import { RouteComponent } from '@ussu/common/src/types/routes';
 import { ScrollToTop } from '../../components/ScrollToTop';
-
-const EventsListLoader = () =>
-  import(/* webpackChunkName: "events.listings" */ '../EventsCalender/index');
-
-const EventBrandingPeriodLoader = () =>
-  import(
-    /* webpackChunkName: "events.listings.brand" */ '../EventsCalender/EventBrandingPeriod'
-  );
-
-const EventBundleLoader = () =>
-  import(
-    /* webpackChunkName: "events.listings.bundle" */ '../EventsCalender/EventBundle'
-  );
+import {EventBundleProps} from "../EventsCalender/EventBundle";
+import {EventsListProps} from "../EventsCalender";
+import {EventBrandingPeriod} from "../EventsCalender/EventBrandingPeriod";
+import {EventDetailPageProps} from "../EventDetailPage";
 
 const LoadableListings = Loadable({
   loading: LoadableLoading,
-  loader: EventsListLoader,
-  render({ EventsList }: { EventsList: any }, props) {
+  loader: () =>
+    import(/* webpackChunkName: "events.listings" */ '../EventsCalender/index'),
+  render({ EventsList }, props: EventsListProps) {
     return <EventsList {...props} />;
   },
-}) as any;
+});
 
 const LoadableListingsBranding = Loadable({
   loading: LoadableLoading,
-  loader: EventBrandingPeriodLoader,
-  render({ EventBrandingPeriod }: { EventBrandingPeriod: any }, props) {
+  loader: () =>
+    import(
+      /* webpackChunkName: "events.listings.brand" */ '../EventsCalender/EventBrandingPeriod'
+      ),
+  render({ EventBrandingPeriod }, props: EventBrandingPeriod) {
     return <EventBrandingPeriod {...props} />;
   },
-}) as any;
+});
 
 const LoadableBundle = Loadable({
   loading: LoadableLoading,
-  loader: EventBundleLoader,
-  render: ({ EventBundle }: { EventBundle: any }, props: any) => {
-    return <EventBundle {...props} />;
+  loader: () =>
+    import(
+      /* webpackChunkName: "events.listings.bundle" */ '../EventsCalender/EventBundle'
+      ),
+  render({ EventBundle }, props: EventBundleProps) {
+    return <EventBundle {...props} />
   },
-}) as any;
+});
 
 const LoadableDetail = Loadable({
   loading: LoadableLoading,
   loader: () =>
     import(/* webpackChunkName: "events.detail" */ '../EventDetailPage'),
+  render({ EventDetailPage }, props: EventDetailPageProps) {
+    return <EventDetailPage {...props} />
+  },
+
 });
 
 type EventsApplicationProps = RouteComponent;

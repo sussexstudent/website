@@ -12,9 +12,9 @@ interface OwnProps {
   filter: any; // todo
 }
 
-type IProps = OwnProps;
+export type EventsListProps = OwnProps;
 
-const EventsList: React.FC<IProps> = ({ filter }) => {
+const EventsList: React.FC<EventsListProps> = ({ filter }) => {
   const [now] = useState(new Date());
   const { data, loading } = useQuery(EventListingsQuery, {
     variables: {

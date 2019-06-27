@@ -71,7 +71,7 @@ const ContentPage: React.FC<IProps> = (props: IProps) => {
 
   return (
     <div className="Layout">
-      <h1>Page type can't be found: "{page.contentType}"</h1>
+      <h1>{`Page type can't be found: "${page.contentType}"`}</h1>
     </div>
   );
 };

@@ -2,12 +2,12 @@ import React from 'react';
 import { Page, StreamFieldData } from '../types';
 import StreamField from '../../content/StreamField';
 
-interface IBasicContentPage extends Page {
+interface BasicContentPageData extends Page {
   content: StreamFieldData;
 }
 
 interface BasicContentPageProps {
-  page: IBasicContentPage;
+  page: BasicContentPageData;
 }
 
 export const BasicContentPage: React.FC<BasicContentPageProps> = ({ page }) => (

@@ -7,7 +7,7 @@ enum FalmerAPIOptions {
   Local = 'local',
 }
 
-export const CompOptionsPanel = () => {
+export const CompOptionsPanel: React.FC = () => {
   const [api, setApi] = useState(FalmerAPIOptions.Local);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const CompOptionsPanel = () => {
         ? FalmerAPIOptions.Production
         : FalmerAPIOptions.Local,
     );
-  });
+  }, [setApi]);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.currentTarget.value as FalmerAPIOptions;

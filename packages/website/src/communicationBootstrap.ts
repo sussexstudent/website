@@ -1,7 +1,7 @@
 import { parseTickets } from '@ussu/common/src/libs/mslEventTicketParser';
 import user from '@ussu/common/src/libs/user';
 
-function eventPage() {
+function eventPage(): void {
   const pathRegEx = /^\/ents\/event\/([0-9]+)\/?/;
   const ticketsEndRegEx = /tickets\/?$/;
 
@@ -29,6 +29,6 @@ function eventPage() {
   }
 }
 
-export function setup() {
+export function setup(): void {
   eventPage();
 }

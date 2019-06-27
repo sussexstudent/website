@@ -1,5 +1,5 @@
 import React from 'react';
-import { EventListings } from '../EventsCalender/EventListings';
+import { EventListings } from './EventListings';
 import Helmet from 'react-helmet';
 import EventListingsBrandingPeriodQuery from './EventListingsBundle.graphql';
 import { useQuery } from 'react-apollo-hooks';
@@ -7,11 +7,9 @@ import Loader from '../../components/Loader';
 import { ErrorState } from '../../components/ErrorState';
 import { RouteComponentProps } from 'react-router';
 
-interface Props extends RouteComponentProps<{ bundleSlug: string }> {
-  filter: any; // todo
-}
+export type EventBundleProps = RouteComponentProps<{ bundleSlug: string }>;
 
-export const EventBundle: React.FC<Props> = ({
+export const EventBundle: React.FC<EventBundleProps> = ({
   match: { params: bundleSlug },
 }) => {
   const { data, loading, error } = useQuery(EventListingsBrandingPeriodQuery, {

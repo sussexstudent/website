@@ -14,11 +14,11 @@ interface DetailPage extends Page<DetailPageSection[]> {
   category: Page;
 }
 
-interface IProps {
+interface Props {
   page: DetailPage; // todo
 }
 
-const DetailedGuideSectionPage: React.FC<IProps> = ({ page: { subPages } }) => {
+const DetailedGuideSectionPage: React.FC<Props> = ({ page: { subPages } }) => {
   return <Redirect from={'/'} to={subPages[0].path} />;
 };
 

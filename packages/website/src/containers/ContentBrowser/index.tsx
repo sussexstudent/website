@@ -5,13 +5,11 @@ import { ContentBrowser } from '../../components/ContentBrowser';
 import { RouteComponentProps } from 'react-router';
 import { useQuery } from 'react-apollo-hooks';
 
-interface ContentBrowserProps extends RouteComponentProps<{}> {}
-
 interface Result {
   page: ContentBrowserPage;
 }
 
-const ContentBrowserContainer: React.FC<ContentBrowserProps> = (props) => {
+export const ContentBrowserContainer: React.FC<RouteComponentProps> = (props) => {
   const { data, loading } = useQuery<Result>(CONTENT_BROWSER_QUERY);
   if (!data || loading) return null;
 
@@ -27,5 +25,3 @@ const ContentBrowserContainer: React.FC<ContentBrowserProps> = (props) => {
     </div>
   );
 };
-
-export default ContentBrowserContainer;

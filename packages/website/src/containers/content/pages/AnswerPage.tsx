@@ -9,7 +9,7 @@ import { StaffOwners } from '../../../components/StaffOwners';
 import { KBContentBreadcrumbBar } from '../../../components/KBContentBreadcrumbBar';
 import { format } from 'date-fns';
 
-interface IAnswerPage extends Page {
+interface AnswerPageData extends Page {
   content: StreamFieldData;
   relatedLinks: StreamFieldData;
   staffOwners: StreamFieldData;
@@ -18,11 +18,11 @@ interface IAnswerPage extends Page {
   category: Page;
 }
 
-interface IProps {
-  page: IAnswerPage;
+interface AnswerPageProps {
+  page: AnswerPageData;
 }
 
-const AnswerPage: React.FC<IProps> = ({
+const AnswerPage: React.FC<AnswerPageProps> = ({
   page: { content, relatedLinks, staffOwners },
   page,
 }) => {

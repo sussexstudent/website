@@ -21,11 +21,9 @@ interface RouteParams {
   eventId: string;
 }
 
-interface OwnProps extends RouteComponentProps<RouteParams> {}
+export type EventDetailPageProps = RouteComponentProps<RouteParams>;
 
-type IProps = OwnProps;
-
-const EventDetailPage: React.FC<IProps> = ({ match, history }) => {
+export const EventDetailPage: React.FC<EventDetailPageProps> = ({ match, history }) => {
   const [mslData, setMslData] = useState<any>(null);
   // const [_ticketModal, setTicketModal] = useState(false);
   const { data, loading } = useQuery(DetailPageQuery, {
@@ -162,5 +160,3 @@ const EventDetailPage: React.FC<IProps> = ({ match, history }) => {
     </ScrollToTop>
   );
 };
-
-export default EventDetailPage;

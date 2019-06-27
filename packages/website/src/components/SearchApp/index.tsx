@@ -416,4 +416,4 @@ export default connect(
   {
     setSearchValue: routerActions.setSearchValue,
   },
-)(SearchApp) as any;
+)(SearchApp);

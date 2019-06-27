@@ -15,16 +15,12 @@ import { Link } from 'react-router-dom';
 import { generateStylesForBrand, getOrdinal } from '../EventsApplication/utils';
 import { getDate } from 'date-fns';
 
-function isSameLogicalSleepDay(startDate: Date, endDate: Date) {
+function isSameLogicalSleepDay(startDate: Date, endDate: Date): boolean {
   if (isSameDay(startDate, endDate)) {
     return true;
   }
 
-  if (isSameDay(addDays(startDate, 1), endDate) && getHours(endDate) < 7) {
-    return true;
-  }
-
-  return false;
+  return isSameDay(addDays(startDate, 1), endDate) && getHours(endDate) < 7;
 }
 
 interface IProps {

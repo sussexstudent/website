@@ -17,7 +17,7 @@ import { WebsiteRootState } from '../../types/website';
 
 let hasAttemptedRender = false;
 
-function trackPageGA(path: string) {
+function trackPageGA(path: string): void {
   if (process.env.NODE_ENV === 'production') {
     ga('set', 'page', path);
     ga('send', 'pageview');

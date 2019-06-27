@@ -27,7 +27,7 @@ interface WebsiteApplicationProps extends RouteComponentProps {
   appMountState: AppMountState;
 }
 
-const ContentAPI = (props: any) => (
+const ContentAPI: React.FC<RouteComponentProps> = (props) => (
   <ContentPage path={props.location.pathname} history={props.history} />
 );
 
@@ -43,15 +43,19 @@ const LoadableStudentGroupsDiscovery = Loadable({
     import(
       /* webpackChunkName: "sgd" */ '../../components/StudentGroupsDiscovery'
     ),
+  render({ StudentGroupListings }, props: {}) {
+    return <StudentGroupListings {...props} />
+  }
 });
 
 const LoadableContentBrowser = Loadable({
   loading: LoadableLoading,
   loader: () =>
     import(/* webpackChunkName: "ContentBrowser" */ '../ContentBrowser'),
+  render({ ContentBrowserContainer }, props: RouteComponentProps) {
+    return <ContentBrowserContainer {...props} />
+  }
 });
-
-const FourOhFourPageRoute = FourOhFourPage as any;
 
 const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
   history,
@@ -61,10 +65,10 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(routerActions.setRouter(history, location));
-  }, [history, location]);
+  }, [dispatch, history, location]);
   useEffect(() => {
     dispatch(routerActions.announceMount(appMountState));
-  }, []);
+  }, [appMountState, dispatch]);
 
   return (
     <ScrollToTop>
@@ -105,7 +109,7 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
             path="/get-involved/campaigns-toolkit"
           />
           <Route component={ContentAPI} path="/about-us/contact" />
-          <Route component={FourOhFourPageRoute} default />
+          <Route component={FourOhFourPage} default />
         </Switch>
       </ErrorBoundary>
     </ScrollToTop>

@@ -7,11 +7,11 @@ interface ContentCardProps {
   bleed?: boolean;
 }
 
-const ContentCard = ({
+const ContentCard: React.FC<ContentCardProps> = ({
   anchor = undefined,
   children,
   bleed = false,
-}: ContentCardProps) => (
+}) => (
   <div className={cx('ContentCard', { 'ContentCard--bleed': bleed })}>
     {anchor !== undefined ? (
       <span className="u-position-anchor" id={anchor} />

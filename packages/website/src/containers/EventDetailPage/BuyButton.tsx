@@ -48,12 +48,12 @@ export const BuyButton: React.FC<BuyButtonProps> = ({
 }) => {
   return href ? (
     <a href={href} css={buttonStyle({ disabled: !!disabled })}>
-      <div css={title}>{titleStyles}</div>
+      <div css={titleStyles}>{title}</div>
       {subtitle && <div css={subtitleStyles}>{subtitle}</div>}
     </a>
   ) : (
     <button css={buttonStyle({ disabled: !!disabled })} onClick={onClick}>
-      <div css={title}>{titleStyles}</div>
+      <div css={titleStyles}>{title}</div>
       {subtitle && <div css={subtitleStyles}>{subtitle}</div>}
     </button>
   );

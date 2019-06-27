@@ -1,5 +1,5 @@
-query ContentPage($path: String) {
-  page(path: $path) {
+query ContentPage($path: String, $previewToken: String) {
+  page(path: $path, previewToken: $previewToken) {
     ...ContentPageGenerals
     ... on DetailedGuidePage {
       subPages {

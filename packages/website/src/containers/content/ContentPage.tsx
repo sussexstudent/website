@@ -6,6 +6,7 @@ import Helmet from 'react-helmet';
 import { FourOhFourPage } from './FourOhFourPage';
 import { Switch } from 'react-router';
 import { useQuery } from 'react-apollo-hooks';
+import qs from 'query-string';
 
 interface OwnProps {
   path: string;
@@ -29,6 +30,7 @@ const ContentPage: React.FC<IProps> = (props: IProps) => {
   const { data, loading } = useQuery<Result>(CONTENT_PAGE_QUERY, {
     variables: {
       path: props.path,
+      previewToken: props.history && qs.parse(props.history.location.search).preview
     },
   });
 

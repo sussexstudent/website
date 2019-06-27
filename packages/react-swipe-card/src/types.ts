@@ -1,5 +1,5 @@
 import { Direction } from './utils';
-import React from "react";
+import React from 'react';
 
 export interface Position {
   x: number;

@@ -13,7 +13,7 @@ const OPTIONS_MERGE: {
   LEVEL: {
     Undergraduate: 'Undergraduate',
     Postgraduate: 'Postgraduate',
-  }
+  },
 };
 
 enum FormState {

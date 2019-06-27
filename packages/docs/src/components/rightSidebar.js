@@ -1,7 +1,7 @@
-import React from "react";
-import { StaticQuery, graphql } from "gatsby";
-import styled from "@emotion/styled";
-import Link from "./link";
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+import styled from '@emotion/styled';
+import Link from './link';
 import './styles.css';
 import config from '../../config';
 
@@ -27,19 +27,19 @@ const Sidebar = styled('aside')`
 
 // eslint-disable-next-line no-unused-vars
 const ListItem = styled(({ className, active, level, ...props }) => {
-    return (
-      <li className={className}>
-        <a href={props.to} {...props} />
-      </li>
-    );
+  return (
+    <li className={className}>
+      <a href={props.to} {...props} />
+    </li>
+  );
 })`
   list-style: none;
 
   a {
-    color: #5C6975;
+    color: #5c6975;
     text-decoration: none;
-    font-weight: ${({level}) => (level === 0 ? 700 : 400)};
-    padding: 0.45rem 0 0.45rem ${props => 2 + (props.level || 0) * 1}rem;
+    font-weight: ${({ level }) => (level === 0 ? 700 : 400)};
+    padding: 0.45rem 0 0.45rem ${(props) => 2 + (props.level || 0) * 1}rem;
     display: block;
     position: relative;
 
@@ -47,9 +47,9 @@ const ListItem = styled(({ className, active, level, ...props }) => {
       color: #314a96 !important;
     }
 
-    ${props =>
-  props.active &&
-  `
+    ${(props) =>
+      props.active &&
+      `
       color: #663399;
       border-color: rgb(230,236,241) !important;
       border-style: solid none solid solid;
@@ -85,20 +85,26 @@ const SidebarLayout = ({ location }) => (
       if (allMdx.edges !== undefined && allMdx.edges.length > 0) {
         const navItems = allMdx.edges.map((item, index) => {
           let innerItems;
-          if(item !== undefined) {
-            if ((item.node.fields.slug === location.pathname) || (config.gatsby.pathPrefix + item.node.fields.slug) === location.pathname) {
+          if (item !== undefined) {
+            if (
+              item.node.fields.slug === location.pathname ||
+              config.gatsby.pathPrefix + item.node.fields.slug ===
+                location.pathname
+            ) {
               if (item.node.tableOfContents.items) {
-                innerItems = item.node.tableOfContents.items.map((innerItem, index) => {
-                  return (
-                    <ListItem
-                      key={index}
-                      to={`#${innerItem.title}`}
-                      level={1}
-                    >
-                      {innerItem.title}
-                    </ListItem>
-                  );
-                });
+                innerItems = item.node.tableOfContents.items.map(
+                  (innerItem, index) => {
+                    return (
+                      <ListItem
+                        key={index}
+                        to={`#${innerItem.title}`}
+                        level={1}
+                      >
+                        {innerItem.title}
+                      </ListItem>
+                    );
+                  },
+                );
               }
             }
           }

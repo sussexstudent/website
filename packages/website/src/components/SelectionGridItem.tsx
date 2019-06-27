@@ -7,7 +7,11 @@ interface SelectionGridItemProps {
   title: string;
 }
 
-const SelectionGridItem = ({ link, imageURL, title }: SelectionGridItemProps) => (
+const SelectionGridItem = ({
+  link,
+  imageURL,
+  title,
+}: SelectionGridItemProps) => (
   <li
     className="SelectionGrid__item SelectionGrid--underneath TrailGrid__item"
     key={link}

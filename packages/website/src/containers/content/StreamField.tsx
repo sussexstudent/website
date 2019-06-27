@@ -14,7 +14,11 @@ interface StreamFieldProps {
   }): ReactElement | null;
 }
 
-const StreamField: React.FC<StreamFieldProps> = ({ items, page, renderItem }) => {
+const StreamField: React.FC<StreamFieldProps> = ({
+  items,
+  page,
+  renderItem,
+}) => {
   return (
     <React.Fragment>
       {items.map((item, index) => {
@@ -27,14 +31,26 @@ const StreamField: React.FC<StreamFieldProps> = ({ items, page, renderItem }) =>
             return renderItem({
               page,
               children: (
-                <Component page={page} block={item.value} index={index} key={item.id} />
+                <Component
+                  page={page}
+                  block={item.value}
+                  index={index}
+                  key={item.id}
+                />
               ),
               block: item.value,
               key: item.id,
-              index: index
+              index: index,
             });
           }
-          return <Component page={page} block={item.value} index={index} key={item.id} />;
+          return (
+            <Component
+              page={page}
+              block={item.value}
+              index={index}
+              key={item.id}
+            />
+          );
         }
 
         console.warn(`[content] missing block "${item.type}"`);

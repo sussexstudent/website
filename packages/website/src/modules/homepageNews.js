@@ -9,7 +9,7 @@ export default () => {
   for (const article of articles) {
     const index = article.link.indexOf('/news/');
     if (article.link.substring(index) === news_pathname) {
-      articles.splice(article.id,1);
+      articles.splice(article.id, 1);
     }
   }
 

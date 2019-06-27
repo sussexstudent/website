@@ -42,7 +42,7 @@ const socialStyles = css({
     position: 'absolute',
     right: '0',
     bottom: '0',
-  }
+  },
 });
 
 const socialItemsStyles = css({
@@ -54,10 +54,11 @@ const socialItemsStyles = css({
 const videoStyle = css({
   margin: '10% auto',
   width: '90%',
-})
+});
 
-export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({ page }) => {
-
+export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
+  page,
+}) => {
   return (
     <div>
       <Sectionbar title={page.section.title} titleLink={page.section.path}>
@@ -72,24 +73,29 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({ page }
         <div className="Layout Layout--sidebar-left" css={topOverviewStyles}>
           <div>
             <OneImage
-            aspectRatio={AspectRatio.r1by1}
-            src={page.officerImage.resource}
-            alt=""
+              aspectRatio={AspectRatio.r1by1}
+              src={page.officerImage.resource}
+              alt=""
             />
           </div>
           <div>
             <h2>{page.role}</h2>
-            <h1>{page.firstName} {page.lastName}</h1>
+            <h1>
+              {page.firstName} {page.lastName}
+            </h1>
             <div className="type-body-copy">
               {convert(page.roleDescription)}
             </div>
             {/* SOCIAL MEDIA SECTION */}
             <div css={socialStyles}>
-              <h4>{'Follow ' + page.firstName }</h4>
+              <h4>{'Follow ' + page.firstName}</h4>
               <ul className={cx('Social')} css={socialItemsStyles}>
                 {page.twitterUsername ? (
                   <li>
-                    <a className="Social__link" href={'https://twitter.com/' + page.twitterUsername}>
+                    <a
+                      className="Social__link"
+                      href={'https://twitter.com/' + page.twitterUsername}
+                    >
                       <span className="Social__icon Social__icon--twitter">
                         <span className="u-h">Twitter</span>
                       </span>
@@ -103,14 +109,17 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({ page }
             </div>
           </div>
         </div>
-          <div className="u-responsive-ratio u-responsive-ratio--r16by9" css={videoStyle}>
-            <iframe
-              className="u-responsive-inner"
-              src="https://www.youtube-nocookie.com/embed/R1KRavrc3wM?rel=0&amp;controls=0&amp;showinfo=0"
-              frameBorder="0"
-              allowFullScreen
-            />
-          </div>
+        <div
+          className="u-responsive-ratio u-responsive-ratio--r16by9"
+          css={videoStyle}
+        >
+          <iframe
+            className="u-responsive-inner"
+            src="https://www.youtube-nocookie.com/embed/R1KRavrc3wM?rel=0&amp;controls=0&amp;showinfo=0"
+            frameBorder="0"
+            allowFullScreen
+          />
+        </div>
         {/* PLEDGES SECTION */}
         {page.pledges.length > 0 && (
           <div>

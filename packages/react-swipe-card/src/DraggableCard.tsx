@@ -36,7 +36,7 @@ interface ResetAction {
   type: 'reset';
   payload: {
     initialPosition: Position;
-  }
+  };
 }
 
 interface PanStartAction {
@@ -52,27 +52,34 @@ interface PanMoveAction {
   payload: {
     delta: Position;
     direction: Direction | undefined | false;
-  }
+  };
 }
 
-type actionTypes = ResetAction | EnableAnimationAction | PanStartAction | PanMoveAction;
+type actionTypes =
+  | ResetAction
+  | EnableAnimationAction
+  | PanStartAction
+  | PanMoveAction;
 
-const reducer = (state: DraggableCardState, action: actionTypes): DraggableCardState => {
-  switch(action.type) {
+const reducer = (
+  state: DraggableCardState,
+  action: actionTypes,
+): DraggableCardState => {
+  switch (action.type) {
     case 'reset': {
       return {
         ...state,
         x: action.payload.initialPosition.x,
         y: action.payload.initialPosition.y,
         initialPosition: action.payload.initialPosition,
-        startPosition: { x: 0, y: 0 }
-      }
+        startPosition: { x: 0, y: 0 },
+      };
     }
     case 'enableAnimation': {
       return {
         ...state,
         animation: true,
-      }
+      };
     }
     case 'panStart': {
       return {
@@ -80,7 +87,7 @@ const reducer = (state: DraggableCardState, action: actionTypes): DraggableCardS
         animation: false,
         startPosition: { x: state.x, y: state.y },
         pristine: false,
-      }
+      };
     }
     case 'panMove': {
       return {
@@ -88,7 +95,7 @@ const reducer = (state: DraggableCardState, action: actionTypes): DraggableCardS
         activatedDirection: action.payload.direction || undefined,
         x: action.payload.delta.x + state.initialPosition.x,
         y: action.payload.delta.y + state.initialPosition.y,
-      }
+      };
     }
     default: {
       return state;
@@ -115,19 +122,22 @@ export const DraggableCard: React.FC<DraggableCardProps> = (props) => {
 
     if (!card) return;
 
-    dispatch({type: 'reset', payload: {
-      initialPosition: {
-        x: Math.round((x - card.offsetWidth) / 2),
-        y: Math.round((y - card.offsetHeight) / 2),
-      }
-    }});
+    dispatch({
+      type: 'reset',
+      payload: {
+        initialPosition: {
+          x: Math.round((x - card.offsetWidth) / 2),
+          y: Math.round((y - card.offsetHeight) / 2),
+        },
+      },
+    });
   }, [cardRef, props.containerSize]);
 
   const getDirection = useCallback(() => {
     const screen = props.containerSize;
     const card = cardRef.current;
     if (!card) return;
-    
+
     const THRESHOLD = 50;
 
     console.log(state.x, state.y);
@@ -141,12 +151,12 @@ export const DraggableCard: React.FC<DraggableCardProps> = (props) => {
     } else if (state.y + (card.offsetHeight - THRESHOLD) > screen.y) {
       return Direction.Bottom;
     }
-    
+
     return false;
   }, [cardRef, props.containerSize, state.x, state.y]);
 
   const panstart = (): void => {
-    dispatch({ type: 'panStart' })
+    dispatch({ type: 'panStart' });
   };
 
   const panend = (ev: HammerInput): void => {
@@ -207,10 +217,10 @@ export const DraggableCard: React.FC<DraggableCardProps> = (props) => {
     dispatch({
       type: 'panMove',
       payload: {
-        delta: { x: ev.deltaX, y: ev.deltaY},
+        delta: { x: ev.deltaX, y: ev.deltaY },
         direction,
-      }
-    })
+      },
+    });
   };
 
   const pancancel = (ev: HammerInput): void => {
@@ -221,10 +231,14 @@ export const DraggableCard: React.FC<DraggableCardProps> = (props) => {
     ev.preventDefault();
     console.log(ev.type);
     switch (ev.type) {
-      case 'panmove': return panmove(ev);
-      case 'pancancel': return pancancel(ev);
-      case 'panend': return panend(ev);
-      case 'panstart': return panstart();
+      case 'panmove':
+        return panmove(ev);
+      case 'pancancel':
+        return pancancel(ev);
+      case 'panend':
+        return panend(ev);
+      case 'panstart':
+        return panstart();
     }
   };
 
@@ -241,10 +255,7 @@ export const DraggableCard: React.FC<DraggableCardProps> = (props) => {
     hammer.add(new Hammer.Pan({ threshold: 2 }));
 
     hammer.on('panstart panend pancancel panmove', handlePan);
-    hammer.on(
-      'swipestart swipeend swipecancel swipemove',
-      handleSwipe,
-    );
+    hammer.on('swipestart swipeend swipecancel swipemove', handleSwipe);
 
     resetPosition();
     window.addEventListener('resize', resetPosition);
@@ -255,10 +266,17 @@ export const DraggableCard: React.FC<DraggableCardProps> = (props) => {
         hammer.destroy();
       }
       window.removeEventListener('resize', resetPosition);
-    }
+    };
   }, [cardRef, handlePan, handleSwipe, resetPosition]);
 
-  const { x, y, animation, pristine, startPosition, activatedDirection } = state;
+  const {
+    x,
+    y,
+    animation,
+    pristine,
+    startPosition,
+    activatedDirection,
+  } = state;
   const style = props.styleTransformer({ x, y }, startPosition);
   return (
     <SimpleCard
@@ -270,5 +288,4 @@ export const DraggableCard: React.FC<DraggableCardProps> = (props) => {
       activatedDirection={activatedDirection}
     />
   );
-
 };

@@ -1,4 +1,4 @@
-import {Position, StyleTransformer} from './types';
+import { Position, StyleTransformer } from './types';
 
 export const defaultStyleTransformer: StyleTransformer = (
   pos: Position,

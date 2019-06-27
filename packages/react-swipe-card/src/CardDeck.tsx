@@ -23,22 +23,25 @@ export const CardDeck: React.FC<CardDeckProps> = (props) => {
     containerSize: { x: 0, y: 0 },
   });
 
-  const handleRemoveCard = useCallback((side: Direction) => {
-    const { children, onEnd } = props;
+  const handleRemoveCard = useCallback(
+    (side: Direction) => {
+      const { children, onEnd } = props;
 
-    if (
-      Array.isArray(children) &&
-      children.length === state.index + 1 &&
-      onEnd
-    ) {
-      onEnd();
-    }
+      if (
+        Array.isArray(children) &&
+        children.length === state.index + 1 &&
+        onEnd
+      ) {
+        onEnd();
+      }
 
-    setState({
-      ...state,
-      index: state.index + 1,
-    });
-  }, [state, props]);
+      setState({
+        ...state,
+        index: state.index + 1,
+      });
+    },
+    [state, props],
+  );
 
   const containerRef = useRef<HTMLElement>(null);
 
@@ -59,16 +62,18 @@ export const CardDeck: React.FC<CardDeckProps> = (props) => {
 
     return () => {
       window.removeEventListener('resize', setSize);
-
-    }
+    };
   }, [setSize]);
-
 
   const { index, containerSize } = state;
   const { children, styleTransformer, renderContainer } = props;
 
   if (!Array.isArray(children) || !containerSize.x || !containerSize.y) {
-    return renderContainer({ isEmpty: true, children: null, ref: containerRef });
+    return renderContainer({
+      isEmpty: true,
+      children: null,
+      ref: containerRef,
+    });
   }
 
   const _cards = (children as React.ReactElement<CardProps>[])
@@ -80,7 +85,7 @@ export const CardDeck: React.FC<CardDeckProps> = (props) => {
         index={card.props.id}
         onOutScreenTop={() => handleRemoveCard(Direction.Top)}
         onOutScreenBottom={() => handleRemoveCard(Direction.Bottom)}
-        onOutScreenLeft={() =>handleRemoveCard(Direction.Left)}
+        onOutScreenLeft={() => handleRemoveCard(Direction.Left)}
         onOutScreenRight={() => handleRemoveCard(Direction.Right)}
         active={index === 0}
         styleTransformer={styleTransformer || defaultStyleTransformer}
@@ -88,5 +93,9 @@ export const CardDeck: React.FC<CardDeckProps> = (props) => {
       />
     ));
 
-  return renderContainer({ isEmpty: _cards.length > 0, children: _cards, ref: containerRef });
+  return renderContainer({
+    isEmpty: _cards.length > 0,
+    children: _cards,
+    ref: containerRef,
+  });
 };

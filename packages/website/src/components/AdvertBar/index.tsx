@@ -7,7 +7,11 @@ interface AdvertBarProps {
   children: any;
 }
 
-const AdvertBar = ({ children, className = '', dark = false }: AdvertBarProps) => (
+const AdvertBar = ({
+  children,
+  className = '',
+  dark = false,
+}: AdvertBarProps) => (
   <div
     className={cx('AdvertBar', 'advert', className, {
       'AdvertBar--dark': dark,

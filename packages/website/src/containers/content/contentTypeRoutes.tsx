@@ -14,7 +14,7 @@ import { KBRootPage } from './pages/KBRootPage';
 import { KBCategoryPage } from './pages/KBCategoryPage';
 import { BasicContentPage } from './pages/BasicContentPage';
 import { Route } from 'react-router';
-import {OfficerOverviewPage} from "./pages/OfficerOverviewPage";
+import { OfficerOverviewPage } from './pages/OfficerOverviewPage';
 
 const StaffPage = Loadable({
   loading: LoadableLoading,

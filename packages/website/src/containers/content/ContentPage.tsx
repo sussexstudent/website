@@ -30,7 +30,8 @@ const ContentPage: React.FC<IProps> = (props: IProps) => {
   const { data, loading } = useQuery<Result>(CONTENT_PAGE_QUERY, {
     variables: {
       path: props.path,
-      previewToken: props.history && qs.parse(props.history.location.search).preview
+      previewToken:
+        props.history && qs.parse(props.history.location.search).preview,
     },
   });
 

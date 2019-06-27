@@ -1,15 +1,14 @@
-import React, { Component } from "react";
-import Helmet from "react-helmet";
-import { graphql } from "gatsby";
-import MDXRenderer from "gatsby-mdx/mdx-renderer";
-import styled  from "@emotion/styled";
-import { Layout, Link } from "$components";
+import React, { Component } from 'react';
+import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
+import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import styled from '@emotion/styled';
+import { Layout, Link } from '$components';
 import NextPrevious from '../components/NextPrevious';
 import '../components/styles.css';
 import config from '../../config';
 
 const forcedNavOrder = config.sidebar.forcedNavOrder;
-
 
 const Edit = styled('div')`
   padding: 1rem 1.5rem;
@@ -44,30 +43,30 @@ export default class MDXRuntimeTest extends Component {
       allMdx,
       mdx,
       site: {
-        siteMetadata: { docsLocation, title }
-      }
+        siteMetadata: { docsLocation, title },
+      },
     } = data;
     const gitHub = require('../components/images/github.svg');
 
     const navItems = allMdx.edges
       .map(({ node }) => node.fields.slug)
-      .filter(slug => slug !== "/")
+      .filter((slug) => slug !== '/')
       .sort()
       .reduce(
         (acc, cur) => {
-          if (forcedNavOrder.find(url => url === cur)) {
+          if (forcedNavOrder.find((url) => url === cur)) {
             return { ...acc, [cur]: [cur] };
           }
 
-          const prefix = cur.split("/")[1];
+          const prefix = cur.split('/')[1];
 
-          if (prefix && forcedNavOrder.find(url => url === `/${prefix}`)) {
+          if (prefix && forcedNavOrder.find((url) => url === `/${prefix}`)) {
             return { ...acc, [`/${prefix}`]: [...acc[`/${prefix}`], cur] };
           } else {
             return { ...acc, items: [...acc.items, cur] };
           }
         },
-        { items: [] }
+        { items: [] },
       );
 
     const nav = forcedNavOrder
@@ -75,9 +74,9 @@ export default class MDXRuntimeTest extends Component {
         return acc.concat(navItems[cur]);
       }, [])
       .concat(navItems.items)
-      .map(slug => {
+      .map((slug) => {
         const { node } = allMdx.edges.find(
-          ({ node }) => node.fields.slug === slug
+          ({ node }) => node.fields.slug === slug,
         );
 
         return { title: node.fields.title, url: node.fields.slug };
@@ -87,27 +86,39 @@ export default class MDXRuntimeTest extends Component {
     const metaTitle = mdx.frontmatter.metaTitle;
     const metaDescription = mdx.frontmatter.metaDescription;
     let canonicalUrl = config.gatsby.siteUrl;
-    canonicalUrl = config.gatsby.pathPrefix !== '/' ? canonicalUrl + config.gatsby.pathPrefix : canonicalUrl; 
+    canonicalUrl =
+      config.gatsby.pathPrefix !== '/'
+        ? canonicalUrl + config.gatsby.pathPrefix
+        : canonicalUrl;
     canonicalUrl = canonicalUrl + mdx.fields.slug;
 
     return (
       <Layout {...this.props}>
         <Helmet>
-          {metaTitle ? <title>{metaTitle}</title> : null }
+          {metaTitle ? <title>{metaTitle}</title> : null}
           {metaTitle ? <meta name="title" content={metaTitle} /> : null}
-          {metaDescription ? <meta name="description" content={metaDescription} /> : null}
+          {metaDescription ? (
+            <meta name="description" content={metaDescription} />
+          ) : null}
           {metaTitle ? <meta property="og:title" content={metaTitle} /> : null}
-          {metaDescription ? <meta property="og:description" content={metaDescription} /> : null}
-          {metaTitle ? <meta property="twitter:title" content={metaTitle} /> : null}
-          {metaDescription ? <meta property="twitter:description" content={metaDescription} /> : null}
+          {metaDescription ? (
+            <meta property="og:description" content={metaDescription} />
+          ) : null}
+          {metaTitle ? (
+            <meta property="twitter:title" content={metaTitle} />
+          ) : null}
+          {metaDescription ? (
+            <meta property="twitter:description" content={metaDescription} />
+          ) : null}
           <link rel="canonical" href={canonicalUrl} />
         </Helmet>
         <div className={'titleWrapper'}>
-          <h1 className={'title'}>
-            {mdx.fields.title}
-          </h1>
+          <h1 className={'title'}>{mdx.fields.title}</h1>
           <Edit className={'mobileView'}>
-            <Link className={'gitBtn'} to={`${docsLocation}/${mdx.parent.relativePath}`}>
+            <Link
+              className={'gitBtn'}
+              to={`${docsLocation}/${mdx.parent.relativePath}`}
+            >
               <img src={gitHub} alt={'Github logo'} /> Edit on GitHub
             </Link>
           </Edit>
@@ -148,7 +159,7 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
-#        metaDescription
+        #        metaDescription
       }
     }
     allMdx {

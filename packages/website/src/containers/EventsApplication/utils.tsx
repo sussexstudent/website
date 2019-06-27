@@ -1,6 +1,6 @@
 import React from 'react';
 import { groupBy, orderBy, padStart, sortBy, toPairs } from 'lodash';
-import {isAfter} from 'date-fns';
+import { isAfter } from 'date-fns';
 import getYear from 'date-fns/getYear';
 import setHours from 'date-fns/setHours';
 import addDays from 'date-fns/addDays';

@@ -12,7 +12,10 @@ class ChangeStateMutation extends Mutation<{
   changeState(data: any): Promise<{}>;
 }> {}
 
-export function OwnerStatusBanner({ state, listingId }: OwnerStatusBannerProps) {
+export function OwnerStatusBanner({
+  state,
+  listingId,
+}: OwnerStatusBannerProps) {
   return (
     <ChangeStateMutation mutation={CHANGE_STATE_MUTATION}>
       {(changeState) => (

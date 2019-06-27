@@ -9,7 +9,9 @@ interface Props {
   styleTransformer: StyleTransformer;
 }
 
-type CardPassthroughProps = Props & Omit<SimpleCardProps, 'cardRef'> & Omit<DraggableCardProps, 'cardRef'>;
+type CardPassthroughProps = Props &
+  Omit<SimpleCardProps, 'cardRef'> &
+  Omit<DraggableCardProps, 'cardRef'>;
 
 export const CardPassthrough: React.FC<CardPassthroughProps> = ({
   active = false,
@@ -17,6 +19,6 @@ export const CardPassthrough: React.FC<CardPassthroughProps> = ({
 }) => {
   const cardRef = useRef<HTMLElement>(null);
   return active
-    ? createElement(DraggableCard, {...props, cardRef } as DraggableCardProps)
-    : createElement(SimpleCard, {...props, cardRef} as SimpleCardProps);
+    ? createElement(DraggableCard, { ...props, cardRef } as DraggableCardProps)
+    : createElement(SimpleCard, { ...props, cardRef } as SimpleCardProps);
 };

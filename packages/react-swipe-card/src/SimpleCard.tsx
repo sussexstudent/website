@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Position, CardRenderProp, StyleTransformer } from './types';
 import { Direction } from './utils';
 
@@ -11,7 +11,7 @@ export interface SimpleCardProps {
   styleTransformer: StyleTransformer;
   shouldTransition?: boolean;
   isPristine?: boolean;
-  activatedDirection?: Direction
+  activatedDirection?: Direction;
   cardRef: any; // todo
 }
 
@@ -20,12 +20,18 @@ interface SimpleCardState {
 }
 
 export const SimpleCard: React.FC<SimpleCardProps> = (props) => {
-  const [state, setState ] = useState<SimpleCardState>({ initialPosition: { x: 0, y: 0 } });
+  const [state, setState] = useState<SimpleCardState>({
+    initialPosition: { x: 0, y: 0 },
+  });
 
   const setInitialPosition = useCallback((): void => {
     const initialPosition = {
-      x: Math.round((props.containerSize.x - props.cardRef.current.offsetWidth) / 2),
-      y: Math.round((props.containerSize.y - props.cardRef.current.offsetHeight) / 2),
+      x: Math.round(
+        (props.containerSize.x - props.cardRef.current.offsetWidth) / 2,
+      ),
+      y: Math.round(
+        (props.containerSize.y - props.cardRef.current.offsetHeight) / 2,
+      ),
     };
     setState({ initialPosition });
   }, [props.cardRef, props.containerSize.x, props.containerSize.y]);
@@ -52,7 +58,6 @@ export const SimpleCard: React.FC<SimpleCardProps> = (props) => {
     style,
     shouldTransition: shouldTransition ? true : false,
     activatedDirection: props.activatedDirection,
-    isPristine:
-      isPristine === undefined || isPristine === true ? true : false,
+    isPristine: isPristine === undefined || isPristine === true ? true : false,
   });
 };

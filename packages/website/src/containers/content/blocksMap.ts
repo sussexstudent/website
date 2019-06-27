@@ -32,3 +32,5 @@ const BlockComponentMap: {
   internal_link: InternalLink,
   pledge: Pledge,
 };
+
+export default BlockComponentMap;

@@ -8,26 +8,24 @@ import MenuIcon from '../MenuIcon';
 import CrossIcon from '../CrossIcon';
 import SearchIcon from '../SearchIcon';
 import * as pageActions from '../../ducks/page';
-import { connect } from 'react-redux';
 import { InternalAppLink } from '../InternalAppLink';
 import { useHover } from './useHover';
 import { MenuItem } from '@ussu/common/src/types/skeleton';
 import { WebsiteRootState } from '../../types/website';
 import { LokiMenuDropover } from './LokiMenuDropover';
+import {useDispatch, useMappedState} from 'redux-react-hook';
 
-interface LokiHeaderProps {
-  isOpenMobileMenu: boolean;
-  toggleMobileMenu: typeof pageActions.toggleMobileMenu;
-}
-
-const LokiHeaderComponent: React.FC<LokiHeaderProps> = ({
-  isOpenMobileMenu,
-  toggleMobileMenu,
-}) => {
+export const LokiHeaderInner: React.FC = () => {
   const [dropoverRef, isDropoverHovering] = useHover<HTMLDivElement>();
   const [currentHover, setHover] = useState<MenuItem | null>(null);
   const [latestItem, setLatestItem] = useState<MenuItem>(MenuItem.GetInvolved);
   const [hasMounted, setMounted] = useState(false);
+
+  const mapState = useCallback((state: WebsiteRootState) => ({
+    isOpenMobileMenu: state.page.isOpenMobileMenu,
+  }), []);
+  const { isOpenMobileMenu } = useMappedState(mapState);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setMounted(true);
@@ -76,7 +74,7 @@ const LokiHeaderComponent: React.FC<LokiHeaderProps> = ({
         </div>
         <button
           className="LokiHeader__button-mobile LokiHeader__button-mobile--menu"
-          onClick={() => toggleMobileMenu(!isOpenMobileMenu)}
+          onClick={() => dispatch(pageActions.toggleMobileMenu(!isOpenMobileMenu))}
           type="button"
         >
           {isOpenMobileMenu ? <CrossIcon /> : <MenuIcon />}
@@ -86,7 +84,7 @@ const LokiHeaderComponent: React.FC<LokiHeaderProps> = ({
         </button>
         <LokiSideMenu
           isOpen={isOpenMobileMenu}
-          onBackdropClick={() => toggleMobileMenu(!isOpenMobileMenu)}
+          onBackdropClick={() => dispatch(pageActions.toggleMobileMenu(!isOpenMobileMenu))}
         />
       </div>
       {hasMounted &&
@@ -101,15 +99,6 @@ const LokiHeaderComponent: React.FC<LokiHeaderProps> = ({
     </React.Fragment>
   );
 };
-
-export const LokiHeaderInner = connect(
-  (state: WebsiteRootState) => ({
-    isOpenMobileMenu: state.page.isOpenMobileMenu,
-  }),
-  {
-    toggleMobileMenu: pageActions.toggleMobileMenu,
-  },
-)(LokiHeaderComponent as any);
 
 export const LokiHeader = () => (
   <header className="LokiHeader">

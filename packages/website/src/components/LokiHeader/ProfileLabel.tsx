@@ -1,35 +1,30 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import ProfileIcon from '@ussu/common/src/icons/user.svg';
 import UserChevronIcon from '@ussu/common/src/icons/user-chevron.svg';
-import { connect } from 'react-redux';
 import * as userActions from '../../ducks/user';
-import { UserState } from '../../ducks/user';
 import { LoginModal } from '../LoginModal';
 import { YourPage } from '../YourPage';
 import { WebsiteRootState } from '../../types/website';
+import {useDispatch, useMappedState} from 'redux-react-hook';
 
-interface ProfileLabelProps {
-  user: UserState;
-  openLoginModal: typeof userActions.openLoginModal;
-  closeLoginModal: typeof userActions.closeLoginModal;
-
-  openYourModal: typeof userActions.openYourModal;
-  closeYourModal: typeof userActions.closeYourModal;
-}
-
-const ProfileLabelComponent = (props: ProfileLabelProps) => {
-  if (!props.user.isLoaded) {
+export const ProfileLabel: React.FC = () => {
+  const mapState = useCallback((state: WebsiteRootState) => ({
+    user: state.user,
+  }), []);
+  const { user } = useMappedState(mapState);
+  const dispatch = useDispatch();
+  if (!user.isLoaded) {
     return null;
   }
 
-  if (props.user.isLoggedIn && props.user.profile) {
-    const { firstName, lastName } = props.user.profile;
+  if (user.isLoggedIn && user.profile) {
+    const { firstName, lastName } = user.profile;
 
     return (
       <React.Fragment>
         <button
           className="ProfileLabel ProfileLabel--authenticated"
-          onClick={props.openYourModal}
+          onClick={() => dispatch(userActions.openYourModal())}
           type="button"
         >
           <ProfileIcon className="ProfileLabel__icon" />
@@ -40,8 +35,8 @@ const ProfileLabelComponent = (props: ProfileLabelProps) => {
         </button>
 
         <YourPage
-          isOpen={props.user.yourModalOpen}
-          onRequestClose={props.closeYourModal}
+          isOpen={user.yourModalOpen}
+          onRequestClose={() => dispatch(userActions.closeYourModal())}
         />
       </React.Fragment>
     );
@@ -53,28 +48,16 @@ const ProfileLabelComponent = (props: ProfileLabelProps) => {
         <button
           className="ProfileLabel__textual-button"
           type="button"
-          onClick={props.openLoginModal}
+          onClick={() => dispatch(userActions.openLoginModal())}
         >
           Log in
         </button>
       </div>
 
       <LoginModal
-        isOpen={props.user.loginModalOpen}
-        onRequestClose={props.closeLoginModal}
+        isOpen={user.loginModalOpen}
+        onRequestClose={() => dispatch(userActions.closeLoginModal())}
       />
     </React.Fragment>
   );
 };
-
-export const ProfileLabel = connect(
-  (state: WebsiteRootState) => ({
-    user: state.user,
-  }),
-  {
-    openLoginModal: userActions.openLoginModal,
-    closeLoginModal: userActions.closeLoginModal,
-    openYourModal: userActions.openYourModal,
-    closeYourModal: userActions.closeYourModal,
-  },
-)(ProfileLabelComponent);

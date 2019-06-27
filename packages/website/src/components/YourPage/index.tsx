@@ -1,35 +1,34 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import { Modal } from '../Modal';
-import { connect } from 'react-redux';
-import { UserState } from '../../ducks/user';
-import { PageState } from '../../ducks/page';
 import { Accordion } from '../Accordion';
 import { AccordionItem } from '../Accordion/AccordionItem';
 import getApolloClientForFalmer from '@ussu/common/src/libs/getApolloClientForFalmer';
 import { BannerOutlet } from '../BannerOutlet';
 import { ApolloProvider } from 'react-apollo';
 import { WebsiteRootState } from '../../types/website';
+import {useMappedState} from 'redux-react-hook';
 
 interface YourPageProps {
-  user: UserState;
-  page: PageState;
   isOpen: boolean;
 }
 
-const YourPageComponent: React.FC<YourPageProps & ReactModal.Props> = (
+export const YourPage: React.FC<YourPageProps & ReactModal.Props> = (
   props,
 ) => {
-  if (!props.user || !props.user.profile) {
+  const mapState = useCallback((state: WebsiteRootState) => ({
+    user: state.user,
+    page: state.page,
+  }), []);
+  const { user, page: { menu } } = useMappedState(mapState);
+
+  if (!user || !user.profile) {
     return null;
   }
-
-  const { actionBound } = props.user;
-  const { menu } = props.page;
 
   return (
     <Modal size="small" {...props} footerClose>
       <h2 className="Modal__heading">
-        {props.user.profile.firstName} {props.user.profile.lastName}
+        {user.profile.firstName} {user.profile.lastName}
       </h2>
 
       <ApolloProvider client={getApolloClientForFalmer}>
@@ -88,7 +87,7 @@ const YourPageComponent: React.FC<YourPageProps & ReactModal.Props> = (
 
         <button
           className="Button Button--color-red"
-          onClick={actionBound || undefined}
+          onClick={user.actionBound || undefined}
           type="button"
         >
           Log out
@@ -101,8 +100,3 @@ const YourPageComponent: React.FC<YourPageProps & ReactModal.Props> = (
     </Modal>
   );
 };
-
-export const YourPage = connect((state: WebsiteRootState) => ({
-  user: state.user,
-  page: state.page,
-}))(YourPageComponent);

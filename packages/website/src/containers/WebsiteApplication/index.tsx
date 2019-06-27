@@ -22,6 +22,7 @@ import {
 } from 'react-router';
 import { ScrollToTop } from '../../components/ScrollToTop';
 import { useDispatch } from 'redux-react-hook';
+import {SearchProps} from "../../components/SearchApp";
 
 interface WebsiteApplicationProps extends RouteComponentProps {
   appMountState: AppMountState;
@@ -35,6 +36,10 @@ const LoadableSearchApp = Loadable({
   loading: LoadableLoading,
   loader: () =>
     import(/* webpackChunkName: "searchapp" */ '../../components/SearchApp'),
+  render({ Search }, props: SearchProps) {
+    return <Search {...props} />
+  }
+
 });
 
 const LoadableStudentGroupsDiscovery = Loadable({

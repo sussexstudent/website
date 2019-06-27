@@ -2,7 +2,7 @@ import React from 'react';
 import { Sectionbar, SectionbarItem } from '../Sectionbar';
 import { InternalAppLink } from '../InternalAppLink';
 
-export const StudentGroupsSectionbar = () => {
+export const StudentGroupsSectionbar: React.FC = () => {
   return (
     <Sectionbar title="Societies, sports & media">
       <SectionbarItem>

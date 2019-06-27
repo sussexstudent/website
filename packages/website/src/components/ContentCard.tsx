@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-interface IProps {
+interface ContentCardProps {
   anchor?: string;
   children?: any;
   bleed?: boolean;
@@ -11,7 +11,7 @@ const ContentCard = ({
   anchor = undefined,
   children,
   bleed = false,
-}: IProps) => (
+}: ContentCardProps) => (
   <div className={cx('ContentCard', { 'ContentCard--bleed': bleed })}>
     {anchor !== undefined ? (
       <span className="u-position-anchor" id={anchor} />

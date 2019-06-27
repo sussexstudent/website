@@ -3,12 +3,12 @@ import qs from 'query-string';
 import { ContentPage } from '../containers/content/ContentPage';
 import { bind } from 'bind-decorator';
 
-interface IState {
+interface ContentExplorerState {
   path: string | null;
   pathInput: string;
 }
 
-export class ContentExplorer extends React.Component<{}, IState> {
+export class ContentExplorer extends React.Component<{}, ContentExplorerState> {
   constructor(props: {}) {
     super(props);
 

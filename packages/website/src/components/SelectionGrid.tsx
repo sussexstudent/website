@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface IProps {
+interface SelectionGridProps {
   children: any;
 }
 
-const SelectionGrid = ({ children }: IProps) => (
+const SelectionGrid = ({ children }: SelectionGridProps) => (
   <ul className="SelectionGrid TrailGrid TrailGrid--three">{children}</ul>
 );
 

@@ -16,16 +16,16 @@ interface FigureCollectionBlock {
   };
 }
 
-interface IHomePage extends Page {
+interface HomepagePage extends Page {
   fullTimeOfficers: FigureCollectionBlock[];
   partTimeOfficers: FigureCollectionBlock[];
 }
 
-interface IProps {
-  page: IHomePage;
+interface HomepageProps {
+  page: HomepagePage;
 }
 
-function HomePage(props: IProps) {
+function Homepage(props: HomepageProps) {
   const {
     page: { fullTimeOfficers, partTimeOfficers },
   } = props;
@@ -65,4 +65,4 @@ function HomePage(props: IProps) {
   );
 }
 
-export default HomePage;
+export default Homepage;

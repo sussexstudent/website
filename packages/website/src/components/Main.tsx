@@ -2,11 +2,11 @@ import React from 'react';
 import cx from 'classnames';
 import MSLTag from './MSLTag';
 
-interface IProps {
+interface MainProps {
   legacy: boolean;
 }
 
-const Main: React.FC<IProps> = ({ legacy }) => (
+const Main: React.FC<MainProps> = ({ legacy }) => (
   <main className={cx('Site__content u-keep-footer-down')}>
     {legacy ? (
       <div className={cx('Container')}>

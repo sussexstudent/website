@@ -2,13 +2,13 @@ import React from 'react';
 import { headContent } from '../head';
 import CompProvider from '../components/CompProviders';
 
-interface IProps {
+interface HTMLProps {
   assets: any; // todo
   children: any;
   additionalHead: string[];
 }
 
-const HTML = ({ children, assets, additionalHead = [] }: IProps) => (
+const HTML = ({ children, assets, additionalHead = [] }: HTMLProps) => (
   <CompProvider>
     <html lang="en">
       <head

@@ -1,11 +1,11 @@
 import React from 'react';
 import MSLTag from '../MSLTag';
 
-interface IProps {
+interface MSLAdvertProps {
   position: string;
 }
 
-export const MSLAdvert = ({ position }: IProps) => (
+export const MSLAdvert = ({ position }: MSLAdvertProps) => (
   <div
     className="AdvertBar__advert"
     dangerouslySetInnerHTML={{

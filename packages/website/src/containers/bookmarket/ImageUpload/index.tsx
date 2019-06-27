@@ -9,19 +9,19 @@ import AddImageIcon from '@ussu/common/src/icons/add-image.svg';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
 import classnames from 'classnames';
 
-interface IProps {
+interface ImageUploadProps {
   onUploadComplete(data: FalmerImage): void;
   image?: FalmerImage;
 }
 
-interface IState {
+interface ImageUploadState {
   isUploading: boolean;
   uploaded: boolean;
   error: null | any;
 }
 
-class ImageUpload extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class ImageUpload extends React.Component<ImageUploadProps, ImageUploadState> {
+  constructor(props: ImageUploadProps) {
     super(props);
 
     this.state = {

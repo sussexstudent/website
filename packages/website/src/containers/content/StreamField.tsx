@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import blocksMap from '../content/blocksMap';
 import { Page, StreamFieldBlock } from './types';
 
-interface IProps {
+interface StreamFieldProps {
   page: any;
   items: any[];
   renderItem?(props: {
@@ -14,7 +14,7 @@ interface IProps {
   }): ReactElement | null;
 }
 
-const StreamField: React.FC<IProps> = ({ items, page, renderItem }) => {
+const StreamField: React.FC<StreamFieldProps> = ({ items, page, renderItem }) => {
   return (
     <React.Fragment>
       {items.map((item, index) => {

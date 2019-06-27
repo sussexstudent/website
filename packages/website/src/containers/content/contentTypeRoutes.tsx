@@ -2,7 +2,7 @@ import React from 'react';
 import Loadable from 'react-loadable';
 import { LoadableLoading } from '../../components/LoadableLoading';
 import GenericContentStreamPage from './pages/GenericContentStreamPage';
-import HomePage from './pages/HomePage';
+import Homepage from './pages/Homepage';
 import { SectionContentPage } from './pages/SectionContentPage';
 import AnswerPage from '../content/pages/AnswerPage';
 import ReferencePage from './pages/ReferencePage';
@@ -62,7 +62,7 @@ const pageRouter = (
 };
 
 export default {
-  HomePage,
+  HomePage: Homepage,
   StaffPage: pageRouter(StaffPage),
   SectionContentPage: pageRouter(SectionContentPage),
 

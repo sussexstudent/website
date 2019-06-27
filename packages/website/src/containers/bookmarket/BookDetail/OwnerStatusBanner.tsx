@@ -4,7 +4,7 @@ import CHANGE_STATE_MUTATION from './ChangeState.graphql';
 import Deckchair from '../../../components/Deckchair';
 import { Mutation } from 'react-apollo';
 
-interface IProps {
+interface OwnerStatusBannerProps {
   state: MarketListingState;
   listingId: number;
 }
@@ -12,7 +12,7 @@ class ChangeStateMutation extends Mutation<{
   changeState(data: any): Promise<{}>;
 }> {}
 
-export function OwnerStatusBanner({ state, listingId }: IProps) {
+export function OwnerStatusBanner({ state, listingId }: OwnerStatusBannerProps) {
   return (
     <ChangeStateMutation mutation={CHANGE_STATE_MUTATION}>
       {(changeState) => (

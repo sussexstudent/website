@@ -9,7 +9,7 @@ import { AspectRatio, OneImage } from '../../../components/OneImage';
 import { NoListItems } from '../NoListItems';
 import { formatPrice } from '@ussu/common/src/libs/money';
 
-interface IProps {
+interface ListingListProps {
   items: MarketListing[];
   ownUser?: boolean;
 }
@@ -21,7 +21,7 @@ const stateLangMap = {
   [MarketListingState.Unlisted]: 'Unlisted',
 };
 
-const ListingList: React.FC<IProps> = (props: IProps) => {
+const ListingList: React.FC<ListingListProps> = (props: ListingListProps) => {
   if (props.items.length <= 0) {
     return <NoListItems />;
   }

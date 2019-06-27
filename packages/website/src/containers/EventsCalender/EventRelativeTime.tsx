@@ -4,11 +4,11 @@ import formatDistance from 'date-fns/formatDistance';
 import subMinutes from 'date-fns/subMinutes';
 import { Event } from '@ussu/common/src/types/events';
 
-interface IProps {
+interface EventRelativeTimeProps {
   event: Event;
 }
 
-const EventRelativeTime: React.FC<IProps> = ({ event }) => {
+const EventRelativeTime: React.FC<EventRelativeTimeProps> = ({ event }) => {
   const startsSoon = isWithinInterval(new Date(), {
     start: subMinutes(new Date(event.startTime), 90),
     end: new Date(event.startTime),

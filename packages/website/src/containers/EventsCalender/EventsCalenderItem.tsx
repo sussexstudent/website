@@ -45,7 +45,7 @@ function getTreat(event: Event) {
   return null;
 }
 
-interface IProps {
+interface EventsCalenderItemProps {
   relative?: boolean;
   showDay?: boolean;
   inline?: boolean;
@@ -55,7 +55,7 @@ interface IProps {
   };
 }
 
-const EventsCalenderItem: React.FC<IProps> = ({
+const EventsCalenderItem: React.FC<EventsCalenderItemProps> = ({
   part,
   inline = false,
   showDay = false,

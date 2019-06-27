@@ -6,9 +6,7 @@ import { AppMountState } from '../ducks/router';
 import {LokiHeader} from '../components/LokiHeader';
 import Footer from '../components/Footer';
 
-interface IProps {}
-
-const Website: React.FC<IProps> = () => {
+const Website: React.FC = () => {
   return (
     <React.Fragment>
       <LokiHeader />

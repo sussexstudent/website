@@ -1,13 +1,13 @@
 import React from 'react';
 import { OneImageBackground } from './OneImage';
 
-interface IProps {
+interface SelectionGridItemProps {
   link: string;
   imageURL: string;
   title: string;
 }
 
-const SelectionGridItem = ({ link, imageURL, title }: IProps) => (
+const SelectionGridItem = ({ link, imageURL, title }: SelectionGridItemProps) => (
   <li
     className="SelectionGrid__item SelectionGrid--underneath TrailGrid__item"
     key={link}

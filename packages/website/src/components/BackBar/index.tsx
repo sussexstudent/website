@@ -1,13 +1,13 @@
 import React from 'react';
 import cx from 'classnames';
 
-interface IProps {
+interface BackBarProps {
   color?: 'red' | 'blue' | 'green' | 'slate';
   href: string;
   children: any;
 }
 
-function BackBar({ color = 'blue', href, children }: IProps) {
+function BackBar({ color = 'blue', href, children }: BackBarProps) {
   return (
     <div className={cx('BackBar', `BackBar--color-${color}`)}>
       <a href={href}>

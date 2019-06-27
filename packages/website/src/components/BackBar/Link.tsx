@@ -2,13 +2,13 @@ import React from 'react';
 import cx from 'classnames';
 import { InternalAppLink } from '../InternalAppLink';
 
-interface IProps {
+interface BackBarProps {
   color?: 'red' | 'blue' | 'green' | 'slate';
   to: string;
   children: any;
 }
 
-function BackBar({ color = 'blue', to, children }: IProps) {
+function BackBar({ color = 'blue', to, children }: BackBarProps) {
   return (
     <div className={cx('BackBar', `BackBar--color-${color}`)}>
       <InternalAppLink to={to}>

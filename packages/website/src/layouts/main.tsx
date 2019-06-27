@@ -21,7 +21,7 @@ const mslLogout = MSLTag('LoginButton', {
   GoHomeOnLogout: 'True',
 });
 
-interface IProps {
+interface MainLayoutProps {
   legacy: boolean;
   loggedIn: boolean;
   assets: {
@@ -36,7 +36,7 @@ interface IProps {
   };
 }
 
-const mainLayout: React.FC<IProps> = ({ assets, legacy }) => {
+const mainLayout: React.FC<MainLayoutProps> = ({ assets, legacy }) => {
   return (
     <div className="Body" id="top">
       <div

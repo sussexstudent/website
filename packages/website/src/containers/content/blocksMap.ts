@@ -12,11 +12,11 @@ import { StartButtonBlock } from './blocks/StartButton';
 import { AlertTextBlock } from './blocks/AlertText';
 import { Pledge } from './blocks/Pledge';
 
-interface BlockComponentMap {
+// These keys are from Wagtail, so we use snake case
+/* eslint-disable @typescript-eslint/camelcase */
+const BlockComponentMap: {
   [blockName: string]: StreamFieldBlock<any>; // todo
-}
-
-export default {
+} = {
   heading: Heading,
   heading_hero: HeadingHeroBlock,
   selection_grid: SelectionGridBlock,
@@ -31,4 +31,4 @@ export default {
   document_link: DocumentLink,
   internal_link: InternalLink,
   pledge: Pledge,
-} as BlockComponentMap;
+};

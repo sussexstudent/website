@@ -31,7 +31,7 @@ async function createPermissionTypes() {
   );
 
   try {
-    await fs.writeFile(path.join(__dirname, '../packages/common/src/types/permissions.generated.ts'), `export enum Permission {\n${permissions.join('\n')}\n}`);
+    await fs.writeFile(path.join(__dirname, '../packages/common/src/types/permissions.generated.ts'), `/* eslint-disable */\nexport enum Permission {\n${permissions.join('\n')}\n}`);
     console.log('Permission types generated!');
   } catch (e) {
     console.error('Error writing permissions types file', e);

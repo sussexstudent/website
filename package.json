@@ -12,7 +12,13 @@
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@types/jest": "^24.0.14",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
     "babel-loader": "^8.0.6",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^5.1.0",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-hooks": "^1.6.1",
     "mini-css-extract-plugin": "^0.7.0"
   },
   "resolutions": {
@@ -28,7 +34,8 @@
     "format": "`yarn bin`/prettier \"packages/*/src/**/*.{ts,tsx,js,css,graphql}\" --write",
     "setup": "node ./scripts/initialSetup.js",
     "test": "NODE_ENV=test && jest",
-    "testc": "NODE_ENV=test && jest --coverage"
+    "testc": "NODE_ENV=test && jest --coverage",
+    "lint": "eslint \"packages/**/src/**/*.{ts,tsx}\""
   },
   "husky": {
     "hooks": {

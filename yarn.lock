@@ -8211,10 +8211,10 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-final-form@^4.14.1:
-  version "4.14.1"
-  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.14.1.tgz#260b680fe89cb1a78ad0f4bd42f589272007eded"
-  integrity sha512-kd1KMH7FL3/qDqNZm1h/OGmdbcNiXSU/19T7aVhQQYhyYM4Oz7mpVOff5wpUMixexExkuzq4hce4zXLeim1/Tg==
+final-form@^4.16.1:
+  version "4.16.1"
+  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.16.1.tgz#1a4047e55d375ae65c799a676c59e85ffeccb4d3"
+  integrity sha512-nUY6ZyFRvnOhSukqpmzm6pt38qYjCA6zSeW630CcfOvy0tBM+Wy0ZLIE36y/QiUfuAtMEJWp8k7GK5LqrqubEw==
   dependencies:
     "@babel/runtime" "^7.3.1"
 

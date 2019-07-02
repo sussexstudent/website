@@ -15,30 +15,30 @@ Modal.setAppElement('.FalmerAppRoot');
 const LoadableMedia = Loadable({
   loader: () => import(/* webpackChunkName: "Media" */ '../FalmerMedia'),
   loading: LoadableLoading,
-}) as any;
+});
 
 const LoadableBookMarket = Loadable({
   loader: () =>
     import(/* webpackChunkName: "BookMarket" */ '../FalmerBookMarket'),
   loading: LoadableLoading,
-}) as any;
+});
 
 const LoadableStudentGroups = Loadable({
   loader: () =>
     import(/* webpackChunkName: "StudentGroups" */ '../FalmerStudentGroups'),
   loading: LoadableLoading,
-}) as any;
+});
 
 const LoadableEvents = Loadable({
   loader: () => import(/* webpackChunkName: "Events" */ '../FalmerEvents'),
   loading: LoadableLoading,
-}) as any;
+});
 
 const LoadableDashboard = Loadable({
   loader: () =>
     import(/* webpackChunkName: "Dashboard" */ '../FalmerDashboard'),
   loading: LoadableLoading,
-}) as any;
+});
 
 const LoadableFeaturedAreas = Loadable({
   loader: () =>

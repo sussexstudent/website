@@ -19,6 +19,8 @@
     "eslint-config-prettier": "^5.1.0",
     "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-react-hooks": "^1.6.1",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.0.0",
     "mini-css-extract-plugin": "^0.7.0"
   },
   "resolutions": {
@@ -43,12 +45,10 @@
     }
   },
   "lint-staged": {
-    "linters": {
-      "*.{ts,tsx,css,graphql}": [
-        "yarn prettier --write",
-        "git add"
-      ]
-    }
+    "*.{ts,tsx,css,graphql}": [
+       "yarn prettier --write",
+       "git add"
+    ]
   },
   "jest": {
     "moduleNameMapper": {

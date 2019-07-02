@@ -6,8 +6,8 @@ import { MarketListing } from '@ussu/common/src/types/market';
 import { ListingList } from '../ListingList';
 import { Field, Form } from 'react-final-form';
 import Helmet from 'react-helmet';
-import { HandledQuery } from '../../../components/HandledQuery';
 import { InternalAppLink } from '../../../components/InternalAppLink';
+import {HandledQuery} from "../HandledQuery";
 
 interface OwnProps {
   sectionSlug?: string;

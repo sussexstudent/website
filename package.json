@@ -27,7 +27,7 @@
   "dependencies": {
     "awesome-typescript-loader": "^5.2.1",
     "jest": "^24.8.0",
-    "webpack": "^4.34.0"
+    "webpack": "^4.35.2"
   },
   "scripts": {
     "heroku-postbuild": "yarn setup && yarn san:front-prod && yarn san:server-prod",

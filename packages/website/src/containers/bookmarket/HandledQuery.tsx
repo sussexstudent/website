@@ -1,7 +1,7 @@
 import React from 'react';
 import { Query, QueryProps } from 'react-apollo';
-import Loader from './Loader';
-import { ErrorState } from './ErrorState';
+import Loader from '../../components/Loader';
+import { ErrorState } from '../../components/ErrorState';
 
 interface HandledQueryProps<TData, TVariables>
   extends QueryProps<TData, TVariables> {

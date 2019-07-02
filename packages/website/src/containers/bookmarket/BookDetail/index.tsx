@@ -11,12 +11,12 @@ import { ImageUpload } from '../ImageUpload';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
 import { CurrentUserProps, CurrentUserQuery } from '../currentUserData';
 import Helmet from 'react-helmet';
-import { HandledQuery } from '../../../components/HandledQuery';
 import { OwnerStatusBanner } from './OwnerStatusBanner';
 import { formatPrice } from '@ussu/common/src/libs/money';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { RouteComponentProps } from 'react-router';
 import { adopt } from '../../../components/Adopt';
+import {HandledQuery} from "../HandledQuery";
 
 interface OwnProps extends RouteComponentProps<{ listingId: string }> {}
 

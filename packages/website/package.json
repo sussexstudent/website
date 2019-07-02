@@ -13,7 +13,7 @@
     "apollo-link-http": "^1.5.15",
     "bind-decorator": "^1.0.11",
     "classnames": "^2.2.6",
-    "date-fns": "^2.0.0-alpha.33",
+    "date-fns": "^2.0.0-beta.2",
     "final-form": "^4.16.1",
     "graphql": "^14.4.1",
     "graphql-tag": "^2.10.1",

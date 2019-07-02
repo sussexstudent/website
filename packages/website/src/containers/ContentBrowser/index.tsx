@@ -9,7 +9,9 @@ interface Result {
   page: ContentBrowserPage;
 }
 
-export const ContentBrowserContainer: React.FC<RouteComponentProps> = (props) => {
+export const ContentBrowserContainer: React.FC<RouteComponentProps> = (
+  props,
+) => {
   const { data, loading } = useQuery<Result>(CONTENT_BROWSER_QUERY);
   if (!data || loading) return null;
 

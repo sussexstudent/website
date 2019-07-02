@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import convert from 'htmr';
 import BANNER_QUERY from './AllActiveBanners.graphql';
-import {useQuery} from 'react-apollo-hooks';
+import { useQuery } from 'react-apollo-hooks';
 
 interface BannerOutletProps {
   outlet: string;
@@ -21,7 +21,7 @@ interface Result {
 }
 
 export const BannerOutlet: React.FC<BannerOutletProps> = ({ outlet }) => {
-  const { data, loading} = useQuery<Result>(BANNER_QUERY);
+  const { data, loading } = useQuery<Result>(BANNER_QUERY);
 
   if (loading || !data) {
     return null;
@@ -38,21 +38,18 @@ export const BannerOutlet: React.FC<BannerOutletProps> = ({ outlet }) => {
   return (
     <ul className="BannerList List--reset">
       {!loading &&
-      data &&
-      suitableBanners.map((banner) => (
-        <li
-          className={cx('Banner', `Banner--purpose-${banner.purpose}`)}
-          key={banner.id}
-        >
-          <div className="Banner__heading type-pica">
-            {banner.heading}
-          </div>
-          <div className="Banner__body type-long-primer">
-            {convert(banner.body)}
-          </div>
-        </li>
-      ))}
+        data &&
+        suitableBanners.map((banner) => (
+          <li
+            className={cx('Banner', `Banner--purpose-${banner.purpose}`)}
+            key={banner.id}
+          >
+            <div className="Banner__heading type-pica">{banner.heading}</div>
+            <div className="Banner__body type-long-primer">
+              {convert(banner.body)}
+            </div>
+          </li>
+        ))}
     </ul>
   );
-
 };

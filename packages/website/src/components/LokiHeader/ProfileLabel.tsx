@@ -1,16 +1,19 @@
-import React, {useCallback} from 'react';
+import React, { useCallback } from 'react';
 import ProfileIcon from '@ussu/common/src/icons/user.svg';
 import UserChevronIcon from '@ussu/common/src/icons/user-chevron.svg';
 import * as userActions from '../../ducks/user';
 import { LoginModal } from '../LoginModal';
 import { YourPage } from '../YourPage';
 import { WebsiteRootState } from '../../types/website';
-import {useDispatch, useMappedState} from 'redux-react-hook';
+import { useDispatch, useMappedState } from 'redux-react-hook';
 
 export const ProfileLabel: React.FC = () => {
-  const mapState = useCallback((state: WebsiteRootState) => ({
-    user: state.user,
-  }), []);
+  const mapState = useCallback(
+    (state: WebsiteRootState) => ({
+      user: state.user,
+    }),
+    [],
+  );
   const { user } = useMappedState(mapState);
   const dispatch = useDispatch();
   if (!user.isLoaded) {

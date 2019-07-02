@@ -5,10 +5,10 @@ import { LoadableLoading } from '../../components/LoadableLoading';
 import { Sectionbar, SectionbarItem } from '../../components/Sectionbar';
 import { RouteComponent } from '@ussu/common/src/types/routes';
 import { ScrollToTop } from '../../components/ScrollToTop';
-import {EventBundleProps} from "../EventsCalender/EventBundle";
-import {EventsListProps} from "../EventsCalender";
-import {EventBrandingPeriod} from "../EventsCalender/EventBrandingPeriod";
-import {EventDetailPageProps} from "../EventDetailPage";
+import { EventBundleProps } from '../EventsCalender/EventBundle';
+import { EventsListProps } from '../EventsCalender';
+import { EventBrandingPeriod } from '../EventsCalender/EventBrandingPeriod';
+import { EventDetailPageProps } from '../EventDetailPage';
 
 const LoadableListings = Loadable({
   loading: LoadableLoading,
@@ -24,7 +24,7 @@ const LoadableListingsBranding = Loadable({
   loader: () =>
     import(
       /* webpackChunkName: "events.listings.brand" */ '../EventsCalender/EventBrandingPeriod'
-      ),
+    ),
   render({ EventBrandingPeriod }, props: EventBrandingPeriod) {
     return <EventBrandingPeriod {...props} />;
   },
@@ -35,9 +35,9 @@ const LoadableBundle = Loadable({
   loader: () =>
     import(
       /* webpackChunkName: "events.listings.bundle" */ '../EventsCalender/EventBundle'
-      ),
+    ),
   render({ EventBundle }, props: EventBundleProps) {
-    return <EventBundle {...props} />
+    return <EventBundle {...props} />;
   },
 });
 
@@ -46,9 +46,8 @@ const LoadableDetail = Loadable({
   loader: () =>
     import(/* webpackChunkName: "events.detail" */ '../EventDetailPage'),
   render({ EventDetailPage }, props: EventDetailPageProps) {
-    return <EventDetailPage {...props} />
+    return <EventDetailPage {...props} />;
   },
-
 });
 
 type EventsApplicationProps = RouteComponent;

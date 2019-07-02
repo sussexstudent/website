@@ -20,7 +20,7 @@ export default function ready() {
     ReactDOM.render(
       <ApolloProvider client={getApolloClientForFalmer}>
         <StoreContext.Provider value={store}>
-            <TrophyCabinet slug={match[1]} />
+          <TrophyCabinet slug={match[1]} />
         </StoreContext.Provider>
       </ApolloProvider>,
       sidebarBottom,
@@ -35,9 +35,9 @@ export default function ready() {
     siteContent.insertBefore(topOfContent, siteContent.firstChild);
 
     ReactDOM.render(
-        <StoreContext.Provider value={store}>
-          <StudentGroupsSectionbar />
-        </StoreContext.Provider>,
+      <StoreContext.Provider value={store}>
+        <StudentGroupsSectionbar />
+      </StoreContext.Provider>,
       topOfContent,
     );
   }

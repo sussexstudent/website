@@ -1,5 +1,5 @@
-import {useMemo, useEffect} from "react";
-import {throttle} from "lodash";
+import { useMemo, useEffect } from 'react';
+import { throttle } from 'lodash';
 
 export const useThrottle = <T extends (...args: any) => any>(
   fn: T,

@@ -7,7 +7,8 @@ import { RouteComponentProps } from 'react-router';
 import { useQuery } from 'react-apollo-hooks';
 import Loader from '../../components/Loader';
 
-export interface EventBrandingPeriod extends RouteComponentProps<{ brandSlug: string }> {
+export interface EventBrandingPeriod
+  extends RouteComponentProps<{ brandSlug: string }> {
   filter: any;
 }
 

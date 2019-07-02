@@ -14,7 +14,7 @@ export default function() {
       <ApolloProvider client={getApolloClientForFalmer}>
         <APHook client={getApolloClientForFalmer}>
           <ReduxHooks.Provider value={store}>
-              <LokiHeaderInner />
+            <LokiHeaderInner />
           </ReduxHooks.Provider>
         </APHook>
       </ApolloProvider>

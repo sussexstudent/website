@@ -23,7 +23,10 @@ interface RouteParams {
 
 export type EventDetailPageProps = RouteComponentProps<RouteParams>;
 
-export const EventDetailPage: React.FC<EventDetailPageProps> = ({ match, history }) => {
+export const EventDetailPage: React.FC<EventDetailPageProps> = ({
+  match,
+  history,
+}) => {
   const [mslData, setMslData] = useState<any>(null);
   // const [_ticketModal, setTicketModal] = useState(false);
   const { data, loading } = useQuery(DetailPageQuery, {

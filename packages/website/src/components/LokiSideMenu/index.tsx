@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import SocialMenu from '../SocialMenu';
-import {UserBar} from '../UserBar';
+import { UserBar } from '../UserBar';
 import { LokiMenu } from '../LokiMenu';
 
 interface LokiSideMenuProps {
@@ -10,7 +10,10 @@ interface LokiSideMenuProps {
   onBackdropClick(): void;
 }
 
-export const LokiSideMenu: React.FC<LokiSideMenuProps> = ({ isOpen, onBackdropClick }) => {
+export const LokiSideMenu: React.FC<LokiSideMenuProps> = ({
+  isOpen,
+  onBackdropClick,
+}) => {
   // const [isThisPageOpen, setThisPageOpen] = useState(false);
   // const [isAdminOpen, setThisAdminOpen] = useState(false);
 

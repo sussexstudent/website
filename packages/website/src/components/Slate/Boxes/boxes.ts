@@ -1,6 +1,6 @@
 import { SlateBoxImpulseButton } from './ImpulseButton';
 import { SlateBoxSimpleBranded } from './SimpleBranded';
-import {BoxType} from '@ussu/common/src/types/slates';
+import { BoxType } from '@ussu/common/src/types/slates';
 import { SlateBoxEmpty } from './Empty';
 import { SlateBoxVoteNow } from './VoteNow';
 import { mapValues } from 'lodash';

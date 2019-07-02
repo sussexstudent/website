@@ -1,8 +1,8 @@
-import React, {useState, useCallback, useEffect} from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import cx from 'classnames';
 import client, { ClientAuth } from '@ussu/common/src/libs/user';
 import { WebsiteRootState } from '../../types/website';
-import {useMappedState} from 'redux-react-hook';
+import { useMappedState } from 'redux-react-hook';
 
 enum DropdownState {
   Page,
@@ -24,19 +24,28 @@ export const UserBar: React.FC = ({}) => {
     greetingIndex: 0,
   });
 
-  const handleToggleDropdown = useCallback((dropdown: DropdownState) => () => {
-    setState(state => ({
-    ...state,
+  const handleToggleDropdown = useCallback(
+    (dropdown: DropdownState) => () => {
+      setState((state) => ({
+        ...state,
         dropdownOpen: dropdown === state.dropdownOpen ? null : dropdown,
-    }));
-  }, []);
+      }));
+    },
+    [],
+  );
 
-  const mapState = useCallback((state: WebsiteRootState) => ({
-    page: state.page,
-    user: state.user,
-  }), []);
+  const mapState = useCallback(
+    (state: WebsiteRootState) => ({
+      page: state.page,
+      user: state.user,
+    }),
+    [],
+  );
 
-  const { page: { menu }, user: { isLoaded, isLoggedIn, profile, actionBound } } = useMappedState(mapState);
+  const {
+    page: { menu },
+    user: { isLoaded, isLoggedIn, profile, actionBound },
+  } = useMappedState(mapState);
 
   useEffect(() => {
     setTimeout(() => {
@@ -52,22 +61,20 @@ export const UserBar: React.FC = ({}) => {
     (window as any).emitter.on('changePageOptions', (_options: any) => {});
   }, []);
 
-    if (!isLoaded) {
-      return (
-        <ul className="UserBar__list" style={{ visibility: 'hidden' }}>
-          <li className="UserBar__item UserBar__item">Loading</li>
-        </ul>
-      );
-    }
+  if (!isLoaded) {
+    return (
+      <ul className="UserBar__list" style={{ visibility: 'hidden' }}>
+        <li className="UserBar__item UserBar__item">Loading</li>
+      </ul>
+    );
+  }
 
   const { dropdownOpen } = state;
 
   if (isLoggedIn && profile) {
     return (
       <ul className="UserBar__list">
-        <li
-          className="UserBar__item UserBar__item--welcome"
-        >
+        <li className="UserBar__item UserBar__item--welcome">
           Hi {profile.firstName}!
         </li>
         <li className="UserBar__item UserBar__item--action">
@@ -85,7 +92,10 @@ export const UserBar: React.FC = ({}) => {
               },
             )}
           >
-            <button onClick={handleToggleDropdown(DropdownState.Admin)} type="button">
+            <button
+              onClick={handleToggleDropdown(DropdownState.Admin)}
+              type="button"
+            >
               Admin
             </button>
             {dropdownOpen === DropdownState.Admin ? (
@@ -116,7 +126,10 @@ export const UserBar: React.FC = ({}) => {
               },
             )}
           >
-            <button onClick={handleToggleDropdown(DropdownState.Page)} type="button">
+            <button
+              onClick={handleToggleDropdown(DropdownState.Page)}
+              type="button"
+            >
               Page
             </button>
             {dropdownOpen === DropdownState.Page ? (

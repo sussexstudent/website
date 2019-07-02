@@ -5,9 +5,11 @@ import { TrophyModal } from './TrophyModal';
 import { Group } from '@ussu/common/src/types/awards';
 import { isWithinInterval } from 'date-fns';
 import { PeriodList } from './PeriodList';
-import {useQuery} from 'react-apollo-hooks';
+import { useQuery } from 'react-apollo-hooks';
 
-interface Result { group: Group }
+interface Result {
+  group: Group;
+}
 
 interface Props {
   slug: string;
@@ -29,9 +31,7 @@ const TrophyCabinetContent: React.FC<Result> = ({ group }) => {
         <PeriodList data={filtered} />
       ) : (
         <div className="ContentCard__error-message">
-                  <span>
-                    It looks like there are no awards for the current period!
-                  </span>
+          <span>It looks like there are no awards for the current period!</span>
         </div>
       )}
 
@@ -48,15 +48,20 @@ const TrophyCabinetContent: React.FC<Result> = ({ group }) => {
         data={group.awards}
       />
     </React.Fragment>
-  );};
+  );
+};
 
 const TrophyCabinet: React.FC<Props> = ({ slug }) => {
-  const { data, loading } = useQuery<Result>(AllAwardsQuery, { variables: { slug }});
+  const { data, loading } = useQuery<Result>(AllAwardsQuery, {
+    variables: { slug },
+  });
 
   return (
     <ContentCard>
       <h3>Trophy Cabinet</h3>
-      {loading || !data || !data.group === null ? null : <TrophyCabinetContent group={data.group} />}
+      {loading || !data || !data.group === null ? null : (
+        <TrophyCabinetContent group={data.group} />
+      )}
     </ContentCard>
   );
 };

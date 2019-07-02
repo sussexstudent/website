@@ -13,7 +13,7 @@ import { useHover } from './useHover';
 import { MenuItem } from '@ussu/common/src/types/skeleton';
 import { WebsiteRootState } from '../../types/website';
 import { LokiMenuDropover } from './LokiMenuDropover';
-import {useDispatch, useMappedState} from 'redux-react-hook';
+import { useDispatch, useMappedState } from 'redux-react-hook';
 
 export const LokiHeaderInner: React.FC = () => {
   const [dropoverRef, isDropoverHovering] = useHover<HTMLDivElement>();
@@ -21,9 +21,12 @@ export const LokiHeaderInner: React.FC = () => {
   const [latestItem, setLatestItem] = useState<MenuItem>(MenuItem.GetInvolved);
   const [hasMounted, setMounted] = useState(false);
 
-  const mapState = useCallback((state: WebsiteRootState) => ({
-    isOpenMobileMenu: state.page.isOpenMobileMenu,
-  }), []);
+  const mapState = useCallback(
+    (state: WebsiteRootState) => ({
+      isOpenMobileMenu: state.page.isOpenMobileMenu,
+    }),
+    [],
+  );
   const { isOpenMobileMenu } = useMappedState(mapState);
   const dispatch = useDispatch();
 
@@ -74,7 +77,9 @@ export const LokiHeaderInner: React.FC = () => {
         </div>
         <button
           className="LokiHeader__button-mobile LokiHeader__button-mobile--menu"
-          onClick={() => dispatch(pageActions.toggleMobileMenu(!isOpenMobileMenu))}
+          onClick={() =>
+            dispatch(pageActions.toggleMobileMenu(!isOpenMobileMenu))
+          }
           type="button"
         >
           {isOpenMobileMenu ? <CrossIcon /> : <MenuIcon />}
@@ -84,7 +89,9 @@ export const LokiHeaderInner: React.FC = () => {
         </button>
         <LokiSideMenu
           isOpen={isOpenMobileMenu}
-          onBackdropClick={() => dispatch(pageActions.toggleMobileMenu(!isOpenMobileMenu))}
+          onBackdropClick={() =>
+            dispatch(pageActions.toggleMobileMenu(!isOpenMobileMenu))
+          }
         />
       </div>
       {hasMounted &&

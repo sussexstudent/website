@@ -1,4 +1,4 @@
-import React, {useCallback, useReducer, useEffect} from 'react';
+import React, { useCallback, useReducer, useEffect } from 'react';
 import qs from 'query-string';
 import { Sectionbar } from '../Sectionbar';
 import cx from 'classnames';
@@ -11,9 +11,14 @@ import { Location } from 'history';
 import { RouteComponentProps } from 'react-router';
 import { getFirstItemOrValue } from '@ussu/common/src/libs/qs';
 import { WebsiteRootState } from '../../types/website';
-import {useMappedState, useDispatch} from 'redux-react-hook';
-import {useThrottle} from "../../hooks/useThrottle";
-import {getPayloadMetadata, GraphQLAreas, querySearch, SearchPayload} from "./utils";
+import { useMappedState, useDispatch } from 'redux-react-hook';
+import { useThrottle } from '../../hooks/useThrottle';
+import {
+  getPayloadMetadata,
+  GraphQLAreas,
+  querySearch,
+  SearchPayload,
+} from './utils';
 
 export interface SearchProps extends RouteComponentProps<{}> {
   query: string;
@@ -99,9 +104,10 @@ const reducer: React.Reducer<SearchState, ActionTypes> = (state, action) => {
         ...state,
         latestQuery: action.payload.query,
         isLoading: true,
-      }
+      };
     }
-    default: return state;
+    default:
+      return state;
   }
 };
 
@@ -114,13 +120,15 @@ function getParams(location: Location): { area: GraphQLAreas } {
 }
 
 export const Search: React.FC<SearchProps> = ({ location }) => {
-  const mapState = useCallback((state: WebsiteRootState) => ({
-    query: state.router.searchQuery,
-  }), []);
+  const mapState = useCallback(
+    (state: WebsiteRootState) => ({
+      query: state.router.searchQuery,
+    }),
+    [],
+  );
 
   const { query } = useMappedState(mapState);
   const dispatch = useDispatch();
-
 
   const [state, dispatchState] = useReducer(reducer, {
     page:
@@ -134,36 +142,49 @@ export const Search: React.FC<SearchProps> = ({ location }) => {
     latestQuery: '',
   });
 
-  const handleSearchInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(routerActions.setSearchValue(e.currentTarget.value));
-  }, [dispatch]);
+  const handleSearchInput = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      dispatch(routerActions.setSearchValue(e.currentTarget.value));
+    },
+    [dispatch],
+  );
 
   const load = useCallback((givenQuery: string) => {
     dispatchState({ type: 'LATEST_QUERY', payload: { query: givenQuery } });
-    querySearch(givenQuery)
-      .then((payload) => {
-          dispatchState({ type: 'QUERY_RESULT', payload: {
-              data: payload,
-              query: givenQuery,
-            } });
-      })}, []);
+    querySearch(givenQuery).then((payload) => {
+      dispatchState({
+        type: 'QUERY_RESULT',
+        payload: {
+          data: payload,
+          query: givenQuery,
+        },
+      });
+    });
+  }, []);
 
   const loadQueryResults = useThrottle(load, 800);
 
-  useEffect((forceSearchTerm: string | null = null) => {
-    const selectedQuery = forceSearchTerm === null ? query : forceSearchTerm;
+  useEffect(
+    (forceSearchTerm: string | null = null) => {
+      const selectedQuery = forceSearchTerm === null ? query : forceSearchTerm;
 
-    if (query !== '') {
-      loadQueryResults(selectedQuery);
-    } else {
-      dispatchState({ type: 'EMPTY_QUERY' })
-    }
-  }, [query]);
-
-
+      if (query !== '') {
+        loadQueryResults(selectedQuery);
+      } else {
+        dispatchState({ type: 'EMPTY_QUERY' });
+      }
+    },
+    [query],
+  );
 
   const { area } = getParams(location);
-  const { itemsByArea, isLoading, hasResults, orderedAreas, latestQuery } = state;
+  const {
+    itemsByArea,
+    isLoading,
+    hasResults,
+    orderedAreas,
+    latestQuery,
+  } = state;
 
   const containerclassNamees = cx('SearchApp__container', {
     'SearchApp__container--is-loading': isLoading === true,
@@ -182,14 +203,9 @@ export const Search: React.FC<SearchProps> = ({ location }) => {
     metaContent = <span className="SearchMeta__note">No results found.</span>;
   }
 
-
   return (
     <div>
-      <Helmet
-        title={
-          query ? `Search for "${query}"` : 'Search'
-        }
-      />
+      <Helmet title={query ? `Search for "${query}"` : 'Search'} />
       <Sectionbar title="Search">
         <input
           className="SearchApp__mobile-search-input"
@@ -219,15 +235,13 @@ export const Search: React.FC<SearchProps> = ({ location }) => {
             </ul>
           ) : null}
           {!isLoading &&
-            query === latestQuery &&
+          query === latestQuery &&
           itemsByArea !== null &&
           itemsByArea[area].length === 0 ? (
             <NoListItems />
           ) : null}
         </div>
-
       </div>
     </div>
   );
 };
-

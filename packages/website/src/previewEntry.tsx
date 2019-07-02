@@ -43,9 +43,9 @@ ReactDOM.render(
   <BrowserRouter>
     <ApolloProvider client={getApolloClientForFalmer}>
       <ApolloProviderHooks client={getApolloClientForFalmer}>
-          <StoreContext.Provider value={store}>
-            <Website />
-          </StoreContext.Provider>
+        <StoreContext.Provider value={store}>
+          <Website />
+        </StoreContext.Provider>
       </ApolloProviderHooks>
     </ApolloProvider>
   </BrowserRouter>,

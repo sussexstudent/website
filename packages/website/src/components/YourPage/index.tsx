@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, { useCallback } from 'react';
 import { Modal } from '../Modal';
 import { Accordion } from '../Accordion';
 import { AccordionItem } from '../Accordion/AccordionItem';
@@ -6,20 +6,24 @@ import getApolloClientForFalmer from '@ussu/common/src/libs/getApolloClientForFa
 import { BannerOutlet } from '../BannerOutlet';
 import { ApolloProvider } from 'react-apollo';
 import { WebsiteRootState } from '../../types/website';
-import {useMappedState} from 'redux-react-hook';
+import { useMappedState } from 'redux-react-hook';
 
 interface YourPageProps {
   isOpen: boolean;
 }
 
-export const YourPage: React.FC<YourPageProps & ReactModal.Props> = (
-  props,
-) => {
-  const mapState = useCallback((state: WebsiteRootState) => ({
-    user: state.user,
-    page: state.page,
-  }), []);
-  const { user, page: { menu } } = useMappedState(mapState);
+export const YourPage: React.FC<YourPageProps & ReactModal.Props> = (props) => {
+  const mapState = useCallback(
+    (state: WebsiteRootState) => ({
+      user: state.user,
+      page: state.page,
+    }),
+    [],
+  );
+  const {
+    user,
+    page: { menu },
+  } = useMappedState(mapState);
 
   if (!user || !user.profile) {
     return null;

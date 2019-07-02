@@ -1,4 +1,4 @@
-import React, {useReducer, useCallback, useEffect} from 'react';
+import React, { useReducer, useCallback, useEffect } from 'react';
 import { keyBy } from 'lodash';
 import Fuse from 'fuse.js';
 import OrganisationGrid from '../OrganisationGrid';
@@ -6,8 +6,8 @@ import STUDENT_GROUP_LISTING_QUERY from './StudentGroupListings.graphql';
 import { StudentGroupsSectionbar } from '../StudentGroupsSectionbar';
 import Helmet from 'react-helmet';
 import { StudentGroup } from '@ussu/common/src/types/groups';
-import {useQuery} from 'react-apollo-hooks';
-import Loader from "../Loader";
+import { useQuery } from 'react-apollo-hooks';
+import Loader from '../Loader';
 
 interface Result {
   allGroups: {
@@ -26,31 +26,32 @@ interface State {
 }
 
 interface SearchChangeAction {
-  type: "SEARCH_CHANGE";
+  type: 'SEARCH_CHANGE';
   payload: {
     query: string;
-  }
+  };
 }
 
 interface OnDataAction {
-  type: "ON_DATA";
+  type: 'ON_DATA';
   payload: {
     data: Result;
-  }
+  };
 }
 
 type Actions = SearchChangeAction | OnDataAction;
 
 const reducer: React.Reducer<State, Actions> = (state, action) => {
   switch (action.type) {
-    case "SEARCH_CHANGE":
+    case 'SEARCH_CHANGE':
       const { query } = action.payload;
       return {
         ...state,
         searchValue: query,
-        displayIds: query && state.fuse
-          ? state.fuse.search(query)
-          : state.groups.map((group: StudentGroup) => group.groupId),
+        displayIds:
+          query && state.fuse
+            ? state.fuse.search(query)
+            : state.groups.map((group: StudentGroup) => group.groupId),
       };
 
     case 'ON_DATA':
@@ -83,26 +84,29 @@ export const StudentGroupListings: React.FC = () => {
     fuse: null,
   });
 
-  const onSearchUpdate = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const searchValue = e.target.value;
-    dispatch({ type: "SEARCH_CHANGE", payload: { query: searchValue } });
-  }, []);
-
+  const onSearchUpdate = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const searchValue = e.target.value;
+      dispatch({ type: 'SEARCH_CHANGE', payload: { query: searchValue } });
+    },
+    [],
+  );
 
   useEffect(() => {
-    data && dispatch({ type: 'ON_DATA', payload: {
-        data
-      }})
+    data &&
+      dispatch({
+        type: 'ON_DATA',
+        payload: {
+          data,
+        },
+      });
   }, [data]);
-
 
   if (loading) return <Loader />;
 
   const map = keyBy(
     data && data.allGroups
-      ? data.allGroups.edges.map(
-      (edge: { node: StudentGroup }) => edge.node,
-      )
+      ? data.allGroups.edges.map((edge: { node: StudentGroup }) => edge.node)
       : [],
     (i) => i.groupId,
   );

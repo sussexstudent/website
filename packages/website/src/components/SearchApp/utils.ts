@@ -1,8 +1,8 @@
-import {Page} from "../../containers/content/types";
-import {Event} from "@ussu/common/src/types/events";
-import {StudentGroup} from "@ussu/common/src/types/groups";
-import getFalmerEndpoint from "@ussu/common/src/libs/getFalmerEndpoint";
-import {orderBy} from "lodash";
+import { Page } from '../../containers/content/types';
+import { Event } from '@ussu/common/src/types/events';
+import { StudentGroup } from '@ussu/common/src/types/groups';
+import getFalmerEndpoint from '@ussu/common/src/libs/getFalmerEndpoint';
+import { orderBy } from 'lodash';
 
 export interface SearchPayload {
   data: {
@@ -39,7 +39,6 @@ export function generateKeyMap(search: SearchPayload['data']['search']) {
 
   return m;
 }
-
 
 export function querySearch(query: string): Promise<SearchPayload> {
   return window
@@ -97,7 +96,7 @@ export function querySearch(query: string): Promise<SearchPayload> {
         },
       }),
     })
-    .then(res => res.json());
+    .then((res) => res.json());
 }
 
 export function getPayloadMetadata({ data: { search } }: SearchPayload) {

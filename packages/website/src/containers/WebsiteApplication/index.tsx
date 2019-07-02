@@ -22,7 +22,7 @@ import {
 } from 'react-router';
 import { ScrollToTop } from '../../components/ScrollToTop';
 import { useDispatch } from 'redux-react-hook';
-import {SearchProps} from "../../components/SearchApp";
+import { SearchProps } from '../../components/SearchApp';
 
 interface WebsiteApplicationProps extends RouteComponentProps {
   appMountState: AppMountState;
@@ -37,9 +37,8 @@ const LoadableSearchApp = Loadable({
   loader: () =>
     import(/* webpackChunkName: "searchapp" */ '../../components/SearchApp'),
   render({ Search }, props: SearchProps) {
-    return <Search {...props} />
-  }
-
+    return <Search {...props} />;
+  },
 });
 
 const LoadableStudentGroupsDiscovery = Loadable({
@@ -49,8 +48,8 @@ const LoadableStudentGroupsDiscovery = Loadable({
       /* webpackChunkName: "sgd" */ '../../components/StudentGroupsDiscovery'
     ),
   render({ StudentGroupListings }, props: {}) {
-    return <StudentGroupListings {...props} />
-  }
+    return <StudentGroupListings {...props} />;
+  },
 });
 
 const LoadableContentBrowser = Loadable({
@@ -58,8 +57,8 @@ const LoadableContentBrowser = Loadable({
   loader: () =>
     import(/* webpackChunkName: "ContentBrowser" */ '../ContentBrowser'),
   render({ ContentBrowserContainer }, props: RouteComponentProps) {
-    return <ContentBrowserContainer {...props} />
-  }
+    return <ContentBrowserContainer {...props} />;
+  },
 });
 
 const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({

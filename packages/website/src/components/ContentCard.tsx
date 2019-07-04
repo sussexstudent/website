@@ -1,5 +1,5 @@
 import React from 'react';
-import cx from 'classnames';
+import { css } from '@emotion/core';
 
 interface ContentCardProps {
   anchor?: string;
@@ -7,12 +7,30 @@ interface ContentCardProps {
   bleed?: boolean;
 }
 
+const cardStyles = css({
+  boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.15)',
+  borderRadius: '6px',
+  padding: '1rem',
+  marginBottom: '1rem',
+  backgroundColor: '#ffffff',
+});
+
+const bleedStyles = css({
+  padding: 0,
+  overflow: 'hidden',
+});
+
+export const ContentCardContent: React.FC = ({ children }) => (
+  <div css={{ padding: '1rem' }}>{children}</div>
+);
+
 const ContentCard: React.FC<ContentCardProps> = ({
   anchor = undefined,
   children,
   bleed = false,
+  ...props
 }) => (
-  <div className={cx('ContentCard', { 'ContentCard--bleed': bleed })}>
+  <div css={[cardStyles, bleed && bleedStyles]} {...props}>
     {anchor !== undefined ? (
       <span className="u-position-anchor" id={anchor} />
     ) : null}

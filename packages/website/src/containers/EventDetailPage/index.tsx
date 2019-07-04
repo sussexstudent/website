@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
-import ContentCard from '../../components/ContentCard';
+import ContentCard, { ContentCardContent } from '../../components/ContentCard';
 import Loader from '../../components/Loader';
 import DetailPageQuery from './EventsDetailPage.graphql';
 import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
@@ -91,8 +91,11 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
         )}
         <div className="LokiContainer">
           <div className="Layout--sidebar-right">
-            <ContentCard bleed>
-              <div className="ContentCard__content">
+            <ContentCard
+              bleed
+              css={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+            >
+              <ContentCardContent>
                 <div className="Prose type-body-copy">
                   {event.bodyHtml !== '' ? (
                     <div dangerouslySetInnerHTML={{ __html: event.bodyHtml }} />
@@ -120,7 +123,7 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
                     ) : null}
                   </div>
                 ) : null}
-              </div>
+              </ContentCardContent>
             </ContentCard>
             <div>
               <EventDetailSidebar

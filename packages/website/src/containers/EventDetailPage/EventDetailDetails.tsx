@@ -14,6 +14,7 @@ import SocietyIcon from '@ussu/common/src/icons/events-society.svg';
 import { Link } from 'react-router-dom';
 import { generateStylesForBrand, getOrdinal } from '../EventsApplication/utils';
 import { getDate } from 'date-fns';
+import { ContentCardContent } from '../../components/ContentCard';
 
 function isSameLogicalSleepDay(startDate: Date, endDate: Date): boolean {
   if (isSameDay(startDate, endDate)) {
@@ -76,7 +77,7 @@ export const EventDetailDetails = (props: IProps) => {
 
   return (
     <React.Fragment>
-      <div className="ContentCard__content">
+      <ContentCardContent>
         <ul className="List--reset EventDetail__tags">
           {event.brand !== null ? (
             <li className="EventDetail__tag-item">
@@ -144,7 +145,7 @@ export const EventDetailDetails = (props: IProps) => {
             </li>
           ) : null}
         </ul>
-      </div>
+      </ContentCardContent>
     </React.Fragment>
   );
 };

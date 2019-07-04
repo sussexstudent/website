@@ -17,6 +17,8 @@ import minimalisticTimeRenderer from '@ussu/common/src/libs/minimalisticTimeRend
 import convert from 'htmr';
 import { css } from '@emotion/core';
 import classnames from 'classnames';
+import { Heading, HeadingLevel } from '../../../components/Heading';
+import { type, TypeSize } from '@ussu/common/src/libs/style/type';
 
 interface IOutletIndex extends Page<Page[]> {}
 
@@ -37,26 +39,41 @@ interface OutletPageProps {
   page: IOutletPage;
 }
 
-function OpeningTimesCard({
+const OpeningTimesCard = ({
   openingTimes,
 }: {
   openingTimes: OpeningTimeInterval[];
-}) {
-  return (
-    <ContentCard>
-      <h3>Opening Times</h3>
-      <ul>
+}) => (
+  <ContentCard>
+    <Heading level={HeadingLevel.h3} size={TypeSize.GreatPrimer}>
+      Opening Times
+    </Heading>
+    <table
+      css={{
+        listStyle: 'none',
+        padding: 0,
+        margin: 0,
+      }}
+    >
+      <tbody>
         {openingTimes.map((interval) => (
-          <li>
-            {format(interval.start, 'eeee ')}{' '}
-            {minimalisticTimeRenderer(interval.start)} -{' '}
-            {minimalisticTimeRenderer(interval.end)}
-          </li>
+          <tr
+            key={format(interval.start, 'eeee ')}
+            css={{ marginBottom: '0.2rem', ...type(TypeSize.LongPrimer) }}
+          >
+            <td css={{ fontWeight: 'bold' }}>
+              {format(interval.start, 'eeee ')}
+            </td>
+            <td>
+              {minimalisticTimeRenderer(interval.start)} -{' '}
+              {minimalisticTimeRenderer(interval.end)}
+            </td>
+          </tr>
         ))}
-      </ul>
-    </ContentCard>
-  );
-}
+      </tbody>
+    </table>
+  </ContentCard>
+);
 
 const heroContainerStyles = css({
   color: '#ffffff',
@@ -138,7 +155,9 @@ export const OutletPage: React.FC<OutletPageProps> = ({ page }) => {
             >
               {page.googleMapsPlaceId !== '' && (
                 <div>
-                  <h4>Find us</h4>
+                  <Heading level={HeadingLevel.h4} size={TypeSize.LongPrimer}>
+                    Find us
+                  </Heading>
                   <iframe
                     width="100%"
                     height="400"
@@ -160,14 +179,18 @@ export const OutletPage: React.FC<OutletPageProps> = ({ page }) => {
 
             {page.menu.length > 0 && (
               <ContentCard>
-                <h3>Menus</h3>
+                <Heading level={HeadingLevel.h3} size={TypeSize.GreatPrimer}>
+                  Menus
+                </Heading>
                 <StreamField page={page} items={page.menu} />
               </ContentCard>
             )}
 
             {page.deals.length > 0 && (
               <ContentCard>
-                <h3>Deals</h3>
+                <Heading level={HeadingLevel.h3} size={TypeSize.GreatPrimer}>
+                  Deals
+                </Heading>
                 <StreamField page={page} items={page.deals} />
               </ContentCard>
             )}

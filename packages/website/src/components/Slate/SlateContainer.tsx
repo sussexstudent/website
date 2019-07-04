@@ -7,7 +7,7 @@ import { getAreaBox } from './Boxes/boxes';
 export const SlateContainer: React.FC = ({}) => {
   const { data, loading } = useQuery(ACTIVE_SLATE_QUERY);
 
-  if (loading || !data) {
+  if (loading || !data || !data.activeSlate) {
     return null;
   }
 

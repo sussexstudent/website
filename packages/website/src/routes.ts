@@ -14,7 +14,6 @@ export default new PreRouter([
   '/event-discovery',
   /^\/get-involved$/,
   /^\/get-involved\/societies-and-student-media/,
-  /^\/get-involved\/officers/,
   /^\/get-involved\/sports-clubs/,
   /^\/get-involved\/decision-making/,
   /^\/about-us\/contact/,
@@ -22,4 +21,5 @@ export default new PreRouter([
   '/get-involved-next',
   '/get-involved/campaigns-toolkit',
   '/about-us-next',
+  /^\/about-us\/officers/,
 ]);

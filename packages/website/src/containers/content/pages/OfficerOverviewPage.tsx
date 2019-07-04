@@ -56,7 +56,7 @@ const videoStyle = css({
   margin: '10% auto',
   width: '90%',
 });
-const youtubeMatcher = /(?<=v=).([A-Za-z0-9-]+)/;
+const youtubeMatcher = /\?v=([A-Za-z0-9-]+)/;
 
 const youtubeId = (url: string): null | string => {
   if (url === null || url === '') {

@@ -127,6 +127,9 @@ query ContentPage($path: String, $previewToken: String) {
       lastName
       pledges
       twitterUsername
+      facebookUrl
+      instagramUrl
+      youtubeSplash
       section: closestAncestorOfType(
         contentType: "OfficersIndex"
         inclusive: true

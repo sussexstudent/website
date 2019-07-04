@@ -101,7 +101,7 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
             component={ContentAPI}
             path="/get-involved/societies-and-student-media"
           />
-          <Route component={ContentAPI} path="/get-involved/officers" />
+          <Route component={ContentAPI} path="/about-us/officers" />
           <Route component={ContentAPI} path="/get-involved/sports-clubs" />
           <Route component={ContentAPI} path="/get-involved/decision-making" />
           <Route component={ContentAPI} path="/services" />

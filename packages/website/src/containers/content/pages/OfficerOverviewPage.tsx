@@ -6,9 +6,9 @@ import { AspectRatio, OneImage } from '@ussu/website/src/components/OneImage';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import convert from 'htmr';
 import StreamField from '../../content/StreamField';
-import cx from 'classnames';
 import { css } from '@emotion/core';
 import { MQ } from '@ussu/common/src/libs/style';
+import Helmet from 'react-helmet';
 
 interface IOfficerOverviewIndex extends Page<Page[]> {}
 
@@ -21,8 +21,9 @@ interface IOfficerOverviewPage extends Page {
   lastName: string;
   pledges: StreamFieldData;
   twitterUsername: string;
-  manifestoTagline: string;
-  manifestoOverview: string;
+  facebookUrl: string;
+  instagramUrl: string;
+  youtubeSplash: string;
 }
 
 interface OfficerOverviewPageProps {
@@ -55,12 +56,30 @@ const videoStyle = css({
   margin: '10% auto',
   width: '90%',
 });
+const youtubeMatcher = /(?<=v=).([A-Za-z0-9-]+)/;
+
+const youtubeId = (url: string): null | string => {
+  if (url === null || url === '') {
+    return null;
+  }
+
+  const match = url.match(youtubeMatcher);
+  if (match && match.length > 0) {
+    return match[0];
+  }
+
+  return null;
+};
 
 export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
   page,
 }) => {
+  const splashYoutubeId = youtubeId(page.youtubeSplash);
   return (
     <div>
+      <Helmet
+        title={`${page.role} | ${page.firstName} ${page.lastName}`}
+      ></Helmet>
       <Sectionbar title={page.section.title} titleLink={page.section.path}>
         {page.section.subPages.map((page) => (
           <SectionbarItem key={page.path}>
@@ -75,7 +94,7 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
             <OneImage
               aspectRatio={AspectRatio.r1by1}
               src={page.officerImage.resource}
-              alt=""
+              alt={page.title}
             />
           </div>
           <div>
@@ -87,39 +106,65 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
               {convert(page.roleDescription)}
             </div>
             {/* SOCIAL MEDIA SECTION */}
-            <div css={socialStyles}>
-              <h4>{'Follow ' + page.firstName}</h4>
-              <ul className={cx('Social')} css={socialItemsStyles}>
-                {page.twitterUsername ? (
-                  <li>
-                    <a
-                      className="Social__link"
-                      href={'https://twitter.com/' + page.twitterUsername}
-                    >
-                      <span className="Social__icon Social__icon--twitter">
-                        <span className="u-h">Twitter</span>
-                      </span>
-                      <span className="Social__handle">
-                        {page.twitterUsername || 'Twitter'}
-                      </span>
-                    </a>
-                  </li>
-                ) : null}
-              </ul>
-            </div>
+            {page.facebookUrl || page.instagramUrl || page.twitterUsername ? (
+              <div css={socialStyles}>
+                <h4>Follow {page.firstName}</h4>
+                <ul className="Social" css={socialItemsStyles}>
+                  {page.facebookUrl ? (
+                    <li>
+                      <a className="Social__link" href={page.facebookUrl}>
+                        <span className="Social__icon Social__icon--facebook">
+                          <span className="u-h">Facebook</span>
+                        </span>
+                        <span className="Social__handle">Facebook</span>
+                      </a>
+                    </li>
+                  ) : null}
+
+                  {page.instagramUrl ? (
+                    <li>
+                      <a className="Social__link" href={page.instagramUrl}>
+                        <span className="Social__icon Social__icon--instagram">
+                          <span className="u-h">Instagram</span>
+                        </span>
+                        <span className="Social__handle">Instagram</span>
+                      </a>
+                    </li>
+                  ) : null}
+
+                  {page.twitterUsername ? (
+                    <li>
+                      <a
+                        className="Social__link"
+                        href={'https://twitter.com/' + page.twitterUsername}
+                      >
+                        <span className="Social__icon Social__icon--twitter">
+                          <span className="u-h">Twitter</span>
+                        </span>
+                        <span className="Social__handle">
+                          {page.twitterUsername || 'Twitter'}
+                        </span>
+                      </a>
+                    </li>
+                  ) : null}
+                </ul>
+              </div>
+            ) : null}
           </div>
         </div>
-        <div
-          className="u-responsive-ratio u-responsive-ratio--r16by9"
-          css={videoStyle}
-        >
-          <iframe
-            className="u-responsive-inner"
-            src="https://www.youtube-nocookie.com/embed/R1KRavrc3wM?rel=0&amp;controls=0&amp;showinfo=0"
-            frameBorder="0"
-            allowFullScreen
-          />
-        </div>
+        {splashYoutubeId ? (
+          <div
+            className="u-responsive-ratio u-responsive-ratio--r16by9"
+            css={videoStyle}
+          >
+            <iframe
+              className="u-responsive-inner"
+              src={`https://www.youtube-nocookie.com/embed/${splashYoutubeId}?rel=0&amp;controls=0&amp;showinfo=0`}
+              frameBorder="0"
+              allowFullScreen
+            />
+          </div>
+        ) : null}
         {/* PLEDGES SECTION */}
         {page.pledges.length > 0 && (
           <div>

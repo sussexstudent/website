@@ -22,8 +22,6 @@ interface IOfficerOverviewPage extends Page {
   twitterUsername: string;
   facebookUrl: string;
   instagramUrl: string;
-  manifestoTagline: string;
-  manifestoOverview: string;
   youtubeSplash: string;
 }
 

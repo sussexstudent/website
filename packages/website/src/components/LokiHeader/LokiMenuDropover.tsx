@@ -30,7 +30,13 @@ const LokiMenuDropover = React.forwardRef<
 >(({ isOpen, currentItem }, ref) => {
   const { data, loading } = useQuery(MENU_QUERY);
 
-  if (!data || loading) {
+  if (
+    !data ||
+    loading ||
+    !data.page ||
+    !data.page.subPages ||
+    !data.page.subPages.hasOwnProperty(currentItem)
+  ) {
     return null;
   }
 

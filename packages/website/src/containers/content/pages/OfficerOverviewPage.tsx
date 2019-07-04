@@ -6,7 +6,6 @@ import { AspectRatio, OneImage } from '@ussu/website/src/components/OneImage';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import convert from 'htmr';
 import StreamField from '../../content/StreamField';
-import cx from 'classnames';
 import { css } from '@emotion/core';
 import { MQ } from '@ussu/common/src/libs/style';
 
@@ -21,8 +20,11 @@ interface IOfficerOverviewPage extends Page {
   lastName: string;
   pledges: StreamFieldData;
   twitterUsername: string;
+  facebookUrl: string;
+  instagramUrl: string;
   manifestoTagline: string;
   manifestoOverview: string;
+  youtubeSplash: string;
 }
 
 interface OfficerOverviewPageProps {
@@ -59,6 +61,13 @@ const videoStyle = css({
 export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
   page,
 }) => {
+  const match = page.youtubeSplash.match('(?<=v=).([A-Za-z0-9-]+)');
+  let videoID = null;
+  if (page.youtubeSplash && match) {
+    if (match != null && match.length > 0) {
+      videoID = match[0];
+    }
+  }
   return (
     <div>
       <Sectionbar title={page.section.title} titleLink={page.section.path}>
@@ -75,7 +84,7 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
             <OneImage
               aspectRatio={AspectRatio.r1by1}
               src={page.officerImage.resource}
-              alt=""
+              alt={page.title}
             />
           </div>
           <div>
@@ -89,7 +98,33 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
             {/* SOCIAL MEDIA SECTION */}
             <div css={socialStyles}>
               <h4>{'Follow ' + page.firstName}</h4>
-              <ul className={cx('Social')} css={socialItemsStyles}>
+              <ul className="Social" css={socialItemsStyles}>
+                {page.facebookUrl ? (
+                  <li>
+                    <a className="Social__link" href={page.facebookUrl}>
+                      <span className="Social__icon Social__icon--facebook">
+                        <span className="u-h">Facebook</span>
+                      </span>
+                      <span className="Social__handle">
+                        {page.facebookUrl || 'Facebook'}
+                      </span>
+                    </a>
+                  </li>
+                ) : null}
+
+                {page.instagramUrl ? (
+                  <li>
+                    <a className="Social__link" href={page.instagramUrl}>
+                      <span className="Social__icon Social__icon--instagram">
+                        <span className="u-h">Instagram</span>
+                      </span>
+                      <span className="Social__handle">
+                        {page.instagramUrl || 'Instagram'}
+                      </span>
+                    </a>
+                  </li>
+                ) : null}
+
                 {page.twitterUsername ? (
                   <li>
                     <a
@@ -109,17 +144,23 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
             </div>
           </div>
         </div>
-        <div
-          className="u-responsive-ratio u-responsive-ratio--r16by9"
-          css={videoStyle}
-        >
-          <iframe
-            className="u-responsive-inner"
-            src="https://www.youtube-nocookie.com/embed/R1KRavrc3wM?rel=0&amp;controls=0&amp;showinfo=0"
-            frameBorder="0"
-            allowFullScreen
-          />
-        </div>
+        {page.youtubeSplash ? (
+          <div
+            className="u-responsive-ratio u-responsive-ratio--r16by9"
+            css={videoStyle}
+          >
+            <iframe
+              className="u-responsive-inner"
+              src={
+                'https://www.youtube-nocookie.com/embed/' +
+                videoID +
+                '?rel=0&amp;controls=0&amp;showinfo=0'
+              }
+              frameBorder="0"
+              allowFullScreen
+            />
+          </div>
+        ) : null}
         {/* PLEDGES SECTION */}
         {page.pledges.length > 0 && (
           <div>

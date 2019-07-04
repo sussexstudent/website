@@ -8,6 +8,7 @@ import convert from 'htmr';
 import StreamField from '../../content/StreamField';
 import { css } from '@emotion/core';
 import { MQ } from '@ussu/common/src/libs/style';
+import Helmet from 'react-helmet';
 
 interface IOfficerOverviewIndex extends Page<Page[]> {}
 
@@ -68,6 +69,9 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
   }
   return (
     <div>
+      <Helmet
+        title={`${page.role} | ${page.firstName} ${page.lastName}`}
+      ></Helmet>
       <Sectionbar title={page.section.title} titleLink={page.section.path}>
         {page.section.subPages.map((page) => (
           <SectionbarItem key={page.path}>

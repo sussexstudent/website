@@ -64,8 +64,8 @@ const youtubeId = (url: string): null | string => {
   }
 
   const match = url.match(youtubeMatcher);
-  if (match && match.length > 0) {
-    return match[0];
+  if (match && match.length > 1) {
+    return match[1];
   }
 
   return null;

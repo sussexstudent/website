@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
-import ContentCard, { ContentCardContent } from '../../components/ContentCard';
+import { ContentCard, ContentCardContent } from '../../components/ContentCard';
 import Loader from '../../components/Loader';
 import DetailPageQuery from './EventsDetailPage.graphql';
 import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';

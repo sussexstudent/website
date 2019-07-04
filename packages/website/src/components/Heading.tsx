@@ -13,14 +13,18 @@ export enum HeadingLevel {
 
 export interface HeadingProps {
   level: HeadingLevel;
-  size: TypeSize;
+  size?: TypeSize;
 }
 
 const headingStyle = css({
   marginTop: 0,
 });
 
-export const Heading: React.FC<HeadingProps> = ({ level, children, size }) => {
+export const Heading: React.FC<HeadingProps> = ({
+  level,
+  children,
+  size = TypeSize.GreatPrimer,
+}) => {
   return jsx(
     level,
     { css: [headingStyle, css(type(size, Typeface.Secondary))] },

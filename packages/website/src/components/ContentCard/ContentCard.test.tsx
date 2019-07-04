@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import ContentCard from './index';
+import { ContentCard } from './index';
 
 it('renders with an anchor', () => {
   const tree = renderer

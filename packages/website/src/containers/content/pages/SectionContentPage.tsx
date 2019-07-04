@@ -3,7 +3,10 @@ import bind from 'bind-decorator';
 import slugify from '@ussu/common/src/libs/slugify';
 import HeadingHero from '../../../components/HeadingHero';
 import VisibleChildWatcher from '../../../components/VisibleChildWatcher';
-import ContentCard from '../../../components/ContentCard';
+import {
+  ContentCard,
+  ContentCardContent,
+} from '../../../components/ContentCard';
 import ContentNavigation, {
   generateTitlesFromStream,
 } from '../../../components/ContentNavigation';
@@ -11,6 +14,7 @@ import StreamField from '../../content/StreamField';
 import { Page } from '../types';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { OneImage } from '../../../components/OneImage';
+import { Heading, HeadingLevel } from '../../../components/Heading';
 
 interface ISectionContentPage extends Page {
   title: string;
@@ -92,13 +96,13 @@ class SectionContentPage extends React.Component<IProps, IState> {
                       />
                     </div>
                   ) : (
-                    <div className="ContentCard__content">
-                      <h2 className="Heading Heading--highlight">
+                    <ContentCardContent>
+                      <Heading level={HeadingLevel.h2}>
                         {block.value.heading}
-                      </h2>
-                    </div>
+                      </Heading>
+                    </ContentCardContent>
                   )}
-                  <div className="ContentCard__content">
+                  <ContentCardContent>
                     {block.value.body.map((
                       bodyItem: any, // todo
                     ) => (
@@ -107,7 +111,7 @@ class SectionContentPage extends React.Component<IProps, IState> {
                         dangerouslySetInnerHTML={{ __html: bodyItem.value }}
                       />
                     ))}
-                  </div>
+                  </ContentCardContent>
                 </ContentCard>
               ))}
             </VisibleChildWatcher>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import ContentCard from '../ContentCard/index';
+import { ContentCard } from './index';
 
 storiesOf('ContentCard', module).add('main', () => (
   <ContentCard>

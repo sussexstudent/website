@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ContentCard from '../ContentCard';
+import { ContentCard } from '../ContentCard';
 import AllAwardsQuery from './AllAwards.graphql';
 import { TrophyModal } from './TrophyModal';
 import { Group } from '@ussu/common/src/types/awards';

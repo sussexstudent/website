@@ -2,7 +2,7 @@ import React from 'react';
 import { Page, StreamFieldData } from '../types';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import StreamField from '../../content/StreamField';
-import ContentCard from '../../../components/ContentCard';
+import { ContentCard } from '../../../components/ContentCard';
 import { OneImageBackground } from '../../../components/OneImage';
 import { openingTimesBlockParser } from '@ussu/common/src/libs/streamFieldStructures';
 import { Sectionbar, SectionbarItem } from '../../../components/Sectionbar';

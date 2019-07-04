@@ -1,5 +1,5 @@
 import React from 'react';
-import ContentCard from '../../components/ContentCard';
+import { ContentCard } from '../../components/ContentCard';
 import Button from '../../components/Button';
 import Stepper from 'react-stepper-primitive';
 import { formatPrice } from '@ussu/common/src/libs/money';

@@ -1,10 +1,12 @@
 import React from 'react';
 import slugify from '@ussu/common/src/libs/slugify';
 import flatStreamToLevels from '@ussu/common/src/libs/flatStreamToLevels';
-import ContentCard from '../../../components/ContentCard';
+import { ContentCard } from '../../../components/ContentCard';
 import StreamField from '../../content/StreamField';
 import { Page } from '../types';
 import ContentNavigation from '../../../components/ContentNavigation';
+import { Heading, HeadingLevel } from '../../../components/Heading';
+import { TypeSize } from '@ussu/common/src/libs/style/type';
 
 const fromText = (text: string) => ({ name: text, anchor: slugify(text) });
 
@@ -67,7 +69,9 @@ const StaffPage: React.FC<IProps> = ({ page: { body }, page }) => {
         <div className="row">
           <div className="col-md-6">
             <ContentCard>
-              <h2>General Enquiries</h2>
+              <Heading level={HeadingLevel.h2} size={TypeSize.GreatPrimer}>
+                General Enquiries
+              </Heading>
 
               <p>
                 <a href="mailto:reception@sussexstudent.com">

@@ -77,9 +77,7 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
   const splashYoutubeId = youtubeId(page.youtubeSplash);
   return (
     <div>
-      <Helmet
-        title={`${page.role} | ${page.firstName} ${page.lastName}`}
-      ></Helmet>
+      <Helmet title={`${page.role} | ${page.firstName} ${page.lastName}`} />
       <Sectionbar title={page.section.title} titleLink={page.section.path}>
         {page.section.subPages.map((page) => (
           <SectionbarItem key={page.path}>

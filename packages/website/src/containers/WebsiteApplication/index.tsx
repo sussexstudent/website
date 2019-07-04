@@ -108,6 +108,7 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
           <Route component={ContentAPI} path="/support" exact />
           <Route component={ContentAPI} path="/get-involved-next" />
           <Route component={ContentAPI} path="/about-us-next" />
+          <Route component={ContentAPI} path="/about-us" />
           <Route
             component={ContentAPI}
             path="/get-involved/campaigns-toolkit"

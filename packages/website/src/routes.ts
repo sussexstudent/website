@@ -17,6 +17,7 @@ export default new PreRouter([
   /^\/get-involved\/sports-clubs/,
   /^\/get-involved\/decision-making/,
   /^\/about-us\/contact/,
+  /^\/about-us$/,
   /^\/support$/,
   '/get-involved-next',
   '/get-involved/campaigns-toolkit',

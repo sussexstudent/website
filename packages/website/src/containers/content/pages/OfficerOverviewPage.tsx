@@ -98,52 +98,54 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
               {convert(page.roleDescription)}
             </div>
             {/* SOCIAL MEDIA SECTION */}
-            <div css={socialStyles}>
-              <h4>{'Follow ' + page.firstName}</h4>
-              <ul className="Social" css={socialItemsStyles}>
-                {page.facebookUrl ? (
-                  <li>
-                    <a className="Social__link" href={page.facebookUrl}>
-                      <span className="Social__icon Social__icon--facebook">
-                        <span className="u-h">Facebook</span>
-                      </span>
-                      <span className="Social__handle">
-                        {page.facebookUrl || 'Facebook'}
-                      </span>
-                    </a>
-                  </li>
-                ) : null}
+            {page.facebookUrl || page.instagramUrl || page.twitterUsername ? (
+              <div css={socialStyles}>
+                <h4>{'Follow ' + page.firstName}</h4>
+                <ul className="Social" css={socialItemsStyles}>
+                  {page.facebookUrl ? (
+                    <li>
+                      <a className="Social__link" href={page.facebookUrl}>
+                        <span className="Social__icon Social__icon--facebook">
+                          <span className="u-h">Facebook</span>
+                        </span>
+                        <span className="Social__handle">
+                          {page.facebookUrl || 'Facebook'}
+                        </span>
+                      </a>
+                    </li>
+                  ) : null}
 
-                {page.instagramUrl ? (
-                  <li>
-                    <a className="Social__link" href={page.instagramUrl}>
-                      <span className="Social__icon Social__icon--instagram">
-                        <span className="u-h">Instagram</span>
-                      </span>
-                      <span className="Social__handle">
-                        {page.instagramUrl || 'Instagram'}
-                      </span>
-                    </a>
-                  </li>
-                ) : null}
+                  {page.instagramUrl ? (
+                    <li>
+                      <a className="Social__link" href={page.instagramUrl}>
+                        <span className="Social__icon Social__icon--instagram">
+                          <span className="u-h">Instagram</span>
+                        </span>
+                        <span className="Social__handle">
+                          {page.instagramUrl || 'Instagram'}
+                        </span>
+                      </a>
+                    </li>
+                  ) : null}
 
-                {page.twitterUsername ? (
-                  <li>
-                    <a
-                      className="Social__link"
-                      href={'https://twitter.com/' + page.twitterUsername}
-                    >
-                      <span className="Social__icon Social__icon--twitter">
-                        <span className="u-h">Twitter</span>
-                      </span>
-                      <span className="Social__handle">
-                        {page.twitterUsername || 'Twitter'}
-                      </span>
-                    </a>
-                  </li>
-                ) : null}
-              </ul>
-            </div>
+                  {page.twitterUsername ? (
+                    <li>
+                      <a
+                        className="Social__link"
+                        href={'https://twitter.com/' + page.twitterUsername}
+                      >
+                        <span className="Social__icon Social__icon--twitter">
+                          <span className="u-h">Twitter</span>
+                        </span>
+                        <span className="Social__handle">
+                          {page.twitterUsername || 'Twitter'}
+                        </span>
+                      </a>
+                    </li>
+                  ) : null}
+                </ul>
+              </div>
+            ) : null}
           </div>
         </div>
         {page.youtubeSplash ? (

@@ -56,17 +56,25 @@ const videoStyle = css({
   margin: '10% auto',
   width: '90%',
 });
+const youtubeMatcher = /(?<=v=).([A-Za-z0-9-]+)/;
+
+const youtubeId = (url: string): null | string => {
+  if (url === null || url === '') {
+    return null;
+  }
+
+  const match = url.match(youtubeMatcher);
+  if (match && match.length > 0) {
+    return match[0];
+  }
+
+  return null;
+};
 
 export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
   page,
 }) => {
-  const match = page.youtubeSplash.match('(?<=v=).([A-Za-z0-9-]+)');
-  let videoID = null;
-  if (page.youtubeSplash && match) {
-    if (match != null && match.length > 0) {
-      videoID = match[0];
-    }
-  }
+  const splashYoutubeId = youtubeId(page.youtubeSplash);
   return (
     <div>
       <Helmet
@@ -100,7 +108,7 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
             {/* SOCIAL MEDIA SECTION */}
             {page.facebookUrl || page.instagramUrl || page.twitterUsername ? (
               <div css={socialStyles}>
-                <h4>{'Follow ' + page.firstName}</h4>
+                <h4>Follow {page.firstName}</h4>
                 <ul className="Social" css={socialItemsStyles}>
                   {page.facebookUrl ? (
                     <li>
@@ -108,9 +116,7 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
                         <span className="Social__icon Social__icon--facebook">
                           <span className="u-h">Facebook</span>
                         </span>
-                        <span className="Social__handle">
-                          {page.facebookUrl || 'Facebook'}
-                        </span>
+                        <span className="Social__handle">Facebook</span>
                       </a>
                     </li>
                   ) : null}
@@ -121,9 +127,7 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
                         <span className="Social__icon Social__icon--instagram">
                           <span className="u-h">Instagram</span>
                         </span>
-                        <span className="Social__handle">
-                          {page.instagramUrl || 'Instagram'}
-                        </span>
+                        <span className="Social__handle">Instagram</span>
                       </a>
                     </li>
                   ) : null}
@@ -148,18 +152,14 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
             ) : null}
           </div>
         </div>
-        {page.youtubeSplash ? (
+        {splashYoutubeId ? (
           <div
             className="u-responsive-ratio u-responsive-ratio--r16by9"
             css={videoStyle}
           >
             <iframe
               className="u-responsive-inner"
-              src={
-                'https://www.youtube-nocookie.com/embed/' +
-                videoID +
-                '?rel=0&amp;controls=0&amp;showinfo=0'
-              }
+              src={`https://www.youtube-nocookie.com/embed/${splashYoutubeId}?rel=0&amp;controls=0&amp;showinfo=0`}
               frameBorder="0"
               allowFullScreen
             />

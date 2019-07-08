@@ -15,7 +15,7 @@
     "react-jsonschema-form": "^1.6.1",
     "react-select": "^3.0.4",
     "redux": "^4.0.1",
-    "redux-saga": "^1.0.4"
+    "redux-saga": "^1.0.5"
   },
   "scripts": {
     "postinstall": ":",

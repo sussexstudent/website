@@ -58,7 +58,7 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@emotion/babel-preset-css-prop": "^10.0.9",
-    "@types/classnames": "^2.2.8",
+    "@types/classnames": "^2.2.9",
     "@types/google.analytics": "^0.0.40",
     "@types/history": "^4.7.2",
     "@types/lodash": "^4.14.134",

@@ -76,6 +76,32 @@ query ContentPage($path: String, $previewToken: String) {
         }
       }
     }
+    ... on OfficersIndex {
+      subPages {
+        ... on OfficerOverviewPage {
+          ...ContentPageGenerals
+          role
+          roleDescription
+          officerImage {
+            ...FalmerImage
+          }
+          firstName
+          lastName
+          twitterUsername
+          facebookUrl
+          instagramUrl
+        }
+      }
+      section: closestAncestorOfType(
+        contentType: "OfficersIndex"
+        inclusive: true
+      ) {
+        ...ContentPageGenerals
+        subPages {
+          ...ContentPageGenerals
+        }
+      }
+    }
     ... on KBRootPage {
       introduction
       categories: subPages {

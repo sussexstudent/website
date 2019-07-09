@@ -37,7 +37,7 @@
     "setup": "node ./scripts/initialSetup.js",
     "test": "NODE_ENV=test && jest",
     "testc": "NODE_ENV=test && jest --coverage",
-    "lint": "eslint \"packages/**/src/**/*.{ts,tsx}\""
+    "lint": "eslint \"packages/*/src/**/*.{ts,tsx}\""
   },
   "husky": {
     "hooks": {

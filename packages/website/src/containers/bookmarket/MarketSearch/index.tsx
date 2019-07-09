@@ -7,7 +7,7 @@ import { ListingList } from '../ListingList';
 import { Field, Form } from 'react-final-form';
 import Helmet from 'react-helmet';
 import { InternalAppLink } from '../../../components/InternalAppLink';
-import {HandledQuery} from "../HandledQuery";
+import { HandledQuery } from '../HandledQuery';
 
 interface OwnProps {
   sectionSlug?: string;

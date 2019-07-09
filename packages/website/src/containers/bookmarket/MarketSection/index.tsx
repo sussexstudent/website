@@ -6,7 +6,7 @@ import { ListingList } from '../ListingList';
 import Helmet from 'react-helmet';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { RouteComponentProps } from 'react-router';
-import {HandledQuery} from "../HandledQuery";
+import { HandledQuery } from '../HandledQuery';
 
 interface OwnProps extends RouteComponentProps<{ sectionSlug: string }> {}
 

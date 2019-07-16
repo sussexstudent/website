@@ -32,7 +32,7 @@ export const SocialArray: React.FC<IProps> = ({ networks }) => (
     ) : null}
     {networks.twitter ? (
       <li>
-        <a className="Social__link" href={networks.twitter.name}>
+        <a className="Social__link" href={networks.twitter.link}>
           <span className="Social__icon Social__icon--twitter">
             <span className="u-h">Twitter</span>
           </span>

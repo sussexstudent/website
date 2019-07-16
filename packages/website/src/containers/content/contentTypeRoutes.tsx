@@ -13,6 +13,7 @@ import { KBRootPage } from './pages/KBRootPage';
 import { KBCategoryPage } from './pages/KBCategoryPage';
 import { BasicContentPage } from './pages/BasicContentPage';
 import { OfficerOverviewPage } from './pages/OfficerOverviewPage';
+import { OfficersIndex } from './pages/OfficersIndex';
 
 const StaffPage = Loadable({
   loading: LoadableLoading,
@@ -55,11 +56,10 @@ export const contentTypeMap: PageComponentMap = {
   // Outlets
   OutletIndexPage: OutletIndexPage,
   OutletPage: OutletPage,
-  OfficerOverviewPage: OfficerOverviewPage,
 
   // Officers
-  // TODO: OfficerIndexPage
-  // TODO: OfficerPage
+  OfficerOverviewPage: OfficerOverviewPage,
+  OfficersIndex: OfficersIndex,
 
   // Volunteering
   // TODO: VolunteeringPage

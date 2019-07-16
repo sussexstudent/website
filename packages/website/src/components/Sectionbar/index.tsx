@@ -9,6 +9,7 @@ export const SectionbarItem: React.FC<
     css={{
       display: 'flex',
       alignItems: 'center',
+      flex: '0 0 auto',
 
       '& &--disabled': {
         '& > a, & > button': {
@@ -25,11 +26,7 @@ export const SectionbarItem: React.FC<
         color: active ? COLORS.BRAND_BLUE : COLORS.GREY_SLATE,
         textDecoration: 'none',
         fontWeight: 600,
-        padding: '0.2rem',
-
-        [MQ.Medium]: {
-          padding: '0 0.5rem',
-        },
+        padding: '0 0.6rem',
 
         '&.active': {
           color: COLORS.BRAND_BLUE,
@@ -91,20 +88,33 @@ export const Sectionbar: React.FC<SectionbarProps> = (props) => {
             props.title
           )}
         </h2>
-        <ul
+        <div
           css={{
             display: 'flex',
-            padding: 0,
-            margin: 0,
-            listStyle: 'none',
-            flexDirection: 'column',
-            [MQ.Medium]: {
-              flexDirection: 'row',
+            ':after': {
+              position: 'absolute',
+              right: 0,
+              top: 0,
+              bottom: 0,
+              width: '30px',
+              background: 'green',
             },
           }}
         >
-          {props.children}
-        </ul>
+          <ul
+            css={{
+              padding: 0,
+              margin: 0,
+              listStyle: 'none',
+              display: 'flex',
+              flexDirection: 'row',
+              overflow: 'auto',
+              paddingBottom: '10px',
+            }}
+          >
+            {props.children}
+          </ul>
+        </div>
       </div>
     </div>
   );

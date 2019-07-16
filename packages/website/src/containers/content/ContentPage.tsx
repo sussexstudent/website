@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { History } from 'history';
 import CONTENT_PAGE_QUERY from './ContentPageQuery.graphql';
-import ctRoutes from '../content/contentTypeRoutes';
+import { contentTypeMap } from './contentTypeRoutes';
 import Helmet from 'react-helmet';
 import { FourOhFourPage } from './FourOhFourPage';
-import { Switch } from 'react-router';
 import { useQuery } from 'react-apollo-hooks';
 import qs from 'query-string';
+import { ErrorState } from '../../components/ErrorState';
 
 interface OwnProps {
   path: string;
@@ -18,6 +18,7 @@ interface Result {
     title: string;
     data: any;
     contentType: string;
+    path: string;
 
     seoTitle: string;
     searchDescription: string;
@@ -35,11 +36,22 @@ const ContentPage: React.FC<IProps> = (props: IProps) => {
     },
   });
 
-  if (!data || loading) {
+  const [cachedPage, setCachedPage] = useState<{
+    page: Result | undefined;
+    path: string;
+  }>({ page: undefined, path: props.path });
+
+  useEffect(() => {
+    if (data && !loading) {
+      setCachedPage({ page: data, path: data.page.path });
+    }
+  }, [data, loading]);
+
+  if (!cachedPage.page) {
     return null;
   }
 
-  const page = data.page;
+  const page = cachedPage.page.page;
 
   if (page === null) {
     return <FourOhFourPage />;
@@ -49,11 +61,11 @@ const ContentPage: React.FC<IProps> = (props: IProps) => {
     props.history.replace(`/browse${props.path}`, { replace: true });
     return null;
   }
-  const RoutesForContentType = ctRoutes.hasOwnProperty(page.contentType)
-    ? ctRoutes[page.contentType]
+  const ContentTypeTemplate = contentTypeMap.hasOwnProperty(page.contentType)
+    ? contentTypeMap[page.contentType]
     : null;
 
-  if (RoutesForContentType) {
+  if (ContentTypeTemplate) {
     return (
       <React.Fragment>
         <Helmet title={page.seoTitle || page.title}>
@@ -62,16 +74,17 @@ const ContentPage: React.FC<IProps> = (props: IProps) => {
           )}
         </Helmet>
 
-        <Switch>
-          <RoutesForContentType page={page} />
-        </Switch>
+        <ContentTypeTemplate page={page} />
       </React.Fragment>
     );
   }
 
   return (
-    <div className="Layout">
-      <h1>{`Page type can't be found: "${page.contentType}"`}</h1>
+    <div className="LayoutContent">
+      <ErrorState
+        title="This page is missing a template"
+        description={`Content Type "${page.contentType}" is missing from the contentTypeMap.`}
+      />
     </div>
   );
 };

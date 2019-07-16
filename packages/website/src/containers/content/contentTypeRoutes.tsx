@@ -1,8 +1,7 @@
-import React from 'react';
 import Loadable from 'react-loadable';
 import { LoadableLoading } from '../../components/LoadableLoading';
 import GenericContentStreamPage from './pages/GenericContentStreamPage';
-import Homepage from './pages/Homepage';
+import Homepage from './pages/HomePage';
 import { SectionContentPage } from './pages/SectionContentPage';
 import AnswerPage from '../content/pages/AnswerPage';
 import ReferencePage from './pages/ReferencePage';
@@ -13,7 +12,6 @@ import { OutletPage } from './pages/OutletPage';
 import { KBRootPage } from './pages/KBRootPage';
 import { KBCategoryPage } from './pages/KBCategoryPage';
 import { BasicContentPage } from './pages/BasicContentPage';
-import { Route } from 'react-router';
 import { OfficerOverviewPage } from './pages/OfficerOverviewPage';
 import { OfficersIndex } from './pages/OfficersIndex';
 
@@ -35,67 +33,38 @@ interface PageComponentMap {
   [wagtailModel: string]: any; // todo
 }
 
-const pageComponent = (Component: any, page: any) => (routeProps: any) => (
-  <Component page={page} {...routeProps} />
-);
-
-const pageRouter = (
-  indexComponent: any,
-  additionalRoutes: { path: string; component: any }[] = [],
-) => ({ page }: { page: any }) => {
-  return (
-    <React.Fragment>
-      <Route
-        path={page.path}
-        component={pageComponent(indexComponent, page)}
-        exact
-      />
-      {additionalRoutes.map((route) => (
-        <Route
-          key={route.path}
-          path={page.path + route.path}
-          component={pageComponent(route.component, page)}
-          exact
-        />
-      ))}
-    </React.Fragment>
-  );
-};
-
-export default {
+export const contentTypeMap: PageComponentMap = {
   HomePage: Homepage,
-  StaffPage: pageRouter(StaffPage),
-  SectionContentPage: pageRouter(SectionContentPage),
+  StaffPage: StaffPage,
+  SectionContentPage: SectionContentPage,
 
-  BasicContentPage: pageRouter(BasicContentPage),
+  BasicContentPage: BasicContentPage,
 
   // FRESHERS
-  FreshersHomepage: pageRouter(FreshersHomepage),
+  FreshersHomepage: FreshersHomepage,
 
   // Knowledge
-  KBRootPage: pageRouter(KBRootPage),
-  KBCategoryPage: pageRouter(KBCategoryPage),
-  AnswerPage: pageRouter(AnswerPage),
-  ReferencePage: pageRouter(ReferencePage),
-  DetailedGuidePage: pageRouter(DetailedGuidePage),
-  DetailedGuideSectionPage: pageRouter(DetailedGuideSectionPage),
+  KBRootPage: KBRootPage,
+  KBCategoryPage: KBCategoryPage,
+  AnswerPage: AnswerPage,
+  ReferencePage: ReferencePage,
+  DetailedGuidePage: DetailedGuidePage,
+  DetailedGuideSectionPage: DetailedGuideSectionPage,
 
   // TODO: BasicContentPage
 
   // Outlets
-  OutletIndexPage: pageRouter(OutletIndexPage, [
-    { path: 'archive', component: () => <h1>Archive page whoa!</h1> },
-  ]),
-  OutletPage: pageRouter(OutletPage),
+  OutletIndexPage: OutletIndexPage,
+  OutletPage: OutletPage,
 
   // Officers
-  OfficerOverviewPage: pageRouter(OfficerOverviewPage),
-  OfficersIndex: pageRouter(OfficersIndex),
+  OfficerOverviewPage: OfficerOverviewPage,
+  OfficersIndex: OfficersIndex,
 
   // Volunteering
   // TODO: VolunteeringPage
 
   // Policy
 
-  SelectionGridPage: pageRouter(GenericContentStreamPage),
-} as PageComponentMap;
+  SelectionGridPage: GenericContentStreamPage,
+};

@@ -16,7 +16,7 @@ import { formatPrice } from '@ussu/common/src/libs/money';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { RouteComponentProps } from 'react-router';
 import { adopt } from '../../../components/Adopt';
-import {HandledQuery} from "../HandledQuery";
+import { HandledQuery } from '../HandledQuery';
 
 interface OwnProps extends RouteComponentProps<{ listingId: string }> {}
 

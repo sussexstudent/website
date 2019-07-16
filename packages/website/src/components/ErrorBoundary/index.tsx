@@ -67,4 +67,4 @@ class ErrorBoundary extends React.Component<
   }
 }
 
-export default withRouter(ErrorBoundary as any);
+export default withRouter(ErrorBoundary);

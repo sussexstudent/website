@@ -108,21 +108,21 @@ const MarketHomeComponent: React.FC<IProps> = (props) => {
               </li>
             ) : null}
 
-            <li>
-              <InternalAppLink to="/kb/features/book-market/information-sellers">
-                Information for sellers
-              </InternalAppLink>
-            </li>
-            <li>
-              <InternalAppLink to="/kb/features/book-market/information-buyers">
-                Information for buyers
-              </InternalAppLink>
-            </li>
-            <li>
-              <InternalAppLink to="/kb/features/book-market/usage-guidelines">
-                Usage Guidelines
-              </InternalAppLink>
-            </li>
+            {/*<li>*/}
+            {/*  <InternalAppLink to="/kb/features/book-market/information-sellers">*/}
+            {/*    Information for sellers*/}
+            {/*  </InternalAppLink>*/}
+            {/*</li>*/}
+            {/*<li>*/}
+            {/*  <InternalAppLink to="/kb/features/book-market/information-buyers">*/}
+            {/*    Information for buyers*/}
+            {/*  </InternalAppLink>*/}
+            {/*</li>*/}
+            {/*<li>*/}
+            {/*  <InternalAppLink to="/kb/features/book-market/usage-guidelines">*/}
+            {/*    Usage Guidelines*/}
+            {/*  </InternalAppLink>*/}
+            {/*</li>*/}
           </ul>
         </aside>
       </div>

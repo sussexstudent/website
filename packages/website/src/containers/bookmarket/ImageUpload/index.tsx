@@ -1,6 +1,5 @@
-import React from 'react';
-import Dropzone from 'react-dropzone';
-import bind from 'bind-decorator';
+import React, { useState, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
 import getFalmerEndpoint from '@ussu/common/src/libs/getFalmerEndpoint';
 import { getMslJwt } from '@ussu/common/src/libs/getMslJwt';
 import { ImageSourcePurpose } from '@ussu/common/src/types/upload';
@@ -20,111 +19,101 @@ interface ImageUploadState {
   error: null | any;
 }
 
-class ImageUpload extends React.Component<ImageUploadProps, ImageUploadState> {
-  constructor(props: ImageUploadProps) {
-    super(props);
+export const ImageUpload: React.FC<ImageUploadProps> = ({
+  image,
+  onUploadComplete,
+}) => {
+  const [state, setState] = useState<ImageUploadState>({
+    isUploading: false,
+    uploaded: false,
+    error: null,
+  });
 
-    this.state = {
-      isUploading: false,
-      uploaded: false,
-      error: null,
-    };
-  }
+  const onDrop = useCallback(
+    (acceptedFiles: any, rejectedFiles: any) => {
+      if (acceptedFiles.length === 0 && rejectedFiles.length > 0) {
+        setState({
+          ...state,
 
-  @bind
-  onDrop(acceptedFiles: any, rejectedFiles: any) {
-    if (acceptedFiles.length === 0 && rejectedFiles.length > 0) {
-      this.setState({
-        error: {
-          errors: 'File rejected, must be jpg/png, under 5MB',
+          error: {
+            errors: 'File rejected, must be jpg/png, under 5MB',
+          },
+        });
+        return;
+      }
+
+      setState({
+        ...state,
+
+        isUploading: true,
+        error: null,
+      });
+
+      const formData = new FormData();
+
+      formData.append('file', acceptedFiles[0]);
+      formData.append('source', String(ImageSourcePurpose.BookMarketListing));
+
+      fetch(`${getFalmerEndpoint()}/images/`, {
+        method: 'PUT',
+        headers: {
+          authorization: `Bearer ${getMslJwt()}`,
         },
-      });
-      return;
-    }
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((response) => {
+          if (response.ok) {
+            onUploadComplete(response.data);
+            setState({
+              ...state,
+              isUploading: false,
+              uploaded: true,
+            });
+          } else {
+            setState({
+              ...state,
+              error: response.data,
+            });
+          }
+        });
+    },
+    [onUploadComplete, state],
+  );
 
-    this.setState({
-      isUploading: true,
-      error: null,
-    });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-    const formData = new FormData();
+  return (
+    <div className="ImageUpload">
+      <div
+        {...getRootProps()}
+        className={classnames({ 'ImageUpload--active': isDragActive })}
+      >
+        <input {...getInputProps()} />
+        {image ? (
+          <OneImage
+            src={image.resource}
+            aspectRatio={AspectRatio.r3by4}
+            alt=""
+          />
+        ) : (
+          <div className="ImageUpload__no-image">
+            <div className="ImageUpload__icon">
+              <AddImageIcon />
+            </div>
+            <div>Add an image</div>
+          </div>
+        )}
+      </div>
 
-    formData.append('file', acceptedFiles[0]);
-    formData.append('source', String(ImageSourcePurpose.BookMarketListing));
-
-    fetch(`${getFalmerEndpoint()}/images/`, {
-      method: 'PUT',
-      headers: {
-        authorization: `Bearer ${getMslJwt()}`,
-      },
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        if (response.ok) {
-          this.props.onUploadComplete(response.data);
-          this.setState({
-            isUploading: false,
-            uploaded: true,
-          });
-        } else {
-          this.setState({ error: response.data });
-        }
-      });
-  }
-
-  renderStatus() {
-    if (this.state.error) {
-      return (
+      {state.isUploading && 'Uploading'}
+      {state.uploaded && 'Uploaded'}
+      {state.error && (
         <div>
           Sorry an error occurred!
-          <pre>{JSON.stringify(this.state.error.errors)}</pre>
+          <pre>{JSON.stringify(state.error.errors)}</pre>
         </div>
-      );
-    }
-    if (this.state.isUploading) {
-      return 'Uploading';
-    }
-
-    if (this.state.uploaded) {
-      return 'Uploaded!';
-    }
-  }
-
-  render() {
-    return (
-      <div className="ImageUpload">
-        <Dropzone
-          onDrop={this.onDrop}
-          accept="image/jpeg,image/jpg,image/png"
-          multiple={false}
-          maxSize={8000000}
-        >
-          {({ isDragActive }) => (
-            <div
-              className={classnames({ 'ImageUpload--active': isDragActive })}
-            >
-              {this.props.image ? (
-                <OneImage
-                  src={this.props.image.resource}
-                  aspectRatio={AspectRatio.r3by4}
-                  alt=""
-                />
-              ) : (
-                <div className="ImageUpload__no-image">
-                  <div className="ImageUpload__icon">
-                    <AddImageIcon />
-                  </div>
-                  <div>Add an image</div>
-                </div>
-              )}
-            </div>
-          )}
-        </Dropzone>
-        {this.renderStatus()}
-      </div>
-    );
-  }
-}
-
-export { ImageUpload };
+      )}
+    </div>
+  );
+};

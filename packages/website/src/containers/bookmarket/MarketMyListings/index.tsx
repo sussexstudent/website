@@ -17,7 +17,7 @@ interface Result {
 const MarketMyListings: React.FC = () => {
   const { data, loading } = useQuery<Result>(MyListingsQuery, {
     variables: {
-      own: true,
+      filters: { own: true },
     },
   });
 

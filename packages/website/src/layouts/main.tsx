@@ -48,15 +48,6 @@ const mainLayout: React.FC<MainLayoutProps> = ({ assets, legacy }) => {
       <div className="Site">
         <AdvertBar className="AdvertBar--top">
           <MSLAdvert position="TopBanner" />
-          <a
-            className="AdvertBar__advert"
-            href="https://zugarznap.com/insurance/gadget-ga-sussex/get-cover?utm_source=sussexuniversity&utm_medium=cpc&utm_campaign=gadgetsussex"
-          >
-            <img
-              src="https://su.imgix.net/original_images/77f38e7e1f094974b0a9c3f9e6e8ed8c?w=960&h=138&auto=format&q=60"
-              alt="ZugarZnap Insurance (ad)"
-            />
-          </a>
         </AdvertBar>
         <LokiHeader />
         <Main legacy={legacy} />

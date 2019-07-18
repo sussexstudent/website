@@ -5,12 +5,11 @@ import ReactDOM from 'react-dom';
 import Raven from 'raven-js';
 import mitt from 'mitt';
 import { addClassesForFeatures } from '@ussu/common/src/libs/features';
-import { ApolloProvider as ApolloProviderHooks } from 'react-apollo-hooks';
+import { ApolloProvider } from '@apollo/react-hooks';
 import { StoreContext } from 'redux-react-hook';
 import getApolloClientForFalmer from '@ussu/common/src/libs/getApolloClientForFalmer';
 import { store } from '../../website/src/redux/store';
 import { Provider as ReduxProvider } from 'react-redux';
-import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter } from '../../website/src/components/BrowserRouter';
 import Loadable from 'react-loadable';
 import { Website } from './Website';
@@ -39,13 +38,11 @@ Loadable.preloadReady().then(() => {
   ReactDOM.hydrate(
     <BrowserRouter>
       <ApolloProvider client={getApolloClientForFalmer}>
-        <ApolloProviderHooks client={getApolloClientForFalmer}>
-          <ReduxProvider store={store}>
-            <StoreContext.Provider value={store}>
-              <Website />
-            </StoreContext.Provider>
-          </ReduxProvider>
-        </ApolloProviderHooks>
+        <ReduxProvider store={store}>
+          <StoreContext.Provider value={store}>
+            <Website />
+          </StoreContext.Provider>
+        </ReduxProvider>
       </ApolloProvider>
     </BrowserRouter>,
     document.querySelector('.Site'),

@@ -14,7 +14,7 @@ import PatternPlaceholder from '../../components/PatternPlaceholder';
 import Button from '../../components/Button';
 import { RouteComponentProps } from 'react-router-dom';
 import { ScrollToTop } from '../../components/ScrollToTop';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 
 interface RouteParams {
   [0]: string;

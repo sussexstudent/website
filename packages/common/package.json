@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "types": "src/defs/index.d.ts",
   "dependencies": {
     "@emotion/core": "^10.0.14"
   },

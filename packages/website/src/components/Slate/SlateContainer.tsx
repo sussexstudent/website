@@ -1,7 +1,7 @@
 import React from 'react';
 import ACTIVE_SLATE_QUERY from './ActiveSlate.graphql';
 import { SlateLayout } from '../SlateLayout';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import { getAreaBox } from './Boxes/boxes';
 
 export const SlateContainer: React.FC = ({}) => {

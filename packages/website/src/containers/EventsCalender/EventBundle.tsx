@@ -2,7 +2,7 @@ import React from 'react';
 import { EventListings } from './EventListings';
 import Helmet from 'react-helmet';
 import EventListingsBrandingPeriodQuery from './EventListingsBundle.graphql';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import Loader from '../../components/Loader';
 import { ErrorState } from '../../components/ErrorState';
 import { RouteComponentProps } from 'react-router';

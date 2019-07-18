@@ -9,7 +9,7 @@ import FalmerDataList, {
 } from '../../components/FalmerDataList';
 import { Connection } from '@ussu/common/src/types/falmer';
 import { Event } from '@ussu/common/src/types/events';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 
 interface IProps {
   onSelect(eventId: number): void;

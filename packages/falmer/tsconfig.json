@@ -1,5 +1,6 @@
 {
   "extends": "../../tsconfig.json",
+  "types": ["node", "@emotion/core", "../common/src/defs"],
   "exclude": [
     "dist",
     "build",
@@ -13,4 +14,3 @@
     "./src/**/*"
   ]
 }
-

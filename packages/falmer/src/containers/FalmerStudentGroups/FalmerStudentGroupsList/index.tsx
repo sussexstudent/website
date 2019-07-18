@@ -5,7 +5,7 @@ import FalmerDataList, {
   Row,
   HeaderCell,
 } from '../../../components/FalmerDataList';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import ALL_GROUPS_QUERY from './AllGroups.graphql';
 import FalmerSubSections, {
   SubSection,

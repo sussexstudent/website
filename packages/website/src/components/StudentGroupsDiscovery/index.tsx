@@ -6,7 +6,7 @@ import STUDENT_GROUP_LISTING_QUERY from './StudentGroupListings.graphql';
 import { StudentGroupsSectionbar } from '../StudentGroupsSectionbar';
 import Helmet from 'react-helmet';
 import { StudentGroup } from '@ussu/common/src/types/groups';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import Loader from '../Loader';
 
 interface Result {

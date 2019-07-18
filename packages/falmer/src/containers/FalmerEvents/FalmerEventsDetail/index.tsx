@@ -12,7 +12,7 @@ import { Modal } from '@ussu/website/src/components/Modal';
 import { Tag, Tags } from '@ussu/website/src/components/Tags';
 import { formatDistance } from 'date-fns';
 import { FalmerDetailHeader } from '../../../components/FalmerDetailHeader';
-import { useQuery, useMutation } from 'react-apollo-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 
 interface Result {
   event: Event;
@@ -28,7 +28,7 @@ const FalmerEventsDetail: React.FC<Props> = ({
   const { data, loading } = useQuery<Result>(EVENT_DETAIL_QUERY, {
     variables: { eventId },
   });
-  const moveEvent = useMutation(MOVE_EVENT_MUTATION, {
+  const [moveEvent] = useMutation(MOVE_EVENT_MUTATION, {
     refetchQueries: ['AllEvents', 'EventDetail'],
   });
   const [isMoveModalOpen, handleMoveModal] = useState(false);

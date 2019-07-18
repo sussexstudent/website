@@ -10,18 +10,28 @@
     "node": ">=10.x"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@types/jest": "^24.0.14",
-    "@typescript-eslint/eslint-plugin": "^1.11.0",
-    "@typescript-eslint/parser": "^1.11.0",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@emotion/babel-preset-css-prop": "^10.0.14",
+    "@types/jest": "^24.0.15",
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-lodash": "^3.3.4",
+    "css-loader": "^3.1.0",
     "eslint": "^6.0.1",
-    "eslint-config-prettier": "^5.1.0",
+    "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-react-hooks": "^1.6.1",
+    "file-loader": "^4.0.0",
     "husky": "^3.0.0",
-    "lint-staged": "^9.0.0",
-    "mini-css-extract-plugin": "^0.7.0"
+    "lint-staged": "^9.2.0",
+    "lodash-webpack-plugin": "^0.11.5",
+    "mini-css-extract-plugin": "^0.8.0",
+    "url-loader": "^2.0.1"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
@@ -29,7 +39,7 @@
   "dependencies": {
     "awesome-typescript-loader": "^5.2.1",
     "jest": "^24.8.0",
-    "webpack": "^4.35.2"
+    "webpack": "^4.36.1"
   },
   "scripts": {
     "heroku-postbuild": "yarn setup && yarn san:front-prod && yarn san:server-prod",
@@ -46,8 +56,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx,css,graphql}": [
-       "yarn prettier --write",
-       "git add"
+      "yarn prettier --write",
+      "git add"
     ]
   },
   "jest": {

@@ -2,16 +2,9 @@
   "extends": "../../tsconfig.json",
   "types": ["node", "@emotion/core", "./src/defs"],
   "exclude": [
-    "dist",
-    "build",
-    "comp-dist",
-    "build-falmer",
-    "dist-falmer",
-    "config",
     "./src/projects/app/**/*"
   ],
   "include": [
     "./src/**/*"
   ]
 }
-

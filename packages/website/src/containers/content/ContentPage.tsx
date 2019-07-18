@@ -4,7 +4,7 @@ import CONTENT_PAGE_QUERY from './ContentPageQuery.graphql';
 import { contentTypeMap } from './contentTypeRoutes';
 import Helmet from 'react-helmet';
 import { FourOhFourPage } from './FourOhFourPage';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import qs from 'query-string';
 import { ErrorState } from '../../components/ErrorState';
 

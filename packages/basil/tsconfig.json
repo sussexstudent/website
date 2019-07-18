@@ -3,7 +3,7 @@
   "types": ["node", "@emotion/core"],
   "compilerOptions": {
     "declaration": true,
-    "allowJs": null
+    "allowJs": false,
   },
   "include": [
     "./src/**/*"

@@ -2,10 +2,10 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import TrophyCabinet from '../components/TrophyCabinet';
 import { StudentGroupsSectionbar } from '../components/StudentGroupsSectionbar';
-import { store } from '../redux/store';
-import { ApolloProvider } from 'react-apollo';
 import { StoreContext } from 'redux-react-hook';
 import getApolloClientForFalmer from '@ussu/common/src/libs/getApolloClientForFalmer';
+import { store } from '../redux/store';
+import { ApolloProvider } from '@apollo/react-hooks';
 
 export default function ready() {
   const match = window.location.pathname.match(

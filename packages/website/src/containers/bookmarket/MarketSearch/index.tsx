@@ -7,7 +7,7 @@ import { ListingList } from '../ListingList';
 import { Field, Form } from 'react-final-form';
 import Helmet from 'react-helmet';
 import { InternalAppLink } from '../../../components/InternalAppLink';
-import { HandledQuery } from '../HandledQuery';
+import { useQuery } from '@apollo/react-hooks';
 
 interface OwnProps {
   sectionSlug?: string;
@@ -21,21 +21,23 @@ interface Result {
   };
 }
 
-type IProps = OwnProps & { data: Result };
+type IProps = OwnProps;
 
-class MarketSearchQuery extends HandledQuery<Result, {}> {}
+const MarketSearch: React.FC<IProps> = (props: IProps) => {
+  const { data } = useQuery<Result>(GET_SEARCH_QUERY, {
+    variables: {
+      filters: {
+        q: qs.parse(props.location.search).q,
+      },
+    },
+  });
 
-const MarketSearchComponent: React.FC<IProps> = (props: IProps) => {
   function renderList() {
-    if (
-      !props.data ||
-      !props.data.allMarketListings ||
-      !props.data.allMarketListings.edges
-    ) {
+    if (!data || !data.allMarketListings || !data.allMarketListings.edges) {
       return <h1>Error</h1>;
     }
 
-    const edges = props.data.allMarketListings.edges;
+    const edges = data.allMarketListings.edges;
 
     return <ListingList items={edges.map((edge) => edge.node)} />;
   }
@@ -78,24 +80,5 @@ const MarketSearchComponent: React.FC<IProps> = (props: IProps) => {
     </div>
   );
 };
-
-const MarketSearch: React.FC<OwnProps> = (props) => (
-  <MarketSearchQuery
-    query={GET_SEARCH_QUERY}
-    variables={{
-      filters: {
-        q: qs.parse(props.location.search).q,
-      },
-    }}
-  >
-    {({ data }) => {
-      if (!data) {
-        return;
-      }
-
-      return <MarketSearchComponent {...props} data={data} />;
-    }}
-  </MarketSearchQuery>
-);
 
 export { MarketSearch };

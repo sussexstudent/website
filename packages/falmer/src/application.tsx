@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { FalmerApplication } from './containers/FalmerApplication';
-import { ApolloProvider } from 'react-apollo';
-import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
+import { ApolloProvider } from '@apollo/react-hooks';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -45,16 +44,14 @@ const store = createStore(
 sagaMiddleware.run(saga);
 
 ReactDOM.render(
-  <ApolloProvider client={client as any}>
-    <ApolloHooksProvider client={client}>
-      <BrowserRouter>
-        <Provider store={store}>
-          <StoreContext.Provider value={store}>
-            <FalmerApplication />
-          </StoreContext.Provider>
-        </Provider>
-      </BrowserRouter>
-    </ApolloHooksProvider>
+  <ApolloProvider client={client}>
+    <BrowserRouter>
+      <Provider store={store}>
+        <StoreContext.Provider value={store}>
+          <FalmerApplication />
+        </StoreContext.Provider>
+      </Provider>
+    </BrowserRouter>
   </ApolloProvider>,
   document.querySelector('.FalmerAppRoot'),
 );

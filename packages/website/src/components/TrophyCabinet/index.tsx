@@ -5,7 +5,7 @@ import { TrophyModal } from './TrophyModal';
 import { Group } from '@ussu/common/src/types/awards';
 import { isWithinInterval } from 'date-fns';
 import { PeriodList } from './PeriodList';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 
 interface Result {
   group: Group;

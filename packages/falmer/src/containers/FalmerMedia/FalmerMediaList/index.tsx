@@ -4,7 +4,7 @@ import { FauxRouterLinkNonIAL } from '@ussu/website/src/components/FauxRouterLin
 import { Connection } from '@ussu/common/src/types/falmer';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { OneImage } from '@ussu/website/src/components/OneImage';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import Loader from '@ussu/website/src/components/Loader';
 import { ErrorState } from '@ussu/website/src/components/ErrorState';
 

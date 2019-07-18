@@ -1,8 +1,6 @@
 import React from 'react';
 import { Modal } from '../Modal';
 import { BannerOutlet } from '../BannerOutlet';
-import { ApolloProvider } from 'react-apollo';
-import getApolloClientForFalmer from '@ussu/common/src/libs/getApolloClientForFalmer';
 
 interface LoginModalProps {}
 
@@ -15,9 +13,7 @@ export const LoginModal: React.FC<LoginModalProps & ReactModal.Props> = (
   return (
     <Modal size="small" {...props} footerClose>
       <h1 className="Modal__heading">Log in</h1>
-      <ApolloProvider client={getApolloClientForFalmer}>
-        <BannerOutlet outlet="login.modal.top" />
-      </ApolloProvider>
+      <BannerOutlet outlet="login.modal.top" />
       <ul className="LoginActions">
         <li>
           <a
@@ -53,9 +49,7 @@ export const LoginModal: React.FC<LoginModalProps & ReactModal.Props> = (
         </li>
       </ul>
 
-      <ApolloProvider client={getApolloClientForFalmer}>
-        <BannerOutlet outlet="login.modal.bottom" />
-      </ApolloProvider>
+      <BannerOutlet outlet="login.modal.bottom" />
     </Modal>
   );
 };

@@ -15,7 +15,7 @@ import FalmerSubSections, {
 } from '../../../components/FalmerSubSections';
 import { Event } from '@ussu/common/src/types/events';
 import { Connection } from '@ussu/common/src/types/falmer';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 
 function plural(
   length: number,

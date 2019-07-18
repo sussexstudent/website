@@ -14,7 +14,7 @@ import FalmerSubSections, {
 import FalmerListView from '../../../components/FalmerListView';
 import { Connection } from '@ussu/common/src/types/falmer';
 import { Venue } from '@ussu/common/src/types/events';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 
 interface Result {
   allVenues: Connection<Venue>;

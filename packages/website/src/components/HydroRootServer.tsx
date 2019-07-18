@@ -1,7 +1,6 @@
 import React from 'react';
-import { ApolloProvider } from 'react-apollo';
 import { store } from '../redux/store';
-import { ApolloProvider as APHooks } from 'react-apollo-hooks';
+import { ApolloProvider } from '@apollo/react-hooks';
 import { StoreContext as ProviderHooks } from 'redux-react-hook';
 
 export const HydroRootServer: React.FC<{ apolloClient?: any }> = (props) => {
@@ -9,7 +8,7 @@ export const HydroRootServer: React.FC<{ apolloClient?: any }> = (props) => {
     return (
       <ProviderHooks.Provider value={store}>
         <ApolloProvider client={props.apolloClient}>
-          <APHooks client={props.apolloClient}>{props.children}</APHooks>
+          {props.children}
         </ApolloProvider>
       </ProviderHooks.Provider>
     );

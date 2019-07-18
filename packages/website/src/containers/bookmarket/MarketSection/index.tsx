@@ -6,7 +6,9 @@ import { ListingList } from '../ListingList';
 import Helmet from 'react-helmet';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { RouteComponentProps } from 'react-router';
-import { HandledQuery } from '../HandledQuery';
+import { useQuery } from '@apollo/react-hooks';
+import Loader from '../../../components/Loader';
+import { ErrorState } from '../../../components/ErrorState';
 
 interface OwnProps extends RouteComponentProps<{ sectionSlug: string }> {}
 
@@ -19,48 +21,43 @@ interface Result {
 
 type IProps = OwnProps;
 
-class SectionListingsQuery extends HandledQuery<
-  Result,
-  { filters: { section: string }; sectionSlug: string }
-> {}
-
 const MarketSection: React.FC<IProps> = (props: IProps) => {
+  const { data, loading } = useQuery<Result>(SECTION_LISTINGS_QUERY, {
+    variables: {
+      filters: {
+        section: props.match.params.sectionSlug,
+      },
+      sectionSlug: props.match.params.sectionSlug,
+    },
+  });
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (!data) {
+    return <ErrorState />;
+  }
+
+  const edges = data.allMarketListings.edges;
+
   return (
-    <SectionListingsQuery
-      query={SECTION_LISTINGS_QUERY}
-      variables={{
-        filters: {
-          section: props.match.params.sectionSlug,
-        },
-        sectionSlug: props.match.params.sectionSlug,
-      }}
-    >
-      {({ data }) => {
-        if (!data) {
-          return;
-        }
-        const edges = data.allMarketListings.edges;
+    <div>
+      <Helmet title={data.marketSection && data.marketSection.title} />
 
-        return (
-          <div>
-            <Helmet title={data.marketSection && data.marketSection.title} />
-
-            <BreadcrumbBar>
-              <InternalAppLink to="/book-market/">Book Market</InternalAppLink>
-              <InternalAppLink
-                to={`/book-market/section/${data.marketSection &&
-                  data.marketSection.slug}`}
-              >
-                {data.marketSection && data.marketSection.title}
-              </InternalAppLink>
-            </BreadcrumbBar>
-            <div className="Layout Layout--sidebar-right">
-              <ListingList items={edges.map((edge) => edge.node)} />
-            </div>
-          </div>
-        );
-      }}
-    </SectionListingsQuery>
+      <BreadcrumbBar>
+        <InternalAppLink to="/book-market/">Book Market</InternalAppLink>
+        <InternalAppLink
+          to={`/book-market/section/${data.marketSection &&
+            data.marketSection.slug}`}
+        >
+          {data.marketSection && data.marketSection.title}
+        </InternalAppLink>
+      </BreadcrumbBar>
+      <div className="Layout Layout--sidebar-right">
+        <ListingList items={edges.map((edge) => edge.node)} />
+      </div>
+    </div>
   );
 };
 

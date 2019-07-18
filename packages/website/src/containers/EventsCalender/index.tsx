@@ -4,7 +4,7 @@ import startOfDay from 'date-fns/startOfDay';
 import addMonths from 'date-fns/addMonths';
 import EventListingsQuery from './EventListings.graphql';
 import { EventListings } from './EventListings';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import Loader from '../../components/Loader';
 
 interface OwnProps {

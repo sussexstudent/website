@@ -7,7 +7,7 @@ import PatternPlaceholder from '../PatternPlaceholder';
 import StreamField from '../../containers/content/StreamField';
 import Button from '../Button';
 import { Modal } from '../Modal';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 
 interface Result {
   allOffers: Offer[];

@@ -3,7 +3,7 @@ import CONTENT_BROWSER_QUERY from './ContentBrowserQuery.graphql';
 import { ContentBrowserPage } from '../content/types';
 import { ContentBrowser } from '../../components/ContentBrowser';
 import { RouteComponentProps } from 'react-router';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 
 interface Result {
   page: ContentBrowserPage;

@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import convert from 'htmr';
 import BANNER_QUERY from './AllActiveBanners.graphql';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 
 interface BannerOutletProps {
   outlet: string;

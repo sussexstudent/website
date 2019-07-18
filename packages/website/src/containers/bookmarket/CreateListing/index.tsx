@@ -1,20 +1,17 @@
 import React from 'react';
-import { compose } from 'recompose';
 import { Field, Form } from 'react-final-form';
 import {
   composeValidators,
   maxLength,
   required,
 } from '@ussu/common/src/libs/finalFormValidators';
-import { ChildProps, graphql, QueryProps } from 'react-apollo';
 import GetCategories from './GetCategories.graphql';
 import CreateListingMutation from './CreateListingMutation.graphql';
 import { MarketListing, MarketSection } from '@ussu/common/src/types/market';
 import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
 import Helmet from 'react-helmet';
 import { InternalAppLink } from '../../../components/InternalAppLink';
-
-interface OwnProps {}
+import { useMutation, useQuery } from '@apollo/react-hooks';
 
 interface Result {
   createMarketListing: {
@@ -22,31 +19,28 @@ interface Result {
   };
 }
 
-type IProps = OwnProps &
-  ChildProps<{}, Result> & {
-    categoryQuery: QueryProps & Partial<{ allMarketSections: MarketSection[] }>;
-  };
+const CreateListing: React.FC = (props) => {
+  const [createListing] = useMutation<Result>(CreateListingMutation);
+  const { data } = useQuery<{ allMarketSections: MarketSection[] }>(
+    GetCategories,
+  );
 
-const CreateListingComponent: React.FC<IProps> = (props) => {
   const onSubmit = (formData: any) => {
-    props.mutate &&
-      props
-        .mutate({
-          variables: {
-            listingData: {
-              ...formData,
-              price: parseFloat(formData.price),
-              sectionId: parseInt(formData.sectionId, 10),
-            },
-          },
-        })
-        .then((response) => {
-          if (response && response.data) {
-            (props as any).history.push(
-              `/book-market/listing/${response.data.createMarketListing.listing.pk}`,
-            );
-          }
-        });
+    createListing({
+      variables: {
+        listingData: {
+          ...formData,
+          price: parseFloat(formData.price),
+          sectionId: parseInt(formData.sectionId, 10),
+        },
+      },
+    }).then((response) => {
+      if (response && response.data) {
+        (props as any).history.push(
+          `/book-market/listing/${response.data.createMarketListing.listing.pk}`,
+        );
+      }
+    });
   };
 
   return (
@@ -196,9 +190,9 @@ const CreateListingComponent: React.FC<IProps> = (props) => {
                     <option selected hidden>
                       Select a school
                     </option>
-                    {props.categoryQuery &&
-                      props.categoryQuery.allMarketSections &&
-                      props.categoryQuery.allMarketSections.map((section) => (
+                    {data &&
+                      data.allMarketSections &&
+                      data.allMarketSections.map((section) => (
                         <option key={section.pk} value={section.pk}>
                           {section.title}
                         </option>
@@ -215,12 +209,5 @@ const CreateListingComponent: React.FC<IProps> = (props) => {
     </div>
   );
 };
-
-const CreateListing = compose<IProps, OwnProps>(
-  graphql(CreateListingMutation),
-  graphql(GetCategories, {
-    name: 'categoryQuery',
-  }),
-)(CreateListingComponent);
 
 export { CreateListing };

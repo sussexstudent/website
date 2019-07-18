@@ -3,7 +3,7 @@ import MEDIA_DETAIL_QUERY from './MediaDetail.graphql';
 import Loader from '@ussu/website/src/components/Loader';
 import ImageTreatmentPreview from '../../../components/ImageTreatmentPreview';
 import { FalmerImage } from '@ussu/common/src/types/events';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import { RouteComponentProps } from 'react-router';
 
 interface IProps extends RouteComponentProps<{ mediaId: string | undefined }> {}

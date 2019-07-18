@@ -1,7 +1,7 @@
 import React from 'react';
 // import EXAMPLE_QUERY from './ExampleQuery.graphql';
 import './test.css';
-// import {useQuery} from 'react-apollo-hooks';
+// import {useQuery} from '@apollo/react-hooks';
 
 export const EventDiscovery = () => {
   return <h1>tbi</h1>;

@@ -5,7 +5,7 @@ import CopyToClipboardButton from '@ussu/website/src/components/CopyToClipboardB
 import BackBar from '@ussu/website/src/components/BackBar/Link';
 import { Tags, Tag } from '@ussu/website/src/components/Tags';
 import { FalmerDetailHeader } from '../../../components/FalmerDetailHeader';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import { StudentGroup } from '@ussu/common/src/types/groups';
 
 interface IProps {

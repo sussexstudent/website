@@ -4,11 +4,7 @@ import express from 'express';
 import path from 'path';
 import fetch from 'node-fetch';
 import { StaticRouter } from 'react-router';
-import { ApolloProvider } from 'react-apollo';
-import {
-  ApolloProvider as ApolloProviderHooks,
-  getMarkupFromTree,
-} from 'react-apollo-hooks';
+import { ApolloProvider, getMarkupFromTree } from 'react-apollo-hooks';
 import ApolloClient from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import {
@@ -133,13 +129,11 @@ export default function server({ port }: { port: number }) {
       <Loadable.Capture report={(moduleName) => modules.push(moduleName)}>
         <StaticRouter location={req.url} context={context}>
           <ApolloProvider client={client}>
-            <ApolloProviderHooks client={client}>
-              <StoreContext.Provider value={store}>
-                <ReduxProvider store={store}>
-                  <Website />
-                </ReduxProvider>
-              </StoreContext.Provider>
-            </ApolloProviderHooks>
+            <StoreContext.Provider value={store}>
+              <ReduxProvider store={store}>
+                <Website />
+              </ReduxProvider>
+            </StoreContext.Provider>
           </ApolloProvider>
         </StaticRouter>
       </Loadable.Capture>

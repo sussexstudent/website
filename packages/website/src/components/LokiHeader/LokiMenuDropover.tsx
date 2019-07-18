@@ -4,7 +4,7 @@ import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
 import { MenuItem } from '@ussu/common/src/types/skeleton';
 import { COLORS } from '@ussu/common/src/libs/style';
 import MENU_QUERY from './MenuQuery.graphql';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import { css } from '@emotion/core';
 
 const dropoverStyles = css({

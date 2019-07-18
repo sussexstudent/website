@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import EventListingsBrandingPeriodQuery from './EventListingsBrandingPeriod.graphql';
 import { ErrorState } from '../../components/ErrorState';
 import { RouteComponentProps } from 'react-router';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import Loader from '../../components/Loader';
 
 export interface EventBrandingPeriod

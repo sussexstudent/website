@@ -1,41 +1,35 @@
 import React from 'react';
 import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
 import MyListingsQuery from './MyListings.graphql';
-import { compose } from 'recompose';
-import { ChildProps, graphql } from 'react-apollo';
 import Loader from '../../../components/Loader';
-import { MarketListing, MarketSection } from '@ussu/common/src/types/market';
+import { MarketListing } from '@ussu/common/src/types/market';
 import { ListingList } from '../ListingList';
 import Helmet from 'react-helmet';
 import { InternalAppLink } from '../../../components/InternalAppLink';
-
-interface OwnProps {
-  sectionSlug: string;
-}
+import { useQuery } from '@apollo/react-hooks';
 
 interface Result {
   allMarketListings: {
     edges: { node: MarketListing }[];
   };
-  marketSection: MarketSection;
 }
 
-type IProps = OwnProps & ChildProps<{}, Result>;
+const MarketMyListings: React.FC = () => {
+  const { data, loading } = useQuery<Result>(MyListingsQuery, {
+    variables: {
+      own: true,
+    },
+  });
 
-const MarketMyListingsComponent: React.FC<IProps> = (props: IProps) => {
-  if (props.data && props.data.loading) {
+  if (data && loading) {
     return <Loader />;
   }
 
-  if (
-    !props.data ||
-    !props.data.allMarketListings ||
-    !props.data.allMarketListings.edges
-  ) {
+  if (!data || !data.allMarketListings || !data.allMarketListings.edges) {
     return <h1>Error</h1>;
   }
 
-  const edges = props.data.allMarketListings.edges;
+  const edges = data.allMarketListings.edges;
 
   return (
     <div>
@@ -53,17 +47,5 @@ const MarketMyListingsComponent: React.FC<IProps> = (props: IProps) => {
     </div>
   );
 };
-
-const MarketMyListings = compose<OwnProps, IProps>(
-  graphql<Result, IProps>(MyListingsQuery, {
-    options: () => ({
-      variables: {
-        filters: {
-          own: true,
-        },
-      },
-    }),
-  }),
-)(MarketMyListingsComponent);
 
 export { MarketMyListings };

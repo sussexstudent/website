@@ -2,9 +2,7 @@ import React, { useCallback } from 'react';
 import { Modal } from '../Modal';
 import { Accordion } from '../Accordion';
 import { AccordionItem } from '../Accordion/AccordionItem';
-import getApolloClientForFalmer from '@ussu/common/src/libs/getApolloClientForFalmer';
 import { BannerOutlet } from '../BannerOutlet';
-import { ApolloProvider } from 'react-apollo';
 import { WebsiteRootState } from '../../types/website';
 import { useMappedState } from 'redux-react-hook';
 
@@ -35,9 +33,7 @@ export const YourPage: React.FC<YourPageProps & ReactModal.Props> = (props) => {
         {user.profile.firstName} {user.profile.lastName}
       </h2>
 
-      <ApolloProvider client={getApolloClientForFalmer}>
-        <BannerOutlet outlet="yourpage.modal.top" />
-      </ApolloProvider>
+      <BannerOutlet outlet="yourpage.modal.top" />
 
       <Accordion className="ModalAccordion">
         {menu.admin.areas.length > 0 || menu.admin.orgs.length > 0 ? (
@@ -98,9 +94,7 @@ export const YourPage: React.FC<YourPageProps & ReactModal.Props> = (props) => {
         </button>
       </div>
 
-      <ApolloProvider client={getApolloClientForFalmer}>
-        <BannerOutlet outlet="yourpage.modal.bottom" />
-      </ApolloProvider>
+      <BannerOutlet outlet="yourpage.modal.bottom" />
     </Modal>
   );
 };

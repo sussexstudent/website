@@ -8,11 +8,10 @@ import './modules/eventRedirect';
 import Modal from 'react-modal';
 import { BrowserRouter } from './components/BrowserRouter';
 import ReactDOM from 'react-dom';
-import { ApolloProvider as ApolloProviderHooks } from 'react-apollo-hooks';
+import { ApolloProvider } from '@apollo/react-hooks';
 import { StoreContext } from 'redux-react-hook';
 import getApolloClientForFalmer from '@ussu/common/src/libs/getApolloClientForFalmer';
 import { store } from './redux/store';
-import { ApolloProvider } from 'react-apollo';
 import { Website } from './containers/Website';
 // Install raven for sentry error  reporting
 if (process.env.NODE_ENV === 'production') {
@@ -42,11 +41,9 @@ document.body.appendChild(site);
 ReactDOM.render(
   <BrowserRouter>
     <ApolloProvider client={getApolloClientForFalmer}>
-      <ApolloProviderHooks client={getApolloClientForFalmer}>
-        <StoreContext.Provider value={store}>
-          <Website />
-        </StoreContext.Provider>
-      </ApolloProviderHooks>
+      <StoreContext.Provider value={store}>
+        <Website />
+      </StoreContext.Provider>
     </ApolloProvider>
   </BrowserRouter>,
   document.querySelector('.Site'),

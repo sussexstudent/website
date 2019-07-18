@@ -4,7 +4,7 @@
 @import './core/colors.css';
 
 /* general */
-@import '@ussu/website/src/components/Footer/Footer.css';
+@import '../../../website/src/components/Footer/Footer.css';
 @import './components/Modal.css';
 @import './components/LokiContainer.css';
 
@@ -17,15 +17,15 @@
 
 /* layouts */
 @import '../css/base.css';
-@import '@ussu/falmer/src/css/Site.css';
-@import '@ussu/falmer/src/css/FalmerViewContainer.css';
+@import '../../../falmer/src/Site.css';
+@import '../../../falmer/src/FalmerViewContainer.css';
 @import './components/Layout.css';
 @import './components/Trail.css';
 
 /* components */
 @import './components/List.css';
-@import '@ussu/website/src/components/Loader/Loader.css';
-@import '@ussu/website/src/components/Button/Button.css';
+@import '../../../website/src/components/Loader/Loader.css';
+@import '../../../website/src/components/Button/Button.css';
 @import './components/Heading.css';
 @import './components/FalmerHeader.css';
 @import './components/Stonewall.css';
@@ -38,8 +38,8 @@
 @import './components/FalmerDataList.css';
 @import './components/ImagePlaceholder.css';
 @import './components/FalmerMediaGrid.css';
-@import '@ussu/website/src/components/BackBar/BackBar.css';
-@import '@ussu/website/src/components/Tags/Tags.css';
-@import '@ussu/website/src/components/ContentCard/ContentCard.css';
+@import '../../../website/src/components/BackBar/BackBar.css';
+@import '../../../website/src/components/Tags/Tags.css';
+@import '../../../website/src/components/ContentCard/ContentCard.css';
 @import './components/Bento.css';
 @import './components/BentoBox.css';

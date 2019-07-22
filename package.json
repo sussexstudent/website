@@ -18,7 +18,7 @@
     "@emotion/babel-preset-css-prop": "^10.0.14",
     "@types/jest": "^24.0.15",
     "@typescript-eslint/eslint-plugin": "^1.12.0",
-    "@typescript-eslint/parser": "^1.12.0",
+    "@typescript-eslint/parser": "^1.13.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-lodash": "^3.3.4",
     "css-loader": "^3.1.0",

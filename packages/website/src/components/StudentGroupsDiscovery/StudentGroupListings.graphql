@@ -10,6 +10,14 @@ query StudentGroups {
         logo {
           resource
         }
+        mslGroup {
+          id
+          lastSync
+          category {
+            id
+            name
+          }
+        }
       }
     }
   }

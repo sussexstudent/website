@@ -12,6 +12,10 @@ export interface StudentGroup {
   id: number;
   groupId: number;
   mslGroup?: {
+    category: {
+      id: number;
+      name: string;
+    };
     lastSync: string;
   };
 }

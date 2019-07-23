@@ -16,5 +16,13 @@
     display: inline-block;
     text-decoration: none;
     border-radius: 2px;
+    border: 0;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+
+    &--dim {
+      opacity: 0.5;
+    }
   }
 }

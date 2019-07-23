@@ -1,5 +1,7 @@
 import React from 'react';
 import { StreamFieldBlock, StreamFieldBlockData } from '../types';
+import { css } from '@emotion/core';
+import slugify from '@ussu/common/src/libs/slugify';
 
 type Text = StreamFieldBlockData<
   'text',
@@ -33,22 +35,46 @@ export type TwoColSliceData = StreamFieldBlockData<
   }
 >;
 
+const sliceStyle = css({
+  padding: '1rem 0',
+});
+
 export const ProfileSlice: StreamFieldBlock<ProfileSliceData> = ({
-  block: { title },
+  block: { title, backgroundColor, menuName },
 }) => {
   return (
-    <div>
-      <h1>{title}</h1>
+    <div
+      css={[
+        sliceStyle,
+        {
+          background: `#${backgroundColor}`,
+        },
+      ]}
+      id={slugify(menuName)}
+    >
+      <div className="LokiContainer">
+        <h2>{title}</h2>
+      </div>
     </div>
   );
 };
 
 export const TwoColSlice: StreamFieldBlock<TwoColSliceData> = ({
-  block: { title },
+  block: { title, backgroundColor, menuName },
 }) => {
   return (
-    <div>
-      <h1>{title}</h1>
+    <div
+      css={[
+        sliceStyle,
+        {
+          background: `#${backgroundColor}`,
+        },
+      ]}
+      id={slugify(menuName)}
+    >
+      <div className="LokiContainer">
+        <h2>{title}</h2>
+      </div>
     </div>
   );
 };

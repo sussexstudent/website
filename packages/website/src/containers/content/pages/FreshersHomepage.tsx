@@ -6,6 +6,7 @@ import FreshersLogo from '../../../icons/FreshersWeekPlaceholder.svg';
 import { Page } from '../types';
 import StreamField from '../StreamField';
 import { ProfileSliceData, TwoColSliceData } from '../blocks/Freshers';
+import slugify from '@ussu/common/src/libs/slugify';
 
 type FreshersSlices = ProfileSliceData | TwoColSliceData;
 
@@ -66,6 +67,17 @@ const FreshersHomepage: React.FC<FreshersHomepageProps> = ({
           </div>
           <NewsletterSignup />
         </OneImageBackground>
+        <div>
+          <ul>
+            {content.map((slice) => (
+              <li key={slice.id}>
+                <a href={`#${slugify(slice.value.menuName)}`}>
+                  {slice.value.menuName}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
         <StreamField page={page} items={content} />
       </div>
     </React.Fragment>

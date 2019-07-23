@@ -1,8 +1,15 @@
 import React from 'react';
-import { StreamFieldBlock } from '../../types';
+import { StreamFieldBlock, StreamFieldBlockData } from '../../types';
 import AlertIcon from '@ussu/common/src/icons/alert-circle.svg';
 
-export const AlertTextBlock: StreamFieldBlock<{ value: string }> = ({
+export type AlertTextBlockData = StreamFieldBlockData<
+  'alert_text',
+  {
+    value: string;
+  }
+>;
+
+export const AlertTextBlock: StreamFieldBlock<AlertTextBlockData> = ({
   block: { value },
 }) => {
   return (

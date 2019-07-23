@@ -1,8 +1,21 @@
 import React from 'react';
-import { StreamFieldBlock } from '../types';
+import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import StreamField from '../StreamField';
+import {
+  DocumentLinkBlockData,
+  ExternalLinkBlockData,
+  InternalLinkBlockData,
+} from './Links';
 
-export const ButtonGroupBlock: StreamFieldBlock<any[]> = ({ page, block }) => {
+export type ButtonGroupBlockData = StreamFieldBlockData<
+  'button_group_links',
+  (ExternalLinkBlockData | InternalLinkBlockData | DocumentLinkBlockData)[]
+>;
+
+export const ButtonGroupBlock: StreamFieldBlock<ButtonGroupBlockData> = ({
+  page,
+  block,
+}) => {
   return (
     <ul className="List List--reset">
       <StreamField

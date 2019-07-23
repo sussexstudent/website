@@ -1,12 +1,19 @@
 import React from 'react';
-import { StreamFieldBlock } from '../types';
+import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { OneImage } from '../../../components/OneImage';
 
-export const ImageBlock: StreamFieldBlock<{
-  caption: string;
-  image: FalmerImage;
-}> = ({ block: { caption, image } }) => {
+export type ImageBlockData = StreamFieldBlockData<
+  'image',
+  {
+    caption: string;
+    image: FalmerImage;
+  }
+>;
+
+export const ImageBlock: StreamFieldBlock<ImageBlockData> = ({
+  block: { caption, image },
+}) => {
   return (
     <figure>
       <OneImage

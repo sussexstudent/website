@@ -1,14 +1,21 @@
 import React from 'react';
-import { StreamFieldBlock } from '../types';
+import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import { normaliseContentLink } from '../utils';
 import { BlockLink } from '../../../components/BlockLink';
 import Button from '../../../components/Button';
 
-export const ExternalLink: StreamFieldBlock<{
-  link: string;
-  target: any;
-  title: string;
-}> = ({ block: { link, title } }) => {
+export type ExternalLinkBlockData = StreamFieldBlockData<
+  'external_link',
+  {
+    link: string;
+    target: any;
+    title: string;
+  }
+>;
+
+export const ExternalLink: StreamFieldBlock<ExternalLinkBlockData> = ({
+  block: { link, title },
+}) => {
   return (
     <BlockLink to={normaliseContentLink(link)} external>
       {title}
@@ -16,20 +23,34 @@ export const ExternalLink: StreamFieldBlock<{
   );
 };
 
-export const InternalLink: StreamFieldBlock<{
-  link: {
-    path: string;
+export type InternalLinkBlockData = StreamFieldBlockData<
+  'internal_link',
+  {
+    link: {
+      path: string;
+      title: string;
+    };
+    target: any;
     title: string;
-  };
-  target: any;
-  title: string;
-}> = ({ block: { link, title } }) => {
+  }
+>;
+
+export const InternalLink: StreamFieldBlock<InternalLinkBlockData> = ({
+  block: { link, title },
+}) => {
   return <BlockLink to={link.path}>{title || link.title}</BlockLink>;
 };
 
-export const DocumentLink: StreamFieldBlock<{
-  url: string;
-  title: string;
-}> = ({ block: { url, title } }) => {
+export type DocumentLinkBlockData = StreamFieldBlockData<
+  'document_link',
+  {
+    url: string;
+    title: string;
+  }
+>;
+
+export const DocumentLink: StreamFieldBlock<DocumentLinkBlockData> = ({
+  block: { url, title },
+}) => {
   return <Button href={url}>{title}</Button>;
 };

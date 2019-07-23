@@ -1,12 +1,19 @@
 import React from 'react';
-import { StreamFieldBlock } from '../types';
+import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 
-export const StartButtonBlock: StreamFieldBlock<{
-  title: string;
-  link: any;
-  page: any;
-}> = ({ block: { title, link, page } }) => {
+export type StartButtonBlockData = StreamFieldBlockData<
+  'start_button',
+  {
+    title: string;
+    link: any;
+    page: any;
+  }
+>;
+
+export const StartButtonBlock: StreamFieldBlock<StartButtonBlockData> = ({
+  block: { title, link, page },
+}) => {
   return (
     <InternalAppLink
       className="Button Button--start ContentBlock"

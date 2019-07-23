@@ -1,8 +1,13 @@
 import React from 'react';
-import { StreamFieldBlock } from '../types';
+import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import slugify from '@ussu/common/src/libs/slugify';
 
-export const Heading: StreamFieldBlock<{ value: string }> = ({
+export type HeadingBlockData = StreamFieldBlockData<
+  'heading',
+  { value: string }
+>;
+
+export const Heading: StreamFieldBlock<HeadingBlockData> = ({
   block: { value },
 }) => {
   return (

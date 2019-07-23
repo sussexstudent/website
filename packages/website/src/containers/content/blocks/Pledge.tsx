@@ -1,5 +1,5 @@
 import React from 'react';
-import { StreamFieldBlock } from '../types';
+import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import convert from 'htmr';
 import { AspectRatio, OneImage } from '@ussu/website/src/components/OneImage';
@@ -54,12 +54,20 @@ const StatusBadge: React.FC<{ status: string }> = ({ status }) => {
   );
 };
 
-export const Pledge: StreamFieldBlock<{
-  title: string;
-  body: string;
-  status: string;
-  image: FalmerImage;
-}> = ({ block: { title, body, status, image }, index }) => {
+export type PledgeBlockData = StreamFieldBlockData<
+  'pledge',
+  {
+    title: string;
+    body: string;
+    status: string;
+    image: FalmerImage;
+  }
+>;
+
+export const Pledge: StreamFieldBlock<PledgeBlockData> = ({
+  block: { title, body, status, image },
+  index,
+}) => {
   const reverse = index % 2 === 0 ? 'row' : 'row-reverse';
   const itemClass = reverse == 'row-reverse' ? right : left;
   let statusComponent;

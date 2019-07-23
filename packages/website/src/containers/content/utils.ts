@@ -38,7 +38,7 @@ export function getHeadingsFromStreamField(stream: StreamFieldData): string[] {
     [],
     stream
       .filter((block) => block.type === 'text')
-      .map((block: StreamFieldBlockData<{ value: string }>) =>
+      .map((block: StreamFieldBlockData<'text', { value: string }>) =>
         getHeadingsFromHtmlString(block.value.value),
       ),
   );

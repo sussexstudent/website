@@ -1,7 +1,10 @@
 import React from 'react';
 import slugify from '@ussu/common/src/libs/slugify';
 import { FalmerImage } from '@ussu/common/src/types/events';
-import { StreamFieldBlock } from '../../containers/content/types';
+import {
+  StreamFieldBlock,
+  StreamFieldBlockData,
+} from '../../containers/content/types';
 import { AspectRatio, OneImage } from '../OneImage';
 
 interface StaffMemberData {
@@ -15,10 +18,17 @@ interface StaffMemberData {
   officeLocation?: string;
 }
 
-const StaffList: StreamFieldBlock<{
-  heading: string;
-  body: StaffMemberData[];
-}> = ({ block: { heading, body } }) => {
+export type StaffListBlockData = StreamFieldBlockData<
+  'staff_list',
+  {
+    heading: string;
+    body: StaffMemberData[];
+  }
+>;
+
+const StaffList: StreamFieldBlock<StaffListBlockData> = ({
+  block: { heading, body },
+}) => {
   return (
     <div>
       <span className="u-position-anchor" id={slugify(heading)} />

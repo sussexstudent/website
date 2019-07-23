@@ -1,14 +1,14 @@
 import React, { ReactElement } from 'react';
-import blocksMap from '../content/blocksMap';
-import { Page, StreamFieldBlock } from './types';
+import blocksMap, { AllBlocks } from '../content/blocksMap';
+import { Page } from './types';
 
 interface StreamFieldProps {
   page: any;
-  items: any[];
+  items: AllBlocks[];
   renderItem?(props: {
     children: any;
     key: string;
-    block: StreamFieldBlock<any>;
+    block: AllBlocks['value'];
     page: Page;
     index: number;
   }): ReactElement | null;

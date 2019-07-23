@@ -1,10 +1,17 @@
 import React from 'react';
 import convert from 'htmr';
-import { StreamFieldBlock } from '../types';
+import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import slugify from '@ussu/common/src/libs/slugify';
 import { getTextFromElementChildren } from '../utils';
 
-export const TextBlock: StreamFieldBlock<{ value: string }> = ({ block }) => {
+export type TextBlockData = StreamFieldBlockData<
+  'paragraph' | 'text',
+  {
+    value: string;
+  }
+>;
+
+export const TextBlock: StreamFieldBlock<TextBlockData> = ({ block }) => {
   const html = convert(block.value, {
     transform: {
       h2: (props) =>

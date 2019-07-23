@@ -3,8 +3,27 @@ import { NewsletterSignup } from '../../../components/NewsletterSignup';
 import { AspectRatio, OneImageBackground } from '../../../components/OneImage';
 import { useCountdown } from '../../../hooks/useCountdown';
 import FreshersLogo from '../../../icons/FreshersWeekPlaceholder.svg';
+import { Page } from '../types';
+import StreamField from '../StreamField';
+import { ProfileSliceData, TwoColSliceData } from '../blocks/Freshers';
 
-const FreshersHomepage: React.FC = () => {
+type FreshersSlices = ProfileSliceData | TwoColSliceData;
+
+interface FreshersHomepagePage extends Page {
+  countdownCaption: string;
+  countdownTarget: string;
+  heroText: string;
+  content: FreshersSlices[];
+}
+
+interface FreshersHomepageProps {
+  page: FreshersHomepagePage;
+}
+
+const FreshersHomepage: React.FC<FreshersHomepageProps> = ({
+  page,
+  page: { content },
+}) => {
   const countdown = useCountdown(new Date(2019, 9, 21, 12, 0, 0));
 
   return (
@@ -47,6 +66,7 @@ const FreshersHomepage: React.FC = () => {
           </div>
           <NewsletterSignup />
         </OneImageBackground>
+        <StreamField page={page} items={content} />
       </div>
     </React.Fragment>
   );

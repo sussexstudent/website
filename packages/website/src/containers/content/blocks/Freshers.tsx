@@ -21,7 +21,7 @@ export type ProfileSliceData = StreamFieldBlockData<
 >;
 
 export type TwoColSliceData = StreamFieldBlockData<
-  'two_col_slice_component',
+  'two_slice_component',
   {
     backgroundColor: string;
     description: string;

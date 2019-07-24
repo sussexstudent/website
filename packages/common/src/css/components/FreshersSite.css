@@ -1,6 +1,4 @@
 .FreshersSite {
-  background-color: var(--color__f18-blue);
-  color: #ffffff;
   margin-top: -1rem;
 
   & .BlockLink {
@@ -113,6 +111,76 @@
     p {
       color: var(--color__grey-sad-slate);
     }
+  }
+
+  .top-section .top-description p {
+    font-size: 16px;
+  }
+
+  .NewsletterSignup {
+    color: #000;
+    font-weight: normal;
+
+    &__button {
+      background: #1294d2;
+      font-weight: normal;
+      font-size: 20px !important;
+      width: 140px;
+    }
+
+    input {
+      background-color: #d0e9f4;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  .union-logo svg {
+    width: 100px;
+  }
+  .Social {
+    padding-left: 15px;
+    &__icon {
+      height: 30px;
+      width: 30px;
+      &--facebook {
+        background-image: url('~@ussu/common/src/css/img/Facebook.svg');
+      }
+
+      &--twitter {
+        background-image: url('~@ussu/common/src/css/img/Twitter.svg');
+      }
+
+      &--instagram {
+        background-image: url('~@ussu/common/src/css/img/Instagram.svg');
+      }
+
+      &--linkedin {
+        background-image: url('~@ussu/common/src/css/img/Linkedin.svg');
+      }
+    }
+  }
+
+  .inner-container {
+    background-image: url('~@ussu/common/src/css/img/Design.svg');
+    padding: 20px 30px;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+
+  .BlockLink {
+    text-decoration: none;
+    border: 2px solid white;
+    color: white;
+    font-weight: normal;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 18px !important;
+    padding: 5px 50px;
+    width: fit-content;
+    margin: 0 auto;
   }
 }
 

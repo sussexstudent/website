@@ -67,7 +67,7 @@ const BlockComponentMap: {
   internal_link: InternalLink,
   pledge: Pledge,
   profile_slice_component: ProfileSlice,
-  two_col_slice_component: TwoColSlice,
+  two_slice_component: TwoColSlice,
 };
 
 export default BlockComponentMap;

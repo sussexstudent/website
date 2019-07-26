@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const { generateConfig } = require('./webpack.base.config.js');
-const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = generateConfig();
@@ -40,9 +39,6 @@ config.plugins = config.plugins.concat([
     },
   }),
   new webpack.HotModuleReplacementPlugin(),
-  new ReactLoadablePlugin({
-    filename: './sanguine-dist/backend/react-loadable.json',
-  }),
   extractCSS,
 ]);
 

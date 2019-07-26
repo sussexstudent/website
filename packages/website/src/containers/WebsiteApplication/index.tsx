@@ -4,8 +4,6 @@ import EventsApplication from '../EventsApplication';
 import * as routerActions from '../../ducks/router';
 import { AppMountState } from '../../ducks/router';
 import { ContentPage } from '../content/ContentPage';
-import { LoadableLoading } from '../../components/LoadableLoading';
-import Loadable from 'react-loadable';
 import Helmet from 'react-helmet';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import Homepage from '../../layouts/homepage';
@@ -23,6 +21,8 @@ import {
 import { ScrollToTop } from '../../components/ScrollToTop';
 import { useDispatch } from 'redux-react-hook';
 import { SearchProps } from '../../components/SearchApp';
+import loadable from '@loadable/component';
+import { ContentBrowserContainer } from '../ContentBrowser';
 
 interface WebsiteApplicationProps extends RouteComponentProps {
   appMountState: AppMountState;
@@ -32,33 +32,21 @@ const ContentAPI: React.FC<RouteComponentProps> = (props) => (
   <ContentPage path={props.location.pathname} history={props.history} />
 );
 
-const LoadableSearchApp = Loadable({
-  loading: LoadableLoading,
-  loader: () =>
-    import(/* webpackChunkName: "searchapp" */ '../../components/SearchApp'),
-  render({ Search }, props: SearchProps) {
-    return <Search {...props} />;
-  },
+const LoadableSearchApp = loadable<SearchProps>(async () => {
+  const { Search } = await import('../../components/SearchApp');
+  return (props) => <Search {...props} />;
 });
 
-const LoadableStudentGroupsDiscovery = Loadable({
-  loading: LoadableLoading,
-  loader: () =>
-    import(
-      /* webpackChunkName: "sgd" */ '../../components/StudentGroupsDiscovery'
-    ),
-  render({ StudentGroupListings }, props: {}) {
-    return <StudentGroupListings {...props} />;
-  },
+const LoadableStudentGroupsDiscovery = loadable<{}>(async () => {
+  const { StudentGroupListings } = await import(
+    '../../components/StudentGroupsDiscovery'
+  );
+  return (props) => <StudentGroupListings {...props} />;
 });
 
-const LoadableContentBrowser = Loadable({
-  loading: LoadableLoading,
-  loader: () =>
-    import(/* webpackChunkName: "ContentBrowser" */ '../ContentBrowser'),
-  render({ ContentBrowserContainer }, props: RouteComponentProps) {
-    return <ContentBrowserContainer {...props} />;
-  },
+const LoadableContentBrowser = loadable<ContentBrowserContainer>(async () => {
+  const { ContentBrowserContainer } = await import('../ContentBrowser');
+  return (props) => <ContentBrowserContainer {...props} />;
 });
 
 const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({

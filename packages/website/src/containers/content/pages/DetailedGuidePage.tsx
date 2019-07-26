@@ -14,12 +14,12 @@ interface DetailPage extends Page<DetailPageSection[]> {
   category: Page;
 }
 
-interface Props {
+export interface DetailedGuidePageProps {
   page: DetailPage; // todo
 }
 
-const DetailedGuideSectionPage: React.FC<Props> = ({ page: { subPages } }) => {
+export const DetailedGuidePage: React.FC<DetailedGuidePageProps> = ({
+  page: { subPages },
+}) => {
   return <Redirect from={'/'} to={subPages[0].path} />;
 };
-
-export default DetailedGuideSectionPage;

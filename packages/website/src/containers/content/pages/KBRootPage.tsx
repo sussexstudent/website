@@ -15,7 +15,7 @@ interface IKBRootPage extends Page {
   introduction: string;
 }
 
-interface KBRootPageProps {
+export interface KBRootPageProps {
   page: IKBRootPage;
 }
 

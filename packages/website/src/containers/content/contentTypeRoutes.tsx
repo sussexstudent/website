@@ -1,65 +1,100 @@
-import Loadable from 'react-loadable';
-import { LoadableLoading } from '../../components/LoadableLoading';
-import GenericContentStreamPage from './pages/GenericContentStreamPage';
+import React from 'react';
+import loadable from '@loadable/component';
+import { GenericContentStreamPage } from './pages/GenericContentStreamPage';
 import Homepage from './pages/HomePage';
-import { SectionContentPage } from './pages/SectionContentPage';
-import AnswerPage from '../content/pages/AnswerPage';
-import ReferencePage from './pages/ReferencePage';
-import DetailedGuideSectionPage from './pages/DetailedGuideSectionPage';
-import DetailedGuidePage from './pages/DetailedGuidePage';
-import { OutletIndexPage } from './pages/OutletIndexPage';
-import { OutletPage } from './pages/OutletPage';
-import { KBRootPage } from './pages/KBRootPage';
-import { KBCategoryPage } from './pages/KBCategoryPage';
-import { BasicContentPage } from './pages/BasicContentPage';
-import { OfficerOverviewPage } from './pages/OfficerOverviewPage';
-import { OfficersIndex } from './pages/OfficersIndex';
-
-const StaffPage = Loadable({
-  loading: LoadableLoading,
-  loader: () =>
-    import(/* webpackChunkName: "page.staff" */ '../content/pages/StaffPage'),
-});
-
-const FreshersHomepage = Loadable({
-  loading: LoadableLoading,
-  loader: () =>
-    import(
-      /* webpackChunkName: "page.freshers.homepage" */ '../content/pages/FreshersHomepage'
-    ),
-});
-
+import { StaffPageProps } from './pages/StaffPage';
+import { SectionContentPageProps } from './pages/SectionContentPage';
+import { BasicContentPageProps } from './pages/BasicContentPage';
+import { FreshersHomepageProps } from './pages/FreshersHomepage';
+import { KBRootPageProps } from './pages/KBRootPage';
+import { KBCategoryPageProps } from './pages/KBCategoryPage';
+import { AnswerPageProps } from './pages/AnswerPage';
+import { ReferencePageProps } from './pages/ReferencePage';
+import { DetailedGuidePageProps } from './pages/DetailedGuidePage';
+import { DetailedGuideSectionProps } from './pages/DetailedGuideSectionPage';
+import { OutletIndexPageProps } from './pages/OutletIndexPage';
+import { OutletPageProps } from './pages/OutletPage';
+import { OfficerOverviewPageProps } from './pages/OfficerOverviewPage';
+import { OfficerIndexProps } from './pages/OfficersIndex';
 interface PageComponentMap {
   [wagtailModel: string]: any; // todo
 }
 
 export const contentTypeMap: PageComponentMap = {
   HomePage: Homepage,
-  StaffPage: StaffPage,
-  SectionContentPage: SectionContentPage,
-
-  BasicContentPage: BasicContentPage,
+  StaffPage: loadable<StaffPageProps>(async () => {
+    const { StaffPage } = await import('./pages/StaffPage');
+    return (props) => <StaffPage {...props} />;
+  }),
+  SectionContentPage: loadable<SectionContentPageProps>(async () => {
+    const { SectionContentPage } = await import('./pages/SectionContentPage');
+    return (props) => <SectionContentPage {...props} />;
+  }),
+  BasicContentPage: loadable<BasicContentPageProps>(async () => {
+    const { BasicContentPage } = await import('./pages/BasicContentPage');
+    return (props) => <BasicContentPage {...props} />;
+  }),
 
   // FRESHERS
-  FreshersHomepage: FreshersHomepage,
+  FreshersHomepage: loadable<FreshersHomepageProps>(async () => {
+    const { FreshersHomepage } = await import('./pages/FreshersHomepage');
+    return (props) => <FreshersHomepage {...props} />;
+  }),
 
   // Knowledge
-  KBRootPage: KBRootPage,
-  KBCategoryPage: KBCategoryPage,
-  AnswerPage: AnswerPage,
-  ReferencePage: ReferencePage,
-  DetailedGuidePage: DetailedGuidePage,
-  DetailedGuideSectionPage: DetailedGuideSectionPage,
+  KBRootPage: loadable<KBRootPageProps>(async () => {
+    const { KBRootPage } = await import('./pages/KBRootPage');
+    return (props) => <KBRootPage {...props} />;
+  }),
+
+  KBCategoryPage: loadable<KBCategoryPageProps>(async () => {
+    const { KBCategoryPage } = await import('./pages/KBCategoryPage');
+    return (props) => <KBCategoryPage {...props} />;
+  }),
+
+  AnswerPage: loadable<AnswerPageProps>(async () => {
+    const { AnswerPage } = await import('./pages/AnswerPage');
+    return (props) => <AnswerPage {...props} />;
+  }),
+
+  ReferencePage: loadable<ReferencePageProps>(async () => {
+    const { ReferencePage } = await import('./pages/ReferencePage');
+    return (props) => <ReferencePage {...props} />;
+  }),
+
+  DetailedGuidePage: loadable<DetailedGuidePageProps>(async () => {
+    const { DetailedGuidePage } = await import('./pages/DetailedGuidePage');
+    return (props) => <DetailedGuidePage {...props} />;
+  }),
+  DetailedGuideSectionPage: loadable<DetailedGuideSectionProps>(async () => {
+    const { DetailedGuideSectionPage } = await import(
+      './pages/DetailedGuideSectionPage'
+    );
+    return (props) => <DetailedGuideSectionPage {...props} />;
+  }),
 
   // TODO: BasicContentPage
 
   // Outlets
-  OutletIndexPage: OutletIndexPage,
-  OutletPage: OutletPage,
+  OutletIndexPage: loadable<OutletIndexPageProps>(async () => {
+    const { OutletIndexPage } = await import('./pages/OutletIndexPage');
+    return (props) => <OutletIndexPage {...props} />;
+  }),
+  OutletPage: loadable<OutletPageProps>(async () => {
+    const { OutletPage } = await import('./pages/OutletPage');
+    return (props) => <OutletPage {...props} />;
+  }),
 
   // Officers
-  OfficerOverviewPage: OfficerOverviewPage,
-  OfficersIndex: OfficersIndex,
+  OfficerOverviewPage: loadable<OfficerOverviewPageProps>(async () => {
+    const { OfficerOverviewPage } = await import('./pages/OfficerOverviewPage');
+    return (props) => <OfficerOverviewPage {...props} />;
+  }),
+
+  OfficersIndex: loadable<OfficerIndexProps>(async () => {
+    const { OfficersIndex } = await import('./pages/OfficersIndex');
+    return (props) => <OfficersIndex {...props} />;
+  }),
 
   // Volunteering
   // TODO: VolunteeringPage

@@ -11,7 +11,7 @@ import Loader from '../Loader';
 import css from '@emotion/css';
 import { COLORS } from '@ussu/common/src/libs/style';
 import CrossIcon from '../CrossIcon';
-import { cx } from 'emotion';
+import cx from 'classnames';
 
 interface Result {
   allGroups: {

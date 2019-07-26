@@ -10,7 +10,8 @@ import { useQuery } from '@apollo/react-hooks';
 import Loader from '../../../components/Loader';
 import { ErrorState } from '../../../components/ErrorState';
 
-interface OwnProps extends RouteComponentProps<{ sectionSlug: string }> {}
+export interface MarketSectionProps
+  extends RouteComponentProps<{ sectionSlug: string }> {}
 
 interface Result {
   allMarketListings: {
@@ -19,9 +20,7 @@ interface Result {
   marketSection: MarketSection;
 }
 
-type IProps = OwnProps;
-
-const MarketSection: React.FC<IProps> = (props: IProps) => {
+const MarketSection: React.FC<MarketSectionProps> = (props) => {
   const { data, loading } = useQuery<Result>(SECTION_LISTINGS_QUERY, {
     variables: {
       filters: {

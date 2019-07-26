@@ -22,7 +22,7 @@ interface Result {
 
 type IProps = ComponentProps;
 
-const MarketHomeComponent: React.FC<IProps> = (props) => {
+export const MarketHome: React.FC<IProps> = (props) => {
   const { loading: viewerLoading, isAuthenticated } = useViewer();
   const { data, loading } = useQuery<Result>(MARKET_HOME_QUERY);
 
@@ -129,7 +129,3 @@ const MarketHomeComponent: React.FC<IProps> = (props) => {
     </div>
   );
 };
-
-const MarketHome = MarketHomeComponent;
-
-export { MarketHome };

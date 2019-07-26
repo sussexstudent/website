@@ -2,7 +2,7 @@ import React from 'react';
 import { ContentBrowserPage } from '../../containers/content/types';
 import { ContentBrowserColumn } from './ContentBrowserColumn';
 
-interface ContentBrowserProps {
+export interface ContentBrowserProps {
   pages: ContentBrowserPage;
   segments: string[];
 }

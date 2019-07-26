@@ -41,11 +41,14 @@ interface IStaffPage extends Page {
   body: any;
 }
 
-interface IProps {
+export interface StaffPageProps {
   page: IStaffPage; // todo
 }
 
-const StaffPage: React.FC<IProps> = ({ page: { body }, page }) => {
+export const StaffPage: React.FC<StaffPageProps> = ({
+  page: { body },
+  page,
+}) => {
   const levels = flatStreamToLevels(
     (item) => (levelMap as any)[item.type],
     body,
@@ -314,5 +317,3 @@ const StaffPage: React.FC<IProps> = ({ page: { body }, page }) => {
     </div>
   );
 };
-
-export default StaffPage;

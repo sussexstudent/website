@@ -17,11 +17,11 @@ interface FreshersHomepagePage extends Page {
   content: FreshersSlices[];
 }
 
-interface FreshersHomepageProps {
+export interface FreshersHomepageProps {
   page: FreshersHomepagePage;
 }
 
-const FreshersHomepage: React.FC<FreshersHomepageProps> = ({
+export const FreshersHomepage: React.FC<FreshersHomepageProps> = ({
   page,
   page: { content },
 }) => {
@@ -83,5 +83,3 @@ const FreshersHomepage: React.FC<FreshersHomepageProps> = ({
     </React.Fragment>
   );
 };
-
-export default FreshersHomepage;

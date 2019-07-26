@@ -5,7 +5,7 @@ import FalmerEventsDetail from './FalmerEventsDetail';
 import FalmerVenues from '../FalmerVenues';
 import FalmerEventPeriods from '../FalmerEventPeriods';
 
-const FalmerEvents: React.FC = () => (
+export const FalmerEvents: React.FC = () => (
   <div>
     <Switch>
       <Route path="/events" exact component={FalmerEventsList} />
@@ -15,5 +15,3 @@ const FalmerEvents: React.FC = () => (
     </Switch>
   </div>
 );
-
-export default FalmerEvents;

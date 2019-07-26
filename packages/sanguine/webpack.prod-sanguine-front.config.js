@@ -10,7 +10,6 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
-const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
 const config = generateConfig();
 
@@ -82,9 +81,6 @@ config.plugins = config.plugins.concat([
   }),
   new CopyWebpackPlugin([{ from: './src/img/favicons', to: './branding' }]),
   new AssetsWebpackPlugin({filename: 'sanguine-assets.json'}),
-  new ReactLoadablePlugin({
-    filename: './sanguine-dist/backend/react-loadable.json',
-  }),
 ]);
 
 config.module.rules = config.module.rules.concat([

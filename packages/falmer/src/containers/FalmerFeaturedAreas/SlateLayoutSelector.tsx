@@ -2,7 +2,7 @@ import React from 'react';
 import { enumValues } from '@ussu/common/src/libs/enumValues';
 import { Layout } from '@ussu/common/src/types/slates';
 import { SlateLayoutIcon } from './SlateLayoutIcon';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 
 interface Props {
   value: Layout;
@@ -33,10 +33,10 @@ export const SlateLayoutSelector: React.FC<Props> = ({
   layouts,
 }) => {
   return (
-    <ul className={`List List--reset ${listStyles}`}>
+    <ul className={`List List--reset`} css={listStyles}>
       {enumValues(layouts).map((l) => (
         <li key={l}>
-          <button className={buttonStyles} onClick={() => onChange(l)}>
+          <button css={buttonStyles} onClick={() => onChange(l)}>
             <SlateLayoutIcon layout={l} selected={value === l} />
           </button>
         </li>

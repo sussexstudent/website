@@ -18,9 +18,7 @@ function getGreeting() {
   return 'Evening!';
 }
 
-interface IProps {}
-
-export default function FalmerDashboard({  }: IProps) {
+export const FalmerDashboard: React.FC = () => {
   // const mapState = useCallback((state: RootState) => ({
   //   user: state.auth.user,
   // });
@@ -34,4 +32,4 @@ export default function FalmerDashboard({  }: IProps) {
       <h1 className="Heading">{getGreeting()}</h1>
     </div>
   );
-}
+};

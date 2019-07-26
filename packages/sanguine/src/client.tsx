@@ -11,7 +11,6 @@ import getApolloClientForFalmer from '@ussu/common/src/libs/getApolloClientForFa
 import { store } from '../../website/src/redux/store';
 import { Provider as ReduxProvider } from 'react-redux';
 import { BrowserRouter } from '../../website/src/components/BrowserRouter';
-import Loadable from 'react-loadable';
 import { Website } from './Website';
 
 addClassesForFeatures();

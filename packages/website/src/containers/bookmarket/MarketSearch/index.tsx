@@ -9,7 +9,7 @@ import Helmet from 'react-helmet';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { useQuery } from '@apollo/react-hooks';
 
-interface OwnProps {
+export interface MarketSearchProps {
   sectionSlug?: string;
   location: any;
   navigate: any;
@@ -21,9 +21,7 @@ interface Result {
   };
 }
 
-type IProps = OwnProps;
-
-const MarketSearch: React.FC<IProps> = (props: IProps) => {
+const MarketSearch: React.FC<MarketSearchProps> = (props) => {
   const { data } = useQuery<Result>(GET_SEARCH_QUERY, {
     variables: {
       filters: {

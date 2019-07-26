@@ -6,7 +6,7 @@ interface BasicContentPageData extends Page {
   content: StreamFieldData;
 }
 
-interface BasicContentPageProps {
+export interface BasicContentPageProps {
   page: BasicContentPageData;
 }
 

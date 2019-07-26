@@ -12,7 +12,7 @@ interface IKBCategoryPage extends Page<IKBContentPage[]> {
   rootPage: IKBRoot;
 }
 
-interface KBCategoryPageProps {
+export interface KBCategoryPageProps {
   page: IKBCategoryPage;
 }
 

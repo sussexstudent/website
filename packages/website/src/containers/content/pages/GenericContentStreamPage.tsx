@@ -10,7 +10,7 @@ interface IProps {
   page: GenericContentStreamPage;
 }
 
-const GenericContentStreamPage: React.FC<IProps> = ({
+export const GenericContentStreamPage: React.FC<IProps> = ({
   page: { body },
   page,
 }) => {
@@ -22,5 +22,3 @@ const GenericContentStreamPage: React.FC<IProps> = ({
     </div>
   );
 };
-
-export default GenericContentStreamPage;

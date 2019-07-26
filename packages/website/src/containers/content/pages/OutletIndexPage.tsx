@@ -19,7 +19,7 @@ interface OutletIndexPage extends Page<OutletPagePreview[]> {
   section: IOutletIndex;
 }
 
-interface OutletIndexPageProps {
+export interface OutletIndexPageProps {
   page: OutletIndexPage;
 }
 

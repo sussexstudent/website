@@ -1,11 +1,11 @@
 import React from 'react';
 import { Layout } from '@ussu/common/src/types/slates';
-import { css, cx } from 'emotion';
 import {
   AreasMap,
   SlateLayout,
 } from '@ussu/website/src/components/SlateLayout';
 import { COLORS } from '@ussu/common/src/libs/style';
+import { css } from '@emotion/core';
 
 const selectedStyles = css({
   opacity: 1,
@@ -56,15 +56,15 @@ export const SlateLayoutIcon: React.FC<{
     .fill(null)
     .map((_k, i) => (
       <div
-        className={areaStyles}
+        css={areaStyles}
         style={{ backgroundColor: colors[i % colors.length] }}
         key={i}
       />
     ));
 
   return (
-    <div className={cx(containerStyles, { [selectedStyles]: selected })}>
-      <div className={pageStyles}>
+    <div css={[containerStyles, selected && selectedStyles]}>
+      <div css={pageStyles}>
         <SlateLayout layout={layout} areas={areas} />
       </div>
     </div>

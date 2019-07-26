@@ -1,57 +1,41 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Helmet from 'react-helmet';
-import { LoadableLoading } from '../../components/LoadableLoading';
-import Loadable from 'react-loadable';
 import { Sectionbar, SectionbarItem } from '../../components/Sectionbar';
 import { InternalAppLink } from '../../components/InternalAppLink';
+import loadable from '@loadable/component';
+import { MarketSearchProps } from './MarketSearch';
+import { MarketSectionProps } from './MarketSection';
+import { BookDetailProps } from './BookDetail';
 
-const LoadableMarketHome = Loadable({
-  loading: LoadableLoading,
-  loader: () =>
-    import(/* webpackChunkName: "MarketHome" */ './MarketHome').then(
-      (m) => m.MarketHome as any,
-    ),
+const LoadableMarketHome = loadable<{}>(async () => {
+  const { MarketHome } = await import('./MarketHome');
+  return (props) => <MarketHome {...props} />;
 });
 
-const LoadableMarketMyListings = Loadable({
-  loading: LoadableLoading,
-  loader: () =>
-    import(
-      /* webpackChunkName: "MarketMyListings" */ './MarketMyListings'
-    ).then((m) => m.MarketMyListings as any),
+const LoadableMarketMyListings = loadable<{}>(async () => {
+  const { MarketMyListings } = await import('./MarketMyListings');
+  return (props) => <MarketMyListings {...props} />;
 });
 
-const LoadableMarketSearch = Loadable({
-  loading: LoadableLoading,
-  loader: () =>
-    import(/* webpackChunkName: "MarketSearch" */ './MarketSearch').then(
-      (m) => m.MarketSearch as any,
-    ),
+const LoadableMarketSearch = loadable<MarketSearchProps>(async () => {
+  const { MarketSearch } = await import('./MarketSearch');
+  return (props) => <MarketSearch {...props} />;
 });
 
-const LoadableMarketSection = Loadable({
-  loading: LoadableLoading,
-  loader: () =>
-    import(/* webpackChunkName: "MarketSection" */ './MarketSection').then(
-      (m) => m.MarketSection as any,
-    ),
+const LoadableMarketSection = loadable<MarketSectionProps>(async () => {
+  const { MarketSection } = await import('./MarketSection');
+  return (props) => <MarketSection {...props} />;
 });
 
-const LoadableMarketBookDetail = Loadable({
-  loading: LoadableLoading,
-  loader: () =>
-    import(/* webpackChunkName: "MarketBookDetail" */ './BookDetail').then(
-      (m) => m.BookDetail as any,
-    ),
+const LoadableMarketBookDetail = loadable<BookDetailProps>(async () => {
+  const { BookDetail } = await import('./BookDetail');
+  return (props) => <BookDetail {...props} />;
 });
 
-const LoadableMarketCreateListing = Loadable({
-  loading: LoadableLoading,
-  loader: () =>
-    import(
-      /* webpackChunkName: "MarketCreateListing" */ './CreateListing'
-    ).then((m) => m.CreateListing as any),
+const LoadableMarketCreateListing = loadable(async () => {
+  const { CreateListing } = await import('./CreateListing');
+  return (props) => <CreateListing {...props} />;
 });
 
 const BookMarketApplication: React.FC<{}> = () => (

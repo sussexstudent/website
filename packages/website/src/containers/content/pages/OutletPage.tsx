@@ -35,7 +35,7 @@ interface IOutletPage extends Page {
   section: IOutletIndex;
 }
 
-interface OutletPageProps {
+export interface OutletPageProps {
   page: IOutletPage;
 }
 

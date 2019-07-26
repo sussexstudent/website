@@ -18,11 +18,11 @@ interface AnswerPageData extends Page {
   category: Page;
 }
 
-interface AnswerPageProps {
+export interface AnswerPageProps {
   page: AnswerPageData;
 }
 
-const AnswerPage: React.FC<AnswerPageProps> = ({
+export const AnswerPage: React.FC<AnswerPageProps> = ({
   page: { content, relatedLinks, staffOwners },
   page,
 }) => {
@@ -65,5 +65,3 @@ const AnswerPage: React.FC<AnswerPageProps> = ({
     </div>
   );
 };
-
-export default AnswerPage;

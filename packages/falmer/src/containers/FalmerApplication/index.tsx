@@ -1,49 +1,45 @@
 import React, { useCallback, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import Loadable from 'react-loadable';
 import { requestAuthToken } from '../../ducks/auth';
 import FalmerHeader from '../../components/FalmerHeader';
 import Loader from '@ussu/website/src/components/Loader';
-import LoadableLoading from '@ussu/website/src/components/LoadableLoading';
 import { RootState } from '@ussu/common/src/types/falmer';
 import { Switch, Route } from 'react-router-dom';
 import { useMappedState, useDispatch } from 'redux-react-hook';
 import Modal from 'react-modal';
+import { EventsListProps } from '@ussu/website/src/containers/EventsCalender';
+import loadable from '@loadable/component';
 
 Modal.setAppElement('.FalmerAppRoot');
 
-const LoadableMedia = Loadable({
-  loader: () => import(/* webpackChunkName: "Media" */ '../FalmerMedia'),
-  loading: LoadableLoading,
+const LoadableMedia = loadable<EventsListProps>(async () => {
+  const { FalmerMedia } = await import('../FalmerMedia');
+  return (props) => <FalmerMedia {...props} />;
 });
 
-const LoadableBookMarket = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: "BookMarket" */ '../FalmerBookMarket'),
-  loading: LoadableLoading,
+const LoadableBookMarket = loadable(async () => {
+  const { FalmerBookMarket } = await import('../FalmerBookMarket');
+  return (props) => <FalmerBookMarket {...props} />;
 });
 
-const LoadableStudentGroups = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: "StudentGroups" */ '../FalmerStudentGroups'),
-  loading: LoadableLoading,
+const LoadableStudentGroups = loadable(async () => {
+  const { FalmerStudentGroups } = await import('../FalmerStudentGroups');
+  return (props) => <FalmerStudentGroups {...props} />;
 });
 
-const LoadableEvents = Loadable({
-  loader: () => import(/* webpackChunkName: "Events" */ '../FalmerEvents'),
-  loading: LoadableLoading,
+const LoadableEvents = loadable(async () => {
+  const { FalmerEvents } = await import('../FalmerEvents');
+  return (props) => <FalmerEvents {...props} />;
 });
 
-const LoadableDashboard = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: "Dashboard" */ '../FalmerDashboard'),
-  loading: LoadableLoading,
+const LoadableDashboard = loadable(async () => {
+  const { FalmerDashboard } = await import('../FalmerDashboard');
+  return (props) => <FalmerDashboard {...props} />;
 });
 
-const LoadableFeaturedAreas = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: "FeaturedAreas" */ '../FalmerFeaturedAreas'),
-  loading: LoadableLoading,
+const LoadableFeaturedAreas = loadable(async () => {
+  const { FalmerFeaturedAreas } = await import('../FalmerFeaturedAreas');
+  return (props) => <FalmerFeaturedAreas {...props} />;
 });
 
 export const FalmerApplication: React.FC = () => {

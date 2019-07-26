@@ -17,15 +17,14 @@ import { RouteComponentProps } from 'react-router';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import Loader from '../../../components/Loader';
 
-interface OwnProps extends RouteComponentProps<{ listingId: string }> {}
+export interface BookDetailProps
+  extends RouteComponentProps<{ listingId: string }> {}
 
 interface Result {
   marketListing: MarketListing;
 }
 
-type IProps = OwnProps;
-
-const BookDetail: React.FC<IProps> = (props: IProps) => {
+const BookDetail: React.FC<BookDetailProps> = (props) => {
   const [updateImage] = useMutation(UPDATE_IMAGE_MUTATION);
   const [requestContactDetails] = useMutation(REQUEST_CONTACT_DETAILS_MUTATION);
   const { loading: viewerLoading, isAuthenticated, currentUser } = useViewer();

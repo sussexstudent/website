@@ -13,11 +13,8 @@ import {
 } from 'apollo-cache-inmemory';
 import { createSanguineStore } from '~website/redux/store';
 import { Provider as ReduxProvider } from 'react-redux';
-import Loadable from 'react-loadable';
 import proxy from 'http-proxy-middleware';
 import introspectionQueryResultData from '../../../fragmentTypes.json';
-import { getBundles, Bundle } from 'react-loadable/webpack';
-import stats from '../../../sanguine-dist/backend/react-loadable.json';
 import { Website } from './Website';
 import { StoreContext } from 'redux-react-hook';
 import { Branding, manifestHandler } from '~website/head';

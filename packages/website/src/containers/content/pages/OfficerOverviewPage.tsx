@@ -26,7 +26,7 @@ interface IOfficerOverviewPage extends Page {
   youtubeSplash: string;
 }
 
-interface OfficerOverviewPageProps {
+export interface OfficerOverviewPageProps {
   page: IOfficerOverviewPage;
 }
 

@@ -25,7 +25,7 @@ interface ISectionContentPage extends Page {
   contentsInSidebar: boolean;
 }
 
-interface IProps {
+export interface SectionContentPageProps {
   page: ISectionContentPage;
 }
 
@@ -33,7 +33,10 @@ interface IState {
   visibleKey: null | string;
 }
 
-class SectionContentPage extends React.Component<IProps, IState> {
+class SectionContentPage extends React.Component<
+  SectionContentPageProps,
+  IState
+> {
   state = {
     visibleKey: null,
   };

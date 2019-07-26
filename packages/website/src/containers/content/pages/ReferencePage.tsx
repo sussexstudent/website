@@ -18,11 +18,11 @@ interface IReferencePage extends Page {
   category: Page;
 }
 
-interface IProps {
+export interface ReferencePageProps {
   page: IReferencePage;
 }
 
-const ReferencePage: React.FC<IProps> = ({
+export const ReferencePage: React.FC<ReferencePageProps> = ({
   page: { content, relatedLinks, staffOwners },
   page,
 }) => {
@@ -66,5 +66,3 @@ const ReferencePage: React.FC<IProps> = ({
     </div>
   );
 };
-
-export default ReferencePage;

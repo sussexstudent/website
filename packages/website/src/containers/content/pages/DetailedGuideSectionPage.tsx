@@ -22,7 +22,7 @@ interface DetailPageSection extends Page {
   parentPage: DetailPage;
 }
 
-interface Props {
+export interface DetailedGuideSectionProps {
   page: DetailPageSection; // todo
 }
 
@@ -30,7 +30,7 @@ const DetailedGuideSection: React.FC<{ page: DetailPageSection }> = (props) => (
   <StreamField items={props.page.content} page={props.page} />
 );
 
-const DetailedGuideSectionPage: React.FC<Props> = ({
+export const DetailedGuideSectionPage: React.FC<DetailedGuideSectionProps> = ({
   page: {
     parentPage: { subPages, relatedLinks, staffOwners },
   },
@@ -92,5 +92,3 @@ const DetailedGuideSectionPage: React.FC<Props> = ({
     </div>
   );
 };
-
-export default DetailedGuideSectionPage;

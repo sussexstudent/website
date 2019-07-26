@@ -24,7 +24,7 @@ interface OfficersIndex extends Page<OfficerPagePreview[]> {
   section: IOfficersIndex;
 }
 
-interface OfficerIndexProps {
+export interface OfficerIndexProps {
   page: OfficersIndex;
 }
 

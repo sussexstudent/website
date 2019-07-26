@@ -199,7 +199,6 @@ const standard: FontMap = {
     'group-a': {
       fontSize: '12px',
       lineHeight: '16px',
-      textTransform: 'uppercase',
     },
     'group-c': {
       fontSize: '13px',

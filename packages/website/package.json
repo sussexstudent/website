@@ -36,7 +36,7 @@
     "react": "^16.8.6",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.8.6",
-    "react-dropzone": "^10.1.5",
+    "react-dropzone": "^10.1.6",
     "react-final-form": "^6.3.0",
     "react-helmet": "^5.2.1",
     "react-modal": "^3.9.1",

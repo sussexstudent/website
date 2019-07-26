@@ -8,7 +8,7 @@ import { COLORS } from '@ussu/common/src/libs/style';
 
 const pledgeHeaderStyles = css({
   display: 'flex',
-  alignItems: 'center',
+  flexDirection: 'column',
 });
 
 const right = css({
@@ -31,9 +31,6 @@ const StatusBadge: React.FC<{ status: string }> = ({ status }) => {
       css={{
         textTransform: 'uppercase',
         fontWeight: 'bold',
-        paddingLeft: '1rem',
-        marginTop: '20px',
-        marginBottom: '10px',
         fontSize: '14px',
         color: color,
       }}
@@ -77,7 +74,7 @@ export const Pledge: StreamFieldBlock<PledgeBlockData> = ({
   return (
     <div
       className="Trail Trail__row--11"
-      css={{ marginBottom: '5%', flexDirection: reverse }}
+      css={{ marginBottom: '5%', flexDirection: reverse, alignItems: 'center' }}
     >
       <div css={itemClass}>
         <div css={pledgeHeaderStyles}>

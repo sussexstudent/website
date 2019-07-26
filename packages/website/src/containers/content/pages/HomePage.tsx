@@ -34,7 +34,7 @@ function Homepage(props: HomepageProps) {
     <div>
       <Helmet title={undefined} />
       <div className="ContentBlock">
-        <div className="ContentBlock__heading">Your full-time officers</div>
+        <h3 className="ContentBlock__heading">Your full-time officers</h3>
         <PersonCollection size="small">
           {shuffle(fullTimeOfficers).map((item) => (
             <PersonCollectionFigure
@@ -48,7 +48,7 @@ function Homepage(props: HomepageProps) {
         </PersonCollection>
       </div>
       <div className="ContentBlock">
-        <div className="ContentBlock__heading">Your part-time officers</div>
+        <h3 className="ContentBlock__heading">Your part-time officers</h3>
         <PersonCollection size="small">
           {shuffle(partTimeOfficers).map((item) => (
             <PersonCollectionFigure

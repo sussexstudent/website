@@ -12,6 +12,7 @@ interface IProps {
     twitter?: NetworkInfo;
     instagram?: NetworkInfo;
     snapchat?: NetworkInfo;
+    linkedin?: NetworkInfo;
   };
 }
 
@@ -64,6 +65,19 @@ export const SocialArray: React.FC<IProps> = ({ networks }) => (
 
           <span className="Social__handle">
             {networks.snapchat.name || 'Snapchat'}
+          </span>
+        </a>
+      </li>
+    ) : null}
+    {networks.linkedin ? (
+      <li>
+        <a className="Social__link" href={networks.linkedin.link}>
+          <span className="Social__icon Social__icon--linkedin">
+            <span className="u-h">Linkedin</span>
+          </span>
+
+          <span className="Social__handle">
+            {networks.linkedin.name || 'Linkedin'}
           </span>
         </a>
       </li>

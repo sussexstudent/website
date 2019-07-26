@@ -6,7 +6,7 @@ import {
 
 interface IProps {
   items?: FigureData[];
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'big';
 }
 
 export const PersonCollection: React.FC<IProps> = ({

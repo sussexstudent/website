@@ -1,0 +1,26 @@
+{
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Default Introspection Endpoint": {
+        "url": "https://falmer.sussexstudent.com/graphql/",
+        "introspect": true,
+        "headers": {
+          "user-agent": "JS GraphQL"
+        }
+      },
+      "Default (http://localhost:8000/graphql)": {
+        "url": "http://localhost:8000/graphql/",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        }
+      },
+      "Production": {
+        "url": "https://falmer.sussexstudent.com/graphql/",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        }
+      }
+    }
+  }
+}

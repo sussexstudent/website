@@ -8,6 +8,7 @@ export interface FalmerUser {
 
 export interface AuthState {
   user: FalmerUser;
+  loading: boolean;
 }
 
 export interface RootState {

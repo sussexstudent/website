@@ -3,9 +3,11 @@ const webpack = require('webpack');
 const config = require('./falmer.base.config.js');
 
 config.devServer = {
-  historyApiFallback: true,
-  hot: true,
+  historyApiFallback: false,
+  hot: false,
   https: false,
+  liveReload: false,
+  inline: false
 };
 
 config.output = {

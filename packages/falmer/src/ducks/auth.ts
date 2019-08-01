@@ -36,12 +36,14 @@ function apiGetClientData() {
 const REQUEST_AUTH_TOKEN = 'REQUEST_AUTH_TOKEN';
 const SUCCESS_AUTH_TOKEN = 'SUCCESS_AUTH_TOKEN';
 const CLIENT_DATA_SUCCESS = 'CLIENT_DATA_SUCCESS';
+const NOT_LOGGED_IN = 'NOT_LOGGED_IN';
 
 // Reducer
 export default function reducer(
   state = {
     authToken: null,
     user: null,
+    loading: true,
   },
   action: AnyAction,
 ) {
@@ -56,9 +58,16 @@ export default function reducer(
       return {
         ...state,
         user: action.payload.user,
+        loading: false,
       };
     }
-
+    case NOT_LOGGED_IN: {
+      return {
+        ...state,
+        user: null,
+        loading: false,
+      };
+    }
     default:
       return state;
   }
@@ -83,23 +92,27 @@ function* getClientData() {
       },
     });
   } catch (e) {
-    console.log('error getting client data');
+    yield put({ type: NOT_LOGGED_IN });
   }
 }
 
 function* getAuthToken() {
   try {
     const res = yield call(apiGetToken);
-    yield call(saveToken, res.token);
-    yield put({
-      type: SUCCESS_AUTH_TOKEN,
-      payload: {
-        token: res.token,
-      },
-    });
-    yield* getClientData();
+    if (res.token) {
+      yield call(saveToken, res.token);
+      yield put({
+        type: SUCCESS_AUTH_TOKEN,
+        payload: {
+          token: res.token,
+        },
+      });
+      yield* getClientData();
+    } else {
+      throw new Error('failed to get token');
+    }
   } catch (e) {
-    console.error('error with getting token');
+    yield put({ type: NOT_LOGGED_IN });
   }
 }
 

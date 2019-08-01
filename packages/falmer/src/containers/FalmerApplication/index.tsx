@@ -9,6 +9,7 @@ import { useMappedState, useDispatch } from 'redux-react-hook';
 import Modal from 'react-modal';
 import { EventsListProps } from '@ussu/website/src/containers/EventsCalender';
 import loadable from '@loadable/component';
+import { LoginPage } from '../../components/LoginPage';
 
 Modal.setAppElement('.FalmerAppRoot');
 
@@ -43,19 +44,20 @@ const LoadableFeaturedAreas = loadable(async () => {
 });
 
 export const FalmerApplication: React.FC = () => {
-  const mapState = useCallback(
-    (state: RootState) => state.auth.user !== null,
-    [],
-  );
-  const isAuthenticated = useMappedState(mapState);
+  const mapState = useCallback((state: RootState) => state.auth, []);
+  const auth = useMappedState(mapState);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(requestAuthToken());
   }, []);
 
-  if (!isAuthenticated) {
+  if (auth.loading) {
     return <Loader />;
+  }
+
+  if (auth.user === null) {
+    return <LoginPage />;
   }
 
   return (

@@ -23,6 +23,107 @@
       }
     }
   }
+
+  .ContactSection {
+    .Social {
+      flex-direction: column;
+      @media (--medium) {
+        float: right;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      li {
+        flex: 0 50%;
+        padding: 0 0 1rem 0;
+
+        a {
+          display: flex;
+          text-decoration: none;
+          width: 80%;
+          float: right;
+        }
+
+        .Social__handle {
+          display: block;
+          padding-left: 1.5rem;
+          color: #000;
+        }
+      }
+    }
+  }
+
+  .NewsletterSignup {
+    color: #000;
+    font-weight: normal;
+    z-index: 0;
+
+    &__button {
+      background: #1294d2;
+      font-weight: normal;
+      font-size: 20px !important;
+      width: 140px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+
+    input {
+      background-color: #d0e9f4;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  .BlockLink {
+    text-decoration: none;
+    border: 2px solid white;
+    color: white;
+    font-weight: normal;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 18px !important;
+    padding: 5px 50px;
+    width: fit-content;
+    margin: 0 auto 2rem;
+  }
+
+  .FGT__countdown {
+    font-family: var(--type__primary);
+    color: var(--color__grey-slate);
+    text-transform: uppercase;
+    @mixin type trafalgar;
+    text-align: center;
+    font-weight: bold;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+
+  .FGT__countdownFreshers {
+    color: white;
+    font-weight: normal;
+    text-transform: lowercase;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 2rem;
+    flex-direction: column;
+
+    @media (--medium) {
+      flex-direction: row;
+    }
+
+    .countdown_value {
+      font-size: 5rem;
+      line-height: 3rem;
+    }
+
+    .countdown_label {
+      font-size: 1rem;
+      text-transform: uppercase;
+      padding: 0 0 2rem;
+      line-height: 3rem;
+    }
+  }
 }
 
 .FreshersHomepage {

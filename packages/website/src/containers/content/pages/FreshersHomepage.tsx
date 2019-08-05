@@ -1,5 +1,4 @@
 import React from 'react';
-//import { useCountdown } from '../../../hooks/useCountdown';
 import { Page } from '../types';
 import {
   ProfileSliceData,
@@ -17,6 +16,7 @@ import StreamField from '../StreamField';
 import { MQ } from '@ussu/common/src/libs/style';
 import { useCountdown } from '../../../hooks/useCountdown';
 import sand from '../../../img/freshers-sand.svg';
+import { NewsletterSignup } from '../../../components/NewsletterSignup';
 
 type FreshersSlices = ProfileSliceData | TwoColSliceData;
 
@@ -74,6 +74,7 @@ const FerrisAnimation = keyframes`
 
 const desktopOnlyStyle = css({
   display: 'none',
+  color: '#000',
   [MQ.Medium]: {
     display: 'block',
   },
@@ -119,9 +120,9 @@ const FreshersHero: React.FC<{ heroText: string; title: string }> = ({
                 Back to the SU Homepage
               </a>
             </div>
-            <div css={desktopOnlyStyle}>
+            <a href="/" css={desktopOnlyStyle}>
               <UnionLogo css={{ width: '100px' }} />
-            </div>
+            </a>
           </div>
 
           <div css={sectionStyle}>
@@ -194,8 +195,11 @@ const FreshersMenu: React.FC<{ content: FreshersSlices[] }> = ({ content }) => (
   </div>
 );
 
-const FreshersWater: React.FC = () => {
-  const countdown = useCountdown(new Date(2019, 9, 21, 12, 0, 0));
+const FreshersWater: React.FC<{
+  countdownTarget: string;
+  countdownCaption: string;
+}> = ({ countdownTarget, countdownCaption }) => {
+  const countdown = useCountdown(new Date(countdownTarget));
   return (
     <div
       css={{
@@ -206,12 +210,25 @@ const FreshersWater: React.FC = () => {
           backgroundImage: `url(${sand})`,
           backgroundPosition: 'left top',
           backgroundRepeat: 'no-repeat',
-          backgroundSize: 'contain',
+          backgroundSize: 'cover',
           width: '100%',
-          height: 80,
+          height: 150,
         },
       }}
     >
+      <div
+        css={{
+          margin: '0',
+          color: 'white',
+          textTransform: 'uppercase',
+          textAlign: 'center',
+          fontSize: '3rem',
+          padding: '2rem',
+          lineHeight: '3rem',
+        }}
+      >
+        {countdownCaption}
+      </div>
       <div className="FGT__countdown FGT__countdownFreshers">
         <div className="countdown_item">
           <div className="countdown_value">{countdown.days}</div>
@@ -249,9 +266,13 @@ export const FreshersHomepage: React.FC<FreshersHomepageProps> = ({
   return (
     <div>
       <FreshersHero title={title} heroText={heroText} />
-      <FreshersWater />
+      <FreshersWater
+        countdownTarget={page.countdownTarget}
+        countdownCaption={page.countdownCaption}
+      />
       <div>
         <FreshersMenu content={content} />
+        <NewsletterSignup />
         <StreamField page={page} items={content} />
         <SocialSlice />
       </div>

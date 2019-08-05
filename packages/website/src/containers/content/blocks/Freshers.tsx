@@ -10,6 +10,7 @@ import { TextBlockData } from './TextBlock';
 import { ExternalLinkBlockData, InternalLinkBlockData } from './Links';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
 import { ImageBlockData } from './Image';
+import { SocialArray } from '../../../components/SocialArray';
 
 const Slice: React.FC<{ id: string; color: string }> = ({
   children,
@@ -31,7 +32,9 @@ const subheadingStyle = css({
 
 const descStyle = css({
   textAlign: 'center',
-  width: '50%',
+  [MQ.Medium]: {
+    width: '50%',
+  },
   margin: '30px auto',
 });
 
@@ -87,7 +90,9 @@ export const ProfileSlice: StreamFieldBlock<ProfileSliceData> = ({
               width: '40%',
               maxWidth: 240,
               textAlign: 'center',
-              [MQ.Medium]: { paddingRight: 30 },
+              fontWeight: 'bold',
+              margin: '1rem auto',
+              [MQ.Medium]: { paddingRight: '5%' },
               '& img': { borderRadius: '50%' },
             }}
           >
@@ -96,9 +101,19 @@ export const ProfileSlice: StreamFieldBlock<ProfileSliceData> = ({
               src={image.image.resource}
               aspectRatio={AspectRatio.r1by1}
             />
-            <span>{image.caption}</span>
+            <div
+              css={{
+                marginTop: '10px',
+              }}
+            >
+              {image.caption}
+            </div>
           </div>
-          <div>
+          <div
+            css={{
+              alignSelf: 'center',
+            }}
+          >
             <StreamField page={page} items={body} />
           </div>
         </div>
@@ -118,17 +133,39 @@ export const SocialSlice: React.FC = () => (
       padding: '1rem 0 3rem 0',
     }}
   >
-    <div className="LokiContainer">
-      <h1>Connect with us</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scrupulum,
-        inquam, abeunti; Quod si ita est, sequitur id ipsum, quod te velle
-        video, omnes semper beatos esse sapientes. Duo Reges: constructio
-        interrete. Eadem nunc mea adversum te oratio est. Nec vero alia sunt
-        quaerenda contra Carneadeam illam sententiam. Ut id aliis narrare
-        gestiant? Non est enim vitium in oratione solum, sed etiam in moribus.
-        Quorum altera prosunt, nocent altera.
-      </p>
+    <div className="LokiContainer ContactSection" css={{ minHeight: '150px' }}>
+      <h1
+        css={{
+          textAlign: 'center',
+          [MQ.Medium]: {
+            paddingBottom: '2rem',
+          },
+        }}
+      >
+        Connect with us
+      </h1>
+      <div>
+        <SocialArray
+          networks={{
+            website: {
+              link: 'https://www.sussexstudent.com/',
+              name: 'sussexstudent.com',
+            },
+            instagram: {
+              link: 'https://twitter.com/ussu',
+              name: 'ussu',
+            },
+            facebook: {
+              link: 'https://www.facebook.com/thestudentsunion/',
+              name: 'sussexsu',
+            },
+            twitter: {
+              link: 'https://www.instagram.com/sussexsu/',
+              name: 'thestudentunion',
+            },
+          }}
+        />
+      </div>
     </div>
   </div>
 );

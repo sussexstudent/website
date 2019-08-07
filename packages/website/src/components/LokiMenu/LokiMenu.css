@@ -44,39 +44,7 @@
   }
 }
 
-.LokiMenu__item:nth-child(1) .LokiMenu__link {
-  background-color: var(--color__brand-blue);
-  color: #fff;
-
-  @media (--medium) {
-    background-color: transparent;
-    color: var(--color__brand-blue);
-  }
-
-  &:hover,
-  &.LokiMenu__link--active {
-    background-color: var(--color__brand-blue);
-    color: #ffffff;
-  }
-}
-
-.LokiMenu__item:nth-child(2) .LokiMenu__link {
-  background-color: var(--color__brand-green);
-  color: #fff;
-
-  @media (--medium) {
-    background-color: transparent;
-    color: var(--color__brand-green);
-  }
-
-  &:hover,
-  &.LokiMenu__link--active {
-    background-color: var(--color__brand-green);
-    color: #fff;
-  }
-}
-
-.LokiMenu__item:nth-child(3) .LokiMenu__link {
+.LokiMenu__item .LokiMenu__link {
   background-color: var(--color__brand-red);
   color: #fff;
 
@@ -88,22 +56,6 @@
   &:hover,
   &.LokiMenu__link--active {
     background-color: var(--color__brand-red);
-    color: #fff;
-  }
-}
-
-.LokiMenu__item:nth-child(4) .LokiMenu__link {
-  background-color: var(--color__grey-slate);
-  color: #fff;
-
-  @media (--medium) {
-    background-color: transparent;
-    color: var(--color__grey-slate);
-  }
-
-  &:hover,
-  &.LokiMenu__link--active {
-    background-color: var(--color__grey-slate);
     color: #fff;
   }
 }

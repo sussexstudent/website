@@ -1,0 +1,8 @@
+query AllFlags {
+  allFlags {
+    name
+    mode
+    state
+    expired
+  }
+}

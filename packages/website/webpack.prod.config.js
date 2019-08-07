@@ -42,7 +42,7 @@ config.optimization = {
 };
 
 config.plugins = config.plugins.concat([
-  new BundleAnalyzerPlugin(),
+  //new BundleAnalyzerPlugin(),
   new CleanWebpackPlugin(),
   // new webpack.HashedModuleIdsPlugin(),
   extractCSS,

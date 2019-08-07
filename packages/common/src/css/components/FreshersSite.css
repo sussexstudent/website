@@ -1,163 +1,111 @@
 .FreshersSite {
-  background-color: var(--color__f18-blue);
-  color: #ffffff;
   margin-top: -1rem;
 
-  & .BlockLink {
-    color: var(--color__f18-orange);
-    @mixin type paragon;
+  & .Social {
+    padding-left: 15px;
+    &__icon {
+      height: 30px;
+      width: 30px;
+      &--facebook {
+        background-image: url('~@ussu/common/src/css/img/Facebook.svg');
+      }
+
+      &--twitter {
+        background-image: url('~@ussu/common/src/css/img/Twitter.svg');
+      }
+
+      &--instagram {
+        background-image: url('~@ussu/common/src/css/img/Instagram.svg');
+      }
+
+      &--linkedin {
+        background-image: url('~@ussu/common/src/css/img/Linkedin.svg');
+      }
+    }
   }
 
-  a {
-    color: #ffffff;
+  .ContactSection {
+    .Social {
+      flex-direction: column;
+      @media (--medium) {
+        float: right;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      li {
+        flex: 0 50%;
+        padding: 0 0 1rem 0;
+
+        a {
+          display: flex;
+          text-decoration: none;
+          width: 80%;
+          float: right;
+        }
+
+        .Social__handle {
+          display: block;
+          padding-left: 1.5rem;
+          color: #000;
+        }
+      }
+    }
   }
-}
 
-.FreshersLogoContainer {
-  padding: 2rem 0;
-  color: #484598;
-  max-width: 600px;
-  width: 80%;
-  margin: 0 auto;
+  .NewsletterSignup {
+    color: #000;
+    font-weight: normal;
+    z-index: 0;
 
-  h1 {
-    text-align: center;
+    &__button {
+      background: #1294d2;
+      font-weight: normal;
+      font-size: 20px !important;
+      width: 140px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+
+    input {
+      background-color: #d0e9f4;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  .BlockLink {
+    text-decoration: none;
+    border: 2px solid white;
     color: white;
-    font-size: 3rem;
-    padding-top: 1rem;
-    line-height: 3rem;
-  }
-}
-.FreshersLogoContainer svg {
-  width: 100%;
-  height: auto;
-}
-
-.FreshersHomepage {
-  .SplashSlice {
-    padding-top: 2rem;
-    min-height: 70vh;
-    background-size: cover;
-  }
-
-  &__attend {
-    a {
-      color: #ffffff;
-    }
-  }
-
-  & h2 {
-    @mixin type canon;
-  }
-
-  & h3 {
-    @mixin type paragon;
-  }
-
-  & p {
-    @mixin type body-copy;
-    max-width: 660px;
-  }
-
-  &__slice {
-    padding: 2rem 0;
-  }
-
-  &__slice--events {
-    background: #4bc1c2;
-
-    h2 {
-      color: #1e1c50;
-    }
-
-    p {
-      color: #1a686a;
-    }
-  }
-
-  &__slice--gt {
-    background: #ec5453;
-    overflow-x: hidden;
-    overflow-y: visible;
-    width: 100%;
-    box-sizing: border-box;
-
-    h2 {
-      color: #1e1c50;
-    }
-  }
-
-  &__slice--preview {
-    padding: 20vh 0;
+    font-weight: normal;
+    border-radius: 30px;
     text-align: center;
-    color: var(--color__f18-teal);
-    text-shadow: 3px 3px 0 #1e1c50, 6px 6px 0 var(--color__f18-pink),
-      9px 9px 0 var(--color__f18-orange), 12px 12px 0 var(--color__f18-purple);
-
-    h1 {
-      @mixin type canon;
-    }
+    font-size: 18px !important;
+    padding: 5px 50px;
+    width: fit-content;
+    margin: 0 auto 2rem;
   }
 
-  &__slice--union {
-    background: #fff;
-
-    h2 {
-      color: #1e1c50;
-    }
-
-    h3 {
-      color: var(--color__f18-purple);
-    }
-
-    p {
-      color: var(--color__grey-sad-slate);
-    }
-  }
-}
-
-.FGT {
-  &__header {
-    @media (--medium) {
-      display: flex;
-    }
-  }
-
-  &__heading {
-    flex: 1 1 auto;
-    padding-right: 1rem;
-    box-sizing: border-box;
-  }
-
-  &__ticket {
-    transform: rotate(4deg);
-    width: 100%;
-
-    @media (--medium) {
-      max-width: 40%;
-      transform: rotate(12deg);
-      margin-right: -6%;
-      margin-top: -40px;
-    }
-  }
-
-  &__countdown {
+  .FGT__countdown {
     font-family: var(--type__primary);
     color: var(--color__grey-slate);
     text-transform: uppercase;
     @mixin type trafalgar;
     text-align: center;
     font-weight: bold;
+    max-width: 50%;
+    margin: 0 auto;
   }
 
-  &__countdownFreshers {
+  .FGT__countdownFreshers {
     color: white;
     font-weight: normal;
     text-transform: lowercase;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding-top: 5rem;
+    padding-top: 2rem;
     flex-direction: column;
 
     @media (--medium) {
@@ -174,6 +122,30 @@
       text-transform: uppercase;
       padding: 0 0 2rem;
       line-height: 3rem;
+    }
+  }
+}
+
+.FreshersHomepage {
+  .SplashSlice {
+    padding-top: 2rem;
+    min-height: 70vh;
+    background-size: cover;
+  }
+
+  &__slice--union {
+    background: #fff;
+
+    h2 {
+      color: #1e1c50;
+    }
+
+    h3 {
+      color: var(--color__f18-purple);
+    }
+
+    p {
+      color: var(--color__grey-sad-slate);
     }
   }
 }
@@ -208,28 +180,5 @@
         display: inline;
       }
     }
-  }
-}
-
-.FreshersMenu {
-  display: flex;
-  font-size: 1.3rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-family: var(--type__primary);
-  align-items: flex-end;
-  flex-direction: column;
-
-  @media (--medium) {
-    flex-direction: row;
-  }
-
-  a {
-    color: #ffffff;
-    padding: 0 1.2rem;
-    text-decoration: none;
   }
 }

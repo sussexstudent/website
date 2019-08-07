@@ -1,28 +1,20 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { css } from '@emotion/core';
 import { COLORS } from '@ussu/common/src/libs/style';
+import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
 
 enum FalmerAPIOptions {
   Production = 'production',
   Local = 'local',
 }
 
+const api =
+  localStorage.getItem('falmerEndpoint') === 'https://falmer.sussexstudent.com'
+    ? FalmerAPIOptions.Production
+    : FalmerAPIOptions.Local;
 export const CompOptionsPanel: React.FC = () => {
-  const [api, setApi] = useState(FalmerAPIOptions.Local);
-
-  useEffect(() => {
-    const endpoint = localStorage.getItem('falmerEndpoint');
-    setApi(
-      endpoint === 'https://falmer.sussexstudent.com'
-        ? FalmerAPIOptions.Production
-        : FalmerAPIOptions.Local,
-    );
-  }, [setApi]);
-
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.currentTarget.value as FalmerAPIOptions;
-    setApi(value);
-
     if (value === FalmerAPIOptions.Local) {
       localStorage.setItem('falmerEndpoint', 'http://localhost:8000');
     } else {
@@ -80,7 +72,9 @@ export const CompOptionsPanel: React.FC = () => {
           </div>
         </div>
       </div>
-      comp
+      <span css={{ ...type(TypeSize.Minion, Typeface.Secondary) }}>
+        Falmer API: {api}
+      </span>
     </div>
   );
 };

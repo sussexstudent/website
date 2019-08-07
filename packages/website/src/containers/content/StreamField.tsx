@@ -1,10 +1,11 @@
 import React, { ReactElement } from 'react';
-import blocksMap, { AllBlocks } from '../content/blocksMap';
+import blocksMap, { AllBlocks, BlockComponentMap } from '../content/blocksMap';
 import { Page } from './types';
 
 interface StreamFieldProps {
   page: any;
   items: AllBlocks[];
+  components?: BlockComponentMap;
   renderItem?(props: {
     children: any;
     key: string;
@@ -18,13 +19,13 @@ const StreamField: React.FC<StreamFieldProps> = ({
   items,
   page,
   renderItem,
+  components = {},
 }) => {
+  const map = { ...blocksMap, ...components };
   return (
     <React.Fragment>
       {items.map((item, index) => {
-        const Component = blocksMap.hasOwnProperty(item.type)
-          ? blocksMap[item.type]
-          : null;
+        const Component = map.hasOwnProperty(item.type) ? map[item.type] : null;
 
         if (Component) {
           if (renderItem) {

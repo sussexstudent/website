@@ -7,19 +7,20 @@ export type ImageBlockData = StreamFieldBlockData<
   'image',
   {
     caption: string;
+    alternativeTitle: string;
     image: FalmerImage;
   }
 >;
 
 export const ImageBlock: StreamFieldBlock<ImageBlockData> = ({
-  block: { caption, image },
+  block: { caption, image, alternativeTitle },
 }) => {
   return (
     <figure>
       <OneImage
         src={image.resource}
         aspectRatio={{ width: image.width, height: image.height }}
-        alt=""
+        alt={alternativeTitle}
       />
       <figcaption>{caption}</figcaption>
     </figure>

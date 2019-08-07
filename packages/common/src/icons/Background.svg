@@ -1,0 +1,17 @@
+<svg id="Background" xmlns="http://www.w3.org/2000/svg" width="1920" height="1300" viewBox="0 0 1920 1300">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ffc400;
+      }
+
+      .cls-2 {
+        fill: #ed5551;
+      }
+    </style>
+  </defs>
+  <g id="Group_600" data-name="Group 600">
+    <rect id="Rectangle_145" data-name="Rectangle 145" class="cls-1" width="1920" height="1300"/>
+    <path id="Path_1141" data-name="Path 1141" class="cls-2" d="M72.231,0A72.231,72.231,0,1,1,0,72.231,72.231,72.231,0,0,1,72.231,0Z" transform="translate(220.542 590.542)"/>
+  </g>
+</svg>

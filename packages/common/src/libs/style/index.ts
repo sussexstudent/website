@@ -1,5 +1,3 @@
-import { mapValues } from 'lodash';
-
 export const TYPE_PRIMARY =
   "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
 export const TYPE_SECONDARY = `'Larsseit', ${TYPE_PRIMARY}`;
@@ -32,14 +30,17 @@ export const COLORS = {
   BLACK: '#000000',
 };
 
-export const MQ = mapValues(
-  {
-    Small: 480,
-    Medium: 768,
-    Large: 960,
-    ExtraLarge: 1100,
+export const MQ = Object.entries({
+  Small: 480,
+  Medium: 768,
+  Large: 960,
+  ExtraLarge: 1100,
+}).reduce(
+  (map, [name, value]) => {
+    map[name] = `@media (min-width: ${value}px)`;
+    return map;
   },
-  (v) => `@media (min-width: ${v}px)`,
+  ({} as any) as { [name: string]: string },
 );
 
 export enum Layers {

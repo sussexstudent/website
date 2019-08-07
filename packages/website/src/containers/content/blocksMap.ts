@@ -47,11 +47,12 @@ export type AllBlocks =
   | ProfileSliceData
   | TwoColSliceData;
 
+export interface BlockComponentMap {
+  [blockName: string]: any; // todo
+}
 // These keys are from Wagtail, so we use snake case
 /* eslint-disable @typescript-eslint/camelcase */
-const BlockComponentMap: {
-  [blockName: string]: any; // todo
-} = {
+const blockComponentMap: BlockComponentMap = {
   heading: Heading,
   heading_hero: HeadingHeroBlock,
   selection_grid: SelectionGridBlock,
@@ -70,4 +71,4 @@ const BlockComponentMap: {
   two_slice_component: TwoColSlice,
 };
 
-export default BlockComponentMap;
+export default blockComponentMap;

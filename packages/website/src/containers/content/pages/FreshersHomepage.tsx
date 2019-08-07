@@ -147,6 +147,9 @@ const FreshersHero: React.FC<{ heroText: string; title: string }> = ({
             transformOrigin: '56.659092px 56.480682px',
             animation: `${FerrisAnimation} 60s linear infinite`,
           },
+          '& svg': {
+            display: 'block',
+          },
         }}
       >
         <FreshersWeekArt />

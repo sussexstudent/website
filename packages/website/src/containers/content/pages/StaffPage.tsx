@@ -5,8 +5,6 @@ import { ContentCard } from '../../../components/ContentCard';
 import StreamField from '../../content/StreamField';
 import { Page } from '../types';
 import ContentNavigation from '../../../components/ContentNavigation';
-import { Heading, HeadingLevel } from '../../../components/Heading';
-import { TypeSize } from '@ussu/common/src/libs/style/type';
 
 const fromText = (text: string) => ({ name: text, anchor: slugify(text) });
 

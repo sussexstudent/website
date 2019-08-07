@@ -12,20 +12,39 @@
     flex-direction: column;
   }
 
-  &__contact {
+  &__contact-inner {
     margin: 0;
     padding: 0;
     margin-bottom: 1rem;
     list-style: none;
+    width: fit-content;
+    background: var(--color__grey-spring);
     justify-self: flex-end;
+    border-radius: 6px;
+    transition: all 300ms ease;
+    box-shadow: 3px 0 10px rgba(30, 30, 30, 0);
+    padding-right: 10px;
+  }
+
+  &__contact {
     overflow: hidden;
-    border-radius: 2px;
+    justify-self: flex-end;
+    border-radius: 6px;
+  }
+
+  &__contact:hover &__contact-inner {
+    box-shadow: 3px 0 10px rgba(30, 30, 30, 0.2);
+  }
+
+  &__contact:hover {
+    overflow: visible;
+    z-index: 2000;
   }
 
   &__contact-item {
-    background: var(--color__grey-spring);
     padding: 0.2rem;
     padding-left: 0.8rem;
+    width: fit-content;
   }
 
   &__image {

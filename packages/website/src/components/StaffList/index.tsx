@@ -61,28 +61,30 @@ const StaffList: StreamFieldBlock<StaffListBlockData> = ({
                 dangerouslySetInnerHTML={{ __html: member.jobDescription }}
               />
             </div>
-            <ul className="StaffList__contact">
-              {member.email ? (
-                <li className="StaffList__contact-item StaffList__contact-item--email">
-                  <a href={`mailto:${member.email}`}>{member.email}</a>
-                </li>
-              ) : null}
-              {member.officePhoneNumber ? (
-                <li className="StaffList__contact-item StaffList__contact-item--office-phone">
-                  {member.officePhoneNumber}
-                </li>
-              ) : null}
-              {member.mobilePhoneNumber ? (
-                <li className="StaffList__contact-item StaffList__contact-item--mobile-phone">
-                  {member.mobilePhoneNumber}
-                </li>
-              ) : null}
-              {member.officeLocation ? (
-                <li className="StaffList__contact-item StaffList__contact-item--office-location">
-                  {member.officeLocation}
-                </li>
-              ) : null}
-            </ul>
+            <div className="StaffList__contact">
+              <ul className="StaffList__contact-inner">
+                {member.email ? (
+                  <li className="StaffList__contact-item StaffList__contact-item--email">
+                    <a href={`mailto:${member.email}`}>{member.email}</a>
+                  </li>
+                ) : null}
+                {member.officePhoneNumber ? (
+                  <li className="StaffList__contact-item StaffList__contact-item--office-phone">
+                    {member.officePhoneNumber}
+                  </li>
+                ) : null}
+                {member.mobilePhoneNumber ? (
+                  <li className="StaffList__contact-item StaffList__contact-item--mobile-phone">
+                    {member.mobilePhoneNumber}
+                  </li>
+                ) : null}
+                {member.officeLocation ? (
+                  <li className="StaffList__contact-item StaffList__contact-item--office-location">
+                    {member.officeLocation}
+                  </li>
+                ) : null}
+              </ul>
+            </div>
           </li>
         ))}
       </ul>

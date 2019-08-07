@@ -180,6 +180,7 @@ export const TwoColSlice: StreamFieldBlock<TwoColSliceData> = ({
     colOneTitle,
     colOneContent,
     colTwoTitle,
+    colTwoContent,
   },
 }) => {
   return (
@@ -204,13 +205,7 @@ export const TwoColSlice: StreamFieldBlock<TwoColSliceData> = ({
           <div>
             <h2 css={subheadingStyle}>{colTwoTitle}</h2>
             <div css={{ padding: '20px 10%' }}>
-              <StreamField
-                page={page}
-                items={colOneContent}
-                components={{
-                  x: history,
-                }}
-              />
+              <StreamField page={page} items={colTwoContent} />
             </div>
           </div>
         </div>

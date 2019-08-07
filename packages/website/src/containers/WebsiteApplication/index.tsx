@@ -7,7 +7,6 @@ import { ContentPage } from '../content/ContentPage';
 import Helmet from 'react-helmet';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import Homepage from '../../layouts/homepage';
-import { FreshersContentAPI } from '../freshers/ContentAPIContainer';
 import { FreshersEvents } from '../freshers/FreshersEvents';
 import { RouterAnalytics } from '../../components/RouterAnalytics';
 import { FourOhFourPage } from '../content/FourOhFourPage';
@@ -82,7 +81,7 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
           />
           <Redirect from="/freshers/freshers-week-events/" to="/freshers" />
           <Route component={FreshersEvents} path="/freshers/whats-on" />
-          <Route component={FreshersContentAPI} path="/freshers" />
+          <Route component={ContentAPI} path="/freshers" />
           {/*<EventDiscovery path="/event-discovery" />*/}
           <Route component={ContentAPI} path="/get-involved" exact />
           <Route

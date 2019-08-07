@@ -2,8 +2,8 @@ import React from 'react';
 import { Page } from '../types';
 import {
   ProfileSliceData,
-  TwoColSliceData,
   SocialSlice,
+  TwoColSliceData,
 } from '../blocks/Freshers';
 import convert from 'htmr';
 import { css, keyframes } from '@emotion/core';
@@ -13,7 +13,7 @@ import slugify from '@ussu/common/src/libs/slugify';
 import FreshersWeekArt from '../../../icons/freshersWeek2019ArtEdit.svg';
 import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
 import StreamField from '../StreamField';
-import { MQ } from '@ussu/common/src/libs/style';
+import { COLORS, MQ } from '@ussu/common/src/libs/style';
 import { useCountdown } from '../../../hooks/useCountdown';
 import sand from '../../../img/freshers-sand.svg';
 import { NewsletterSignup } from '../../../components/NewsletterSignup';
@@ -171,6 +171,7 @@ const FreshersMenu: React.FC<{ content: FreshersSlices[] }> = ({ content }) => (
           listStyle: 'none',
           fontWeight: 'bold',
           display: 'flex',
+          flexWrap: 'wrap',
           justifyContent: 'space-around',
           margin: 0,
           padding: 0,
@@ -192,6 +193,29 @@ const FreshersMenu: React.FC<{ content: FreshersSlices[] }> = ({ content }) => (
         ))}
       </ul>
     )}
+  </div>
+);
+
+const CountdownItem: React.FC<{ value: number; label: string }> = ({
+  value,
+  label,
+}) => (
+  <div
+    css={{
+      flex: '1 0 0',
+      paddingBottom: '1rem',
+    }}
+  >
+    <div css={type(TypeSize.Trafalgar, Typeface.Primary)}>{value}</div>
+    <div
+      css={{
+        ...type(TypeSize.DoublePica, Typeface.Secondary),
+        textTransform: 'uppcase',
+      }}
+    >
+      {label}
+      {value !== 1 ? 's' : null}
+    </div>
   </div>
 );
 
@@ -222,38 +246,33 @@ const FreshersWater: React.FC<{
           color: 'white',
           textTransform: 'uppercase',
           textAlign: 'center',
-          fontSize: '3rem',
-          padding: '2rem',
-          lineHeight: '3rem',
+          fontWeight: '600',
+          ...type(TypeSize.DoublePica, Typeface.Secondary),
+          marginBottom: '1rem',
         }}
       >
         {countdownCaption}
       </div>
-      <div className="FGT__countdown FGT__countdownFreshers">
-        <div className="countdown_item">
-          <div className="countdown_value">{countdown.days}</div>
-          <div className="countdown_label">
-            day{countdown.days !== 1 ? 's' : null}
-          </div>
-        </div>
-        <div className="countdown_item">
-          <div className="countdown_value">{countdown.hours}</div>
-          <div className="countdown_label">
-            hour{countdown.hours !== 1 ? 's' : null}
-          </div>
-        </div>
-        <div className="countdown_item">
-          <div className="countdown_value">{countdown.minutes}</div>
-          <div className="countdown_label">
-            minute{countdown.minutes !== 1 ? 's' : null}
-          </div>
-        </div>
-        <div className="countdown_item">
-          <div className="countdown_value">{countdown.seconds}</div>
-          <div className="countdown_label">
-            second{countdown.seconds !== 1 ? 's' : null}
-          </div>
-        </div>
+      <div
+        css={{
+          textAlign: 'center',
+          fontWeight: 'bold',
+          maxWidth: '50%',
+          margin: '0 auto',
+          textTransform: 'uppercase',
+          ...type(TypeSize.GreatPrimer, Typeface.Secondary),
+          color: COLORS.WHITE,
+          display: 'flex',
+          flexDirection: 'column',
+          [MQ.Medium]: {
+            flexDirection: 'row',
+          },
+        }}
+      >
+        <CountdownItem value={countdown.days} label="day" />
+        <CountdownItem value={countdown.hours} label="hour" />
+        <CountdownItem value={countdown.minutes} label="minutes" />
+        <CountdownItem value={countdown.seconds} label="seconds" />
       </div>
     </div>
   );
@@ -264,7 +283,7 @@ export const FreshersHomepage: React.FC<FreshersHomepageProps> = ({
   page: { heroText, title, content },
 }) => {
   return (
-    <div>
+    <div className={'FreshersSite'}>
       <FreshersHero title={title} heroText={heroText} />
       <FreshersWater
         countdownTarget={page.countdownTarget}

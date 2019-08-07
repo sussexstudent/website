@@ -5,7 +5,6 @@ import Homepage from './pages/HomePage';
 import { StaffPageProps } from './pages/StaffPage';
 import { SectionContentPageProps } from './pages/SectionContentPage';
 import { BasicContentPageProps } from './pages/BasicContentPage';
-import { FreshersHomepageProps } from './pages/FreshersHomepage';
 import { KBRootPageProps } from './pages/KBRootPage';
 import { KBCategoryPageProps } from './pages/KBCategoryPage';
 import { AnswerPageProps } from './pages/AnswerPage';
@@ -36,9 +35,9 @@ export const contentTypeMap: PageComponentMap = {
   }),
 
   // FRESHERS
-  FreshersHomepage: loadable<FreshersHomepageProps>(async () => {
-    const { FreshersHomepage } = await import('./pages/FreshersHomepage');
-    return (props) => <FreshersHomepage {...props} />;
+  FreshersHomepage: loadable<any>(async () => {
+    const { FreshersSwitcher } = await import('./pages/FreshersSwitcher');
+    return (props) => <FreshersSwitcher {...props} />;
   }),
 
   // Knowledge

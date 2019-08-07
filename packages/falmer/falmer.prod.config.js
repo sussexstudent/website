@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const config = require('./falmer.base.config.js');
 const MiniCSSExtract = require('mini-css-extract-plugin');
@@ -18,7 +18,7 @@ config.profile = false;
 config.devtool = 'source-map';
 config.mode = 'production';
 
-const baseDir = path.join(__dirname, '..');
+const baseDir = path.join(__dirname);
 
 config.output = {
   path: path.resolve(path.join(baseDir, 'dist-falmer')),
@@ -35,9 +35,7 @@ config.optimization = {
 };
 
 config.plugins = config.plugins.concat([
-  new CleanWebpackPlugin(['./dist-falmer'], {
-    root: path.join(__dirname, '/..'),
-  }),
+  new CleanWebpackPlugin(),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
   }),

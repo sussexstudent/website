@@ -18,10 +18,11 @@
   },
   "scripts": {
     "postinstall": ":",
-    "falmer:prod": "export NODE_ENV=production && export BABEL_ENV=bundle && `yarn bin`/webpack --config ./falmer.prod.config.js",
+    "falmer:prod": "export NODE_ENV=production && export BABEL_ENV=bundle && yarn falmer:build",
     "falmer:serve": "webpack-dev-server --config ./falmer.dev.config.js",
+    "falmer:build": "webpack --config ./falmer.prod.config.js",
     "falmer:_deploy": "node ./config/deployToFalmer.js",
-    "falmer:deploy": "yarn run falmer:prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist-falmer/ s3://ussu-static/ --config=.s3cfg --acl-public && yarn run falmer:_deploy"
+    "falmer:deploy": "yarn run falmer:prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist-falmer/ s3://ussu-static/ --config=../../.s3cfg --acl-public && yarn run falmer:_deploy"
   },
   "devDependencies": {
     "@types/react-jsonschema-form": "^1.6.2",

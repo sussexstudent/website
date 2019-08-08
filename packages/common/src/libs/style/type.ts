@@ -214,19 +214,19 @@ const standard: FontMap = {
   // },
   [TypeSize.BodyCopy]: {
     'group-a': {
-      fontSize: '15px',
+      fontSize: '14px',
       lineHeight: '20px',
     },
     'group-b': {
-      fontSize: '16px',
+      fontSize: '15px',
       lineHeight: '22px',
     },
     'group-c': {
-      fontSize: '18px',
+      fontSize: '17px',
       lineHeight: '24px',
     },
     'group-d': {
-      fontSize: '19px',
+      fontSize: '18px',
       lineHeight: '28px',
     },
   },

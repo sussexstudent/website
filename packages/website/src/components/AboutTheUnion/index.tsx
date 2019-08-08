@@ -23,12 +23,8 @@ export const AboutTheUnion = () => (
         <div>
           <h3>Societies {'&'} sports</h3>
           <p>
-            We have over 200 societies and sports clubs, and you can join as
-            many as you like from the first week. We help run a whole range of
-            groups including sports, performing arts, political, music,crafts.
-            LGBTQ+ and religious societies, so there’s bound to be something for
-            you. If nothing we have takes your fancy, we can help you start your
-            very own society.
+            We have over 250 societies and sports clubs, and you can join as
+            many as you like from the first week.
           </p>
           <a href="https://www.sussexstudent.com/sport-societies-media/discover/">
             Discover student groups
@@ -37,9 +33,8 @@ export const AboutTheUnion = () => (
         <div>
           <h3>Jobs</h3>
           <p>
-            We have many jobs on offer for new and returning students. We employ
-            students in our outlets and beyond to help make our Students’ Union
-            the best it can be.
+            We employ students in our outlets and beyond to help make our
+            Students’ Union the best it can be.
           </p>
           <a href="http://sussexstudent.us11.list-manage.com/subscribe?u=23e3c41370592d03091dbc21a&id=32f92b5623">
             Join the vacancy mailing list

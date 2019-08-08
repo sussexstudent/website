@@ -274,8 +274,8 @@ const FreshersWater: React.FC<{
       >
         <CountdownItem value={countdown.days} label="day" />
         <CountdownItem value={countdown.hours} label="hour" />
-        <CountdownItem value={countdown.minutes} label="minutes" />
-        <CountdownItem value={countdown.seconds} label="seconds" />
+        <CountdownItem value={countdown.minutes} label="minute" />
+        <CountdownItem value={countdown.seconds} label="second" />
       </div>
     </div>
   );

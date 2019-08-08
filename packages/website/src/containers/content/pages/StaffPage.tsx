@@ -66,32 +66,28 @@ export const StaffPage: React.FC<StaffPageProps> = ({
 
   return (
     <div className="LokiContainer">
-      <div className="Layout">
+      <div className="Layout Layout--sidebar-left Layout--sidebar-thin">
         <div>
-          <div className="Layout Layout--sidebar-left Layout--sidebar-thin">
-            <div>
-              <aside>
-                <ContentNavigation
-                  title="Contacts"
-                  items={menuItems}
-                  activeKey="x"
-                  onlyShowSubMenuWhenChildActive
-                />
-              </aside>
-            </div>
-            <div>
-              {levels.map((
-                { value, _children = null }: { value: any; _children?: any }, // todo
-              ) => (
-                <ContentCard anchor={slugify(value)}>
-                  <h1>{value}</h1>
-                  {_children !== null ? (
-                    <StreamField page={page} items={_children} />
-                  ) : null}
-                </ContentCard>
-              ))}
-            </div>
-          </div>
+          <aside>
+            <ContentNavigation
+              title="Contacts"
+              items={menuItems}
+              activeKey="x"
+              onlyShowSubMenuWhenChildActive
+            />
+          </aside>
+        </div>
+        <div>
+          {levels.map((
+            { value, _children = null }: { value: any; _children?: any }, // todo
+          ) => (
+            <ContentCard anchor={slugify(value)}>
+              <h1>{value}</h1>
+              {_children !== null ? (
+                <StreamField page={page} items={_children} />
+              ) : null}
+            </ContentCard>
+          ))}
         </div>
       </div>
     </div>

@@ -16,7 +16,9 @@
   }
 
   &--sidebar-thin&--sidebar-left {
+    flex-direction: column;
     @media (--medium) {
+      flex-direction: row;
       & > *:nth-child(1) {
         lost-column: 1/4;
       }

@@ -97,11 +97,11 @@
   }
 
   &--medium &__item {
-    @media (--small) {
+    @media (--pretty-small) {
       lost-column: 1/2;
     }
 
-    @media (--medium) {
+    @media (--small) {
       lost-column: 1/3;
     }
 

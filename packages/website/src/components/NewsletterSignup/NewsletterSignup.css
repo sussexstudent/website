@@ -4,7 +4,7 @@
   width: 100%;
   text-align: center;
   font-weight: 600;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   max-width: 660px;
   font-family: var(--type__primary);
   margin: 0 auto;
@@ -14,7 +14,7 @@
     font-family: var(--type__primary);
     @mixin card flat;
     border-radius: 2px;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     padding: 0.4rem;
     border: 0;
     flex: 1 0 auto;
@@ -75,7 +75,7 @@
       padding: 0.6rem;
       font-family: var(--type__primary);
       background: var(--color__brand-blue);
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 600;
       cursor: pointer;
       color: #fff;

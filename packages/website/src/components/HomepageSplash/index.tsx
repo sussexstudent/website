@@ -1,7 +1,7 @@
 import React from 'react';
-import { OneImageBackground } from '../OneImage';
 import { basicTimer, Typer } from '../Typer';
 import { shuffle } from 'lodash';
+import { COLORS } from '@ussu/common/src/libs/style';
 
 const placeholderHints = shuffle([
   'support',
@@ -15,9 +15,11 @@ const placeholderHints = shuffle([
 ]);
 
 const HomepageSplashComponent = () => (
-  <OneImageBackground
+  <div
     className="HomepageSplash"
-    src="original_images/63b813ed4eb54ee6b07ac2b29a478b18"
+    css={{
+      background: COLORS.BRAND_RED,
+    }}
   >
     <div className="LokiContainer">
       <div className="HomepageSplash__inner">
@@ -26,14 +28,16 @@ const HomepageSplashComponent = () => (
           lines={placeholderHints}
           render={({ value }) => (
             <React.Fragment>
-              <div className="HomepageSplash__heading">Your union for</div>
+              <div className="HomepageSplash__heading">
+                {"Sussex Students' Union for"}
+              </div>
               <div className="HomepageSplash__heading">{value}&nbsp;</div>
             </React.Fragment>
           )}
         />
       </div>
     </div>
-  </OneImageBackground>
+  </div>
 );
 
 export const HomepageSplash = HomepageSplashComponent;

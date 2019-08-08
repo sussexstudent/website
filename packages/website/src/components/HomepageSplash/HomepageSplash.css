@@ -3,8 +3,6 @@
   background-position: center center;
 
   &__inner {
-    min-height: 300px;
-    padding: 12vh 0 calc(12vh + 100px);
     text-align: center;
     color: #ffffff;
     display: flex;
@@ -12,14 +10,13 @@
     max-width: 860px;
     margin: 0 auto;
     box-sizing: border-box;
+    padding: 2rem 0;
   }
 
   &__heading {
     font-family: var(--type__primary);
     font-weight: bold;
-    font-size: 3.5vmax;
-    text-shadow: 0 2px 16px rgba(30, 30, 30, 0.5);
-    line-height: 4vmax;
+    @mixin type trafalgar;
   }
 
   &__search-input {
@@ -41,5 +38,5 @@
 }
 
 .HomepageSplashLower {
-  margin-top: -80px;
+  margin-top: 2rem;
 }

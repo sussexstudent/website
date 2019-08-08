@@ -1,4 +1,4 @@
-import React, { useReducer, useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useReducer } from 'react';
 import { keyBy } from 'lodash';
 import Fuse from 'fuse.js';
 import OrganisationGrid from '../OrganisationGrid';
@@ -163,8 +163,7 @@ export const StudentGroupListings: React.FC = () => {
             edge.node.mslGroup ? edge.node.mslGroup.category.name : null,
           )
         : [];
-    const categoryArray = Array.from(new Set(categoryNames));
-    return categoryArray;
+    return Array.from(new Set(categoryNames));
   };
 
   return (
@@ -201,6 +200,7 @@ export const StudentGroupListings: React.FC = () => {
                             state.filter !== '' && cat !== state.filter,
                         })}
                         onClick={onFilter(cat)}
+                        type="button"
                       >
                         {cat}
                       </button>
@@ -213,6 +213,7 @@ export const StudentGroupListings: React.FC = () => {
                 css={resetButton}
                 disabled={state.filter === ''}
                 onClick={onFilter('')}
+                type="button"
               >
                 Clear filters <CrossIcon height="13" verticalAlign="middle" />
               </button>

@@ -163,9 +163,11 @@ const FreshersMenu: React.FC<{ content: FreshersSlices[] }> = ({ content }) => (
     css={{
       background: '#fff',
       top: 0,
-      position: 'sticky',
       padding: '1rem 0',
       zIndex: 100,
+      [MQ.Medium]: {
+        position: 'sticky',
+      },
     }}
   >
     {content.length > 0 && (
@@ -182,12 +184,15 @@ const FreshersMenu: React.FC<{ content: FreshersSlices[] }> = ({ content }) => (
         }}
       >
         {content.map(({ id, value: { menuName } }) => (
-          <li key={id} css={{ textAlign: 'center' }}>
+          <li key={id} css={{ textAlign: 'center', padding: '0.3rem 0' }}>
             <a
               href={`#${slugify(menuName)}`}
               css={{
                 color: DARK_BLUE,
                 textDecoration: 'none',
+                '&:hover': {
+                  textDecoration: 'underline',
+                },
               }}
             >
               {menuName}

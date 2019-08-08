@@ -5,7 +5,7 @@ import slugify from '@ussu/common/src/libs/slugify';
 import convert from 'htmr';
 import StreamField from '../StreamField';
 import socialSquiggle from '../../../img/socialSquiggle.svg';
-import { MQ } from '@ussu/common/src/libs/style';
+import { COLORS, MQ } from '@ussu/common/src/libs/style';
 import { TextBlockData } from './TextBlock';
 import { ExternalLinkBlockData, InternalLinkBlockData } from './Links';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
@@ -93,6 +93,7 @@ export const ProfileSlice: StreamFieldBlock<ProfileSliceData> = ({
         <div css={descStyle}>{convert(description)}</div>
         <div
           css={{
+            alignContent: 'center',
             [MQ.Medium]: { display: 'flex', justifyContent: 'space-evenly' },
           }}
         >
@@ -100,13 +101,24 @@ export const ProfileSlice: StreamFieldBlock<ProfileSliceData> = ({
             href={profileLink}
             css={{
               display: 'block',
-              width: '35%',
-              maxWidth: 240,
+              width: 200,
               textAlign: 'center',
               fontWeight: 'bold',
-              margin: '1rem auto',
-              [MQ.Medium]: { paddingRight: '5%' },
-              '& img': { borderRadius: '50%' },
+              color: COLORS.GREY_SLATE,
+              textDecoration: 'none',
+              boxSizing: 'border-box',
+              margin: '0 auto',
+              paddingBottom: '1rem',
+              [MQ.Medium]: { paddingRight: '2rem' },
+              '& .u-responsive-ratio': {
+                borderRadius: '50%',
+                transition: 'transform 300ms ease',
+              },
+              '&:hover': {
+                '& .u-responsive-ratio': {
+                  transform: 'scale(1.1)',
+                },
+              },
             }}
           >
             <OneImage
@@ -124,7 +136,8 @@ export const ProfileSlice: StreamFieldBlock<ProfileSliceData> = ({
           </a>
           <div
             css={{
-              alignSelf: 'center',
+              alignSelf: 'flex-start',
+              flex: '1 0',
               ...type(TypeSize.BodyCopy, Typeface.Secondary),
             }}
           >
@@ -199,6 +212,7 @@ export const TwoColSlice: StreamFieldBlock<TwoColSliceData> = ({
 }) => {
   const col = css({
     flex: '1 0 0',
+    padding: '0 1rem',
   });
 
   return (
@@ -212,18 +226,18 @@ export const TwoColSlice: StreamFieldBlock<TwoColSliceData> = ({
               display: 'flex',
               justifyContent: 'space-evenly',
             },
-            ...type(TypeSize.BodyCopy, Typeface.Primary),
+            ...type(TypeSize.BodyCopy, Typeface.Secondary),
           }}
         >
           <div css={col}>
             <h2 css={subheadingStyle}>{colOneTitle}</h2>
-            <div css={{ padding: '20px 10%' }}>
+            <div>
               <StreamField page={page} items={colOneContent} />
             </div>
           </div>
           <div css={col}>
             <h2 css={subheadingStyle}>{colTwoTitle}</h2>
-            <div css={{ padding: '20px 10%' }}>
+            <div>
               <StreamField page={page} items={colTwoContent} />
             </div>
           </div>

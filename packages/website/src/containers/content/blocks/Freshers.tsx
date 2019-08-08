@@ -11,6 +11,7 @@ import { ExternalLinkBlockData, InternalLinkBlockData } from './Links';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
 import { ImageBlockData } from './Image';
 import { SocialArray } from '../../../components/SocialArray';
+import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
 
 const Slice: React.FC<{ id: string; color: string }> = ({
   children,
@@ -36,6 +37,7 @@ const descStyle = css({
     width: '50%',
   },
   margin: '30px auto',
+  ...type(TypeSize.BodyCopy, Typeface.Secondary),
 });
 
 export type ProfileSliceData = StreamFieldBlockData<
@@ -47,6 +49,7 @@ export type ProfileSliceData = StreamFieldBlockData<
     title: string;
     image: ImageBlockData['value'];
     body: TextBlockData[];
+    profileLink: string;
   }
 >;
 
@@ -73,7 +76,15 @@ export type TwoColSliceData = StreamFieldBlockData<
 
 export const ProfileSlice: StreamFieldBlock<ProfileSliceData> = ({
   page,
-  block: { title, backgroundColor, menuName, description, body, image },
+  block: {
+    title,
+    backgroundColor,
+    menuName,
+    description,
+    body,
+    image,
+    profileLink,
+  },
 }) => {
   return (
     <Slice id={menuName} color={backgroundColor}>
@@ -85,9 +96,11 @@ export const ProfileSlice: StreamFieldBlock<ProfileSliceData> = ({
             [MQ.Medium]: { display: 'flex', justifyContent: 'space-evenly' },
           }}
         >
-          <div
+          <a
+            href={profileLink}
             css={{
-              width: '40%',
+              display: 'block',
+              width: '35%',
               maxWidth: 240,
               textAlign: 'center',
               fontWeight: 'bold',
@@ -108,10 +121,11 @@ export const ProfileSlice: StreamFieldBlock<ProfileSliceData> = ({
             >
               {image.caption}
             </div>
-          </div>
+          </a>
           <div
             css={{
               alignSelf: 'center',
+              ...type(TypeSize.BodyCopy, Typeface.Secondary),
             }}
           >
             <StreamField page={page} items={body} />
@@ -183,6 +197,10 @@ export const TwoColSlice: StreamFieldBlock<TwoColSliceData> = ({
     colTwoContent,
   },
 }) => {
+  const col = css({
+    flex: '1 0 0',
+  });
+
   return (
     <Slice id={menuName} color={backgroundColor}>
       <React.Fragment>
@@ -194,15 +212,16 @@ export const TwoColSlice: StreamFieldBlock<TwoColSliceData> = ({
               display: 'flex',
               justifyContent: 'space-evenly',
             },
+            ...type(TypeSize.BodyCopy, Typeface.Primary),
           }}
         >
-          <div>
+          <div css={col}>
             <h2 css={subheadingStyle}>{colOneTitle}</h2>
             <div css={{ padding: '20px 10%' }}>
               <StreamField page={page} items={colOneContent} />
             </div>
           </div>
-          <div>
+          <div css={col}>
             <h2 css={subheadingStyle}>{colTwoTitle}</h2>
             <div css={{ padding: '20px 10%' }}>
               <StreamField page={page} items={colTwoContent} />

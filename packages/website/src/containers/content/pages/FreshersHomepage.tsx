@@ -50,15 +50,15 @@ const freshersTitle = css({
 
 const i360Animation = keyframes`
 0% {
-  transform: translate(0, 215px);
+  transform: translate(0, 280px);
 }
 
 50% {
-  transform: translate(0, -40px);
+  transform: translate(0, 10px);
 }
 
 100% {
-  transform: translate(0, 215px);
+  transform: translate(0, 280px);
 }
 `;
 

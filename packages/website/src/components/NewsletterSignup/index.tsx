@@ -206,7 +206,7 @@ class NewsletterSignup extends React.Component<IProps, IState> {
                   Subscribe
                 </button>
               </form>
-              <div className="NewsletterSignup__small-print">{`We'll send you freshers week update emails and subscribe you to our newsletter. You can unsubscribe at any time`}</div>
+              <div className="NewsletterSignup__small-print">{`We'll send you Freshers' Week update emails and subscribe you to our newsletter. You can unsubscribe at any time.`}</div>
             </div>
           ) : null}
 

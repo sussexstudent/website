@@ -1,19 +1,17 @@
 import React from 'react';
-import FauxLink from '../../../FauxLink';
 import { SlateBox } from '@ussu/common/src/types/slates';
-import { FalmerImage } from '@ussu/common/src/types/events';
 import { SlateBoxContainerStyleable } from '../../Box';
 import { InternalAppLink } from '../../../InternalAppLink';
 import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
 
 interface IProps {
-  srt: string;
+  cta: string;
   link: string;
-  foregroundImage: FalmerImage;
-  backgroundImage: FalmerImage;
+  heading: string;
+  subheading: string;
 }
 
-const component: React.FC<IProps> = ({ link }) => {
+const component: React.FC<IProps> = ({ link, cta, heading, subheading }) => {
   return (
     <SlateBoxContainerStyleable
       css={{
@@ -34,7 +32,7 @@ const component: React.FC<IProps> = ({ link }) => {
         },
       }}
     >
-      <FauxLink href={link} />
+      <InternalAppLink to={link} />
       <div
         style={{
           width: '100%',
@@ -52,13 +50,11 @@ const component: React.FC<IProps> = ({ link }) => {
             type(TypeSize.Canon, Typeface.Secondary),
           ]}
         >
-          Freshers' Week 2019
+          {heading}
         </h1>
-        <h2 css={{ fontWeight: 500, marginBottom: '2rem' }}>
-          This is the start of your sussex adventure!
-        </h2>
+        <h2 css={{ fontWeight: 500, marginBottom: '2rem' }}>{subheading}</h2>
         <InternalAppLink
-          to={'/freshers'}
+          to={link}
           css={{
             textTransform: 'uppercase',
             textDecoration: 'none',
@@ -75,7 +71,7 @@ const component: React.FC<IProps> = ({ link }) => {
             },
           }}
         >
-          Start here
+          {cta}
         </InternalAppLink>
       </div>
     </SlateBoxContainerStyleable>
@@ -86,7 +82,7 @@ export const SlateBoxFreshers2019: SlateBox = {
   component,
   schema: {
     type: 'object',
-    required: ['srt', 'foregroundImage', 'backgroundImage', 'link'],
+    required: ['heading', 'subheading', 'cta', 'link'],
     properties: {
       heading: { type: 'string', title: 'Heading', default: '' },
       subheading: { type: 'string', title: 'Subheading', default: '' },

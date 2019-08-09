@@ -5,6 +5,7 @@ import { SlateBoxEmpty } from './Empty';
 import { SlateBoxVoteNow } from './VoteNow';
 import { mapValues } from 'lodash';
 import { SlateBoxSimpleText } from './SimpleText';
+import { SlateBoxFreshers2019 } from './Freshers2019';
 
 export const slateBoxes = {
   [BoxType.NA]: SlateBoxEmpty,
@@ -12,6 +13,7 @@ export const slateBoxes = {
   [BoxType.SimpleBranded]: SlateBoxSimpleBranded,
   [BoxType.SimpleText]: SlateBoxSimpleText,
   [BoxType.VoteNow]: SlateBoxVoteNow,
+  [BoxType.Freshers2019]: SlateBoxFreshers2019,
 };
 
 const boxMap = mapValues(slateBoxes, (box) => box.component);

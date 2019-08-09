@@ -1,9 +1,41 @@
 import React from 'react';
 import { IBackgroundProps, OneImageBackground } from '../OneImage';
 
-export const SlateBoxContainer: React.FC = ({ children }) => (
-  <div className="BentoBox">{children}</div>
+export const SlateBoxContainer: React.FC = ({ children, ...props }) => (
+  <div className="BentoBox" {...props}>
+    {children}
+  </div>
 );
+
+export const SlateBoxContainerStyleable: React.FC = ({
+  children,
+  ...props
+}) => (
+  <div
+    css={{
+      boxShadow: '0 2px 16px 3px rgba(0, 0, 0, 0.15)',
+      borderRadius: '6px',
+      overflow: 'hidden',
+      transition: 'box-shadow 300ms ease',
+      background: 'white',
+      boxSizing: 'border-box',
+      marginBottom: '1rem',
+      position: 'relative',
+      display: 'flex',
+      width: '100%',
+      '&:hover': {
+        boxShadow: '0 4px 22px 3px rgba(0, 0, 0, 0.2)',
+      },
+      '&:active': {
+        boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.15)',
+      },
+    }}
+    {...props}
+  >
+    {children}
+  </div>
+);
+
 export const SlateBoxBackground: React.FC<IBackgroundProps> = (props) => (
   <OneImageBackground
     css={{

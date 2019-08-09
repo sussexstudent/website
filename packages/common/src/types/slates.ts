@@ -12,6 +12,7 @@ export enum BoxType {
   SimpleBranded = 'simplebranded',
   SimpleText = 'simpletext',
   VoteNow = 'votenow',
+  Freshers2019 = 'freshers19',
 }
 
 export interface InternalBox {

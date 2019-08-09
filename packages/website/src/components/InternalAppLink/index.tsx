@@ -23,15 +23,17 @@ export const InternalAppLink: React.FC<Props> = ({
     }),
     [],
   );
-  const { history } = useMappedState(mapState);
 
-  const isClientRendered = routes.matches(to);
+  try {
+    const { history } = useMappedState(mapState);
+    const isClientRendered = routes.matches(to);
 
-  if (isClientRendered) {
-    if (history) {
-      return <Link to={to} {...(props as any)} />; // todo
+    if (isClientRendered) {
+      if (history) {
+        return <Link to={to} {...(props as any)} />; // todo
+      }
     }
-  }
+  } catch (e) {}
 
   return React.createElement('a', {
     ...props,

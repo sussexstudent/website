@@ -179,7 +179,7 @@ export const SocialSlice: React.FC = () => (
               name: 'sussexstudent.com',
             },
             instagram: {
-              link: 'https://twitter.com/ussu',
+              link: 'https://www.instagram.com/sussexsu/',
               name: 'ussu',
             },
             facebook: {
@@ -187,7 +187,7 @@ export const SocialSlice: React.FC = () => (
               name: 'sussexsu',
             },
             twitter: {
-              link: 'https://www.instagram.com/sussexsu/',
+              link: 'https://twitter.com/ussu',
               name: 'thestudentunion',
             },
           }}

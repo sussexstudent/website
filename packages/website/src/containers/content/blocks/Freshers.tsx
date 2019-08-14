@@ -155,7 +155,7 @@ export const SocialSlice: React.FC = () => (
       backgroundImage: `url(${socialSquiggle})`,
       backgroundColor: '#fff',
       backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'left bottom',
+      backgroundPosition: 'left bottom -5px',
       backgroundSize: '650px',
       padding: '1rem 0 3rem 0',
     }}

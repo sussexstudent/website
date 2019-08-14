@@ -116,6 +116,7 @@
   &__hero {
     position: relative;
     overflow: hidden;
+    background: white;
   }
 
   &__hero-bg {

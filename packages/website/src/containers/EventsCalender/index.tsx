@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import startOfDay from 'date-fns/startOfDay';
 import addMonths from 'date-fns/addMonths';
@@ -6,6 +6,10 @@ import EventListingsQuery from './EventListings.graphql';
 import { EventListings } from './EventListings';
 import { useQuery } from '@apollo/react-hooks';
 import Loader from '../../components/Loader';
+import {
+  setBrandingPeriod,
+  useWhatsOnThemingContext,
+} from '../EventsApplication/WhatsOnBrandingContext';
 
 interface OwnProps {
   disableHeader: boolean;
@@ -15,6 +19,10 @@ interface OwnProps {
 export type EventsListProps = OwnProps;
 
 const EventsList: React.FC<EventsListProps> = ({ filter }) => {
+  const dispatch = useWhatsOnThemingContext()[1];
+  useEffect(() => {
+    dispatch(setBrandingPeriod(null));
+  }, []);
   const [now] = useState(new Date());
   const { data, loading } = useQuery(EventListingsQuery, {
     variables: {

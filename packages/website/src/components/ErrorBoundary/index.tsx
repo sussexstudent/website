@@ -39,6 +39,7 @@ class ErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, info: ErrorInfo): void {
+    console.error(error);
     const { onError } = this.props;
 
     if (typeof onError === 'function') {

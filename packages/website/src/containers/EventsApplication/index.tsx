@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, Switch, Redirect, Route } from 'react-router-dom';
-import { Sectionbar, SectionbarItem } from '../../components/Sectionbar';
+import { Switch, Redirect, Route } from 'react-router-dom';
 import { RouteComponent } from '@ussu/common/src/types/routes';
 import { ScrollToTop } from '../../components/ScrollToTop';
 import { EventBundleProps } from '../EventsCalender/EventBundle';
@@ -8,6 +7,9 @@ import { EventsListProps } from '../EventsCalender';
 import { EventBrandingPeriodProps } from '../EventsCalender/EventBrandingPeriod';
 import { EventDetailPageProps } from '../EventDetailPage';
 import loadable from '@loadable/component';
+import { WhatsOnSectionbar } from './WhatsOnSectionbar';
+import { BrandingContainer } from './branding/components';
+import { WhatsOnThemingProvider } from './WhatsOnBrandingContext';
 
 const LoadableListings = loadable<EventsListProps>(async () => {
   const { EventsList } = await import('../EventsCalender');
@@ -61,51 +63,42 @@ type EventsApplicationProps = RouteComponent;
 
 const EventsApplication: React.FC<EventsApplicationProps> = () => {
   return (
-    <ScrollToTop>
-      <div className="u-keep-footer-down js-expand-container">
-        <Sectionbar title="What's on">
-          <SectionbarItem>
-            <Link to={'/whats-on'}>Listings</Link>
-          </SectionbarItem>
-          <SectionbarItem>
-            <a
-              href={
-                'https://www.sussexstudent.com/get-involved/societies-and-student-media/guides/events/hold-event'
-              }
-            >
-              Hold an event
-            </a>
-          </SectionbarItem>
-        </Sectionbar>
-        <Switch>
-          <Route component={LoadableListings} path="/whats-on" exact />
-          <Route
-            component={LoadableBundle}
-            path="/whats-on/bundle/:bundleSlug"
-            exact
-          />
-          <Redirect
-            from="/whats-on/period/:brandSlug"
-            to="/whats-on/periods/:brandSlug"
-          />
-          <Redirect
-            from="/whats-on/collections/:brandSlug"
-            to="/whats-on/periods/:brandSlug"
-          />
-          <Redirect
-            from="/whats-on/collection/:brandSlug"
-            to="/whats-on/periods/:brandSlug"
-          />
-          <Route
-            component={LoadableListingsBranding}
-            path="/whats-on/periods/:brandSlug"
-            exact
-          />
-          <Route path="/whats-on/**-:eventId" component={LoadableDetail} />
-          <Route path="/whats-on/:eventId" component={LoadableDetail} />
-        </Switch>
-      </div>
-    </ScrollToTop>
+    <WhatsOnThemingProvider>
+      <ScrollToTop>
+        <BrandingContainer>
+          <div className="u-keep-footer-down js-expand-container">
+            <WhatsOnSectionbar />
+            <Switch>
+              <Route component={LoadableListings} path="/whats-on" exact />
+              <Route
+                component={LoadableBundle}
+                path="/whats-on/bundle/:bundleSlug"
+                exact
+              />
+              <Redirect
+                from="/whats-on/period/:brandSlug"
+                to="/whats-on/periods/:brandSlug"
+              />
+              <Redirect
+                from="/whats-on/collections/:brandSlug"
+                to="/whats-on/periods/:brandSlug"
+              />
+              <Redirect
+                from="/whats-on/collection/:brandSlug"
+                to="/whats-on/periods/:brandSlug"
+              />
+              <Route
+                component={LoadableListingsBranding}
+                path="/whats-on/periods/:brandSlug"
+                exact
+              />
+              <Route path="/whats-on/**-:eventId" component={LoadableDetail} />
+              <Route path="/whats-on/:eventId" component={LoadableDetail} />
+            </Switch>
+          </div>
+        </BrandingContainer>
+      </ScrollToTop>
+    </WhatsOnThemingProvider>
   );
 };
 

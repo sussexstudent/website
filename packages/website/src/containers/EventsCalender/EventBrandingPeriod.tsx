@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { EventListings } from './EventListings';
 import Helmet from 'react-helmet';
 import EventListingsBrandingPeriodQuery from './EventListingsBrandingPeriod.graphql';
@@ -6,6 +6,11 @@ import { ErrorState } from '../../components/ErrorState';
 import { RouteComponentProps } from 'react-router';
 import { useQuery } from '@apollo/react-hooks';
 import Loader from '../../components/Loader';
+import {
+  setBrandingPeriod,
+  useWhatsOnThemingContext,
+} from '../EventsApplication/WhatsOnBrandingContext';
+import { BrandingPeriodHeader } from '../EventsApplication/branding/components';
 
 export interface EventBrandingPeriodProps
   extends RouteComponentProps<{ brandSlug: string }> {
@@ -25,6 +30,12 @@ export const EventBrandingPeriod: React.FC<EventBrandingPeriodProps> = ({
       },
     },
   });
+  const dispatch = useWhatsOnThemingContext()[1];
+  console.log(brandSlug);
+  useEffect(() => {
+    dispatch(setBrandingPeriod(brandSlug));
+    console.log(setBrandingPeriod(brandSlug));
+  }, [brandSlug]);
 
   if (loading) {
     return <Loader dark />;
@@ -41,18 +52,8 @@ export const EventBrandingPeriod: React.FC<EventBrandingPeriodProps> = ({
       <Helmet>
         <title>{`${brandingPeriod.name} | What's on | Sussex Students' Union`}</title>
       </Helmet>
-      <h2 className="type-brevier">Event Period</h2>
-      <div>
-        {brandingPeriod.logoVector ? (
-          <img src={brandingPeriod.logoVector.resource} height="160" />
-        ) : (
-          <h1>{brandingPeriod.name}</h1>
-        )}
-        <div
-          className="type-body-copy"
-          dangerouslySetInnerHTML={{ __html: brandingPeriod.description }}
-        />
-      </div>
+
+      <BrandingPeriodHeader brandingPeriod={brandingPeriod} />
 
       <EventListings events={allEvents} removePast={!brandSlug} />
     </div>

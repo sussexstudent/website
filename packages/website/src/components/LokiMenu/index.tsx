@@ -84,6 +84,13 @@ export const LokiMenu = ({ activeItem, setCurrentHover }: IProps) => {
           link="/about-us/"
           active={activeItem === MenuItem.AboutUs}
         />
+        <LokiMenuItem
+          onMouseOver={onOver(MenuItem.AboutUs)}
+          onMouseOut={onOut(MenuItem.AboutUs)}
+          name="Freshers"
+          link="/freshers/"
+          active={activeItem === MenuItem.AboutUs}
+        />
       </ul>
     </nav>
   );

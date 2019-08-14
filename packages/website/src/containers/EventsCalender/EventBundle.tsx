@@ -10,7 +10,9 @@ import { RouteComponentProps } from 'react-router';
 export type EventBundleProps = RouteComponentProps<{ bundleSlug: string }>;
 
 export const EventBundle: React.FC<EventBundleProps> = ({
-  match: { params: bundleSlug },
+  match: {
+    params: { bundleSlug },
+  },
 }) => {
   const { data, loading, error } = useQuery(EventListingsBrandingPeriodQuery, {
     variables: {

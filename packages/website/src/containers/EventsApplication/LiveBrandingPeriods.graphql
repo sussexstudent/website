@@ -1,0 +1,6 @@
+query getLiveBrandingPeriods {
+  allBrandingPeriods {
+    name
+    slug
+  }
+}

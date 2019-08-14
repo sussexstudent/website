@@ -15,6 +15,11 @@ import Button from '../../components/Button';
 import { RouteComponentProps } from 'react-router-dom';
 import { ScrollToTop } from '../../components/ScrollToTop';
 import { useQuery } from '@apollo/react-hooks';
+import { BundleBanner } from '../EventsApplication/branding/components';
+import {
+  setBrandingPeriod,
+  useWhatsOnThemingContext,
+} from '../EventsApplication/WhatsOnBrandingContext';
 
 interface RouteParams {
   [0]: string;
@@ -27,6 +32,7 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
   match,
   history,
 }) => {
+  const dispatch = useWhatsOnThemingContext()[1];
   const [mslData, setMslData] = useState<any>(null);
   // const [_ticketModal, setTicketModal] = useState(false);
   const { data, loading } = useQuery(DetailPageQuery, {
@@ -39,6 +45,9 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
       const event = data.event;
       if (match.params[0] !== event.slug) {
         history.replace(`/whats-on/${event.slug}-${event.eventId}`);
+      }
+      if (event.brand && event.brand.slug) {
+        dispatch(setBrandingPeriod(event.brand.slug));
       }
     }
   }, [data]);
@@ -163,6 +172,8 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
           {/*) : null}*/}
         </div>
       </div>
+
+      {event.bundle ? <BundleBanner bundle={event.bundle} /> : null}
     </ScrollToTop>
   );
 };

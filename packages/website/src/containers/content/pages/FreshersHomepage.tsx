@@ -314,10 +314,10 @@ function setRed(x: number, y: number) {
 
 const paralax = () => {
   const y = window.scrollY;
-  if (y > 400) return;
+  if (y > 800) return;
 
   setBlue(10, y / 5);
-  setMoon(30, y / 2);
+  setMoon(y / 7, y / 2);
   setRed(20, y / 7);
 };
 

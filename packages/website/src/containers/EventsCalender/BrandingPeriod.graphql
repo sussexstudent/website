@@ -1,0 +1,18 @@
+query getBrandingPeriod($brandSlug: String) {
+  brandingPeriod(slug: $brandSlug) {
+    name
+    logo {
+      resource
+    }
+    logoVector {
+      resource
+    }
+    description
+    accent
+    websiteLink
+    bundleSet {
+      slug
+      name
+    }
+  }
+}

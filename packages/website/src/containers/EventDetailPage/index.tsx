@@ -173,7 +173,9 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
         </div>
       </div>
 
-      {event.bundle ? <BundleBanner bundle={event.bundle} /> : null}
+      {event.bundle ? (
+        <BundleBanner bundle={event.bundle} onEvent={true} />
+      ) : null}
     </ScrollToTop>
   );
 };

@@ -5,6 +5,7 @@ import EVENT_LISTINGS_BUNDLE from '../../EventsCalender/EventListingsBundle.grap
 import { useQuery } from '@apollo/react-hooks';
 import { type, TypeSize } from '@ussu/common/src/libs/style/type';
 import { Layers } from '@ussu/common/src/libs/style';
+import FauxRouterLink from '../../../components/FauxRouterLink';
 
 export const BrandingContainer = createBrandedComponent(
   WhatsOnBrandedComponentLocation.Container,
@@ -12,7 +13,7 @@ export const BrandingContainer = createBrandedComponent(
 );
 export const BundleBanner = createBrandedComponent(
   WhatsOnBrandedComponentLocation.BundleBanner,
-  ({ bundle }: { bundle: any }) => {
+  ({ bundle, onEvent }: { bundle: any; onEvent: boolean }) => {
     const { data, loading, error } = useQuery(EVENT_LISTINGS_BUNDLE, {
       variables: {
         bundleSlug: bundle.slug,
@@ -47,11 +48,15 @@ export const BundleBanner = createBrandedComponent(
                 borderTopLeftRadius: '6px',
                 padding: '1rem',
                 color: 'rgba(0, 0, 0, 0.7)',
+                position: 'relative',
               }}
             >
-              <div css={[{ fontWeight: 600 }, type(TypeSize.Brevier)]}>
-                Part of the
-              </div>
+              <FauxRouterLink href={`/whats-on/bundle/${data.bundle.slug}`} />
+              {onEvent ? (
+                <div css={[{ fontWeight: 600 }, type(TypeSize.Brevier)]}>
+                  Part of the
+                </div>
+              ) : null}
               <h2 css={[{ margin: 0 }, type(TypeSize.GreatPrimer)]}>
                 {data.bundle.name}
               </h2>

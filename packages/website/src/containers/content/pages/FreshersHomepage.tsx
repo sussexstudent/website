@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Page } from '../types';
 import {
   ProfileSliceData,
@@ -15,6 +15,7 @@ import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
 import StreamField from '../StreamField';
 import { COLORS, MQ } from '@ussu/common/src/libs/style';
 import { useCountdown } from '../../../hooks/useCountdown';
+import { useWindowScroll } from 'react-use';
 import sand from '../../../img/freshers-sand.svg';
 import { NewsletterSignup } from '../../../components/NewsletterSignup';
 
@@ -82,14 +83,15 @@ const desktopOnlyStyle = css({
 
 const DARK_BLUE = '#1e2736';
 
-const FreshersHero: React.FC<{ heroText: string; title: string }> = ({
-  heroText,
-  title,
-}) => {
+const FreshersHero: React.FC<{
+  heroText: string;
+  title: string;
+  backgroundColor: string;
+}> = ({ heroText, title, backgroundColor }) => {
   return (
     <div
       css={{
-        backgroundColor: '#FFC400',
+        backgroundColor,
         position: 'relative',
         paddingBottom: '20%',
         overflow: 'hidden',
@@ -184,7 +186,7 @@ const FreshersMenu: React.FC<{ content: FreshersSlices[] }> = ({ content }) => (
         }}
       >
         {content.map(({ id, value: { menuName } }) => (
-          <li key={id} css={{ textAlign: 'center', padding: '0.3rem 0' }}>
+          <li key={id} css={{ textAlign: 'center', padding: '0.5rem' }}>
             <a
               href={`#${slugify(menuName)}`}
               css={{
@@ -218,7 +220,7 @@ const CountdownItem: React.FC<{ value: number; label: string }> = ({
     <div
       css={{
         ...type(TypeSize.DoublePica, Typeface.Secondary),
-        textTransform: 'uppcase',
+        textTransform: 'uppercase',
       }}
     >
       {label}
@@ -236,6 +238,7 @@ const FreshersWater: React.FC<{
     <div
       css={{
         backgroundColor: '#0095d8',
+        paddingTop: '3rem',
         '&:after': {
           content: '""',
           display: 'block',
@@ -245,6 +248,7 @@ const FreshersWater: React.FC<{
           backgroundSize: 'cover',
           width: '100%',
           height: 150,
+          marginTop: '-3rem',
         },
       }}
     >
@@ -286,13 +290,77 @@ const FreshersWater: React.FC<{
   );
 };
 
+function setBlue(x: number, y: number) {
+  // @ts-ignore
+  document.querySelector(
+    '#freshersWeek2019ArtEdit_svg___blue',
+    // @ts-ignore
+  ).style.transform = `translate(${x}px, ${y}px)`;
+}
+function setMoon(x: number, y: number) {
+  // @ts-ignore
+  document.querySelector(
+    '#freshersWeek2019ArtEdit_svg___moon',
+    // @ts-ignore
+  ).style.transform = `translate(${x}px, ${y}px)`;
+}
+function setRed(x: number, y: number) {
+  // @ts-ignore
+  document.querySelector(
+    '#freshersWeek2019ArtEdit_svg___red',
+    // @ts-ignore
+  ).style.transform = `translate(${x}px, ${y}px)`;
+}
+
+const paralax = () => {
+  const y = window.scrollY;
+  if (y > 400) return;
+
+  setBlue(10, y / 5);
+  setMoon(30, y / 2);
+  setRed(20, y / 7);
+};
+
+type Color = [number, number, number];
+
+const generateColorFrom = (start: Color, end: Color, progress: number) => {
+  const calculated = start.map((startValue, index) => {
+    console.log(progress);
+    const endValue = end[index];
+    const difference = startValue - endValue;
+
+    return startValue > endValue
+      ? startValue - difference * progress
+      : startValue + difference * progress;
+  });
+
+  return `rgb(${calculated.join(',')})`;
+};
+
 export const FreshersHomepage: React.FC<FreshersHomepageProps> = ({
   page,
   page: { heroText, title, content },
 }) => {
+  const { y } = useWindowScroll();
+  useEffect(() => {
+    window.addEventListener('scroll', paralax, true);
+
+    return () => {
+      window.removeEventListener('scroll', paralax, true);
+    };
+  });
+
   return (
     <div className={'FreshersSite'}>
-      <FreshersHero title={title} heroText={heroText} />
+      <FreshersHero
+        title={title}
+        heroText={heroText}
+        backgroundColor={generateColorFrom(
+          [255, 196, 0],
+          [115, 77, 0],
+          y < 500 ? y / 500 : 1,
+        )}
+      />
       <FreshersWater
         countdownTarget={page.countdownTarget}
         countdownCaption={page.countdownCaption}

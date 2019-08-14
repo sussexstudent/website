@@ -32,13 +32,13 @@
   ],
   "devDependencies": {
     "@kadira/storybook-deployer": "^1.2.0",
-    "@storybook/addon-actions": "^5.1.8",
-    "@storybook/addon-info": "^5.1.8",
-    "@storybook/react": "^5.1.8",
+    "@storybook/addon-actions": "^5.1.11",
+    "@storybook/addon-info": "^5.1.11",
+    "@storybook/react": "^5.1.11",
     "@types/hammerjs": "^2.0.36",
-    "@types/jest": "^24.0.15",
-    "@types/react": "^16.8.23",
-    "@types/react-dom": "^16.8.4",
+    "@types/jest": "^24.0.17",
+    "@types/react": "^16.9.1",
+    "@types/react-dom": "^16.8.5",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "jest": "^24.8.0",
@@ -53,8 +53,8 @@
   },
   "dependencies": {
     "hammerjs": "^2.0.8",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   },
   "prettier": {
     "printWidth": 80,

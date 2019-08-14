@@ -6,6 +6,7 @@ import { useQuery } from '@apollo/react-hooks';
 import Loader from '../../components/Loader';
 import { ErrorState } from '../../components/ErrorState';
 import { RouteComponentProps } from 'react-router';
+import { BuyButton } from '../EventDetailPage/BuyButton';
 
 export type EventBundleProps = RouteComponentProps<{ bundleSlug: string }>;
 
@@ -40,6 +41,10 @@ export const EventBundle: React.FC<EventBundleProps> = ({
       </Helmet>
       <h2 className="type-brevier">Event Bundle</h2>
       <h1>{bundle.name}</h1>
+
+      {bundle.ticketData ? (
+        <BuyButton title="Buy Bundle" href={bundle.ticketData} />
+      ) : null}
 
       <EventListings events={allEvents} removePast={false} />
     </div>

@@ -83,6 +83,8 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
             from="/freshers/whatson/"
             to="/whats-on/periods/freshers-week-2019"
           />
+          <Redirect from="/freshers/terms-conditions/" to="/freshers/terms/" />
+          <Redirect from="/freshers/events-info/" to="/freshers/faq/" />
           <Redirect
             from="/freshers/whats-on/"
             to="/whats-on/periods/freshers-week-2019"

@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import { has } from 'lodash';
 import formatDate from 'date-fns/format';
-import FauxLink from '../../components/FauxLink';
 import FauxInternalAppLink from '../../components/FauxInternalAppLink';
 import minimalisticTimeRenderer from '@ussu/common/src/libs/minimalisticTimeRenderer';
 import EventRelativeTime from './EventRelativeTime';
@@ -73,7 +72,7 @@ const EventsCalenderItem: React.FC<EventsCalenderItemProps> = ({
       })}
     >
       {event.url !== undefined && event.url !== '' ? (
-        <FauxLink href={event.url} />
+        <FauxInternalAppLink href={event.url} />
       ) : (
         <FauxInternalAppLink
           href={`/whats-on/${event.slug}-${event.eventId}`}

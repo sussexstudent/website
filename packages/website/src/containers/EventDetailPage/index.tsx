@@ -43,7 +43,10 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
   useEffect(() => {
     if (data && data.event) {
       const event = data.event;
-      if (match.params[0] !== event.slug) {
+      if (
+        match.params.eventId === event.eventId.toString() &&
+        match.params[0] !== event.slug
+      ) {
         history.replace(`/whats-on/${event.slug}-${event.eventId}`);
       }
       if (event.brand && event.brand.slug) {

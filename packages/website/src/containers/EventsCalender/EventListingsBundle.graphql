@@ -30,5 +30,8 @@ query EventsListings($filter: EventFilterInput, $bundleSlug: String) {
   bundle(slug: $bundleSlug) {
     name
     slug
+    ticketData
+    ticketLevel
+    ticketType
   }
 }

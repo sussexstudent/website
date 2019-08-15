@@ -79,8 +79,22 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
             component={LoadableStudentGroupsDiscovery}
             path="/sport-societies-media/discover"
           />
-          <Redirect from="/freshers/freshers-week-events/" to="/freshers" />
-          <Route component={FreshersEvents} path="/freshers/whats-on" />
+          <Redirect
+            from="/freshers/whatson/"
+            to="/whats-on/periods/freshers-week-2019"
+          />
+          <Redirect
+            from="/freshers/whats-on/"
+            to="/whats-on/periods/freshers-week-2019"
+          />
+          <Redirect
+            from="/freshers/events/"
+            to="/whats-on/periods/freshers-week-2019"
+          />
+          <Route
+            component={FreshersEvents}
+            path="/whats-on/periods/freshers-week-2019"
+          />
           <Route component={ContentAPI} path="/freshers" />
           {/*<EventDiscovery path="/event-discovery" />*/}
           <Route component={ContentAPI} path="/get-involved" exact />

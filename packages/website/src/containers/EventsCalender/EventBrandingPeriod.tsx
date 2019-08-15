@@ -79,7 +79,6 @@ export const EventBrandingPeriod: React.FC<EventBrandingPeriodProps> = ({
 
   useEffect(() => {
     dispatch(setBrandingPeriod(brandSlug));
-    console.log(setBrandingPeriod(brandSlug));
   }, [brandSlug]);
 
   if (brandLoading) {

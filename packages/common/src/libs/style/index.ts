@@ -63,6 +63,7 @@ export enum Layers {
   UserBar_dropdown = 50,
   Sticky_sectionHeaderMonth = 41,
   Sticky_sectionHeaderDay = 40,
+  FauxLinkBreakout = 4,
   FauxLink = 3,
   Tweet_quoted = 2,
   Tweet_link = 1,

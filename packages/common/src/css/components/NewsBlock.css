@@ -16,7 +16,6 @@
   &__title {
     box-decoration-break: clone;
     padding: 0.02em 0.2em;
-    background-color: var(--color__brand-yellow);
     color: #000000;
     display: inline;
     position: relative;

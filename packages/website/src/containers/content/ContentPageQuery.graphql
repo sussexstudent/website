@@ -151,6 +151,15 @@ query ContentPage($path: String, $previewToken: String) {
     }
 
     ... on OfficerOverviewPage {
+      subPages {
+        ... on OfficerEventsPage {
+          ...ContentPageGenerals
+          description
+          curator {
+            id
+          }
+        }
+      }
       role
       roleDescription
       officerImage {
@@ -168,9 +177,19 @@ query ContentPage($path: String, $previewToken: String) {
         inclusive: true
       ) {
         ...ContentPageGenerals
-        subPages {
-          ...ContentPageGenerals
-        }
+      }
+    }
+
+    ... on OfficerEventsPage {
+      description
+      curator {
+        id
+      }
+      section: closestAncestorOfType(
+        contentType: "OfficerOverviewPage"
+        inclusive: true
+      ) {
+        ...ContentPageGenerals
       }
     }
   }

@@ -15,6 +15,7 @@ import { OutletIndexPageProps } from './pages/OutletIndexPage';
 import { OutletPageProps } from './pages/OutletPage';
 import { OfficerOverviewPageProps } from './pages/OfficerOverviewPage';
 import { OfficerIndexProps } from './pages/OfficersIndex';
+import { OfficerEventsPageProps } from './pages/OfficerEventsPage';
 interface PageComponentMap {
   [wagtailModel: string]: any; // todo
 }
@@ -93,6 +94,11 @@ export const contentTypeMap: PageComponentMap = {
   OfficersIndex: loadable<OfficerIndexProps>(async () => {
     const { OfficersIndex } = await import('./pages/OfficersIndex');
     return (props) => <OfficersIndex {...props} />;
+  }),
+
+  OfficerEventsPage: loadable<OfficerEventsPageProps>(async () => {
+    const { OfficerEventsPage } = await import('./pages/OfficerEventsPage');
+    return (props) => <OfficerEventsPage {...props} />;
   }),
 
   // Volunteering

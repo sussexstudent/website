@@ -8,28 +8,11 @@
     width: 100%;
   }
 
-  &__item {
-    @mixin card standard;
-    background-color: var(--color__brand-yellow);
-  }
-
   &__title {
     font-weight: bold;
-    background: var(--color__brand-yellow);
-    padding: 0 0.2rem;
+    padding: 0.4rem 0.2rem;
     display: inline-block;
-    @mixin type great-primer without-line-height;
-
-    @media (--medium) {
-      @mixin type double-pica without-line-height;
-    }
-  }
-
-  &__image {
-    padding-top: 30%;
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @mixin type great-primer;
   }
 
   &--undderneath &__image-inside {

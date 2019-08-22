@@ -10,19 +10,9 @@
 
   &__title {
     font-weight: bold;
-    padding: 0 0.2rem;
+    padding: 0.4rem 0.2rem;
     display: inline-block;
-    @mixin type great-primer without-line-height;
-
-    @media (--medium) {
-      @mixin type double-pica without-line-height;
-    }
-  }
-
-  &__image {
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @mixin type great-primer;
   }
 
   &--undderneath &__image-inside {

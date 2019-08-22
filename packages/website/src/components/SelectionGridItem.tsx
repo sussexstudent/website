@@ -23,9 +23,7 @@ const SelectionGridItem = ({
         alt=""
         aspectRatio={AspectRatio.r20by9}
       />
-      <div className="SelectionGrid__image-inside">
-        <div className="SelectionGrid__title">{title}</div>
-      </div>
+      <div className="SelectionGrid__title">{title}</div>
     </a>
   </li>
 );

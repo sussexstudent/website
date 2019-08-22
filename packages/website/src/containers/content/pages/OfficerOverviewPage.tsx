@@ -38,20 +38,6 @@ const topOverviewStyles = css({
   },
 });
 
-const socialStyles = css({
-  [MQ.Medium]: {
-    position: 'absolute',
-    right: '0',
-    bottom: '0',
-  },
-});
-
-const socialItemsStyles = css({
-  [MQ.Medium]: {
-    justifyContent: 'flex-end',
-  },
-});
-
 const videoStyle = css({
   margin: '10% auto',
   width: '90%',
@@ -105,9 +91,9 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
             </div>
             {/* SOCIAL MEDIA SECTION */}
             {page.facebookUrl || page.instagramUrl || page.twitterUsername ? (
-              <div css={socialStyles}>
+              <div>
                 <h4>Follow {page.firstName}</h4>
-                <ul className="Social" css={socialItemsStyles}>
+                <ul className="Social">
                   {page.facebookUrl ? (
                     <li>
                       <a className="Social__link" href={page.facebookUrl}>

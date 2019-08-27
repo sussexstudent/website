@@ -1,5 +1,5 @@
 import React from 'react';
-import { OneImageBackground } from './OneImage';
+import { OneImage, AspectRatio } from './OneImage';
 
 interface SelectionGridItemProps {
   link: string;
@@ -17,11 +17,13 @@ const SelectionGridItem = ({
     key={link}
   >
     <a className="SelectionGrid__link" href={link}>
-      <OneImageBackground className="SelectionGrid__image" src={imageURL}>
-        <div className="SelectionGrid__image-inside">
-          <div className="SelectionGrid__title">{title}</div>
-        </div>
-      </OneImageBackground>
+      <OneImage
+        className="SelectionGrid__image"
+        src={imageURL}
+        alt=""
+        aspectRatio={AspectRatio.r20by9}
+      />
+      <div className="SelectionGrid__title">{title}</div>
     </a>
   </li>
 );

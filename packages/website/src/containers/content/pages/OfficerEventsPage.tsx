@@ -6,6 +6,7 @@ import { EventListings } from '../../EventsCalender/EventListings';
 import { useQuery } from '@apollo/react-hooks';
 import { startOfDay, addMonths } from 'date-fns/esm';
 import Loader from '../../../components/Loader';
+import { Sectionbar } from '../../../components/Sectionbar';
 
 interface IOfficerEventsIndex extends Page<Page[]> {}
 
@@ -41,10 +42,13 @@ export const OfficerEventsPage: React.FC<OfficerEventsPageProps> = ({
   }
 
   return (
-    <div className="LokiContainer">
-      <h1>{page.title}</h1>
-      {convert(page.description)}
-      <EventListings events={data.allEvents} removePast={true} />
+    <div>
+      <Sectionbar title={page.section.title} titleLink={page.section.path} />
+      <div className="LokiContainer">
+        <h1>{page.title}</h1>
+        {convert(page.description)}
+        <EventListings events={data.allEvents} removePast={true} />
+      </div>
     </div>
   );
 };

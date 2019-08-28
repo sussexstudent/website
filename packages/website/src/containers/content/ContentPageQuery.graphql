@@ -151,6 +151,15 @@ query ContentPage($path: String, $previewToken: String) {
     }
 
     ... on OfficerOverviewPage {
+      subPages {
+        ... on OfficerEventsPage {
+          ...ContentPageGenerals
+          description
+          curator {
+            id
+          }
+        }
+      }
       role
       roleDescription
       officerImage {

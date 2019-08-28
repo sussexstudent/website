@@ -33,6 +33,9 @@ jobs:
 
       # run tests!
       - run: cd packages/website && yarn test
+      - run:
+        name: Danger
+        command: yarn danger ci
 
 workflows:
   test:

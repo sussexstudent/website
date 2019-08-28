@@ -10,6 +10,7 @@ import loadable from '@loadable/component';
 import { WhatsOnSectionbar } from './WhatsOnSectionbar';
 import { BrandingContainer } from './branding/components';
 import { WhatsOnThemingProvider } from './WhatsOnBrandingContext';
+import { MyProgrammeProps } from './MyProgramme';
 
 const LoadableListings = loadable<EventsListProps>(async () => {
   const { EventsList } = await import('../EventsCalender');
@@ -33,6 +34,11 @@ const LoadableBundle = loadable<EventBundleProps>(async () => {
 const LoadableDetail = loadable<EventDetailPageProps>(async () => {
   const { EventDetailPage } = await import('../EventDetailPage');
   return (props) => <EventDetailPage {...props} />;
+});
+
+const LoadableMyProgramme = loadable<MyProgrammeProps>(async () => {
+  const { MyProgramme } = await import('./MyProgramme');
+  return (props) => <MyProgramme {...props} />;
 });
 
 type EventsApplicationProps = RouteComponent;
@@ -91,6 +97,10 @@ const EventsApplication: React.FC<EventsApplicationProps> = () => {
                 component={LoadableListingsBranding}
                 path="/whats-on/periods/:brandSlug"
                 exact
+              />
+              <Route
+                path="/whats-on/my-programme"
+                component={LoadableMyProgramme}
               />
               <Route path="/whats-on/**-:eventId" component={LoadableDetail} />
               <Route path="/whats-on/:eventId" component={LoadableDetail} />

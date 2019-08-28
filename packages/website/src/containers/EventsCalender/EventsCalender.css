@@ -101,6 +101,45 @@
     text-transform: uppercase;
   }
 
+  &__item-image-like {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 130px;
+      height: 60px;
+      transform: translate(40px, -30px) rotate(45deg);
+      background: linear-gradient(
+        to bottom,
+        hsl(0, 0%, 0%) 0%,
+        hsla(0, 0%, 0%, 0.992) 0.3%,
+        hsla(0, 0%, 0%, 0.97) 1.1%,
+        hsla(0, 0%, 0%, 0.934) 2.5%,
+        hsla(0, 0%, 0%, 0.887) 4.7%,
+        hsla(0, 0%, 0%, 0.83) 7.7%,
+        hsla(0, 0%, 0%, 0.763) 11.6%,
+        hsla(0, 0%, 0%, 0.689) 16.4%,
+        hsla(0, 0%, 0%, 0.609) 22.3%,
+        hsla(0, 0%, 0%, 0.525) 29.4%,
+        hsla(0, 0%, 0%, 0.437) 37.6%,
+        hsla(0, 0%, 0%, 0.347) 47.2%,
+        hsla(0, 0%, 0%, 0.258) 58.1%,
+        hsla(0, 0%, 0%, 0.169) 70.5%,
+        hsla(0, 0%, 0%, 0.082) 84.4%,
+        hsla(0, 0%, 0%, 0) 100%
+      );
+    }
+  }
+
   &__item-container {
     padding: 0.5rem;
   }

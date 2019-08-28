@@ -7,6 +7,8 @@ import minimalisticTimeRenderer from '@ussu/common/src/libs/minimalisticTimeRend
 import EventRelativeTime from './EventRelativeTime';
 import { Event, TicketCost, TicketType } from '@ussu/common/src/types/events';
 import { AspectRatio, OneImage } from '../../components/OneImage';
+import PatternPlaceholder from '../../components/PatternPlaceholder';
+import { EventLikeButton } from './EventLikeButton';
 
 function renderEventLocation(event: Event) {
   if (!event.venue) {
@@ -78,19 +80,25 @@ const EventsCalenderItem: React.FC<EventsCalenderItemProps> = ({
           href={`/whats-on/${event.slug}-${event.eventId}`}
         />
       )}
-      {has(part, 'event.featuredImage.resource') ? (
-        <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
+      <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
+        {has(part, 'event.featuredImage.resource') ? (
           <OneImage
             src={event.featuredImage.resource}
             aspectRatio={AspectRatio.r16by9}
             alt=""
             withoutContainer
           />
-          {treat !== null ? (
-            <div className="EventsCalender__item-image-treat">{treat}</div>
-          ) : null}
+        ) : (
+          <PatternPlaceholder />
+        )}
+        <div className="EventsCalender__item-image-like">
+          <EventLikeButton event={event} />
         </div>
-      ) : null}
+
+        {treat !== null ? (
+          <div className="EventsCalender__item-image-treat">{treat}</div>
+        ) : null}
+      </div>
       {event.bundle !== null && event.bundle !== undefined ? (
         <div className="EventsCalender__item-banner EventsCalender__item-banner--bundle">
           {event.bundle.name}

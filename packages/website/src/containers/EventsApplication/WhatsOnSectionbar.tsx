@@ -11,16 +11,11 @@ export const WhatsOnSectionbar = () => {
   return (
     <Sectionbar title="What's on">
       <SectionbarItem>
-        <Link to={'/whats-on'}>Listings</Link>
+        <Link to={'/whats-on'}>All listings</Link>
       </SectionbarItem>
+
       <SectionbarItem>
-        <a
-          href={
-            'https://www.sussexstudent.com/get-involved/societies-and-student-media/guides/events/hold-event'
-          }
-        >
-          Hold an event
-        </a>
+        <Link to={'/whats-on/my-programme'}>My Programme</Link>
       </SectionbarItem>
 
       {data && data.allBrandingPeriods && data.allBrandingPeriods.length > 0
@@ -30,6 +25,15 @@ export const WhatsOnSectionbar = () => {
             </SectionbarItem>
           ))
         : null}
+      <SectionbarItem>
+        <a
+          href={
+            'https://www.sussexstudent.com/get-involved/societies-and-student-media/guides/events/hold-event'
+          }
+        >
+          Hold an event
+        </a>
+      </SectionbarItem>
     </Sectionbar>
   );
 };

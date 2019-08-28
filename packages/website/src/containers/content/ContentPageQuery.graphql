@@ -56,6 +56,12 @@ query ContentPage($path: String, $previewToken: String) {
     ... on SelectionGridPage {
       body
     }
+    ... on OfficerEventsPage {
+      description
+      curator {
+        id
+      }
+    }
     ... on OutletIndexPage {
       preamble
       subPages {

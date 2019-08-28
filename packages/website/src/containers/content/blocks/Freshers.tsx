@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import slugify from '@ussu/common/src/libs/slugify';
 import convert from 'htmr';
 import StreamField from '../StreamField';
-import socialSquiggle from '../../../img/socialSquiggle.svg';
+import socialSquiggle from '../../../img/socialsquiggle.svg';
 import { COLORS, MQ } from '@ussu/common/src/libs/style';
 import { TextBlockData } from './TextBlock';
 import { ExternalLinkBlockData, InternalLinkBlockData } from './Links';

@@ -5,7 +5,7 @@
   "license": "MIT",
   "types": "src/defs/index.d.ts",
   "dependencies": {
-    "@emotion/core": "^10.0.15"
+    "@emotion/core": "^10.0.16"
   },
   "scripts": {
     "postinstall": ":"

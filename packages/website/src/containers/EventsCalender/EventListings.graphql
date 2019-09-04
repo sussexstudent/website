@@ -24,6 +24,9 @@ query EventsListings($filter: EventFilterInput, $skipEmbargo: Boolean) {
         featuredImage {
           resource
         }
+        curatedBy {
+          id
+        }
       }
     }
   }

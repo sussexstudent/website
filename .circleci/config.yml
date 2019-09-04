@@ -32,13 +32,16 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn test
+      - run: cd packages/website && yarn test
+      - run:
+          name: Danger
+          command: yarn danger ci
 
 workflows:
   test:
     jobs:
       - build
-      - cypress/run:
-          yarn: true
-          start: yarn localrequired && yarn prep && yarn serve
-          wait-on: 'http://localhost:3002'
+#      - cypress/run:
+#          yarn: true
+#          start: yarn localrequired && yarn prep && yarn serve
+#          wait-on: 'http://localhost:3002'

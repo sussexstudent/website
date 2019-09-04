@@ -83,6 +83,7 @@
     "webpack-hot-middleware": "^2.25.0"
   },
   "scripts": {
+    "test": "NODE_ENV=test && jest",
     "generatepreview": "webpack --config ./webpack.preview.config.js && echo \"/*    /index.html   200\" > \"preview-dist/_redirects\"",
     "serve": "BABEL_ENV=bundle node --trace-warnings ./devserver.js",
     "prod": "export NODE_ENV=production && export BABEL_ENV=bundle && webpack --config ./webpack.prod.config.js",

@@ -16,6 +16,7 @@ const buttonStyle = ({ disabled }: { disabled: boolean }) =>
     textDecoration: 'none',
     marginTop: '1rem',
     boxSizing: 'border-box',
+    whiteSpace: 'nowrap',
     cardActionable,
   });
 

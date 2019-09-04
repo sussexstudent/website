@@ -4,8 +4,9 @@ import React from 'react';
 import EVENT_LISTINGS_BUNDLE from '../../EventsCalender/EventListingsBundle.graphql';
 import { useQuery } from '@apollo/react-hooks';
 import { type, TypeSize } from '@ussu/common/src/libs/style/type';
-import { Layers } from '@ussu/common/src/libs/style';
+import { Layers, MQ } from '@ussu/common/src/libs/style';
 import FauxRouterLink from '../../../components/FauxRouterLink';
+import { BuyButton } from '../../EventDetailPage/BuyButton';
 
 export const BrandingContainer = createBrandedComponent(
   WhatsOnBrandedComponentLocation.Container,
@@ -49,32 +50,57 @@ export const BundleBanner = createBrandedComponent(
                 padding: '1rem',
                 color: 'rgba(0, 0, 0, 0.7)',
                 position: 'relative',
+                overflow: 'hidden',
               }}
             >
-              <FauxRouterLink href={`/whats-on/bundle/${data.bundle.slug}`} />
-              {onEvent ? (
-                <div css={[{ fontWeight: 600 }, type(TypeSize.Brevier)]}>
-                  Part of the
+              <div css={{ display: 'flex', flexDirection: 'row' }}>
+                <div
+                  css={{
+                    flex: 'auto',
+                    minWidth: 0,
+                    position: 'relative',
+                    [MQ.Medium]: { paddingRight: '2rem' },
+                  }}
+                >
+                  <FauxRouterLink
+                    href={`/whats-on/bundle/${data.bundle.slug}`}
+                  />
+                  {onEvent ? (
+                    <div css={[{ fontWeight: 600 }, type(TypeSize.Brevier)]}>
+                      Part of the
+                    </div>
+                  ) : null}
+                  <h2 css={[{ margin: 0 }, type(TypeSize.GreatPrimer)]}>
+                    {data.bundle.name}
+                  </h2>
+                  <div
+                    css={[
+                      {
+                        fontWeight: 600,
+                      },
+                      type(TypeSize.Brevier),
+                    ]}
+                  >
+                    Includes:{' '}
+                    {data.allEvents.edges
+                      .map((event: any) => event.node.title)
+                      .join(', ')}
+                  </div>
                 </div>
-              ) : null}
-              <h2 css={[{ margin: 0 }, type(TypeSize.GreatPrimer)]}>
-                {data.bundle.name}
-              </h2>
-              <div
-                css={[
-                  {
-                    fontWeight: 600,
-                    textOverflow: 'ellipsis',
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap',
-                  },
-                  type(TypeSize.Brevier),
-                ]}
-              >
-                Includes:{' '}
-                {data.allEvents.edges
-                  .map((event: any) => event.node.title)
-                  .join(', ')}
+                {data.bundle.ticketData ? (
+                  <div
+                    css={{
+                      display: 'none',
+                      zIndex: Layers.FauxLinkBreakout,
+                      [MQ.Medium]: { display: 'block' },
+                    }}
+                  >
+                    <BuyButton
+                      title="Buy Bundle"
+                      href={data.bundle.ticketData}
+                    />
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

@@ -325,7 +325,6 @@ type Color = [number, number, number];
 
 const generateColorFrom = (start: Color, end: Color, progress: number) => {
   const calculated = start.map((startValue, index) => {
-    console.log(progress);
     const endValue = end[index];
     const difference = startValue - endValue;
 

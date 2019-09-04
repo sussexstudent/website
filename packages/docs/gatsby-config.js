@@ -18,7 +18,6 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-sharp',
     {
       resolve: `gatsby-plugin-layout`,
       options: {

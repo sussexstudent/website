@@ -36,16 +36,16 @@
     "@storybook/addon-info": "^5.1.11",
     "@storybook/react": "^5.1.11",
     "@types/hammerjs": "^2.0.36",
-    "@types/jest": "^24.0.17",
-    "@types/react": "^16.9.1",
-    "@types/react-dom": "^16.8.5",
+    "@types/jest": "^24.0.18",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
-    "jest": "^24.8.0",
+    "jest": "^24.9.0",
     "microbundle": "0.11.0",
     "prettier": "^1.18.2",
     "ts-jest": "^24.0.2",
-    "typescript": "^3.5.3"
+    "typescript": "^3.6.2"
   },
   "peerDependencies": {
     "react": "^15.8.6",

@@ -33,9 +33,10 @@ export const whatsOnBrandingMap: {
     [WhatsOnBrandedComponentLocation.Container]: ({ children }) => (
       <div
         css={{
-          backgroundImage: `url(${require('../../../img/freshers-2019/repeatable-bg-left.svg')}), url(${require('../../../img/freshers-2019/repeatable-bg-right.svg')})`,
+          backgroundImage: `url(${require('../../../img/freshers-2019/repeatable-bg-left-01.svg')}), url(${require('../../../img/freshers-2019/repeatable-bg-right-02.svg')})`,
           backgroundRepeat: 'repeat-y, repeat-y',
           backgroundPosition: 'top left, top right',
+          backgroundSize: '20%',
         }}
       >
         {children}

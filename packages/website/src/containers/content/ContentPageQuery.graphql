@@ -208,7 +208,7 @@ fragment ContentPageGenerals on Page {
 
   contentType
   lastPublishedAt
-  subPages(inMenu: true) {
+  subPages {
     title
     slug
     path
@@ -224,7 +224,7 @@ fragment ContentPageGenerals on Page {
     slug
     path
     contentType
-    subPages(inMenu: true) {
+    subPages {
       contentType
       title
       slug

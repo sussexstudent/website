@@ -219,7 +219,7 @@ fragment ContentPageGenerals on Page {
     contentType
   }
 
-  ancestorPages {
+  ancestorPages(inMenu: true) {
     title
     slug
     path

@@ -208,6 +208,29 @@ fragment ContentPageGenerals on Page {
 
   contentType
   lastPublishedAt
+  subPages {
+    title
+    slug
+    path
+
+    seoTitle
+    searchDescription
+
+    contentType
+  }
+
+  ancestorPages {
+    title
+    slug
+    path
+    contentType
+    subPages {
+      contentType
+      title
+      slug
+      path
+    }
+  }
 }
 
 fragment FalmerImage on Image {

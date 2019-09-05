@@ -1,6 +1,5 @@
 import React from 'react';
 import { Page, StreamFieldData } from '../types';
-import { Sectionbar, SectionbarItem } from '../../../components/Sectionbar';
 import { Link } from 'react-router-dom';
 import { AspectRatio, OneImage } from '@ussu/website/src/components/OneImage';
 import { FalmerImage } from '@ussu/common/src/types/events';
@@ -84,13 +83,6 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
   return (
     <div>
       <Helmet title={`${page.role} | ${page.firstName} ${page.lastName}`} />
-      <Sectionbar title={page.section.title} titleLink={page.section.path}>
-        {page.section.subPages.map((page) => (
-          <SectionbarItem key={page.path}>
-            <Link to={page.path}>{page.title}</Link>
-          </SectionbarItem>
-        ))}
-      </Sectionbar>
 
       <div className="LokiContainer">
         <div className="Layout Layout--sidebar-left" css={topOverviewStyles}>

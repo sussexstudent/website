@@ -2,7 +2,6 @@ import React from 'react';
 import { Page } from '../types';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { Link } from 'react-router-dom';
-import { Sectionbar, SectionbarItem } from '../../../components/Sectionbar';
 import { OneImage, AspectRatio } from '../../../components/OneImage';
 import convert from 'htmr';
 import { SocialArray } from '../../../components/SocialArray';
@@ -66,13 +65,6 @@ const socialLinks = (pageObj: OfficerPagePreview): NetworkItem => {
 
 export const OfficersIndex: React.FC<OfficerIndexProps> = ({ page }) => (
   <React.Fragment>
-    <Sectionbar title={page.section.title} titleLink={page.section.path}>
-      {page.section.subPages.map((page) => (
-        <SectionbarItem key={page.path}>
-          <Link to={page.path}>{page.title}</Link>
-        </SectionbarItem>
-      ))}
-    </Sectionbar>
     <div className="LokiContainer">
       {page.subPages.map((page) => (
         <div className="Trail Trail__row--12">

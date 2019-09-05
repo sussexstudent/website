@@ -80,7 +80,7 @@ const ContentPage: React.FC<IProps> = (props: IProps) => {
             { opacity: 1, transition: '300ms ease opacity' },
             loading && { opacity: 0.4 },
           ]}
-          {...(loading ? { ariaBusy: 'true' } : {})}
+          {...(loading ? { 'aria-busy': 'true' } : {})}
         >
           <ContentTypeTemplate page={page} />
         </div>

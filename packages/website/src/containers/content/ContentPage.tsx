@@ -74,7 +74,16 @@ const ContentPage: React.FC<IProps> = (props: IProps) => {
           )}
         </Helmet>
 
-        <ContentTypeTemplate page={page} />
+        <div
+          aria-live="polite"
+          css={[
+            { opacity: 1, transition: '300ms ease opacity' },
+            loading && { opacity: 0.4 },
+          ]}
+          {...(loading ? { ariaBusy: 'true' } : {})}
+        >
+          <ContentTypeTemplate page={page} />
+        </div>
       </React.Fragment>
     );
   }

@@ -76,8 +76,16 @@ const ContentPage: React.FC<IProps> = (props: IProps) => {
         </Helmet>
 
         <Wayfinder page={page as any} />
-
-        <ContentTypeTemplate page={page} />
+        <div
+          aria-live="polite"
+          css={[
+            { opacity: 1, transition: '300ms ease opacity' },
+            loading && { opacity: 0.4 },
+          ]}
+          {...(loading ? { 'aria-busy': 'true' } : {})}
+        >
+          <ContentTypeTemplate page={page} />
+        </div>
       </React.Fragment>
     );
   }

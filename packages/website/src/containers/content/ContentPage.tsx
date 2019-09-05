@@ -7,6 +7,7 @@ import { FourOhFourPage } from './FourOhFourPage';
 import { useQuery } from '@apollo/react-hooks';
 import qs from 'query-string';
 import { ErrorState } from '../../components/ErrorState';
+import { Wayfinder } from '../../components/Wayfinder';
 
 interface OwnProps {
   path: string;
@@ -73,6 +74,8 @@ const ContentPage: React.FC<IProps> = (props: IProps) => {
             <meta name="description" content={page.searchDescription} />
           )}
         </Helmet>
+
+        <Wayfinder page={page as any} />
 
         <ContentTypeTemplate page={page} />
       </React.Fragment>

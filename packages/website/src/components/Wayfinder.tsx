@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 interface WayfinderPage {
   title: string;
   path: string;
+  contentType: string;
   ancestorPages: WayfinderPage[];
   subPages: WayfinderPage[];
 }
@@ -13,13 +14,25 @@ export interface WayfinderProps {
   page: WayfinderPage;
 }
 
+const contentTypeBlacklist = ['KBRootPage', 'FreshersHomepage'];
+
+const inBlacklist = (page: WayfinderPage) =>
+  contentTypeBlacklist.indexOf(page.contentType) > -1;
+const isUsable = (page: WayfinderPage) =>
+  (page !== undefined && !inBlacklist(page) && page) || null;
+
 const getWayfinderDataFromPage = (page: WayfinderPage) => {
   const { ancestorPages } = page;
   const pages = [...ancestorPages, page];
+
+  const section = isUsable(pages[2]);
+  const topic = isUsable(pages[3]);
+  const subnav = isUsable(pages[4]);
+
   return {
-    section: pages[2] || null,
-    topic: pages[3] || null,
-    subnav: pages[4] || null,
+    section: section,
+    topic: (section && topic) || null,
+    subnav: (section && topic && subnav) || null,
   };
 };
 
@@ -44,6 +57,10 @@ const Menu: React.FC<React.HTMLProps<HTMLUListElement>> = ({
 
 export const Wayfinder: React.FC<WayfinderProps> = ({ page }) => {
   const { section, topic, subnav } = getWayfinderDataFromPage(page);
+
+  if (!section) {
+    return null;
+  }
 
   return (
     <div css={{ marginTop: '-1rem', marginBottom: '1rem' }}>

@@ -223,7 +223,9 @@ fragment ContentPageGenerals on Page {
     title
     slug
     path
+    contentType
     subPages {
+      contentType
       title
       slug
       path

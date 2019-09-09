@@ -1,14 +1,40 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import HeartFull from '../../icons/heart-full.svg';
 import Heart from '../../icons/heart-empty.svg';
 import { Event } from '@ussu/common/src/types/events';
 import LikeEvent from './LikeEvent.graphql';
 import { useMutation } from '@apollo/react-hooks';
+import { useViewer } from '../bookmarket/currentUserData';
+import { useDispatch } from 'redux-react-hook';
+import { openLoginModal } from '../../ducks/user';
 
 export const EventLikeButton: React.FC<{ event: Event }> = ({ event }) => {
+  const { loading, isAuthenticated } = useViewer();
   const [likeEvent] = useMutation(LikeEvent);
+  const dispatch = useDispatch();
+
+  const handleLike = useCallback(() => {
+    if (isAuthenticated) {
+      likeEvent({
+        variables: {
+          eventId: event.eventId,
+          type:
+            event.userLike === null || event.userLike.source === 'UNLIKED'
+              ? 'USER'
+              : 'UNLIKED',
+        },
+      });
+    } else {
+      console.log(isAuthenticated, openLoginModal());
+      dispatch(openLoginModal());
+    }
+  }, [loading, isAuthenticated, likeEvent, event.userLike]);
 
   const isLiked = event.userLike && event.userLike.source === 'USER';
+
+  if (loading) {
+    return null;
+  }
 
   return (
     <button
@@ -36,17 +62,7 @@ export const EventLikeButton: React.FC<{ event: Event }> = ({ event }) => {
       }}
       type="button"
       aria-label="Like"
-      onClick={() =>
-        likeEvent({
-          variables: {
-            eventId: event.eventId,
-            type:
-              event.userLike === null || event.userLike.source === 'UNLIKED'
-                ? 'USER'
-                : 'UNLIKED',
-          },
-        })
-      }
+      onClick={handleLike}
     >
       {isLiked ? <HeartFull /> : <Heart />}
     </button>

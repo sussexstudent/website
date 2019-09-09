@@ -1,5 +1,6 @@
 import React from 'react';
 import { OneImage, AspectRatio } from './OneImage';
+import { InternalAppLink } from './InternalAppLink';
 
 interface SelectionGridItemProps {
   link: string;
@@ -16,7 +17,7 @@ const SelectionGridItem = ({
     className="SelectionGrid__item SelectionGrid--underneath TrailGrid__item"
     key={link}
   >
-    <a className="SelectionGrid__link" href={link}>
+    <InternalAppLink className="SelectionGrid__link" to={link}>
       <OneImage
         className="SelectionGrid__image"
         src={imageURL}
@@ -24,7 +25,7 @@ const SelectionGridItem = ({
         aspectRatio={AspectRatio.r20by9}
       />
       <div className="SelectionGrid__title">{title}</div>
-    </a>
+    </InternalAppLink>
   </li>
 );
 

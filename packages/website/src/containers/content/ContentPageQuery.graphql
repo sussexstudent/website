@@ -132,15 +132,6 @@ query ContentPage($path: String, $previewToken: String) {
       deals
       googleMapsPlaceId
       contactDetails
-      section: closestAncestorOfType(
-        contentType: "OutletIndexPage"
-        inclusive: true
-      ) {
-        ...ContentPageGenerals
-        subPages {
-          ...ContentPageGenerals
-        }
-      }
     }
 
     ... on FreshersHomepage {
@@ -172,27 +163,12 @@ query ContentPage($path: String, $previewToken: String) {
       facebookUrl
       instagramUrl
       youtubeSplash
-      section: closestAncestorOfType(
-        contentType: "OfficersIndex"
-        inclusive: true
-      ) {
-        ...ContentPageGenerals
-        subPages {
-          ...ContentPageGenerals
-        }
-      }
     }
 
     ... on OfficerEventsPage {
       description
       curator {
         id
-      }
-      section: closestAncestorOfType(
-        contentType: "OfficerOverviewPage"
-        inclusive: true
-      ) {
-        ...ContentPageGenerals
       }
     }
   }
@@ -208,7 +184,7 @@ fragment ContentPageGenerals on Page {
 
   contentType
   lastPublishedAt
-  subPages {
+  subPagesWayfinding: subPages(inMenu: true) {
     title
     slug
     path
@@ -224,7 +200,7 @@ fragment ContentPageGenerals on Page {
     slug
     path
     contentType
-    subPages {
+    subPages(inMenu: true) {
       contentType
       title
       slug

@@ -23,7 +23,10 @@ const isUsable = (page: WayfinderPage) =>
 
 const getWayfinderDataFromPage = (page: WayfinderPage) => {
   const { ancestorPages } = page;
-  const pages = [...ancestorPages, page];
+  const pages = [
+    ...ancestorPages,
+    { ...page, subPages: (page as any).subPagesWayfinding },
+  ];
 
   const section = isUsable(pages[2]);
   const topic = isUsable(pages[3]);

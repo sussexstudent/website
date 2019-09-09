@@ -7,6 +7,7 @@ import { FourOhFourPage } from './FourOhFourPage';
 import { useQuery } from '@apollo/react-hooks';
 import qs from 'query-string';
 import { ErrorState } from '../../components/ErrorState';
+import { Wayfinder } from '../../components/Wayfinder';
 
 interface OwnProps {
   path: string;
@@ -74,7 +75,17 @@ const ContentPage: React.FC<IProps> = (props: IProps) => {
           )}
         </Helmet>
 
-        <ContentTypeTemplate page={page} />
+        <Wayfinder page={page as any} />
+        <div
+          aria-live="polite"
+          css={[
+            { opacity: 1, transition: '300ms ease opacity' },
+            loading && { opacity: 0.4 },
+          ]}
+          {...(loading ? { 'aria-busy': 'true' } : {})}
+        >
+          <ContentTypeTemplate page={page} />
+        </div>
       </React.Fragment>
     );
   }

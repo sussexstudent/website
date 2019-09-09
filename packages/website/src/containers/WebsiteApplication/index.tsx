@@ -93,6 +93,10 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
             from="/freshers/events/"
             to="/whats-on/periods/freshers-week-2019"
           />
+          <Redirect
+            from="/services/outlets/*"
+            to="/about-us/shops-and-bars/*"
+          />
           <Route
             component={FreshersEvents}
             path="/whats-on/periods/freshers-week-2019"
@@ -118,6 +122,7 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
             path="/get-involved/campaigns-toolkit"
           />
           <Route component={ContentAPI} path="/about-us/contact" />
+          <Route component={ContentAPI} path="/about-us/shops-and-bars" />
           <Route component={FourOhFourPage} default />
         </Switch>
       </ErrorBoundary>

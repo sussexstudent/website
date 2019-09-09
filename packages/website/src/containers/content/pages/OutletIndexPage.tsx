@@ -3,7 +3,6 @@ import { Page, StreamFieldData } from '../types';
 import StreamField from '../../content/StreamField';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { Link } from 'react-router-dom';
-import { Sectionbar, SectionbarItem } from '../../../components/Sectionbar';
 import { OneImageBackground } from '../../../components/OneImage';
 import { Typeface, TypeSize, type } from '@ussu/common/src/libs/style/type';
 import { css } from '@emotion/core';
@@ -64,13 +63,6 @@ const titleStyles = css({
 
 export const OutletIndexPage: React.FC<OutletIndexPageProps> = ({ page }) => (
   <React.Fragment>
-    <Sectionbar title={page.section.title} titleLink={page.section.path}>
-      {page.section.subPages.map((page) => (
-        <SectionbarItem key={page.path}>
-          <Link to={page.path}>{page.title}</Link>
-        </SectionbarItem>
-      ))}
-    </Sectionbar>
     <div className="LokiContainer">
       <div className="type-body-copy">
         <StreamField page={page} items={page.preamble} />

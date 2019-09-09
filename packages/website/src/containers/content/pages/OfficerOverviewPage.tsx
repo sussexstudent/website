@@ -1,6 +1,5 @@
 import React from 'react';
 import { Page, StreamFieldData } from '../types';
-import { Sectionbar, SectionbarItem } from '../../../components/Sectionbar';
 import { Link } from 'react-router-dom';
 import { AspectRatio, OneImage } from '@ussu/website/src/components/OneImage';
 import { FalmerImage } from '@ussu/common/src/types/events';
@@ -12,7 +11,7 @@ import Helmet from 'react-helmet';
 
 interface IOfficerOverviewIndex extends Page<Page[]> {}
 
-interface IOfficerOverviewPage extends Page {
+interface IOfficerOverviewPage extends Page<Page[]> {
   section: IOfficerOverviewIndex;
   officerImage: FalmerImage;
   role: string;
@@ -57,6 +56,26 @@ const youtubeId = (url: string): null | string => {
   return null;
 };
 
+const OfficerEventPageButton: React.FC<OfficerOverviewPageProps> = ({
+  page,
+}) => {
+  const pagesFilter = page.subPages.filter((page) => page.slug === 'events');
+
+  const eventPage = pagesFilter.length > 0 ? pagesFilter[0] : null;
+
+  if (!eventPage) {
+    return null;
+  }
+
+  return (
+    <div css={{ textAlign: 'center', margin: '2rem' }}>
+      <Link className="Button Button--start" to={eventPage.path}>
+        Go to {page.title} Events
+      </Link>
+    </div>
+  );
+};
+
 export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
   page,
 }) => {
@@ -64,13 +83,6 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
   return (
     <div>
       <Helmet title={`${page.role} | ${page.firstName} ${page.lastName}`} />
-      <Sectionbar title={page.section.title} titleLink={page.section.path}>
-        {page.section.subPages.map((page) => (
-          <SectionbarItem key={page.path}>
-            <Link to={page.path}>{page.title}</Link>
-          </SectionbarItem>
-        ))}
-      </Sectionbar>
 
       <div className="LokiContainer">
         <div className="Layout Layout--sidebar-left" css={topOverviewStyles}>
@@ -156,6 +168,7 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
             <StreamField page={page} items={page.pledges} />
           </div>
         )}
+        <OfficerEventPageButton page={page} />
       </div>
     </div>
   );

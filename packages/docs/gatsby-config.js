@@ -18,7 +18,6 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-sharp',
     {
       resolve: `gatsby-plugin-layout`,
       options: {
@@ -26,7 +25,7 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-mdx',
+      resolve: 'gatsby-plugin-mdx',
       options: {
         gatsbyRemarkPlugins: [
           {

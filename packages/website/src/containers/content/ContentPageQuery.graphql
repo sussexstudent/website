@@ -138,15 +138,6 @@ query ContentPage($path: String, $previewToken: String) {
       deals
       googleMapsPlaceId
       contactDetails
-      section: closestAncestorOfType(
-        contentType: "OutletIndexPage"
-        inclusive: true
-      ) {
-        ...ContentPageGenerals
-        subPages {
-          ...ContentPageGenerals
-        }
-      }
     }
 
     ... on FreshersHomepage {
@@ -157,6 +148,15 @@ query ContentPage($path: String, $previewToken: String) {
     }
 
     ... on OfficerOverviewPage {
+      subPages {
+        ... on OfficerEventsPage {
+          ...ContentPageGenerals
+          description
+          curator {
+            id
+          }
+        }
+      }
       role
       roleDescription
       officerImage {
@@ -169,14 +169,12 @@ query ContentPage($path: String, $previewToken: String) {
       facebookUrl
       instagramUrl
       youtubeSplash
-      section: closestAncestorOfType(
-        contentType: "OfficersIndex"
-        inclusive: true
-      ) {
-        ...ContentPageGenerals
-        subPages {
-          ...ContentPageGenerals
-        }
+    }
+
+    ... on OfficerEventsPage {
+      description
+      curator {
+        id
       }
     }
   }
@@ -192,6 +190,29 @@ fragment ContentPageGenerals on Page {
 
   contentType
   lastPublishedAt
+  subPagesWayfinding: subPages(inMenu: true) {
+    title
+    slug
+    path
+
+    seoTitle
+    searchDescription
+
+    contentType
+  }
+
+  ancestorPages {
+    title
+    slug
+    path
+    contentType
+    subPages(inMenu: true) {
+      contentType
+      title
+      slug
+      path
+    }
+  }
 }
 
 fragment FalmerImage on Image {

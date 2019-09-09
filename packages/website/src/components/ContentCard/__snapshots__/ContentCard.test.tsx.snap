@@ -1,8 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders with an anchor 1`] = `
+.emotion-0 {
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.15);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #ffffff;
+}
+
 <div
-  className="ContentCard"
+  className="emotion-0"
 >
   <span
     className="u-position-anchor"
@@ -15,8 +23,16 @@ exports[`renders with an anchor 1`] = `
 `;
 
 exports[`renders without anchor 1`] = `
+.emotion-0 {
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.15);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #ffffff;
+}
+
 <div
-  className="ContentCard"
+  className="emotion-0"
 >
   <h1>
     No anchor example

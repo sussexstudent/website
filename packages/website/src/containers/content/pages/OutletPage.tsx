@@ -5,8 +5,6 @@ import StreamField from '../../content/StreamField';
 import { ContentCard } from '../../../components/ContentCard';
 import { OneImageBackground } from '../../../components/OneImage';
 import { openingTimesBlockParser } from '@ussu/common/src/libs/streamFieldStructures';
-import { Sectionbar, SectionbarItem } from '../../../components/Sectionbar';
-import { Link } from 'react-router-dom';
 import {
   isOpenNow,
   OpeningTimeInterval,
@@ -119,13 +117,6 @@ export const OutletPage: React.FC<OutletPageProps> = ({ page }) => {
 
   return (
     <div>
-      <Sectionbar title={page.section.title} titleLink={page.section.path}>
-        {page.section.subPages.map((page) => (
-          <SectionbarItem key={page.path}>
-            <Link to={page.path}>{page.title}</Link>
-          </SectionbarItem>
-        ))}
-      </Sectionbar>
       <OneImageBackground
         className={'Layout--content-top-bleed'}
         css={headerStyles}

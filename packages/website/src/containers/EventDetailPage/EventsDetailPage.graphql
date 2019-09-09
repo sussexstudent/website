@@ -1,5 +1,6 @@
 query EventsDetailPage($eventId: Int) {
   event(eventId: $eventId) {
+    id
     eventId
     slug
     title
@@ -15,6 +16,10 @@ query EventsDetailPage($eventId: Int) {
     ticketData
     mslEventId
     cost
+
+    userLike {
+      source
+    }
 
     # pa set
     containsLowLight

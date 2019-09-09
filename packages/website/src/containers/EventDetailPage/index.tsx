@@ -116,6 +116,7 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
                   )}
                   {event.brand && event.brand.eventAppend ? (
                     <div className="type-long-primer">
+                      <hr />
                       <div
                         dangerouslySetInnerHTML={{
                           __html: event.brand.eventAppend,

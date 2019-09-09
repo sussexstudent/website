@@ -1,0 +1,11 @@
+#import "./EventListingFragment.graphql"
+
+query getUserLikedEvents($filter: EventFilterInput) {
+  allEvents(viewerLiked: true, filter: $filter) {
+    edges {
+      node {
+        ...EventListingFragment
+      }
+    }
+  }
+}

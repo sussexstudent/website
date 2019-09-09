@@ -7,6 +7,11 @@ import minimalisticTimeRenderer from '@ussu/common/src/libs/minimalisticTimeRend
 import EventRelativeTime from './EventRelativeTime';
 import { Event, TicketCost, TicketType } from '@ussu/common/src/types/events';
 import { AspectRatio, OneImage } from '../../components/OneImage';
+import PatternPlaceholder from '../../components/PatternPlaceholder';
+import { EventLikeButton } from './EventLikeButton';
+import { cardActionable } from '@ussu/common/src/libs/style/cards';
+import { COLORS, MQ } from '@ussu/common/src/libs/style';
+import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
 
 function renderEventLocation(event: Event) {
   if (!event.venue) {
@@ -47,29 +52,86 @@ function getTreat(event: Event) {
 interface EventsCalenderItemProps {
   relative?: boolean;
   showDay?: boolean;
-  inline?: boolean;
-  small?: boolean;
   part: {
     event: Event;
   };
 }
 
+const EventItemImageTreat: React.FC = ({ children }) => (
+  <div
+    css={{
+      position: 'absolute',
+      color: '#fff',
+      fontWeight: 600,
+      padding: '0.1rem 0.3rem',
+      textShadow: '0 0 4px rgba(50, 50, 50, 0.8)',
+      bottom: 0,
+      right: 0,
+      fontSize: '0.9rem',
+      textTransform: 'uppercase',
+    }}
+  >
+    {children}
+  </div>
+);
+
+enum EventItemBannerType {
+  Bundle,
+  Ticket,
+}
+
+const EventItemBanner: React.FC<{ type: EventItemBannerType }> = ({
+  type,
+  children,
+}) => (
+  <div
+    css={{
+      color: '#fff',
+      fontWeight: 600,
+      fontSize: '0.9rem',
+      textAlign: 'center',
+      display: 'block',
+      backgroundColor:
+        type === EventItemBannerType.Bundle ? '#fbaa05' : COLORS.BRAND_GREEN,
+    }}
+  >
+    {children}
+  </div>
+);
+
 const EventsCalenderItem: React.FC<EventsCalenderItemProps> = ({
   part,
-  inline = false,
   showDay = false,
   relative = false,
-  small = false,
 }) => {
   const event = part.event;
   const treat = getTreat(event);
 
   return (
     <div
-      className={cx('EventsCalender__item', {
-        'EventsCalender--inline': inline,
-        'EventsCalender--small': small,
-      })}
+      className={cx('EventsCalender__item')}
+      css={[
+        cardActionable,
+        {
+          borderRadius: 6,
+          background: '#fff',
+          display: 'block',
+          position: 'relative',
+          marginBottom: '1rem',
+          width: '100%',
+          [MQ.Small]: {
+            width: 240,
+            marginRight: '1rem',
+          },
+          [MQ.Medium]: {
+            width: 280,
+          },
+          [MQ.Large]: {
+            marginRight: '1.5rem',
+            width: 320,
+          },
+        },
+      ]}
     >
       {event.url !== undefined && event.url !== '' ? (
         <FauxInternalAppLink href={event.url} />
@@ -78,45 +140,86 @@ const EventsCalenderItem: React.FC<EventsCalenderItemProps> = ({
           href={`/whats-on/${event.slug}-${event.eventId}`}
         />
       )}
-      {has(part, 'event.featuredImage.resource') ? (
-        <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
+      <div className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide">
+        {has(part, 'event.featuredImage.resource') ? (
           <OneImage
             src={event.featuredImage.resource}
             aspectRatio={AspectRatio.r16by9}
             alt=""
             withoutContainer
           />
-          {treat !== null ? (
-            <div className="EventsCalender__item-image-treat">{treat}</div>
-          ) : null}
+        ) : (
+          <PatternPlaceholder />
+        )}
+        <div className="EventsCalender__item-image-like">
+          <EventLikeButton event={event} />
         </div>
-      ) : null}
+
+        {treat !== null ? (
+          <EventItemImageTreat>{treat}</EventItemImageTreat>
+        ) : null}
+      </div>
       {event.bundle !== null && event.bundle !== undefined ? (
-        <div className="EventsCalender__item-banner EventsCalender__item-banner--bundle">
-          {event.bundle.name}
-        </div>
+        <EventItemBanner type={EventItemBannerType.Bundle}>
+          Included in the {event.bundle.name}
+        </EventItemBanner>
       ) : null}
       {event.ticketType !== undefined &&
       event.ticketType !== TicketType.NA &&
       event.ticketLevel !== 'SO' ? (
-        <div className="EventsCalender__item-banner EventsCalender__item-banner--tickets">
+        <EventItemBanner type={EventItemBannerType.Ticket}>
           {event.cost === TicketCost.Free
             ? 'Reserve your space'
-            : 'Buy Tickets'}
-        </div>
+            : 'Tickets available'}
+        </EventItemBanner>
       ) : null}
-      <div className="EventsCalender__item-container">
+      <div
+        css={{
+          padding: '0.5rem',
+        }}
+      >
         {event.kicker ? (
-          <div className="EventsCalender__item-kicker">{event.kicker}</div>
+          <div
+            css={[
+              type(TypeSize.Minion, Typeface.Secondary),
+              {
+                marginTop: '0.3rem',
+                fontWeight: 600,
+              },
+            ]}
+          >
+            {event.kicker}
+          </div>
         ) : null}
-        <h2 className="EventsCalender__item-title">
+        <h2
+          css={[
+            type(TypeSize.DoublePica),
+            {
+              margin: '0.2rem 0 0.4rem 0',
+            },
+          ]}
+        >
           {event.title}
           {relative ? <EventRelativeTime event={event} /> : null}
         </h2>
-        <div className="EventsCalender__item-description">
+        <div
+          css={{
+            fontSize: '0.8rem',
+          }}
+        >
           {event.shortDescription}
         </div>
-        <div className="EventsCalender__item-meta">
+        <div
+          css={[
+            type(TypeSize.Minion, Typeface.Primary),
+            {
+              color: COLORS.GREY_SLATE,
+              fontWeight: 500,
+              paddingTop: '1rem',
+              fontSize: '0.8rem',
+            },
+          ]}
+        >
           {showDay ? formatDate(new Date(event.startTime), 'EEE ') : ''}
           {minimalisticTimeRenderer(new Date(event.startTime))}
           <span> – </span>

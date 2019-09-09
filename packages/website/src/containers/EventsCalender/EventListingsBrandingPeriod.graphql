@@ -1,29 +1,10 @@
+#import "./EventListingFragment.graphql"
+
 query EventsListings($filter: EventFilterInput, $brandSlug: String) {
   allEvents(filter: $filter) {
     edges {
       node {
-        eventId
-        slug
-        title
-        startTime
-        endTime
-        locationDisplay
-        kicker
-        shortDescription
-        url
-        cost
-        ticketLevel
-        ticketType
-        bundle {
-          name
-        }
-        venue {
-          name
-          websiteLink
-        }
-        featuredImage {
-          resource
-        }
+        ...EventListingFragment
       }
     }
   }

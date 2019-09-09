@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import { generateStylesForBrand, getOrdinal } from '../EventsApplication/utils';
 import { getDate } from 'date-fns';
 import { ContentCardContent } from '../../components/ContentCard';
+import { EventLikeButton } from '../EventsCalender/EventLikeButton';
 
 function isSameLogicalSleepDay(startDate: Date, endDate: Date): boolean {
   if (isSameDay(startDate, endDate)) {
@@ -105,7 +106,12 @@ export const EventDetailDetails = (props: IProps) => {
             </li>
           ) : null}
         </ul>
-        <h2 className="EventDetail__title type-paragon">{event.title}</h2>
+        <h2 className="EventDetail__title type-paragon">
+          <div css={{ width: 20, height: 20, display: 'inline-block' }}>
+            <EventLikeButton event={event} />
+          </div>{' '}
+          {event.title}
+        </h2>
         <ul className="EventDetail__details-list">
           {event.parent ? (
             <li className="EventDetail__details-list-item">

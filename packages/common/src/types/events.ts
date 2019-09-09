@@ -109,6 +109,10 @@ export interface Event {
 
   socialFacebook: string;
 
+  userLike: null | {
+    source: 'USER' | 'UNLIKED' | 'RECOMMENDATION';
+  };
+
   bundle: null | {
     name: string;
     slug: string;

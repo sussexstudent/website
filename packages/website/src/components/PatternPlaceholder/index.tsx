@@ -46,6 +46,7 @@ const PatternPlaceholder = () => {
         backgroundRepeat: 'repeat',
         backgroundImage: `url("${pattern(swatch[1])}")`,
         backgroundColor: `#${swatch[0]}`,
+        position: 'absolute',
       }}
     />
   );

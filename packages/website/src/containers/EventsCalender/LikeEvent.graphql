@@ -1,0 +1,10 @@
+mutation likeEvent($eventId: Int!, $type: String!) {
+  likeEvent(eventId: $eventId, likeType: $type) {
+    event {
+      id
+      userLike {
+        source
+      }
+    }
+  }
+}

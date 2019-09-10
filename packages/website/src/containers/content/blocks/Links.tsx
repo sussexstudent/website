@@ -46,6 +46,7 @@ export type DocumentLinkBlockData = StreamFieldBlockData<
   {
     url: string;
     title: string;
+    resource: string;
   }
 >;
 

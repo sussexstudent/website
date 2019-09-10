@@ -17,6 +17,10 @@ import { css } from '@emotion/core';
 import classnames from 'classnames';
 import { Heading, HeadingLevel } from '../../../components/Heading';
 import { type, TypeSize } from '@ussu/common/src/libs/style/type';
+import {
+  CardListActionable,
+  CardListActionableDocumentLink,
+} from '../../../components/CardListActionable';
 
 interface IOutletIndex extends Page<Page[]> {}
 
@@ -173,7 +177,15 @@ export const OutletPage: React.FC<OutletPageProps> = ({ page }) => {
                 <Heading level={HeadingLevel.h3} size={TypeSize.GreatPrimer}>
                   Menus
                 </Heading>
-                <StreamField page={page} items={page.menu} />
+                <CardListActionable>
+                  <StreamField
+                    page={page}
+                    items={page.menu}
+                    components={{
+                      document_link: CardListActionableDocumentLink,
+                    }}
+                  />
+                </CardListActionable>{' '}
               </ContentCard>
             )}
 

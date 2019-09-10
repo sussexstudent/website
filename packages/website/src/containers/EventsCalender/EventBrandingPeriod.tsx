@@ -81,11 +81,11 @@ export const EventBrandingPeriod: React.FC<EventBrandingPeriodProps> = ({
     dispatch(setBrandingPeriod(brandSlug));
   }, [brandSlug]);
 
-  if (brandLoading) {
+  if (brandLoading || listingsLoading) {
     return <Loader dark />;
   }
 
-  if (brandError || !brandData) {
+  if (brandError || !brandData || !listingsData) {
     return <ErrorState />;
   }
 

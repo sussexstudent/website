@@ -38,7 +38,8 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
   const { data, loading } = useQuery(DetailPageQuery, {
     variables: { eventId: match.params.eventId },
   });
-  const event = data.event;
+
+  const event = data && data.event;
 
   useEffect(() => {
     if (data && data.event) {

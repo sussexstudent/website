@@ -1,6 +1,7 @@
 .EventsCalender {
   border-left: 3px solid var(--color__brand-green);
   padding-left: 1lh;
+  position: relative;
 
   @media (--medium) {
     margin-left: 10px;

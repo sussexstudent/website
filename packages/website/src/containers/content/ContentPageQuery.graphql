@@ -56,12 +56,6 @@ query ContentPage($path: String, $previewToken: String) {
     ... on SelectionGridPage {
       body
     }
-    ... on OfficerEventsPage {
-      description
-      curator {
-        id
-      }
-    }
     ... on OutletIndexPage {
       preamble
       subPages {
@@ -148,15 +142,6 @@ query ContentPage($path: String, $previewToken: String) {
     }
 
     ... on OfficerOverviewPage {
-      subPages {
-        ... on OfficerEventsPage {
-          ...ContentPageGenerals
-          description
-          curator {
-            id
-          }
-        }
-      }
       role
       roleDescription
       officerImage {
@@ -189,7 +174,6 @@ fragment ContentPageGenerals on Page {
   searchDescription
 
   contentType
-  lastPublishedAt
   subPagesWayfinding: subPages(inMenu: true) {
     title
     slug

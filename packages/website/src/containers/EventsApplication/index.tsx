@@ -7,13 +7,17 @@ import { EventsListProps } from '../EventsCalender';
 import { EventBrandingPeriodProps } from '../EventsCalender/EventBrandingPeriod';
 import { EventDetailPageProps } from '../EventDetailPage';
 import loadable from '@loadable/component';
-import { WhatsOnSectionbar } from './WhatsOnSectionbar';
 import { BrandingContainer } from './branding/components';
 import { WhatsOnThemingProvider } from './WhatsOnBrandingContext';
 import { MyProgrammeProps } from './MyProgramme';
+import {
+  Wayfinder,
+  WayfinderTopLevel,
+  WayfinderItem,
+} from '../../components/Wayfinder';
 import LIVE_BRANDING_PERIOD_QUERY from './LiveBrandingPeriods.graphql';
+import { useQuery } from '@apollo/react-hooks';
 import { Brand } from '@ussu/common/src/types/events';
-import { Sectionbar, SectionbarItem } from '../../components/Sectionbar';
 
 const LoadableListings = loadable<EventsListProps>(async () => {
   const { EventsList } = await import('../EventsCalender');
@@ -78,28 +82,28 @@ const EventsApplication: React.FC<EventsApplicationProps> = () => {
       <ScrollToTop>
         <BrandingContainer>
           <div className="u-keep-footer-down js-expand-container">
-            <WhatsOnSectionbar />
-            <CustomWayfinder>
-              <WayfinderItem to="/whats-on">All listings</WayfinderItem>
-              <WayfinderItem to="/whats-on/my-programme">
-                My Programme
-              </WayfinderItem>
-              {data &&
-              data.allBrandingPeriods &&
-              data.allBrandingPeriods.length > 0
-                ? data.allBrandingPeriods.map((period: Brand) => (
-                    <WayfinderItem
-                      key={period.slug}
-                      to={`/whats-on/periods/${period.slug}`}
-                    >
-                      {period.name}
-                    </WayfinderItem>
-                  ))
-                : null}
-              <WayfinderItem to="/get-involved/societies-and-student-media/guides/events/hold-event'">
-                Hold an event
-              </WayfinderItem>
-            </CustomWayfinder>
+            <Wayfinder>
+              <WayfinderTopLevel title="What's on" to="/whats-on">
+                <WayfinderItem to="/whats-on/my-programme">
+                  My Programme
+                </WayfinderItem>
+                {data &&
+                data.allBrandingPeriods &&
+                data.allBrandingPeriods.length > 0
+                  ? data.allBrandingPeriods.map((period: Brand) => (
+                      <WayfinderItem
+                        key={period.slug}
+                        to={`/whats-on/periods/${period.slug}`}
+                      >
+                        {period.name}
+                      </WayfinderItem>
+                    ))
+                  : null}
+                <WayfinderItem to="/get-involved/societies-and-student-media/guides/events/hold-event'">
+                  Hold an event
+                </WayfinderItem>
+              </WayfinderTopLevel>
+            </Wayfinder>
             <Switch>
               <Route component={LoadableListings} path="/whats-on" exact />
               <Route

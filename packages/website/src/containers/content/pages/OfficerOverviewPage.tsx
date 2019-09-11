@@ -1,6 +1,5 @@
 import React from 'react';
 import { Page, StreamFieldData } from '../types';
-import { Link } from 'react-router-dom';
 import { AspectRatio, OneImage } from '@ussu/website/src/components/OneImage';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import convert from 'htmr';
@@ -54,26 +53,6 @@ const youtubeId = (url: string): null | string => {
   }
 
   return null;
-};
-
-const OfficerEventPageButton: React.FC<OfficerOverviewPageProps> = ({
-  page,
-}) => {
-  const pagesFilter = page.subPages.filter((page) => page.slug === 'events');
-
-  const eventPage = pagesFilter.length > 0 ? pagesFilter[0] : null;
-
-  if (!eventPage) {
-    return null;
-  }
-
-  return (
-    <div css={{ textAlign: 'center', margin: '2rem' }}>
-      <Link className="Button Button--start" to={eventPage.path}>
-        Go to {page.title} Events
-      </Link>
-    </div>
-  );
 };
 
 export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
@@ -168,7 +147,6 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
             <StreamField page={page} items={page.pledges} />
           </div>
         )}
-        <OfficerEventPageButton page={page} />
       </div>
     </div>
   );

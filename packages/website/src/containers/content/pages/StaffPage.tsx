@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import slugify from '@ussu/common/src/libs/slugify';
 import flatStreamToLevels from '@ussu/common/src/libs/flatStreamToLevels';
 import { ContentCard } from '../../../components/ContentCard';
@@ -64,16 +64,6 @@ export const StaffPage: React.FC<StaffPageProps> = ({
       : [],
   }));
 
-  // scroll to view when linking directly
-  useEffect(() => {
-    if (location.hash) {
-      const node = document.getElementById(location.hash.substring(1));
-      if (node) {
-        node.scrollIntoView();
-      }
-    }
-  }, []);
-
   return (
     <div className="LokiContainer">
       <div className="Layout Layout--sidebar-left Layout--sidebar-thin">
@@ -89,11 +79,10 @@ export const StaffPage: React.FC<StaffPageProps> = ({
         </div>
         <div>
           {levels.map((
-            { value, _children = null }: { value: any; _children?: any },
-            index, // todo
+            { value, _children = null }: { value: any; _children?: any }, // todo
           ) => (
-            <ContentCard anchor={slugify(value)} key={index}>
-              <h1 id={slugify(value)}>{value}</h1>
+            <ContentCard anchor={slugify(value)}>
+              <h1>{value}</h1>
               {_children !== null ? (
                 <StreamField page={page} items={_children} />
               ) : null}

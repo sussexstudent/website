@@ -25,6 +25,7 @@
   &__image-container {
     border-bottom: 1px solid var(--color__grey-spring);
     height: 140px;
+    position: relative;
   }
 
   &__title {

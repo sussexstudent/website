@@ -28,6 +28,45 @@ interface Result {
 
 type IProps = OwnProps;
 
+const ContentPageWrapper: React.FC<{
+  page: Result['page'];
+  ContentTemplate: any;
+  loading: boolean;
+}> = ({ page, ContentTemplate, loading }) => {
+  useEffect(() => {
+    setTimeout(() => {
+      if (location.hash) {
+        const node = document.getElementById(location.hash.substring(1));
+        if (node) {
+          node.scrollIntoView();
+        }
+      }
+    }, 100); // todo: this is not great
+  }, [page]);
+
+  return (
+    <React.Fragment>
+      <Helmet title={page.seoTitle || page.title}>
+        {page.searchDescription && (
+          <meta name="description" content={page.searchDescription} />
+        )}
+      </Helmet>
+
+      <ContentWayfinder page={page as any} />
+      <div
+        aria-live="polite"
+        css={[
+          { opacity: 1, transition: '300ms ease opacity' },
+          loading && { opacity: 0.4 },
+        ]}
+        {...(loading ? { 'aria-busy': 'true' } : {})}
+      >
+        <ContentTemplate page={page} />
+      </div>
+    </React.Fragment>
+  );
+};
+
 const ContentPage: React.FC<IProps> = (props: IProps) => {
   const { data, loading } = useQuery<Result>(CONTENT_PAGE_QUERY, {
     variables: {
@@ -68,25 +107,11 @@ const ContentPage: React.FC<IProps> = (props: IProps) => {
 
   if (ContentTypeTemplate) {
     return (
-      <React.Fragment>
-        <Helmet title={page.seoTitle || page.title}>
-          {page.searchDescription && (
-            <meta name="description" content={page.searchDescription} />
-          )}
-        </Helmet>
-
-        <ContentWayfinder page={page as any} />
-        <div
-          aria-live="polite"
-          css={[
-            { opacity: 1, transition: '300ms ease opacity' },
-            loading && { opacity: 0.4 },
-          ]}
-          {...(loading ? { 'aria-busy': 'true' } : {})}
-        >
-          <ContentTypeTemplate page={page} />
-        </div>
-      </React.Fragment>
+      <ContentPageWrapper
+        ContentTemplate={ContentTypeTemplate}
+        page={page}
+        loading={loading}
+      />
     );
   }
 

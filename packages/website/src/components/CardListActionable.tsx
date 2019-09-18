@@ -79,7 +79,7 @@ export const CardListActionableDocumentLink: StreamFieldBlock<
         {url.endsWith('.pdf') ? (
           <iframe
             css={{ height: '80vh', width: '100%', border: 0 }}
-            src={`http://docs.google.com/gview?url=${target}&embedded=true`}
+            src={`https://docs.google.com/gview?url=${target}&embedded=true`}
           />
         ) : null}
         {url.endsWith('.png') || url.endsWith('.jpg') ? (

@@ -32,7 +32,7 @@ export const EventLikeButton: React.FC<{ event: Event }> = ({ event }) => {
 
   const isLiked = event.userLike && event.userLike.source === 'USER';
 
-  if (loading) {
+  if (loading || true) {
     return null;
   }
 

@@ -84,9 +84,9 @@ const EventsApplication: React.FC<EventsApplicationProps> = () => {
           <div className="u-keep-footer-down js-expand-container">
             <Wayfinder>
               <WayfinderTopLevel title="What's on" to="/whats-on">
-                <WayfinderItem to="/whats-on/my-programme">
-                  My Programme
-                </WayfinderItem>
+                {/*<WayfinderItem to="/whats-on/my-programme">*/}
+                {/*  My Programme*/}
+                {/*</WayfinderItem>*/}
                 {data &&
                 data.allBrandingPeriods &&
                 data.allBrandingPeriods.length > 0

@@ -37,16 +37,49 @@ function renderEventLocation(event: Event) {
   return <span> / {event.locationDisplay || event.venue.name}</span>;
 }
 
-function getTreat(event: Event) {
+enum EventTagType {
+  Info,
+  Requirement,
+  Taste,
+}
+
+function createTag(title: string, type: EventTagType): EventTag {
+  return { title, type };
+}
+
+function* getTagsForEvent(event: Event) {
+  if (event.isOver18Only) {
+    yield createTag('18+', EventTagType.Requirement);
+  }
+
   if (event.cost === 'FREE') {
-    return 'Free';
+    yield createTag('Free', EventTagType.Info);
+  }
+
+  if (
+    event.ticketType !== undefined &&
+    event.ticketType !== TicketType.NA &&
+    event.ticketLevel !== 'SO'
+  ) {
+    yield createTag(
+      event.cost === TicketCost.Free ? 'Ticketed' : 'Ticketed',
+      EventTagType.Info,
+    );
   }
 
   if (event.ticketLevel === 'LA') {
-    return 'Limited availability';
+    yield createTag('Limited availability', EventTagType.Info);
   }
 
-  return null;
+  if (event.type) {
+    yield createTag(event.type.name, EventTagType.Taste);
+  }
+
+  if (event.categories && event.categories.length > 0) {
+    yield* event.categories
+      .slice(0, 2)
+      .map((cat) => createTag(cat.name, EventTagType.Taste));
+  }
 }
 
 interface EventsCalenderItemProps {
@@ -57,22 +90,48 @@ interface EventsCalenderItemProps {
   };
 }
 
-const EventItemImageTreat: React.FC = ({ children }) => (
-  <div
+interface EventTag {
+  title: string;
+  type: EventTagType;
+}
+
+const EventItemTags: React.FC<{ tags: EventTag[] }> = ({ tags }) => (
+  <ul
     css={{
       position: 'absolute',
       color: '#fff',
       fontWeight: 600,
-      padding: '0.1rem 0.3rem',
-      textShadow: '0 0 4px rgba(50, 50, 50, 0.8)',
-      bottom: 0,
+      bottom: 6,
+      left: 0,
       right: 0,
-      fontSize: '0.9rem',
-      textTransform: 'uppercase',
+      fontSize: '0.7rem',
+      margin: 0,
+      padding: 0,
+      listStyle: 'none',
+      overflow: 'hidden',
+      display: 'flex',
     }}
   >
-    {children}
-  </div>
+    {tags.map((tag) => (
+      <li
+        css={{
+          padding: '0.1rem 0.3rem',
+          marginLeft: 6,
+          borderRadius: '10px',
+          display: 'inline-block',
+          flex: '0 0 auto',
+          background:
+            tag.type === EventTagType.Info
+              ? COLORS.BRAND_BLUE
+              : tag.type === EventTagType.Requirement
+              ? COLORS.BRAND_RED
+              : COLORS.BRAND_GREEN,
+        }}
+      >
+        {tag.title}
+      </li>
+    ))}
+  </ul>
 );
 
 enum EventItemBannerType {
@@ -105,8 +164,6 @@ const EventsCalenderItem: React.FC<EventsCalenderItemProps> = ({
   relative = false,
 }) => {
   const event = part.event;
-  const treat = getTreat(event);
-
   return (
     <div
       className={cx('EventsCalender__item')}
@@ -155,22 +212,11 @@ const EventsCalenderItem: React.FC<EventsCalenderItemProps> = ({
           <EventLikeButton event={event} />
         </div>
 
-        {treat !== null ? (
-          <EventItemImageTreat>{treat}</EventItemImageTreat>
-        ) : null}
+        <EventItemTags tags={Array.from(getTagsForEvent(event))} />
       </div>
       {event.bundle !== null && event.bundle !== undefined ? (
         <EventItemBanner type={EventItemBannerType.Bundle}>
           Included in the {event.bundle.name}
-        </EventItemBanner>
-      ) : null}
-      {event.ticketType !== undefined &&
-      event.ticketType !== TicketType.NA &&
-      event.ticketLevel !== 'SO' ? (
-        <EventItemBanner type={EventItemBannerType.Ticket}>
-          {event.cost === TicketCost.Free
-            ? 'Reserve your space'
-            : 'Tickets available'}
         </EventItemBanner>
       ) : null}
       <div
@@ -191,17 +237,18 @@ const EventsCalenderItem: React.FC<EventsCalenderItemProps> = ({
             {event.kicker}
           </div>
         ) : null}
-        <h2
+        <div
           css={[
-            type(TypeSize.DoublePica),
+            type(TypeSize.GreatPrimer, Typeface.Secondary),
             {
+              fontWeight: '600',
               margin: '0.2rem 0 0.4rem 0',
             },
           ]}
         >
           {event.title}
           {relative ? <EventRelativeTime event={event} /> : null}
-        </h2>
+        </div>
         <div
           css={{
             fontSize: '0.8rem',

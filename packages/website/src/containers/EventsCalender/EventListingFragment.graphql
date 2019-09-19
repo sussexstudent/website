@@ -12,6 +12,16 @@ fragment EventListingFragment on Event {
   cost
   ticketLevel
   ticketType
+
+  audienceSuitableKidsFamilies
+  isOver18Only
+
+  type {
+    name
+  }
+  categories {
+    name
+  }
   userLike {
     source
   }

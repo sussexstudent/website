@@ -172,6 +172,7 @@ fragment ContentPageGenerals on Page {
 
   seoTitle
   searchDescription
+  lastPublishedAt
 
   contentType
   subPagesWayfinding: subPages(inMenu: true) {

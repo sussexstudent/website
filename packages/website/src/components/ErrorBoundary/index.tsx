@@ -1,6 +1,7 @@
 import React from 'react';
 import { ErrorState } from '../ErrorState';
 import { withRouter, RouteComponentProps } from 'react-router';
+import Raven from 'raven-js';
 
 interface ErrorBoundaryProps extends RouteComponentProps<any> {
   children?: any;
@@ -48,6 +49,7 @@ class ErrorBoundary extends React.Component<
       } catch (ignoredError) {}
     }
 
+    Raven.captureException(error, { extra: info });
     this.setState({ error, info });
   }
 

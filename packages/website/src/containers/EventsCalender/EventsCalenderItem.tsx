@@ -1,5 +1,4 @@
 import React from 'react';
-import cx from 'classnames';
 import { has } from 'lodash';
 import formatDate from 'date-fns/format';
 import FauxInternalAppLink from '../../components/FauxInternalAppLink';
@@ -9,7 +8,7 @@ import { Event, TicketCost, TicketType } from '@ussu/common/src/types/events';
 import { AspectRatio, OneImage } from '../../components/OneImage';
 import PatternPlaceholder from '../../components/PatternPlaceholder';
 import { EventLikeButton } from './EventLikeButton';
-import { cardActionable } from '@ussu/common/src/libs/style/cards';
+import { cardActionable, contentCard } from '@ussu/common/src/libs/style/cards';
 import { COLORS, MQ } from '@ussu/common/src/libs/style';
 import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
 
@@ -166,11 +165,11 @@ const EventsCalenderItem: React.FC<EventsCalenderItemProps> = ({
   const event = part.event;
   return (
     <div
-      className={cx('EventsCalender__item')}
+      className="EventsCalender__item"
       css={[
         cardActionable,
+        contentCard,
         {
-          borderRadius: 6,
           background: '#fff',
           display: 'block',
           position: 'relative',

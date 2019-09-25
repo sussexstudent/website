@@ -21,3 +21,7 @@ export const cardRaised = css({
     transition: 'box-shadow 300ms ease',
   },
 });
+
+export const contentCard = css({
+  borderRadius: 6,
+});

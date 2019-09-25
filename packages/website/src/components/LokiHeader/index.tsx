@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import StudentsUnionLogoNoLogotype from '@ussu/common/src/icons/students-union-logo-no-logotype.svg';
 import { LokiHeaderSearch } from './LokiHeaderSearch';
 import { LokiMenu } from '../LokiMenu';
@@ -9,18 +9,10 @@ import CrossIcon from '../CrossIcon';
 import SearchIcon from '../SearchIcon';
 import * as pageActions from '../../ducks/page';
 import { InternalAppLink } from '../InternalAppLink';
-import { useHover } from './useHover';
-import { MenuItem } from '@ussu/common/src/types/skeleton';
 import { WebsiteRootState } from '../../types/website';
-import { LokiMenuDropover } from './LokiMenuDropover';
 import { useDispatch, useMappedState } from 'redux-react-hook';
 
 export const LokiHeaderInner: React.FC = () => {
-  const [dropoverRef, isDropoverHovering] = useHover<HTMLDivElement>();
-  const [currentHover, setHover] = useState<MenuItem | null>(null);
-  const [latestItem, setLatestItem] = useState<MenuItem>(MenuItem.GetInvolved);
-  const [hasMounted, setMounted] = useState(false);
-
   const mapState = useCallback(
     (state: WebsiteRootState) => ({
       isOpenMobileMenu: state.page.isOpenMobileMenu,
@@ -29,19 +21,6 @@ export const LokiHeaderInner: React.FC = () => {
   );
   const { isOpenMobileMenu } = useMappedState(mapState);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const setMenuHover = useCallback((v: MenuItem | null) => {
-    setHover(v);
-    if (v !== null) {
-      setLatestItem(v);
-    }
-  }, []);
-
-  const showDropover = currentHover !== null || isDropoverHovering;
 
   return (
     <React.Fragment>
@@ -72,7 +51,7 @@ export const LokiHeaderInner: React.FC = () => {
             </div>
           </div>
           <div className="LokiHeader__bottom-row">
-            <LokiMenu setCurrentHover={setMenuHover} />
+            <LokiMenu />
           </div>
         </div>
         <button
@@ -94,15 +73,6 @@ export const LokiHeaderInner: React.FC = () => {
           }
         />
       </div>
-      {hasMounted &&
-      (typeof localStorage !== 'undefined' &&
-        localStorage.getItem('navBeta') !== null) ? (
-        <LokiMenuDropover
-          ref={dropoverRef}
-          isOpen={showDropover}
-          currentItem={latestItem}
-        />
-      ) : null}
     </React.Fragment>
   );
 };

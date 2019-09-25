@@ -28,7 +28,7 @@ export const LokiSideMenu: React.FC<LokiSideMenuProps> = ({
           'LokiHeader__side-menu--is-open': isOpen,
         })}
       >
-        <LokiMenu setCurrentHover={() => null} />
+        <LokiMenu />
         <div className="LokiHeader__side-container UserBar">
           <UserBar />
         </div>

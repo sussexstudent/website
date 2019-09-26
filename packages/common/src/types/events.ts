@@ -108,6 +108,7 @@ export interface Event {
   ticketData: string;
 
   socialFacebook: string;
+  canceledAt: string;
 
   userLike: null | {
     source: 'USER' | 'UNLIKED' | 'RECOMMENDATION';

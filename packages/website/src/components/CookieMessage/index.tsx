@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { COLORS, Layers } from '@ussu/common/src/libs/style';
 import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
 
-const CookieMessage: React.FC = () => {
+export const CookieMessage: React.FC = () => {
   const [hidden, setHidden] = useState(false);
 
   if (hidden) {
@@ -60,5 +60,3 @@ const CookieMessage: React.FC = () => {
     </div>
   );
 };
-
-export default CookieMessage;

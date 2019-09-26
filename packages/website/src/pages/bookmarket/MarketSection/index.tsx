@@ -7,7 +7,7 @@ import Helmet from 'react-helmet';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { RouteComponentProps } from 'react-router';
 import { useQuery } from '@apollo/react-hooks';
-import Loader from '../../../components/Loader';
+import { Loader } from '../../../components/Loader';
 import { ErrorState } from '../../../components/ErrorState';
 
 export interface MarketSectionProps

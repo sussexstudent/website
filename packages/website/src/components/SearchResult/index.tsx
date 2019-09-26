@@ -73,7 +73,7 @@ const MSLNewsResult = ({
   </li>
 );
 
-export interface SearchResult {
+export interface SearchResultData {
   id: string;
   __typename: string;
   title: string;
@@ -83,10 +83,10 @@ export interface SearchResult {
 
 interface IProps {
   type: string;
-  item: SearchResult;
+  item: SearchResultData;
 }
 
-function SearchResult(props: IProps) {
+export const SearchResult: React.FC<IProps> = (props) => {
   const { type } = props;
 
   if (type === 'Event') {
@@ -111,6 +111,4 @@ function SearchResult(props: IProps) {
 
   console.warn('Search result render fell through', type);
   return null;
-}
-
-export default SearchResult;
+};

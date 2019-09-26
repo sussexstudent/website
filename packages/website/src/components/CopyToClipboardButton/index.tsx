@@ -5,7 +5,10 @@ interface IProps {
   value: string;
 }
 
-const CopyToClipboardButton: React.FC<IProps> = ({ value, children }) => {
+export const CopyToClipboardButton: React.FC<IProps> = ({
+  value,
+  children,
+}) => {
   const [hasCopied, setHasCopied] = useState(false);
 
   return (
@@ -14,5 +17,3 @@ const CopyToClipboardButton: React.FC<IProps> = ({ value, children }) => {
     </CopyToClipboard>
   );
 };
-
-export default CopyToClipboardButton;

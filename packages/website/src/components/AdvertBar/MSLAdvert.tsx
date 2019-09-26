@@ -1,5 +1,5 @@
 import React from 'react';
-import MSLTag from '../MSLTag';
+import { MSLTag } from '../MSLTag';
 
 interface MSLAdvertProps {
   position: string;

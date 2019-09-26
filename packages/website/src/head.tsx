@@ -1,5 +1,5 @@
 import React from 'react';
-import MSLTag from './components/MSLTag';
+import { MSLTag } from './components/MSLTag';
 
 export const branding = `<link rel="apple-touch-icon" sizes="180x180" href="https://du9l8eemj97rm.cloudfront.net/branding-s18/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="https://du9l8eemj97rm.cloudfront.net/branding-s18/favicon-32x32.png" sizes="32x32">

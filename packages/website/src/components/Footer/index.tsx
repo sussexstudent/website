@@ -1,7 +1,7 @@
 import React from 'react';
-import Social from '../SocialMenu';
+import { SocialMenu } from '../SocialMenu';
 
-const Footer = () => (
+export const Footer: React.FC = () => (
   <footer className="Footer">
     <div className="Footer__container LokiContainer">
       <div className="Footer__contact">
@@ -45,7 +45,7 @@ const Footer = () => (
         </p>
       </div>
       <div className="Footer__social">
-        <Social />
+        <SocialMenu />
         <a
           className="Button Button--yellow"
           href="/newsletter"
@@ -57,5 +57,3 @@ const Footer = () => (
     </div>
   </footer>
 );
-
-export default Footer;

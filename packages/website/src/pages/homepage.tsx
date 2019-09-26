@@ -4,9 +4,9 @@ import { HomepageSplash } from '../components/HomepageSplash';
 import { RouteComponent } from '@ussu/common/src/types/routes';
 import { ScrollToTop } from '../components/ScrollToTop';
 import { AboutTheUnion } from '../components/AboutTheUnion';
-import AdvertBar from '../components/AdvertBar';
+import { AdvertBar } from '../components/AdvertBar';
 import { MSLAdvert } from '../components/AdvertBar/MSLAdvert';
-import NewsList from '../components/NewsList';
+import { NewsList } from '../components/NewsList';
 import { SlateContainer } from '../components/Slate/SlateContainer';
 import { parseNews } from '@ussu/common/src/libs/msl';
 

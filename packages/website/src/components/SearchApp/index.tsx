@@ -2,8 +2,11 @@ import React, { useCallback, useReducer, useEffect } from 'react';
 import qs from 'query-string';
 import { Sectionbar } from '../Sectionbar';
 import cx from 'classnames';
-import SearchResult, { SearchResult as ISearchResult } from '../SearchResult';
-import SearchFilterNav from '../SearchFilterNav';
+import {
+  SearchResult,
+  SearchResultData as ISearchResult,
+} from '../SearchResult';
+import { SearchFilterNav } from '../SearchFilterNav';
 import * as routerActions from '../../ducks/router';
 import Helmet from 'react-helmet';
 import { NoListItems } from '../../pages/bookmarket/NoListItems';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Storybase } from '../Storybase';
-import PaginationNavigation from '../PaginationNavigation/index';
+import { PaginationNavigation } from '../PaginationNavigation/index';
 
 storiesOf('PaginationNavigation', module)
   .addDecorator(Storybase())

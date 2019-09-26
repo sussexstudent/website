@@ -1,6 +1,6 @@
 import React from 'react';
 import { Page, StreamFieldData } from '../types';
-import ContentNavigation from '../../../components/ContentNavigation';
+import { ContentNavigation } from '../../../components/ContentNavigation';
 import { RelatedContent } from '../../../components/RelatedContent';
 import { StaffOwners } from '../../../components/StaffOwners';
 import StreamField from '../StreamField';

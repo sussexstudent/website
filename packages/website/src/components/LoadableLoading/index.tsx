@@ -1,5 +1,5 @@
 import React from 'react';
-import Loader from '../Loader/index';
+import { Loader } from '../Loader/index';
 
 interface IProps {
   error: null | Error;

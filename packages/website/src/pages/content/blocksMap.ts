@@ -7,7 +7,7 @@ import {
   SelectionGridBlock,
   SelectionGridItemData,
 } from './blocks/SelectionGridBlock';
-import StaffList, { StaffListBlockData } from '../../components/StaffList';
+import { StaffList, StaffListBlockData } from '../../components/StaffList';
 import { TextBlock, TextBlockData } from './blocks/TextBlock';
 import {
   DocumentLink,

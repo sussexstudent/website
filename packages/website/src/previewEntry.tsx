@@ -12,7 +12,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import { StoreContext } from 'redux-react-hook';
 import getApolloClientForFalmer from '@ussu/common/src/libs/getApolloClientForFalmer';
 import { store } from './redux/store';
-import { Website } from './containers/Website';
+import { Website } from './Website';
 // Install raven for sentry error  reporting
 if (process.env.NODE_ENV === 'production') {
   Raven.config('https://fd478822b69843a2a3718c621c5fadad@sentry.io/158659', {

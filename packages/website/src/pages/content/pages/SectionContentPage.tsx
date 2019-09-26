@@ -1,13 +1,14 @@
 import React from 'react';
 import bind from 'bind-decorator';
 import slugify from '@ussu/common/src/libs/slugify';
-import HeadingHero from '../../../components/HeadingHero';
-import VisibleChildWatcher from '../../../components/VisibleChildWatcher';
+import { HeadingHero } from '../../../components/HeadingHero';
+import { VisibleChildWatcher } from '../../../components/VisibleChildWatcher';
 import {
   ContentCard,
   ContentCardContent,
 } from '../../../components/ContentCard';
-import ContentNavigation, {
+import {
+  ContentNavigation,
   generateTitlesFromStream,
 } from '../../../components/ContentNavigation';
 import StreamField from '../StreamField';

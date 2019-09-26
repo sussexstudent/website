@@ -3,9 +3,9 @@ import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
 import REQUEST_CONTACT_DETAILS_MUTATION from './RequestContactDetails.graphql';
 import GET_LISTING_QUERY from './GetListing.graphql';
 import UPDATE_IMAGE_MUTATION from './UpdateImage.graphql';
-import JsonLd from '../../../components/JsonLd';
+import { JsonLd } from '../../../components/JsonLd';
 import { MarketListing } from '@ussu/common/src/types/market';
-import Deckchair from '../../../components/Deckchair';
+import { Deckchair } from '../../../components/Deckchair';
 import { ImageUpload } from '../ImageUpload';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
 import { useViewer } from '../currentUserData';
@@ -15,7 +15,7 @@ import { formatPrice } from '@ussu/common/src/libs/money';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { RouteComponentProps } from 'react-router';
 import { useMutation, useQuery } from '@apollo/react-hooks';
-import Loader from '../../../components/Loader';
+import { Loader } from '../../../components/Loader';
 
 export interface BookDetailProps
   extends RouteComponentProps<{ listingId: string }> {}

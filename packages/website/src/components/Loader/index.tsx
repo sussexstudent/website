@@ -6,12 +6,10 @@ interface IProps {
   dark?: boolean;
 }
 
-function Loader(props: IProps) {
+export const Loader: React.FC<IProps> = (props) => {
   return (
     <div className={cx('Loader', { 'Loader--dark': props.dark })}>
       <LoaderLeaves className="Loader__svg" />
     </div>
   );
-}
-
-export default Loader;
+};

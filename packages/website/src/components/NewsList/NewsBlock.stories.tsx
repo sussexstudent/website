@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Storybase } from '../Storybase';
-import NewsBlock from '../NewsList/NewsBlock';
+import { NewsBlock } from '../NewsList/NewsBlock';
 
 storiesOf('NewsBlock', module)
   .addDecorator(Storybase())

@@ -5,7 +5,7 @@ import addMonths from 'date-fns/addMonths';
 import EventListingsQuery from './EventListings.graphql';
 import { EventListings } from './EventListings';
 import { useQuery } from '@apollo/react-hooks';
-import Loader from '../../components/Loader';
+import { Loader } from '../../../components/Loader';
 import {
   setBrandingPeriod,
   useWhatsOnThemingContext,

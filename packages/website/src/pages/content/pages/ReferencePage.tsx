@@ -2,7 +2,7 @@ import React from 'react';
 import { Page, StreamFieldData } from '../types';
 import StreamField from '../StreamField';
 import { getHeadingsFromStreamField } from '../utils';
-import ContentNavigation from '../../../components/ContentNavigation';
+import { ContentNavigation } from '../../../components/ContentNavigation';
 import slugify from '@ussu/common/src/libs/slugify';
 import { RelatedContent } from '../../../components/RelatedContent';
 import { StaffOwners } from '../../../components/StaffOwners';

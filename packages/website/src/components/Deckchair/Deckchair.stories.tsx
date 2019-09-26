@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Deckchair from './index';
+import { Deckchair } from './index';
 
 storiesOf('Deckchair', module).add('default', () => (
   <div>

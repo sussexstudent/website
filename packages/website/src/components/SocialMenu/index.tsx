@@ -1,7 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
 
-const SocialMenu = ({ asList = false }) => (
+export const SocialMenu: React.FC<{ asList?: boolean }> = ({
+  asList = false,
+}) => (
   <ul className={cx('Social', { 'Social--as-list': asList })}>
     <li>
       <a
@@ -47,5 +49,3 @@ const SocialMenu = ({ asList = false }) => (
     </li>
   </ul>
 );
-
-export default SocialMenu;

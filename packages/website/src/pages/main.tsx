@@ -1,9 +1,9 @@
 import React from 'react';
-import MobileFooterTreats from '../components/MobileFooterTreats';
-import Footer from '../components/Footer';
-import Main from '../components/Main';
-import AdvertBar from '../components/AdvertBar';
-import MSLTag from '../components/MSLTag';
+import { MobileFooterTreats } from '../components/MobileFooterTreats';
+import { Footer } from '../components/Footer';
+import { Main } from '../components/Main';
+import { AdvertBar } from '../components/AdvertBar';
+import { MSLTag } from '../components/MSLTag';
 import { LokiHeader } from '../components/LokiHeader';
 import { MSLAdvert } from '../components/AdvertBar/MSLAdvert';
 

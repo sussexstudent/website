@@ -1,6 +1,6 @@
 import React from 'react';
 import { Event, TicketCost, TicketType } from '@ussu/common/src/types/events';
-import { SocialArray } from '../../components/SocialArray';
+import { SocialArray } from '../../../components/SocialArray';
 import { EventAccessSidebar } from './EventAccessSidebar';
 import { BuyButton } from './BuyButton';
 import { formatPrice } from '@ussu/common/src/libs/money';

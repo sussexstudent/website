@@ -51,7 +51,7 @@ const TrophyCabinetContent: React.FC<Result> = ({ group }) => {
   );
 };
 
-const TrophyCabinet: React.FC<Props> = ({ slug }) => {
+export const TrophyCabinet: React.FC<Props> = ({ slug }) => {
   const { data, loading } = useQuery<Result>(AllAwardsQuery, {
     variables: { slug },
   });
@@ -65,5 +65,3 @@ const TrophyCabinet: React.FC<Props> = ({ slug }) => {
     </ContentCard>
   );
 };
-
-export default TrophyCabinet;

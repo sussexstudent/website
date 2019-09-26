@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Event } from '@ussu/common/src/types/events';
-import JsonLd from '../../components/JsonLd';
+import { JsonLd } from '../../../components/JsonLd';
 
 interface EventDetailMetadataProps {
   event: Event;

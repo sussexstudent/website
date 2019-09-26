@@ -2,7 +2,7 @@ interface PropertyMap {
   [key: string]: string | number | undefined;
 }
 
-const MSLTag = (name: string, properties: PropertyMap | null = null) => {
+export const MSLTag = (name: string, properties: PropertyMap | null = null) => {
   if (process.env.TARGET_ENV === 'SANGUINE') {
     return '';
   }
@@ -21,5 +21,3 @@ const MSLTag = (name: string, properties: PropertyMap | null = null) => {
 
   return `<MSL:${name} ${props}/>`;
 };
-
-export default MSLTag;

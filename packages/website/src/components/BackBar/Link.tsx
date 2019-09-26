@@ -8,7 +8,11 @@ interface BackBarProps {
   children: any;
 }
 
-function BackBar({ color = 'blue', to, children }: BackBarProps) {
+export const BackBar: React.FC<BackBarProps> = ({
+  color = 'blue',
+  to,
+  children,
+}) => {
   return (
     <div className={cx('BackBar', `BackBar--color-${color}`)}>
       <InternalAppLink to={to}>
@@ -39,6 +43,4 @@ function BackBar({ color = 'blue', to, children }: BackBarProps) {
       </InternalAppLink>
     </div>
   );
-}
-
-export default BackBar;
+};

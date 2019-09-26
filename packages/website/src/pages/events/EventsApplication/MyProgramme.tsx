@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import getUserLikedEvents from '../EventsCalender/MyProgramme.graphql';
 import { startOfDay, addMonths } from 'date-fns';
-import Loader from '../../components/Loader';
+import { Loader } from '../../../components/Loader';
 import { EventListings } from '../EventsCalender/EventListings';
 
 export interface MyProgrammeProps {}

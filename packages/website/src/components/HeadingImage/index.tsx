@@ -7,7 +7,11 @@ interface IProps {
   description?: string;
 }
 
-const HeadingImage = ({ imageURL, title, description }: IProps) => (
+export const HeadingImage: React.FC<IProps> = ({
+  imageURL,
+  title,
+  description,
+}) => (
   <div
     className="HeadingImage"
     style={{
@@ -22,5 +26,3 @@ const HeadingImage = ({ imageURL, title, description }: IProps) => (
     ) : null}
   </div>
 );
-
-export default HeadingImage;

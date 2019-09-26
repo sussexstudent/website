@@ -38,7 +38,7 @@ const LoadableMarketCreateListing = loadable(async () => {
   return (props) => <CreateListing {...props} />;
 });
 
-const BookMarketApplication: React.FC<{}> = () => (
+export const BookMarketApplication: React.FC<{}> = () => (
   <Route
     path={`/book-market/`}
     component={() => (
@@ -90,5 +90,3 @@ const BookMarketApplication: React.FC<{}> = () => (
     )}
   />
 );
-
-export default BookMarketApplication;

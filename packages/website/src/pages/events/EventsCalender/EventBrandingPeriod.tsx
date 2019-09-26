@@ -3,10 +3,10 @@ import { EventListings } from './EventListings';
 import Helmet from 'react-helmet';
 import BrandingPeriodQuery from './BrandingPeriod.graphql';
 import EventListingsQuery from './EventListings.graphql';
-import { ErrorState } from '../../components/ErrorState';
+import { ErrorState } from '../../../components/ErrorState';
 import { RouteComponentProps } from 'react-router';
 import { useQuery } from '@apollo/react-hooks';
-import Loader from '../../components/Loader';
+import { Loader } from '../../../components/Loader';
 import {
   setBrandingPeriod,
   useWhatsOnThemingContext,

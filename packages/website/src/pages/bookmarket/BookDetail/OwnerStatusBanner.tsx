@@ -1,7 +1,7 @@
 import React from 'react';
 import { MarketListingState } from '@ussu/common/src/types/market';
 import CHANGE_STATE_MUTATION from './ChangeState.graphql';
-import Deckchair from '../../../components/Deckchair';
+import { Deckchair } from '../../../components/Deckchair';
 import { useMutation } from '@apollo/react-hooks';
 
 interface OwnerStatusBannerProps {

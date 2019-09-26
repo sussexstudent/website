@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
-import SocialMenu from '../SocialMenu';
+import { SocialMenu } from '../SocialMenu';
 import { UserBar } from '../UserBar';
 import { LokiMenu } from '../LokiMenu';
 

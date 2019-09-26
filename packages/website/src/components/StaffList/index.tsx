@@ -26,7 +26,7 @@ export type StaffListBlockData = StreamFieldBlockData<
   }
 >;
 
-const StaffList: StreamFieldBlock<StaffListBlockData> = ({
+export const StaffList: StreamFieldBlock<StaffListBlockData> = ({
   block: { heading, body },
 }) => {
   return (
@@ -91,5 +91,3 @@ const StaffList: StreamFieldBlock<StaffListBlockData> = ({
     </div>
   );
 };
-
-export default StaffList;

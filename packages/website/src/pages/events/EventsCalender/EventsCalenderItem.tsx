@@ -1,12 +1,12 @@
 import React from 'react';
 import { has } from 'lodash';
 import formatDate from 'date-fns/format';
-import FauxInternalAppLink from '../../components/FauxInternalAppLink';
+import FauxInternalAppLink from '../../../components/FauxInternalAppLink';
 import minimalisticTimeRenderer from '@ussu/common/src/libs/minimalisticTimeRenderer';
-import EventRelativeTime from './EventRelativeTime';
+import { EventRelativeTime } from './EventRelativeTime';
 import { Event, TicketCost, TicketType } from '@ussu/common/src/types/events';
-import { AspectRatio, OneImage } from '../../components/OneImage';
-import PatternPlaceholder from '../../components/PatternPlaceholder';
+import { AspectRatio, OneImage } from '../../../components/OneImage';
+import { PatternPlaceholder } from '../../../components/PatternPlaceholder';
 import { EventLikeButton } from './EventLikeButton';
 import { cardActionable, contentCard } from '@ussu/common/src/libs/style/cards';
 import { COLORS, MQ } from '@ussu/common/src/libs/style';
@@ -179,7 +179,7 @@ const CanceledStamp: React.FC = () => (
   </div>
 );
 
-const EventsCalenderItem: React.FC<EventsCalenderItemProps> = ({
+export const EventsCalenderItem: React.FC<EventsCalenderItemProps> = ({
   part,
   showDay = false,
   relative = false,
@@ -313,5 +313,3 @@ const EventsCalenderItem: React.FC<EventsCalenderItemProps> = ({
 //               {' '}- Starts in {distanceInWordsToNow(event.startDate)}
 //             </span>
 //   : null}
-
-export default EventsCalenderItem;

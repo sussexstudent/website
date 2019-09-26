@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
-import { ContentCard, ContentCardContent } from '../../components/ContentCard';
-import Loader from '../../components/Loader';
+import {
+  ContentCard,
+  ContentCardContent,
+} from '../../../components/ContentCard';
+import { Loader } from '../../../components/Loader';
 import DetailPageQuery from './EventsDetailPage.graphql';
-import EventsCalenderItem from '../EventsCalender/EventsCalenderItem';
+import { EventsCalenderItem } from '../EventsCalender/EventsCalenderItem';
 import { Event, TicketType } from '@ussu/common/src/types/events';
-import { AspectRatio, OneImageBackground } from '../../components/OneImage';
+import { AspectRatio, OneImageBackground } from '../../../components/OneImage';
 import { EventDetailDetails } from './EventDetailDetails';
 import { EventDetailSidebar } from './EventDetailSidebar';
 import { MSLEventCommunication } from './MSLEventCommunication';
 import { EventDetailMetadata } from './EventDetailMetadata';
-import PatternPlaceholder from '../../components/PatternPlaceholder';
-import Button from '../../components/Button';
+import { PatternPlaceholder } from '../../../components/PatternPlaceholder';
+import { Button } from '../../../components/Button';
 import { RouteComponentProps } from 'react-router-dom';
-import { ScrollToTop } from '../../components/ScrollToTop';
+import { ScrollToTop } from '../../../components/ScrollToTop';
 import { useQuery } from '@apollo/react-hooks';
 import { BundleBanner } from '../EventsApplication/branding/components';
 import {

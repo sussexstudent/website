@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal } from '../../components/Modal';
+import { Modal } from '../../../components/Modal';
 import { MSLCommunicationEventData } from '@ussu/common/src/types/events';
 import { formatPrice } from '@ussu/common/src/libs/money';
 

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const CrossIcon: React.FC<{ height?: string; verticalAlign?: string }> = ({
-  height = '21',
-  verticalAlign = 'initial',
-}) => {
+export const CrossIcon: React.FC<{
+  height?: string;
+  verticalAlign?: string;
+}> = ({ height = '21', verticalAlign = 'initial' }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,5 +21,3 @@ const CrossIcon: React.FC<{ height?: string; verticalAlign?: string }> = ({
     </svg>
   );
 };
-
-export default CrossIcon;

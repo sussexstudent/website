@@ -1,12 +1,12 @@
 import React from 'react';
-import FigureCollectionFigure, { FigureData } from './FigureCollectionFigure';
+import { FigureCollectionFigure, FigureData } from './FigureCollectionFigure';
 
 interface IProps {
   items?: FigureData[];
   size?: 'small' | 'medium';
 }
 
-const FigureCollection: React.FC<IProps> = ({
+export const FigureCollection: React.FC<IProps> = ({
   children,
   items = null,
   size = 'medium',
@@ -17,5 +17,3 @@ const FigureCollection: React.FC<IProps> = ({
       : items.map((item) => <FigureCollectionFigure {...item} />)}
   </ul>
 );
-
-export default FigureCollection;

@@ -1,16 +1,16 @@
 import React, { useCallback, useEffect, useReducer } from 'react';
 import { keyBy } from 'lodash';
 import Fuse from 'fuse.js';
-import OrganisationGrid from '../OrganisationGrid';
+import { OrganisationGrid } from '../OrganisationGrid';
 import STUDENT_GROUP_LISTING_QUERY from './StudentGroupListings.graphql';
 import { StudentGroupsSectionbar } from '../StudentGroupsSectionbar';
 import Helmet from 'react-helmet';
 import { StudentGroup } from '@ussu/common/src/types/groups';
 import { useQuery } from '@apollo/react-hooks';
-import Loader from '../Loader';
+import { Loader } from '../Loader';
 import css from '@emotion/css';
 import { COLORS } from '@ussu/common/src/libs/style';
-import CrossIcon from '../CrossIcon';
+import { CrossIcon } from '../CrossIcon';
 import cx from 'classnames';
 
 interface Result {

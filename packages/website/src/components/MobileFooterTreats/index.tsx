@@ -1,10 +1,10 @@
 import React from 'react';
-import Social from '../SocialMenu';
+import { SocialMenu } from '../SocialMenu';
 
-const MobileFooterTreats = () => (
+export const MobileFooterTreats: React.FC = () => (
   <div className="MobileFooterTreats">
     <div className="MobileFooterTreats__social">
-      <Social />
+      <SocialMenu />
     </div>
     <div>
       <a
@@ -20,5 +20,3 @@ const MobileFooterTreats = () => (
     </a>
   </div>
 );
-
-export default MobileFooterTreats;

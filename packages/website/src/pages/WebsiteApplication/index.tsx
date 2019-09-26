@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import BookMarketApp from '../../pages/bookmarket/BookMarketApp';
-import EventsApplication from '../../pages/events/EventsApplication';
+import { BookMarketApplication } from '../../pages/bookmarket/BookMarketApp';
+import { EventsApplication } from '../../pages/events/EventsApplication';
 import * as routerActions from '../../ducks/router';
 import { AppMountState } from '../../ducks/router';
 import { ContentPage } from '../../pages/content/ContentPage';
@@ -73,7 +73,7 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
       <ErrorBoundary>
         <Switch>
           <Route component={Homepage} path="/" exact />
-          <Route component={BookMarketApp} path="/book-market" />
+          <Route component={BookMarketApplication} path="/book-market" />
           <Route component={LoadableContentBrowser} path="/browse" />
           <Route component={EventsApplication} path="/whats-on" />
           <Route component={LoadableSearchApp} path="/search" />

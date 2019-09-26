@@ -7,11 +7,11 @@ interface AdvertBarProps {
   children: any;
 }
 
-const AdvertBar = ({
+export const AdvertBar: React.FC<AdvertBarProps> = ({
   children,
   className = '',
   dark = false,
-}: AdvertBarProps) => (
+}) => (
   <div
     className={cx('AdvertBar', 'advert', className, {
       'AdvertBar--dark': dark,
@@ -20,5 +20,3 @@ const AdvertBar = ({
     {children}
   </div>
 );
-
-export default AdvertBar;

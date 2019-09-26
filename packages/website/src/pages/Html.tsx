@@ -1,6 +1,6 @@
 import React from 'react';
 import { headContent } from '../head';
-import CompProvider from '../components/CompProviders';
+import { CompProvider } from '../components/CompProviders';
 
 interface HTMLProps {
   assets: any; // todo

@@ -5,7 +5,7 @@ import EVENT_LISTINGS_BUNDLE from '../../EventsCalender/EventListingsBundle.grap
 import { useQuery } from '@apollo/react-hooks';
 import { type, TypeSize } from '@ussu/common/src/libs/style/type';
 import { Layers, MQ } from '@ussu/common/src/libs/style';
-import FauxRouterLink from '../../../components/FauxRouterLink';
+import FauxRouterLink from '../../../../components/FauxRouterLink';
 import { BuyButton } from '../../EventDetailPage/BuyButton';
 
 export const BrandingContainer = createBrandedComponent(

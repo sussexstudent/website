@@ -1,7 +1,7 @@
 import React from 'react';
 import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
 import MyListingsQuery from './MyListings.graphql';
-import Loader from '../../../components/Loader';
+import { Loader } from '../../../components/Loader';
 import { MarketListing } from '@ussu/common/src/types/market';
 import { ListingList } from '../ListingList';
 import Helmet from 'react-helmet';

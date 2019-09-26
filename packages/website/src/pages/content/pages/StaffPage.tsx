@@ -4,7 +4,7 @@ import flatStreamToLevels from '@ussu/common/src/libs/flatStreamToLevels';
 import { ContentCard } from '../../../components/ContentCard';
 import StreamField from '../StreamField';
 import { Page } from '../types';
-import ContentNavigation from '../../../components/ContentNavigation';
+import { ContentNavigation } from '../../../components/ContentNavigation';
 
 const fromText = (text: string) => ({ name: text, anchor: slugify(text) });
 

@@ -5,7 +5,7 @@ interface IItemProps {
   link: string;
 }
 
-const Item = ({ name, link }: IItemProps) => (
+const Item: React.FC<IItemProps> = ({ name, link }) => (
   <li className="PrefooterMenu__column-item">
     <a href={link}>{name}</a>
   </li>
@@ -17,7 +17,7 @@ interface IColumnProps {
   children: any;
 }
 
-const Column = ({ name, link, children }: IColumnProps) => (
+const Column: React.FC<IColumnProps> = ({ name, link, children }) => (
   <ul className="PrefooterMenu__column">
     <li className="PrefooterMenu__column-header">
       <a href={link}>{name}</a>
@@ -26,7 +26,7 @@ const Column = ({ name, link, children }: IColumnProps) => (
   </ul>
 );
 
-const PrefooterMenu = () => (
+export const PrefooterMenu: React.FC = () => (
   <div className="PrefooterMenu">
     <div className="Container PrefooterMenu__inner">
       <Column name="Get involved" link="/get-involved">
@@ -50,5 +50,3 @@ const PrefooterMenu = () => (
     </div>
   </div>
 );
-
-export default PrefooterMenu;

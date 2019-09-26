@@ -5,7 +5,7 @@ import EventListingsQuery from '../../../pages/events/EventsCalender/EventListin
 import { EventListings } from '../../../pages/events/EventsCalender/EventListings';
 import { useQuery } from '@apollo/react-hooks';
 import { startOfDay, addMonths } from 'date-fns/esm';
-import Loader from '../../../components/Loader';
+import { Loader } from '../../../components/Loader';
 
 interface IOfficerEventsIndex extends Page<Page[]> {}
 

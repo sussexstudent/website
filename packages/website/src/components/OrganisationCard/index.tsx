@@ -1,5 +1,5 @@
 import React from 'react';
-import PatternPlaceholder from '../PatternPlaceholder';
+import { PatternPlaceholder } from '../PatternPlaceholder';
 import { AspectRatio, OneImage } from '../OneImage';
 import { StudentGroup } from '@ussu/common/src/types/groups';
 
@@ -7,7 +7,7 @@ interface IProps {
   org: StudentGroup;
 }
 
-function OrganisationCard(props: IProps) {
+export const OrganisationCard: React.FC<IProps> = (props: IProps) => {
   const org = props.org;
   return (
     <li className="TrailGrid__item">
@@ -44,6 +44,4 @@ function OrganisationCard(props: IProps) {
       </a>
     </li>
   );
-}
-
-export default OrganisationCard;
+};

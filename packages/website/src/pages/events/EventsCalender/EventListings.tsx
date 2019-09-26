@@ -6,7 +6,7 @@ import {
   splitEventsInToParts,
 } from '../EventsApplication/utils';
 import { Event, EventPart } from '@ussu/common/src/types/events';
-import EventsCalenderItem from './EventsCalenderItem';
+import { EventsCalenderItem } from './EventsCalenderItem';
 // import VisibilitySensor from 'react-visibility-sensor';
 
 interface EventListingsProps {

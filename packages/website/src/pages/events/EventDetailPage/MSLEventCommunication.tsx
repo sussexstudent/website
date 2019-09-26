@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import { replacePageActions } from '../../ducks/page';
+import { replacePageActions } from '../../../ducks/page';
 import { useDispatch } from 'redux-react-hook';
 
 interface IProps {

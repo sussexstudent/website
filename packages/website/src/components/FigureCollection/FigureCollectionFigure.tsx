@@ -15,12 +15,12 @@ export interface FigureData {
   link: string;
 }
 
-const FigureCollectionFigure = ({
+export const FigureCollectionFigure: React.FC<IProps> = ({
   imageResource,
   title,
   sub,
   link,
-}: IProps) => (
+}) => (
   <li className="FigureCollection__item TrailGrid__item">
     <a href={link} className="FigureCollection__link">
       <OneImage alt="" aspectRatio={AspectRatio.r1by1} src={imageResource} />
@@ -29,5 +29,3 @@ const FigureCollectionFigure = ({
     </a>
   </li>
 );
-
-export default FigureCollectionFigure;

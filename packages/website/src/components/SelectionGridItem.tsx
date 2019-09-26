@@ -8,11 +8,11 @@ interface SelectionGridItemProps {
   title: string;
 }
 
-const SelectionGridItem = ({
+export const SelectionGridItem: React.FC<SelectionGridItemProps> = ({
   link,
   imageURL,
   title,
-}: SelectionGridItemProps) => (
+}) => (
   <li
     className="SelectionGrid__item SelectionGrid--underneath TrailGrid__item"
     key={link}
@@ -28,5 +28,3 @@ const SelectionGridItem = ({
     </InternalAppLink>
   </li>
 );
-
-export default SelectionGridItem;

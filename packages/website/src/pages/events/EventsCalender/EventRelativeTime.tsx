@@ -8,7 +8,9 @@ interface EventRelativeTimeProps {
   event: Event;
 }
 
-const EventRelativeTime: React.FC<EventRelativeTimeProps> = ({ event }) => {
+export const EventRelativeTime: React.FC<EventRelativeTimeProps> = ({
+  event,
+}) => {
   const startsSoon = isWithinInterval(new Date(), {
     start: subMinutes(new Date(event.startTime), 90),
     end: new Date(event.startTime),
@@ -32,4 +34,3 @@ const EventRelativeTime: React.FC<EventRelativeTimeProps> = ({ event }) => {
     </div>
   );
 };
-export default EventRelativeTime;

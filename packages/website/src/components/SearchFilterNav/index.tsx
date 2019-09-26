@@ -17,7 +17,7 @@ interface IItemProps {
   query: string;
 }
 
-function SearchFilterItem(props: IItemProps) {
+const SearchFilterItem: React.FC<IItemProps> = (props) => {
   const { currentValue, option, query, itemKey } = props;
 
   const count = itemKey !== 'top' ? <span> {`(${option.count})`}</span> : null;
@@ -42,7 +42,7 @@ function SearchFilterItem(props: IItemProps) {
       )}
     </SectionbarItem>
   );
-}
+};
 
 interface IProps {
   value: any;
@@ -50,7 +50,11 @@ interface IProps {
   query: string;
 }
 
-function SearchFilterNav({ value, options, query }: IProps) {
+export const SearchFilterNav: React.FC<IProps> = ({
+  value,
+  options,
+  query,
+}) => {
   return (
     <React.Fragment>
       {options.map((option) => (
@@ -64,6 +68,4 @@ function SearchFilterNav({ value, options, query }: IProps) {
       ))}
     </React.Fragment>
   );
-}
-
-export default SearchFilterNav;
+};

@@ -2,7 +2,7 @@ require('isomorphic-fetch');
 import path from 'path';
 import React from 'react';
 import { headContent, headContentLegacy } from './src/head';
-import Html from './src/layouts/Html';
+import Html from './src/pages/Html';
 import CompProviders from './src/components/CompProviders';
 import assets from './webpack-assets.json';
 import manifest from './dist/manifest.json';
@@ -13,17 +13,17 @@ export default {
   templates: {
     main: {
       head: headContent,
-      template: require('./src/layouts/main'),
+      template: require('./src/pages/main'),
     },
     legacy: {
       head: headContent,
-      templatePublic: require('./src/layouts/MainLegacy'),
-      templateLoggedIn: require('./src/layouts/MainLegacy'),
+      templatePublic: require('./src/pages/MainLegacy'),
+      templateLoggedIn: require('./src/pages/MainLegacy'),
     },
     'legacy-jquery': {
       head: headContentLegacy,
-      templatePublic: require('./src/layouts/MainLegacy'),
-      templateLoggedIn: require('./src/layouts/MainLegacy'),
+      templatePublic: require('./src/pages/MainLegacy'),
+      templateLoggedIn: require('./src/pages/MainLegacy'),
     },
   },
   skin: 'union',

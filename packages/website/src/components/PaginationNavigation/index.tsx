@@ -6,11 +6,11 @@ interface IProps {
   onPageChange(pageNumber: number): void;
 }
 
-function PaginationNavigation({
+export const PaginationNavigation: React.FC<IProps> = ({
   currentPage,
   totalPages,
   onPageChange,
-}: IProps) {
+}) => {
   return (
     <div className="PaginationNavigation">
       <button
@@ -36,6 +36,4 @@ function PaginationNavigation({
       </button>
     </div>
   );
-}
-
-export default PaginationNavigation;
+};

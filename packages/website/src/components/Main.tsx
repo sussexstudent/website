@@ -1,12 +1,12 @@
 import React from 'react';
 import cx from 'classnames';
-import MSLTag from './MSLTag';
+import { MSLTag } from './MSLTag';
 
 interface MainProps {
-  legacy: boolean;
+  legacy?: boolean;
 }
 
-const Main: React.FC<MainProps> = ({ legacy }) => (
+export const Main: React.FC<MainProps> = ({ legacy = false }) => (
   <main className={cx('Site__content u-keep-footer-down')}>
     {legacy ? (
       <div className={cx('Container')}>
@@ -23,9 +23,3 @@ const Main: React.FC<MainProps> = ({ legacy }) => (
     )}
   </main>
 );
-
-Main.defaultProps = {
-  legacy: false,
-};
-
-export default Main;

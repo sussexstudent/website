@@ -8,7 +8,7 @@ interface IProps {
   children?: any;
 }
 
-const Deckchair: React.FC<IProps> = ({
+export const Deckchair: React.FC<IProps> = ({
   header,
   about,
   chairKey,
@@ -24,5 +24,3 @@ const Deckchair: React.FC<IProps> = ({
     <div className="Deckchair__right">{children ? children : null}</div>
   </div>
 );
-
-export default Deckchair;

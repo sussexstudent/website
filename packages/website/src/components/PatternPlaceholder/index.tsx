@@ -34,7 +34,7 @@ const SWATCHES = [
   ['00a850', '009246'],
 ];
 
-const PatternPlaceholder = () => {
+export const PatternPlaceholder = () => {
   const [pattern] = useState(() => sample(PATTERNS) || PATTERNS[0]);
   const [swatch] = useState(sample(SWATCHES) || SWATCHES[0]);
 
@@ -51,5 +51,3 @@ const PatternPlaceholder = () => {
     />
   );
 };
-
-export default PatternPlaceholder;

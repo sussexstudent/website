@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import BackBar from './index';
+import { BackBar } from './index';
 
 it('renders a snapshot', () => {
   const tree = renderer

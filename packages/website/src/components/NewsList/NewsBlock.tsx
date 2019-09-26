@@ -21,9 +21,9 @@ interface IProps {
   item: NewsItem;
 }
 
-const NewsBlock = ({
+export const NewsBlock: React.FC<IProps> = ({
   item: { title, link, publishedDate, led, imageURL },
-}: IProps) => (
+}) => (
   <li
     className="NewsGrid__item"
     css={{
@@ -153,5 +153,3 @@ const NewsBlock = ({
     </a>
   </li>
 );
-
-export default NewsBlock;

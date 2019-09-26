@@ -1,7 +1,7 @@
 import React from 'react';
 import loadable from '@loadable/component';
 import { GenericContentStreamPage } from './pages/GenericContentStreamPage';
-import Homepage from './pages/HomePage';
+import { Homepage } from './pages/HomePage';
 import { StaffPageProps } from './pages/StaffPage';
 import { SectionContentPageProps } from './pages/SectionContentPage';
 import { BasicContentPageProps } from './pages/BasicContentPage';

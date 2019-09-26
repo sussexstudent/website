@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import { RouteComponent } from '@ussu/common/src/types/routes';
-import { ScrollToTop } from '../../components/ScrollToTop';
+import { ScrollToTop } from '../../../components/ScrollToTop';
 import { EventBundleProps } from '../EventsCalender/EventBundle';
 import { EventsListProps } from '../EventsCalender';
 import { EventBrandingPeriodProps } from '../EventsCalender/EventBrandingPeriod';
@@ -14,7 +14,7 @@ import {
   Wayfinder,
   WayfinderTopLevel,
   WayfinderItem,
-} from '../../components/Wayfinder';
+} from '../../../components/Wayfinder';
 import LIVE_BRANDING_PERIOD_QUERY from './LiveBrandingPeriods.graphql';
 import { useQuery } from '@apollo/react-hooks';
 import { Brand } from '@ussu/common/src/types/events';
@@ -74,7 +74,7 @@ type EventsApplicationProps = RouteComponent;
 //   }
 // }
 
-const EventsApplication: React.FC<EventsApplicationProps> = () => {
+export const EventsApplication: React.FC<EventsApplicationProps> = () => {
   const { data } = useQuery(LIVE_BRANDING_PERIOD_QUERY);
 
   return (
@@ -141,5 +141,3 @@ const EventsApplication: React.FC<EventsApplicationProps> = () => {
     </WhatsOnThemingProvider>
   );
 };
-
-export default EventsApplication;

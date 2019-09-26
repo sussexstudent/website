@@ -16,7 +16,7 @@ interface IProps {
   onChange(key: string): void;
 }
 
-class VisibleChildWatcher extends React.Component<IProps> {
+export class VisibleChildWatcher extends React.Component<IProps> {
   private childEls: { [key: string]: HTMLElement } = {};
 
   componentDidMount() {
@@ -55,5 +55,3 @@ class VisibleChildWatcher extends React.Component<IProps> {
     );
   }
 }
-
-export default VisibleChildWatcher;

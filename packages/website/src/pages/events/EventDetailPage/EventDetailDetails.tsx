@@ -14,7 +14,7 @@ import SocietyIcon from '@ussu/common/src/icons/events-society.svg';
 import { Link } from 'react-router-dom';
 import { generateStylesForBrand, getOrdinal } from '../EventsApplication/utils';
 import { getDate } from 'date-fns';
-import { ContentCardContent } from '../../components/ContentCard';
+import { ContentCardContent } from '../../../components/ContentCard';
 import { EventLikeButton } from '../EventsCalender/EventLikeButton';
 
 function isSameLogicalSleepDay(startDate: Date, endDate: Date): boolean {

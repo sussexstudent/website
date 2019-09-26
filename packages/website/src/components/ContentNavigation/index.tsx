@@ -39,7 +39,7 @@ function canDisplaySubMenu(
 
 // TODO: Tidy this up. Should technically support unlimited levels
 // TODO: this component's name doesn't match the css component
-const ContentNavigation: React.FC<IProps> = ({
+export const ContentNavigation: React.FC<IProps> = ({
   title,
   items,
   activeKey = '',
@@ -114,5 +114,3 @@ const ContentNavigation: React.FC<IProps> = ({
     </div>
   );
 };
-
-export default ContentNavigation;

@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Button from './index';
+import { Button } from './index';
 
 it('renders', () => {
   const tree = renderer

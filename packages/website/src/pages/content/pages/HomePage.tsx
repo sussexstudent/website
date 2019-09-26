@@ -25,7 +25,7 @@ interface HomepageProps {
   page: HomepagePage;
 }
 
-function Homepage(props: HomepageProps) {
+export const Homepage: React.FC<HomepageProps> = (props) => {
   const {
     page: { fullTimeOfficers, partTimeOfficers },
   } = props;
@@ -63,6 +63,4 @@ function Homepage(props: HomepageProps) {
       </div>
     </div>
   );
-}
-
-export default Homepage;
+};

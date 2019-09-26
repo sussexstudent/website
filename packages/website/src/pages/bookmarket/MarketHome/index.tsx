@@ -1,12 +1,12 @@
 import React from 'react';
 import qs from 'query-string';
-import HeadingHero from '../../../components/HeadingHero';
+import { HeadingHero } from '../../../components/HeadingHero';
 import MARKET_HOME_QUERY from './MarketHomeQuery.graphql';
 import { Field, Form } from 'react-final-form';
 import { useViewer } from '../currentUserData';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { useQuery } from '@apollo/react-hooks';
-import Loader from '../../../components/Loader';
+import { Loader } from '../../../components/Loader';
 import { ErrorState } from '../../../components/ErrorState';
 
 interface ComponentProps {}

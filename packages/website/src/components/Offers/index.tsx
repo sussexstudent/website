@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import OFFERS_QUERY from './OffersQuery.graphql';
 import { Offer } from '@ussu/common/src/types/commercial';
-import Loader from '../Loader';
+import { Loader } from '../Loader';
 import { AspectRatio, OneImage } from '../OneImage';
-import PatternPlaceholder from '../PatternPlaceholder';
+import { PatternPlaceholder } from '../PatternPlaceholder';
 import StreamField from '../../pages/content/StreamField';
-import Button from '../Button';
+import { Button } from '../Button';
 import { Modal } from '../Modal';
 import { useQuery } from '@apollo/react-hooks';
 
@@ -13,7 +13,7 @@ interface Result {
   allOffers: Offer[];
 }
 
-const Offers: React.FC = () => {
+export const Offers: React.FC = () => {
   const [openOffer, setOpenOffer] = useState(-1);
   const { data, loading } = useQuery<Result>(OFFERS_QUERY);
 
@@ -77,5 +77,3 @@ const Offers: React.FC = () => {
     </div>
   );
 };
-
-export default Offers;

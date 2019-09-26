@@ -4,8 +4,6 @@ interface SelectionGridProps {
   children: any;
 }
 
-const SelectionGrid = ({ children }: SelectionGridProps) => (
+export const SelectionGrid: React.FC<SelectionGridProps> = ({ children }) => (
   <ul className="SelectionGrid TrailGrid TrailGrid--three">{children}</ul>
 );
-
-export default SelectionGrid;

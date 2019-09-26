@@ -9,12 +9,12 @@ interface IProps {
   thin?: boolean;
 }
 
-const HeadingHero = ({
+export const HeadingHero: React.FC<IProps> = ({
   imageURL,
   title,
   description = '',
   thin = false,
-}: IProps) => (
+}) => (
   <OneImageBackground
     className={cx('HeadingImage', { 'HeadingImage--thin': thin })}
     src={imageURL}
@@ -27,5 +27,3 @@ const HeadingHero = ({
     ) : null}
   </OneImageBackground>
 );
-
-export default HeadingHero;

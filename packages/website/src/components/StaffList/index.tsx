@@ -4,7 +4,7 @@ import { FalmerImage } from '@ussu/common/src/types/events';
 import {
   StreamFieldBlock,
   StreamFieldBlockData,
-} from '../../containers/content/types';
+} from '../../pages/content/types';
 import { AspectRatio, OneImage } from '../OneImage';
 
 interface StaffMemberData {

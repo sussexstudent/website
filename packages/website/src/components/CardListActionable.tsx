@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { COLORS } from '@ussu/common/src/libs/style';
-import { DocumentLinkBlockData } from '../containers/content/blocks/Links';
-import { StreamFieldBlock } from '../containers/content/types';
+import { DocumentLinkBlockData } from '../pages/content/blocks/Links';
+import { StreamFieldBlock } from '../pages/content/types';
 import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
 import { Modal } from './Modal';
 

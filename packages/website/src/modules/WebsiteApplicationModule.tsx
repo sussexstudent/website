@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import WebsiteApplication from '../containers/WebsiteApplication';
+import WebsiteApplication from '../pages/WebsiteApplication';
 import { store } from '../redux/store';
 import { AppMountState } from '../ducks/router';
 import getApolloClientForFalmer from '@ussu/common/src/libs/getApolloClientForFalmer';

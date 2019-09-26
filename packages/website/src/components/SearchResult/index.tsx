@@ -1,6 +1,6 @@
 import React from 'react';
 import { Event } from '@ussu/common/src/types/events';
-import { ContentBrowserPage } from '../../containers/content/types';
+import { ContentBrowserPage } from '../../pages/content/types';
 import { StudentGroup } from '@ussu/common/src/types/groups';
 
 const EventSearchResult = ({

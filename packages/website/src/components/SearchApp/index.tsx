@@ -6,7 +6,7 @@ import SearchResult, { SearchResult as ISearchResult } from '../SearchResult';
 import SearchFilterNav from '../SearchFilterNav';
 import * as routerActions from '../../ducks/router';
 import Helmet from 'react-helmet';
-import { NoListItems } from '../../containers/bookmarket/NoListItems';
+import { NoListItems } from '../../pages/bookmarket/NoListItems';
 import { Location } from 'history';
 import { RouteComponentProps } from 'react-router';
 import { getFirstItemOrValue } from '@ussu/common/src/libs/qs';

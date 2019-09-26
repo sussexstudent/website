@@ -4,7 +4,7 @@ import { Offer } from '@ussu/common/src/types/commercial';
 import Loader from '../Loader';
 import { AspectRatio, OneImage } from '../OneImage';
 import PatternPlaceholder from '../PatternPlaceholder';
-import StreamField from '../../containers/content/StreamField';
+import StreamField from '../../pages/content/StreamField';
 import Button from '../Button';
 import { Modal } from '../Modal';
 import { useQuery } from '@apollo/react-hooks';

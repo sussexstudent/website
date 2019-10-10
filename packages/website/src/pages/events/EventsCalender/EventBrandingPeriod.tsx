@@ -18,6 +18,7 @@ import {
 import { getFirstItemOrValue } from '@ussu/common/src/libs/qs';
 import qs from 'query-string';
 import { pickBy, mapValues } from 'lodash';
+import { isAfter, max } from 'date-fns';
 
 export interface EventBrandingPeriodProps
   extends RouteComponentProps<{ brandSlug: string }> {
@@ -92,6 +93,10 @@ export const EventBrandingPeriod: React.FC<EventBrandingPeriodProps> = ({
   const { brandingPeriod } = brandData;
   const { allEvents } = listingsData;
 
+  const latestDate = max(
+    allEvents.edges.map((e: any) => new Date(e.node.endTime)),
+  );
+
   return (
     <div className="LokiContainer">
       <Helmet>
@@ -103,7 +108,10 @@ export const EventBrandingPeriod: React.FC<EventBrandingPeriodProps> = ({
       {listingsLoading ? (
         <Loader dark />
       ) : listingsData && !listingsError ? (
-        <EventListings events={allEvents} removePast={!brandSlug} />
+        <EventListings
+          events={allEvents}
+          removePast={!isAfter(new Date(), latestDate)}
+        />
       ) : (
         <ErrorState />
       )}

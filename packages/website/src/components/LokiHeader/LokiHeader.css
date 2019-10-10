@@ -249,6 +249,7 @@
 
     &--menu {
       text-align: right;
+      height: 35px;
     }
 
     & > svg {

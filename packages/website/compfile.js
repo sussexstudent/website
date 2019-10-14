@@ -2,8 +2,8 @@ require('isomorphic-fetch');
 import path from 'path';
 import React from 'react';
 import { headContent, headContentLegacy } from './src/head';
-import Html from './src/pages/Html';
-import CompProviders from './src/components/CompProviders';
+import { Html } from './src/pages/Html';
+import { CompProvider } from './src/components/CompProviders';
 import assets from './webpack-assets.json';
 import manifest from './dist/manifest.json';
 
@@ -31,5 +31,5 @@ export default {
     manifest,
     map: assets,
   },
-  providers: CompProviders,
+  providers: CompProvider,
 };

@@ -4,7 +4,7 @@ import { EventsApplication } from '../../pages/events/EventsApplication';
 import * as routerActions from '../../ducks/router';
 import { AppMountState } from '../../ducks/router';
 import { ContentPage } from '../../pages/content/ContentPage';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import { FreshersEvents } from '../freshers/FreshersEvents';
 import { RouterAnalytics } from '../../components/RouterAnalytics';

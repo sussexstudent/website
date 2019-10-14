@@ -9,7 +9,7 @@ import { Deckchair } from '../../../components/Deckchair';
 import { ImageUpload } from '../ImageUpload';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
 import { useViewer } from '../currentUserData';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { OwnerStatusBanner } from './OwnerStatusBanner';
 import { formatPrice } from '@ussu/common/src/libs/money';
 import { InternalAppLink } from '../../../components/InternalAppLink';

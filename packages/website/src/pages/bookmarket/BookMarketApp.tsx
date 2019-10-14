@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { Sectionbar, SectionbarItem } from '../../components/Sectionbar';
 import { InternalAppLink } from '../../components/InternalAppLink';
 import loadable from '@loadable/component';

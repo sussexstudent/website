@@ -9,7 +9,7 @@ import GetCategories from './GetCategories.graphql';
 import CreateListingMutation from './CreateListingMutation.graphql';
 import { MarketListing, MarketSection } from '@ussu/common/src/types/market';
 import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 

@@ -4,7 +4,7 @@ import MyListingsQuery from './MyListings.graphql';
 import { Loader } from '../../../components/Loader';
 import { MarketListing } from '@ussu/common/src/types/market';
 import { ListingList } from '../ListingList';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { useQuery } from '@apollo/react-hooks';
 

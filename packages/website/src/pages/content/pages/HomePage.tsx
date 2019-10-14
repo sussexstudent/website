@@ -1,7 +1,7 @@
 import React from 'react';
 import { Page } from '../types';
 import { FalmerImage } from '@ussu/common/src/types/events';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { PersonCollectionFigure } from '../../../components/PersonCollection/PersonCollectionFigure';
 import { PersonCollection } from '../../../components/PersonCollection';
 import { shuffle } from 'lodash';

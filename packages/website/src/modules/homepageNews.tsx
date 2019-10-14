@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {NewsList} from '../components/NewsList';
+import { NewsList } from '../components/NewsList';
 import { parseNews } from '@ussu/common/src/libs/msl';
 
 export default () => {
@@ -14,7 +14,7 @@ export default () => {
   }
 
   ReactDOM.render(
-    <NewsList items={articles} />,
+    <NewsList items={articles} fullWidth={false} />,
     document.querySelector('.app__news'),
   );
 };

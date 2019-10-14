@@ -3,7 +3,7 @@ import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
 import SECTION_LISTINGS_QUERY from './SectionListings.graphql';
 import { MarketListing, MarketSection } from '@ussu/common/src/types/market';
 import { ListingList } from '../ListingList';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { RouteComponentProps } from 'react-router';
 import { useQuery } from '@apollo/react-hooks';

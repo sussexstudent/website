@@ -8,6 +8,7 @@ function render(
   Providers: any,
   // location: string | undefined = undefined,
 ) {
+  console.log(Component, props, Providers);
   const finalElement: any = React.createElement(
     Providers,
     {},
@@ -54,6 +55,7 @@ export function renderTemplates(
   const renderedTemplates: RenderedTemplateMap = {};
 
   Object.keys(templates).forEach((templateName) => {
+    console.log(`- ${templateName}`);
     renderedTemplates[templateName] = {
       name: templateName,
       head: templates[templateName].head(assets),

@@ -8,7 +8,7 @@ interface HTMLProps {
   additionalHead: string[];
 }
 
-const HTML = ({ children, assets, additionalHead = [] }: HTMLProps) => (
+export const HTML = ({ children, assets, additionalHead = [] }: HTMLProps) => (
   <CompProvider>
     <html lang="en">
       <head
@@ -20,5 +20,3 @@ const HTML = ({ children, assets, additionalHead = [] }: HTMLProps) => (
     </html>
   </CompProvider>
 );
-
-export default HTML;

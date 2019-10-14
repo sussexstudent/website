@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { NewsBlock, NewsItem } from './NewsBlock';
 
 interface IProps {
-  fullWidth: boolean;
+  fullWidth?: boolean;
   items: NewsItem[];
 }
 

@@ -5,7 +5,7 @@ import GET_SEARCH_QUERY from './GetSearch.graphql';
 import { MarketListing } from '@ussu/common/src/types/market';
 import { ListingList } from '../ListingList';
 import { Field, Form } from 'react-final-form';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { useQuery } from '@apollo/react-hooks';
 

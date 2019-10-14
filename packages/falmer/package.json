@@ -5,16 +5,16 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@emotion/core": "^10.0.17",
-    "date-fns": "^2.0.1",
-    "immer": "^3.2.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "@emotion/core": "^10.0.21",
+    "date-fns": "^2.4.1",
+    "immer": "^4.0.1",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
     "react-jsonschema-form": "^1.8.0",
-    "react-select": "^3.0.4",
+    "react-select": "^3.0.8",
     "redux": "^4.0.4",
-    "redux-saga": "^1.0.5"
+    "redux-saga": "^1.1.1"
   },
   "scripts": {
     "postinstall": ":",
@@ -25,11 +25,11 @@
     "falmer:deploy": "yarn run falmer:prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist-falmer/ s3://ussu-static/ --config=../../.s3cfg --acl-public && yarn run falmer:_deploy"
   },
   "devDependencies": {
-    "@types/react-jsonschema-form": "^1.6.2",
-    "@types/react-select": "^3.0.4",
+    "@types/react-jsonschema-form": "^1.6.5",
+    "@types/react-select": "^3.0.5",
     "html-webpack-harddisk-plugin": "^1.0.1",
     "html-webpack-plugin": "^3.2.0",
-    "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
   }
 }

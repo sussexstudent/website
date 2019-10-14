@@ -5,17 +5,17 @@
   "types": "dist/index.d.ts",
   "license": "MIT",
   "devDependencies": {
-    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-react": "^7.6.3",
     "@emotion/babel-preset-css-prop": "^10.0.17",
-    "@storybook/addon-knobs": "^5.1.11",
-    "@storybook/theming": "^5.1.11",
-    "@types/react": "^16.9.2",
-    "@types/react-dom": "^16.9.0",
-    "rollup": "^1.20.3",
+    "@storybook/addon-knobs": "^5.2.3",
+    "@storybook/theming": "^5.2.3",
+    "@types/react": "^16.9.5",
+    "@types/react-dom": "^16.9.1",
+    "rollup": "^1.23.1",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-typescript2": "^0.24.0",
+    "rollup-plugin-typescript2": "^0.24.3",
     "tslib": "^1.10.0",
-    "typescript": "^3.6.2"
+    "typescript": "^3.6.4"
   },
   "scripts": {
     "build": "echo skipping",

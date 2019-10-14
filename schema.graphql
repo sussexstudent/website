@@ -1,0 +1,1950 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Queries
+  mutation: Mutations
+}
+
+interface KbArticle {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  lastPublishedAt: DateTime
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+interface KbReference {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  lastPublishedAt: DateTime
+  main: GenericScalar
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  topic: KbTopic
+  urlPath: String
+}
+
+interface KbSection {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  lastPublishedAt: DateTime
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  topics: [KbTopic]
+  urlPath: String
+}
+
+interface KbTopic {
+  ancestorPages(inMenu: Boolean): [Page]
+  articles: [KbArticle]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  lastPublishedAt: DateTime
+  parentPage: Page
+  path: String
+  searchDescription: String
+  section: KbSection
+  seoTitle: String
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+interface KnowledgeBase {
+  ancestorPages(inMenu: Boolean): [Page]
+  article(path: String): KbReference
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  lastPublishedAt: DateTime
+  parentPage: Page
+  path: String
+  searchDescription: String
+  section(slug: String): KbSection
+  sections: [KbSection]
+  seoTitle: String
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+"An object with an ID"
+interface Node {
+  "The ID of the object."
+  id: ID!
+}
+
+interface Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  lastPublishedAt: DateTime
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type AnswerPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  content: GenericStreamFieldType
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  relatedLinks: GenericStreamFieldType!
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  staffOwners: GenericStreamFieldType!
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type Award {
+  authority: AwardAuthority!
+  description: String!
+  groupawardedSet: [AwardAwarded!]!
+  icon: AwardIcon!
+  id: ID!
+  link: String!
+  name: String!
+  slug: String!
+}
+
+type AwardAuthority {
+  awardSet: [Award!]!
+  awardperiodSet: [AwardPeriod!]!
+  id: ID!
+  name: String!
+  slug: String!
+}
+
+type AwardAwarded {
+  award: Award!
+  grade: Int!
+  group: StudentGroup!
+  id: ID!
+  period: AwardPeriod!
+}
+
+type AwardPeriod {
+  authority: AwardAuthority!
+  awarded: [AwardAwarded]
+  displayName: String!
+  endDate: DateTime!
+  id: ID!
+  startDate: DateTime!
+}
+
+type Banner {
+  body: RichTextFieldType!
+  displayFrom: DateTime
+  displayTo: DateTime
+  heading: String!
+  id: ID!
+  outlet: String!
+  purpose: BannerPurpose!
+}
+
+type BasicContentPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  content: GenericStreamFieldType
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type BrandingPeriod {
+  accent: String!
+  bundleSet: [Bundle!]!
+  description: RichTextFieldType!
+  displayFrom: DateTime
+  eventAppend: RichTextFieldType!
+  events(after: String, before: String, first: Int, last: Int): EventConnection!
+  id: ID!
+  logo: Image
+  logoVector: File
+  name: String!
+  overrideListingsRoot: String!
+  slug: String!
+  websiteLink: String!
+}
+
+type Bundle {
+  brand: BrandingPeriod
+  eventSet(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): EventConnection!
+  id: ID!
+  name: String!
+  price: Float
+  slug: String!
+  ticketData: String!
+  ticketLevel: BundleTicketLevel!
+  ticketType: BundleTicketType!
+}
+
+type CategoryNode {
+  depth: Int!
+  eventSet(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): EventConnection!
+  id: ID!
+  name: String!
+  numchild: Int!
+  parent: CategoryNode
+  path: String!
+  slug: String!
+}
+
+type ClickThrough implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  targetLink: String!
+  title: String
+  urlPath: String
+}
+
+type ClientUser {
+  authority: FalmerUserAuthority!
+  email: String!
+  eventLikes: [EventLike!]!
+  eventSet(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): EventConnection!
+  hasCmsAccess: Boolean
+  id: ID!
+  identifier: String!
+  isActive: Boolean!
+  isStaff: Boolean!
+  "Designates that this user has all permissions without explicitly assigning them."
+  isSuperuser: Boolean!
+  lastLogin: DateTime
+  listingSet(
+    after: String
+    before: String
+    bookAuthor: String
+    bookTitle: String
+    first: Int
+    last: Int
+    section: ID
+  ): MarketListingConnection!
+  listings(
+    after: String
+    before: String
+    bookAuthor: String
+    bookTitle: String
+    first: Int
+    last: Int
+    section: ID
+  ): MarketListingConnection!
+  matteimageSet(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): ImageConnection!
+  name: String
+  password: String!
+  permissions: [Int]
+  userId: Int
+  "Specific permissions for this user."
+  userPermissions: [Permission!]!
+}
+
+type CreateMarketListing {
+  listing: MarketListing
+  ok: Boolean
+}
+
+type Curator {
+  eventSet(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): EventConnection!
+  id: ID!
+  name: String!
+  officereventspageSet: [OfficerEventsPage!]!
+  slug: String!
+}
+
+type DetailedGuidePage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  relatedLinks: GenericStreamFieldType!
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  staffOwners: GenericStreamFieldType!
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type DetailedGuideSectionPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  content: GenericStreamFieldType
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type Event implements Node {
+  alcohol: EventAlcohol!
+  audienceGoodToMeetPeople: Boolean!
+  audienceJustForPgs: Boolean!
+  audienceSuitableKidsFamilies: Boolean!
+  body: RichTextFieldType!
+  bodyHtml: String
+  brand: BrandingPeriod
+  bundle: Bundle
+  canceledAt: DateTime
+  categories: [CategoryNode]
+  category: [CategoryNode!]!
+  children: [Event]
+  containsFlashingLights: VenueContainsFlashingLights!
+  containsFlashingLightsReasoning: String!
+  containsLoudMusic: VenueContainsLoudMusic!
+  containsLoudMusicReasoning: String!
+  containsLowLight: VenueContainsLowLight!
+  containsLowLightReasoning: String!
+  containsUnevenGround: VenueContainsUnevenGround!
+  containsUnevenGroundReasoning: String!
+  cost: EventCost!
+  curatedBy: [Curator!]!
+  embargoUntil: DateTime
+  endTime: DateTime!
+  eventId: Int
+  eventlikeSet: [EventLike!]!
+  featuredImage: Image
+  hasAccessibleToilets: VenueHasAccessibleToilets!
+  hasAccessibleToiletsReasoning: String!
+  hasChangingFacilities: VenueHasChangingFacilities!
+  hasChangingFacilitiesReasoning: String!
+  hasGenderNeutralToilets: VenueHasGenderNeutralToilets!
+  hasGenderNeutralToiletsReasoning: String!
+  hasLevelAccess: VenueHasLevelAccess!
+  hasLevelAccessReasoning: String!
+  "The ID of the object."
+  id: ID!
+  isOver18Only: Boolean!
+  kicker: String!
+  likes: [PublicUser!]!
+  locationDisplay: String!
+  mslEvent: MSLEvent
+  mslEventId: Int
+  mslevent: MSLEvent
+  parent: Event
+  shortDescription: String!
+  slug: String!
+  socialFacebook: String!
+  startTime: DateTime!
+  studentGroup: StudentGroup
+  ticketData: String!
+  ticketLevel: EventTicketLevel!
+  ticketType: EventTicketType!
+  title: String!
+  type: Type
+  url: String!
+  userLike: EventLike
+  venue: Venue
+}
+
+type EventConnection {
+  "Contains the nodes in this connection."
+  edges: [EventEdge]!
+  "Pagination data for this connection."
+  pageInfo: PageInfo!
+}
+
+"A Relay edge containing a `Event` and its cursor."
+type EventEdge {
+  "A cursor for use in pagination"
+  cursor: String!
+  "The item at the end of the edge"
+  node: Event
+}
+
+type EventLike {
+  createdAt: DateTime!
+  event: Event!
+  id: ID!
+  initialSource: EventLikeInitialSource!
+  source: EventLikeSource!
+  sourceLocation: EventLikeSourceLocation!
+  updatedAt: DateTime!
+  user: PublicUser!
+}
+
+type FalmerFile {
+  url: String
+}
+
+type File {
+  resource: String
+}
+
+type Flag {
+  description: String!
+  expired: Boolean!
+  id: ID!
+  mode: FlagMode!
+  name: String!
+  state: Boolean!
+}
+
+type FreshersHomepage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  content: GenericStreamFieldType
+  contentType: String
+  countdownCaption: String!
+  countdownTarget: DateTime
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  heroText: RichTextFieldType!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type GenericPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  lastPublishedAt: DateTime
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type HomePage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  fullTimeOfficers: GenericStreamFieldType!
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  partTimeOfficers: GenericStreamFieldType!
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type Image implements Node {
+  brandingperiodSet: [BrandingPeriod!]!
+  createdAt: DateTime!
+  eventSet(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): EventConnection!
+  file: FalmerFile!
+  fileHash: String!
+  fileSize: Int
+  focalPointHeight: Int
+  focalPointWidth: Int
+  focalPointX: Int
+  focalPointY: Int
+  height: Int!
+  "The ID of the object."
+  id: ID!
+  imagelabelthroughSet(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): ImageLabelConnection!
+  internalSource: MatteImageInternalSource!
+  labels(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): ImageLabelConnection
+  listingSet(
+    after: String
+    before: String
+    bookAuthor: String
+    bookTitle: String
+    first: Int
+    last: Int
+    section: ID
+  ): MarketListingConnection!
+  mediaId: Int
+  mslstudentgroupSet: [MSLStudentGroup!]!
+  "Companies logo displayed next to the offer"
+  offerSet: [Offer!]!
+  officeroverviewpageSet: [OfficerOverviewPage!]!
+  outletpageSet: [OutletPage!]!
+  resource: String
+  schemepageSet: [SchemePage!]!
+  sectioncontentpageSet: [SectionContentPage!]!
+  studentgroupSet(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): StudentGroupConnection!
+  title: String!
+  uploadedByUser: PublicUser
+  venueSet(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): VenueConnection!
+  width: Int!
+}
+
+type ImageConnection {
+  "Contains the nodes in this connection."
+  edges: [ImageEdge]!
+  "Pagination data for this connection."
+  pageInfo: PageInfo!
+}
+
+"A Relay edge containing a `Image` and its cursor."
+type ImageEdge {
+  "A cursor for use in pagination"
+  cursor: String!
+  "The item at the end of the edge"
+  node: Image
+}
+
+type ImageLabel implements Node {
+  confidence: Float!
+  "The ID of the object."
+  id: ID!
+  image: Image!
+  name: String
+}
+
+type ImageLabelConnection {
+  "Contains the nodes in this connection."
+  edges: [ImageLabelEdge]!
+  "Pagination data for this connection."
+  pageInfo: PageInfo!
+}
+
+"A Relay edge containing a `ImageLabel` and its cursor."
+type ImageLabelEdge {
+  "A cursor for use in pagination"
+  cursor: String!
+  "The item at the end of the edge"
+  node: ImageLabel
+}
+
+type KBCategoryPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  pageIcon: FalmerFile
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type KBRootPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  introduction: RichTextFieldType!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type LikeEvent {
+  event: Event
+  ok: Boolean
+}
+
+type MSLEvent implements Node {
+  bodyHtml: String!
+  description: String!
+  disableSync: Boolean!
+  endTime: DateTime!
+  event: Event!
+  hasTickets: Boolean!
+  "The ID of the object."
+  id: ID!
+  imageUrl: String!
+  lastSync: DateTime!
+  location: String!
+  mslEventId: Int!
+  orgId: String!
+  orgName: String!
+  startTime: DateTime!
+  title: String!
+  url: String!
+}
+
+type MSLNewsResult {
+  description: String
+  link: String
+  title: String
+  uuid: String
+}
+
+type MSLPageResult {
+  description: String
+  image: String
+  link: String
+  title: String
+  uuid: String
+}
+
+type MSLStudentGroup {
+  category: MSLStudentGroupCategory
+  description: String!
+  group: StudentGroup!
+  id: ID!
+  lastSync: DateTime!
+  link: String!
+  logo: Image
+  logoUrl: String!
+  mslGroupId: Int!
+}
+
+type MSLStudentGroupCategory {
+  id: ID!
+  mslstudentgroupSet: [MSLStudentGroup!]!
+  name: String!
+}
+
+type MarketListing implements Node {
+  bookAuthor: String!
+  bookTitle: String!
+  buyPrice: Float!
+  contactDetails: String
+  contactRequesters: [PublicUser!]!
+  createdAt: DateTime!
+  deleted: Boolean!
+  description: String!
+  "The ID of the object."
+  id: ID!
+  image: Image
+  images(after: String, before: String, first: Int, last: Int): ImageConnection!
+  listedAt: DateTime
+  listingChangeCanary: Int!
+  listingUser: PublicUser
+  pk: Int
+  section: MarketListingSection!
+  state: String!
+  updatedAt: DateTime!
+}
+
+type MarketListingConnection {
+  "Contains the nodes in this connection."
+  edges: [MarketListingEdge]!
+  "Pagination data for this connection."
+  pageInfo: PageInfo!
+}
+
+"A Relay edge containing a `MarketListing` and its cursor."
+type MarketListingEdge {
+  "A cursor for use in pagination"
+  cursor: String!
+  "The item at the end of the edge"
+  node: MarketListing
+}
+
+type MarketListingSection {
+  id: ID!
+  listingSet(
+    after: String
+    before: String
+    bookAuthor: String
+    bookTitle: String
+    first: Int
+    last: Int
+    section: ID
+  ): MarketListingConnection!
+  pk: Int
+  slug: String!
+  title: String!
+}
+
+type MoveEvent {
+  event: Event
+  ok: Boolean
+}
+
+type Mutations {
+  createMarketListing(listingData: MarketListingInput!): CreateMarketListing
+  likeEvent(eventId: Int, likeType: String): LikeEvent
+  moveEvent(destinationEventId: Int, eventId: Int): MoveEvent
+  requestMarketListingContactDetails(listingId: Int): RequestDetails
+  updateMarketListing(
+    listingData: MarketListingUpdateInput!
+    listingId: Int
+  ): UpdateMarketListing
+  updateSlate(data: SlateInput!, slateId: Int!): UpdateSlate
+}
+
+type Offer {
+  "Companies logo displayed next to the offer"
+  companyLogo: Image
+  "Display name of the company offering the deal"
+  companyName: String!
+  companyWebsite: String!
+  "The deal itself, \"40%\", \"By one get one free\", etc"
+  dealTag: String!
+  id: ID!
+  isFeatured: Boolean!
+  main: GenericScalar
+}
+
+type OfficerEventsPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  curator: Curator
+  depth: Int!
+  description: RichTextFieldType!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type OfficerOverviewPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  facebookUrl: String!
+  firstName: String!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  instagramUrl: String!
+  lastName: String!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  officerImage: Image
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  pledges: GenericStreamFieldType!
+  role: String!
+  roleDescription: RichTextFieldType!
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  twitterUsername: String!
+  urlPath: String
+  youtubeSplash: String!
+}
+
+type OfficersIndex implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type OutletIndexPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  preamble: GenericStreamFieldType!
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type OutletPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contactDetails: RichTextFieldType!
+  contentType: String
+  deals: GenericStreamFieldType!
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  googleMapsPlaceId: String!
+  hasUnpublishedChanges: Boolean!
+  heroImage: Image!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  "Link this outlet with a venue's events"
+  linkedVenue: Venue
+  live: Boolean!
+  locked: Boolean!
+  main: GenericStreamFieldType
+  menu: GenericStreamFieldType!
+  numchild: Int!
+  openingTimes: GenericStreamFieldType!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+"The Relay compliant `PageInfo` type, containing data necessary to paginate this connection."
+type PageInfo {
+  "When paginating forwards, the cursor to continue."
+  endCursor: String
+  "When paginating forwards, are there more items?"
+  hasNextPage: Boolean!
+  "When paginating backwards, are there more items?"
+  hasPreviousPage: Boolean!
+  "When paginating backwards, the cursor to continue."
+  startCursor: String
+}
+
+type PageResult {
+  contentType: String
+  data: GenericScalar
+  id: Int
+  lastPublishedAt: DateTime
+  path: String
+  searchDescription: String
+  seoTitle: String
+  slug: String
+  title: String
+  urlPath: String
+}
+
+type Permission {
+  codename: String!
+  contentType: String
+  id: ID!
+  name: String!
+  "Specific permissions for this user."
+  userSet: [PublicUser!]!
+}
+
+type PublicUser {
+  id: ID!
+  name: String!
+  userId: Int
+}
+
+type Queries {
+  activeSlate: Slate
+  allActiveBanners: [Banner]
+  allBrandingPeriods: [BrandingPeriod]
+  allEvents(
+    after: String
+    before: String
+    brand: String
+    filter: EventFilterInput
+    first: Int
+    last: Int
+    skipEmbargo: Boolean
+    viewerLiked: Boolean
+  ): EventConnection
+  allFlags: [Flag]
+  allGroups(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): StudentGroupConnection
+  allImages(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): ImageConnection
+  allMarketListings(
+    after: String
+    before: String
+    filters: MarketListingsFilter
+    first: Int
+    last: Int
+  ): MarketListingConnection
+  allMarketSections: [MarketListingSection]
+  allOffers: [Offer]
+  allPages(path: String): [Page]
+  allSlates(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): SlateConnection
+  allVenues(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): VenueConnection
+  brandingPeriod(slug: String): BrandingPeriod
+  bundle(slug: String): Bundle
+  content: [PageResult]
+  event(eventId: Int, mslEventId: Int): Event
+  events: [Event]
+  group(groupId: Int, groupSlug: String): StudentGroup
+  groups: [StudentGroup]
+  image(mediaId: Int): Image
+  knowledgeBase: KnowledgeBase
+  marketListing(listingId: Int): MarketListing
+  marketSection(slug: String): MarketListingSection
+  news: [MSLNewsResult]
+  page(path: String, previewToken: String): Page
+  pages: [MSLPageResult]
+  permissions: [Permission]
+  search(query: String): SearchQuery
+  slate(slateId: Int): Slate
+  top: [String]
+  viewer: ClientUser
+}
+
+type ReferencePage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  content: GenericStreamFieldType
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  relatedLinks: GenericStreamFieldType!
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  staffOwners: GenericStreamFieldType!
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type RequestDetails {
+  listing: MarketListing
+}
+
+type SchemeIndexPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  preamble: GenericStreamFieldType!
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type SchemePage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  heroImage: Image!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  main: GenericStreamFieldType
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  sidebarCards: GenericStreamFieldType!
+  slug: String
+  socialEmailAddress: String!
+  socialFacebookUrl: String!
+  socialInstagramHandle: String!
+  socialSnapchatHandle: String!
+  socialTwitterHandle: String!
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type SearchQuery {
+  content: [PageResult]
+  events: [Event]
+  groups: [StudentGroup]
+  news: [MSLNewsResult]
+  pages: [MSLPageResult]
+  top: [String]
+}
+
+type SectionContentPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  body: GenericStreamFieldType!
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  contentsInSidebar: Boolean!
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  headingImage: Image
+  headingImageAsHero: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  sidebarBody: GenericStreamFieldType!
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type SelectionGridPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  body: GenericStreamFieldType!
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type Slate implements Node {
+  data: GenericScalar
+  displayFrom: DateTime!
+  enhancedData: GenericScalar
+  "The ID of the object."
+  id: ID!
+  notes: String!
+  slateId: Int
+}
+
+type SlateConnection {
+  "Contains the nodes in this connection."
+  edges: [SlateEdge]!
+  "Pagination data for this connection."
+  pageInfo: PageInfo!
+}
+
+"A Relay edge containing a `Slate` and its cursor."
+type SlateEdge {
+  "A cursor for use in pagination"
+  cursor: String!
+  "The item at the end of the edge"
+  node: Slate
+}
+
+type StaffMemberSnippet implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  email: String
+  id: ID!
+  jobDescription: RichTextFieldType!
+  jobTitle: String
+  lastPublishedAt: DateTime
+  mobilePhoneNumber: String
+  name: String!
+  officeLocation: String
+  officePhoneNumber: String
+  parentPage: Page
+  path: String
+  photo: Image
+  searchDescription: String
+  seoTitle: String
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type StaffPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  body: GenericStreamFieldType!
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type StubPage implements Page {
+  ancestorPages(inMenu: Boolean): [Page]
+  closestAncestorOfType(contentType: String, inclusive: Boolean): Page
+  contentType: String
+  depth: Int!
+  draftTitle: String!
+  expireAt: DateTime
+  expired: Boolean!
+  firstPublishedAt: DateTime
+  goLiveAt: DateTime
+  hasUnpublishedChanges: Boolean!
+  id: ID!
+  lastPublishedAt: DateTime
+  latestRevisionCreatedAt: DateTime
+  live: Boolean!
+  locked: Boolean!
+  numchild: Int!
+  owner: PublicUser
+  parentPage: Page
+  path: String
+  searchDescription: String
+  seoTitle: String
+  "Whether a link to this page will appear in automatically generated menus"
+  showInMenus: Boolean!
+  siblingPages(inMenu: Boolean): [Page]
+  slug: String
+  subPages(inMenu: Boolean): [Page]
+  title: String
+  urlPath: String
+}
+
+type StudentGroup implements Node {
+  awards: [AwardPeriod]
+  createdAt: DateTime!
+  description: String!
+  eventSet(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): EventConnection!
+  groupId: Int
+  "The ID of the object."
+  id: ID!
+  isProspective: Boolean!
+  link: String!
+  logo: Image
+  mslGroup: MSLStudentGroup
+  name: String!
+  slug: String
+}
+
+type StudentGroupConnection {
+  "Contains the nodes in this connection."
+  edges: [StudentGroupEdge]!
+  "Pagination data for this connection."
+  pageInfo: PageInfo!
+}
+
+"A Relay edge containing a `StudentGroup` and its cursor."
+type StudentGroupEdge {
+  "A cursor for use in pagination"
+  cursor: String!
+  "The item at the end of the edge"
+  node: StudentGroup
+}
+
+type Type {
+  eventSet(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): EventConnection!
+  id: ID!
+  name: String!
+  slug: String!
+}
+
+type UpdateMarketListing {
+  listing: MarketListing
+  ok: Boolean
+}
+
+type UpdateSlate {
+  ok: Boolean
+  slate: Slate
+}
+
+type Venue implements Node {
+  containsFlashingLights: VenueContainsFlashingLights!
+  containsFlashingLightsReasoning: String!
+  containsLoudMusic: VenueContainsLoudMusic!
+  containsLoudMusicReasoning: String!
+  containsLowLight: VenueContainsLowLight!
+  containsLowLightReasoning: String!
+  containsUnevenGround: VenueContainsUnevenGround!
+  containsUnevenGroundReasoning: String!
+  entryInformation: String!
+  ephemeral: Boolean!
+  eventSet(
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): EventConnection!
+  featuredImage: Image
+  hasAccessibleToilets: VenueHasAccessibleToilets!
+  hasAccessibleToiletsReasoning: String!
+  hasChangingFacilities: VenueHasChangingFacilities!
+  hasChangingFacilitiesReasoning: String!
+  hasGenderNeutralToilets: VenueHasGenderNeutralToilets!
+  hasGenderNeutralToiletsReasoning: String!
+  hasLevelAccess: VenueHasLevelAccess!
+  hasLevelAccessReasoning: String!
+  "The ID of the object."
+  id: ID!
+  name: String!
+  "Link this outlet with a venue's events"
+  outletpageSet: [OutletPage!]!
+  shortDescription: String!
+  venueId: Int
+  venueType: VenueVenueType!
+  websiteLink: String!
+}
+
+type VenueConnection {
+  "Contains the nodes in this connection."
+  edges: [VenueEdge]!
+  "Pagination data for this connection."
+  pageInfo: PageInfo!
+}
+
+"A Relay edge containing a `Venue` and its cursor."
+type VenueEdge {
+  "A cursor for use in pagination"
+  cursor: String!
+  "The item at the end of the edge"
+  node: Venue
+}
+
+"An enumeration."
+enum AwardIcon {
+  #LeafCommunications
+  COMMUNICATIONS
+  #LeafCommunity
+  COMMUNITY
+  #LeafDevelopment
+  DEVELOPMENT
+  #LeafFundraising
+  FUNDRAISING
+  #LeafInclusivity
+  INCLUSIVITY
+  #LeafSocial
+  SOCIAL
+  #LeafStudentVoice
+  STUDENT_VOICE
+  #LeafTeamSussex
+  TEAM_SUSSEX
+}
+
+"An enumeration."
+enum BannerPurpose {
+  #Notice
+  NOTICE
+}
+
+"An enumeration."
+enum BundleTicketLevel {
+  #Limited availability
+  LA
+  #Not applicable
+  NA
+  #Sold out
+  SO
+}
+
+"An enumeration."
+enum BundleTicketType {
+  #ACCA
+  AC
+  #Eventbrite
+  EB
+  #Generic
+  GN
+  #MSL
+  MSL
+  #n/a
+  NA
+  #Native
+  NT
+}
+
+"An enumeration."
+enum EventAlcohol {
+  #Soft drinks & alcohol available
+  AV
+  #Not alcohol focused
+  NF
+  #No alcohol
+  NO
+}
+
+"An enumeration."
+enum EventCost {
+  #Free
+  FREE
+  #n/a
+  NA
+  #Paid
+  PAID
+}
+
+"An enumeration."
+enum EventLikeInitialSource {
+  #Recommendation
+  RECOMMENDATION
+  #Unliked
+  UNLIKED
+  #User
+  USER
+}
+
+"An enumeration."
+enum EventLikeSource {
+  #Recommendation
+  RECOMMENDATION
+  #Unliked
+  UNLIKED
+  #User
+  USER
+}
+
+"An enumeration."
+enum EventLikeSourceLocation {
+  #Collection
+  COLLECTION
+  #Listings
+  LISTINGS
+  #Matcher
+  MATCHER
+}
+
+"An enumeration."
+enum EventTicketLevel {
+  #Limited availability
+  LA
+  #Not applicable
+  NA
+  #Sold out
+  SO
+}
+
+"An enumeration."
+enum EventTicketType {
+  #ACCA
+  AC
+  #Eventbrite
+  EB
+  #Generic
+  GN
+  #MSL
+  MSL
+  #n/a
+  NA
+  #Native
+  NT
+}
+
+"An enumeration."
+enum FalmerUserAuthority {
+  #Internal Staff
+  IS
+  #MSL Users
+  MSL
+}
+
+"An enumeration."
+enum FlagMode {
+  #Force
+  FORCE
+}
+
+"An enumeration."
+enum MatteImageInternalSource {
+  #Default
+  A_100
+  #Student Groups - Logo
+  A_200
+  #Events - Feature
+  A_300
+  #Book Market - Listing
+  A_400
+}
+
+"An enumeration."
+enum VenueContainsFlashingLights {
+  #Not set/inherit
+  A_0
+  #False
+  A_1
+  #True
+  A_2
+}
+
+"An enumeration."
+enum VenueContainsLoudMusic {
+  #Not set/inherit
+  A_0
+  #False
+  A_1
+  #True
+  A_2
+}
+
+"An enumeration."
+enum VenueContainsLowLight {
+  #Not set/inherit
+  A_0
+  #False
+  A_1
+  #True
+  A_2
+}
+
+"An enumeration."
+enum VenueContainsUnevenGround {
+  #Not set/inherit
+  A_0
+  #False
+  A_1
+  #True
+  A_2
+}
+
+"An enumeration."
+enum VenueHasAccessibleToilets {
+  #Not set/inherit
+  A_0
+  #False
+  A_1
+  #True
+  A_2
+}
+
+"An enumeration."
+enum VenueHasChangingFacilities {
+  #Not set/inherit
+  A_0
+  #False
+  A_1
+  #True
+  A_2
+}
+
+"An enumeration."
+enum VenueHasGenderNeutralToilets {
+  #Not set/inherit
+  A_0
+  #False
+  A_1
+  #True
+  A_2
+}
+
+"An enumeration."
+enum VenueHasLevelAccess {
+  #Not set/inherit
+  A_0
+  #False
+  A_1
+  #True
+  A_2
+}
+
+"An enumeration."
+enum VenueVenueType {
+  #Bar
+  BAR
+  #Nightclub
+  CLUB
+  #Uncategorised
+  NA
+}
+
+input EventFilterInput {
+  alcohol: String
+  audienceGoodToMeetPeople: Boolean
+  audienceJustForPgs: Boolean
+  audienceSuitableKidsFamilies: Boolean
+  brand: String
+  bundle: String
+  cost: String
+  curatedBy: ID
+  fromTime: DateTime
+  isOver18Only: Boolean
+  parent: ID
+  studentGroup: ID
+  ticketLevel: String
+  title: String
+  toTime: DateTime
+  type: ID
+  uncurated: Boolean
+  venue: ID
+}
+
+input MarketListingInput {
+  bookAuthor: String!
+  bookTitle: String!
+  contactDetails: String!
+  description: String!
+  price: Float!
+  sectionId: Int!
+}
+
+input MarketListingUpdateInput {
+  bookAuthor: String
+  bookTitle: String
+  contactDetails: String
+  description: String
+  imageId: Int
+  price: Float
+  sectionId: Int
+  state: String
+}
+
+input MarketListingsFilter {
+  own: Boolean
+  q: String
+  section: String
+  sortBy: String
+}
+
+input SlateInput {
+  data: GenericScalar!
+}
+
+"""
+The `DateTime` scalar type represents a DateTime
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar DateTime
+
+scalar GenericStreamFieldType
+
+scalar RichTextFieldType
+
+"""
+The `GenericScalar` scalar type represents a generic
+GraphQL scalar value that could be:
+String, Boolean, Int, Float, List or Object.
+"""
+scalar GenericScalar

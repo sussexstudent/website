@@ -29,7 +29,11 @@ const Homepage: React.FC<RouteComponent> = () => {
             <SlateContainer />
           </div>
           <div>
-            <h2 className="type-double-pica">Latest news</h2>
+            <h2 className="type-double-pica">
+              <a css={{ color: 'black', textDecoration: 'none' }} href="/news">
+                Latest news &raquo;
+              </a>
+            </h2>
             <NewsList items={articles} fullWidth />
           </div>
           {/*<div className="Trail">*/}

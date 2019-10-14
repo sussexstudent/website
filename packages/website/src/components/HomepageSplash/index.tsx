@@ -19,10 +19,11 @@ const HomepageSplashComponent = () => (
     className="HomepageSplash"
     css={{
       backgroundImage: `url(http://falmer.sussexstudent.com/images/OUMWnhdR0NGUUg3NgEbiUcKfzlo=/2745/original/)`,
+      backgroundPositionX: '10%',
     }}
   >
     <div className="LokiContainer">
-      <div className="HomepageSplash__inner" css={{ color: COLORS.BRAND_RED }}>
+      <div className="HomepageSplash__inner" css={{ color: COLORS.WHITE }}>
         <Typer
           timer={basicTimer}
           lines={placeholderHints}

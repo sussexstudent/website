@@ -1,7 +1,7 @@
 import React from 'react';
 import { basicTimer, Typer } from '../Typer';
 import { shuffle } from 'lodash';
-import { COLORS } from '@ussu/common/src/libs/style';
+import { COLORS, MQ } from '@ussu/common/src/libs/style';
 
 const placeholderHints = shuffle([
   'support',
@@ -19,10 +19,12 @@ const HomepageSplashComponent = () => (
     className="HomepageSplash"
     css={{
       backgroundImage: `url(http://falmer.sussexstudent.com/images/OUMWnhdR0NGUUg3NgEbiUcKfzlo=/2745/original/)`,
+      backgroundPositionX: '10%',
+      [MQ.Medium]: { backgroundPositionX: 'center' },
     }}
   >
     <div className="LokiContainer">
-      <div className="HomepageSplash__inner" css={{ color: COLORS.BRAND_RED }}>
+      <div className="HomepageSplash__inner" css={{ color: COLORS.WHITE }}>
         <Typer
           timer={basicTimer}
           lines={placeholderHints}

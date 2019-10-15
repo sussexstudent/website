@@ -47,11 +47,9 @@ const getWayfinderDataFromPage = (page: WayfinderPage) => {
 export const ContentWayfinder: React.FC<WayfinderProps> = ({ page }) => {
   const { section, topic, subnav } = getWayfinderDataFromPage(page);
 
-  if (!section) {
+  if (!section || section.title === 'Homepage') {
     return null;
   }
-
-  console.log(topic);
 
   return (
     <Wayfinder>

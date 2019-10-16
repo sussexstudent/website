@@ -22,6 +22,7 @@ import { SearchProps } from '../../components/SearchApp';
 import loadable from '@loadable/component';
 import { ContentBrowserContainer } from '../../pages/ContentBrowser';
 import Homepage from '../homepage';
+import { ConsentCodeProps } from '../forms/consent';
 
 interface WebsiteApplicationProps extends RouteComponentProps {
   appMountState: AppMountState;
@@ -48,6 +49,11 @@ const LoadableContentBrowser = loadable<ContentBrowserContainer>(async () => {
     '../../pages/ContentBrowser'
   );
   return (props) => <ContentBrowserContainer {...props} />;
+});
+
+const LoadableConsentCode = loadable<ConsentCodeProps>(async () => {
+  const { ConsentCode } = await import('../forms/consent');
+  return (props) => <ConsentCode {...props} />;
 });
 
 const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
@@ -119,6 +125,7 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
           <Route component={ContentAPI} path="/get-involved-next" />
           <Route component={ContentAPI} path="/about-us-next" />
           <Route component={ContentAPI} path="/about-us" />
+          <Route component={LoadableConsentCode} path="/forms/consent/:slug" />
           <Route
             component={ContentAPI}
             path="/get-involved/campaigns-toolkit"

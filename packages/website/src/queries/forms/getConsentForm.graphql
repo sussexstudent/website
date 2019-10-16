@@ -1,0 +1,6 @@
+query ConsentForm($slug: String!) {
+  consentForm(slug: $slug) {
+    title
+    body
+  }
+}

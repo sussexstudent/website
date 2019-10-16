@@ -8,7 +8,7 @@ interface HTMLProps {
   additionalHead: string[];
 }
 
-export const HTML = ({ children, assets, additionalHead = [] }: HTMLProps) => (
+export const Html = ({ children, assets, additionalHead = [] }: HTMLProps) => (
   <CompProvider>
     <html lang="en">
       <head

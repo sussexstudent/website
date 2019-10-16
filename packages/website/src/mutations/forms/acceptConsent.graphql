@@ -1,0 +1,7 @@
+mutation AcceptConsent($slug: String!) {
+  acceptConsent(slug: $slug) {
+    authorisation {
+      code
+    }
+  }
+}

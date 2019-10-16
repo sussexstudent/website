@@ -8,6 +8,7 @@ export default new PreRouter([
   '/book-market', // Book Market App
   '/freshers', // Content API Controlled
   '/services', // Content API Controlled
+  '/forms',
   '/kb',
   '/content-root-example',
   '/search',

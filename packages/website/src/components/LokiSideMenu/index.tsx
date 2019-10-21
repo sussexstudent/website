@@ -33,7 +33,7 @@ export const LokiSideMenu: React.FC<LokiSideMenuProps> = ({
           <UserBar />
         </div>
         <div className="LokiHeader__side-container LokiHeader__side-menu-social">
-          <SocialMenu asList />
+          <SocialMenu asList mobile />
         </div>
       </div>
       <div

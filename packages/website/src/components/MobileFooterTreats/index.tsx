@@ -4,11 +4,11 @@ import { SocialMenu } from '../SocialMenu';
 export const MobileFooterTreats: React.FC = () => (
   <div className="MobileFooterTreats">
     <div className="MobileFooterTreats__social">
-      <SocialMenu />
+      <SocialMenu mobile />
     </div>
     <div>
       <a
-        className="Button Button--yellow"
+        className="Button Button--gray"
         href="/newsletter"
         data-action="newsletter_subscribe"
       >

@@ -36,6 +36,15 @@
     @mixin rounded;
   }
 
+  &--gray {
+    background-color: #36464e;
+  }
+
+  &--white {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
   &[disabled] {
     background-color: var(--color__grey-winter);
     color: var(--color__grey-summer);

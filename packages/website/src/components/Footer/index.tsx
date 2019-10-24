@@ -47,7 +47,7 @@ export const Footer: React.FC = () => (
       <div className="Footer__social">
         <SocialMenu />
         <a
-          className="Button Button--yellow"
+          className="Button Button--white"
           href="/newsletter"
           data-action="newsletter_subscribe"
         >

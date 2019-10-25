@@ -1,6 +1,6 @@
 import React from 'react';
 import MEDIA_DETAIL_QUERY from './MediaDetail.graphql';
-import Loader from '@ussu/website/src/components/Loader';
+import { Loader } from '@ussu/website/src/components/Loader';
 import ImageTreatmentPreview from '../../../components/ImageTreatmentPreview';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { useQuery } from '@apollo/react-hooks';

@@ -1,8 +1,8 @@
 import React from 'react';
 import formatDistance from 'date-fns/formatDistance';
 import GROUP_DETAIL_QUERY from './GroupDetail.graphql';
-import CopyToClipboardButton from '@ussu/website/src/components/CopyToClipboardButton';
-import BackBar from '@ussu/website/src/components/BackBar/Link';
+import { CopyToClipboardButton } from '@ussu/website/src/components/CopyToClipboardButton';
+import { BackBar } from '@ussu/website/src/components/BackBar/Link';
 import { Tags, Tag } from '@ussu/website/src/components/Tags';
 import { FalmerDetailHeader } from '../../../components/FalmerDetailHeader';
 import { useQuery } from '@apollo/react-hooks';

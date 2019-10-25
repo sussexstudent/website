@@ -1,7 +1,7 @@
 import React from 'react';
 import SLATE_DETAIL_QUERY from './SlateDetail.graphql';
 import UPDATE_SLATE_MUTATION from './UpdateSlate.graphql';
-import Loader from '@ussu/website/src/components/Loader';
+import { Loader } from '@ussu/website/src/components/Loader';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { RouteComponentProps } from 'react-router';
 import { SlateEditor } from '../SlateEditor';

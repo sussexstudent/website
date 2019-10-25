@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import CopyToClipboardButton from '@ussu/website/src/components/CopyToClipboardButton';
+import { CopyToClipboardButton } from '@ussu/website/src/components/CopyToClipboardButton';
 import ImageTreatmentPreview from '../../../components/ImageTreatmentPreview';
 import FalmerSelectEvent from '../../FalmerSelectEvent';
 

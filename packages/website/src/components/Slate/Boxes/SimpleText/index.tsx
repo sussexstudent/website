@@ -3,7 +3,6 @@ import FauxLink from '../../../FauxLink';
 import { SlateBox } from '@ussu/common/src/types/slates';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
-import { COLORS } from '@ussu/common/src/libs/style';
 import { SlateBoxBackground, SlateBoxContainer } from '../../Box';
 import { css } from '@emotion/core';
 
@@ -15,29 +14,32 @@ interface IProps {
 }
 
 const headingContainerStyle = css({
-  padding: '1rem',
-  paddingTop: 230,
+  margin: '0 auto',
+  padding: '4rem',
+  textAlign: 'center',
 });
 
 const headingTitle = css({
   ...type(TypeSize.Canon, Typeface.Secondary),
   boxDecorationBreak: 'clone',
   padding: '0 0.2rem',
-  backgroundColor: COLORS.BRAND_YELLOW,
   fontWeight: 'bold',
-  color: '#000000',
+  color: '#fff',
   display: 'inline',
   position: 'relative',
   lineHeight: 1,
   clear: 'right',
 });
 
+const headingDescriptionWrapper = css({
+  marginTop: '1rem',
+});
+
 const headingDescription = css({
   ...type(TypeSize.Pica, Typeface.Secondary),
   display: 'inline-block',
   fontWeight: 'bold',
-  backgroundColor: COLORS.BRAND_YELLOW,
-  color: '#000000',
+  color: '#fff',
   maxWidth: 550,
   padding: '0 0.2rem',
   marginTop: -2,
@@ -56,7 +58,7 @@ const component: React.FC<IProps> = ({
         <div css={headingContainerStyle}>
           <h1 css={headingTitle}>{title}</h1>
           {description ? (
-            <div>
+            <div css={headingDescriptionWrapper}>
               <div css={headingDescription}>{description}</div>
             </div>
           ) : null}

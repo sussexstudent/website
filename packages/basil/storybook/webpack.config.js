@@ -57,6 +57,21 @@ const setup = ({ config }) => {
         },
       ],
     },
+    {
+      test: /\.(graphql|gql)$/,
+      exclude: /node_modules/,
+      use: 'graphql-tag/loader',
+    },
+    {
+      test: /\.m?jsx?$/,
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          envName: 'bundle'
+        }
+      }
+      ],
+    },
     ]);
 
   return config;

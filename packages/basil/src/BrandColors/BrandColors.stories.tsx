@@ -2,20 +2,19 @@ import { storiesOf } from '@storybook/react';
 import { BrandColorCard } from './index';
 import { colors } from '../colors';
 
-storiesOf('Brand Color', module)
-  .add('Green', () => <BrandColorCard color={colors.BrandGreen} />)
-  .add('Yellow', () => <BrandColorCard color={colors.BrandYellow} />)
-  .add('Blue', () => <BrandColorCard color={colors.BrandBlue} />)
-  .add('Red', () => <BrandColorCard color={colors.BrandRed} />)
-  .add('Pink', () => <BrandColorCard color={colors.BrandPink} />)
-  .add('GreySadSlate', () => <BrandColorCard color={colors.GreySadSlate} />)
-  .add('GreySlate', () => <BrandColorCard color={colors.GreySlate} />)
-  .add('GreyWorstDayOfWinter', () => (
+storiesOf('Brand Color', module).add('All colors', () => (
+  <div>
+    <BrandColorCard color={colors.BrandGreen} />
+    <BrandColorCard color={colors.BrandYellow} />
+    <BrandColorCard color={colors.BrandBlue} />
+    <BrandColorCard color={colors.BrandRed} />
+    <BrandColorCard color={colors.BrandPink} />
+    <BrandColorCard color={colors.GreySadSlate} />
+    <BrandColorCard color={colors.GreySlate} />
     <BrandColorCard color={colors.GreyWorstDayOfWinter} />
-  ))
-  .add('GreyWinter', () => <BrandColorCard color={colors.GreyWinter} />)
-  .add('GreySpring', () => <BrandColorCard color={colors.GreySpring} />)
-  .add('GreySummer', () => <BrandColorCard color={colors.GreySummer} />)
-  .add('GreyBackground', () => (
+    <BrandColorCard color={colors.GreyWinter} />
+    <BrandColorCard color={colors.GreySpring} />
+    <BrandColorCard color={colors.GreySummer} />
     <BrandColorCard color={colors.GreyBackground} />
-  ));
+  </div>
+));

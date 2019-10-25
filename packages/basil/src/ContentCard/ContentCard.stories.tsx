@@ -12,10 +12,4 @@ storiesOf('ContentCard', module)
     <ContentCard className="ContentCard__error-message">
       <span>This is an error message in a content card</span>
     </ContentCard>
-  ))
-  .add('Anchor', () => (
-    <ContentCard anchor="example">
-      <h1>Anchor example</h1>
-      <span>This would have the anchor name defined</span>
-    </ContentCard>
   ));

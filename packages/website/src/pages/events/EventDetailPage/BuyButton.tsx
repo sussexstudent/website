@@ -8,7 +8,6 @@ const buttonStyle = ({ disabled }: { disabled: boolean }) =>
   css({
     textAlign: 'center',
     background: disabled ? COLORS.GREY_WINTER : COLORS.BRAND_RED,
-    borderRadius: 6,
     padding: '0.5rem',
     display: 'block',
     width: '100%',

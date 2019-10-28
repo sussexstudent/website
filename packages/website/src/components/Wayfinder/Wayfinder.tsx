@@ -47,7 +47,7 @@ export const WayfinderTopLevel: React.FC<{ title: string; to: string }> = ({
   return (
     <div
       css={{
-        background: COLORS.GREY_SUMMER,
+        background: COLORS.GREY_SPRING,
         fontSize: '1.1em',
       }}
     >

@@ -64,7 +64,7 @@ module.exports = {
   },
   rounded: function roundedMixin(mixin, type) {
     const self = {
-      'border-radius': '6px',
+      'border-radius': '0px',
     };
 
     if (type === 'mask') {
@@ -92,7 +92,7 @@ module.exports = {
         return {
           '&': {
             'box-shadow': '0 1px 2px 0 rgba(0, 0, 0, 0.15);',
-            'border-radius': '6px',
+            'border-radius': '0px',
             overflow: 'hidden',
             transition: 'box-shadow 300ms ease',
           },
@@ -109,7 +109,7 @@ module.exports = {
           '&': {
             'background-color': '#ffffff',
             'box-shadow': '0 1px 2px 0 rgba(0, 0, 0, 0.15);',
-            'border-radius': '6px',
+            'border-radius': '0px',
             overflow: 'hidden',
           },
         };
@@ -117,14 +117,14 @@ module.exports = {
       case 'floating': {
         return {
           'box-shadow': '0 1px 4px 0 rgba(0, 0, 0, 0.1);',
-          'border-radius': '6px',
+          'border-radius': '0px',
         };
       }
       case 'standard-force': {
         return {
           '&': {
             'box-shadow': '0 1px 2px 0 rgba(0, 0, 0, 0.15) !important;',
-            'border-radius': '6px !important',
+            'border-radius': '0px !important',
             overflow: 'hidden !important',
             transition: 'box-shadow 300ms ease !important',
           },
@@ -140,7 +140,7 @@ module.exports = {
         return {
           '&': {
             'box-shadow': '0 1px 2px 0 rgba(0, 0, 0, 0.15);',
-            'border-radius': '6px',
+            'border-radius': '0px',
           },
           '&:hover': {
             'box-shadow': '0 3px 5px 0 rgba(0, 0, 0, 0.15);',

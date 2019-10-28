@@ -14,7 +14,6 @@ export const SlateBoxContainerStyleable: React.FC = ({
   <div
     css={{
       boxShadow: '0 2px 16px 3px rgba(0, 0, 0, 0.15)',
-      borderRadius: '6px',
       overflow: 'hidden',
       transition: 'box-shadow 300ms ease',
       background: 'white',

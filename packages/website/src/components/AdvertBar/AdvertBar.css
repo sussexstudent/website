@@ -1,5 +1,5 @@
 .AdvertBar {
-  background-color: #000000;
+  background-color: #2d3142;
   box-sizing: border-box;
   display: flex;
 
@@ -18,24 +18,6 @@
 
   &--dark {
     background-color: var(--color__grey-sad-slate);
-  }
-
-  &--donatello {
-    background: #a42928;
-    box-shadow: inset -4px 3px 5px rgba(117, 16, 16, 0.61);
-    padding-top: 8px;
-
-    & a {
-      width: 100%;
-      max-width: 600px;
-      max-height: 120px;
-    }
-
-    & svg {
-      width: 100%;
-      max-height: 66px;
-      height: 100%;
-    }
   }
 
   & a {

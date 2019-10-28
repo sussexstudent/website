@@ -1,7 +1,5 @@
 .Button {
-  @mixin card standard;
-
-  background-color: var(--color__brand-blue);
+  background-color: #2d3142;
   color: #ffffff;
   display: inline-block;
   padding: 0.4em 0.8em;

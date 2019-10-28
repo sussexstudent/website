@@ -23,5 +23,5 @@ export const cardRaised = css({
 });
 
 export const contentCard = css({
-  borderRadius: 6,
+  borderRadius: 2,
 });

@@ -45,17 +45,10 @@
 }
 
 .LokiMenu__item .LokiMenu__link {
-  background-color: var(--color__brand-red);
   color: #fff;
-
-  @media (--medium) {
-    background-color: transparent;
-    color: var(--color__brand-red);
-  }
 
   &:hover,
   &.LokiMenu__link--active {
-    background-color: var(--color__brand-red);
     color: #fff;
   }
 }

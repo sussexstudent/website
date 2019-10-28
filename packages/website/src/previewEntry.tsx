@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // probs not great
-(window as any).emitter = new mitt();
+(window as any).emitter = mitt();
 
 if (document.querySelector('.Body')) {
   Modal.setAppElement('.Body');

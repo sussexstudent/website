@@ -13,7 +13,7 @@ Raven.config('https://fd478822b69843a2a3718c621c5fadad@sentry.io/158659', {
 }).install();
 
 // probs not great
-(window as any).emitter = new mitt();
+(window as any).emitter = mitt();
 
 (window as any).LinkshimAsyncLink = {
   referrer_log() {},

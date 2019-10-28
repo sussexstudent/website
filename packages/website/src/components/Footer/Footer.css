@@ -32,14 +32,5 @@
 
   .Footer__social {
     display: block;
-
-    & .Social {
-      justify-content: flex-end;
-      margin-bottom: 1lh;
-    }
-
-    & .Button {
-      float: right;
-    }
   }
 }

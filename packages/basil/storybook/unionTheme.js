@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import { colors } from '../dist/index.esm';
+import { colors } from '../src/colors.ts';
 
 export default create({
   base: 'light',

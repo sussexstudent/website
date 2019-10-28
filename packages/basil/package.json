@@ -23,7 +23,12 @@
     "storybook:build": "build-storybook -c ./storybook",
     "postinstall": "yarn build"
   },
-  "peerDependencies": {
-    "@emotion/core": "^10.0.10"
+  "dependencies": {
+    "@emotion/core": "^10.0.21",
+    "@types/jest": "^24.0.18",
+    "@typescript-eslint/eslint-plugin": "^2.3.3",
+    "@typescript-eslint/parser": "^2.3.3",
+    "danger": "^9.2.1",
+    "webpack": "^4.41.1"
   }
 }

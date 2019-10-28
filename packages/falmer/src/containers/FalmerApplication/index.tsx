@@ -2,12 +2,12 @@ import React, { useCallback, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { requestAuthToken } from '../../ducks/auth';
 import FalmerHeader from '../../components/FalmerHeader';
-import Loader from '@ussu/website/src/components/Loader';
+import { Loader } from '@ussu/website/src/components/Loader';
 import { RootState } from '@ussu/common/src/types/falmer';
 import { Switch, Route } from 'react-router-dom';
 import { useMappedState, useDispatch } from 'redux-react-hook';
 import Modal from 'react-modal';
-import { EventsListProps } from '@ussu/website/src/containers/EventsCalender';
+import { EventsListProps } from '@ussu/website/src/pages/events/EventsCalender';
 import loadable from '@loadable/component';
 import { LoginPage } from '../../components/LoginPage';
 

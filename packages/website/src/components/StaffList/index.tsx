@@ -32,7 +32,7 @@ export const StaffList: StreamFieldBlock<StaffListBlockData> = ({
   return (
     <div>
       <span className="u-position-anchor" id={slugify(heading)} />
-      <h2 className="Heading Heading--highlight">{heading}</h2>
+      <h2 className="Heading">{heading}</h2>
       <ul className="StaffList TrailGrid TrailGrid--medium">
         {body.map((member) => (
           <li className="StaffList__item TrailGrid__item">

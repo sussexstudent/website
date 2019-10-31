@@ -11,6 +11,26 @@ storiesOf('SocialArray', module)
           name: '@example',
           link: 'http://twitter.com/example',
         },
+        facebook: {
+          name: '@example',
+          link: '#',
+        },
+        instagram: {
+          name: '@example',
+          link: '#',
+        },
+        snapchat: {
+          name: '@example',
+          link: '#',
+        },
+        linkedin: {
+          name: '@example',
+          link: '#',
+        },
+        website: {
+          name: '@example',
+          link: '#',
+        },
       }}
     />
   ));

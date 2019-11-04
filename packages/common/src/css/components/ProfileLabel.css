@@ -1,6 +1,6 @@
 .ProfileLabel {
-  background-color: var(--color__brand-blue);
-  color: #ffffff;
+  background-color: #fff;
+  color: #2d3142;
   font-family: var(--type__primary);
   font-weight: 600;
   padding: calc(5px + 0.3rem) 0.4rem 0.2rem;

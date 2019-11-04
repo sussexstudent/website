@@ -144,7 +144,7 @@
     outline: 0;
 
     &:focus {
-      outline: 3px solid var(--color__brand-yellow);
+      outline: 3px solid var(--color__brand-coral);
       color: var(--color__grey-slate);
     }
   }

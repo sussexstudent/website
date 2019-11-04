@@ -1,18 +1,6 @@
 .Heading {
   margin-top: 0;
 
-  &--highlight {
-    box-decoration-break: clone;
-    padding: 0 0.2em;
-    background-color: var(--color__brand-yellow);
-    color: #000000;
-    display: inline;
-    position: relative;
-    line-height: 1 !important;
-    margin: 0;
-    font-family: var(--type__primary);
-  }
-
   &--highlight-w_b {
     color: #ffffff;
     background-color: #000000;

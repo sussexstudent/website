@@ -1,7 +1,7 @@
 :root {
   /* BRAND COLORS */
   --color__brand-green: #1db8a4;
-  --color__brand-yellow: #ffdb7a;
+  --color__brand-yellow: #ffdb7a; /* being culled */
   --color__brand-blue: #27428c;
   --color__brand-blue--hover: #0e2973;
   --color__brand-red: #ee534f;

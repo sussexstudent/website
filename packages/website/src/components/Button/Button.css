@@ -16,11 +16,6 @@
     font-family: var(--type__primary) !important;
   }
 
-  &--yellow {
-    background: var(--color__brand-yellow);
-    color: #000000;
-  }
-
   &--color-green {
     background-color: var(--color__brand-green);
   }

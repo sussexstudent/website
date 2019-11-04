@@ -18,9 +18,10 @@
   }
 
   &__title {
-    background: var(--color__brand-yellow);
+    background: var(--color__brand-coral);
     display: block;
     box-sizing: border-box;
+    color: #fff;
   }
 
   &__secondary {

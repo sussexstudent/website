@@ -10,7 +10,7 @@ export const MenuIcon = () => {
     >
       <g fill="none" fillRule="evenodd">
         <path
-          fill="#323232"
+          fill="#fff"
           d="M2.567 6H1V3h21v3H2.567zm4.022 6H5V9h17v3H6.589zm-4.022 6H1v-3h21v3H2.567z"
         />
       </g>

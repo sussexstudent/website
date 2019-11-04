@@ -134,10 +134,11 @@
     border: 0;
     width: 100%;
 
+    border-radius: 2px;
     font-family: inherit;
     font-weight: 600;
     font-size: 18px;
-    padding: 0.2rem;
+    padding: 0.3rem;
     box-sizing: border-box;
     color: var(--color__grey-winter);
 
@@ -225,6 +226,7 @@
     border: 0;
     padding: 0 0.5rem;
     display: block;
+    color: #fff;
     text-decoration: none;
     font-family: var(--type__primary);
 

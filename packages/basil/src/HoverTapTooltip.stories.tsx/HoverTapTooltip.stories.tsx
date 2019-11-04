@@ -1,7 +1,8 @@
-import { storiesOf } from '@storybook/react';
 import { HoverTapTooltip } from '../../../website/src/components/HoverTapToolTip/index';
 
-storiesOf('HoverTapTooltip', module).add('default', () => (
+export default { title: 'HoverTapTooltip' };
+
+export const Default = () => (
   <div>
     <h1>Tooltip demo</h1>
 
@@ -18,4 +19,4 @@ storiesOf('HoverTapTooltip', module).add('default', () => (
       )}
     </HoverTapTooltip>
   </div>
-));
+);

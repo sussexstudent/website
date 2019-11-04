@@ -1,8 +1,8 @@
-import { storiesOf } from '@storybook/react';
 import { ErrorState } from '../../../website/src/components/ErrorState/index';
 
-storiesOf('ErrorState', module).add('default', () => (
+export default { title: 'ErrorState' };
+export const Standard = () => (
   <div>
     <ErrorState />
   </div>
-));
+);

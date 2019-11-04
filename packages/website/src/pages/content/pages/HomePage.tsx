@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import { PersonCollectionFigure } from '../../../components/PersonCollection/PersonCollectionFigure';
 import { PersonCollection } from '../../../components/PersonCollection';
 import { shuffle } from 'lodash';
+import { ScrollableSlice } from '@ussu/basil/src/ScrollableSlice';
 
 interface FigureCollectionBlock {
   id: string;
@@ -35,31 +36,35 @@ export const Homepage: React.FC<HomepageProps> = (props) => {
       <Helmet title={undefined} />
       <div className="ContentBlock">
         <h3 className="ContentBlock__heading">Your full-time officers</h3>
-        <PersonCollection size="small">
-          {shuffle(fullTimeOfficers).map((item) => (
-            <PersonCollectionFigure
-              key={item.id}
-              title={item.value.title}
-              sub={item.value.subtitle}
-              link={item.value.link}
-              imageResource={item.value.image.resource}
-            />
-          ))}
-        </PersonCollection>
+        <ScrollableSlice>
+          <PersonCollection size="small">
+            {shuffle(fullTimeOfficers).map((item) => (
+              <PersonCollectionFigure
+                key={item.id}
+                title={item.value.title}
+                sub={item.value.subtitle}
+                link={item.value.link}
+                imageResource={item.value.image.resource}
+              />
+            ))}
+          </PersonCollection>
+        </ScrollableSlice>
       </div>
       <div className="ContentBlock">
         <h3 className="ContentBlock__heading">Your part-time officers</h3>
-        <PersonCollection size="small">
-          {shuffle(partTimeOfficers).map((item) => (
-            <PersonCollectionFigure
-              key={item.id}
-              title={item.value.title}
-              sub={item.value.subtitle}
-              link={item.value.link}
-              imageResource={item.value.image.resource}
-            />
-          ))}
-        </PersonCollection>
+        <ScrollableSlice>
+          <PersonCollection size="small">
+            {shuffle(partTimeOfficers).map((item) => (
+              <PersonCollectionFigure
+                key={item.id}
+                title={item.value.title}
+                sub={item.value.subtitle}
+                link={item.value.link}
+                imageResource={item.value.image.resource}
+              />
+            ))}
+          </PersonCollection>
+        </ScrollableSlice>
       </div>
     </div>
   );

@@ -12,9 +12,8 @@ interface IProps {
 export const PersonCollection: React.FC<IProps> = ({
   children,
   items = null,
-  size = 'medium',
 }) => (
-  <ul className={`PersonCollection TrailGrid TrailGrid--${size}`}>
+  <ul className={`PersonCollection`}>
     {items === null
       ? children
       : items.map((item) => <PersonCollectionFigure {...item} />)}

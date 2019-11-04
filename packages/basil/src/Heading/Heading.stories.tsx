@@ -1,7 +1,8 @@
-import { storiesOf } from '@storybook/react';
 import { Heading, HeadingLevel } from '../../../website/src/components/Heading';
 
-storiesOf('Headings', module).add('default', () => (
+export default { title: 'Headings' };
+
+export const Default = () => (
   <div>
     <Heading level={HeadingLevel.h1}>This is a level 1 heading </Heading>
     <hr></hr>
@@ -16,4 +17,4 @@ storiesOf('Headings', module).add('default', () => (
     <Heading level={HeadingLevel.h6}>This is a level 6 heading </Heading>
     <hr></hr>
   </div>
-));
+);

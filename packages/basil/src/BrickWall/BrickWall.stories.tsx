@@ -1,6 +1,6 @@
-import { storiesOf } from '@storybook/react';
+export default { title: 'Brick Wall' };
 
-storiesOf('Brick Wall', module).add('default', () => (
+export const Default = () => (
   <ul className="BrickWall List--reset">
     <li className="BrickWall__item">
       <button className="BrickWall__anchor" type="button">
@@ -23,4 +23,4 @@ storiesOf('Brick Wall', module).add('default', () => (
       </button>
     </li>
   </ul>
-));
+);

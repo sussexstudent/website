@@ -1,8 +1,9 @@
-import { storiesOf } from '@storybook/react';
 import { SocialMenu } from '../../../website/src/components/SocialMenu';
 import { css } from '@emotion/core';
 
-storiesOf('Mobile Footer Treats', module).add('default', () => (
+export default { title: 'Mobile Footer Treats' };
+
+export const Default = () => (
   <div className="MobileFooterTreats" css={css({ display: 'block' })}>
     <div className="MobileFooterTreats__social">
       <SocialMenu mobile />
@@ -20,4 +21,4 @@ storiesOf('Mobile Footer Treats', module).add('default', () => (
       <span>Back to top</span>
     </a>
   </div>
-));
+);

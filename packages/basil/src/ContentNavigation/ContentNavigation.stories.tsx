@@ -1,4 +1,3 @@
-import { storiesOf } from '@storybook/react';
 import { ContentNavigation } from '../../../website/src/components/ContentNavigation/index';
 import slugify from '@ussu/common/src/libs/slugify';
 
@@ -9,7 +8,9 @@ const headings = [
   'Navigation child 4',
 ];
 
-storiesOf('Content Navigation', module).add('default', () => (
+export default { title: 'Content Navigation' };
+
+export const Default = () => (
   <ContentNavigation
     title="Navigation"
     items={headings.map((heading) => ({
@@ -18,4 +19,4 @@ storiesOf('Content Navigation', module).add('default', () => (
       children: [],
     }))}
   />
-));
+);

@@ -1,6 +1,5 @@
-import { storiesOf } from '@storybook/react';
 import { PatternPlaceholder } from '../../../website/src/components/PatternPlaceholder';
 
-storiesOf('Pattern Placeholder', module).add('default', () => (
-  <PatternPlaceholder />
-));
+export default { title: 'Pattern Placeholder' };
+
+export const Standard = () => <PatternPlaceholder />;

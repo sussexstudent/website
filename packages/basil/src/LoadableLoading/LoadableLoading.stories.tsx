@@ -1,13 +1,19 @@
-import { storiesOf } from '@storybook/react';
 import { LoadableLoading } from '../../../website/src/components/LoadableLoading/index';
 
-storiesOf('Loadable Loading', module)
-  .add('Error', () => (
-    <LoadableLoading error={new Error()} timedOut={false} pastDelay={false} />
-  ))
-  .add('Timed out', () => (
-    <LoadableLoading error={null} timedOut={true} pastDelay={false} />
-  ))
-  .add('Past delay', () => (
-    <LoadableLoading error={null} timedOut={false} pastDelay={true} />
-  ));
+export default { title: 'Module Loader' };
+
+export const ErrorState = () => (
+  <LoadableLoading
+    error={new Error('failure')}
+    timedOut={false}
+    pastDelay={false}
+  />
+);
+
+export const TimeOutState = () => (
+  <LoadableLoading error={null} timedOut={true} pastDelay={false} />
+);
+
+export const PastDelayState = () => (
+  <LoadableLoading error={null} timedOut={false} pastDelay={true} />
+);

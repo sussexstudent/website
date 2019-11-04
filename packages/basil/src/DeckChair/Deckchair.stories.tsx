@@ -1,8 +1,9 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { Deckchair } from '../../../website/src/components/Deckchair/index';
 
-storiesOf('Deckchair', module).add('default', () => (
+export default { title: 'Deckchair' };
+
+export const Default = () => (
   <div>
     <Deckchair
       header="Some short header"
@@ -15,4 +16,4 @@ storiesOf('Deckchair', module).add('default', () => (
       color="green"
     />
   </div>
-));
+);

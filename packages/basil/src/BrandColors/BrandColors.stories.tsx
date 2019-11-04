@@ -1,8 +1,9 @@
-import { storiesOf } from '@storybook/react';
 import { BrandColorCard } from './index';
 import { colors } from '../colors';
 
-storiesOf('Brand Color', module).add('All colors', () => (
+export default { title: 'Brand Color' };
+
+export const AllColors = () => (
   <div>
     <BrandColorCard color={colors.BrandGreen} />
     <BrandColorCard color={colors.BrandYellow} />
@@ -17,4 +18,4 @@ storiesOf('Brand Color', module).add('All colors', () => (
     <BrandColorCard color={colors.GreySummer} />
     <BrandColorCard color={colors.GreyBackground} />
   </div>
-));
+);

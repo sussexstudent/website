@@ -1,6 +1,6 @@
-import { storiesOf } from '@storybook/react';
 import { BackBar } from '../../../website/src/components/BackBar/index';
 
-storiesOf('BackBar', module).add('standard', () => (
+export default { title: 'BackBar' };
+export const Standard = () => (
   <BackBar href="http://sussexstudent.com/">{`What's on`}</BackBar>
-));
+);

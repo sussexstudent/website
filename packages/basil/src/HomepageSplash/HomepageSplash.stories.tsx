@@ -1,4 +1,5 @@
-import { storiesOf } from '@storybook/react';
 import { HomepageSplash } from '../../../website/src/components/HomepageSplash/index';
 
-storiesOf('Homepage Splash', module).add('standard', () => <HomepageSplash />);
+export default { title: 'Homepage Splash' };
+
+export const Standard = () => <HomepageSplash />;

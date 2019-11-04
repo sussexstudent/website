@@ -1,6 +1,5 @@
-import { storiesOf } from '@storybook/react';
 import { NewsletterSignup } from '../../../website/src/components/NewsletterSignup/index';
 
-storiesOf('NewsletterSignup', module).add('default', () => (
-  <NewsletterSignup />
-));
+export default { title: 'NewsletterSignup' };
+
+export const Default = () => <NewsletterSignup />;

@@ -1,6 +1,3 @@
-import { storiesOf } from '@storybook/react';
-import { Storybase } from '../../../website/src/components/Storybase';
-
 const types = [
   {
     name: 'canon',
@@ -40,53 +37,52 @@ const types = [
   },
 ];
 
-storiesOf('Typography', module)
-  .addDecorator(Storybase())
-  .add('default', () => (
-    <div className="LokiContainer">
-      <h1>Primary typeface: Larsseit Bold</h1>
-      <div className="type-primary" style={{ fontWeight: 600 }}>
-        {types.map((t) => (
-          <div
-            style={{
-              display: 'flex',
-              borderBottom: '1px solid grey',
-              marginBottom: '1rem',
-              paddingBottom: '1rem',
-            }}
-          >
-            <div style={{ width: '200px' }}>
-              {t.title} <pre>{t.name}</pre>
-            </div>
-            <div style={{ flex: '1 1 0' }} className={`type-${t.name}`}>
-              Earlier this month, we celebrated student success and awarded
-              volunteers, campaigners and societies for making Sussex such a
-              great place to be at the Student Awards.
-            </div>
+export default { title: 'Typography' };
+export const Standard = () => (
+  <div className="LokiContainer">
+    <h1>Primary typeface: Larsseit Bold</h1>
+    <div className="type-primary" style={{ fontWeight: 600 }}>
+      {types.map((t) => (
+        <div
+          style={{
+            display: 'flex',
+            borderBottom: '1px solid grey',
+            marginBottom: '1rem',
+            paddingBottom: '1rem',
+          }}
+        >
+          <div style={{ width: '200px' }}>
+            {t.title} <pre>{t.name}</pre>
           </div>
-        ))}
-      </div>
-      <h1>Secondary typeface: Helvetica Neue, Helvetica, Arial</h1>
-      <div>
-        {types.map((t) => (
-          <div
-            style={{
-              display: 'flex',
-              borderBottom: '1px solid grey',
-              marginBottom: '1rem',
-              paddingBottom: '1rem',
-            }}
-          >
-            <div style={{ width: '200px' }}>
-              {t.title} <pre>{t.name}</pre>
-            </div>
-            <div style={{ flex: '1 1 0' }} className={`type-${t.name}`}>
-              Earlier this month, we celebrated student success and awarded
-              volunteers, campaigners and societies for making Sussex such a
-              great place to be at the Student Awards.
-            </div>
+          <div style={{ flex: '1 1 0' }} className={`type-${t.name}`}>
+            Earlier this month, we celebrated student success and awarded
+            volunteers, campaigners and societies for making Sussex such a great
+            place to be at the Student Awards.
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
-  ));
+    <h1>Secondary typeface: Helvetica Neue, Helvetica, Arial</h1>
+    <div>
+      {types.map((t) => (
+        <div
+          style={{
+            display: 'flex',
+            borderBottom: '1px solid grey',
+            marginBottom: '1rem',
+            paddingBottom: '1rem',
+          }}
+        >
+          <div style={{ width: '200px' }}>
+            {t.title} <pre>{t.name}</pre>
+          </div>
+          <div style={{ flex: '1 1 0' }} className={`type-${t.name}`}>
+            Earlier this month, we celebrated student success and awarded
+            volunteers, campaigners and societies for making Sussex such a great
+            place to be at the Student Awards.
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+);

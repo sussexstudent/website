@@ -1,4 +1,3 @@
-import { storiesOf } from '@storybook/react';
 import { BreadcrumbBar } from '../../../website/src/components/BreadcrumbBar/index';
 
 const crumbs = [
@@ -16,6 +15,6 @@ const crumbs = [
   </a>,
 ];
 
-storiesOf('BreadcrumbBar', module).add('default', () => (
-  <BreadcrumbBar>{crumbs}</BreadcrumbBar>
-));
+export default { title: 'BreadcrumbBar' };
+
+export const normal = () => <BreadcrumbBar>{crumbs}</BreadcrumbBar>;

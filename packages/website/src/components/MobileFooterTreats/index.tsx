@@ -8,7 +8,7 @@ export const MobileFooterTreats: React.FC = () => (
     </div>
     <div>
       <a
-        className="Button Button--gray"
+        className="Button"
         href="/newsletter"
         data-action="newsletter_subscribe"
       >

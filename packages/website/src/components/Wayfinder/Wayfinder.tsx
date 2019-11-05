@@ -122,7 +122,7 @@ export const WayfinderSecondLevel: React.FC<{ title: string; to: string }> = ({
           css={{
             display: 'inline-blokc',
             paddingRight: '1rem',
-            color: '#2d3142',
+            color: '#27363E',
             textDecoration: 'none',
             paddingTop: '0.4rem',
             paddingBottom: '0.4rem',
@@ -143,7 +143,7 @@ export const WayfinderSecondLevel: React.FC<{ title: string; to: string }> = ({
                       {
                         padding: '0 0.4rem',
                         textDecoration: 'none',
-                        color: '#2d3142',
+                        color: '#27363E',
                       },
                     ]}
                     to={item.props.to}
@@ -181,7 +181,7 @@ export const WayfinderThirdLevel: React.FC<{ title: string; to: string }> = ({
             display: 'inline-block',
             paddingRight: '1rem',
             textDecoration: 'none',
-            color: '#2d3142',
+            color: '#27363E',
             paddingTop: '0.4rem',
             paddingBottom: '0.4rem',
           }}

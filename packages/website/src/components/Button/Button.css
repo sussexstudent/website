@@ -1,5 +1,5 @@
 .Button {
-  background-color: #2d3142;
+  background-color: var(--color__brand-primary);
   color: #ffffff;
   display: inline-block;
   padding: 0.4em 0.8em;
@@ -9,6 +9,7 @@
   font-size: 1rem;
   line-height: 1rem;
   margin-bottom: 0.5em;
+  border-radius: 4px;
 
   &--legacy {
     color: #ffffff !important;
@@ -36,6 +37,7 @@
   &--white {
     background-color: #ffffff;
     color: #000000;
+    border-radius: 4px;
   }
 
   &[disabled] {

@@ -1,5 +1,5 @@
 .AdvertBar {
-  background-color: #2d3142;
+  background-color: var(--color__brand-primary);
   box-sizing: border-box;
   display: flex;
 

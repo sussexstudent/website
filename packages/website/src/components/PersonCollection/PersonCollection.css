@@ -1,6 +1,10 @@
 .PersonCollection {
   font-family: var(--type__primary);
+  display: flex;
+  list-style: none;
   justify-content: center;
+  padding: 0;
+  margin: 0 auto;
 
   &__link {
     display: block;
@@ -8,6 +12,10 @@
     color: black;
     text-decoration: none;
     width: 100%;
+  }
+
+  &__item {
+    width: 200px;
   }
 
   &__image {

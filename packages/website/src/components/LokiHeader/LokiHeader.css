@@ -17,7 +17,7 @@
 }
 
 .LokiHeader {
-  background: #2d3142;
+  background: var(--color__brand-primary);
   margin-bottom: 1rem;
   z-index: var(--layer__header--mobile);
   font-family: var(--type__primary);

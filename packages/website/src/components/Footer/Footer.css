@@ -1,9 +1,44 @@
 .Footer {
-  background: #2d3142;
-  padding: 2rem 0 1rem;
+  background: var(--color__brand-primary);
   color: #ffffff;
   font-family: var(--type__primary);
   font-weight: 600;
+  padding: 0 1rem;
+  @media (--medium) {
+    padding: 0;
+  }
+
+  &__menu {
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      list-style: none;
+      padding: 0;
+      @media (--medium) {
+        flex-direction: row;
+        margin-bottom: 0;
+      }
+    }
+
+    li {
+      padding: 0.5rem 0;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+  }
+
+  &__container.LokiContainer {
+    padding-bottom: 2rem;
+    text-align: left;
+    @media (--medium) {
+      text-align: center;
+    }
+  }
 
   &__social {
     display: none;
@@ -12,6 +47,8 @@
   & p {
     margin-top: 0;
     @mixin type pica;
+    padding-bottom: 1rem;
+    font-weight: normal;
   }
 
   &__contact {
@@ -26,11 +63,21 @@
 }
 
 @media (--medium) {
-  .Footer__container {
-    lost-column: 1/3;
-  }
-
   .Footer__social {
     display: block;
+
+    .Social {
+      padding: 2.5rem 0;
+      justify-content: center;
+    }
+
+    .Social__icon {
+      width: 60px;
+      height: 60px;
+    }
+
+    .Button {
+      margin-bottom: 2.5rem;
+    }
   }
 }

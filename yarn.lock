@@ -16252,8 +16252,8 @@ rollup-plugin-typescript2@^0.19.0:
     tslib "1.9.3"
 
 rollup-plugin-typescript2@^0.25.1:
-  version "0.24.3"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-typescript2/-/rollup-plugin-typescript2-0.24.3.tgz#276fa33a9d584d500da62d3e5400307f4a46bdf2"
+  version "0.25.2"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-typescript2/-/rollup-plugin-typescript2-0.25.2.tgz#1a165df08560902da45b355413464caca1765d3a"
   dependencies:
     find-cache-dir "^3.0.0"
     fs-extra "8.1.0"

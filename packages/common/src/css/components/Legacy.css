@@ -50,18 +50,18 @@
 .Legacy a {
   color: black;
   text-decoration: none;
-  border-bottom: 2px solid #f1766d;
+  border-bottom: 2px solid var(--color__brand-primary);
+  transition: 0.3s;
 }
 
-.Legacy strong a,
-.Legacy b a {
-  padding-bottom: 2px;
+.Legacy h2 a {
+  border-bottom: none;
 }
 
 .Legacy a:active,
 .Legacy a:hover {
   outline: 0;
-  color: #f1766d;
+  border-bottom: 2px solid var(--color__brand-coral);
 }
 
 .Legacy abbr[title] {
@@ -1111,6 +1111,11 @@
   border-bottom: 2px solid #f1766d;
   padding: 0;
   line-height: 1.5rem;
+  transition: 0.3s;
+}
+
+.Legacy a.btn.btn-default:hover {
+  border-width: 4px;
 }
 
 .Legacy .btn-default:active,
@@ -1139,7 +1144,7 @@
 
 .Legacy .btn-block {
   display: block;
-  width: 100%;
+  width: fit-content;
 }
 
 .Legacy .btn-block + .btn-block {

@@ -5,17 +5,17 @@
   "types": "dist/index.d.ts",
   "license": "MIT",
   "devDependencies": {
-    "@babel/preset-react": "^7.6.3",
+    "@babel/preset-react": "^7.7.0",
     "@emotion/babel-preset-css-prop": "^10.0.17",
     "@storybook/addon-knobs": "^5.2.4",
     "@storybook/theming": "^5.2.4",
     "@types/react": "^16.9.5",
-    "@types/react-dom": "^16.9.1",
+    "@types/react-dom": "^16.9.4",
     "rollup": "^1.23.1",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-typescript2": "^0.25.1",
     "tslib": "^1.10.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.7.2"
   },
   "scripts": {
     "build": "echo skipping",
@@ -25,10 +25,10 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.21",
-    "@types/jest": "^24.0.18",
+    "@types/jest": "^24.0.22",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
-    "danger": "^9.2.1",
+    "danger": "^9.2.4",
     "webpack": "^4.41.1"
   }
 }

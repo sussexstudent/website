@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { ContentPage } from '../pages/content/ContentPage';
 import { HomepageSplash } from '../components/HomepageSplash';
 import { RouteComponent } from '@ussu/common/src/types/routes';
@@ -10,8 +10,18 @@ import { NewsList } from '../components/NewsList';
 import { SlateContainer } from '../components/Slate/SlateContainer';
 import { parseNews } from '@ussu/common/src/libs/msl';
 import { css } from '@emotion/core';
+import { useMappedState } from 'redux-react-hook';
+import { WebsiteRootState } from '../types/website';
 
 const Homepage: React.FC<RouteComponent> = () => {
+  const mapState = useCallback(
+    (state: WebsiteRootState) => ({
+      user: state.user,
+    }),
+    [],
+  );
+  const { user } = useMappedState(mapState);
+
   let articles =
     typeof window === 'undefined' ? [] : parseNews(window.document.body);
   if (articles.length > 4) {
@@ -35,11 +45,13 @@ const Homepage: React.FC<RouteComponent> = () => {
           <MSLAdvert position="TopBanner" />
         </AdvertBar>
         <HomepageSplash />
-        <div className="LokiContainer">
-          <div className="HomepageSplashLower">
-            <SlateContainer />
+        {user.isLoggedIn ? (
+          <div className="LokiContainer">
+            <div className="HomepageSplashLower">
+              <SlateContainer />
+            </div>
           </div>
-        </div>
+        ) : null}
         <div css={NewsWrapper}>
           <div className="LokiContainer">
             <h2 className="type-double-pica ContentBlock__heading">

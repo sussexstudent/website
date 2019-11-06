@@ -13,7 +13,7 @@ export const SocialMenu: React.FC<{ asList?: boolean; mobile?: boolean }> = ({
       >
         <span
           className={cx('Social__icon', {
-            'Social__icon--facebook-black': mobile,
+            'Social__icon--facebook': mobile,
             'Social__icon--facebook-white': !mobile,
           })}
         >
@@ -27,7 +27,7 @@ export const SocialMenu: React.FC<{ asList?: boolean; mobile?: boolean }> = ({
       <a className="Social__link" href="https://twitter.com/ussu">
         <span
           className={cx('Social__icon', {
-            'Social__icon--twitter-black': mobile,
+            'Social__icon--twitter': mobile,
             'Social__icon--twitter-white': !mobile,
           })}
         >
@@ -40,7 +40,7 @@ export const SocialMenu: React.FC<{ asList?: boolean; mobile?: boolean }> = ({
       <a className="Social__link" href="https://www.instagram.com/sussexsu/">
         <span
           className={cx('Social__icon', {
-            'Social__icon--instagram-black': mobile,
+            'Social__icon--instagram': mobile,
             'Social__icon--instagram-white': !mobile,
           })}
         >
@@ -57,7 +57,7 @@ export const SocialMenu: React.FC<{ asList?: boolean; mobile?: boolean }> = ({
       >
         <span
           className={cx('Social__icon', {
-            'Social__icon--linkedin-black': mobile,
+            'Social__icon--linkedin': mobile,
             'Social__icon--linkedin-white': !mobile,
           })}
         >
@@ -74,7 +74,7 @@ export const SocialMenu: React.FC<{ asList?: boolean; mobile?: boolean }> = ({
       >
         <span
           className={cx('Social__icon', {
-            'Social__icon--youtube-black': mobile,
+            'Social__icon--youtube': mobile,
             'Social__icon--youtube-white': !mobile,
           })}
         >

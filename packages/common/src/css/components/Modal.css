@@ -55,6 +55,7 @@
     border: 0;
     font-weight: bold;
     align-self: flex-end;
+    cursor: pointer;
   }
 }
 

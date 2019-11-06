@@ -41,13 +41,15 @@ const Homepage: React.FC<RouteComponent> = () => {
           </div>
         </div>
         <div css={NewsWrapper}>
-          <div className="LokiContainer" css={Scrollable}>
+          <div className="LokiContainer">
             <h2 className="type-double-pica ContentBlock__heading">
               <a css={{ color: 'black', textDecoration: 'none' }} href="/news">
                 Latest news &raquo;
               </a>
             </h2>
-            <NewsList items={articles} fullWidth />
+            <div className="Homepage" css={Scrollable}>
+              <NewsList items={articles} fullWidth />
+            </div>
           </div>
         </div>
         <div className="LokiContainer">

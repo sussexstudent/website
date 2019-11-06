@@ -36,14 +36,14 @@
 
   &--color {
     &-blue {
-      color: var(--color__brand-blue);
+      color: var(--color__brand-primary);
 
       & a {
-        color: var(--color__brand-blue);
+        color: var(--color__brand-primary);
       }
 
       & .BackBar__arrow-back {
-        fill: var(--color__brand-blue);
+        fill: var(--color__brand-primary);
       }
     }
 

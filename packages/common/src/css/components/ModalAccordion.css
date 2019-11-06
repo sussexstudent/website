@@ -17,6 +17,7 @@
     box-sizing: border-box;
     padding: 0.4rem 0;
     text-align: left;
+    cursor: pointer;
   }
 
   &__content-list {

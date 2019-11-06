@@ -10,6 +10,11 @@
   flex: auto;
   align-content: stretch;
   display: flex;
+  flex-wrap: wrap;
+}
+
+.HomePage .NewsGrid {
+  flex-wrap: nowrap;
 
   &__item {
     min-width: 250px;

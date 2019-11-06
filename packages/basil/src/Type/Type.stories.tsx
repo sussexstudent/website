@@ -37,7 +37,7 @@ const types = [
   },
 ];
 
-export default { title: 'Typography' };
+export default { title: 'Typography|Scale' };
 export const Standard = () => (
   <div className="LokiContainer">
     <h1>Primary typeface: Larsseit Bold</h1>

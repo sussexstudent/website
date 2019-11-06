@@ -1,6 +1,6 @@
 import { PaginationNavigation } from '../../../website/src/components/PaginationNavigation/index';
 
-export default { title: 'Pagination Navigation' };
+export default { title: 'Navigation|Pagination Navigation' };
 
 export const First = () => (
   <PaginationNavigation

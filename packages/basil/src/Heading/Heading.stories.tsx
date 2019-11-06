@@ -1,6 +1,6 @@
 import { Heading, HeadingLevel } from '../../../website/src/components/Heading';
 
-export default { title: 'Headings' };
+export default { title: 'Typography|Headings' };
 
 export const Default = () => (
   <div>

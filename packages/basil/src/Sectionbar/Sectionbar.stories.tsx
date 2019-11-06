@@ -4,7 +4,7 @@ import {
   SectionbarItem,
 } from '../../../website/src/components/Sectionbar/index';
 
-export default { title: 'Sectionbar' };
+export default { title: 'Navigation|Sectionbar' };
 
 export const Empty = () => <Sectionbar title="Sectionbar" />;
 export const WithNavItems = () => (

@@ -1,7 +1,7 @@
 import { SocialMenu } from '../../../website/src/components/SocialMenu';
 import { css } from '@emotion/core';
 
-export default { title: 'Mobile Footer Treats' };
+export default { title: 'Page|Mobile Footer Treats' };
 
 export const Default = () => (
   <div className="MobileFooterTreats" css={css({ display: 'block' })}>

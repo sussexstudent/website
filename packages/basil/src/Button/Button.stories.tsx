@@ -1,6 +1,6 @@
 import { Button } from './index';
 
-export default { title: 'Button' };
+export default { title: 'Form|Button' };
 
 export const Default = () => (
   <Button className="Button" href="#">

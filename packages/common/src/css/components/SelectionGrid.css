@@ -31,14 +31,4 @@
     margin: 0;
     margin-top: 0.5rem;
   }
-
-  &--on-top &__description {
-    width: 80%;
-    background: var(--color__brand-yellow);
-    padding: 0.3rem;
-    margin-top: 1rem;
-    margin-left: 0.5rem;
-    position: relative;
-    top: -0.5rem;
-  }
 }

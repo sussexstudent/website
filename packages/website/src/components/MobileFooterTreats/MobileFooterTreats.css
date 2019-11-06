@@ -21,7 +21,7 @@
   }
 
   &__to-top {
-    background: var(--color__grey-slate);
+    background: var(--color__brand-primary);
     color: #ffffff;
     padding: 0.5lh 0;
     text-align: center;

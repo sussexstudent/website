@@ -84,48 +84,35 @@
     display: block;
 
     &--facebook {
-      background-image: url('~@ussu/common/src/css/img/social-facebook.svg');
-      &-black {
-        background-image: url('~@ussu/common/src/css/img/social-facebook-black.svg');
-      }
+      background-image: url('~@ussu/common/src/css/img/social-facebook-black.svg');
       &-white {
         background-image: url('~@ussu/common/src/css/img/social-facebook-white.svg');
       }
     }
 
     &--twitter {
-      background-image: url('~@ussu/common/src/css/img/social-twitter.svg');
-      &-black {
-        background-image: url('~@ussu/common/src/css/img/social-twitter-black.svg');
-      }
+      background-image: url('~@ussu/common/src/css/img/social-twitter-black.svg');
       &-white {
         background-image: url('~@ussu/common/src/css/img/social-twitter-white.svg');
       }
     }
 
     &--instagram {
-      background-image: url('~@ussu/common/src/css/img/social-instagram.svg');
-      &-black {
-        background-image: url('~@ussu/common/src/css/img/social-instagram-black.svg');
-      }
+      background-image: url('~@ussu/common/src/css/img/social-instagram-black.svg');
       &-white {
         background-image: url('~@ussu/common/src/css/img/social-instagram-white.svg');
       }
     }
 
     &--linkedin {
-      &-black {
-        background-image: url('~@ussu/common/src/css/img/social-linkedin-black.svg');
-      }
+      background-image: url('~@ussu/common/src/css/img/social-linkedin-black.svg');
       &-white {
         background-image: url('~@ussu/common/src/css/img/social-linkedin-white.svg');
       }
     }
 
     &--youtube {
-      &-black {
-        background-image: url('~@ussu/common/src/css/img/social-youtube-black.svg');
-      }
+      background-image: url('~@ussu/common/src/css/img/social-youtube-black.svg');
       &-white {
         background-image: url('~@ussu/common/src/css/img/social-youtube-white.svg');
       }

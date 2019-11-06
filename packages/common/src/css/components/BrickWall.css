@@ -10,8 +10,8 @@
   }
 
   &__anchor {
-    background-color: var(--color__brand-yellow);
-    color: var(--color__grey-sad-slate);
+    background-color: var(--color__brand-coral);
+    color: #fff;
     padding: 0.2rem 0.4rem;
     display: inline-block;
     text-decoration: none;

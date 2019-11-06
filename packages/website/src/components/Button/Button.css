@@ -1,7 +1,5 @@
 .Button {
-  @mixin card standard;
-
-  background-color: var(--color__brand-blue);
+  background-color: var(--color__brand-primary);
   color: #ffffff;
   display: inline-block;
   padding: 0.4em 0.8em;
@@ -11,16 +9,13 @@
   font-size: 1rem;
   line-height: 1rem;
   margin-bottom: 0.5em;
+  border-radius: 4px;
+  cursor: pointer;
 
   &--legacy {
     color: #ffffff !important;
     font-weight: 600 !important;
     font-family: var(--type__primary) !important;
-  }
-
-  &--yellow {
-    background: var(--color__brand-yellow);
-    color: #000000;
   }
 
   &--color-green {
@@ -43,6 +38,7 @@
   &--white {
     background-color: #ffffff;
     color: #000000;
+    border-radius: 4px;
   }
 
   &[disabled] {

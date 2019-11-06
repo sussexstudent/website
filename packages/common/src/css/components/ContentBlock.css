@@ -5,5 +5,7 @@
     font-family: var(--type__primary);
     font-weight: bold;
     @mixin type double-pica;
+    margin: 1.1rem 0;
+    font-size: 1.5em;
   }
 }

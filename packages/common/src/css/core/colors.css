@@ -1,13 +1,14 @@
 :root {
   /* BRAND COLORS */
   --color__brand-green: #1db8a4;
-  --color__brand-yellow: #ffdb7a;
+  --color__brand-yellow: #ffdb7a; /* being culled */
   --color__brand-blue: #27428c;
   --color__brand-blue--hover: #0e2973;
   --color__brand-red: #ee534f;
   --color__brand-pink: #fdd2c6;
   --color__black: #000000;
   --color__brand-coral: #f1766d;
+  --color__brand-primary: #27363e;
 
   /* E.L James */
   --color__grey-sad-slate: rgba(38, 38, 38, 1);
@@ -17,6 +18,7 @@
   --color__grey-spring: #ececec;
   --color__grey-summer: #f5f5f5;
   --color__grey-bg: #fafafa;
+  --color__grey-light: #e6e8e7;
 
   /* other brands */
   --color__twitter: #50abf1;

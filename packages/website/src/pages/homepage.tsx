@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { ContentPage } from '../pages/content/ContentPage';
 import { HomepageSplash } from '../components/HomepageSplash';
 import { RouteComponent } from '@ussu/common/src/types/routes';
@@ -9,13 +9,34 @@ import { MSLAdvert } from '../components/AdvertBar/MSLAdvert';
 import { NewsList } from '../components/NewsList';
 import { SlateContainer } from '../components/Slate/SlateContainer';
 import { parseNews } from '@ussu/common/src/libs/msl';
+import { css } from '@emotion/core';
+import { useMappedState } from 'redux-react-hook';
+import { WebsiteRootState } from '../types/website';
 
 const Homepage: React.FC<RouteComponent> = () => {
+  const mapState = useCallback(
+    (state: WebsiteRootState) => ({
+      user: state.user,
+    }),
+    [],
+  );
+  const { user } = useMappedState(mapState);
+
   let articles =
     typeof window === 'undefined' ? [] : parseNews(window.document.body);
   if (articles.length > 4) {
     articles = articles.slice(0, 4);
   }
+
+  const NewsWrapper = css({
+    backgroundColor: '#E6E8E7',
+    padding: '1rem 0 2.1rem',
+  });
+
+  const Scrollable = css({
+    width: '100%',
+    overflowX: 'scroll',
+  });
 
   return (
     <ScrollToTop>
@@ -24,41 +45,24 @@ const Homepage: React.FC<RouteComponent> = () => {
           <MSLAdvert position="TopBanner" />
         </AdvertBar>
         <HomepageSplash />
-        <div className="LokiContainer">
-          <div className="HomepageSplashLower">
-            <SlateContainer />
+        {user.isLoggedIn ? (
+          <div className="LokiContainer">
+            <div className="HomepageSplashLower">
+              <SlateContainer />
+            </div>
           </div>
-          <div>
-            <h2 className="type-double-pica">
+        ) : null}
+        <div css={NewsWrapper}>
+          <div className="LokiContainer">
+            <h2 className="type-double-pica ContentBlock__heading">
               <a css={{ color: 'black', textDecoration: 'none' }} href="/news">
                 Latest news &raquo;
               </a>
             </h2>
-            <NewsList items={articles} fullWidth />
+            <div className="Homepage" css={Scrollable}>
+              <NewsList items={articles} fullWidth />
+            </div>
           </div>
-          {/*<div className="Trail">*/}
-          {/*<div className="Trail__row Trail__row--211">*/}
-          {/*<div className="ContentBlock">*/}
-          {/*<div className="ContentBlock__heading">News</div>*/}
-          {/*<div className="u-h">{'{unionnewslist}'}</div>*/}
-          {/*<div className="app__news" />*/}
-          {/*<a className="NewsViewMore type-brevier" href="/news">*/}
-          {/*Read more news stories*/}
-          {/*</a>*/}
-          {/*</div>*/}
-          {/*<div className="ContentBlock">*/}
-          {/*<div className="ContentBlock__heading">{"What's on"}</div>*/}
-          {/*<HomepageEventsList />*/}
-          {/*</div>*/}
-          {/*<div className="ContentBlock">*/}
-          {/*<div className="ContentBlock__heading">Twitter</div>*/}
-          {/*<TweetList*/}
-          {/*query="list/ussu,ussu"*/}
-          {/*signature="f1b9176fddbe7114295eb4bfc65070c5a130a94d"*/}
-          {/*/>*/}
-          {/*</div>*/}
-          {/*</div>*/}
-          {/*</div>*/}
         </div>
         <div className="LokiContainer">
           <ContentPage path={'/homepage'} />

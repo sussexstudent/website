@@ -88,7 +88,7 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
                   {page.facebookUrl ? (
                     <li>
                       <a className="Social__link" href={page.facebookUrl}>
-                        <span className="Social__icon Social__icon--facebook-black">
+                        <span className="Social__icon Social__icon--facebook">
                           <span className="u-h">Facebook</span>
                         </span>
                         <span className="Social__handle">Facebook</span>
@@ -99,7 +99,7 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
                   {page.instagramUrl ? (
                     <li>
                       <a className="Social__link" href={page.instagramUrl}>
-                        <span className="Social__icon Social__icon--instagram-black">
+                        <span className="Social__icon Social__icon--instagram">
                           <span className="u-h">Instagram</span>
                         </span>
                         <span className="Social__handle">Instagram</span>
@@ -113,7 +113,7 @@ export const OfficerOverviewPage: React.FC<OfficerOverviewPageProps> = ({
                         className="Social__link"
                         href={'https://twitter.com/' + page.twitterUsername}
                       >
-                        <span className="Social__icon Social__icon--twitter-black">
+                        <span className="Social__icon Social__icon--twitter">
                           <span className="u-h">Twitter</span>
                         </span>
                         <span className="Social__handle">

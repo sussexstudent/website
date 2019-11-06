@@ -9,11 +9,7 @@ export const Default = () => (
       <SocialMenu mobile />
     </div>
     <div>
-      <a
-        className="Button Button--gray"
-        href="#"
-        data-action="newsletter_subscribe"
-      >
+      <a className="Button" href="#" data-action="newsletter_subscribe">
         Subscribe to our email newsletter
       </a>
     </div>

@@ -21,7 +21,7 @@ export const PersonCollectionFigure = ({
   sub,
   link,
 }: IProps) => (
-  <li className="PersonCollection__item TrailGrid__item">
+  <li className="PersonCollection__item">
     <a href={link} className="PersonCollection__link">
       <div className="PersonCollection__image">
         <OneImage

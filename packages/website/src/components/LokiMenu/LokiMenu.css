@@ -8,9 +8,11 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    background-color: var(--color__brand-coral);
 
     @media (--medium) {
       flex-direction: row;
+      background-color: var(--color__brand-primary);
     }
   }
 
@@ -20,17 +22,20 @@
 
   &__link {
     transition: padding ease 300ms;
-
     display: block;
     text-decoration: none;
     font-weight: bold;
-    padding: 0.8rem 1rem;
+    padding: 1.2rem 1rem;
     @mixin type great-primer;
+    background-color: var(--color__brand-coral);
 
     @media (--medium) {
       padding: 0.2rem 0 0.2rem 0.2rem;
       margin-left: -0.2rem;
       @mixin type pica;
+      border-bottom: 2px solid var(--color__brand-primary);
+      background-color: var(--color__brand-primary);
+      transition: 0.3s;
     }
 
     @media (--large) {
@@ -39,23 +44,16 @@
 
     &:hover,
     &.AnodyneMenu__link--active {
-      color: #ffffff;
+      border-bottom: 2px solid var(--color__brand-coral);
     }
   }
 }
 
 .LokiMenu__item .LokiMenu__link {
-  background-color: var(--color__brand-red);
   color: #fff;
-
-  @media (--medium) {
-    background-color: transparent;
-    color: var(--color__brand-red);
-  }
 
   &:hover,
   &.LokiMenu__link--active {
-    background-color: var(--color__brand-red);
     color: #fff;
   }
 }

@@ -47,22 +47,22 @@ export const WayfinderTopLevel: React.FC<{ title: string; to: string }> = ({
   return (
     <div
       css={{
-        background: COLORS.GREY_SUMMER,
+        background: COLORS.GREY_SPRING,
         fontSize: '1.1em',
       }}
     >
       <div className="LokiContainer">
         <Link
           css={[
-            type(TypeSize.GreatPrimer, Typeface.Secondary),
+            // type(TypeSize.GreatPrimer, Typeface.Secondary),
             {
               display: 'inline-block',
               fontWeight: 600,
               paddingRight: '1rem',
               color: COLORS.GREY_SAD_SLATE,
               textDecoration: 'none',
-              paddingTop: '0.4rem',
-              paddingBottom: '0.4rem',
+              // paddingTop: '0.4rem',
+              // paddingBottom: '0.4rem',
             },
           ]}
           to={to}
@@ -89,7 +89,7 @@ export const WayfinderTopLevel: React.FC<{ title: string; to: string }> = ({
                     to={item.props.to}
                     activeStyle={{
                       color: '#fff',
-                      background: COLORS.BRAND_BLUE,
+                      background: 'rgb(108, 111, 127)',
                     }}
                   >
                     {item.props.children}
@@ -111,7 +111,7 @@ export const WayfinderSecondLevel: React.FC<{ title: string; to: string }> = ({
   return (
     <div
       css={{
-        background: COLORS.BRAND_BLUE,
+        background: COLORS.GREY_SUMMER,
         color: '#fff',
         fontWeight: 600,
         padding: '0.2rem 0',
@@ -122,7 +122,7 @@ export const WayfinderSecondLevel: React.FC<{ title: string; to: string }> = ({
           css={{
             display: 'inline-blokc',
             paddingRight: '1rem',
-            color: '#fff',
+            color: '#27363E',
             textDecoration: 'none',
             paddingTop: '0.4rem',
             paddingBottom: '0.4rem',
@@ -143,7 +143,7 @@ export const WayfinderSecondLevel: React.FC<{ title: string; to: string }> = ({
                       {
                         padding: '0 0.4rem',
                         textDecoration: 'none',
-                        color: '#fff',
+                        color: '#27363E',
                       },
                     ]}
                     to={item.props.to}
@@ -181,7 +181,7 @@ export const WayfinderThirdLevel: React.FC<{ title: string; to: string }> = ({
             display: 'inline-block',
             paddingRight: '1rem',
             textDecoration: 'none',
-            color: COLORS.GREY_SLATE,
+            color: '#27363E',
             paddingTop: '0.4rem',
             paddingBottom: '0.4rem',
           }}

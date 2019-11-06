@@ -1,15 +1,15 @@
 a {
-  color: var(--color__brand-blue);
+  color: var(--color__brand-primary);
   text-decoration: underline;
 }
 
 [data-whatinput='keyboard'] :focus {
-  outline: 4px solid var(--color__brand-yellow);
+  outline: 4px solid var(--color__brand-coral);
   outline-offset: -2px;
 }
 
 ::selection {
-  background: var(--color__brand-yellow);
+  background: var(--color__brand-coral);
 }
 
 h1,

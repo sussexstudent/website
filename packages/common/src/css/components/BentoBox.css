@@ -49,11 +49,6 @@
     color: #ffffff;
     background-color: var(--color__brand-red);
   }
-
-  &--color-yellow {
-    color: var(--color__brand-blue);
-    background-color: var(--color__brand-yellow);
-  }
 }
 
 .Bento {

@@ -17,8 +17,7 @@
 }
 
 .LokiHeader {
-  background: #fff;
-  box-shadow: 0 2px 8px 0 rgba(32, 31, 72, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.026);
+  background: var(--color__brand-primary);
   margin-bottom: 1rem;
   z-index: var(--layer__header--mobile);
   font-family: var(--type__primary);
@@ -35,15 +34,6 @@
   @media (--medium) {
     transition: margin-top ease 800ms;
     position: relative;
-
-    &::before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: var(--color__brand-blue);
-      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
-    }
   }
 
   & .LokiContainer {
@@ -81,7 +71,7 @@
   }
 
   &__logo {
-    padding-right: 1rem;
+    padding-right: 3rem;
     width: 100%;
     transition: margin-top ease 300ms;
 
@@ -141,21 +131,21 @@
 
   &__search-input {
     background: var(--color__grey-summer);
-    border-radius: 6px;
     border: 0;
     width: 100%;
 
+    border-radius: 2px;
     font-family: inherit;
     font-weight: 600;
-    font-size: 20px;
-    padding: 0.4rem;
+    font-size: 18px;
+    padding: 0.3rem;
     box-sizing: border-box;
     color: var(--color__grey-winter);
 
     outline: 0;
 
     &:focus {
-      outline: 3px solid var(--color__brand-yellow);
+      outline: 3px solid var(--color__brand-coral);
       color: var(--color__grey-slate);
     }
   }
@@ -236,6 +226,7 @@
     border: 0;
     padding: 0 0.5rem;
     display: block;
+    color: #fff;
     text-decoration: none;
     font-family: var(--type__primary);
 
@@ -266,7 +257,7 @@
     padding-top: 0.1rem;
     font-weight: 600;
     font-family: inherit;
-    color: #000000;
+    color: #eee;
     @mixin type brevier;
   }
 }

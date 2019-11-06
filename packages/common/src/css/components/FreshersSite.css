@@ -121,7 +121,8 @@
 }
 
 .FUnion {
-  margin-bottom: 2rem;
+  background-color: var(--color__grey-light);
+  padding: 1.5rem 0;
 
   &__areas {
     @media (--medium) {
@@ -334,8 +335,6 @@
 }
 
 .FUnion {
-  margin-bottom: 2rem;
-
   &__areas {
     @media (--medium) {
       display: flex;

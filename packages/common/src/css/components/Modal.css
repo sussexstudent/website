@@ -26,7 +26,7 @@
     max-width: 400px;
 
     @media (--medium) {
-      border-radius: 6px;
+      border-radius: 2px;
     }
   }
 
@@ -55,6 +55,7 @@
     border: 0;
     font-weight: bold;
     align-self: flex-end;
+    cursor: pointer;
   }
 }
 

@@ -8,7 +8,7 @@ const headings = [
   'Navigation child 4',
 ];
 
-export default { title: 'Content Navigation' };
+export default { title: 'Navigation|Content Navigation' };
 
 export const Default = () => (
   <ContentNavigation

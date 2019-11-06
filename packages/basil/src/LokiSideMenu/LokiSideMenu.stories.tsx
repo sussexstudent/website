@@ -1,6 +1,6 @@
-/*import { storiesOf } from '@storybook/react';
 import { LokiSideMenu } from '../../../website/src/components/LokiSideMenu/index';
 
-storiesOf('LokiSideMenu', module).add('Closed', () => (
-  <LokiSideMenu isOpen={true} onBackdropClick={() => function() {}}/>
-));*/
+export default { title: 'Page|LokiSideMenu' };
+export const Closed = () => (
+  <LokiSideMenu isOpen={true} onBackdropClick={() => function() {}} />
+);

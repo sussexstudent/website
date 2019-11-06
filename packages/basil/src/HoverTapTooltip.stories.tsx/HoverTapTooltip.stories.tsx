@@ -1,6 +1,6 @@
 import { HoverTapTooltip } from '../../../website/src/components/HoverTapToolTip/index';
 
-export default { title: 'HoverTapTooltip' };
+export default { title: 'Utils|HoverTapTooltip' };
 
 export const Default = () => (
   <div>

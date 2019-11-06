@@ -3,7 +3,7 @@ import {
   OneImage,
 } from '@ussu/website/src/components/OneImage/index';
 
-export default { title: 'OneImage' };
+export default { title: 'Utils|OneImage' };
 
 export const r16by9 = () => (
   <OneImage

@@ -1,6 +1,6 @@
 import { LoadableLoading } from '../../../website/src/components/LoadableLoading/index';
 
-export default { title: 'Module Loader' };
+export default { title: 'Utils|Module Loader' };
 
 export const ErrorState = () => (
   <LoadableLoading

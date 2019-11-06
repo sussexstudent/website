@@ -1,7 +1,7 @@
 import { BrandColorCard } from './index';
 import { colors } from '../colors';
 
-export default { title: 'Brand Color' };
+export default { title: 'System|Brand Color' };
 
 export const AllColors = () => (
   <div>

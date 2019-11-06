@@ -1,4 +1,4 @@
-export default { title: 'Brick Wall' };
+export default { title: 'Navigation|Brick Wall' };
 
 export const Default = () => (
   <ul className="BrickWall List--reset">

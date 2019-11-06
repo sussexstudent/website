@@ -15,6 +15,6 @@ const crumbs = [
   </a>,
 ];
 
-export default { title: 'BreadcrumbBar' };
+export default { title: 'Navigation|BreadcrumbBar' };
 
 export const normal = () => <BreadcrumbBar>{crumbs}</BreadcrumbBar>;

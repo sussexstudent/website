@@ -1,5 +1,5 @@
 import { LokiMenu } from '../../../website/src/components/LokiMenu/index';
 
-export default { title: 'LokiMenu' };
+export default { title: 'Page|LokiMenu' };
 
 export const Standard = () => <LokiMenu />;

@@ -20,6 +20,7 @@
     font-size: inherit;
     font-family: inherit;
     font-weight: inherit;
+    cursor: pointer;
 
     &--dim {
       opacity: 0.5;

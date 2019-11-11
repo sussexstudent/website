@@ -28,7 +28,7 @@
     "gatsby-plugin-sitemap": "^2.2.18",
     "gatsby-remark-copy-linked-files": "^2.1.27",
     "gatsby-remark-images": "3.1.29",
-    "gatsby-source-filesystem": "^2.1.32",
+    "gatsby-source-filesystem": "^2.1.36",
     "gatsby-transformer-remark": "^2.6.29",
     "graphql": "^14.5.8",
     "is-absolute-url": "^3.0.3",

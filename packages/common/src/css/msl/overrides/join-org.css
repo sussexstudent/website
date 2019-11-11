@@ -10,4 +10,7 @@ ul.join_list li {
 .join_list .button {
   padding: 0.3rem 0.5rem;
   display: block;
+  color: #fff;
+  font-weight: 600;
+  font-family: var(--type__primary);
 }

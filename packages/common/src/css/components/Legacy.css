@@ -1055,10 +1055,11 @@
   border: 0;
   border-radius: 0;
   position: relative;
-  background: var(--color__brand-green);
+  background: var(--color__brand-primary);
   font-family: var(--type__primary);
   font-weight: bold;
   text-decoration: none;
+  color: #fff;
 }
 
 .Legacy .btn:focus,

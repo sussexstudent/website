@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { OneImage, AspectRatio } from '../../../components/OneImage';
 import convert from 'htmr';
 import { SocialArray } from '../../../components/SocialArray';
+import { css } from '@emotion/core';
 
 interface IOfficersIndex extends Page<Page[]> {}
 
@@ -63,11 +64,15 @@ const socialLinks = (pageObj: OfficerPagePreview): NetworkItem => {
   return links;
 };
 
+const marginSection = css({
+  marginBottom: '3rem',
+});
+
 export const OfficersIndex: React.FC<OfficerIndexProps> = ({ page }) => (
   <React.Fragment>
     <div className="LokiContainer">
       {page.subPages.map((page) => (
-        <div className="Trail Trail__row--12">
+        <div className="Trail Trail__row--12" css={marginSection}>
           <div
             css={{
               marginBottom: '2rem',
@@ -100,6 +105,7 @@ export const OfficersIndex: React.FC<OfficerIndexProps> = ({ page }) => (
               More about {page.firstName}
             </Link>
           </div>
+          <hr></hr>
         </div>
       ))}
     </div>

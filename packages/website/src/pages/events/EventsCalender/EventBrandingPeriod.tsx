@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { EventListings } from './EventListings';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import BrandingPeriodQuery from './BrandingPeriod.graphql';
 import EventListingsQuery from './EventListings.graphql';
 import { ErrorState } from '../../../components/ErrorState';

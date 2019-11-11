@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { History } from 'history';
 import CONTENT_PAGE_QUERY from './ContentPageQuery.graphql';
 import { contentTypeMap } from './contentTypeRoutes';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { FourOhFourPage } from './FourOhFourPage';
 import { useQuery } from '@apollo/react-hooks';
 import qs from 'query-string';

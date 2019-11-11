@@ -8,7 +8,7 @@ import {
 } from '../SearchResult';
 import { SearchFilterNav } from '../SearchFilterNav';
 import * as routerActions from '../../ducks/router';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { NoListItems } from '../../pages/bookmarket/NoListItems';
 import { Location } from 'history';
 import { RouteComponentProps } from 'react-router';

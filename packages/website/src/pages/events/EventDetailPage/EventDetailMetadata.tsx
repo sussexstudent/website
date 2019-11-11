@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Event } from '@ussu/common/src/types/events';
 import { JsonLd } from '../../../components/JsonLd';
 

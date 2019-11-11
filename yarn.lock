@@ -15556,7 +15556,7 @@ react-github-btn@^1.0.6:
   dependencies:
     github-buttons "^2.3.0"
 
-react-helmet-async@^1.0.2:
+react-helmet-async@^1.0.2, react-helmet-async@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/react-helmet-async/-/react-helmet-async-1.0.4.tgz#079ef10b7fefcaee6240fefd150711e62463cc97"
   dependencies:

@@ -1,7 +1,7 @@
 import React from 'react';
 import { basicTimer, Typer } from '../Typer';
 import { shuffle } from 'lodash';
-import { COLORS, MQ } from '@ussu/common/src/libs/style';
+import { COLORS } from '@ussu/common/src/libs/style';
 
 const placeholderHints = shuffle([
   'support',
@@ -18,9 +18,7 @@ const HomepageSplashComponent = () => (
   <div
     className="HomepageSplash"
     css={{
-      backgroundImage: `url(http://falmer.sussexstudent.com/images/OUMWnhdR0NGUUg3NgEbiUcKfzlo=/2745/original/)`,
-      backgroundPositionX: '10%',
-      [MQ.Medium]: { backgroundPositionX: 'center' },
+      backgroundImage: `url(http://falmer.sussexstudent.com/images/mryRYNbhc0VJXu3u_Ym266S6WHU=/2911/original/)`,
     }}
   >
     <div className="LokiContainer">

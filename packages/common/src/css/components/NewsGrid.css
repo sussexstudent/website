@@ -13,7 +13,7 @@
   flex-wrap: wrap;
 }
 
-.HomePage .NewsGrid {
+.Homepage .NewsGrid {
   flex-wrap: nowrap;
 
   &__item {

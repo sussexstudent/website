@@ -43,7 +43,6 @@ export const WayfinderTopLevel: React.FC<{ title: string; to: string }> = ({
   title,
   to,
 }) => {
-  console.log(children);
   return (
     <div
       css={{
@@ -54,15 +53,13 @@ export const WayfinderTopLevel: React.FC<{ title: string; to: string }> = ({
       <div className="LokiContainer">
         <Link
           css={[
-            // type(TypeSize.GreatPrimer, Typeface.Secondary),
             {
               display: 'inline-block',
               fontWeight: 600,
-              paddingRight: '1rem',
               color: COLORS.GREY_SAD_SLATE,
               textDecoration: 'none',
-              // paddingTop: '0.4rem',
-              // paddingBottom: '0.4rem',
+              padding: '0.3rem 1rem 0.3rem 0',
+              fontSize: '1.3rem',
             },
           ]}
           to={to}

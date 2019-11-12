@@ -1095,7 +1095,7 @@
 
 .Legacy .btn-default {
   color: #ffffff;
-  background-color: var(--color__brand-green);
+  background-color: var(--color__brand-primary);
 }
 
 .Legacy .btn-default:hover,
@@ -1109,14 +1109,25 @@
   background-color: transparent;
   color: black;
   font-size: 1.3rem;
-  border-bottom: 2px solid #f1766d;
   padding: 0;
-  line-height: 1.5rem;
+  line-height: 1.4rem;
   transition: 0.3s;
+  border: none;
+  margin: 0.5rem;
 }
 
-.Legacy a.btn.btn-default:hover {
-  border-width: 4px;
+.Legacy a.btn.btn-default:before {
+  content: '';
+  height: 2px;
+  background: var(--color__brand-coral);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.Legacy a.btn.btn-default:hover:before {
+  height: 3px;
 }
 
 .Legacy .btn-default:active,

@@ -9,7 +9,7 @@ a {
 }
 
 ::selection {
-  background: var(--color__brand-coral);
+  background: var(--color__brand-coral-light);
 }
 
 h1,

@@ -9,7 +9,7 @@ import { StudentGroup } from '@ussu/common/src/types/groups';
 import { useQuery } from '@apollo/react-hooks';
 import { Loader } from '../Loader';
 import css from '@emotion/css';
-import { COLORS } from '@ussu/common/src/libs/style';
+import { COLORS } from '@ussu/basil/src/style';
 import { CrossIcon } from '../CrossIcon';
 import cx from 'classnames';
 

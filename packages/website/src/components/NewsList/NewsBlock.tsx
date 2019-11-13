@@ -4,9 +4,9 @@ import formatDistance from 'date-fns/formatDistance';
 import isSameDay from 'date-fns/isSameDay';
 import Logotype from '../../img/logotype';
 import { AspectRatio, OneImage } from '../OneImage';
-import { COLORS } from '@ussu/common/src/libs/style';
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
-import { cardActionable, contentCard } from '@ussu/common/src/libs/style/cards';
+import { COLORS } from '@ussu/basil/src/style';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
+import { cardActionable, contentCard } from '@ussu/basil/src/style/cards';
 
 export interface NewsItem {
   id: number;
@@ -135,7 +135,7 @@ export const NewsBlock: React.FC<IProps> = ({
               display: 'block',
               width: 30,
               height: 3,
-              background: COLORS.BRAND_YELLOW,
+              background: COLORS.BRAND_RED,
               margin: '0.2rem 0',
               marginTop: 'auto',
             },

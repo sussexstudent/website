@@ -8,9 +8,9 @@ import { Event, TicketCost, TicketType } from '@ussu/common/src/types/events';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
 import { PatternPlaceholder } from '../../../components/PatternPlaceholder';
 import { EventLikeButton } from './EventLikeButton';
-import { cardActionable, contentCard } from '@ussu/common/src/libs/style/cards';
-import { COLORS, MQ } from '@ussu/common/src/libs/style';
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
+import { cardActionable, contentCard } from '@ussu/basil/src/style/cards';
+import { COLORS, MQ } from '@ussu/basil/src/style';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 
 function renderEventLocation(event: Event) {
   if (!event.venue) {

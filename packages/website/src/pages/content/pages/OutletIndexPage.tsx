@@ -4,7 +4,7 @@ import StreamField from '../StreamField';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { Link } from 'react-router-dom';
 import { OneImageBackground } from '../../../components/OneImage';
-import { Typeface, TypeSize, type } from '@ussu/common/src/libs/style/type';
+import { Typeface, TypeSize, type } from '@ussu/basil/src/style/type';
 import { css } from '@emotion/core';
 
 interface IOutletIndex extends Page<Page[]> {}

@@ -5,8 +5,8 @@ import { FalmerImage } from '@ussu/common/src/types/events';
 import convert from 'htmr';
 import StreamField from '../StreamField';
 import { css } from '@emotion/core';
-import { MQ } from '@ussu/common/src/libs/style';
 import { Helmet } from 'react-helmet-async';
+import { MQ } from '@ussu/basil/src/style';
 
 interface IOfficerOverviewIndex extends Page<Page[]> {}
 

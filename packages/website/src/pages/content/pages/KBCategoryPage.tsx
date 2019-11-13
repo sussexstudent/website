@@ -2,7 +2,7 @@ import React from 'react';
 import { Page } from '../types';
 import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
 import { Link } from 'react-router-dom';
-import { Typeface, TypeSize, type } from '@ussu/common/src/libs/style/type';
+import { Typeface, TypeSize, type } from '@ussu/basil/src/style/type';
 
 interface IKBRoot extends Page {}
 

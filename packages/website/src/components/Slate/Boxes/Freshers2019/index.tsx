@@ -2,7 +2,7 @@ import React from 'react';
 import { SlateBox } from '@ussu/common/src/types/slates';
 import { SlateBoxContainerStyleable } from '../../Box';
 import { InternalAppLink } from '../../../InternalAppLink';
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 
 interface IProps {
   cta: string;

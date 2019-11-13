@@ -4,7 +4,7 @@ import {
   AreasMap,
   SlateLayout,
 } from '@ussu/website/src/components/SlateLayout';
-import { COLORS } from '@ussu/common/src/libs/style';
+import { COLORS } from '@ussu/basil/src/style';
 import { css } from '@emotion/core';
 
 const selectedStyles = css({
@@ -44,7 +44,6 @@ const colors = [
   COLORS.BRAND_BLUE,
   COLORS.BRAND_RED,
   COLORS.BRAND_GREEN,
-  COLORS.BRAND_YELLOW,
   COLORS.BRAND_PINK,
 ];
 

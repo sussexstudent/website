@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { COLORS } from '@ussu/common/src/libs/style';
+import { COLORS } from '@ussu/basil/src/style';
 import { DocumentLinkBlockData } from '../pages/content/blocks/Links';
 import { StreamFieldBlock } from '../pages/content/types';
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 import { Modal } from './Modal';
 
 export const CardListActionable: React.FC = ({ children }) => {

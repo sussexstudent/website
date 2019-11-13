@@ -2,7 +2,7 @@ import React from 'react';
 import FauxLink from '../../../FauxLink';
 import { SlateBox } from '@ussu/common/src/types/slates';
 import { FalmerImage } from '@ussu/common/src/types/events';
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 import { SlateBoxBackground, SlateBoxContainer } from '../../Box';
 import { css } from '@emotion/core';
 

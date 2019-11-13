@@ -1,6 +1,6 @@
 import React from 'react';
 import { WhatsOnBrandedComponentLocation } from './locations';
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 import { Link } from 'react-router-dom';
 
 const SimpleFilterList: React.FC = ({ children }) => (

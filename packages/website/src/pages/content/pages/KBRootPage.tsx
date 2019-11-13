@@ -2,8 +2,8 @@ import React from 'react';
 import { FalmerFile, Page } from '../types';
 import { Link } from 'react-router-dom';
 import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
-import { COLORS, MQ } from '@ussu/common/src/libs/style';
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
+import { COLORS, MQ } from '@ussu/basil/src/style';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 import convert from 'htmr';
 
 interface IKBCatPage extends Page {

@@ -4,7 +4,7 @@ import { FalmerImage } from '@ussu/common/src/types/events';
 import convert from 'htmr';
 import { AspectRatio, OneImage } from '@ussu/website/src/components/OneImage';
 import { css } from '@emotion/core';
-import { COLORS } from '@ussu/common/src/libs/style';
+import { COLORS } from '@ussu/basil/src/style';
 
 const pledgeHeaderStyles = css({
   display: 'flex',
@@ -22,9 +22,7 @@ const left = css({
 });
 
 const StatusBadge: React.FC<{ status: string }> = ({ status }) => {
-  const color = `${
-    status == 'done' ? COLORS.BRAND_GREEN : COLORS.BRAND_YELLOW
-  }`;
+  const color = `${status == 'done' ? COLORS.BRAND_GREEN : '#ffc300'}`;
   return (
     <div
       className={status}

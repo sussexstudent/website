@@ -1,6 +1,6 @@
 import React from 'react';
 import { css, jsx } from '@emotion/core';
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 
 export enum HeadingLevel {
   h1 = 'h1',

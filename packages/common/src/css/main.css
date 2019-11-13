@@ -67,7 +67,6 @@
 @import './components/ImageUpload.css';
 @import './components/Popover.css';
 @import './components/ContentSidebar.css';
-@import './components/FreshersSite.css';
 
 @import '../../../website/src/components/NewsletterSignup/NewsletterSignup.css';
 @import '../../../website/src/components/OrganisationGrid/OrganisationGrid.css';

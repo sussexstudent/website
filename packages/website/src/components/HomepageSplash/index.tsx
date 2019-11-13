@@ -1,7 +1,7 @@
 import React from 'react';
 import { basicTimer, Typer } from '../Typer';
 import { shuffle } from 'lodash';
-import { COLORS } from '@ussu/common/src/libs/style';
+import { COLORS } from '@ussu/basil/src/style';
 
 const placeholderHints = shuffle([
   'support',

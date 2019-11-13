@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { COLORS, Layers } from '@ussu/common/src/libs/style';
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
+import { COLORS, Layers } from '@ussu/basil/src/style';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 
 export const CookieMessage: React.FC = () => {
   const [hidden, setHidden] = useState(false);

@@ -1,7 +1,7 @@
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 import React from 'react';
-import { COLORS } from '@ussu/common/src/libs/style';
-import { cardActionable } from '@ussu/common/src/libs/style/cards';
+import { COLORS } from '@ussu/basil/src/style';
+import { cardActionable } from '@ussu/basil/src/style/cards';
 import css from '@emotion/css';
 
 const buttonStyle = ({ disabled }: { disabled: boolean }) =>

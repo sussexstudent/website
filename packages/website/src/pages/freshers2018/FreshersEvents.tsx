@@ -6,7 +6,7 @@ import qs from 'query-string';
 import { mapValues, pickBy } from 'lodash';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 import { getFirstItemOrValue } from '@ussu/common/src/libs/qs';
 
 interface FreshersEventsProps extends RouteComponentProps<{ path: string }> {}

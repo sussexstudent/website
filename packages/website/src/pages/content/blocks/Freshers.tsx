@@ -5,13 +5,13 @@ import slugify from '@ussu/common/src/libs/slugify';
 import convert from 'htmr';
 import StreamField from '../StreamField';
 import socialSquiggle from '../../../img/socialsquiggle.svg';
-import { COLORS, MQ } from '@ussu/common/src/libs/style';
+import { COLORS, MQ } from '@ussu/basil/src/style';
 import { TextBlockData } from './TextBlock';
 import { ExternalLinkBlockData, InternalLinkBlockData } from './Links';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
 import { ImageBlockData } from './Image';
 import { SocialArray } from '../../../components/SocialArray';
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 
 const Slice: React.FC<{ id: string; color: string }> = ({
   children,

@@ -7,7 +7,7 @@ import { Loader } from '../../../components/Loader';
 import { ErrorState } from '../../../components/ErrorState';
 import { RouteComponentProps } from 'react-router';
 import { BuyButton } from '../EventDetailPage/BuyButton';
-import { type, TypeSize } from '@ussu/common/src/libs/style/type';
+import { type, TypeSize } from '@ussu/basil/src/style/type';
 
 export type EventBundleProps = RouteComponentProps<{ bundleSlug: string }>;
 

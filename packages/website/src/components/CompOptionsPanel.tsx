@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { css } from '@emotion/core';
-import { COLORS } from '@ussu/common/src/libs/style';
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
+import { COLORS } from '@ussu/basil/src/style';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 
 enum FalmerAPIOptions {
   Production = 'production',

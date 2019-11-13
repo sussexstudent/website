@@ -1,6 +1,6 @@
 import React from 'react';
 import { ContentBrowserPage } from '../../pages/content/types';
-import { COLORS } from '@ussu/common/src/libs/style';
+import { COLORS } from '@ussu/basil/src/style';
 import { ContentBrowserItem, itemActive } from './ContentBrowserItem';
 import { css } from '@emotion/core';
 

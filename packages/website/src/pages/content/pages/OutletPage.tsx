@@ -16,7 +16,7 @@ import convert from 'htmr';
 import { css } from '@emotion/core';
 import classnames from 'classnames';
 import { Heading, HeadingLevel } from '../../../components/Heading';
-import { type, TypeSize } from '@ussu/common/src/libs/style/type';
+import { type, TypeSize } from '@ussu/basil/src/style/type';
 import {
   CardListActionable,
   CardListActionableDocumentLink,

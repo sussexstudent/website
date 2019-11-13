@@ -1,5 +1,5 @@
 import React from 'react';
-import { type, TypeSize } from '@ussu/common/src/libs/style/type';
+import { type, TypeSize } from '@ussu/basil/src/style/type';
 
 interface FalmerDetailHeaderProps {
   title: string;

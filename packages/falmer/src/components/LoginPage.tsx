@@ -1,6 +1,6 @@
 import React from 'react';
-import { cardActionable } from '@ussu/common/src/libs/style/cards';
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
+import { cardActionable } from '@ussu/basil/src/style/cards';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 
 export const LoginPage = () => {
   return (

@@ -1,8 +1,8 @@
 import React from 'react';
 import SadFaceIcon from '@ussu/common/src/icons/sad-face.svg';
 import Raven from 'raven-js';
-import { type, TypeSize } from '@ussu/common/src/libs/style/type';
-import { COLORS } from '@ussu/common/src/libs/style';
+import { type, TypeSize } from '@ussu/basil/src/style/type';
+import { COLORS } from '@ussu/basil/src/style';
 
 const refreshPage = () =>
   typeof window !== 'undefined' && window.location.reload();

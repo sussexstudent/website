@@ -1,5 +1,5 @@
 import React from 'react';
-import { TypeSize, type } from '@ussu/common/src/libs/style/type';
+import { TypeSize, type } from '@ussu/basil/src/style/type';
 
 interface FalmerSplashProps {
   image: any;

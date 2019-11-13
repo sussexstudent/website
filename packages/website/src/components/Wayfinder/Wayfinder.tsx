@@ -1,8 +1,8 @@
 import React from 'react';
-import { COLORS } from '@ussu/common/src/libs/style';
+import { COLORS } from '@ussu/basil/src/style';
 import { Link, NavLink } from 'react-router-dom';
 import { flatten } from 'lodash';
-import { type, Typeface, TypeSize } from '@ussu/common/src/libs/style/type';
+import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 
 const Menu: React.FC<React.HTMLProps<HTMLUListElement>> = ({
   children,

@@ -4,10 +4,12 @@ export const TYPE_SECONDARY = `'Larsseit', ${TYPE_PRIMARY}`;
 
 export const COLORS = {
   BRAND_GREEN: '#1db8a4',
-  BRAND_YELLOW: '#ffdb7a',
   BRAND_BLUE: '#27428c',
   BRAND_RED: '#ee534f',
   BRAND_PINK: '#fdd2c6',
+  BRAND_CORAL: '#f1766d',
+  BRAND_CORAL__LIGHT: '#f8b2b0',
+  BRAND_PRIMARY: '#27363e',
 
   GREY_SAD_SLATE: 'rgba(38, 38, 38, 1)',
   GREY_SLATE: '#323232',
@@ -19,12 +21,6 @@ export const COLORS = {
 
   EXTERNAL_TWITTER: '#50abf1',
   EXTERNAL_SNAPCHAT: '#fff900',
-
-  F18_BLUE: '#1e1c50',
-  F18_TEAL: '#44c1c3',
-  F18_ORANGE: '#e46b3d',
-  F18_PURPLE: '#4751a3',
-  F18_PINK: '#bb1f66',
 
   WHITE: '#ffffff',
   BLACK: '#000000',

@@ -7,7 +7,7 @@ import { RootState } from '@ussu/common/src/types/falmer';
 import { Switch, Route } from 'react-router-dom';
 import { useMappedState, useDispatch } from 'redux-react-hook';
 import Modal from 'react-modal';
-import { EventsListProps } from '@ussu/website/src/pages/events/EventsCalender';
+import { EventsListProps } from '@ussu/website/src/pages/whatson/WhatsOnListings';
 import loadable from '@loadable/component';
 import { LoginPage } from '../../components/LoginPage';
 

@@ -9,7 +9,7 @@ import { Loader } from '../../../components/Loader';
 import {
   setBrandingPeriod,
   useWhatsOnThemingContext,
-} from '../EventsApplication/WhatsOnBrandingContext';
+} from '../WhatsOnBrandingContext';
 
 interface OwnProps {
   disableHeader: boolean;

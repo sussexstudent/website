@@ -88,8 +88,8 @@
 @import '../../../website/src/components/BannerOutlet/Banner.css';
 @import '../../../website/src/components/BlockLink/BlockLink.css';
 
-@import '../../../website/src/pages/events/EventDetailPage/EventDetail.css';
-@import '../../../website/src/pages/events/EventsCalender/EventsCalender.css';
+@import '../../../website/src/pages/whatson/EventDetailPage/EventDetail.css';
+@import '../../../website/src/pages/whatson/WhatsOnListings/EventsCalender.css';
 
 @import '../../../website/src/components/HomepageSplash/HomepageSplash.css';
 @import '../../../website/src/components/ContentBrowser/ContentBrowser.css';

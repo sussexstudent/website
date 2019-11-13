@@ -1,51 +1,51 @@
 import React from 'react';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import { RouteComponent } from '@ussu/common/src/types/routes';
-import { ScrollToTop } from '../../../components/ScrollToTop';
-import { EventBundleProps } from '../EventsCalender/EventBundle';
-import { EventsListProps } from '../EventsCalender';
-import { EventBrandingPeriodProps } from '../EventsCalender/EventBrandingPeriod';
-import { EventDetailPageProps } from '../EventDetailPage';
+import { ScrollToTop } from '../../components/ScrollToTop';
+import { EventBundleProps } from './WhatsOnListings/EventBundle';
+import { EventsListProps } from './WhatsOnListings';
+import { EventBrandingPeriodProps } from './WhatsOnListings/EventBrandingPeriod';
+import { EventDetailPageProps } from './EventDetailPage';
 import loadable from '@loadable/component';
 import { BrandingContainer } from './branding/components';
 import { WhatsOnThemingProvider } from './WhatsOnBrandingContext';
-import { MyProgrammeProps } from './MyProgramme';
+import { WhatsOnMyProgrammeProps } from './WhatsOnMyProgramme';
 import {
   Wayfinder,
   WayfinderTopLevel,
   WayfinderItem,
-} from '../../../components/Wayfinder';
+} from '../../components/Wayfinder';
 import LIVE_BRANDING_PERIOD_QUERY from './LiveBrandingPeriods.graphql';
 import { useQuery } from '@apollo/react-hooks';
 import { Brand } from '@ussu/common/src/types/events';
 
 const LoadableListings = loadable<EventsListProps>(async () => {
-  const { EventsList } = await import('../EventsCalender');
+  const { EventsList } = await import('./WhatsOnListings');
   return (props) => <EventsList {...props} />;
 });
 
 const LoadableListingsBranding = loadable<EventBrandingPeriodProps>(
   async () => {
     const { EventBrandingPeriod } = await import(
-      '../EventsCalender/EventBrandingPeriod'
+      './WhatsOnListings/EventBrandingPeriod'
     );
     return (props) => <EventBrandingPeriod {...props} />;
   },
 );
 
 const LoadableBundle = loadable<EventBundleProps>(async () => {
-  const { EventBundle } = await import('../EventsCalender/EventBundle');
+  const { EventBundle } = await import('./WhatsOnListings/EventBundle');
   return (props) => <EventBundle {...props} />;
 });
 
 const LoadableDetail = loadable<EventDetailPageProps>(async () => {
-  const { EventDetailPage } = await import('../EventDetailPage');
+  const { EventDetailPage } = await import('./EventDetailPage');
   return (props) => <EventDetailPage {...props} />;
 });
 
-const LoadableMyProgramme = loadable<MyProgrammeProps>(async () => {
-  const { MyProgramme } = await import('./MyProgramme');
-  return (props) => <MyProgramme {...props} />;
+const LoadableMyProgramme = loadable<WhatsOnMyProgrammeProps>(async () => {
+  const { WhatsOnMyProgramme } = await import('./WhatsOnMyProgramme');
+  return (props) => <WhatsOnMyProgramme {...props} />;
 });
 
 type EventsApplicationProps = RouteComponent;
@@ -74,7 +74,7 @@ type EventsApplicationProps = RouteComponent;
 //   }
 // }
 
-export const EventsApplication: React.FC<EventsApplicationProps> = () => {
+export const WhatsOn: React.FC<EventsApplicationProps> = () => {
   const { data } = useQuery(LIVE_BRANDING_PERIOD_QUERY);
 
   return (

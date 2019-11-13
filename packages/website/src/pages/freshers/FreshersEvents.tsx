@@ -1,6 +1,6 @@
 import React from 'react';
 import { FreshersContainer } from './FreshersContainer';
-import { EventsList } from '../../pages/events/EventsCalender';
+import { EventsList } from '../whatson/WhatsOnListings';
 import { addMonths, startOfDay } from 'date-fns';
 import qs from 'query-string';
 import { mapValues, pickBy } from 'lodash';

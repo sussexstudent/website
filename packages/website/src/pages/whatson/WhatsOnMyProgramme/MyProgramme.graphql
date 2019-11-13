@@ -1,4 +1,4 @@
-#import "./EventListingFragment.graphql"
+#import "../WhatsOnListings/EventListingFragment.graphql"
 
 query getUserLikedEvents($filter: EventFilterInput) {
   allEvents(viewerLiked: true, filter: $filter) {

@@ -6,7 +6,7 @@ import {
 } from '../../../components/ContentCard';
 import { Loader } from '../../../components/Loader';
 import DetailPageQuery from './EventsDetailPage.graphql';
-import { EventsCalenderItem } from '../EventsCalender/EventsCalenderItem';
+import { WhatsOnEventCard } from '../WhatsOnEventCard';
 import { Event, TicketType } from '@ussu/common/src/types/events';
 import { AspectRatio, OneImageBackground } from '../../../components/OneImage';
 import { EventDetailDetails } from './EventDetailDetails';
@@ -18,11 +18,11 @@ import { Button } from '../../../components/Button';
 import { RouteComponentProps } from 'react-router-dom';
 import { ScrollToTop } from '../../../components/ScrollToTop';
 import { useQuery } from '@apollo/react-hooks';
-import { BundleBanner } from '../EventsApplication/branding/components';
+import { BundleBanner } from '../branding/components';
 import {
   setBrandingPeriod,
   useWhatsOnThemingContext,
-} from '../EventsApplication/WhatsOnBrandingContext';
+} from '../WhatsOnBrandingContext';
 
 interface RouteParams {
   [0]: string;
@@ -157,7 +157,7 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
               <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 {event.children.map((childEvent: Event) => (
                   <div>
-                    <EventsCalenderItem part={{ event: childEvent }} />
+                    <WhatsOnEventCard part={{ event: childEvent }} />
                   </div>
                 ))}
               </div>

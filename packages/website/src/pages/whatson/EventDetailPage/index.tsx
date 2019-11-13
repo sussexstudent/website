@@ -6,7 +6,7 @@ import {
 } from '../../../components/ContentCard';
 import { Loader } from '../../../components/Loader';
 import DetailPageQuery from './EventsDetailPage.graphql';
-import { EventsCalenderItem } from '../EventsCalender/EventsCalenderItem';
+import { WhatsOnEventCard } from '../WhatsOnEventCard';
 import { Event, TicketType } from '@ussu/common/src/types/events';
 import { AspectRatio, OneImageBackground } from '../../../components/OneImage';
 import { EventDetailDetails } from './EventDetailDetails';
@@ -14,15 +14,15 @@ import { EventDetailSidebar } from './EventDetailSidebar';
 import { MSLEventCommunication } from './MSLEventCommunication';
 import { EventDetailMetadata } from './EventDetailMetadata';
 import { PatternPlaceholder } from '../../../components/PatternPlaceholder';
-import { Button } from '../../../components/Button';
 import { RouteComponentProps } from 'react-router-dom';
 import { ScrollToTop } from '../../../components/ScrollToTop';
 import { useQuery } from '@apollo/react-hooks';
-import { BundleBanner } from '../EventsApplication/branding/components';
+import { BundleBanner } from '../branding/components';
 import {
   setBrandingPeriod,
   useWhatsOnThemingContext,
-} from '../EventsApplication/WhatsOnBrandingContext';
+} from '../WhatsOnBrandingContext';
+import { InternalAppLink } from '../../../components/InternalAppLink';
 
 interface RouteParams {
   [0]: string;
@@ -134,9 +134,12 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
                   <div>
                     <h3>{event.venue.name}</h3>
                     {event.venue.websiteLink ? (
-                      <Button href={event.venue.websiteLink}>
+                      <InternalAppLink
+                        to={event.venue.websiteLink}
+                        className="Button"
+                      >
                         More information
-                      </Button>
+                      </InternalAppLink>
                     ) : null}
                   </div>
                 ) : null}
@@ -157,7 +160,7 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
               <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 {event.children.map((childEvent: Event) => (
                   <div>
-                    <EventsCalenderItem part={{ event: childEvent }} />
+                    <WhatsOnEventCard part={{ event: childEvent }} />
                   </div>
                 ))}
               </div>

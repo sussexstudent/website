@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
-import { BookMarketApplication } from '../../pages/bookmarket/BookMarketApp';
-import { EventsApplication } from '../../pages/events/EventsApplication';
+import { BookMarketApplication } from '../bookmarket/BookMarketApp';
+import { WhatsOn } from '../whatson';
 import * as routerActions from '../../ducks/router';
 import { AppMountState } from '../../ducks/router';
-import { ContentPage } from '../../pages/content/ContentPage';
+import { ContentPage } from '../content/ContentPage';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import { FreshersEvents } from '../freshers/FreshersEvents';
 import { RouterAnalytics } from '../../components/RouterAnalytics';
-import { FourOhFourPage } from '../../pages/content/FourOhFourPage';
+import { FourOhFourPage } from '../content/FourOhFourPage';
 import {
   Route,
   Switch,
@@ -20,7 +20,7 @@ import { ScrollToTop } from '../../components/ScrollToTop';
 import { useDispatch } from 'redux-react-hook';
 import { SearchProps } from '../../components/SearchApp';
 import loadable from '@loadable/component';
-import { ContentBrowserContainer } from '../../pages/ContentBrowser';
+import { ContentBrowserContainer } from '../ContentBrowser';
 import Homepage from '../homepage';
 import { ConsentCodeProps } from '../forms/consent';
 
@@ -82,7 +82,7 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
             <Route component={Homepage} path="/" exact />
             <Route component={BookMarketApplication} path="/book-market" />
             <Route component={LoadableContentBrowser} path="/browse" />
-            <Route component={EventsApplication} path="/whats-on" />
+            <Route component={WhatsOn} path="/whats-on" />
             <Route component={LoadableSearchApp} path="/search" />
             <Route
               component={LoadableStudentGroupsDiscovery}

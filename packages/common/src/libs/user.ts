@@ -155,7 +155,7 @@ function currentUser(): Client | null {
   return {
     auth: auth(),
     fundraising: fundraising(),
-    mitt: new mitt(),
+    mitt: mitt(),
   };
 }
 

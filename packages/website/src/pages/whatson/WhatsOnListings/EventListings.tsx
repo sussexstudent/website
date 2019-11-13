@@ -4,9 +4,9 @@ import {
   getSmartDate,
   organisePartsForUI,
   splitEventsInToParts,
-} from '../EventsApplication/utils';
+} from '../utils';
 import { Event, EventPart } from '@ussu/common/src/types/events';
-import { EventsCalenderItem } from './EventsCalenderItem';
+import { WhatsOnEventCard } from '../WhatsOnEventCard';
 // import VisibilitySensor from 'react-visibility-sensor';
 
 interface EventListingsProps {
@@ -68,7 +68,7 @@ export const EventListings: React.FC<EventListingsProps> = (props) => {
                           className="EventsCalender__part-container"
                           key={index}
                         >
-                          <EventsCalenderItem part={part} />
+                          <WhatsOnEventCard part={part} />
                         </div>
                       );
                     })}

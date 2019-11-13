@@ -1,4 +1,6 @@
 .EventDetail {
+  margin-top: -1rem;
+
   &__bundle,
   &__brand {
     padding: 0.2rem;

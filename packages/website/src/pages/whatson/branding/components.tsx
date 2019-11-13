@@ -1,12 +1,12 @@
 import { createBrandedComponent } from './createBrandedComponent';
 import { WhatsOnBrandedComponentLocation } from './locations';
 import React from 'react';
-import EVENT_LISTINGS_BUNDLE from '../../EventsCalender/EventListingsBundle.graphql';
+import EVENT_LISTINGS_BUNDLE from '../WhatsOnListings/EventListingsBundle.graphql';
 import { useQuery } from '@apollo/react-hooks';
 import { type, TypeSize } from '@ussu/basil/src/style/type';
 import { Layers, MQ } from '@ussu/basil/src/style';
-import FauxRouterLink from '../../../../components/FauxRouterLink';
-import { BuyButton } from '../../EventDetailPage/BuyButton';
+import FauxRouterLink from '../../../components/FauxRouterLink';
+import { BuyButton } from '../EventDetailPage/BuyButton';
 
 export const BrandingContainer = createBrandedComponent(
   WhatsOnBrandedComponentLocation.Container,

@@ -3,7 +3,7 @@ import React from 'react';
 import './test.css';
 // import {useQuery} from '@apollo/react-hooks';
 
-export const EventDiscovery = () => {
+export const WhatsOnDiscovery = () => {
   return <h1>tbi</h1>;
   // const { data, loading } = useQuery(EXAMPLE_QUERY, { variables: { brand: 'freshers-week-2017' } });
   //   return (

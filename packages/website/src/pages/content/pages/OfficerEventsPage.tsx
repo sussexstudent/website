@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Page } from '../types';
 import convert from 'htmr';
-import EventListingsQuery from '../../../pages/events/EventsCalender/EventListings.graphql';
-import { EventListings } from '../../../pages/events/EventsCalender/EventListings';
+import EventListingsQuery from '../../../pages/whatson/WhatsOnListings/EventListings.graphql';
+import { EventListings } from '../../whatson/WhatsOnListings/EventListings';
 import { useQuery } from '@apollo/react-hooks';
 import { startOfDay, addMonths } from 'date-fns/esm';
 import { Loader } from '../../../components/Loader';

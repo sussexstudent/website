@@ -24,7 +24,7 @@ export const EventAccessSidebar: React.FC<EventAccessSidebarProps> = ({
       )}
       {event.categories.length > 0 && (
         <EventSidebarSection heading="Categories">
-          <ul>
+          <ul className="List List--reset">
             {event.categories.map((cat) => (
               <li key={cat.slug}>{cat.name}</li>
             ))}
@@ -33,7 +33,7 @@ export const EventAccessSidebar: React.FC<EventAccessSidebarProps> = ({
       )}
       {hasAnyAudience ? (
         <EventSidebarSection heading="Audience">
-          <ul>
+          <ul className="List List--reset">
             {event.audienceGoodToMeetPeople && <li>Good to meet people</li>}
             {event.audienceJustForPgs && <li>Great for PGs</li>}
             {event.audienceSuitableKidsFamilies && (
@@ -45,7 +45,7 @@ export const EventAccessSidebar: React.FC<EventAccessSidebarProps> = ({
       ) : null}
 
       <EventSidebarSection heading="Accessibility">
-        <ul>
+        <ul className="List List--reset">
           {event.hasAccessibleToilets === PAValue.Positive && (
             <li>Has accessible toilets</li>
           )}

@@ -10,11 +10,8 @@ import { Loader } from '../../../components/Loader';
 import {
   setBrandingPeriod,
   useWhatsOnThemingContext,
-} from '../EventsApplication/WhatsOnBrandingContext';
-import {
-  BrandingPeriodHeader,
-  BundleBanner,
-} from '../EventsApplication/branding/components';
+} from '../WhatsOnBrandingContext';
+import { BrandingPeriodHeader, BundleBanner } from '../branding/components';
 import { getFirstItemOrValue } from '@ussu/common/src/libs/qs';
 import qs from 'query-string';
 import { pickBy, mapValues } from 'lodash';

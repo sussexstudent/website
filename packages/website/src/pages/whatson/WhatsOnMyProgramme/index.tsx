@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import getUserLikedEvents from '../EventsCalender/MyProgramme.graphql';
+import getUserLikedEvents from './MyProgramme.graphql';
 import { startOfDay, addMonths } from 'date-fns';
 import { Loader } from '../../../components/Loader';
-import { EventListings } from '../EventsCalender/EventListings';
+import { EventListings } from '../WhatsOnListings/EventListings';
 
-export interface MyProgrammeProps {}
+export interface WhatsOnMyProgrammeProps {}
 
-export const MyProgramme: React.FC<MyProgrammeProps> = ({}) => {
+export const WhatsOnMyProgramme: React.FC<WhatsOnMyProgrammeProps> = ({}) => {
   const [now] = useState(new Date());
   const { data, loading } = useQuery(getUserLikedEvents, {
     variables: {

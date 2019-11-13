@@ -12,10 +12,10 @@ import CollectionParentIcon from '@ussu/common/src/icons/events-collection-paren
 import PinIcon from '@ussu/common/src/icons/events-pin.svg';
 import SocietyIcon from '@ussu/common/src/icons/events-society.svg';
 import { Link } from 'react-router-dom';
-import { generateStylesForBrand, getOrdinal } from '../EventsApplication/utils';
+import { generateStylesForBrand, getOrdinal } from '../utils';
 import { getDate } from 'date-fns';
 import { ContentCardContent } from '../../../components/ContentCard';
-import { EventLikeButton } from '../EventsCalender/EventLikeButton';
+import { EventLikeButton } from '../WhatsOnListings/EventLikeButton';
 
 function isSameLogicalSleepDay(startDate: Date, endDate: Date): boolean {
   if (isSameDay(startDate, endDate)) {

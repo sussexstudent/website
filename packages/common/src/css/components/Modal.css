@@ -1,71 +1,10 @@
-.Modal {
-  position: relative;
-  width: 100%;
-  background: rgb(255, 255, 255);
-  overflow: auto;
-  outline: none;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-
-  @media (--medium) {
-    width: 80%;
-    max-width: 800px;
-
-    margin-top: 60px;
-    margin-bottom: 60px;
-    box-sizing: border-box;
-    box-shadow: 0 8px 15px 3px rgba(0, 0, 0, 0.2);
-    border-radius: 2px;
-    flex: none;
-    min-height: 0;
-  }
-
-  &--small {
-    max-width: 400px;
-
-    @media (--medium) {
-      border-radius: 2px;
-    }
-  }
-
-  &--full {
-    max-width: none;
-  }
-
-  &--small &__heading {
-    text-align: center;
-  }
-
-  &__content {
-    padding: 1rem;
-  }
-
-  &__footerClose {
-    background: var(--color__grey-spring);
-    color: var(--color__grey-sad-slate);
-    text-align: center;
-    padding: 0.6rem;
-    box-sizing: border-box;
-    font-size: 1.2rem;
-    width: 100%;
-    display: block;
-    font-family: var(--type__primary);
-    border: 0;
-    font-weight: bold;
-    align-self: flex-end;
-    cursor: pointer;
-  }
-}
-
-.Overlay {
+.ReactModal__Overlay {
   position: fixed;
   top: 0px;
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background-color: rgba(26, 26, 26, 0.4);
+  background-color: rgba(26, 26, 26, 0);
   z-index: 400;
   display: flex;
   align-content: center;
@@ -73,8 +12,35 @@
   overflow-y: auto;
   overflow-x: hidden;
   align-items: flex-start;
+  transition: background-color 400ms ease-in-out;
+
+  &--after-open {
+    background-color: rgba(26, 26, 26, 0.4);
+  }
+
+  &--before-open,
+  &--before-close {
+    background-color: rgba(26, 26, 26, 0);
+  }
 
   @media (--medium) {
     padding: 10px;
   }
+}
+
+.ReactModal__Content {
+  transition: opacity 300ms ease-in-out, transform 400ms ease-in-out;
+  opacity: 0;
+  transform: scale(0.95);
+  will-change: transform, opacity;
+}
+.ReactModal__Content--before-open,
+.ReactModal__Content--before-close {
+  opacity: 0 !important;
+  transform: scale(0.95) !important;
+}
+.ReactModal__Content--after-open {
+  top: 0;
+  opacity: 1;
+  transform: scale(1);
 }

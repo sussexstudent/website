@@ -3,8 +3,7 @@
   color: var(--color__brand-primary);
   font-family: var(--type__primary);
   font-weight: 600;
-  padding: calc(5px + 0.3rem) 0.4rem 0.2rem;
-  margin-top: -15px;
+  padding: 0.3rem;
   border-radius: 2px;
   font-size: 1rem;
   border: 0;

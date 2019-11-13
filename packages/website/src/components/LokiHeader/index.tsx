@@ -36,7 +36,6 @@ export const LokiHeaderInner: React.FC = () => {
           <InternalAppLink
             className="LokiHeader__logo-link"
             to="/"
-            style={{ color: '#ee534f' }}
             title="Sussex Students' Union"
           >
             <StudentsUnionLogoNoLogotype />

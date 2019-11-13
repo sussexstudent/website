@@ -53,14 +53,13 @@
     display: flex;
   }
 
-  &__bottom-row {
-  }
-
   &__profile-label-container {
     min-width: 100px;
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
+    margin-top: 0.4rem;
+    margin-bottom: 0.8rem;
   }
 
   @media (--up-to-medium) {
@@ -100,6 +99,7 @@
   &__logo-link {
     display: block;
     width: 100%;
+    color: var(--color__brand-coral);
 
     @media (--up-to-medium) {
       max-height: 30px;

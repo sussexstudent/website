@@ -11,10 +11,11 @@
     box-sizing: border-box;
     padding: 0.8rem 0.5rem;
     color: #ffffff;
-    background-color: var(--color__brand-blue);
+    background-color: var(--color__brand-primary);
     text-decoration: none;
     text-align: center;
     display: block;
     margin-bottom: 1rem;
+    border-radius: 4px;
   }
 }

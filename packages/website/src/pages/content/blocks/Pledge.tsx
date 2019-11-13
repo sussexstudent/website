@@ -5,45 +5,35 @@ import convert from 'htmr';
 import { AspectRatio, OneImage } from '@ussu/website/src/components/OneImage';
 import { css } from '@emotion/core';
 import { COLORS } from '@ussu/basil/src/style';
+import { type, TypeSize } from '@ussu/basil/src/style/type';
 
 const pledgeHeaderStyles = css({
   display: 'flex',
   flexDirection: 'column',
 });
 
-const right = css({
-  marginRight: '0 !important',
-  marginLeft: '1rem !important',
-});
-
-const left = css({
-  marginRight: '1rem !important',
-  marginLeft: '0 !important',
-});
-
 const StatusBadge: React.FC<{ status: string }> = ({ status }) => {
-  const color = `${status == 'done' ? COLORS.BRAND_GREEN : '#ffc300'}`;
+  const color = `${status == 'done' ? COLORS.BRAND_GREEN : '#ff8c00'}`;
   return (
     <div
       className={status}
       css={{
         textTransform: 'uppercase',
         fontWeight: 'bold',
-        fontSize: '14px',
         color: color,
-      }}
-    >
-      <span
-        css={{
-          height: '20px',
-          width: '20px',
+        ...type(TypeSize.Brevier),
+        '::before': {
+          height: '12px',
+          width: '12px',
           borderRadius: '50%',
           display: 'inline-block',
           marginRight: '8px',
           verticalAlign: 'bottom',
           backgroundColor: color,
-        }}
-      ></span>
+          content: '""',
+        },
+      }}
+    >
       {status.replace('_', ' ')}
     </div>
   );
@@ -64,29 +54,46 @@ export const Pledge: StreamFieldBlock<PledgeBlockData> = ({
   index,
 }) => {
   const reverse = index % 2 === 0 ? 'row' : 'row-reverse';
-  const itemClass = reverse == 'row-reverse' ? right : left;
-  let statusComponent;
-  if (status !== 'blank') {
-    statusComponent = <StatusBadge status={status} />;
-  }
+
   return (
     <div
-      className="Trail Trail__row--11"
-      css={{ marginBottom: '5%', flexDirection: reverse, alignItems: 'center' }}
+      css={{
+        marginBottom: '3rem',
+        '::after': {
+          content: '""',
+          display: 'block',
+          height: '1px',
+          width: '10%',
+          margin: '0 auto',
+          backgroundColor: COLORS.GREY_WINTER,
+          position: 'relative',
+        },
+      }}
     >
-      <div css={itemClass}>
-        <div css={pledgeHeaderStyles}>
-          <h1>{title}</h1>
-          {statusComponent}
+      <div
+        css={{
+          display: 'grid',
+          grid: '2fr 3fr',
+          paddingBottom: '3rem',
+          flexDirection: reverse,
+          alignItems: 'flex-start',
+          justifyContent: 'space-between',
+        }}
+      >
+        <div>
+          <div css={pledgeHeaderStyles}>
+            <h1 css={[type(TypeSize.DoublePica), { margin: 0 }]}>{title}</h1>
+            {status !== 'blank' ? <StatusBadge status={status} /> : null}
+          </div>
+          <div className="type-body-copy">{convert(body)}</div>
         </div>
-        <div className="type-body-copy">{convert(body)}</div>
-      </div>
-      <div>
-        <OneImage
-          aspectRatio={AspectRatio.r16by9}
-          src={image.resource}
-          alt=""
-        />
+        <div css={{ maxWidth: 500 }}>
+          <OneImage
+            aspectRatio={AspectRatio.r16by9}
+            src={image.resource}
+            alt=""
+          />
+        </div>
       </div>
     </div>
   );

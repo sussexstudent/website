@@ -148,7 +148,7 @@ export const pageQuery = graphql`
         title
         slug
       }
-        body
+      body
       tableOfContents
       parent {
         ... on File {

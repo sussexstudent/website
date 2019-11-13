@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS, MQ, TYPE_SECONDARY } from '@ussu/basil/src/style';
 
-export const SectionbarItem: React.FC<
-  { active?: boolean; disabled?: boolean } & React.HTMLAttributes<HTMLLIElement>
-> = ({ children, active, disabled }) => (
+export const SectionbarItem: React.FC<{
+  active?: boolean;
+  disabled?: boolean;
+} & React.HTMLAttributes<HTMLLIElement>> = ({ children, active, disabled }) => (
   <li
     css={{
       display: 'flex',

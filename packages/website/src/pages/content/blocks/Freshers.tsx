@@ -66,11 +66,13 @@ export type TwoColSliceData = StreamFieldBlockData<
     colOneContent: (
       | TextBlockData
       | ExternalLinkBlockData
-      | InternalLinkBlockData)[];
+      | InternalLinkBlockData
+    )[];
     colTwoContent: (
       | TextBlockData
       | ExternalLinkBlockData
-      | InternalLinkBlockData)[];
+      | InternalLinkBlockData
+    )[];
   }
 >;
 

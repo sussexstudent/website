@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router';
 
-const ScrollToTopComponent: React.FC<
-  RouteComponentProps & { children: any }
-> = ({ history, children }) => {
+const ScrollToTopComponent: React.FC<RouteComponentProps & {
+  children: any;
+}> = ({ history, children }) => {
   const [currentKey, setKey] = useState(
     `${history.location.pathname}${history.location.search}`,
   );

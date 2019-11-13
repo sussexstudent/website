@@ -41,9 +41,9 @@ export function setup() {
   }
 
   if (document.querySelector('.app__news_page')) {
-    import(/* webpackChunkName: "newsPage.module" */ './modules/newsPage').then(
-      (module) => module.default(),
-    );
+    import(
+      /* webpackChunkName: "newsPage.module" */ './modules/newsPage'
+    ).then((module) => module.default());
   }
 
   // Module: cookie_message

@@ -53,9 +53,9 @@ export const CardListActionableItem: React.FC<{
   );
 };
 
-export const CardListActionableDocumentLink: StreamFieldBlock<
-  DocumentLinkBlockData
-> = ({ block: { url, title, resource } }) => {
+export const CardListActionableDocumentLink: StreamFieldBlock<DocumentLinkBlockData> = ({
+  block: { url, title, resource },
+}) => {
   const [isPreviewing, setPreviewing] = useState(false);
   const target = `http://falmer-content.s3-eu-west-1.amazonaws.com/${resource}`;
   return (

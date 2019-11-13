@@ -24,9 +24,9 @@ const siteMode = getSiteMode();
 
 if (siteMode === Mode.Top || siteMode === Mode.ExternalFrame) {
   console.log(`[mode] ${siteMode}, loading visualBootstrap`);
-  import(/* webpackChunkName: "visualBootstrap" */ './visualBootstrap').then(
-    (module) => module.setup(),
-  );
+  import(
+    /* webpackChunkName: "visualBootstrap" */ './visualBootstrap'
+  ).then((module) => module.setup());
 } else if (siteMode === Mode.InternalFrame) {
   console.log(`[mode] ${siteMode}, loading communicationBootstrap`);
   import(

@@ -116,7 +116,10 @@ const EditableArea: React.FC<{
 
   const mapState = useCallback(
     (state) => {
-      return keyBy(usedImages.map((id) => state.images.images[id]), 'mediaId');
+      return keyBy(
+        usedImages.map((id) => state.images.images[id]),
+        'mediaId',
+      );
     },
     [area],
   );

@@ -15,9 +15,8 @@ interface AccordionItemInternalProps {
   className: string;
 }
 
-export const AccordionItemInternal: React.FC<
-  AccordionItemProps & AccordionItemInternalProps
-> = (props) => {
+export const AccordionItemInternal: React.FC<AccordionItemProps &
+  AccordionItemInternalProps> = (props) => {
   return (
     <li className={`${props.className}__item`}>
       {props.title({

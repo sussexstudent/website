@@ -31,13 +31,10 @@ export const MQ = Object.entries({
   Medium: 768,
   Large: 960,
   ExtraLarge: 1100,
-}).reduce(
-  (map, [name, value]) => {
-    map[name] = `@media (min-width: ${value}px)`;
-    return map;
-  },
-  ({} as any) as { [name: string]: string },
-);
+}).reduce((map, [name, value]) => {
+  map[name] = `@media (min-width: ${value}px)`;
+  return map;
+}, ({} as any) as { [name: string]: string });
 
 export enum Layers {
   Header_sideSearch = 155,

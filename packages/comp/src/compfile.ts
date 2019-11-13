@@ -7,7 +7,7 @@ import {
   TemplateResultMap,
 } from './types';
 import { createCompiler, createCompilerWatcher } from './compile';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 
 const moduleDetectRegEx = /comp-dist\/union\.main\.js$/;
 

@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 
 function createTwoStepMessage(msgGen: (...args: Array<any>) => string) {
   return (...args: Array<any>) => {

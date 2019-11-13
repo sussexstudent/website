@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 import * as ui from './generator/ui';
 import { renderTemplates } from './renderer';
 import { getCompfile, resolveAllTemplates } from './compfile';

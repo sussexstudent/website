@@ -1,6 +1,6 @@
 import React from 'react';
 import { EventListings } from './EventListings';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import EventListingsBrandingPeriodQuery from './EventListingsBundle.graphql';
 import { useQuery } from '@apollo/react-hooks';
 import { Loader } from '../../../components/Loader';

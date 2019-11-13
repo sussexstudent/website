@@ -4,7 +4,7 @@ import { EventsApplication } from '../../pages/events/EventsApplication';
 import * as routerActions from '../../ducks/router';
 import { AppMountState } from '../../ducks/router';
 import { ContentPage } from '../../pages/content/ContentPage';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import { FreshersEvents } from '../freshers/FreshersEvents';
 import { RouterAnalytics } from '../../components/RouterAnalytics';
@@ -71,70 +71,81 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
 
   return (
     <ScrollToTop>
-      <Helmet
-        defaultTitle="Sussex Students' Union"
-        titleTemplate="%s | Sussex Students' Union"
-      />
-      <RouterAnalytics />
-      <ErrorBoundary>
-        <Switch>
-          <Route component={Homepage} path="/" exact />
-          <Route component={BookMarketApplication} path="/book-market" />
-          <Route component={LoadableContentBrowser} path="/browse" />
-          <Route component={EventsApplication} path="/whats-on" />
-          <Route component={LoadableSearchApp} path="/search" />
-          <Route
-            component={LoadableStudentGroupsDiscovery}
-            path="/sport-societies-media/discover"
-          />
-          <Redirect
-            from="/freshers/whatson/"
-            to="/whats-on/periods/freshers-week-2019"
-          />
-          <Redirect from="/freshers/terms-conditions/" to="/freshers/terms/" />
-          <Redirect from="/freshers/events-info/" to="/freshers/faq/" />
-          <Redirect
-            from="/freshers/whats-on/"
-            to="/whats-on/periods/freshers-week-2019"
-          />
-          <Redirect
-            from="/freshers/events/"
-            to="/whats-on/periods/freshers-week-2019"
-          />
-          <Redirect
-            from="/services/outlets/*"
-            to="/about-us/shops-and-bars/*"
-          />
-          <Route
-            component={FreshersEvents}
-            path="/whats-on/periods/freshers-week-2019"
-          />
-          <Route component={ContentAPI} path="/freshers" />
-          {/*<EventDiscovery path="/event-discovery" />*/}
-          <Route component={ContentAPI} path="/get-involved" exact />
-          <Route
-            component={ContentAPI}
-            path="/get-involved/societies-and-student-media"
-          />
-          <Route component={ContentAPI} path="/about-us/officers" />
-          <Route component={ContentAPI} path="/get-involved/sports-clubs" />
-          <Route component={ContentAPI} path="/get-involved/decision-making" />
-          <Route component={ContentAPI} path="/volunteer/support" />
-          <Route component={ContentAPI} path="/services" />
-          <Route component={ContentAPI} path="/support" exact />
-          <Route component={ContentAPI} path="/get-involved-next" />
-          <Route component={ContentAPI} path="/about-us-next" />
-          <Route component={ContentAPI} path="/about-us" />
-          <Route component={LoadableConsentCode} path="/forms/consent/:slug" />
-          <Route
-            component={ContentAPI}
-            path="/get-involved/campaigns-toolkit"
-          />
-          <Route component={ContentAPI} path="/about-us/contact" />
-          <Route component={ContentAPI} path="/about-us/shops-and-bars" />
-          <Route component={FourOhFourPage} default />
-        </Switch>
-      </ErrorBoundary>
+      <HelmetProvider>
+        <Helmet
+          defaultTitle="Sussex Students' Union"
+          titleTemplate="%s | Sussex Students' Union"
+        />
+        <RouterAnalytics />
+        <ErrorBoundary>
+          <Switch>
+            <Route component={Homepage} path="/" exact />
+            <Route component={BookMarketApplication} path="/book-market" />
+            <Route component={LoadableContentBrowser} path="/browse" />
+            <Route component={EventsApplication} path="/whats-on" />
+            <Route component={LoadableSearchApp} path="/search" />
+            <Route
+              component={LoadableStudentGroupsDiscovery}
+              path="/sport-societies-media/discover"
+            />
+            <Redirect
+              from="/freshers/whatson/"
+              to="/whats-on/periods/freshers-week-2019"
+            />
+            <Redirect
+              from="/freshers/terms-conditions/"
+              to="/freshers/terms/"
+            />
+            <Redirect from="/freshers/events-info/" to="/freshers/faq/" />
+            <Redirect
+              from="/freshers/whats-on/"
+              to="/whats-on/periods/freshers-week-2019"
+            />
+            <Redirect
+              from="/freshers/events/"
+              to="/whats-on/periods/freshers-week-2019"
+            />
+            <Redirect
+              from="/services/outlets/*"
+              to="/about-us/shops-and-bars/*"
+            />
+            <Route
+              component={FreshersEvents}
+              path="/whats-on/periods/freshers-week-2019"
+            />
+            <Route component={ContentAPI} path="/freshers" />
+            {/*<EventDiscovery path="/event-discovery" />*/}
+            <Route component={ContentAPI} path="/get-involved" exact />
+            <Route
+              component={ContentAPI}
+              path="/get-involved/societies-and-student-media"
+            />
+            <Route component={ContentAPI} path="/about-us/officers" />
+            <Route component={ContentAPI} path="/get-involved/sports-clubs" />
+            <Route
+              component={ContentAPI}
+              path="/get-involved/decision-making"
+            />
+            <Route component={ContentAPI} path="/volunteer/support" />
+            <Route component={ContentAPI} path="/services" />
+            <Route component={ContentAPI} path="/support" exact />
+            <Route component={ContentAPI} path="/get-involved-next" />
+            <Route component={ContentAPI} path="/about-us-next" />
+            <Route component={ContentAPI} path="/about-us" />
+            <Route
+              component={LoadableConsentCode}
+              path="/forms/consent/:slug"
+            />
+            <Route
+              component={ContentAPI}
+              path="/get-involved/campaigns-toolkit"
+            />
+            <Route component={ContentAPI} path="/about-us/contact" />
+            <Route component={ContentAPI} path="/about-us/shops-and-bars" />
+            <Route component={FourOhFourPage} default />
+          </Switch>
+        </ErrorBoundary>
+      </HelmetProvider>
     </ScrollToTop>
   );
 };

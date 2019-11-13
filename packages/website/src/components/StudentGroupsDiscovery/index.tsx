@@ -4,7 +4,7 @@ import Fuse from 'fuse.js';
 import { OrganisationGrid } from '../OrganisationGrid';
 import STUDENT_GROUP_LISTING_QUERY from './StudentGroupListings.graphql';
 import { StudentGroupsSectionbar } from '../StudentGroupsSectionbar';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { StudentGroup } from '@ussu/common/src/types/groups';
 import { useQuery } from '@apollo/react-hooks';
 import { Loader } from '../Loader';

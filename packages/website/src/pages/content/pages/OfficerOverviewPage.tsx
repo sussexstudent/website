@@ -6,7 +6,7 @@ import convert from 'htmr';
 import StreamField from '../StreamField';
 import { css } from '@emotion/core';
 import { MQ } from '@ussu/common/src/libs/style';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 interface IOfficerOverviewIndex extends Page<Page[]> {}
 

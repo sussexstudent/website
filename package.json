@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "engines": {
-    "node": ">=10.x"
+    "node": ">=12.x"
   },
   "devDependencies": {
     "@babel/core": "^7.7.0",

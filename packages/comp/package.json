@@ -11,7 +11,7 @@
     "@types/fs-extra": "^8.0.0",
     "@types/git-rev": "^0.2.0",
     "@types/jsdom": "^12.2.4",
-    "@types/lodash": "^4.14.146",
+    "@types/lodash": "^4.14.148",
     "@types/node-fetch": "^2.5.2",
     "@types/react": "^16.9.5",
     "@types/react-dom": "^16.9.4",

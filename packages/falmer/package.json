@@ -8,7 +8,7 @@
     "@emotion/core": "^10.0.21",
     "date-fns": "^2.7.0",
     "immer": "^5.0.0",
-    "react": "^16.10.2",
+    "react": "^16.12.0",
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
     "react-jsonschema-form": "^2.0.0-alpha.1",

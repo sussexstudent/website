@@ -59,7 +59,7 @@ export const WayfinderTopLevel: React.FC<{ title: string; to: string }> = ({
               color: COLORS.GREY_SAD_SLATE,
               textDecoration: 'none',
               padding: '0.3rem 1rem 0.3rem 0',
-              fontSize: '1.3rem',
+              ...type(TypeSize.DoublePica),
             },
           ]}
           to={to}

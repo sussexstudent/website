@@ -26,12 +26,14 @@ export const COLORS = {
   BLACK: '#000000',
 };
 
-export const MQ = Object.entries({
+export const MQSizes = Object.entries({
   Small: 480,
   Medium: 768,
   Large: 960,
   ExtraLarge: 1100,
-}).reduce((map, [name, value]) => {
+});
+
+export const MQ = MQSizes.reduce((map, [name, value]) => {
   map[name] = `@media (min-width: ${value}px)`;
   return map;
 }, ({} as any) as { [name: string]: string });

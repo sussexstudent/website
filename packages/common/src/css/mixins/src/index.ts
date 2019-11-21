@@ -1,10 +1,10 @@
 const omit = require('lodash').omit;
-const standardType = require('./typedata').standard;
+const allType = require('./typedata').all;
 
 function type(mixin, args) {
   const [name, ...options] = args.split(' ');
 
-  if (!standardType.hasOwnProperty(name)) {
+  if (!allType.hasOwnProperty(name)) {
     console.warn(`[css] "${name}" isn't a font size.`);
     return { color: 'red !important' };
   }
@@ -29,24 +29,24 @@ function type(mixin, args) {
     return processedMap;
   };
 
-  const size = standardType[name];
+  const size = allType[name];
 
-  const fontMap = process(standardType[name]['group-a']);
+  const fontMap = process(allType[name]['group-a']);
 
   if (size.hasOwnProperty('group-b')) {
     fontMap['@media screen and (min-width: 320px)'] = process(
-      standardType[name]['group-b'],
+      allType[name]['group-b'],
     );
   }
 
   if (size.hasOwnProperty('group-c')) {
     fontMap['@media screen and (min-width: 600px)'] = process(
-      standardType[name]['group-c'],
+      allType[name]['group-c'],
     );
   }
 
   if (size.hasOwnProperty('group-d')) {
-    fontMap['.feature-no-touch &'] = process(standardType[name]['group-d']);
+    fontMap['.feature-no-touch &'] = process(allType[name]['group-d']);
   }
 
   return fontMap;
@@ -64,7 +64,7 @@ module.exports = {
   },
   rounded: function roundedMixin(mixin, type) {
     const self = {
-      'border-radius': '0px',
+      'border-radius': '2px',
     };
 
     if (type === 'mask') {

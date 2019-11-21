@@ -18,7 +18,7 @@
     "typescript": "^3.7.2"
   },
   "scripts": {
-    "build": "echo skipping",
+    "build": "yarn rollup -c rollup.config.js && mkdir -p css-dist && node generate.js > ./css-dist/style.css",
     "storybook": "start-storybook -p 9001 -c ./storybook",
     "storybook:build": "build-storybook -c ./storybook",
     "postinstall": "yarn build"

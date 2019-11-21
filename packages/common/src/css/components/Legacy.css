@@ -1108,12 +1108,12 @@
 .Legacy a.btn.btn-default {
   background-color: transparent;
   color: black;
-  font-size: 1.3rem;
+  font-size: 1rem;
   padding: 0;
   line-height: 1.4rem;
   transition: 0.3s;
   border: none;
-  margin: 0.5rem;
+  margin: 0.5rem 0;
 }
 
 .Legacy a.btn.btn-default:before {
@@ -1242,7 +1242,9 @@
   color: #000 !important;
 }
 
-.Legacy .half input.button {
+.Legacy .half input.button,
+.Legacy .login-box a.Button,
+.Legacy .login-box input.button {
   background: #27363e;
   color: #fff;
   font-weight: 600;
@@ -1273,4 +1275,75 @@
     max-width: 100%;
     height: auto !important;
   }
+}
+
+.Legacy .election-navigation a.current {
+  border-left: 5px solid var(--color__brand-coral);
+}
+
+@media (min-width: 600px) {
+  .Legacy .election-navigation a.current {
+    border-left: none;
+    border-color: var(--color__brand-coral);
+  }
+}
+
+.Legacy .election-navigation a:hover,
+.election-navigation a.current {
+  background-color: var(--color__brand-coral-light);
+}
+
+.Legacy a.totop {
+  display: initial;
+}
+
+.Legacy .post_sd,
+.msl-post-description {
+  border-left: 5px solid var(--color__brand-coral);
+}
+
+.Legacy .msl_notification .msl_info,
+.Legacy .msl_notification {
+  background: var(--color__brand-coral);
+  color: #fff;
+  border-radius: 4px;
+}
+
+.Legacy .msl_notification {
+  border: none;
+  background: var(--color__brand-coral);
+}
+
+.Legacy .election_page {
+  margin-bottom: 2rem;
+}
+
+.Legacy .election p.msl-election-organisation a {
+  color: var(--color__brand-primary);
+}
+
+.Legacy .election p.msl-election-desc {
+  background: var(--color__grey-light);
+  border: none;
+}
+
+.Legacy a[href="https://www.sussexstudent.com/edit/page/widget/?page_name=/student-reps/&control_name=elections"] {
+  display: none;
+}
+
+.Legacy .join_list .button {
+  background: #27363e;
+  border: none;
+  border-radius: 4px;
+}
+
+.Legacy .msl_notification .confirm a,
+.Legacy .msl_notification .confirm,
+.Legacy .msl_notification {
+  background: transparent;
+  color: #000;
+}
+
+.Legacy .checkoutpage .msl_table th {
+  background: #27363e;
 }

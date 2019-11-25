@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {
     "@emotion/core": "^10.0.21",
-    "date-fns": "^2.7.0",
+    "date-fns": "^2.8.1",
     "immer": "^5.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",

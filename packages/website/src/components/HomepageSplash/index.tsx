@@ -2,6 +2,7 @@ import React from 'react';
 import { basicTimer, Typer } from '../Typer';
 import { shuffle } from 'lodash';
 import { COLORS } from '@ussu/basil/src/style';
+import { OneImageBackground } from '../OneImage';
 
 const placeholderHints = shuffle([
   'support',
@@ -15,10 +16,11 @@ const placeholderHints = shuffle([
 ]);
 
 const HomepageSplashComponent = () => (
-  <div
-    className="HomepageSplash"
+  <OneImageBackground
+    src="original_images/7ee2fc8daf2e4f93bea953d9e86c32ee"
     css={{
-      backgroundImage: `url(http://falmer.sussexstudent.com/images/mryRYNbhc0VJXu3u_Ym266S6WHU=/2911/original/)`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
     }}
   >
     <div className="LokiContainer">
@@ -37,7 +39,7 @@ const HomepageSplashComponent = () => (
         />
       </div>
     </div>
-  </div>
+  </OneImageBackground>
 );
 
 export const HomepageSplash = HomepageSplashComponent;

@@ -46,7 +46,7 @@
 
   & p {
     margin-top: 0;
-    @mixin type pica;
+    @mixin type Pica;
     padding-bottom: 1rem;
     font-weight: normal;
   }

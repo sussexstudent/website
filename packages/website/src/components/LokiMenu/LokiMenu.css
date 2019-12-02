@@ -26,20 +26,20 @@
     text-decoration: none;
     font-weight: bold;
     padding: 1.2rem 1rem;
-    @mixin type great-primer;
+    @mixin type GreatPrimer;
     background-color: var(--color__brand-coral);
 
     @media (--medium) {
       padding: 0.2rem 0 0.2rem 0.2rem;
       margin-left: -0.2rem;
-      @mixin type pica;
+      @mixin type Pica;
       border-bottom: 2px solid var(--color__brand-primary);
       background-color: var(--color__brand-primary);
       transition: 0.3s;
     }
 
     @media (--large) {
-      @mixin type great-primer;
+      @mixin type GreatPrimer;
     }
 
     &:hover,

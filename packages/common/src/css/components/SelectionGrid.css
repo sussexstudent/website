@@ -12,7 +12,7 @@
     font-weight: bold;
     padding: 0.4rem 0.2rem;
     display: inline-block;
-    @mixin type great-primer;
+    @mixin type GreatPrimer;
   }
 
   &--undderneath &__image-inside {

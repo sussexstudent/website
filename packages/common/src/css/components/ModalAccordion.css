@@ -6,7 +6,7 @@
   font-weight: 600;
 
   &__item-title {
-    @mixin type pica;
+    @mixin type Pica;
     font-weight: inherit;
     font-family: inherit;
     border: 0;

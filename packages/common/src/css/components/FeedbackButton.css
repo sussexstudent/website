@@ -1,6 +1,6 @@
 .FeedbackButton {
   padding: 1rem;
-  @mixin type double-pica;
+  @mixin type DoublePica;
   text-align: center;
 
   &__feedbackGiven {

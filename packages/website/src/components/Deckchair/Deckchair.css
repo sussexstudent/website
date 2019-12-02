@@ -60,7 +60,7 @@
     text-decoration: none;
     font-weight: bold;
     border: 0;
-    @mixin type great-primer;
+    @mixin type GreatPrimer;
     justify-self: end;
     @mixin card standard;
   }

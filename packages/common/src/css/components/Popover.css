@@ -5,7 +5,7 @@
   position: relative;
 
   &__inner {
-    @mixin type long-primer;
+    @mixin type LongPrimer;
     font-family: var(--type__primary);
     flex-direction: column;
     padding: 0.3em 0.5em;

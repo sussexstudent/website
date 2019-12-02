@@ -32,13 +32,13 @@
     color: #000000;
     margin: 0 0 0.6rem;
     text-align: center;
-    @mixin type great-primer;
+    @mixin type GreatPrimer;
     font-family: var(--type__primary);
   }
 
   &__description {
     text-align: center;
-    @mixin type long-primer;
+    @mixin type LongPrimer;
     color: grey;
   }
 

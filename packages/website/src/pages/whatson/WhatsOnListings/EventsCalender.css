@@ -98,7 +98,7 @@
     padding-bottom: 0.4rem;
 
     sup {
-      @mixin type pica;
+      @mixin type Pica;
     }
 
     @media (--medium) {

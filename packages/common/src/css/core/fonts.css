@@ -67,6 +67,7 @@
       format('woff'),
     url('https://du9l8eemj97rm.cloudfront.net/fonts/larsseit/2E6B7C_8_0.ttf')
       format('truetype');
+  font-display: fallback;
 }
 
 @font-face {
@@ -81,6 +82,7 @@
       format('woff'),
     url('https://du9l8eemj97rm.cloudfront.net/fonts/larsseit/2E6B7C_2_0.ttf')
       format('truetype');
+  font-display: fallback;
 }
 /*
 @font-face {

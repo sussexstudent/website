@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { BackBar } from '../../../website/src/components/BackBar/index';
 
 export default { title: 'Navigation|BackBar' };

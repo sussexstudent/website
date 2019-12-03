@@ -1,3 +1,4 @@
+import React from 'react';
 import { SocialArray } from '../../../website/src/components/SocialArray/index';
 
 export default { title: 'SocialArray' };

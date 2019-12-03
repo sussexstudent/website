@@ -1,3 +1,4 @@
+import React from 'react';
 import { Loader } from '../../../website/src/components/Loader';
 
 export default { title: 'Utils|Loader' };

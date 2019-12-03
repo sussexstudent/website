@@ -1,3 +1,4 @@
+import React from 'react';
 import { Tag, Tags } from '../../../website/src/components/Tags/index';
 
 export default { title: 'Tags' };

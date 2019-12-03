@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { ContentCard } from './index';
 
 export default { title: 'ContentCard' };

@@ -1,3 +1,4 @@
+import React from 'react';
 import { SocialMenu } from '../../../website/src/components/SocialMenu';
 import { css } from '@emotion/core';
 

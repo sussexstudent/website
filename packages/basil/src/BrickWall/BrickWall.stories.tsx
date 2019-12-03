@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default { title: 'Navigation|Brick Wall' };
 
 export const Default = () => (

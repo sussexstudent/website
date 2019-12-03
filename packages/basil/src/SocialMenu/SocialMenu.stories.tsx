@@ -1,3 +1,4 @@
+import React from 'react';
 import { SocialMenu } from '../../../website/src/components/SocialMenu/index';
 
 export default { title: 'SocialMenu' };

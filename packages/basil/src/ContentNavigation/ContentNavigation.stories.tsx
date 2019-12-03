@@ -1,3 +1,4 @@
+import React from 'react';
 import { ContentNavigation } from '../../../website/src/components/ContentNavigation/index';
 import slugify from '@ussu/common/src/libs/slugify';
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { PersonCollectionFigure } from '../../../website/src/components/PersonCollection/PersonCollectionFigure';
 
 export default { title: 'Person Collection' };

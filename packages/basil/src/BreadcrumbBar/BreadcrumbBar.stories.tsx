@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { BreadcrumbBar } from '../../../website/src/components/BreadcrumbBar/index';
 
 const crumbs = [

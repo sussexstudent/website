@@ -1,3 +1,4 @@
+import React from 'react';
 import { NewsBlock } from '../../../website/src/components/NewsList/NewsBlock';
 
 export default { title: 'NewsBlock' };

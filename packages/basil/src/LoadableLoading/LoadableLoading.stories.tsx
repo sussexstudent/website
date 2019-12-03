@@ -1,3 +1,4 @@
+import React from 'react';
 import { LoadableLoading } from '../../../website/src/components/LoadableLoading/index';
 
 export default { title: 'Utils|Module Loader' };

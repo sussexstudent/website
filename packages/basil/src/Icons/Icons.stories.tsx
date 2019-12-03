@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { CrossIcon } from '../../../website/src/components/CrossIcon';
 import { MenuIcon } from '../../../website/src/components/MenuIcon';
 import { SearchIcon } from '../../../website/src/components/SearchIcon';

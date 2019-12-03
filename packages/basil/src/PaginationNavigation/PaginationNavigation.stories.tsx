@@ -1,3 +1,4 @@
+import React from 'react';
 import { PaginationNavigation } from '../../../website/src/components/PaginationNavigation/index';
 
 export default { title: 'Navigation|Pagination Navigation' };

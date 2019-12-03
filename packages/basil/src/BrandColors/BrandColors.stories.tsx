@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { BrandColorCard } from './index';
 import { COLORS } from '../style';
 

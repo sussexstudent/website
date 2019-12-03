@@ -1,3 +1,4 @@
+import React from 'react';
 import { PatternPlaceholder } from '../../../website/src/components/PatternPlaceholder';
 
 export default { title: 'Organisation Card' };

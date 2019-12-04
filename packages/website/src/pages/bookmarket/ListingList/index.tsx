@@ -21,7 +21,7 @@ const stateLangMap = {
   [MarketListingState.Unlisted]: 'Unlisted',
 };
 
-const ListingList: React.FC<ListingListProps> = (props: ListingListProps) => {
+const ListingList: React.FC<ListingListProps> = (props) => {
   if (props.items.length <= 0) {
     return <NoListItems />;
   }
@@ -29,7 +29,7 @@ const ListingList: React.FC<ListingListProps> = (props: ListingListProps) => {
   return (
     <ul className="ListingList List--reset">
       {props.items.map((item) => (
-        <li className="ListingList__item">
+        <li key={item.pk} className="ListingList__item">
           <FauxInternalAppLink href={`/book-market/listing/${item.pk}`} />
           <div className="ListingList__image">
             {item.image ? (

@@ -26,7 +26,7 @@ interface Result {
   };
 }
 
-type IProps = OwnProps;
+type ContentPageProps = OwnProps;
 
 const ContentPageWrapper: React.FC<{
   page: Result['page'];
@@ -67,7 +67,7 @@ const ContentPageWrapper: React.FC<{
   );
 };
 
-const ContentPage: React.FC<IProps> = (props: IProps) => {
+const ContentPage: React.FC<ContentPageProps> = (props) => {
   const { data, loading } = useQuery<Result>(CONTENT_PAGE_QUERY, {
     variables: {
       path: props.path,

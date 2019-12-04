@@ -7,7 +7,7 @@ import { formatPrice } from '@ussu/common/src/libs/money';
 import { every } from 'lodash';
 import { EventSidebarSection } from './EventSidebarSection';
 
-interface IProps {
+interface EventDetailSidebarProps {
   event: Event;
   msl: any;
   onTicketButton(): void;
@@ -30,8 +30,8 @@ function mslSubtitle(msl: any) {
 
   const costs = msl.tickets.map((ticket: any) => ticket.value);
 
-  const min = Math.min.apply(Math, costs);
-  const max = Math.min.apply(Math, costs);
+  const min = Math.min(...costs);
+  const max = Math.min(...costs);
 
   if (min <= 0 && max <= 0) {
     return 'Free!';
@@ -40,7 +40,9 @@ function mslSubtitle(msl: any) {
   return min === max ? `£${formatPrice(min)}` : `from £${formatPrice(min)}`;
 }
 
-export const EventDetailSidebar = (props: IProps) => {
+export const EventDetailSidebar: React.FC<EventDetailSidebarProps> = (
+  props,
+) => {
   const { event, msl } = props;
 
   const ticketCta =

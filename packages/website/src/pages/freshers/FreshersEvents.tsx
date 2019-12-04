@@ -57,7 +57,7 @@ export const FreshersEvents: React.FC<FreshersEventsProps> = ({ location }) => {
   return (
     <FreshersContainer>
       <div className="LokiContainer">
-        <h1>What's on</h1>
+        <h1>{`What's on`}</h1>
         <div>
           Filter to:
           <SimpleFilterList>

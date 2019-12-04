@@ -25,7 +25,7 @@ function isSameLogicalSleepDay(startDate: Date, endDate: Date): boolean {
   return isSameDay(addDays(startDate, 1), endDate) && getHours(endDate) < 7;
 }
 
-interface IProps {
+interface EventDetailDetailsProps {
   event: Event;
 }
 
@@ -73,7 +73,9 @@ function renderDates(event: Event) {
   );
 }
 
-export const EventDetailDetails = (props: IProps) => {
+export const EventDetailDetails: React.FC<EventDetailDetailsProps> = (
+  props,
+) => {
   const { event } = props;
 
   return (

@@ -135,5 +135,3 @@ h4,
 .h4 {
   @mixin type pica;
 }
-
-@mixin outputTypeClassNames;

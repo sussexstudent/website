@@ -51,10 +51,7 @@ const RESPONSE_TEXT: {
     `We either haven't been able to add you or you might already be on there. Please try again later.`,
 };
 
-class NewsletterSignup extends React.Component<
-  undefined,
-  NewsletterSignupState
-> {
+class NewsletterSignup extends React.Component<{}, NewsletterSignupState> {
   private handleFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   private handleEmailAddress: (e: React.ChangeEvent<HTMLInputElement>) => void;
   private handleName: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -62,7 +59,7 @@ class NewsletterSignup extends React.Component<
   private handleNameSubmit: () => void;
   private handleLevel: (level: string) => void;
 
-  constructor(props: undefined) {
+  constructor(props: {}) {
     super(props);
 
     this.state = Object.assign(

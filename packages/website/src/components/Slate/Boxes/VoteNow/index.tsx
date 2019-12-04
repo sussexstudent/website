@@ -173,7 +173,7 @@ export class VoteNowBox extends React.Component<VoteNowProps, VoteNowState> {
 }
 
 export const SlateBoxVoteNow: SlateBox = {
-  component: VoteNowBox,
+  component: VoteNowBox as any,
   schema: {
     type: 'object',
     properties: {

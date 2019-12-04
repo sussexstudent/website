@@ -16,7 +16,7 @@ function createTag(title: string, type: EventTagType): EventTag {
   return { title, type, id: `${type}/${title}` };
 }
 
-export function* getTagsForEvent(event: Event): Iterator<EventTag> {
+export function* getTagsForEvent(event: Event) {
   if (event.isOver18Only) {
     yield createTag('18+', EventTagType.Requirement);
   }

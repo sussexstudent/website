@@ -1,5 +1,9 @@
 import React from 'react';
-import { AwardAuthority, GroupAward } from '@ussu/common/src/types/awards';
+import {
+  AwardAuthority,
+  GroupAward,
+  Grade,
+} from '@ussu/common/src/types/awards';
 import { gradeMap, iconMap } from './data';
 
 export function getGrade(award: GroupAward, authority: AwardAuthority): Grade {

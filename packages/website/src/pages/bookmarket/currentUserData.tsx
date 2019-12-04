@@ -11,7 +11,7 @@ export const useViewer = () => {
 
   return {
     loading,
-    isAuthenticated: data && data.viewer !== null,
-    currentUser: data && data.viewer,
+    isAuthenticated: data?.viewer !== null,
+    currentUser: data?.viewer,
   };
 };

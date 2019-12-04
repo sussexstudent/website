@@ -26,7 +26,7 @@ function plural(
     return single;
   }
 
-  return pluralWord || `${single}s`;
+  return pluralWord ?? `${single}s`;
 }
 
 interface Result {

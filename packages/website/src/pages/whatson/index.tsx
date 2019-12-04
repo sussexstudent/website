@@ -86,9 +86,7 @@ export const WhatsOn: React.FC<EventsApplicationProps> = () => {
                 {/*<WayfinderItem to="/whats-on/my-programme">*/}
                 {/*  My Programme*/}
                 {/*</WayfinderItem>*/}
-                {data &&
-                data.allBrandingPeriods &&
-                data.allBrandingPeriods.length > 0
+                {data?.allBrandingPeriods && data.allBrandingPeriods.length > 0
                   ? data.allBrandingPeriods.map((period: Brand) => (
                       <WayfinderItem
                         key={period.slug}

@@ -10,7 +10,7 @@ export function setup(): void {
     Modal.setAppElement('#root');
   }
 
-  if (currentUser && currentUser.fundraising.blocking) {
+  if (currentUser?.fundraising.blocking) {
     Array.from(document.querySelectorAll('.AdvertBar')).forEach((advert) => {
       advert.remove();
     });

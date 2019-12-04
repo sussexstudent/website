@@ -49,7 +49,7 @@ export const UserBar: React.FC = ({}) => {
 
   useEffect(() => {
     setTimeout(() => {
-      const { auth } = client || { auth: null };
+      const { auth } = client ?? { auth: null };
       setState((state) => ({
         ...state,
         auth,
@@ -78,7 +78,7 @@ export const UserBar: React.FC = ({}) => {
           Hi {profile.firstName}!
         </li>
         <li className="UserBar__item UserBar__item--action">
-          <button onClick={actionBound || undefined} type="button">
+          <button onClick={actionBound ?? undefined} type="button">
             Log out
           </button>
         </li>

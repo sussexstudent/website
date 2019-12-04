@@ -10,8 +10,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { Loader } from '../../../components/Loader';
 import { ErrorState } from '../../../components/ErrorState';
 
-export interface MarketSectionProps
-  extends RouteComponentProps<{ sectionSlug: string }> {}
+export type MarketSectionProps = RouteComponentProps<{ sectionSlug: string }>;
 
 interface Result {
   allMarketListings: {

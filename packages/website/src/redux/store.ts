@@ -39,7 +39,7 @@ store.dispatch({
   type: ROUTER_INITIAL,
 });
 
-if (user && user.auth) {
+if (user?.auth) {
   store.dispatch({
     type: 'PAGE_HYDRATION',
     payload: user,

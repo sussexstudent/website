@@ -83,7 +83,7 @@ function det() {
   if (window.localStorage.getItem('blocking') != null) {
     try {
       (window as any).blocking = JSON.parse(
-        window.localStorage.getItem('blocking') || '{"blocking": false}',
+        window.localStorage.getItem('blocking') ?? '{"blocking": false}',
       ).enabled;
       return (window as any).blocking;
     } catch (e) {

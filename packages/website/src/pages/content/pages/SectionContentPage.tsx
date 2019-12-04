@@ -67,7 +67,7 @@ class SectionContentPage extends React.Component<
               {contentsInSidebar ? (
                 <ContentNavigation
                   items={generateTitlesFromStream(body)}
-                  activeKey={this.state.visibleKey || undefined}
+                  activeKey={this.state.visibleKey ?? undefined}
                 />
               ) : null}
               <StreamField page={page} items={sidebarBody} />

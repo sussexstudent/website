@@ -40,7 +40,7 @@ export function parseTickets(): (undefined | MSLTicket)[] {
         value: parseInt(main, 10) + parseInt(fractional, 10) / 100,
         msl: {
           hidden: (hiddenEl as HTMLInputElement).name,
-          select: (selectEl as HTMLSelectElement).name,
+          select: selectEl.name,
           button: (buttonEl as HTMLInputElement).name,
         },
       };

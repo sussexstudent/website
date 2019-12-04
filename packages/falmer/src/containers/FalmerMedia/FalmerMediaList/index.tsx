@@ -38,7 +38,7 @@ const FalmerMediaList: React.FC<Props> = ({ onSelect }) => {
           <li
             className="FalmerMediaGrid__item"
             key={edge.node.mediaId}
-            onClick={() => onSelect && onSelect(edge.node.mediaId, edge.node)}
+            onClick={() => onSelect?.(edge.node.mediaId, edge.node)}
           >
             <div
               className="u-responsive-fit"

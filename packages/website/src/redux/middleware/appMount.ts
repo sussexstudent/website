@@ -130,9 +130,7 @@ export const appMountMiddleware = (store: any) => (next: any) => (
       if (queryString !== undefined && queryString !== null) {
         store.dispatch(
           setSearchValue(
-            Array.isArray(queryString)
-              ? (queryString[0] as string)
-              : (queryString as string),
+            Array.isArray(queryString) ? queryString[0] : queryString,
           ),
         );
       }

@@ -9,7 +9,7 @@ interface Result {
   page: ContentBrowserPage;
 }
 
-export interface ContentBrowserContainer extends RouteComponentProps {}
+export type ContentBrowserContainer = RouteComponentProps;
 
 export const ContentBrowserContainer: React.FC<ContentBrowserContainer> = (
   props,

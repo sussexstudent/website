@@ -22,7 +22,7 @@ import {
   CardListActionableDocumentLink,
 } from '../../../components/CardListActionable';
 
-interface IOutletIndex extends Page<Page[]> {}
+type IOutletIndex = Page<Page[]>;
 
 interface IOutletPage extends Page {
   main: StreamFieldData;

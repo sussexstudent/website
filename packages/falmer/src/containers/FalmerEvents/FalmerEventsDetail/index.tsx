@@ -18,7 +18,7 @@ interface Result {
   event: Event;
 }
 
-interface Props extends RouteComponentProps<{ eventId: string | undefined }> {}
+type Props = RouteComponentProps<{ eventId: string | undefined }>;
 
 const FalmerEventsDetail: React.FC<Props> = ({
   match: {

@@ -34,7 +34,7 @@ function canDisplaySubMenu(
     return true;
   }
 
-  return children.map((item) => item.anchor).indexOf(key) >= 0;
+  return children.map((item) => item.anchor).includes(key);
 }
 
 // TODO: Tidy this up. Should technically support unlimited levels
@@ -47,7 +47,7 @@ export const ContentNavigation: React.FC<ContentNavigationProps> = ({
 }) => {
   return (
     <div className="NavigationCard">
-      <h3 className="NavigationCard__title">{title || 'Navigation'}</h3>
+      <h3 className="NavigationCard__title">{title ?? 'Navigation'}</h3>
       <ul className="NavigationCard__list">
         {items.map((item) => (
           <li

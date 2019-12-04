@@ -67,10 +67,9 @@ const reducer: React.Reducer<State, Actions> = (state, action) => {
 
     case 'ON_DATA':
       const { data } = action.payload;
-      const groups =
-        data && data.allGroups
-          ? data.allGroups.edges.map((edge) => edge.node)
-          : [];
+      const groups = data?.allGroups
+        ? data.allGroups.edges.map((edge) => edge.node)
+        : [];
 
       return {
         ...state,
@@ -132,7 +131,7 @@ export const StudentGroupListings: React.FC = () => {
     return function() {
       dispatch({
         type: 'CATEGORY_FILTER',
-        payload: { category: category || '' },
+        payload: { category: category ?? '' },
       });
     };
   }
@@ -150,19 +149,18 @@ export const StudentGroupListings: React.FC = () => {
   if (loading) return <Loader />;
 
   const map = keyBy(
-    data && data.allGroups
+    data?.allGroups
       ? data.allGroups.edges.map((edge: { node: StudentGroup }) => edge.node)
       : [],
     (i) => i.groupId,
   );
 
-  const categories = (): Array<string | null> => {
-    const categoryNames =
-      data && data.allGroups
-        ? data.allGroups.edges.map((edge: { node: StudentGroup }) =>
-            edge.node.mslGroup ? edge.node.mslGroup.category.name : null,
-          )
-        : [];
+  const categories = (): (string | null)[] => {
+    const categoryNames = data?.allGroups
+      ? data.allGroups.edges.map((edge: { node: StudentGroup }) =>
+          edge.node.mslGroup ? edge.node.mslGroup.category.name : null,
+        )
+      : [];
     return Array.from(new Set(categoryNames));
   };
 

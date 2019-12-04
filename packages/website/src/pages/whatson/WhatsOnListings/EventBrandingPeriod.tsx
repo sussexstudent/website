@@ -42,9 +42,8 @@ export const EventBrandingPeriod: React.FC<EventBrandingPeriodProps> = ({
   },
 }) => {
   const filtering = location
-    ? pickBy(
-        getFirstItemOrValue(qs.parse(location.search)),
-        (_v, k) => filteringAcceptions.indexOf(k) >= 0,
+    ? pickBy(getFirstItemOrValue(qs.parse(location.search)), (_v, k) =>
+        filteringAcceptions.includes(k),
       )
     : {};
 

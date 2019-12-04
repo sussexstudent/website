@@ -7,7 +7,7 @@ import { OneImageBackground } from '../../../components/OneImage';
 import { Typeface, TypeSize, type } from '@ussu/basil/src/style/type';
 import { css } from '@emotion/core';
 
-interface IOutletIndex extends Page<Page[]> {}
+type IOutletIndex = Page<Page[]>;
 
 interface OutletPagePreview extends Page {
   heroImage: FalmerImage;

@@ -42,10 +42,10 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
     variables: { eventId: match.params.eventId },
   });
 
-  const event = data && data.event;
+  const event = data?.event;
 
   useEffect(() => {
-    if (data && data.event) {
+    if (data?.event) {
       const event = data.event;
       if (
         match.params.eventId === event.eventId.toString() &&

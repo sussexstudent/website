@@ -27,7 +27,7 @@ export const SocialArray: React.FC<SocialArrayProps> = ({ networks }) => (
           </span>
 
           <span className="Social__handle">
-            {networks.facebook.name || 'Facebook'}
+            {networks.facebook.name ?? 'Facebook'}
           </span>
         </a>
       </li>
@@ -39,7 +39,7 @@ export const SocialArray: React.FC<SocialArrayProps> = ({ networks }) => (
             <span className="u-h">Twitter</span>
           </span>
           <span className="Social__handle">
-            {networks.twitter.name || 'Twitter'}
+            {networks.twitter.name ?? 'Twitter'}
           </span>
         </a>
       </li>
@@ -52,7 +52,7 @@ export const SocialArray: React.FC<SocialArrayProps> = ({ networks }) => (
           </span>
 
           <span className="Social__handle">
-            {networks.instagram.name || 'Instagram'}
+            {networks.instagram.name ?? 'Instagram'}
           </span>
         </a>
       </li>
@@ -65,7 +65,7 @@ export const SocialArray: React.FC<SocialArrayProps> = ({ networks }) => (
           </span>
 
           <span className="Social__handle">
-            {networks.snapchat.name || 'Snapchat'}
+            {networks.snapchat.name ?? 'Snapchat'}
           </span>
         </a>
       </li>
@@ -78,7 +78,7 @@ export const SocialArray: React.FC<SocialArrayProps> = ({ networks }) => (
           </span>
 
           <span className="Social__handle">
-            {networks.linkedin.name || 'Linkedin'}
+            {networks.linkedin.name ?? 'Linkedin'}
           </span>
         </a>
       </li>
@@ -91,7 +91,7 @@ export const SocialArray: React.FC<SocialArrayProps> = ({ networks }) => (
           </span>
 
           <span className="Social__handle">
-            {networks.website.name || 'Site'}
+            {networks.website.name ?? 'Site'}
           </span>
         </a>
       </li>

@@ -35,7 +35,7 @@ const CreateListing: React.FC = (props) => {
         },
       },
     }).then((response) => {
-      if (response && response.data) {
+      if (response?.data) {
         (props as any).history.push(
           `/book-market/listing/${response.data.createMarketListing.listing.pk}`,
         );
@@ -190,13 +190,11 @@ const CreateListing: React.FC = (props) => {
                     <option selected hidden>
                       Select a school
                     </option>
-                    {data &&
-                      data.allMarketSections &&
-                      data.allMarketSections.map((section) => (
-                        <option key={section.pk} value={section.pk}>
-                          {section.title}
-                        </option>
-                      ))}
+                    {data?.allMarketSections?.map((section) => (
+                      <option key={section.pk} value={section.pk}>
+                        {section.title}
+                      </option>
+                    ))}
                   </select>
                 </div>
               )}

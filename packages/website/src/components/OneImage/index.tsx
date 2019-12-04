@@ -107,13 +107,13 @@ const OneImage: React.FC<OneImageProps> = (props) => {
   }, [props.src]);
 
   const { withoutContainer, className, mediaSizes, aspectRatio } = props;
-  const sizes = props.sizes || defaultSizes;
+  const sizes = props.sizes ?? defaultSizes;
 
   const img = (
     <img
       className={`ResponsiveImage lazyload ${className}`}
       src={generateUrl(props, { width: sizes[0] })}
-      data-sizes={mediaSizes || 'auto'}
+      data-sizes={mediaSizes ?? 'auto'}
       ref={containerRef}
       srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
       data-srcset={sizes.map(

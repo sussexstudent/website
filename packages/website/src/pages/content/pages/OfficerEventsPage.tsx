@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { startOfDay, addMonths } from 'date-fns/esm';
 import { Loader } from '../../../components/Loader';
 
-interface IOfficerEventsIndex extends Page<Page[]> {}
+type IOfficerEventsIndex = Page<Page[]>;
 
 interface IOfficerEventsPage extends Page {
   section: IOfficerEventsIndex;

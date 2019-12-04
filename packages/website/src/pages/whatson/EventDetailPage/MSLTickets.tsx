@@ -4,18 +4,21 @@ import { Button } from '../../../components/Button';
 import Stepper from 'react-stepper-primitive';
 import { formatPrice } from '@ussu/common/src/libs/money';
 
-interface IProps {
+interface MSLTicketsProps {
   msl: any;
 }
 
-interface IState {
+interface MSLTicketsState {
   ticketSelection: {
     [id: string]: number;
   };
 }
 
-export class MSLTickets extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+export class MSLTickets extends React.Component<
+  MSLTicketsProps,
+  MSLTicketsState
+> {
+  constructor(props: MSLTicketsProps) {
     super(props);
 
     this.state = {

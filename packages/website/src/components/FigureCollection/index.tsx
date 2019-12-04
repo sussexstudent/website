@@ -1,12 +1,12 @@
 import React from 'react';
 import { FigureCollectionFigure, FigureData } from './FigureCollectionFigure';
 
-interface IProps {
+interface FigureCollectionProps {
   items?: FigureData[];
   size?: 'small' | 'medium';
 }
 
-export const FigureCollection: React.FC<IProps> = ({
+export const FigureCollection: React.FC<FigureCollectionProps> = ({
   children,
   items = null,
   size = 'medium',

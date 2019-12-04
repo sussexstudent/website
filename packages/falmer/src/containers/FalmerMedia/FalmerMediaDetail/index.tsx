@@ -6,13 +6,15 @@ import { FalmerImage } from '@ussu/common/src/types/events';
 import { useQuery } from '@apollo/react-hooks';
 import { RouteComponentProps } from 'react-router';
 
-interface IProps extends RouteComponentProps<{ mediaId: string | undefined }> {}
+type FalmerMediaDetailProps = RouteComponentProps<{
+  mediaId: string | undefined;
+}>;
 
 interface Result {
   image: FalmerImage;
 }
 
-const FalmerMediaDetail: React.FC<IProps> = ({
+const FalmerMediaDetail: React.FC<FalmerMediaDetailProps> = ({
   match: {
     params: { mediaId },
   },

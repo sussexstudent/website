@@ -3,12 +3,15 @@ import { headContent } from '../head';
 import { CompProvider } from '../components/CompProviders';
 
 interface HTMLProps {
-  assets: any; // todo
-  children: any;
+  assets: any;
   additionalHead: string[];
 }
 
-export const Html = ({ children, assets, additionalHead = [] }: HTMLProps) => (
+export const Html: React.FC<HTMLProps> = ({
+  children,
+  assets,
+  additionalHead = [],
+}) => (
   <CompProvider>
     <html lang="en">
       <head

@@ -4,7 +4,6 @@ import cx from 'classnames';
 interface AdvertBarProps {
   className?: string;
   dark?: boolean;
-  children: any;
 }
 
 export const AdvertBar: React.FC<AdvertBarProps> = ({

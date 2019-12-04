@@ -1,6 +1,8 @@
+import React from 'react';
+
 export default { title: 'Navigation|Brick Wall' };
 
-export const Default = () => (
+export const Default: React.FC = () => (
   <ul className="BrickWall List--reset">
     <li className="BrickWall__item">
       <button className="BrickWall__anchor" type="button">

@@ -68,7 +68,7 @@ export const Offers: React.FC = () => {
           <h2>{data.allOffers[openOffer].dealTag}</h2>
           {data.allOffers[openOffer].companyWebsite ? (
             <Button href={data.allOffers[openOffer].companyWebsite}>
-              View website >
+              {`View website >`}
             </Button>
           ) : null}
           <StreamField page={{}} items={data.allOffers[openOffer].main} />

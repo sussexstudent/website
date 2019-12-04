@@ -89,4 +89,4 @@ const usePage = (): [PageState, React.Dispatch<Actions>] => {
   return [store, dispatch];
 };
 
-export let PageStore = createContainer(usePage);
+export const PageStore = createContainer(usePage);

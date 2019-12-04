@@ -5,14 +5,14 @@ import { SlateBox } from '@ussu/common/src/types/slates';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { SlateBoxBackground, SlateBoxContainer } from '../../Box';
 
-interface IProps {
+interface SimpleProps {
   srt: string;
   link: string;
   foregroundImage: FalmerImage;
   backgroundImage: FalmerImage;
 }
 
-const component: React.FC<IProps> = ({
+const component: React.FC<SimpleProps> = ({
   link,
   srt,
   backgroundImage,

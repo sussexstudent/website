@@ -30,7 +30,7 @@ export const renderHtml = (
     };
   }
 
-  let additionalHead = [];
+  const additionalHead = [];
 
   if (other.compOptions) {
     additionalHead.push(other.compOptions);

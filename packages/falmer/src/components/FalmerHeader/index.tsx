@@ -29,7 +29,7 @@ const FalmerHeader: React.FC = () => {
         title="Sussex Students' Union"
       >
         <StudentsUnionLogoNoLogotype />
-        <span className="u-h">Sussex Students' Union</span>
+        <span className="u-h">{`Sussex Students' Union`}</span>
       </div>
       <h1 css={logotypeStyle}>Falmer</h1>
       <nav className="FalmerHeader__nav">

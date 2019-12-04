@@ -1,9 +1,7 @@
 import React from 'react';
 import { SlateBox } from '@ussu/common/src/types/slates';
 
-interface IProps {}
-
-const component: React.FC<IProps> = () => <div>select a box</div>;
+const component: React.FC = () => <div>select a box</div>;
 
 const schema = {};
 

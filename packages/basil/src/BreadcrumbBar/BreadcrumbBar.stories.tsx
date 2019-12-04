@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { BreadcrumbBar } from '../../../website/src/components/BreadcrumbBar/index';
 
 const crumbs = [
@@ -17,4 +19,4 @@ const crumbs = [
 
 export default { title: 'Navigation|BreadcrumbBar' };
 
-export const normal = () => <BreadcrumbBar>{crumbs}</BreadcrumbBar>;
+export const normal: React.FC = () => <BreadcrumbBar>{crumbs}</BreadcrumbBar>;

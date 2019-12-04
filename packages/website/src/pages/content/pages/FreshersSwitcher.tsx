@@ -1,6 +1,6 @@
 import React from 'react';
-import { FreshersHomepage } from './FreshersHomepage';
+import { FreshersHomepage, FreshersHomepageProps } from './FreshersHomepage';
 
-export const FreshersSwitcher = (props: any) => {
+export const FreshersSwitcher: React.FC<FreshersHomepageProps> = (props) => {
   return <FreshersHomepage {...props} />;
 };

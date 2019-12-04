@@ -220,7 +220,7 @@ export const StudentGroupListings: React.FC = () => {
             </div>
           ) : null}
           <div>
-            <h2>Can't find what you're looking for?</h2>
+            <h2>{`Can't find what you're looking for?`}</h2>
             <a
               className="Button"
               href="/sport-societies-media/start-a-new-group/"

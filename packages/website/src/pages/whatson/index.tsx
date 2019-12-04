@@ -9,7 +9,6 @@ import { EventDetailPageProps } from './EventDetailPage';
 import loadable from '@loadable/component';
 import { BrandingContainer } from './branding/components';
 import { WhatsOnThemingProvider } from './WhatsOnBrandingContext';
-import { WhatsOnMyProgrammeProps } from './WhatsOnMyProgramme';
 import {
   Wayfinder,
   WayfinderTopLevel,
@@ -43,7 +42,7 @@ const LoadableDetail = loadable<EventDetailPageProps>(async () => {
   return (props) => <EventDetailPage {...props} />;
 });
 
-const LoadableMyProgramme = loadable<WhatsOnMyProgrammeProps>(async () => {
+const LoadableMyProgramme = loadable(async () => {
   const { WhatsOnMyProgramme } = await import('./WhatsOnMyProgramme');
   return (props) => <WhatsOnMyProgramme {...props} />;
 });

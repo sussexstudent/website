@@ -1,13 +1,13 @@
 import React from 'react';
 import { Loader } from '../Loader/index';
 
-interface IProps {
+interface LoadingProps {
   error: null | Error;
   timedOut: boolean;
   pastDelay: boolean;
 }
 
-function Loading(props: IProps) {
+const Loading: React.FC<LoadingProps> = (props) => {
   if (props.error) {
     return <div>Error!</div>;
   }
@@ -21,7 +21,7 @@ function Loading(props: IProps) {
   }
 
   return null;
-}
+};
 
 export { Loading as LoadableLoading };
 

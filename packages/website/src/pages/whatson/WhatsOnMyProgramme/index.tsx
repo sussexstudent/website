@@ -5,9 +5,7 @@ import { startOfDay, addMonths } from 'date-fns';
 import { Loader } from '../../../components/Loader';
 import { EventListings } from '../WhatsOnListings/EventListings';
 
-export interface WhatsOnMyProgrammeProps {}
-
-export const WhatsOnMyProgramme: React.FC<WhatsOnMyProgrammeProps> = ({}) => {
+export const WhatsOnMyProgramme: React.FC = () => {
   const [now] = useState(new Date());
   const { data, loading } = useQuery(getUserLikedEvents, {
     variables: {

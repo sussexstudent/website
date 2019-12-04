@@ -6,7 +6,7 @@ import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 import { SlateBoxBackground, SlateBoxContainer } from '../../Box';
 import { css } from '@emotion/core';
 
-interface IProps {
+interface SimpleTextProps {
   title: string;
   description: string;
   link: string;
@@ -45,7 +45,7 @@ const headingDescription = css({
   marginTop: -2,
 });
 
-const component: React.FC<IProps> = ({
+const component: React.FC<SimpleTextProps> = ({
   link,
   title,
   description,

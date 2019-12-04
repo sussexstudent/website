@@ -1,8 +1,6 @@
 import React from 'react';
 
-interface IProps {}
-
-const FalmerSidebar: React.FC<IProps> = (props) => {
+const FalmerSidebar: React.FC = (props) => {
   return <aside className="FalmerSidebar">{props.children}</aside>;
 };
 

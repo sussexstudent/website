@@ -1,7 +1,7 @@
 import React from 'react';
 import { Event } from '@ussu/common/src/types/events';
 
-export function renderEventLocation(event: Event) {
+export function renderEventLocation(event: Event): null | React.ReactElement {
   if (!event.venue) {
     if (event.locationDisplay === '') {
       return null;

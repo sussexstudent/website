@@ -8,7 +8,7 @@ import { FalmerDetailHeader } from '../../../components/FalmerDetailHeader';
 import { useQuery } from '@apollo/react-hooks';
 import { StudentGroup } from '@ussu/common/src/types/groups';
 
-interface IProps {
+interface FalmerStudentGroupsDetailProps {
   groupId: number;
 }
 
@@ -16,7 +16,9 @@ interface Result {
   group: StudentGroup;
 }
 
-const FalmerStudentGroupsDetail: React.FC<IProps> = ({ groupId }) => {
+const FalmerStudentGroupsDetail: React.FC<FalmerStudentGroupsDetailProps> = ({
+  groupId,
+}) => {
   const { data, loading } = useQuery<Result>(GROUP_DETAIL_QUERY, {
     variables: { groupId },
   });

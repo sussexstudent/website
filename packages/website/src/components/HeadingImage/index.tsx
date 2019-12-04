@@ -1,13 +1,13 @@
 // DEPRECIATED: Use ../HeadingHero
 import React from 'react';
 
-interface IProps {
+interface HeadingImageProps {
   imageURL: string;
   title: string;
   description?: string;
 }
 
-export const HeadingImage: React.FC<IProps> = ({
+export const HeadingImage: React.FC<HeadingImageProps> = ({
   imageURL,
   title,
   description,

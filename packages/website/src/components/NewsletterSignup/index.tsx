@@ -26,9 +26,7 @@ enum FormState {
   Error = 'Error',
 }
 
-interface IProps {}
-
-interface IState {
+interface NewsletterSignupState {
   currentState: FormState;
   isLoading: boolean;
   continuationToken: string;
@@ -40,7 +38,7 @@ interface IState {
 }
 
 const RESPONSE_TEXT: {
-  [state: string]: (data: IState['data']) => string;
+  [state: string]: (data: NewsletterSignupState['data']) => string;
 } = {
   [FormState.Initial]: () => `Sign up to our newsletter for exclusive content`,
   [FormState.InitialFocus]: () => `Enter your email address`,
@@ -53,7 +51,7 @@ const RESPONSE_TEXT: {
     `We either haven't been able to add you or you might already be on there. Please try again later.`,
 };
 
-class NewsletterSignup extends React.Component<IProps, IState> {
+class NewsletterSignup extends React.Component<{}, NewsletterSignupState> {
   private handleFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   private handleEmailAddress: (e: React.ChangeEvent<HTMLInputElement>) => void;
   private handleName: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -61,7 +59,7 @@ class NewsletterSignup extends React.Component<IProps, IState> {
   private handleNameSubmit: () => void;
   private handleLevel: (level: string) => void;
 
-  constructor(props: IProps) {
+  constructor(props: {}) {
     super(props);
 
     this.state = Object.assign(
@@ -120,7 +118,10 @@ class NewsletterSignup extends React.Component<IProps, IState> {
         });
     };
 
-    const fieldUpdate = (nextSuccessState: FormState, fieldMap: Object) => {
+    const fieldUpdate = (
+      nextSuccessState: FormState,
+      fieldMap: Record<string, any>,
+    ) => {
       fetch(NEWSLETTER_ENDPOINT, {
         method: 'PATCH',
         headers: {
@@ -233,7 +234,7 @@ class NewsletterSignup extends React.Component<IProps, IState> {
             <div className="NewsletterSignup__form">
               <ul className="NewsletterSignup__options">
                 {Object.keys(OPTIONS_MERGE.LEVEL).map((key) => (
-                  <li className="NewsletterSignup__options-item">
+                  <li key={key} className="NewsletterSignup__options-item">
                     <button
                       type="button"
                       className="NewsletterSignup__options-button"

@@ -1,6 +1,6 @@
 import Raven from 'raven-js';
 
-export default function logException(ex: Error, context: any) {
+export default function logException(ex: Error, context: any): void {
   Raven.captureException(ex, {
     extra: context,
   });

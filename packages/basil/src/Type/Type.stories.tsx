@@ -1,3 +1,5 @@
+import React from 'react';
+
 const types = [
   {
     name: 'canon',
@@ -38,12 +40,13 @@ const types = [
 ];
 
 export default { title: 'Typography|Scale' };
-export const Standard = () => (
+export const Standard: React.FC = () => (
   <div className="LokiContainer">
     <h1>Primary typeface: Larsseit Bold</h1>
     <div className="type-primary" style={{ fontWeight: 600 }}>
       {types.map((t) => (
         <div
+          key={t.name}
           style={{
             display: 'flex',
             borderBottom: '1px solid grey',
@@ -66,6 +69,7 @@ export const Standard = () => (
     <div>
       {types.map((t) => (
         <div
+          key={t.name}
           style={{
             display: 'flex',
             borderBottom: '1px solid grey',

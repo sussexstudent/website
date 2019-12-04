@@ -1,8 +1,9 @@
+import React from 'react';
 import { PatternPlaceholder } from '../../../website/src/components/PatternPlaceholder';
 
 export default { title: 'Organisation Card' };
 
-export const Default = () => (
+export const Default: React.FC = () => (
   <li className="TrailGrid__item">
     <a className="OrganisationCard__link" href="#">
       <div className="OrganisationCard__image-container">
@@ -16,7 +17,7 @@ export const Default = () => (
   </li>
 );
 
-export const InProgress = () => (
+export const InProgress: React.FC = () => (
   <li className="TrailGrid__item">
     <a className="OrganisationCard__link" href="#">
       <div className="OrganisationCard__image-container">

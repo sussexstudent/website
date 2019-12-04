@@ -9,9 +9,7 @@ interface EnchancedModalProps {
   footerClose?: boolean;
 }
 
-const Modal = (
-  props: ReactModal.Props & EnchancedModalProps & { children: any },
-) => (
+const Modal: React.FC<ReactModal.Props & EnchancedModalProps> = (props) => (
   <ReactModal
     closeTimeoutMS={300}
     css={[

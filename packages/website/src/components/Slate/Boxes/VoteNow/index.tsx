@@ -17,7 +17,7 @@ export enum HighlightTheme {
   WhiteOnBlack = 'w_b',
 }
 
-interface IProps {
+interface VoteNowProps {
   link: string;
   imageUrl: string;
   votingStartsDate: string;
@@ -26,13 +26,13 @@ interface IProps {
   liveCounting?: boolean;
 }
 
-interface IState {
+interface VoteNowState {
   now: Date;
 }
 
 const timeBox = { width: '100%', flex: '1 1 auto' };
 
-export class VoteNowBox extends React.Component<IProps, IState> {
+export class VoteNowBox extends React.Component<VoteNowProps, VoteNowState> {
   interval: number | undefined;
 
   state = {
@@ -173,7 +173,7 @@ export class VoteNowBox extends React.Component<IProps, IState> {
 }
 
 export const SlateBoxVoteNow: SlateBox = {
-  component: VoteNowBox,
+  component: VoteNowBox as any,
   schema: {
     type: 'object',
     properties: {

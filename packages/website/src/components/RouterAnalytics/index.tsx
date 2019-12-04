@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router';
 
-const track = (path: string) => {
+const track = (path: string): void => {
   if (typeof ga === 'undefined') {
     return;
   }

@@ -7,13 +7,15 @@ import { RouteComponentProps } from 'react-router';
 import { SlateEditor } from '../SlateEditor';
 import { InternalSlate } from '@ussu/common/src/types/slates';
 
-interface IProps extends RouteComponentProps<{ slateId: string | undefined }> {}
+type FalmerSlateDetailProps = RouteComponentProps<{
+  slateId: string | undefined;
+}>;
 
 interface Result {
   slate: InternalSlate;
 }
 
-export const FalmerSlateDetail: React.FC<IProps> = ({
+export const FalmerSlateDetail: React.FC<FalmerSlateDetailProps> = ({
   match: {
     params: { slateId },
   },

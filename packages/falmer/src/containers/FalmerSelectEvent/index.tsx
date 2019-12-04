@@ -11,7 +11,7 @@ import { Connection } from '@ussu/common/src/types/falmer';
 import { Event } from '@ussu/common/src/types/events';
 import { useQuery } from '@apollo/react-hooks';
 
-interface IProps {
+interface FalmerEventsProps {
   onSelect(eventId: number): void;
 }
 
@@ -19,7 +19,7 @@ interface Result {
   allEvents: Connection<Event>;
 }
 
-const FalmerEvents: React.FC<IProps> = ({ onSelect }) => {
+const FalmerEvents: React.FC<FalmerEventsProps> = ({ onSelect }) => {
   const { data, loading } = useQuery<Result>(ALL_EVENTS_QUERY);
 
   if (loading || !data) {

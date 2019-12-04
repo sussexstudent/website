@@ -6,8 +6,8 @@ import {
 
 export default { title: 'Navigation|Sectionbar' };
 
-export const Empty = () => <Sectionbar title="Sectionbar" />;
-export const WithNavItems = () => (
+export const Empty: React.FC = () => <Sectionbar title="Sectionbar" />;
+export const WithNavItems: React.FC = () => (
   <Sectionbar title="Sectionbar">
     <SectionbarItem>
       <a href="#">Home</a>

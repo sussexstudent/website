@@ -5,4 +5,14 @@ export interface Profile {
   uuid: string;
 }
 
+export interface MSLUserInfo {
+  jwt?: string;
+  userinfo: {
+    IdCardNumber: string;
+    FirstName: string;
+    LastName: string;
+    UniqueId: string;
+  };
+}
+
 export type LogoutFn = () => void;

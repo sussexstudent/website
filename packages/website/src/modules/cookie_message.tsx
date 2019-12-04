@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { CookieMessage } from '../components/CookieMessage';
 
-export default function onReady() {
+export default function onReady(): void {
   const el = document.createElement('div');
   document.body.insertBefore(el, document.body.firstChild);
   ReactDOM.render(<CookieMessage />, el);

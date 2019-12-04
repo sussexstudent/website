@@ -3,11 +3,11 @@ import { PatternPlaceholder } from '../PatternPlaceholder';
 import { AspectRatio, OneImage } from '../OneImage';
 import { StudentGroup } from '@ussu/common/src/types/groups';
 
-interface IProps {
+interface OrganisationCardProps {
   org: StudentGroup;
 }
 
-export const OrganisationCard: React.FC<IProps> = (props: IProps) => {
+export const OrganisationCard: React.FC<OrganisationCardProps> = (props) => {
   const org = props.org;
   return (
     <li className="TrailGrid__item">

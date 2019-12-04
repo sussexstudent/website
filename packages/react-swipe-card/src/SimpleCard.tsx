@@ -47,7 +47,7 @@ export const SimpleCard: React.FC<SimpleCardProps> = (props) => {
 
   const { initialPosition } = state;
   const { styleTransformer, shouldTransition, isPristine } = props;
-  var style = {
+  const style = {
     ...styleTransformer(initialPosition, initialPosition),
     zIndex: 10 - props.index,
     ...props.style,

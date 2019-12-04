@@ -1,12 +1,12 @@
 import React from 'react';
 import { InternalAppLink } from '../InternalAppLink';
 
-interface IPropsItem {
+interface PropsItem {
   name: string;
   link: string;
 }
 
-const LokiMenuItem = ({ name, link }: IPropsItem) => (
+const LokiMenuItem: React.FC<PropsItem> = ({ name, link }) => (
   <li className="LokiMenu__item">
     <InternalAppLink className="LokiMenu__link" to={link}>
       {name}

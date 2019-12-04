@@ -17,8 +17,7 @@ import { RouteComponentProps } from 'react-router';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { Loader } from '../../../components/Loader';
 
-export interface BookDetailProps
-  extends RouteComponentProps<{ listingId: string }> {}
+export type BookDetailProps = RouteComponentProps<{ listingId: string }>;
 
 interface Result {
   marketListing: MarketListing;

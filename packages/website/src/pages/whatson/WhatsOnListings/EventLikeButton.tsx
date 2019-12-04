@@ -28,7 +28,7 @@ export const EventLikeButton: React.FC<{ event: Event }> = ({ event }) => {
       console.log(isAuthenticated, openLoginModal());
       dispatch(openLoginModal());
     }
-  }, [loading, isAuthenticated, likeEvent, event.userLike]);
+  }, [isAuthenticated, likeEvent, event.eventId, event.userLike, dispatch]);
 
   const isLiked = event.userLike && event.userLike.source === 'USER';
 

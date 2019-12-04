@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 
-interface IRowProps {
+interface RowProps {
   id?: number;
   key?: number;
   selectable: boolean;
@@ -15,14 +15,14 @@ interface Item {
   id: number;
 }
 
-interface IProps {
-  header(args: IRowProps): any;
+interface FalmerDataListProps {
+  header(args: RowProps): any;
   selectable: boolean;
   items: Item[];
-  children(item: Item, props: IRowProps): any;
+  children(item: Item, props: RowProps): any;
 }
 
-const FalmerDataList: React.FC<IProps> = ({
+const FalmerDataList: React.FC<FalmerDataListProps> = ({
   header,
   selectable,
   items,
@@ -69,7 +69,7 @@ export const HeaderCell: React.FC<{}> = (props) => {
   return <th>{props.children}</th>;
 };
 
-export const Row: React.FC<IRowProps> = (props) => {
+export const Row: React.FC<RowProps> = (props) => {
   return (
     <tr className="FalmerDataList__row" key={props.id}>
       {props.selectable ? (

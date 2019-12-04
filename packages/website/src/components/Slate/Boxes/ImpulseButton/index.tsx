@@ -1,13 +1,15 @@
 import React from 'react';
 import { SlateBox } from '@ussu/common/src/types/slates';
 
-interface IProps {
+interface SlateBoxImpulseButtonProps {
   text: string;
   link: string;
   color: 'blue' | 'red' | 'green' | 'yellow';
 }
 
-const SlateBoxImpulseButtonComponent: React.FC<IProps> = (props) => (
+const SlateBoxImpulseButtonComponent: React.FC<SlateBoxImpulseButtonProps> = (
+  props,
+) => (
   <a
     className={`type-great-primer BentoBox BentoBox--anchor BentoBox--impulse BentoBox--color-${props.color}`}
     href={props.link}

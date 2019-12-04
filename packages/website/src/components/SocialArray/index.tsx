@@ -6,7 +6,7 @@ interface NetworkInfo {
   name?: string;
 }
 
-interface IProps {
+interface SocialArrayProps {
   networks: {
     facebook?: NetworkInfo;
     twitter?: NetworkInfo;
@@ -17,7 +17,7 @@ interface IProps {
   };
 }
 
-export const SocialArray: React.FC<IProps> = ({ networks }) => (
+export const SocialArray: React.FC<SocialArrayProps> = ({ networks }) => (
   <ul className={cx('Social')}>
     {networks.facebook ? (
       <li>

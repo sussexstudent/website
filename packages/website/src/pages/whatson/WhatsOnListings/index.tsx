@@ -22,7 +22,7 @@ const EventsList: React.FC<EventsListProps> = ({ filter }) => {
   const dispatch = useWhatsOnThemingContext()[1];
   useEffect(() => {
     dispatch(setBrandingPeriod(null));
-  }, []);
+  }, [dispatch]);
   const [now] = useState(new Date());
   const { data, loading } = useQuery(EventListingsQuery, {
     variables: {

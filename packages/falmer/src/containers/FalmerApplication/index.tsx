@@ -50,7 +50,7 @@ export const FalmerApplication: React.FC = () => {
 
   useEffect(() => {
     dispatch(requestAuthToken());
-  }, []);
+  }, [dispatch]);
 
   if (auth.loading) {
     return <Loader />;

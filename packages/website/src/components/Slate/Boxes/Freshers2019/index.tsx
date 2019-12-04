@@ -4,14 +4,19 @@ import { SlateBoxContainerStyleable } from '../../Box';
 import { InternalAppLink } from '../../../InternalAppLink';
 import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 
-interface IProps {
+interface SlateBoxFreshers2019Props {
   cta: string;
   link: string;
   heading: string;
   subheading: string;
 }
 
-const component: React.FC<IProps> = ({ link, cta, heading, subheading }) => {
+const component: React.FC<SlateBoxFreshers2019Props> = ({
+  link,
+  cta,
+  heading,
+  subheading,
+}) => {
   return (
     <SlateBoxContainerStyleable
       css={{

@@ -1,5 +1,6 @@
 import '../../common/src/css/main.css';
 
+import React from 'react';
 import Raven from 'raven-js';
 import mitt from 'mitt';
 import { addClassesForFeatures } from '@ussu/common/src/libs/features';

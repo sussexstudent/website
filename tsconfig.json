@@ -24,6 +24,12 @@
     "experimentalDecorators": true,
     "allowJs": true,
     "baseUrl": "."
-  }
+  },
+  "include": [
+    "packages/website/src/**/*",
+    "packages/falmer/src/**/*",
+    "packages/basil/src/**/*",
+    "packages/common/src/**/*",
+  ]
 }
 

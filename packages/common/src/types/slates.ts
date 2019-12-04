@@ -35,7 +35,7 @@ export interface InternalSlate {
 }
 
 export interface SlateBox {
-  component: any;
+  component: React.FC;
   displayName: string;
   category: string;
   schema: any;

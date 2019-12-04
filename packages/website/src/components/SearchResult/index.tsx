@@ -3,11 +3,9 @@ import { Event } from '@ussu/common/src/types/events';
 import { ContentBrowserPage } from '../../pages/content/types';
 import { StudentGroup } from '@ussu/common/src/types/groups';
 
-const EventSearchResult = ({
-  item: { slug, id, title, shortDescription },
-}: {
+const EventSearchResult: React.FC<{
   item: Event;
-}) => (
+}> = ({ item: { slug, id, title, shortDescription } }) => (
   <li className="ResultsList__result">
     <a className="ResultsList__link" href={`/whats-on/${slug}-${id}`}>
       <div className="ResultsList__kicker">Event</div>
@@ -17,11 +15,9 @@ const EventSearchResult = ({
   </li>
 );
 
-const StudentGroupSearchResult = ({
-  item: { name, link, description },
-}: {
+const StudentGroupSearchResult: React.FC<{
   item: StudentGroup;
-}) => (
+}> = ({ item: { name, link, description } }) => (
   <li className="ResultsList__result">
     <a className="ResultsList__link" href={link}>
       <div className="ResultsList__kicker">Sports & Societies</div>
@@ -31,11 +27,9 @@ const StudentGroupSearchResult = ({
   </li>
 );
 
-const ContentSearchResult = ({
-  item: { path, title, searchDescription },
-}: {
+const ContentSearchResult: React.FC<{
   item: ContentBrowserPage;
-}) => (
+}> = ({ item: { path, title, searchDescription } }) => (
   <li className="ResultsList__result">
     <a className="ResultsList__link" href={path}>
       <div className="ResultsList__kicker">Page</div>
@@ -45,11 +39,9 @@ const ContentSearchResult = ({
   </li>
 );
 
-const MSLPageSearchResult = ({
-  item: { link, title, description },
-}: {
+const MSLPageSearchResult: React.FC<{
   item: any;
-}) => (
+}> = ({ item: { link, title, description } }) => (
   <li className="ResultsList__result">
     <a className="ResultsList__link" href={link}>
       <div className="ResultsList__kicker">Page</div>
@@ -59,11 +51,9 @@ const MSLPageSearchResult = ({
   </li>
 );
 
-const MSLNewsResult = ({
-  item: { link, title, searchDescription },
-}: {
+const MSLNewsResult: React.FC<{
   item: any;
-}) => (
+}> = ({ item: { link, title, searchDescription } }) => (
   <li className="ResultsList__result">
     <a className="ResultsList__link" href={link}>
       <div className="ResultsList__kicker">Article</div>
@@ -81,12 +71,12 @@ export interface SearchResultData {
   description: string;
 }
 
-interface IProps {
+interface SearchResultProps {
   type: string;
   item: SearchResultData;
 }
 
-export const SearchResult: React.FC<IProps> = (props) => {
+export const SearchResult: React.FC<SearchResultProps> = (props) => {
   const { type } = props;
 
   if (type === 'Event') {

@@ -77,7 +77,7 @@ export const EventBrandingPeriod: React.FC<EventBrandingPeriodProps> = ({
 
   useEffect(() => {
     dispatch(setBrandingPeriod(brandSlug));
-  }, [brandSlug]);
+  }, [brandSlug, dispatch]);
 
   if (brandLoading || listingsLoading) {
     return <Loader dark />;

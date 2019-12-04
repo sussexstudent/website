@@ -17,11 +17,11 @@ export interface NewsItem {
   imageURL?: string;
 }
 
-interface IProps {
+interface NewsBlockProps {
   item: NewsItem;
 }
 
-export const NewsBlock: React.FC<IProps> = ({
+export const NewsBlock: React.FC<NewsBlockProps> = ({
   item: { title, link, publishedDate, led, imageURL },
 }) => (
   <li

@@ -57,7 +57,7 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
         dispatch(setBrandingPeriod(event.brand.slug));
       }
     }
-  }, [data]);
+  }, [data, dispatch, history, match.params]);
 
   if (!data || loading) {
     return <Loader />;

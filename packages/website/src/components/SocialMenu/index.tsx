@@ -64,7 +64,7 @@ export const SocialMenu: React.FC<{ asList?: boolean; mobile?: boolean }> = ({
           <span className="u-h">Linkedin</span>
         </span>
 
-        <span className="Social__handle">Sussex Students'​ Union</span>
+        <span className="Social__handle">{`Sussex Students'​ Union`}</span>
       </a>
     </li>
     <li>

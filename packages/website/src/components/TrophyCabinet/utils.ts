@@ -2,7 +2,7 @@ import React from 'react';
 import { AwardAuthority, GroupAward } from '@ussu/common/src/types/awards';
 import { gradeMap, iconMap } from './data';
 
-export function getGrade(award: GroupAward, authority: AwardAuthority) {
+export function getGrade(award: GroupAward, authority: AwardAuthority): Grade {
   const authoritySlug = authority.slug;
   if (gradeMap.hasOwnProperty(authoritySlug)) {
     const authorityGrades = gradeMap[authoritySlug];

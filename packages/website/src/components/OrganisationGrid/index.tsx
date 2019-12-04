@@ -2,11 +2,11 @@ import React from 'react';
 import { OrganisationCard } from '../OrganisationCard';
 import { StudentGroup } from '@ussu/common/src/types/groups';
 
-interface IProps {
+interface OrganisationGridProps {
   organisations: StudentGroup[];
 }
 
-export const OrganisationGrid: React.FC<IProps> = (props: IProps) => {
+export const OrganisationGrid: React.FC<OrganisationGridProps> = (props) => {
   const { organisations } = props;
   return (
     <ul className="TrailGrid TrailGrid--large">

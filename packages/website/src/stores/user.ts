@@ -97,4 +97,4 @@ const useUser = (): [UserState, React.Dispatch<Actions>] => {
   return [store, dispatch];
 };
 
-export let UserStore = createContainer(useUser);
+export const UserStore = createContainer(useUser);

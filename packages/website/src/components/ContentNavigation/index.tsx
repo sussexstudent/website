@@ -10,7 +10,7 @@ interface Section {
   children: Section[];
 }
 
-interface IProps {
+interface ContentNavigationProps {
   title?: string;
   items: Section[];
   activeKey?: string;
@@ -39,7 +39,7 @@ function canDisplaySubMenu(
 
 // TODO: Tidy this up. Should technically support unlimited levels
 // TODO: this component's name doesn't match the css component
-export const ContentNavigation: React.FC<IProps> = ({
+export const ContentNavigation: React.FC<ContentNavigationProps> = ({
   title,
   items,
   activeKey = '',

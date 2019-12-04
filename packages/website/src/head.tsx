@@ -12,7 +12,7 @@ export const branding = `<link rel="apple-touch-icon" sizes="180x180" href="http
 <meta name="application-name" content="Students' Union">
 <meta name="theme-color" content="#ffffff">`;
 
-export const Branding = () => (
+export const Branding: React.FC = () => (
   <React.Fragment>
     <link
       rel="apple-touch-icon"

@@ -4,7 +4,6 @@ import { withRouter, RouteComponentProps } from 'react-router';
 import Raven from 'raven-js';
 
 interface ErrorBoundaryProps extends RouteComponentProps<any> {
-  children?: any;
   FallbackComponent?: any;
   onError?: (error: Error, componentStack: string) => void;
 }

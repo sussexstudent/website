@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
-interface IProps {
+interface CopyToClipboardButtonProps {
   value: string;
 }
 
-export const CopyToClipboardButton: React.FC<IProps> = ({
+export const CopyToClipboardButton: React.FC<CopyToClipboardButtonProps> = ({
   value,
   children,
 }) => {

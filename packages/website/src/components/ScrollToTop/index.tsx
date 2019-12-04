@@ -19,7 +19,7 @@ const ScrollToTopComponent: React.FC<RouteComponentProps & {
     return () => {
       unlisten();
     };
-  }, []);
+  }, [currentKey, history]);
 
   return children;
 };

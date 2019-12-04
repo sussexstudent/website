@@ -1,5 +1,3 @@
-import { AnyAction } from 'redux';
-
 interface Flag {
   name: string;
   state: boolean;
@@ -13,7 +11,6 @@ export interface FlagsState {
 
 export default function reducer(
   state: FlagsState = { loaded: false, flags: {} },
-  _action: AnyAction,
 ) {
   return state;
 }

@@ -2,11 +2,7 @@ import React from 'react';
 import { Modal } from '../Modal';
 import { BannerOutlet } from '../BannerOutlet';
 
-interface LoginModalProps {}
-
-export const LoginModal: React.FC<LoginModalProps & ReactModal.Props> = (
-  props,
-) => {
+export const LoginModal: React.FC<ReactModal.Props> = (props) => {
   const currentPath =
     typeof window !== 'undefined' ? window.location.pathname : '/';
 

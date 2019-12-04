@@ -9,7 +9,7 @@ export const FourOhFourPage: React.FC = () => (
     <p>
       {`We're always looking to improve our website. If you think there should be
       a page here, or you can't find what you're looking for, please email
-      support@sussexstudent.com.`}
+      websupport@sussexstudent.com.
     </p>
   </div>
 );

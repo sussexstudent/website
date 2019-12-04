@@ -3,4 +3,4 @@ import { NewsletterSignup } from '../../../website/src/components/NewsletterSign
 
 export default { title: 'NewsletterSignup' };
 
-export const Default = () => <NewsletterSignup />;
+export const Default: React.FC = () => <NewsletterSignup />;

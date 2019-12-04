@@ -2,7 +2,7 @@ import React from 'react';
 import { Tag, Tags } from '../../../website/src/components/Tags/index';
 
 export default { title: 'Tags' };
-export const Standard = () => (
+export const Standard: React.FC = () => (
   <Tags>
     <Tag>
       <a href="#">Awesome</a>

@@ -9,13 +9,13 @@ import {
 
 export default { title: 'Page|Wayfinder' };
 
-export const Level1Stub = () => (
+export const Level1Stub: React.FC = () => (
   <Wayfinder>
     <WayfinderTopLevel title={'Get involved'} to={'#'} />
   </Wayfinder>
 );
 
-export const Level1WithChildren = () => (
+export const Level1WithChildren: React.FC = () => (
   <Wayfinder>
     <WayfinderTopLevel title={'Get involved'} to={'#'}>
       <WayfinderItem to={'/sos'}>Societies</WayfinderItem>
@@ -25,7 +25,7 @@ export const Level1WithChildren = () => (
   </Wayfinder>
 );
 
-export const Level2WithChildren = () => (
+export const Level2WithChildren: React.FC = () => (
   <Wayfinder>
     <WayfinderTopLevel title={'Get involved'} to={'#'}>
       <WayfinderItem to={'/'}>Societies</WayfinderItem>
@@ -40,7 +40,7 @@ export const Level2WithChildren = () => (
   </Wayfinder>
 );
 
-export const Level3WithChildren = () => (
+export const Level3WithChildren: React.FC = () => (
   <Wayfinder>
     <WayfinderTopLevel title={'Get involved'} to={'#'}>
       <WayfinderItem to={'/'}>Societies</WayfinderItem>

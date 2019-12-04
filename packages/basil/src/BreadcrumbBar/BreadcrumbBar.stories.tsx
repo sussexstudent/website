@@ -19,4 +19,4 @@ const crumbs = [
 
 export default { title: 'Navigation|BreadcrumbBar' };
 
-export const normal = () => <BreadcrumbBar>{crumbs}</BreadcrumbBar>;
+export const normal: React.FC = () => <BreadcrumbBar>{crumbs}</BreadcrumbBar>;

@@ -3,4 +3,4 @@ import { CookieMessage } from '../../../website/src/components/CookieMessage/ind
 
 export default { title: 'Page|CookieMessage' };
 
-export const Default = () => <CookieMessage />;
+export const Default: React.FC = () => <CookieMessage />;

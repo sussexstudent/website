@@ -1,8 +1,9 @@
+import React from 'react';
 import { Heading, HeadingLevel } from '../../../website/src/components/Heading';
 
 export default { title: 'Typography|Headings' };
 
-export const Default = () => (
+export const Default: React.FC = () => (
   <div>
     <Heading level={HeadingLevel.h1}>This is a level 1 heading </Heading>
     <hr></hr>

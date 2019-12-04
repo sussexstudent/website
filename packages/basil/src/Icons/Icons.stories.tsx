@@ -6,6 +6,6 @@ import { SearchIcon } from '../../../website/src/components/SearchIcon';
 
 export default { title: 'Utils|Icons' };
 
-export const Search = () => <SearchIcon />;
-export const Menu = () => <MenuIcon />;
-export const Cross = () => <CrossIcon />;
+export const Search: React.FC = () => <SearchIcon />;
+export const Menu: React.FC = () => <MenuIcon />;
+export const Cross: React.FC = () => <CrossIcon />;

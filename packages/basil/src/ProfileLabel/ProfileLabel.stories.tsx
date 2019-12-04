@@ -3,4 +3,4 @@ import { ProfileLabel } from '../../../website/src/components/LokiHeader/Profile
 
 export default { title: 'Page|Profile Label' };
 
-export const Standard = () => <ProfileLabel />;
+export const Standard: React.FC = () => <ProfileLabel />;

@@ -1,4 +1,4 @@
-export default function getFalmerEndpoint() {
+export default function getFalmerEndpoint(): string {
   const serverSide = typeof localStorage === 'undefined';
 
   const clientEndpoint = serverSide

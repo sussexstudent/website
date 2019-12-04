@@ -3,7 +3,7 @@ import { NewsBlock } from '../../../website/src/components/NewsList/NewsBlock';
 
 export default { title: 'NewsBlock' };
 
-export const Standard = () => (
+export const Standard: React.FC = () => (
   <NewsBlock
     item={{
       id: 2,

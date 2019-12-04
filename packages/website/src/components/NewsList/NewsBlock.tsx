@@ -95,7 +95,6 @@ export const NewsBlock: React.FC<IProps> = ({
           css={{
             textDecoration: 'none',
             paddingRight: '1rem',
-            padding: '0.02em 0.2em',
             color: '#000',
             display: 'inline',
             position: 'relative',

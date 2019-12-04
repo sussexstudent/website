@@ -95,21 +95,16 @@ export const NewsBlock: React.FC<IProps> = ({
           css={{
             textDecoration: 'none',
             paddingRight: '1rem',
+            padding: '0.02em 0.2em',
+            color: '#000',
+            display: 'inline',
+            position: 'relative',
+            margin: 0,
+            fontWeight: 600,
+            ...type(TypeSize.GreatPrimer, Typeface.Secondary),
           }}
         >
-          <span
-            css={{
-              padding: '0.02em 0.2em',
-              color: '#000',
-              display: 'inline',
-              position: 'relative',
-              margin: 0,
-              fontWeight: 600,
-              ...type(TypeSize.GreatPrimer, Typeface.Secondary),
-            }}
-          >
-            {title}
-          </span>
+          {title}
         </div>
         <p
           css={{

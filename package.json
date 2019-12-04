@@ -28,13 +28,13 @@
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.1.2",
-    "file-loader": "^4.2.0",
+    "file-loader": "^5.0.2",
     "husky": "^3.0.9",
     "jest-emotion": "^10.0.17",
     "lint-staged": "^9.4.2",
     "lodash-webpack-plugin": "^0.11.5",
     "mini-css-extract-plugin": "^0.8.0",
-    "url-loader": "^2.2.0"
+    "url-loader": "^3.0.0"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"

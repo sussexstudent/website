@@ -2,4 +2,5 @@
 title: Frontend Architecture
 ---
 
-The entire website composed of React components. Required components (its DOM node and its children) can be rehydrated on the client. comp manages rendering our website to markup strings.
+- The entire website composed of [React]<https://reactjs.org/docs/getting-started.html> components. 
+- comp manages rendering our website to markup strings.

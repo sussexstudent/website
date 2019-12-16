@@ -14,6 +14,11 @@ module.exports = {
   ignorePatterns: ['node_modules/'],
   rules: {
     "react/prop-types": "off",
+    "react/boolean-prop-naming": "warn",
+    "react/button-has-type": "error",
+    "react/destructuring-assignment": "warn",
+    "react/no-array-index-key": "warn",
+
     "@typescript-eslint/explicit-function-return-type": ["warn", {
       "allowExpressions": true,
       "allowTypedFunctionExpressions": true

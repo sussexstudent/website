@@ -1,4 +1,4 @@
-query EventsDetailPage($eventId: Int) {
+query getFullEventInfo($eventId: Int) {
   event(eventId: $eventId) {
     id
     eventId
@@ -14,12 +14,13 @@ query EventsDetailPage($eventId: Int) {
     socialFacebook
     ticketType
     ticketData
+    ticketLevel
     mslEventId
     cost
     canceledAt
 
     userLike {
-      source
+      ...userLike
     }
 
     # pa set
@@ -104,6 +105,7 @@ query EventsDetailPage($eventId: Int) {
 }
 
 fragment EventCard on Event {
+  id
   eventId
   slug
   title
@@ -116,6 +118,14 @@ fragment EventCard on Event {
   cost
   ticketLevel
   ticketType
+  isOver18Only
+  canceledAt
+  type {
+    name
+  }
+  categories {
+    name
+  }
   bundle {
     name
   }
@@ -126,4 +136,12 @@ fragment EventCard on Event {
   featuredImage {
     resource
   }
+
+  userLike {
+    ...userLike
+  }
+}
+
+fragment userLike on EventLike {
+  source
 }

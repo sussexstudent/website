@@ -5,24 +5,23 @@ import {
   maxLength,
   required,
 } from '@ussu/common/src/libs/finalFormValidators';
-import GetCategories from './GetCategories.graphql';
-import CreateListingMutation from './CreateListingMutation.graphql';
-import { MarketListing, MarketSection } from '@ussu/common/src/types/market';
+import GET_ALL_MARKET_SECTIONS_QUERY from '../getAllMarketSections.graphql';
+import CREATE_LISTING_MUTATION from './CreateListingMutation.graphql';
 import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
 import { Helmet } from 'react-helmet-async';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { useMutation, useQuery } from '@apollo/react-hooks';
-
-interface Result {
-  createMarketListing: {
-    listing: MarketListing;
-  };
-}
+import {
+  CreateListingMutation,
+  GetAllMarketSectionsQuery,
+} from '../../../generated/graphql';
 
 const CreateListing: React.FC = (props) => {
-  const [createListing] = useMutation<Result>(CreateListingMutation);
-  const { data } = useQuery<{ allMarketSections: MarketSection[] }>(
-    GetCategories,
+  const [createListing] = useMutation<CreateListingMutation>(
+    CREATE_LISTING_MUTATION,
+  );
+  const { data } = useQuery<GetAllMarketSectionsQuery>(
+    GET_ALL_MARKET_SECTIONS_QUERY,
   );
 
   const onSubmit = (formData: any) => {
@@ -35,7 +34,7 @@ const CreateListing: React.FC = (props) => {
         },
       },
     }).then((response) => {
-      if (response?.data) {
+      if (response?.data?.createMarketListing?.listing?.pk) {
         (props as any).history.push(
           `/book-market/listing/${response.data.createMarketListing.listing.pk}`,
         );

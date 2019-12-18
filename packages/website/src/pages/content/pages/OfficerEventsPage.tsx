@@ -6,10 +6,11 @@ import { EventListings } from '../../whatson/WhatsOnListings/EventListings';
 import { useQuery } from '@apollo/react-hooks';
 import { startOfDay, addMonths } from 'date-fns/esm';
 import { Loader } from '../../../components/Loader';
+import { GetAllEventsWithFilterQuery } from '../../../generated/graphql';
 
 type IOfficerEventsIndex = Page<Page[]>;
 
-interface IOfficerEventsPage extends Page {
+interface OfficerEventsPage extends Page {
   section: IOfficerEventsIndex;
   description: string;
   curator: {
@@ -19,25 +20,32 @@ interface IOfficerEventsPage extends Page {
 }
 
 export interface OfficerEventsPageProps {
-  page: IOfficerEventsPage;
+  page: OfficerEventsPage;
 }
 
 export const OfficerEventsPage: React.FC<OfficerEventsPageProps> = ({
   page,
 }) => {
   const [now] = useState(new Date());
-  const { data, loading } = useQuery(EventListingsQuery, {
-    variables: {
-      filter: page.filter || {
-        fromTime: startOfDay(now).toISOString(),
-        toTime: addMonths(startOfDay(now), 6).toISOString(),
-        curatedBy: page.curator.id,
+  const { data, loading } = useQuery<GetAllEventsWithFilterQuery>(
+    EventListingsQuery,
+    {
+      variables: {
+        filter: page.filter || {
+          fromTime: startOfDay(now).toISOString(),
+          toTime: addMonths(startOfDay(now), 6).toISOString(),
+          curatedBy: page.curator.id,
+        },
       },
     },
-  });
+  );
 
   if (loading) {
     return <Loader dark />;
+  }
+
+  if (!data?.allEvents) {
+    return <h1>404</h1>;
   }
 
   return (

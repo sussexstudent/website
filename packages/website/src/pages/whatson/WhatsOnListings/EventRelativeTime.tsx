@@ -2,10 +2,10 @@ import React from 'react';
 import isWithinInterval from 'date-fns/isWithinInterval';
 import formatDistance from 'date-fns/formatDistance';
 import subMinutes from 'date-fns/subMinutes';
-import { Event } from '@ussu/common/src/types/events';
+import { EventCardFragment } from 'packages/website/src/generated/graphql';
 
 interface EventRelativeTimeProps {
-  event: Event;
+  event: EventCardFragment;
 }
 
 export const EventRelativeTime: React.FC<EventRelativeTimeProps> = ({

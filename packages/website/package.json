@@ -56,6 +56,13 @@
     "what-input": "^5.2.6"
   },
   "devDependencies": {
+    "@graphql-codegen/add": "^1.9.1",
+    "@graphql-codegen/cli": "^1.9.1",
+    "@graphql-codegen/fragment-matcher": "1.9.1",
+    "@graphql-codegen/introspection": "1.9.1",
+    "@graphql-codegen/typescript": "1.9.1",
+    "@graphql-codegen/typescript-graphql-files-modules": "^1.9.1",
+    "@graphql-codegen/typescript-operations": "1.9.1",
     "@types/classnames": "^2.2.9",
     "@types/google.analytics": "^0.0.40",
     "@types/history": "^4.7.3",
@@ -91,6 +98,7 @@
     "prod": "export NODE_ENV=production && export BABEL_ENV=bundle && webpack --config ./webpack.prod.config.js",
     "gen": "BABEL_ENV=comp && node ../comp/lib/cli.js",
     "postinstall": ":",
-    "deploy": "uncommitted && yarn prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist/ s3://ussu-static/ --config=../../.s3cfg --acl-public && yarn run gen && yarn run msl-deploy deploy.json"
+    "deploy": "uncommitted && yarn prod && s3cmd put --recursive --add-header=\"Cache-Control: public, max-age=365000000, immutable\" ./dist/ s3://ussu-static/ --config=../../.s3cfg --acl-public && yarn run gen && yarn run msl-deploy deploy.json",
+    "codegen": "graphql-codegen --config codegen.yml"
   }
 }

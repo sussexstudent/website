@@ -1,4 +1,4 @@
-query GetMarketListing($listingId: Int) {
+query getMarketListing($listingId: Int!) {
   marketListing(listingId: $listingId) {
     pk
     id

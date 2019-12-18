@@ -11,13 +11,9 @@ import isBefore from 'date-fns/isBefore';
 import isSameDay from 'date-fns/isSameDay';
 import formatDate from 'date-fns/format';
 
-import {
-  Brand,
-  Event,
-  EventPart,
-  EventPartType,
-} from '@ussu/common/src/types/events';
+import { Brand, EventPart, EventPartType } from '@ussu/common/src/types/events';
 import { addWeeks, getDate, startOfWeek } from 'date-fns';
+import { EventCardFragment } from '../../generated/graphql';
 
 const now = setHours(new Date(), 0);
 const rightNow = new Date();
@@ -26,7 +22,15 @@ const startOfNextWeek = addWeeks(
   1,
 );
 
-export function splitEventsInToParts(events: Event[], removePast = true) {
+export type WithHydratedDates<TEvent> = TEvent & {
+  startDate: Date;
+  endDate: Date;
+};
+
+export function splitEventsInToParts(
+  events: WithHydratedDates<EventCardFragment>[],
+  removePast = true,
+) {
   // for all events
   // if single day, add single day event SINGLE
   // if multi day

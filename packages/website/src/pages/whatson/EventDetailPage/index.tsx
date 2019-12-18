@@ -7,7 +7,6 @@ import {
 import { Loader } from '../../../components/Loader';
 import DetailPageQuery from './EventsDetailPage.graphql';
 import { WhatsOnEventCard } from '../WhatsOnEventCard';
-import { Event, TicketType } from '@ussu/common/src/types/events';
 import { AspectRatio, OneImageBackground } from '../../../components/OneImage';
 import { EventDetailDetails } from './EventDetailDetails';
 import { EventDetailSidebar } from './EventDetailSidebar';
@@ -23,6 +22,10 @@ import {
   useWhatsOnThemingContext,
 } from '../WhatsOnBrandingContext';
 import { InternalAppLink } from '../../../components/InternalAppLink';
+import {
+  GetFullEventInfoQuery,
+  EventTicketType,
+} from '../../../generated/graphql';
 
 interface RouteParams {
   [0]: string;
@@ -38,7 +41,7 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
   const dispatch = useWhatsOnThemingContext()[1];
   const [mslData, setMslData] = useState<any>(null);
   // const [_ticketModal, setTicketModal] = useState(false);
-  const { data, loading } = useQuery(DetailPageQuery, {
+  const { data, loading } = useQuery<GetFullEventInfoQuery>(DetailPageQuery, {
     variables: { eventId: match.params.eventId },
   });
 
@@ -59,8 +62,12 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
     }
   }, [data, dispatch, history, match.params]);
 
-  if (!data || loading) {
+  if (loading) {
     return <Loader />;
+  }
+
+  if (!event) {
+    return <h1>404</h1>;
   }
 
   return (
@@ -158,16 +165,16 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
               <span className="u-position-anchor" id="sub-events" />
               <h2 className="Heading Heading--tight">Part of this event</h2>
               <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                {event.children.map((childEvent: Event) => (
+                {event.children.map((childEvent) => (
                   <div>
-                    <WhatsOnEventCard part={{ event: childEvent }} />
+                    <WhatsOnEventCard event={childEvent} />
                   </div>
                 ))}
               </div>
             </div>
           ) : null}
 
-          {event.ticketType === TicketType.MSL ? (
+          {event.ticketType === EventTicketType.Msl ? (
             <MSLEventCommunication
               ticketData={event.ticketData}
               onData={setMslData}

@@ -8,6 +8,7 @@ import { ErrorState } from '../../../components/ErrorState';
 import { RouteComponentProps } from 'react-router';
 import { BuyButton } from '../EventDetailPage/BuyButton';
 import { type, TypeSize } from '@ussu/basil/src/style/type';
+import { GetEventsByBundleSlugQuery } from '../../../generated/graphql';
 
 export type EventBundleProps = RouteComponentProps<{ bundleSlug: string }>;
 
@@ -16,14 +17,17 @@ export const EventBundle: React.FC<EventBundleProps> = ({
     params: { bundleSlug },
   },
 }) => {
-  const { data, loading, error } = useQuery(EventListingsBrandingPeriodQuery, {
-    variables: {
-      bundleSlug,
-      filter: {
-        bundle: bundleSlug,
+  const { data, loading, error } = useQuery<GetEventsByBundleSlugQuery>(
+    EventListingsBrandingPeriodQuery,
+    {
+      variables: {
+        bundleSlug,
+        filter: {
+          bundle: bundleSlug,
+        },
       },
     },
-  });
+  );
 
   if (loading) {
     return <Loader dark />;

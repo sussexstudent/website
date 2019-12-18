@@ -1,14 +1,5 @@
 query FreshersMenuQuery {
   page(path: "/freshers") {
     title
-    root: closestAncestorOfType(
-      contentType: "FreshersHomepage"
-      inclusive: true
-    ) {
-      subPages(inMenu: true) {
-        title
-        path
-      }
-    }
   }
 }

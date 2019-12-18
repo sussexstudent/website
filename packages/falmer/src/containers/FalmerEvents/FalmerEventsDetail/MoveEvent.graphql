@@ -1,4 +1,4 @@
-mutation($eventId: Int, $destinationEventId: Int) {
+mutation($eventId: Int!, $destinationEventId: Int!) {
   moveEvent(eventId: $eventId, destinationEventId: $destinationEventId) {
     event {
       id

@@ -7,6 +7,7 @@ import { type, TypeSize } from '@ussu/basil/src/style/type';
 import { Layers, MQ } from '@ussu/basil/src/style';
 import FauxRouterLink from '../../../components/FauxRouterLink';
 import { BuyButton } from '../EventDetailPage/BuyButton';
+import { GetEventsByBundleSlugQuery } from '../../../generated/graphql';
 
 export const BrandingContainer = createBrandedComponent(
   WhatsOnBrandedComponentLocation.Container,
@@ -15,14 +16,17 @@ export const BrandingContainer = createBrandedComponent(
 export const BundleBanner = createBrandedComponent(
   WhatsOnBrandedComponentLocation.BundleBanner,
   ({ bundle, onEvent }: { bundle: any; onEvent: boolean }) => {
-    const { data, loading, error } = useQuery(EVENT_LISTINGS_BUNDLE, {
-      variables: {
-        bundleSlug: bundle.slug,
-        filter: {
-          bundle: bundle.slug,
+    const { data, loading, error } = useQuery<GetEventsByBundleSlugQuery>(
+      EVENT_LISTINGS_BUNDLE,
+      {
+        variables: {
+          bundleSlug: bundle.slug,
+          filter: {
+            bundle: bundle.slug,
+          },
         },
       },
-    });
+    );
 
     if (!data || loading || error) {
       return null;

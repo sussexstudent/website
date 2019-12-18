@@ -10,6 +10,7 @@ import {
   setBrandingPeriod,
   useWhatsOnThemingContext,
 } from '../WhatsOnBrandingContext';
+import { GetAllEventsWithFilterQuery } from '../../../generated/graphql';
 
 interface OwnProps {
   disableHeader: boolean;
@@ -24,20 +25,27 @@ const EventsList: React.FC<EventsListProps> = ({ filter }) => {
     dispatch(setBrandingPeriod(null));
   }, [dispatch]);
   const [now] = useState(new Date());
-  const { data, loading } = useQuery(EventListingsQuery, {
-    variables: {
-      skipEmbargo:
-        typeof window !== 'undefined' &&
-        window.location.hash === '#skip-embargo',
-      filter: filter || {
-        fromTime: startOfDay(now).toISOString(),
-        toTime: addMonths(startOfDay(now), 6).toISOString(),
+  const { data, loading } = useQuery<GetAllEventsWithFilterQuery>(
+    EventListingsQuery,
+    {
+      variables: {
+        skipEmbargo:
+          typeof window !== 'undefined' &&
+          window.location.hash === '#skip-embargo',
+        filter: filter || {
+          fromTime: startOfDay(now).toISOString(),
+          toTime: addMonths(startOfDay(now), 6).toISOString(),
+        },
       },
     },
-  });
+  );
 
   if (loading) {
     return <Loader dark />;
+  }
+
+  if (!data) {
+    return <h1>404</h1>;
   }
 
   return (

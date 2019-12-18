@@ -1,14 +1,16 @@
 import React, { useCallback } from 'react';
 import HeartFull from '../../../icons/heart-full.svg';
 import Heart from '../../../icons/heart-empty.svg';
-import { Event } from '@ussu/common/src/types/events';
 import LikeEvent from './LikeEvent.graphql';
 import { useMutation } from '@apollo/react-hooks';
 import { useViewer } from '../../bookmarket/currentUserData';
 import { useDispatch } from 'redux-react-hook';
 import { openLoginModal } from '../../../ducks/user';
+import { EventCardFragment } from '../../../generated/graphql';
 
-export const EventLikeButton: React.FC<{ event: Event }> = ({ event }) => {
+export const EventLikeButton: React.FC<{ event: EventCardFragment }> = ({
+  event,
+}) => {
   const { loading, isAuthenticated } = useViewer();
   const [likeEvent] = useMutation(LikeEvent);
   const dispatch = useDispatch();

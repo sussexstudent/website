@@ -1,4 +1,9 @@
-import { Event, TicketCost, TicketType } from '@ussu/common/src/types/events';
+import {
+  EventTicketType,
+  EventTicketLevel,
+  EventCost,
+  EventCardFragment,
+} from '../../../generated/graphql';
 
 export enum EventTagType {
   Info,
@@ -16,7 +21,7 @@ function createTag(title: string, type: EventTagType): EventTag {
   return { title, type, id: `${type}/${title}` };
 }
 
-export function* getTagsForEvent(event: Event) {
+export function* getTagsForEvent(event: EventCardFragment) {
   if (event.isOver18Only) {
     yield createTag('18+', EventTagType.Requirement);
   }
@@ -27,16 +32,16 @@ export function* getTagsForEvent(event: Event) {
 
   if (
     event.ticketType !== undefined &&
-    event.ticketType !== TicketType.NA &&
-    event.ticketLevel !== 'SO'
+    event.ticketType !== EventTicketType.Na &&
+    event.ticketLevel !== EventTicketLevel.SoldOut
   ) {
     yield createTag(
-      event.cost === TicketCost.Free ? 'Ticketed' : 'Ticketed',
+      event.cost === EventCost.Free ? 'Ticketed' : 'Ticketed',
       EventTagType.Info,
     );
   }
 
-  if (event.ticketLevel === 'LA') {
+  if (event.ticketLevel === EventTicketLevel.LimitedAvailability) {
     yield createTag('Limited availability', EventTagType.Info);
   }
 

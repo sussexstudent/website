@@ -16,6 +16,7 @@
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "@emotion/babel-preset-css-prop": "^10.0.17",
+    "@graphql-codegen/cli": "^1.9.1",
     "@types/jest": "^24.0.23",
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
@@ -34,13 +35,13 @@
     "lint-staged": "^9.4.2",
     "lodash-webpack-plugin": "^0.11.5",
     "mini-css-extract-plugin": "^0.8.0",
+    "ts-loader": "^6.2.1",
     "url-loader": "^3.0.0"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
   },
   "dependencies": {
-    "awesome-typescript-loader": "^5.2.1",
     "jest": "^24.9.0",
     "webpack": "^4.41.1"
   },
@@ -50,7 +51,8 @@
     "setup": "node ./scripts/initialSetup.js",
     "test": "NODE_ENV=test && jest",
     "testc": "NODE_ENV=test && jest --coverage",
-    "lint": "eslint \"packages/*/src/**/*.{ts,tsx}\""
+    "lint": "eslint \"packages/*/src/**/*.{ts,tsx}\"",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "husky": {
     "hooks": {

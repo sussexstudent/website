@@ -1,23 +1,23 @@
-query ContentPage($path: String, $previewToken: String) {
+query getContentByPath($path: String, $previewToken: String) {
   page(path: $path, previewToken: $previewToken) {
     ...ContentPageGenerals
     ... on DetailedGuidePage {
-      subPages {
-        ...ContentPageGenerals
+      subPagesGeneric {
+        ...ContentPageGeneralsGeneric
       }
       ...KBTypes
     }
     ... on DetailedGuideSectionPage {
       content
       parentPage {
-        ...ContentPageGenerals
         ... on DetailedGuidePage {
+          ...ContentPageGenerals
           relatedLinks
           staffOwners
-        }
-        ...KBTypes
-        subPages {
-          ...ContentPageGenerals
+          ...KBTypes
+          subPagesGeneric {
+            ...ContentPageGeneralsGeneric
+          }
         }
       }
     }
@@ -66,13 +66,13 @@ query ContentPage($path: String, $previewToken: String) {
           }
         }
       }
-      section: closestAncestorOfType(
+      section: closestAncestorOfTypeGeneric(
         contentType: "OutletIndexPage"
         inclusive: true
       ) {
-        ...ContentPageGenerals
-        subPages {
-          ...ContentPageGenerals
+        ...ContentPageGeneralsGeneric
+        subPagesGeneric {
+          ...ContentPageGeneralsGeneric
         }
       }
     }
@@ -92,21 +92,21 @@ query ContentPage($path: String, $previewToken: String) {
           instagramUrl
         }
       }
-      section: closestAncestorOfType(
+      section: closestAncestorOfTypeGeneric(
         contentType: "OfficersIndex"
         inclusive: true
       ) {
-        ...ContentPageGenerals
-        subPages {
-          ...ContentPageGenerals
+        ...ContentPageGeneralsGeneric
+        subPagesGeneric {
+          ...ContentPageGeneralsGeneric
         }
       }
     }
     ... on KBRootPage {
       introduction
       categories: subPages {
-        ...ContentPageGenerals
         ... on KBCategoryPage {
+          ...ContentPageGenerals
           pageIcon {
             url
           }
@@ -115,10 +115,12 @@ query ContentPage($path: String, $previewToken: String) {
     }
     ... on KBCategoryPage {
       rootPage: closestAncestorOfType(contentType: "KBRootPage") {
-        ...ContentPageGenerals
+        ... on KBRootPage {
+          ...ContentPageGenerals
+        }
       }
-      subPages {
-        ...ContentPageGenerals
+      subPagesGeneric {
+        ...ContentPageGeneralsGeneric
       }
     }
 
@@ -175,7 +177,7 @@ fragment ContentPageGenerals on Page {
   lastPublishedAt
 
   contentType
-  subPagesWayfinding: subPages(inMenu: true) {
+  subPagesWayfinding: subPagesGeneric(inMenu: true) {
     title
     slug
     path
@@ -186,12 +188,47 @@ fragment ContentPageGenerals on Page {
     contentType
   }
 
-  ancestorPages {
+  ancestorPagesGeneric {
     title
     slug
     path
     contentType
-    subPages(inMenu: true) {
+    subPagesGeneric(inMenu: true) {
+      contentType
+      title
+      slug
+      path
+    }
+  }
+}
+
+fragment ContentPageGeneralsGeneric on GenericPage {
+  title
+  slug
+  path
+
+  seoTitle
+  searchDescription
+  lastPublishedAt
+
+  contentType
+  subPagesWayfinding: subPagesGeneric(inMenu: true) {
+    title
+    slug
+    path
+
+    seoTitle
+    searchDescription
+
+    contentType
+  }
+
+  ancestorPagesGeneric {
+    title
+    slug
+    path
+    contentType
+    subPagesGeneric(inMenu: true) {
       contentType
       title
       slug
@@ -207,10 +244,10 @@ fragment FalmerImage on Image {
 }
 
 fragment KBTypes on Page {
-  root: closestAncestorOfType(contentType: "KBRootPage") {
-    ...ContentPageGenerals
+  root: closestAncestorOfTypeGeneric(contentType: "KBRootPage") {
+    ...ContentPageGeneralsGeneric
   }
-  category: closestAncestorOfType(contentType: "KBCategoryPage") {
-    ...ContentPageGenerals
+  category: closestAncestorOfTypeGeneric(contentType: "KBCategoryPage") {
+    ...ContentPageGeneralsGeneric
   }
 }

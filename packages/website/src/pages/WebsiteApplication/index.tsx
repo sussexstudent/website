@@ -20,7 +20,6 @@ import { ScrollToTop } from '../../components/ScrollToTop';
 import { useDispatch } from 'redux-react-hook';
 import { SearchProps } from '../../components/SearchApp';
 import loadable from '@loadable/component';
-import { ContentBrowserContainer } from '../ContentBrowser';
 import Homepage from '../homepage';
 import { ConsentCodeProps } from '../forms/consent';
 
@@ -42,13 +41,6 @@ const LoadableStudentGroupsDiscovery = loadable<{}>(async () => {
     '../../components/StudentGroupsDiscovery'
   );
   return (props) => <StudentGroupListings {...props} />;
-});
-
-const LoadableContentBrowser = loadable<ContentBrowserContainer>(async () => {
-  const { ContentBrowserContainer } = await import(
-    '../../pages/ContentBrowser'
-  );
-  return (props) => <ContentBrowserContainer {...props} />;
 });
 
 const LoadableConsentCode = loadable<ConsentCodeProps>(async () => {
@@ -81,7 +73,6 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
           <Switch>
             <Route component={Homepage} path="/" exact />
             <Route component={BookMarketApplication} path="/book-market" />
-            <Route component={LoadableContentBrowser} path="/browse" />
             <Route component={WhatsOn} path="/whats-on" />
             <Route component={LoadableSearchApp} path="/search" />
             <Route

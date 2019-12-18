@@ -1,4 +1,4 @@
-query EventDetail($eventId: Int) {
+query getEventDetail($eventId: Int) {
   event(eventId: $eventId) {
     eventId
     title

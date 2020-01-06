@@ -1,5 +1,4 @@
 import React from 'react';
-import React from 'react';
 import { Deckchair } from '../../../website/src/components/Deckchair/index';
 
 export default { title: 'Deckchair' };

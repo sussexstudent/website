@@ -26,7 +26,7 @@ interface State {
   searchValue: string;
   displayIds: number[];
   groups: StudentGroup[];
-  fuse: Fuse<any> | null;
+  fuse: Fuse<any, {}> | null;
 }
 
 interface SearchChangeAction {

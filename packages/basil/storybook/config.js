@@ -8,11 +8,6 @@ if (module.hot) {
 import { configure, addDecorator } from '@storybook/react';
 import '../../common/src/css/main.css';
 
-//addParameters({
- // options: { theme: unionTheme}
-//});
-
-
 function Padding(story) {
   return (
     React.createElement('div', { style: { padding: '1rem' }}, story())

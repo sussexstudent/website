@@ -3,17 +3,16 @@ import { Deckchair } from '../../../website/src/components/Deckchair/index';
 
 export default { title: 'Deckchair' };
 
+const colors = ['red', 'green'];
+
 export const Default = () => (
   <div>
-    <Deckchair
-      header="Some short header"
-      about="This is some simple about text"
-      color="red"
-    />
-    <Deckchair
-      header="Some short header"
-      about="This is some simple about text"
-      color="green"
-    />
+    {colors.map((c) => (
+      <Deckchair
+        header="Some short header"
+        about="This is some simple about text"
+        color={c}
+      />
+    ))}
   </div>
 );

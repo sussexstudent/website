@@ -33,7 +33,7 @@
   "devDependencies": {
     "@kadira/storybook-deployer": "^1.2.0",
     "@storybook/addon-actions": "^5.2.6",
-    "@storybook/addon-info": "^5.2.6",
+    "@storybook/addon-info": "^5.3.7",
     "@storybook/react": "^5.2.6",
     "@types/hammerjs": "^2.0.36",
     "@types/jest": "^24.0.23",

@@ -86,7 +86,7 @@ export const appMountMiddleware = (store: any) => (next: any) => (
 
     router.history.listen((location, action) => {
       const initialDynamicPush =
-        location.state && location.state.initialDynamicPush === true;
+        location.state && (location.state as any).initialDynamicPush === true;
 
       if (initialDynamicPush && action === 'POP') {
         store.dispatch(

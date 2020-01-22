@@ -13,7 +13,7 @@
   display: flex;
 
   &__user {
-    @mixin type long-primer without-line-height;
+    @mixin type LongPrimer without-line-height;
     color: var(--color__grey-winter);
     font-weight: 500;
   }
@@ -35,7 +35,7 @@
     list-style: none;
     display: flex;
     width: 100%;
-    @mixin type pica;
+    @mixin type Pica;
   }
 
   &__nav-item {

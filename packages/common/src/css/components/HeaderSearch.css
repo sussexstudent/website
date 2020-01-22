@@ -8,7 +8,7 @@
   font-family: var(--type__primary);
   background: #ffffff;
   padding: 0.3rem 0.6rem 0.1rem 2.6rem;
-  @mixin type great-primer;
+  @mixin type GreatPrimer;
   border: 0;
   font-weight: bold;
   padding-right: 48px;

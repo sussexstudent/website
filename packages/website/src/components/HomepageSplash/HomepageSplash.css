@@ -13,7 +13,7 @@
   &__heading {
     font-family: var(--type__primary);
     font-weight: bold;
-    @mixin type trafalgar;
+    @mixin type Trafalgar;
   }
 
   &__search-input {
@@ -22,7 +22,7 @@
     box-shadow: 0 2px 33px 0 rgba(0, 0, 0, 0.5);
     background: #ffffff;
     border-radius: 6px;
-    @mixin type great-primer;
+    @mixin type GreatPrimer;
     padding: 0.5em;
     border: 0;
   }

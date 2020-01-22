@@ -31,7 +31,7 @@
     border: 0;
     font-weight: 600;
     background: transparent;
-    @mixin type pica;
+    @mixin type Pica;
 
     &[disabled] {
       opacity: 0.4;
@@ -46,6 +46,6 @@
     font-weight: 600;
     flex: 1 1 auto;
     background: transparent;
-    @mixin type pica;
+    @mixin type Pica;
   }
 }

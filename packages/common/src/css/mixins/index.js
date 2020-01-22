@@ -1,10 +1,15 @@
 const omit = require('lodash').omit;
-const standardType = require('./typedata').standard;
+const basil = require('@ussu/basil/dist/index');
+
+const { FontSizes, Group, TypeSize } = basil;
 
 function type(mixin, args) {
-  const [name, ...options] = args.split(' ');
+  const allType = FontSizes;
 
-  if (!standardType.hasOwnProperty(name)) {
+  const [name, ...options] = args.split(' ');
+  const fontKey = TypeSize[name];
+
+  if (!allType.hasOwnProperty(fontKey)) {
     console.warn(`[css] "${name}" isn't a font size.`);
     return { color: 'red !important' };
   }
@@ -29,24 +34,18 @@ function type(mixin, args) {
     return processedMap;
   };
 
-  const size = standardType[name];
+  const size = allType[fontKey];
 
-  const fontMap = process(standardType[name]['group-a']);
+  const fontMap = process(allType[fontKey][Group.A]);
 
-  if (size.hasOwnProperty('group-b')) {
+  if (size.hasOwnProperty(Group.B)) {
     fontMap['@media screen and (min-width: 320px)'] = process(
-      standardType[name]['group-b'],
+      allType[fontKey][Group.B],
     );
   }
 
-  if (size.hasOwnProperty('group-c')) {
-    fontMap['@media screen and (min-width: 600px)'] = process(
-      standardType[name]['group-c'],
-    );
-  }
-
-  if (size.hasOwnProperty('group-d')) {
-    fontMap['.feature-no-touch &'] = process(standardType[name]['group-d']);
+  if (size.hasOwnProperty(Group.D)) {
+    fontMap['.feature-no-touch &'] = process(allType[fontKey][Group.D]);
   }
 
   return fontMap;
@@ -64,7 +63,7 @@ module.exports = {
   },
   rounded: function roundedMixin(mixin, type) {
     const self = {
-      'border-radius': '0px',
+      'border-radius': '2px',
     };
 
     if (type === 'mask') {
@@ -76,16 +75,6 @@ module.exports = {
     };
   },
   type,
-  outputTypeClassNames(mixin) {
-    const sizes = Object.keys(standardType);
-    const map = {};
-
-    sizes.forEach((sizeName) => {
-      map[`.type-${sizeName}`] = type(mixin, sizeName);
-    });
-
-    return map;
-  },
   card: function cardMixin(mixin, type) {
     switch (type) {
       case 'standard': {

@@ -86,7 +86,7 @@
     list-style: none;
     font-weight: 600;
     font-family: var(--type__primary);
-    @mixin type pica;
+    @mixin type Pica;
   }
 
   &__title {
@@ -159,7 +159,7 @@
 
   &__tag {
     padding: 0.2em 0.3em;
-    @mixin type brevier;
+    @mixin type Brevier;
     border-radius: 2px;
     margin-right: 1rem;
 

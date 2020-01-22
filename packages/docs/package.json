@@ -5,7 +5,7 @@
   "author": "Praveen <praveen@hasura.io> (@praveenweb)",
   "version": "0.0.1",
   "dependencies": {
-    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
     "@emotion/core": "^10.0.21",
     "@emotion/styled": "^10.0.17",
     "@emotion/styled-base": "^10.0.19",

@@ -4,7 +4,7 @@
     font-family: var(--type__primary);
     font-weight: 600;
     width: 100%;
-    @mixin type pica;
+    @mixin type Pica;
   }
 
   &__field {
@@ -24,13 +24,13 @@
     padding: 0.4rem 0.6rem;
     border: 1px solid var(--color__grey-spring);
     flex: 1 1 auto;
-    @mixin type great-primer;
+    @mixin type GreatPrimer;
   }
 
   &__input-prefix {
     padding-right: 0.5rem;
     font-weight: 600;
-    @mixin type double-pica;
+    @mixin type DoublePica;
     align-self: center;
   }
 }

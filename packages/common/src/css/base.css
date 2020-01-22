@@ -118,20 +118,20 @@ h6 .small,
 
 h1,
 .h1 {
-  @mixin type trafalgar;
+  @mixin type Trafalgar;
 }
 
 h2,
 .h2 {
-  @mixin type double-pica;
+  @mixin type DoublePica;
 }
 
 h3,
 .h3 {
-  @mixin type great-primer;
+  @mixin type GreatPrimer;
 }
 
 h4,
 .h4 {
-  @mixin type pica;
+  @mixin type Pica;
 }

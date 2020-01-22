@@ -14,5 +14,14 @@ export default [{
     file: `dist/index.esm.js`,
     format: 'esm',
     name: 'basil',
-  }]
+  },{
+    file: `dist/index.mjs`,
+    format: 'esm',
+    name: 'basil',
+  },
+    {
+      file: `dist/index.js`,
+      format: 'cjs',
+      name: 'basil',
+    }]
 }];

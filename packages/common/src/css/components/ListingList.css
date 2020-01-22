@@ -23,12 +23,12 @@
 
   &__title {
     color: var(--color__grey-slate);
-    @mixin type great-primer;
+    @mixin type GreatPrimer;
     font-weight: 600;
   }
 
   &__author {
-    @mixin type great-primer;
+    @mixin type GreatPrimer;
     color: var(--color__grey-worst-day-of-winter);
     font-weight: 600;
   }

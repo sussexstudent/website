@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  @mixin type great-primer;
+  @mixin type GreatPrimer;
   font-family: var(--type__primary);
   font-weight: 600;
 

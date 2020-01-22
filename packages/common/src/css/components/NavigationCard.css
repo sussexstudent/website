@@ -6,7 +6,7 @@
 
   &__title {
     padding: 0.3rem 1rem;
-    @mixin type great-primer;
+    @mixin type GreatPrimer;
   }
 
   &__list {

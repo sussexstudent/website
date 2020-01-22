@@ -18,7 +18,7 @@
   }
 
   &__title {
-    @mixin type great-primer;
+    @mixin type GreatPrimer;
 
     line-height: 1.3 !important;
     margin-top: 0;
@@ -32,12 +32,12 @@
 
   &__snippet {
     max-width: 600px;
-    @mixin type long-primer;
+    @mixin type LongPrimer;
     margin: 0;
   }
 
   &__kicker {
-    @mixin type long-primer;
+    @mixin type LongPrimer;
     color: var(--color__brand-green);
     font-weight: bold;
   }

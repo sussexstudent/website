@@ -16,7 +16,7 @@
   }
 
   &__mobile-search-input {
-    @mixin type great-primer;
+    @mixin type GreatPrimer;
     @mixin card standard;
     font-family: var(--type__primary);
     font-weight: 600;

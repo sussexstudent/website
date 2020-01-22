@@ -4,7 +4,6 @@ import cx from 'classnames';
 interface BackBarProps {
   color?: 'red' | 'blue' | 'green' | 'slate';
   href: string;
-  children: any;
 }
 
 export const BackBar: React.FC<BackBarProps> = ({

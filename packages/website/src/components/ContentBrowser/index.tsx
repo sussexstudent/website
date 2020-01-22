@@ -12,8 +12,7 @@ export const ContentBrowser: React.FC<ContentBrowserProps> = ({
   pages,
 }) => {
   const segOne = pages.subPages.find((page) => page.slug === segments[0]);
-  const segTwo =
-    segOne && segOne.subPages.find((page) => page.slug === segments[1]);
+  const segTwo = segOne?.subPages.find((page) => page.slug === segments[1]);
 
   return (
     <div

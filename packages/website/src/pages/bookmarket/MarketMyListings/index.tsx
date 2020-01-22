@@ -2,24 +2,21 @@ import React from 'react';
 import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
 import MyListingsQuery from './MyListings.graphql';
 import { Loader } from '../../../components/Loader';
-import { MarketListing } from '@ussu/common/src/types/market';
 import { ListingList } from '../ListingList';
 import { Helmet } from 'react-helmet-async';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { useQuery } from '@apollo/react-hooks';
-
-interface Result {
-  allMarketListings: {
-    edges: { node: MarketListing }[];
-  };
-}
+import { GetViewerMarketListingQuery } from '../../../generated/graphql';
 
 const MarketMyListings: React.FC = () => {
-  const { data, loading } = useQuery<Result>(MyListingsQuery, {
-    variables: {
-      filters: { own: true },
+  const { data, loading } = useQuery<GetViewerMarketListingQuery>(
+    MyListingsQuery,
+    {
+      variables: {
+        filters: { own: true },
+      },
     },
-  });
+  );
 
   if (data && loading) {
     return <Loader />;

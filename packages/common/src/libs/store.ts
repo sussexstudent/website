@@ -1,16 +1,18 @@
-let Store: IStore;
-
-interface IStore {
+interface Store {
   get(key: string, def: any): any;
   set(key: string, value: any): void;
 }
 
+let Store: Store;
+
 if (process.env.COMP_NODE) {
   Store = {
-    get(): any {
+    get() {
       return '';
     },
-    set(): void {},
+    set() {
+      /* do nothing */
+    },
   };
 } else {
   Store = {

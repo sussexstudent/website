@@ -6,14 +6,16 @@ interface RelatedContentProps {
   relatedContent: StreamFieldData;
 }
 
-export const RelatedContent = ({ relatedContent }: RelatedContentProps) => (
+export const RelatedContent: React.FC<RelatedContentProps> = ({
+  relatedContent,
+}) => (
   <div>
     {relatedContent.map((linkSection: any) => (
-      <div>
+      <div key={linkSection.id}>
         <h3>{linkSection.value.name || 'Related pages'}</h3>
         <ul>
           {linkSection.value.links.map((link: any) => (
-            <li>
+            <li key={link.id}>
               {link.type === 'internal_link' && (
                 <InternalAppLink key={link.id} to={link.value.link.path}>
                   {link.value.title || link.value.link.title}

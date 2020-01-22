@@ -1,20 +1,19 @@
 import React from 'react';
 
-interface IProps {
+interface DeckchairProps {
   header: string;
   about: string;
   chairKey?: string;
   color: string;
-  children?: any;
 }
 
-export const Deckchair: React.FC<IProps> = ({
+export const Deckchair: React.FC<DeckchairProps> = ({
   header,
   about,
   chairKey,
   color,
   children,
-}: IProps) => (
+}) => (
   <div className={`Deckchair Deckchair--color-${color}`} data-chair={chairKey}>
     {chairKey ? <div className="Deckchair__close" /> : null}
     <div className="Deckchair__info">

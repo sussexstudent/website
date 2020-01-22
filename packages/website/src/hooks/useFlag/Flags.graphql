@@ -1,4 +1,4 @@
-query AllFlags {
+query getActiveFlags {
   allFlags {
     name
     mode

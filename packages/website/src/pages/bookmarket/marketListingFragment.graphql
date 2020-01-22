@@ -1,0 +1,12 @@
+fragment marketListing on MarketListing {
+  pk
+  id
+  bookTitle
+  bookAuthor
+  buyPrice
+  description
+  state
+  image {
+    resource
+  }
+}

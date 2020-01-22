@@ -18,6 +18,6 @@ export const slateBoxes = {
 
 const boxMap = mapValues(slateBoxes, (box) => box.component);
 
-export function getAreaBox(boxType: BoxType) {
+export function getAreaBox(boxType: BoxType): React.FC {
   return boxMap.hasOwnProperty(boxType) ? boxMap[boxType] : boxMap[BoxType.NA];
 }

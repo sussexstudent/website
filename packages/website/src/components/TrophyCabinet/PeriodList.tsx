@@ -1,18 +1,18 @@
 import React from 'react';
 import { getGrade, Icon } from '../TrophyCabinet/utils';
 import { Award } from '../TrophyCabinet/Award';
-import { AwardPeriod } from '@ussu/common/src/types/awards';
+import { AwardsPeriodFragment } from '../../generated/graphql';
 
-export const PeriodList = ({ data }: { data: AwardPeriod[] }) => (
+export const PeriodList = ({ data }: { data: AwardsPeriodFragment[] }) => (
   <ul className="List List--reset">
     {data.map((awardPeriod) => (
-      <li>
+      <li key={awardPeriod.id}>
         <h3>
           {awardPeriod.authority.name} - {awardPeriod.displayName}
         </h3>
         <ul className="TrophyCabinet__awards List--reset">
           {awardPeriod.awarded.map((awarded) => (
-            <li>
+            <li key={awarded.id}>
               <Award
                 color={getGrade(awarded, awardPeriod.authority).color}
                 link={awarded.award.link}

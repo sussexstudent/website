@@ -1,26 +1,17 @@
+import React from 'react';
+
 export default { title: 'Navigation|Brick Wall' };
 
-export const Default = () => (
+const options = ['Sports', 'Media', 'Dance', 'Politics & Social Action'];
+
+export const Default: React.FC = () => (
   <ul className="BrickWall List--reset">
-    <li className="BrickWall__item">
-      <button className="BrickWall__anchor" type="button">
-        Sports
-      </button>
-    </li>
-    <li className="BrickWall__item">
-      <button className="BrickWall__anchor" type="button">
-        Media
-      </button>
-    </li>
-    <li className="BrickWall__item">
-      <button className="BrickWall__anchor" type="button">
-        Dance
-      </button>
-    </li>
-    <li className="BrickWall__item">
-      <button className="BrickWall__anchor" type="button">
-        Politics &amp; Social Action
-      </button>
-    </li>
+    {options.map((v) => (
+      <li className="BrickWall__item">
+        <button className="BrickWall__anchor" type="button">
+          {v}
+        </button>
+      </li>
+    ))}
   </ul>
 );

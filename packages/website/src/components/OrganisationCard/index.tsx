@@ -1,14 +1,13 @@
 import React from 'react';
 import { PatternPlaceholder } from '../PatternPlaceholder';
 import { AspectRatio, OneImage } from '../OneImage';
-import { StudentGroup } from '@ussu/common/src/types/groups';
+import { StudentGroupFragmentFragment } from '../../generated/graphql';
 
-interface IProps {
-  org: StudentGroup;
+interface OrganisationCardProps {
+  org: StudentGroupFragmentFragment;
 }
 
-export const OrganisationCard: React.FC<IProps> = (props: IProps) => {
-  const org = props.org;
+export const OrganisationCard: React.FC<OrganisationCardProps> = ({ org }) => {
   return (
     <li className="TrailGrid__item">
       <a className="OrganisationCard__link" href={org.link || '#'}>

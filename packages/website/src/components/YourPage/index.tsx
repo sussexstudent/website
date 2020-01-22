@@ -87,7 +87,7 @@ export const YourPage: React.FC<YourPageProps & ReactModal.Props> = (props) => {
 
         <button
           className="Button Button--color-red"
-          onClick={user.actionBound || undefined}
+          onClick={user.actionBound ?? undefined}
           type="button"
         >
           Log out

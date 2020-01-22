@@ -1,16 +1,10 @@
-query GetMarketListing($filters: MarketListingsFilter) {
+#import "../marketListingFragment.graphql"
+
+query searchMarketListings($filters: MarketListingsFilter) {
   allMarketListings(filters: $filters) {
     edges {
       node {
-        pk
-        id
-        bookTitle
-        bookAuthor
-        buyPrice
-        description
-        image {
-          resource
-        }
+        ...marketListing
       }
     }
   }

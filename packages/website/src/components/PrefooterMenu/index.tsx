@@ -1,23 +1,22 @@
 import React from 'react';
 
-interface IItemProps {
+interface ItemProps {
   name: string;
   link: string;
 }
 
-const Item: React.FC<IItemProps> = ({ name, link }) => (
+const Item: React.FC<ItemProps> = ({ name, link }) => (
   <li className="PrefooterMenu__column-item">
     <a href={link}>{name}</a>
   </li>
 );
 
-interface IColumnProps {
+interface ColumnProps {
   name: string;
   link: string;
-  children: any;
 }
 
-const Column: React.FC<IColumnProps> = ({ name, link, children }) => (
+const Column: React.FC<ColumnProps> = ({ name, link, children }) => (
   <ul className="PrefooterMenu__column">
     <li className="PrefooterMenu__column-header">
       <a href={link}>{name}</a>

@@ -2,26 +2,29 @@ import React, { useCallback, useEffect } from 'react';
 import { replacePageActions } from '../../../ducks/page';
 import { useDispatch } from 'redux-react-hook';
 
-interface IProps {
+interface MSLEventCommunication {
   ticketData: string;
   onData(data: any): void;
 }
 
-export const MSLEventCommunication: React.FC<IProps> = ({
+export const MSLEventCommunication: React.FC<MSLEventCommunication> = ({
   ticketData,
   onData,
 }) => {
   const dispatch = useDispatch();
-  const handleMessage = useCallback((e: MessageEvent) => {
-    const data = e.data;
-    if (data.source === 'ussu-msl-frame-initial-data') {
-      onData(data.payload);
+  const handleMessage = useCallback(
+    (e: MessageEvent) => {
+      const data = e.data;
+      if (data.source === 'ussu-msl-frame-initial-data') {
+        onData(data.payload);
 
-      if (data.payload.pageMenuOptions) {
-        dispatch(replacePageActions(data.payload.pageMenuOptions));
+        if (data.payload.pageMenuOptions) {
+          dispatch(replacePageActions(data.payload.pageMenuOptions));
+        }
       }
-    }
-  }, []);
+    },
+    [dispatch, onData],
+  );
 
   useEffect(() => {
     window.addEventListener('message', handleMessage);
@@ -29,7 +32,7 @@ export const MSLEventCommunication: React.FC<IProps> = ({
     return () => {
       window.removeEventListener('message', handleMessage);
     };
-  }, []);
+  }, [handleMessage]);
 
   return (
     <iframe

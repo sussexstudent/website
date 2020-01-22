@@ -7,7 +7,7 @@ import convert from 'htmr';
 import { SocialArray } from '../../../components/SocialArray';
 import { css } from '@emotion/core';
 
-interface IOfficersIndex extends Page<Page[]> {}
+type IOfficersIndex = Page<Page[]>;
 
 interface OfficerPagePreview extends Page {
   officerImage: FalmerImage;

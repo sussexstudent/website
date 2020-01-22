@@ -3,14 +3,14 @@ import currentUser from '@ussu/common/src/libs/user';
 import Modal from 'react-modal';
 import hydro from './modules/hydro';
 
-export function setup() {
+export function setup(): void {
   if (document.querySelector('.Body')) {
     Modal.setAppElement('.Body');
   } else if (document.querySelector('#root')) {
     Modal.setAppElement('#root');
   }
 
-  if (currentUser && currentUser.fundraising.blocking) {
+  if (currentUser?.fundraising.blocking) {
     Array.from(document.querySelectorAll('.AdvertBar')).forEach((advert) => {
       advert.remove();
     });

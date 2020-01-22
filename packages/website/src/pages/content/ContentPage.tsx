@@ -8,28 +8,17 @@ import { useQuery } from '@apollo/react-hooks';
 import qs from 'query-string';
 import { ErrorState } from '../../components/ErrorState';
 import { ContentWayfinder } from '../../components/Wayfinder';
+import { GetContentByPathQuery } from '../../generated/graphql';
 
 interface OwnProps {
   path: string;
   history?: History;
 }
 
-interface Result {
-  page: {
-    title: string;
-    data: any;
-    contentType: string;
-    path: string;
-
-    seoTitle: string;
-    searchDescription: string;
-  };
-}
-
-type IProps = OwnProps;
+type ContentPageProps = OwnProps;
 
 const ContentPageWrapper: React.FC<{
-  page: Result['page'];
+  page: NonNullable<GetContentByPathQuery['page']>;
   ContentTemplate: any;
   loading: boolean;
 }> = ({ page, ContentTemplate, loading }) => {
@@ -67,23 +56,25 @@ const ContentPageWrapper: React.FC<{
   );
 };
 
-const ContentPage: React.FC<IProps> = (props: IProps) => {
-  const { data, loading } = useQuery<Result>(CONTENT_PAGE_QUERY, {
-    variables: {
-      path: props.path,
-      previewToken:
-        props.history && qs.parse(props.history.location.search).preview,
+const ContentPage: React.FC<ContentPageProps> = ({ history, path }) => {
+  const { data, loading } = useQuery<GetContentByPathQuery>(
+    CONTENT_PAGE_QUERY,
+    {
+      variables: {
+        path: path,
+        previewToken: history && qs.parse(history.location.search).preview,
+      },
     },
-  });
+  );
 
   const [cachedPage, setCachedPage] = useState<{
-    page: Result | undefined;
+    page: GetContentByPathQuery['page'] | undefined;
     path: string;
-  }>({ page: undefined, path: props.path });
+  }>({ page: undefined, path: path });
 
   useEffect(() => {
-    if (data && !loading) {
-      setCachedPage({ page: data, path: data.page.path });
+    if (data?.page && !loading) {
+      setCachedPage({ page: data.page, path: data.page.path });
     }
   }, [data, loading]);
 
@@ -91,14 +82,14 @@ const ContentPage: React.FC<IProps> = (props: IProps) => {
     return null;
   }
 
-  const page = cachedPage.page.page;
+  const page = cachedPage.page;
 
   if (page === null) {
     return <FourOhFourPage />;
   }
 
-  if (page.contentType === 'StubPage' && props.history) {
-    props.history.replace(`/browse${props.path}`, { replace: true });
+  if (page.contentType === 'StubPage' && history) {
+    history.replace(`/browse${path}`, { replace: true });
     return null;
   }
   const ContentTypeTemplate = contentTypeMap.hasOwnProperty(page.contentType)

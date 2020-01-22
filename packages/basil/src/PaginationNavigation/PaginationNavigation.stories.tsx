@@ -1,8 +1,9 @@
+import React from 'react';
 import { PaginationNavigation } from '../../../website/src/components/PaginationNavigation/index';
 
 export default { title: 'Navigation|Pagination Navigation' };
 
-export const First = () => (
+export const First: React.FC = () => (
   <PaginationNavigation
     currentPage={1}
     onPageChange={() => ({})}
@@ -10,7 +11,7 @@ export const First = () => (
   />
 );
 
-export const Middle = () => (
+export const Middle: React.FC = () => (
   <PaginationNavigation
     currentPage={3}
     onPageChange={() => ({})}
@@ -18,7 +19,7 @@ export const Middle = () => (
   />
 );
 
-export const Last = () => (
+export const Last: React.FC = () => (
   <PaginationNavigation
     currentPage={6}
     onPageChange={() => ({})}

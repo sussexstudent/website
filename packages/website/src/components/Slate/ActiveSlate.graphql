@@ -1,4 +1,4 @@
-query FeaturedSlate {
+query getActiveSlate {
   activeSlate {
     enhancedData
   }

@@ -177,7 +177,7 @@ export const Search: React.FC<SearchProps> = ({ location }) => {
         dispatchState({ type: 'EMPTY_QUERY' });
       }
     },
-    [query],
+    [loadQueryResults, query],
   );
 
   const { area } = getParams(location);

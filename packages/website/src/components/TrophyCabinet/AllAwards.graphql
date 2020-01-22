@@ -1,24 +1,42 @@
-query AllGroupAwards($slug: String) {
+query getAwardsForGroupBySlug($slug: String) {
   group(groupSlug: $slug) {
     awards {
-      startDate
-      endDate
-      displayName
-
-      authority {
-        name
-        slug
-      }
-
-      awarded {
-        grade
-        award {
-          name
-          description
-          link
-          icon
-        }
-      }
+      ...awardsPeriod
     }
+  }
+}
+
+fragment award on Award {
+  id
+  name
+  description
+  link
+  icon
+}
+
+fragment awardAuthority on AwardAuthority {
+  name
+  slug
+}
+fragment awarded on AwardAwarded {
+  id
+  grade
+  award {
+    ...award
+  }
+}
+
+fragment awardsPeriod on AwardPeriod {
+  id
+  startDate
+  endDate
+  displayName
+
+  authority {
+    ...awardAuthority
+  }
+
+  awarded {
+    ...awarded
   }
 }

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Event, PAValue } from '@ussu/common/src/types/events';
 import { EventSidebarSection } from './EventSidebarSection';
+import { GetFullEventInfoQuery, PaValues } from '../../../generated/graphql';
 
 interface EventAccessSidebarProps {
-  event: Event;
+  event: GetFullEventInfoQuery['event'];
 }
 
 export const EventAccessSidebar: React.FC<EventAccessSidebarProps> = ({
@@ -46,28 +46,28 @@ export const EventAccessSidebar: React.FC<EventAccessSidebarProps> = ({
 
       <EventSidebarSection heading="Accessibility">
         <ul className="List List--reset">
-          {event.hasAccessibleToilets === PAValue.Positive && (
+          {event.hasAccessibleToilets === PaValues.Positive && (
             <li>Has accessible toilets</li>
           )}
-          {event.hasChangingFacilities === PAValue.Positive && (
+          {event.hasChangingFacilities === PaValues.Positive && (
             <li>Has changing facilities</li>
           )}
-          {event.hasGenderNeutralToilets === PAValue.Positive && (
+          {event.hasGenderNeutralToilets === PaValues.Positive && (
             <li>Has gender neutral toilets</li>
           )}
-          {event.hasLevelAccess === PAValue.Positive && (
+          {event.hasLevelAccess === PaValues.Positive && (
             <li>Has level access</li>
           )}
-          {event.containsFlashingLights === PAValue.Positive && (
+          {event.containsFlashingLights === PaValues.Positive && (
             <li>Contains flashing lights</li>
           )}
-          {event.containsLoudMusic === PAValue.Positive && (
+          {event.containsLoudMusic === PaValues.Positive && (
             <li>Contains loud music</li>
           )}
-          {event.containsLowLight === PAValue.Positive && (
+          {event.containsLowLight === PaValues.Positive && (
             <li>Contains low light</li>
           )}
-          {event.containsUnevenGround === PAValue.Positive && (
+          {event.containsUnevenGround === PaValues.Positive && (
             <li>Contains uneven ground</li>
           )}
         </ul>

@@ -6,6 +6,6 @@ export const maxLength = (maxLength: number) => (value: any) =>
 
 export const composeValidators = (...validators: Validator[]) => (value: any) =>
   validators.reduce(
-    (error: string | undefined, validator) => error || validator(value),
+    (error: string | undefined, validator) => error ?? validator(value),
     undefined,
   );

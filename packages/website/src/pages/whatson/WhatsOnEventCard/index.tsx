@@ -1,10 +1,8 @@
 import React from 'react';
-import { has } from 'lodash';
 import formatDate from 'date-fns/format';
 import FauxInternalAppLink from '../../../components/FauxInternalAppLink';
 import minimalisticTimeRenderer from '@ussu/common/src/libs/minimalisticTimeRenderer';
 import { EventRelativeTime } from '../WhatsOnListings/EventRelativeTime';
-import { Event } from '@ussu/common/src/types/events';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
 import { PatternPlaceholder } from '../../../components/PatternPlaceholder';
 import { EventLikeButton } from '../WhatsOnListings/EventLikeButton';
@@ -19,21 +17,19 @@ import {
   WhatsOnEventCardBannerType,
 } from './WhatsOnEventCardBanner';
 import { WhatsOnEventCardCanceledStamp } from './WhatsOnEventCardCanceledStamp';
+import { EventCardFragment } from 'packages/website/src/generated/graphql';
 
 interface EventsCalenderItemProps {
   relative?: boolean;
   showDay?: boolean;
-  part: {
-    event: Event;
-  };
+  event: EventCardFragment;
 }
 
 export const WhatsOnEventCard: React.FC<EventsCalenderItemProps> = ({
-  part,
+  event,
   showDay = false,
   relative = false,
 }) => {
-  const event = part.event;
   return (
     <div
       className="EventsCalender__item"
@@ -73,7 +69,7 @@ export const WhatsOnEventCard: React.FC<EventsCalenderItemProps> = ({
         css={event.canceledAt !== null && { opacity: 0.3 }}
         className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide"
       >
-        {has(part, 'event.featuredImage.resource') ? (
+        {event?.featuredImage?.resource ? (
           <OneImage
             src={event.featuredImage.resource}
             aspectRatio={AspectRatio.r16by9}

@@ -1,7 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-// @ts-ignore
-import { withKnobs, number } from '@storybook/addon-knobs/react';
 import { BreadcrumbBar } from './index';
 
 const crumbs = [
@@ -19,14 +17,6 @@ const crumbs = [
   </a>,
 ];
 
-storiesOf('BreadcrumbBar', module)
-  .addDecorator(withKnobs)
-  .add('default', () => {
-    const level = number('levels', 3, {
-      range: true,
-      min: 1,
-      max: crumbs.length,
-      step: 1,
-    });
-    return <BreadcrumbBar>{crumbs.slice(0, level)}</BreadcrumbBar>;
-  });
+storiesOf('BreadcrumbBar', module).add('default', () => {
+  return <BreadcrumbBar>{crumbs.slice(0, 3)}</BreadcrumbBar>;
+});

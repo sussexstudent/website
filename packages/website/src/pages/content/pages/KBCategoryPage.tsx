@@ -4,16 +4,12 @@ import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
 import { Link } from 'react-router-dom';
 import { Typeface, TypeSize, type } from '@ussu/basil/src/style/type';
 
-interface IKBRoot extends Page {}
-
-interface IKBContentPage extends Page {}
-
-interface IKBCategoryPage extends Page<IKBContentPage[]> {
-  rootPage: IKBRoot;
+interface KBCategoryPageData extends Page<Page[]> {
+  rootPage: Page;
 }
 
 export interface KBCategoryPageProps {
-  page: IKBCategoryPage;
+  page: KBCategoryPageData;
 }
 
 export const KBCategoryPage: React.FC<KBCategoryPageProps> = ({ page }) => (

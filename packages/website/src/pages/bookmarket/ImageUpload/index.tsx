@@ -3,14 +3,13 @@ import { useDropzone } from 'react-dropzone';
 import getFalmerEndpoint from '@ussu/common/src/libs/getFalmerEndpoint';
 import { getMslJwt } from '@ussu/common/src/libs/getMslJwt';
 import { ImageSourcePurpose } from '@ussu/common/src/types/upload';
-import { FalmerImage } from '@ussu/common/src/types/events';
 import AddImageIcon from '@ussu/common/src/icons/add-image.svg';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
 import classnames from 'classnames';
 
 interface ImageUploadProps {
-  onUploadComplete(data: FalmerImage): void;
-  image?: FalmerImage;
+  onUploadComplete(data: { resource: string; mediaId: string }): void;
+  image: { resource: string } | null;
 }
 
 interface ImageUploadState {

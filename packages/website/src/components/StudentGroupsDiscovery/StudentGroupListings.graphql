@@ -1,24 +1,27 @@
-query StudentGroups {
+query getAllStudentGroups {
   allGroups {
     edges {
       node {
-        groupId
-        name
-        description
-        link
-        isProspective
-        logo {
-          resource
-        }
-        mslGroup {
-          id
-          lastSync
-          category {
-            id
-            name
-          }
-        }
+        ...StudentGroupFragment
       }
+    }
+  }
+}
+
+fragment StudentGroupFragment on StudentGroup {
+  groupId
+  name
+  description
+  link
+  isProspective
+  logo {
+    resource
+  }
+  mslGroup {
+    id
+    category {
+      id
+      name
     }
   }
 }

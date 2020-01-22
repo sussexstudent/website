@@ -1,5 +1,5 @@
 #import "./EventListingFragment.graphql"
-query EventsListings($filter: EventFilterInput, $bundleSlug: String) {
+query getEventsByBundleSlug($filter: EventFilterInput, $bundleSlug: String!) {
   allEvents(filter: $filter) {
     edges {
       node {

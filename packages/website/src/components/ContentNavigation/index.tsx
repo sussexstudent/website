@@ -10,7 +10,7 @@ interface Section {
   children: Section[];
 }
 
-interface IProps {
+interface ContentNavigationProps {
   title?: string;
   items: Section[];
   activeKey?: string;
@@ -34,12 +34,12 @@ function canDisplaySubMenu(
     return true;
   }
 
-  return children.map((item) => item.anchor).indexOf(key) >= 0;
+  return children.map((item) => item.anchor).includes(key);
 }
 
 // TODO: Tidy this up. Should technically support unlimited levels
 // TODO: this component's name doesn't match the css component
-export const ContentNavigation: React.FC<IProps> = ({
+export const ContentNavigation: React.FC<ContentNavigationProps> = ({
   title,
   items,
   activeKey = '',
@@ -47,7 +47,7 @@ export const ContentNavigation: React.FC<IProps> = ({
 }) => {
   return (
     <div className="NavigationCard">
-      <h3 className="NavigationCard__title">{title || 'Navigation'}</h3>
+      <h3 className="NavigationCard__title">{title ?? 'Navigation'}</h3>
       <ul className="NavigationCard__list">
         {items.map((item) => (
           <li

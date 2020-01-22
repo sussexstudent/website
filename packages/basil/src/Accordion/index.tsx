@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface IProps {
+interface AccordionProps {
   isOpen: boolean;
 }
 
-export const Accordion: React.FC<IProps> = ({ isOpen }) => {
+export const Accordion: React.FC<AccordionProps> = ({ isOpen }) => {
   return (
     <ul className="ModalAccordion">
       <li className="ModalAccordion__item">

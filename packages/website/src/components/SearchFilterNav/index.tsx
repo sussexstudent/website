@@ -10,14 +10,14 @@ interface Option {
   count: number;
 }
 
-interface IItemProps {
+interface ItemProps {
   currentValue: any;
   itemKey: any;
   option: Option;
   query: string;
 }
 
-const SearchFilterItem: React.FC<IItemProps> = (props) => {
+const SearchFilterItem: React.FC<ItemProps> = (props) => {
   const { currentValue, option, query, itemKey } = props;
 
   const count = itemKey !== 'top' ? <span> {`(${option.count})`}</span> : null;
@@ -44,13 +44,13 @@ const SearchFilterItem: React.FC<IItemProps> = (props) => {
   );
 };
 
-interface IProps {
+interface SearchFilterNavProps {
   value: any;
   options: Option[];
   query: string;
 }
 
-export const SearchFilterNav: React.FC<IProps> = ({
+export const SearchFilterNav: React.FC<SearchFilterNavProps> = ({
   value,
   options,
   query,

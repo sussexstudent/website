@@ -1,4 +1,4 @@
-query GetMarketListing($filters: MarketListingsFilter) {
+query getViewerMarketListing($filters: MarketListingsFilter) {
   allMarketListings(filters: $filters) {
     edges {
       node {

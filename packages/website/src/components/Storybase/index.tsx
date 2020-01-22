@@ -6,7 +6,7 @@ import { store } from '../../redux/store';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { StoreContext } from 'redux-react-hook';
 
-export const Storybase = (url: string = '/') => (story: () => any) => (
+export const Storybase = (url = '/') => (story: () => any) => (
   <MemoryRouter initialEntries={[url]}>
     <ApolloProvider client={getApolloClientForFalmer}>
       <StoreContext.Provider value={store}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IBackgroundProps, OneImageBackground } from '../OneImage';
+import { OneImageBackgroundProps, OneImageBackground } from '../OneImage';
 
 export const SlateBoxContainer: React.FC = ({ children, ...props }) => (
   <div className="BentoBox" {...props}>
@@ -35,7 +35,9 @@ export const SlateBoxContainerStyleable: React.FC = ({
   </div>
 );
 
-export const SlateBoxBackground: React.FC<IBackgroundProps> = (props) => (
+export const SlateBoxBackground: React.FC<OneImageBackgroundProps> = (
+  props,
+) => (
   <OneImageBackground
     css={{
       overflow: 'auto',

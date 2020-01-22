@@ -4,7 +4,6 @@ import REQUEST_CONTACT_DETAILS_MUTATION from './RequestContactDetails.graphql';
 import GET_LISTING_QUERY from './GetListing.graphql';
 import UPDATE_IMAGE_MUTATION from './UpdateImage.graphql';
 import { JsonLd } from '../../../components/JsonLd';
-import { MarketListing } from '@ussu/common/src/types/market';
 import { Deckchair } from '../../../components/Deckchair';
 import { ImageUpload } from '../ImageUpload';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
@@ -16,19 +15,15 @@ import { InternalAppLink } from '../../../components/InternalAppLink';
 import { RouteComponentProps } from 'react-router';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { Loader } from '../../../components/Loader';
+import { GetMarketListingQuery } from '../../../generated/graphql';
 
-export interface BookDetailProps
-  extends RouteComponentProps<{ listingId: string }> {}
-
-interface Result {
-  marketListing: MarketListing;
-}
+export type BookDetailProps = RouteComponentProps<{ listingId: string }>;
 
 const BookDetail: React.FC<BookDetailProps> = (props) => {
   const [updateImage] = useMutation(UPDATE_IMAGE_MUTATION);
   const [requestContactDetails] = useMutation(REQUEST_CONTACT_DETAILS_MUTATION);
   const { loading: viewerLoading, isAuthenticated, currentUser } = useViewer();
-  const { data, loading } = useQuery<Result>(GET_LISTING_QUERY, {
+  const { data, loading } = useQuery<GetMarketListingQuery>(GET_LISTING_QUERY, {
     variables: {
       listingId: parseInt(props.match.params.listingId, 10),
     },
@@ -39,6 +34,10 @@ const BookDetail: React.FC<BookDetailProps> = (props) => {
   }
 
   const listing = data.marketListing;
+
+  if (!listing) {
+    return <h1>404</h1>;
+  }
 
   const isOwner =
     isAuthenticated &&

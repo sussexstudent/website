@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface IProps {
+interface PaginationNavigationProps {
   currentPage: number;
   totalPages: number;
   onPageChange(pageNumber: number): void;
 }
 
-export const PaginationNavigation: React.FC<IProps> = ({
+export const PaginationNavigation: React.FC<PaginationNavigationProps> = ({
   currentPage,
   totalPages,
   onPageChange,

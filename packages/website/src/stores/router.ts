@@ -177,4 +177,4 @@ const useRouter = (): [RouterState, React.Dispatch<Actions>] => {
   return [store, dispatch];
 };
 
-export let RouterStore = createContainer(useRouter);
+export const RouterStore = createContainer(useRouter);

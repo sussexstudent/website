@@ -1,3 +1,4 @@
+import React from 'react';
 import { Modal } from '../../../website/src/components/Modal';
 
 export default { title: 'Modal' };

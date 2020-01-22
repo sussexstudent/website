@@ -2,14 +2,14 @@ import React from 'react';
 import cx from 'classnames';
 import { OneImageBackground } from '../OneImage';
 
-interface IProps {
+interface HeadingHeroProps {
   imageURL: string;
   title: string;
   description?: string;
   thin?: boolean;
 }
 
-export const HeadingHero: React.FC<IProps> = ({
+export const HeadingHero: React.FC<HeadingHeroProps> = ({
   imageURL,
   title,
   description = '',

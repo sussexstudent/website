@@ -47,7 +47,7 @@
   }
 
   &__banner {
-    background-color: var(--color__brand-green);
+    background-color: var(--color__brand-primary);
     color: #ffffff;
     text-align: center;
     font-weight: bold;

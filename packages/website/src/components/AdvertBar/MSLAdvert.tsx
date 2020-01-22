@@ -5,7 +5,7 @@ interface MSLAdvertProps {
   position: string;
 }
 
-export const MSLAdvert = ({ position }: MSLAdvertProps) => (
+export const MSLAdvert: React.FC<MSLAdvertProps> = ({ position }) => (
   <div
     className="AdvertBar__advert"
     dangerouslySetInnerHTML={{

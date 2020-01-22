@@ -4,9 +4,7 @@ import ChevronForwardIcon from '@ussu/common/src/icons/chevron-forward.svg';
 import { InternalAppLink } from '../InternalAppLink';
 import { css } from '@emotion/core';
 
-interface IProps {}
-
-const BreadcrumbBar: React.FC<IProps> = ({ children }) => {
+const BreadcrumbBar: React.FC = ({ children }) => {
   return (
     <ul
       css={css({
@@ -64,11 +62,11 @@ function generateBreadcrumbsFromPage(page: any) {
   );
 }
 
-interface IContentProps extends IProps {
+interface ContentBreadcrumbBarProps {
   page: any;
 }
 
-const ContentBreadcrumbBar = (props: IContentProps) => {
+const ContentBreadcrumbBar: React.FC<ContentBreadcrumbBarProps> = (props) => {
   return (
     <BreadcrumbBar {...omit(props, ['children'])}>
       {generateBreadcrumbsFromPage(props.page)}

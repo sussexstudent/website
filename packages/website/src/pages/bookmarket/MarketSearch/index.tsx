@@ -2,12 +2,12 @@ import React from 'react';
 import qs from 'query-string';
 import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
 import GET_SEARCH_QUERY from './GetSearch.graphql';
-import { MarketListing } from '@ussu/common/src/types/market';
 import { ListingList } from '../ListingList';
 import { Field, Form } from 'react-final-form';
 import { Helmet } from 'react-helmet-async';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { useQuery } from '@apollo/react-hooks';
+import { SearchMarketListingsQuery } from '../../../generated/graphql';
 
 export interface MarketSearchProps {
   sectionSlug?: string;
@@ -15,14 +15,8 @@ export interface MarketSearchProps {
   navigate: any;
 } // todo
 
-interface Result {
-  allMarketListings: {
-    edges: { node: MarketListing }[];
-  };
-}
-
 const MarketSearch: React.FC<MarketSearchProps> = (props) => {
-  const { data } = useQuery<Result>(GET_SEARCH_QUERY, {
+  const { data } = useQuery<SearchMarketListingsQuery>(GET_SEARCH_QUERY, {
     variables: {
       filters: {
         q: qs.parse(props.location.search).q,

@@ -1,22 +1,24 @@
 import React from 'react';
 import { throttle, orderBy } from 'lodash';
 
-interface IChildWrapperProps {
+interface ChildWrapperProps {
   handleRef(el: HTMLDivElement): void;
 }
 
-class ChildWrapper extends React.Component<IChildWrapperProps> {
+class ChildWrapper extends React.Component<ChildWrapperProps> {
   render() {
     const { handleRef } = this.props;
     return <div ref={handleRef}>{this.props.children}</div>;
   }
 }
 
-interface IProps {
+interface VisibleChildWatcherProps {
   onChange(key: string): void;
 }
 
-export class VisibleChildWatcher extends React.Component<IProps> {
+export class VisibleChildWatcher extends React.Component<
+  VisibleChildWatcherProps
+> {
   private childEls: { [key: string]: HTMLElement } = {};
 
   componentDidMount() {

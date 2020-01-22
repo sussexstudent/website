@@ -9,7 +9,6 @@ import { EventDetailPageProps } from './EventDetailPage';
 import loadable from '@loadable/component';
 import { BrandingContainer } from './branding/components';
 import { WhatsOnThemingProvider } from './WhatsOnBrandingContext';
-import { WhatsOnMyProgrammeProps } from './WhatsOnMyProgramme';
 import {
   Wayfinder,
   WayfinderTopLevel,
@@ -17,7 +16,7 @@ import {
 } from '../../components/Wayfinder';
 import LIVE_BRANDING_PERIOD_QUERY from './LiveBrandingPeriods.graphql';
 import { useQuery } from '@apollo/react-hooks';
-import { Brand } from '@ussu/common/src/types/events';
+import { GetLiveBrandingPeriodsQuery } from '../../generated/graphql';
 
 const LoadableListings = loadable<EventsListProps>(async () => {
   const { EventsList } = await import('./WhatsOnListings');
@@ -43,7 +42,7 @@ const LoadableDetail = loadable<EventDetailPageProps>(async () => {
   return (props) => <EventDetailPage {...props} />;
 });
 
-const LoadableMyProgramme = loadable<WhatsOnMyProgrammeProps>(async () => {
+const LoadableMyProgramme = loadable(async () => {
   const { WhatsOnMyProgramme } = await import('./WhatsOnMyProgramme');
   return (props) => <WhatsOnMyProgramme {...props} />;
 });
@@ -75,7 +74,9 @@ type EventsApplicationProps = RouteComponent;
 // }
 
 export const WhatsOn: React.FC<EventsApplicationProps> = () => {
-  const { data } = useQuery(LIVE_BRANDING_PERIOD_QUERY);
+  const { data } = useQuery<GetLiveBrandingPeriodsQuery>(
+    LIVE_BRANDING_PERIOD_QUERY,
+  );
 
   return (
     <WhatsOnThemingProvider>
@@ -87,10 +88,8 @@ export const WhatsOn: React.FC<EventsApplicationProps> = () => {
                 {/*<WayfinderItem to="/whats-on/my-programme">*/}
                 {/*  My Programme*/}
                 {/*</WayfinderItem>*/}
-                {data &&
-                data.allBrandingPeriods &&
-                data.allBrandingPeriods.length > 0
-                  ? data.allBrandingPeriods.map((period: Brand) => (
+                {data?.allBrandingPeriods && data.allBrandingPeriods.length > 0
+                  ? data.allBrandingPeriods.map((period) => (
                       <WayfinderItem
                         key={period.slug}
                         to={`/whats-on/periods/${period.slug}`}

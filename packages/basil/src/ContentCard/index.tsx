@@ -13,7 +13,6 @@ export const ContentCardContent: React.FC = ({ children }) => (
 export const ContentCard: React.FC<ContentCardProps> = ({
   anchor = undefined,
   children,
-  bleed = false,
   className,
   ...props
 }) => (

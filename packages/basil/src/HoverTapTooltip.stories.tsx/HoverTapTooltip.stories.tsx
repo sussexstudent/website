@@ -1,8 +1,9 @@
+import React from 'react';
 import { HoverTapTooltip } from '../../../website/src/components/HoverTapToolTip/index';
 
 export default { title: 'Utils|HoverTapTooltip' };
 
-export const Default = () => (
+export const Default: React.FC = () => (
   <div>
     <h1>Tooltip demo</h1>
 

@@ -9,7 +9,7 @@ import styled from '@emotion/styled';
 import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 import { getFirstItemOrValue } from '@ussu/common/src/libs/qs';
 
-interface FreshersEventsProps extends RouteComponentProps<{ path: string }> {}
+type FreshersEventsProps = RouteComponentProps<{ path: string }>;
 
 const filteringAcceptions = [
   'audienceJustForPgs',
@@ -46,18 +46,17 @@ const SimpleFilterList = styled.ul({
 
 export const FreshersEvents: React.FC<FreshersEventsProps> = ({ location }) => {
   const filtering = location
-    ? pickBy(
-        getFirstItemOrValue(qs.parse(location.search)),
-        (_v, k) => filteringAcceptions.indexOf(k) >= 0,
+    ? pickBy(getFirstItemOrValue(qs.parse(location.search)), (_v, k) =>
+        filteringAcceptions.includes(k),
       )
     : {};
 
-  const hash = (location && location.hash) || '';
+  const hash = location?.hash || '';
 
   return (
     <FreshersContainer>
       <div className="LokiContainer">
-        <h1>What's on</h1>
+        <h1>{`What's on`}</h1>
         <div>
           Filter to:
           <SimpleFilterList>

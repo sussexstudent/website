@@ -4,48 +4,38 @@ import {
   getSmartDate,
   organisePartsForUI,
   splitEventsInToParts,
+  WithHydratedDates,
 } from '../utils';
-import { Event, EventPart } from '@ussu/common/src/types/events';
+import { EventPart } from '@ussu/common/src/types/events';
 import { WhatsOnEventCard } from '../WhatsOnEventCard';
-// import VisibilitySensor from 'react-visibility-sensor';
+import {
+  GetAllEventsWithFilterQuery,
+  EventCardFragment,
+} from '../../../generated/graphql';
 
 interface EventListingsProps {
-  events: any;
   removePast: boolean;
+  events: GetAllEventsWithFilterQuery['allEvents'];
 }
 
-// function bucketFill(buckets: number[], count: number) {
-//   let countLeft = count;
-//   let bucketsUsed = 0;
-//   for (let bucket of buckets) {
-//     console.log({ bucket, countLeft });
-//     if (bucket <= countLeft) {
-//       bucketsUsed = bucketsUsed + 1;
-//       countLeft = countLeft - bucket;
-//     } else {
-//       break;
-//     }
-//   }
-//
-//   return [bucketsUsed, countLeft];
-// }
-
-export const EventListings: React.FC<EventListingsProps> = (props) => {
-  const events = props.events.edges.map(({ node }: { node: Event }) => ({
+function hydrateWithDates(
+  events: GetAllEventsWithFilterQuery['allEvents']['edges'],
+): WithHydratedDates<EventCardFragment>[] {
+  return events.map(({ node }) => ({
     ...node,
     startDate: new Date(node.startTime),
     endDate: new Date(node.endTime),
   }));
-  // let previousDay = null;
-  const eventParts = splitEventsInToParts(events, props.removePast);
-  const monthGroup = organisePartsForUI(eventParts, props.removePast);
-  // chunk by day
+}
 
-  // const [displayLevel, setDisplayLevel] = useState(1);
+export const EventListings: React.FC<EventListingsProps> = ({
+  removePast,
+  events,
+}) => {
+  const eventsWithDates = hydrateWithDates(events.edges);
 
-  // const monthDayCount = monthGroup.map((month) => month.parts.length);
-
-  // const [monthDisplay, dayDisplay] = bucketFill(monthDayCount, displayLevel);
+  const eventParts = splitEventsInToParts(eventsWithDates, removePast);
+  const monthGroup = organisePartsForUI(eventParts, removePast);
 
   return (
     <div className="LokiContainer">
@@ -68,7 +58,7 @@ export const EventListings: React.FC<EventListingsProps> = (props) => {
                           className="EventsCalender__part-container"
                           key={index}
                         >
-                          <WhatsOnEventCard part={part} />
+                          <WhatsOnEventCard event={part.event} />
                         </div>
                       );
                     })}
@@ -77,22 +67,6 @@ export const EventListings: React.FC<EventListingsProps> = (props) => {
               ))}
             </div>
           ))}
-        {/*<VisibilitySensor*/}
-        {/*  partialVisibility*/}
-        {/*  onChange={() => setDisplayLevel((level) => level + 1)}*/}
-        {/*>*/}
-        {/*  <div*/}
-        {/*    style={{*/}
-        {/*      display: 'block',*/}
-        {/*      background: 'red',*/}
-        {/*      width: 1,*/}
-        {/*      height: 1000,*/}
-        {/*      opacity: 0,*/}
-        {/*      position: 'absolute',*/}
-        {/*      bottom: 0,*/}
-        {/*    }}*/}
-        {/*  ></div>*/}
-        {/*</VisibilitySensor>*/}
       </div>
     </div>
   );

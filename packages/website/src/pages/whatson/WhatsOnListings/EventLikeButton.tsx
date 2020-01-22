@@ -1,14 +1,16 @@
 import React, { useCallback } from 'react';
 import HeartFull from '../../../icons/heart-full.svg';
 import Heart from '../../../icons/heart-empty.svg';
-import { Event } from '@ussu/common/src/types/events';
 import LikeEvent from './LikeEvent.graphql';
 import { useMutation } from '@apollo/react-hooks';
 import { useViewer } from '../../bookmarket/currentUserData';
 import { useDispatch } from 'redux-react-hook';
 import { openLoginModal } from '../../../ducks/user';
+import { EventCardFragment } from '../../../generated/graphql';
 
-export const EventLikeButton: React.FC<{ event: Event }> = ({ event }) => {
+export const EventLikeButton: React.FC<{ event: EventCardFragment }> = ({
+  event,
+}) => {
   const { loading, isAuthenticated } = useViewer();
   const [likeEvent] = useMutation(LikeEvent);
   const dispatch = useDispatch();
@@ -28,7 +30,7 @@ export const EventLikeButton: React.FC<{ event: Event }> = ({ event }) => {
       console.log(isAuthenticated, openLoginModal());
       dispatch(openLoginModal());
     }
-  }, [loading, isAuthenticated, likeEvent, event.userLike]);
+  }, [isAuthenticated, likeEvent, event.eventId, event.userLike, dispatch]);
 
   const isLiked = event.userLike && event.userLike.source === 'USER';
 

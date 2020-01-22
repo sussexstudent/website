@@ -11,13 +11,9 @@ import isBefore from 'date-fns/isBefore';
 import isSameDay from 'date-fns/isSameDay';
 import formatDate from 'date-fns/format';
 
-import {
-  Brand,
-  Event,
-  EventPart,
-  EventPartType,
-} from '@ussu/common/src/types/events';
+import { Brand, EventPart, EventPartType } from '@ussu/common/src/types/events';
 import { addWeeks, getDate, startOfWeek } from 'date-fns';
+import { EventCardFragment } from '../../generated/graphql';
 
 const now = setHours(new Date(), 0);
 const rightNow = new Date();
@@ -26,7 +22,15 @@ const startOfNextWeek = addWeeks(
   1,
 );
 
-export function splitEventsInToParts(events: Event[], removePast = true) {
+export type WithHydratedDates<TEvent> = TEvent & {
+  startDate: Date;
+  endDate: Date;
+};
+
+export function splitEventsInToParts(
+  events: WithHydratedDates<EventCardFragment>[],
+  removePast = true,
+) {
   // for all events
   // if single day, add single day event SINGLE
   // if multi day
@@ -76,7 +80,7 @@ export function splitEventsInToParts(events: Event[], removePast = true) {
   return parts;
 }
 
-function poorMonthSort(key: string) {
+function poorMonthSort(key: string): number {
   if (key === '0') {
     return 0;
   }
@@ -142,7 +146,7 @@ export function organisePartsForUI(eventParts: EventPart[], removePast = true) {
   return asList;
 }
 
-export function getOrdinal(day: number) {
+export function getOrdinal(day: number): 'st' | 'nd' | 'th' | 'rd' {
   const rem100 = day % 100;
   if (rem100 > 20 || rem100 < 10) {
     switch (rem100 % 10) {
@@ -157,7 +161,7 @@ export function getOrdinal(day: number) {
   return 'th';
 }
 
-export function getSmartDate(part: EventPart) {
+export function getSmartDate(part: EventPart): string | React.ReactElement {
   if (isSameDay(new Date(), part.date)) {
     return 'Today';
   }
@@ -178,7 +182,7 @@ export function getSmartDate(part: EventPart) {
   );
 }
 
-export function generateStylesForBrand(brand: Brand) {
+export function generateStylesForBrand(brand: Brand): object {
   if (!brand.accent) {
     return {};
   }

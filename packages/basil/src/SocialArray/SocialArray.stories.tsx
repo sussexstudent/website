@@ -1,8 +1,9 @@
+import React from 'react';
 import { SocialArray } from '../../../website/src/components/SocialArray/index';
 
 export default { title: 'SocialArray' };
 
-export const Standard = () => (
+export const Standard: React.FC = () => (
   <SocialArray
     networks={{
       twitter: {

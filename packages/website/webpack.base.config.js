@@ -60,13 +60,13 @@ function generateConfig() {
           test: /\.tsx?$/,
           use: [
             {
-              loader: 'awesome-typescript-loader?useBabel=true&useCache=true',
+              loader: 'babel-loader',
               options: {
-                useBabel: true,
-                useCache: true,
-                babelCore: "@babel/core",
-                reportFiles: ['src/**/*.{ts,tsx}'],
-              },
+                envName: 'bundle'
+              }
+            },
+            {
+              loader: 'ts-loader',
             },
           ],
         },

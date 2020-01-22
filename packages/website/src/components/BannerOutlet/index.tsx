@@ -3,25 +3,14 @@ import cx from 'classnames';
 import convert from 'htmr';
 import BANNER_QUERY from './AllActiveBanners.graphql';
 import { useQuery } from '@apollo/react-hooks';
+import { GetActiveBannersQuery } from '../../generated/graphql';
 
 interface BannerOutletProps {
   outlet: string;
 }
 
-interface Banner {
-  id: string;
-  outlet: string;
-  heading: string;
-  body: string;
-  purpose: string;
-}
-
-interface Result {
-  allActiveBanners: Banner[];
-}
-
 export const BannerOutlet: React.FC<BannerOutletProps> = ({ outlet }) => {
-  const { data, loading } = useQuery<Result>(BANNER_QUERY);
+  const { data, loading } = useQuery<GetActiveBannersQuery>(BANNER_QUERY);
 
   if (loading || !data) {
     return null;

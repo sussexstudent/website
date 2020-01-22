@@ -35,12 +35,12 @@ const levelMap = {
   staff_list: 1,
 };
 
-interface IStaffPage extends Page {
+interface StaffPageData extends Page {
   body: any;
 }
 
 export interface StaffPageProps {
-  page: IStaffPage; // todo
+  page: StaffPageData; // todo
 }
 
 export const StaffPage: React.FC<StaffPageProps> = ({

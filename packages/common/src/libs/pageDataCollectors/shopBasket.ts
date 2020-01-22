@@ -1,1 +1,3 @@
-export function getBasketData() {}
+export function getBasketData(): void {
+  /* currently unused */
+}

@@ -16,7 +16,7 @@ export const TicketsModal: React.FC<TicketsModalProps & ReactModal.Props> = (
     <ul>
       {props.msl &&
         props.msl.tickets.map((ticket) => (
-          <li>
+          <li key={ticket.ticketName}>
             {ticket.ticketName}{' '}
             {ticket.value <= 0
               ? 'Free'

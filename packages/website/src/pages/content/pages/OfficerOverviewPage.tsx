@@ -8,7 +8,7 @@ import { css } from '@emotion/core';
 import { Helmet } from 'react-helmet-async';
 import { MQ } from '@ussu/basil/src/style';
 
-interface IOfficerOverviewIndex extends Page<Page[]> {}
+type IOfficerOverviewIndex = Page<Page[]>;
 
 interface IOfficerOverviewPage extends Page<Page[]> {
   section: IOfficerOverviewIndex;

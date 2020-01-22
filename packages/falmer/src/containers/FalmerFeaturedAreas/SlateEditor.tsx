@@ -121,7 +121,7 @@ const EditableArea: React.FC<{
         'mediaId',
       );
     },
-    [area],
+    [usedImages],
   );
   const imageData = useMappedState(mapState);
 
@@ -178,26 +178,29 @@ export const SlateEditor: React.FC<Props> = ({ data, onSave }) => {
 
   const handleSave = useCallback(() => {
     onSave(editorData);
-  }, [editorData]);
+  }, [editorData, onSave]);
 
-  const changeLayout = useCallback((layout: Layout) => {
-    const currentData = editorData !== null ? editorData : data;
+  const changeLayout = useCallback(
+    (layout: Layout) => {
+      const currentData = editorData !== null ? editorData : data;
 
-    updateSelectedArea(0);
-    updateEditorData({
-      layout,
-      areas: new Array(AreasMap[layout]).fill(null).map((_: any, i: number) =>
-        currentData.areas[i] !== undefined
-          ? currentData.areas[i]
-          : [
-              {
-                type: BoxType.NA,
-                data: {},
-              },
-            ],
-      ),
-    });
-  }, []);
+      updateSelectedArea(0);
+      updateEditorData({
+        layout,
+        areas: new Array(AreasMap[layout]).fill(null).map((_: any, i: number) =>
+          currentData.areas[i] !== undefined
+            ? currentData.areas[i]
+            : [
+                {
+                  type: BoxType.NA,
+                  data: {},
+                },
+              ],
+        ),
+      });
+    },
+    [data, editorData],
+  );
 
   const changeBox = useCallback((selectedArea: any, box: BoxType) => {
     updateEditorData(
@@ -218,7 +221,7 @@ export const SlateEditor: React.FC<Props> = ({ data, onSave }) => {
 
   useEffect(() => {
     changeLayout(data.layout);
-  }, []);
+  }, [changeLayout, data.layout]);
 
   if (editorData === null) {
     return null;

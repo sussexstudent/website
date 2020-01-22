@@ -1,10 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Event } from '@ussu/common/src/types/events';
 import { JsonLd } from '../../../components/JsonLd';
+import { GetFullEventInfoQuery } from '../../../generated/graphql';
 
 interface EventDetailMetadataProps {
-  event: Event;
+  event: GetFullEventInfoQuery['event'];
 }
 
 export const EventDetailMetadata: React.FC<EventDetailMetadataProps> = ({

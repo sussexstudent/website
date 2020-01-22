@@ -4,8 +4,9 @@ import Raven from 'raven-js';
 import { type, TypeSize } from '@ussu/basil/src/style/type';
 import { COLORS } from '@ussu/basil/src/style';
 
-const refreshPage = () =>
+const refreshPage = (): void => {
   typeof window !== 'undefined' && window.location.reload();
+};
 
 interface ErrorStateProps {
   title?: string;

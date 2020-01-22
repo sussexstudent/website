@@ -1,13 +1,12 @@
 import React from 'react';
 import cx from 'classnames';
 
-interface IProps {
+interface ButtonProps {
   href: string;
-  children: any;
   endOfCard?: boolean;
 }
 
-export const Button: React.FC<IProps> = ({
+export const Button: React.FC<ButtonProps> = ({
   href,
   endOfCard = false,
   children,

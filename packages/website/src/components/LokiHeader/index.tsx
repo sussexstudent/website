@@ -39,7 +39,7 @@ export const LokiHeaderInner: React.FC = () => {
             title="Sussex Students' Union"
           >
             <StudentsUnionLogoNoLogotype />
-            <span className="u-h">Sussex Students' Union</span>
+            <span className="u-h">{`Sussex Students' Union`}</span>
           </InternalAppLink>
         </div>
         <div className="LokiHeader__parts">
@@ -76,7 +76,7 @@ export const LokiHeaderInner: React.FC = () => {
   );
 };
 
-export const LokiHeader = () => (
+export const LokiHeader: React.FC = () => (
   <header className="LokiHeader">
     <LokiHeaderInner />
   </header>

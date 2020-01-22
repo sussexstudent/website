@@ -2,11 +2,13 @@ import React from 'react';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { AspectRatio, OneImage } from '@ussu/website/src/components/OneImage';
 
-interface IProps {
+interface ImageTreatmentPreviewProps {
   image: FalmerImage;
 }
 
-const ImageTreatmentPreview: React.FC<IProps> = ({ image }) => {
+const ImageTreatmentPreview: React.FC<ImageTreatmentPreviewProps> = ({
+  image,
+}) => {
   const treatments = [
     {
       size: AspectRatio.r1by1,

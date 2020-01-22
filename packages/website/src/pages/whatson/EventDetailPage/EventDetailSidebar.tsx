@@ -1,14 +1,18 @@
 import React from 'react';
-import { Event, TicketCost, TicketType } from '@ussu/common/src/types/events';
 import { SocialArray } from '../../../components/SocialArray';
 import { EventAccessSidebar } from './EventAccessSidebar';
 import { BuyButton } from './BuyButton';
 import { formatPrice } from '@ussu/common/src/libs/money';
 import { every } from 'lodash';
 import { EventSidebarSection } from './EventSidebarSection';
+import {
+  EventTicketType,
+  GetFullEventInfoQuery,
+  EventCost,
+} from '../../../generated/graphql';
 
-interface IProps {
-  event: Event;
+interface EventDetailSidebarProps {
+  event: GetFullEventInfoQuery['event'];
   msl: any;
   onTicketButton(): void;
 }
@@ -30,8 +34,8 @@ function mslSubtitle(msl: any) {
 
   const costs = msl.tickets.map((ticket: any) => ticket.value);
 
-  const min = Math.min.apply(Math, costs);
-  const max = Math.min.apply(Math, costs);
+  const min = Math.min(...costs);
+  const max = Math.min(...costs);
 
   if (min <= 0 && max <= 0) {
     return 'Free!';
@@ -40,39 +44,41 @@ function mslSubtitle(msl: any) {
   return min === max ? `£${formatPrice(min)}` : `from £${formatPrice(min)}`;
 }
 
-export const EventDetailSidebar = (props: IProps) => {
+export const EventDetailSidebar: React.FC<EventDetailSidebarProps> = (
+  props,
+) => {
   const { event, msl } = props;
 
   const ticketCta =
-    event.cost === TicketCost.Free ? 'Reserve your space' : 'Get Tickets';
+    event.cost === EventCost.Free ? 'Reserve your space' : 'Get Tickets';
 
   return (
     <aside css={{ paddingBottom: '1rem' }}>
-      {event.ticketType === TicketType.Native ? (
+      {event.ticketType === EventTicketType.Native ? (
         <BuyButton
           href={event.ticketData}
           title={ticketCta}
           subtitle="via native.fm"
         />
       ) : null}
-      {event.ticketType === TicketType.Eventbrite ? (
+      {event.ticketType === EventTicketType.Eventbrite ? (
         <BuyButton
           href={event.ticketData}
           title={ticketCta}
           subtitle="via Eventbrite"
         />
       ) : null}
-      {event.ticketType === TicketType.Generic ? (
+      {event.ticketType === EventTicketType.Generic ? (
         <BuyButton href={event.ticketData} title={ticketCta} subtitle="" />
       ) : null}
-      {event.ticketType === TicketType.ACCA ? (
+      {event.ticketType === EventTicketType.Acca ? (
         <BuyButton
           href={event.ticketData}
           title={ticketCta}
           subtitle="via attenboroughcentre.com"
         />
       ) : null}
-      {event.ticketType === TicketType.MSL ? (
+      {event.ticketType === EventTicketType.Msl ? (
         <React.Fragment>
           {/*<BuyButton*/}
           {/*onClick={onTicketButton}*/}

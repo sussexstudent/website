@@ -1,4 +1,4 @@
-query getBrandingPeriod($brandSlug: String) {
+query getBrandingPeriod($brandSlug: String!) {
   brandingPeriod(slug: $brandSlug) {
     name
     logo {

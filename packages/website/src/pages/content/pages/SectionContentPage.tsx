@@ -17,7 +17,7 @@ import { FalmerImage } from '@ussu/common/src/types/events';
 import { OneImage } from '../../../components/OneImage';
 import { Heading, HeadingLevel } from '../../../components/Heading';
 
-interface ISectionContentPage extends Page {
+interface SectionContentPageData extends Page {
   title: string;
   sidebarBody: any;
   body: any;
@@ -27,16 +27,16 @@ interface ISectionContentPage extends Page {
 }
 
 export interface SectionContentPageProps {
-  page: ISectionContentPage;
+  page: SectionContentPageData;
 }
 
-interface IState {
+interface SectionContentPageState {
   visibleKey: null | string;
 }
 
 class SectionContentPage extends React.Component<
   SectionContentPageProps,
-  IState
+  SectionContentPageState
 > {
   state = {
     visibleKey: null,
@@ -67,7 +67,7 @@ class SectionContentPage extends React.Component<
               {contentsInSidebar ? (
                 <ContentNavigation
                   items={generateTitlesFromStream(body)}
-                  activeKey={this.state.visibleKey || undefined}
+                  activeKey={this.state.visibleKey ?? undefined}
                 />
               ) : null}
               <StreamField page={page} items={sidebarBody} />

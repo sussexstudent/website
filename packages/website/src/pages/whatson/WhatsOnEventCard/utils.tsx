@@ -1,7 +1,9 @@
 import React from 'react';
-import { Event } from '@ussu/common/src/types/events';
+import { EventCardFragment } from '../../../generated/graphql';
 
-export function renderEventLocation(event: Event) {
+export function renderEventLocation(
+  event: EventCardFragment,
+): null | React.ReactElement {
   if (!event.venue) {
     if (event.locationDisplay === '') {
       return null;

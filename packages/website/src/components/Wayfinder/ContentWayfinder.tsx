@@ -21,8 +21,8 @@ export interface WayfinderProps {
 
 const contentTypeBlacklist = ['KBRootPage', 'FreshersHomepage'];
 
-const inBlacklist = (page: WayfinderPage) =>
-  contentTypeBlacklist.indexOf(page.contentType) > -1;
+const inBlacklist = (page: WayfinderPage): boolean =>
+  contentTypeBlacklist.includes(page.contentType);
 const isUsable = (page: WayfinderPage) =>
   (page !== undefined && !inBlacklist(page) && page) || null;
 

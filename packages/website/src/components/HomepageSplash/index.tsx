@@ -15,7 +15,7 @@ const placeholderHints = shuffle([
   'jobs',
 ]);
 
-const HomepageSplashComponent = () => (
+const HomepageSplashComponent: React.FC = () => (
   <OneImageBackground
     src="original_images/7ee2fc8daf2e4f93bea953d9e86c32ee"
     css={{

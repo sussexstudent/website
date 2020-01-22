@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import OFFERS_QUERY from './OffersQuery.graphql';
-import { Offer } from '@ussu/common/src/types/commercial';
 import { Loader } from '../Loader';
 import { AspectRatio, OneImage } from '../OneImage';
 import { PatternPlaceholder } from '../PatternPlaceholder';
@@ -8,14 +7,11 @@ import StreamField from '../../pages/content/StreamField';
 import { Button } from '../Button';
 import { Modal } from '../Modal';
 import { useQuery } from '@apollo/react-hooks';
-
-interface Result {
-  allOffers: Offer[];
-}
+import { GetOffersQuery } from '../../generated/graphql';
 
 export const Offers: React.FC = () => {
   const [openOffer, setOpenOffer] = useState(-1);
-  const { data, loading } = useQuery<Result>(OFFERS_QUERY);
+  const { data, loading } = useQuery<GetOffersQuery>(OFFERS_QUERY);
 
   if (!data || loading) {
     return <Loader />;
@@ -25,7 +21,7 @@ export const Offers: React.FC = () => {
     <div>
       <ul className="List List--reset OrganisationGrid">
         {data.allOffers.map((offer, index) => (
-          <li className="OrganisationCard">
+          <li className="OrganisationCard" key={offer.id}>
             <div
               className="OrganisationCard__link"
               onClick={() => setOpenOffer(index)}
@@ -68,7 +64,7 @@ export const Offers: React.FC = () => {
           <h2>{data.allOffers[openOffer].dealTag}</h2>
           {data.allOffers[openOffer].companyWebsite ? (
             <Button href={data.allOffers[openOffer].companyWebsite}>
-              View website >
+              {`View website >`}
             </Button>
           ) : null}
           <StreamField page={{}} items={data.allOffers[openOffer].main} />

@@ -5,28 +5,23 @@ import { OrganisationGrid } from '../OrganisationGrid';
 import STUDENT_GROUP_LISTING_QUERY from './StudentGroupListings.graphql';
 import { StudentGroupsSectionbar } from '../StudentGroupsSectionbar';
 import { Helmet } from 'react-helmet-async';
-import { StudentGroup } from '@ussu/common/src/types/groups';
 import { useQuery } from '@apollo/react-hooks';
 import { Loader } from '../Loader';
 import css from '@emotion/css';
 import { COLORS } from '@ussu/basil/src/style';
 import { CrossIcon } from '../CrossIcon';
 import cx from 'classnames';
-
-interface Result {
-  allGroups: {
-    edges: {
-      node: StudentGroup;
-    }[];
-  };
-}
+import {
+  GetAllStudentGroupsQuery,
+  StudentGroupFragmentFragment,
+} from '../../generated/graphql';
 
 interface State {
   filter: string;
   searchValue: string;
-  displayIds: number[];
-  groups: StudentGroup[];
-  fuse: Fuse<any> | null;
+  displayIds: any;
+  groups: StudentGroupFragmentFragment[];
+  fuse: Fuse<any, any> | null; // todo
 }
 
 interface SearchChangeAction {
@@ -39,7 +34,7 @@ interface SearchChangeAction {
 interface OnDataAction {
   type: 'ON_DATA';
   payload: {
-    data: Result;
+    data: GetAllStudentGroupsQuery;
   };
 }
 
@@ -62,15 +57,16 @@ const reducer: React.Reducer<State, Actions> = (state, action) => {
         displayIds:
           query && state.fuse
             ? state.fuse.search(query)
-            : state.groups.map((group: StudentGroup) => group.groupId),
+            : state.groups.map(
+                (group: StudentGroupFragmentFragment) => group.groupId,
+              ),
       };
 
     case 'ON_DATA':
       const { data } = action.payload;
-      const groups =
-        data && data.allGroups
-          ? data.allGroups.edges.map((edge) => edge.node)
-          : [];
+      const groups = data?.allGroups
+        ? data.allGroups.edges.map((edge) => edge.node)
+        : [];
 
       return {
         ...state,
@@ -88,10 +84,10 @@ const reducer: React.Reducer<State, Actions> = (state, action) => {
           ? state.groups
               .filter(
                 (group) =>
-                  group.mslGroup && group.mslGroup.category.name === category,
+                  group.mslGroup && group.mslGroup.category?.name === category,
               )
-              .map((group: StudentGroup) => group.groupId)
-          : state.groups.map((group: StudentGroup) => group.groupId),
+              .map((group) => group.groupId)
+          : state.groups.map((group) => group.groupId),
       };
 
     default:
@@ -110,7 +106,9 @@ const resetButton = css({
 });
 
 export const StudentGroupListings: React.FC = () => {
-  const { data, loading } = useQuery<Result>(STUDENT_GROUP_LISTING_QUERY);
+  const { data, loading } = useQuery<GetAllStudentGroupsQuery>(
+    STUDENT_GROUP_LISTING_QUERY,
+  );
 
   const [state, dispatch] = useReducer(reducer, {
     groups: [],
@@ -132,7 +130,7 @@ export const StudentGroupListings: React.FC = () => {
     return function() {
       dispatch({
         type: 'CATEGORY_FILTER',
-        payload: { category: category || '' },
+        payload: { category: category ?? '' },
       });
     };
   }
@@ -150,19 +148,16 @@ export const StudentGroupListings: React.FC = () => {
   if (loading) return <Loader />;
 
   const map = keyBy(
-    data && data.allGroups
-      ? data.allGroups.edges.map((edge: { node: StudentGroup }) => edge.node)
-      : [],
+    data?.allGroups ? data.allGroups.edges.map((edge) => edge.node) : [],
     (i) => i.groupId,
   );
 
-  const categories = (): Array<string | null> => {
-    const categoryNames =
-      data && data.allGroups
-        ? data.allGroups.edges.map((edge: { node: StudentGroup }) =>
-            edge.node.mslGroup ? edge.node.mslGroup.category.name : null,
-          )
-        : [];
+  const categories = (): (string | null)[] => {
+    const categoryNames = data?.allGroups
+      ? data.allGroups.edges.map(
+          (edge) => edge.node.mslGroup?.category?.name ?? null,
+        )
+      : [];
     return Array.from(new Set(categoryNames));
   };
 
@@ -220,7 +215,7 @@ export const StudentGroupListings: React.FC = () => {
             </div>
           ) : null}
           <div>
-            <h2>Can't find what you're looking for?</h2>
+            <h2>{`Can't find what you're looking for?`}</h2>
             <a
               className="Button"
               href="/sport-societies-media/start-a-new-group/"
@@ -232,7 +227,7 @@ export const StudentGroupListings: React.FC = () => {
         <div className="ActivitiesApp__main">
           <div className="ActivitiesApp__grid">
             <OrganisationGrid
-              organisations={state.displayIds.map((id) => map[id])}
+              organisations={state.displayIds.map((id: any) => map[id])}
             />
           </div>
         </div>

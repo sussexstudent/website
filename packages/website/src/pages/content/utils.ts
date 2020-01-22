@@ -2,7 +2,7 @@ import { isString, castArray } from 'lodash';
 import htmr from 'htmr';
 import { StreamFieldBlockData, StreamFieldData } from './types';
 
-export function normaliseContentLink(link: string | null) {
+export function normaliseContentLink(link: string | null): string {
   if (link === null) {
     return '';
   }
@@ -18,7 +18,7 @@ export function getTextFromElementChildren(children: any | any[]): string {
     .join(' ');
 }
 
-export function getTextFromElement(element: React.ReactElement<any>) {
+export function getTextFromElement(element: React.ReactElement): string {
   if (element.props.children) {
     return getTextFromElementChildren(element.props.children);
   }

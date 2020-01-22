@@ -2,18 +2,25 @@
 title: Quick start
 ---
 
-Install dependencies with
+Prerequisites:
+<!-- add some installation pre requisites here -->
+
+1) Clone website repository
+```bash
+$ git clone https://github.com/sussexstudent/website.git
+```
+
+1) Navigate to website root folder and install dependencies with
 ```bash
 $ yarn
 ```
 
-Setup a few things using
+1) Setup a few things using
 ```bash
 $ yarn setup
 ```
 
-We've built `comp` to manage our build process. To start comp with the development server:
-
+1) We've built `comp` to manage our build process. To start comp with the development server. Navigate to `website/packages/website` and run the following command:
 ```bash
 $ yarn serve
 ```
@@ -22,7 +29,4 @@ Woo! Have a gander at `http://localhost:3002`.
 
 This is sussexstudent.com using locally built assets and a locally generated base template. The content is proxied from the live site.
 
-To aid in developing pages, locally rendered pages can be accessed under the `/~/` path, for example `http://localhost:3002/~/get-involved` - this uses generators `get-involved` template to build this file.
-
-
-
+You can go along and clone the msl-deploy and falmer repository as well, as you may use them in the future.

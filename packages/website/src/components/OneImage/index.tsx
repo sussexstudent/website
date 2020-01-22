@@ -25,7 +25,7 @@ interface ImageOptions {
   [optionName: string]: number | string;
 }
 
-interface IProps extends React.HTMLAttributes<HTMLImageElement> {
+interface OneImageProps extends React.HTMLAttributes<HTMLImageElement> {
   aspectRatio: AspectRatioInput;
   src: string;
   alt: string;
@@ -37,7 +37,10 @@ interface IProps extends React.HTMLAttributes<HTMLImageElement> {
   mediaSizes?: string;
 }
 
-function aspectMultiplier(aspectRatio: AspectRatioInput, width: number) {
+function aspectMultiplier(
+  aspectRatio: AspectRatioInput,
+  width: number,
+): number {
   if (typeof aspectRatio === 'string') {
     return width * aspectRatioMap[aspectRatio];
   }
@@ -52,7 +55,7 @@ const defaultOptions = {
   crop: 'faces',
 };
 
-function createQueryString(obj: { [key: string]: any }) {
+function createQueryString(obj: { [key: string]: string | number }): string {
   return Object.entries(obj)
     .map((pair) => pair.join('='))
     .join('&');
@@ -66,7 +69,7 @@ function generateUrl(
     options?: ImageOptions;
   },
   opts: { width: number },
-) {
+): string {
   if (!props.aspectRatio) {
     return `${props.mslResource ? MSL_ENDPOINT : FALMER_ENDPOINT}${
       props.src
@@ -93,7 +96,7 @@ const defaultSizes = [
   1680,
 ];
 
-const OneImage: React.FC<IProps> = (props) => {
+const OneImage: React.FC<OneImageProps> = (props) => {
   const containerRef = useRef<null | HTMLImageElement>(null);
 
   useLayoutEffect(() => {
@@ -104,13 +107,13 @@ const OneImage: React.FC<IProps> = (props) => {
   }, [props.src]);
 
   const { withoutContainer, className, mediaSizes, aspectRatio } = props;
-  const sizes = props.sizes || defaultSizes;
+  const sizes = props.sizes ?? defaultSizes;
 
   const img = (
     <img
       className={`ResponsiveImage lazyload ${className}`}
       src={generateUrl(props, { width: sizes[0] })}
-      data-sizes={mediaSizes || 'auto'}
+      data-sizes={mediaSizes ?? 'auto'}
       ref={containerRef}
       srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
       data-srcset={sizes.map(
@@ -138,13 +141,14 @@ const OneImage: React.FC<IProps> = (props) => {
   return <div {...containerProps}>{img}</div>;
 };
 
-export interface IBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface OneImageBackgroundProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   aspectRatio?: AspectRatioInput;
   src: string;
   mslResource?: boolean;
 }
 
-const OneImageBackground: React.FC<IBackgroundProps> = (props) => {
+const OneImageBackground: React.FC<OneImageBackgroundProps> = (props) => {
   const containerRef = useRef<null | HTMLDivElement>(null);
 
   useLayoutEffect(() => {

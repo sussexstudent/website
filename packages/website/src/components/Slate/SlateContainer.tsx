@@ -3,9 +3,10 @@ import ACTIVE_SLATE_QUERY from './ActiveSlate.graphql';
 import { SlateLayout } from '../SlateLayout';
 import { useQuery } from '@apollo/react-hooks';
 import { getAreaBox } from './Boxes/boxes';
+import { GetActiveSlateQuery } from '../../generated/graphql';
 
-export const SlateContainer: React.FC = ({}) => {
-  const { data, loading } = useQuery(ACTIVE_SLATE_QUERY);
+export const SlateContainer: React.FC = () => {
+  const { data, loading } = useQuery<GetActiveSlateQuery>(ACTIVE_SLATE_QUERY);
 
   if (loading || !data || !data.activeSlate) {
     return null;

@@ -1,3 +1,3 @@
-export function formatPrice(price: number) {
-  return price % 1 > 0 ? price.toFixed(2) : price.toString();
+export function formatPrice(price: number): string {
+  return price % 1 > 0 ? price.toFixed(2).toString() : price.toString();
 }

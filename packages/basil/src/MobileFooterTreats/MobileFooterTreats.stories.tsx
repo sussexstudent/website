@@ -1,9 +1,10 @@
+import React from 'react';
 import { SocialMenu } from '../../../website/src/components/SocialMenu';
 import { css } from '@emotion/core';
 
 export default { title: 'Page|Mobile Footer Treats' };
 
-export const Default = () => (
+export const Default: React.FC = () => (
   <div className="MobileFooterTreats" css={css({ display: 'block' })}>
     <div className="MobileFooterTreats__social">
       <SocialMenu mobile />

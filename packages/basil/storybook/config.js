@@ -7,6 +7,7 @@ if (module.hot) {
 
 import { configure, addDecorator } from '@storybook/react';
 import '../../common/src/css/main.css';
+import '../../common/src/lazysizes.ts';
 
 function Padding(story) {
   return (

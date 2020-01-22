@@ -1,5 +1,7 @@
-query MarketHomeQuery {
+query getAllMarketSections {
   allMarketSections {
+    id
+    pk
     title
     slug
   }

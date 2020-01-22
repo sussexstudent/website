@@ -1,14 +1,18 @@
 import React from 'react';
-import { Event, TicketCost, TicketType } from '@ussu/common/src/types/events';
 import { SocialArray } from '../../../components/SocialArray';
 import { EventAccessSidebar } from './EventAccessSidebar';
 import { BuyButton } from './BuyButton';
 import { formatPrice } from '@ussu/common/src/libs/money';
 import { every } from 'lodash';
 import { EventSidebarSection } from './EventSidebarSection';
+import {
+  EventTicketType,
+  GetFullEventInfoQuery,
+  EventCost,
+} from '../../../generated/graphql';
 
 interface EventDetailSidebarProps {
-  event: Event;
+  event: GetFullEventInfoQuery['event'];
   msl: any;
   onTicketButton(): void;
 }
@@ -46,35 +50,35 @@ export const EventDetailSidebar: React.FC<EventDetailSidebarProps> = (
   const { event, msl } = props;
 
   const ticketCta =
-    event.cost === TicketCost.Free ? 'Reserve your space' : 'Get Tickets';
+    event.cost === EventCost.Free ? 'Reserve your space' : 'Get Tickets';
 
   return (
     <aside css={{ paddingBottom: '1rem' }}>
-      {event.ticketType === TicketType.Native ? (
+      {event.ticketType === EventTicketType.Native ? (
         <BuyButton
           href={event.ticketData}
           title={ticketCta}
           subtitle="via native.fm"
         />
       ) : null}
-      {event.ticketType === TicketType.Eventbrite ? (
+      {event.ticketType === EventTicketType.Eventbrite ? (
         <BuyButton
           href={event.ticketData}
           title={ticketCta}
           subtitle="via Eventbrite"
         />
       ) : null}
-      {event.ticketType === TicketType.Generic ? (
+      {event.ticketType === EventTicketType.Generic ? (
         <BuyButton href={event.ticketData} title={ticketCta} subtitle="" />
       ) : null}
-      {event.ticketType === TicketType.ACCA ? (
+      {event.ticketType === EventTicketType.Acca ? (
         <BuyButton
           href={event.ticketData}
           title={ticketCta}
           subtitle="via attenboroughcentre.com"
         />
       ) : null}
-      {event.ticketType === TicketType.MSL ? (
+      {event.ticketType === EventTicketType.Msl ? (
         <React.Fragment>
           {/*<BuyButton*/}
           {/*onClick={onTicketButton}*/}

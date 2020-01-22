@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { ContentCard } from '../ContentCard';
 import AllAwardsQuery from './AllAwards.graphql';
 import { TrophyModal } from './TrophyModal';
-import { Group } from '@ussu/common/src/types/awards';
 import { isWithinInterval } from 'date-fns';
 import { PeriodList } from './PeriodList';
 import { useQuery } from '@apollo/react-hooks';
+import { GetAwardsForGroupBySlugQuery } from '../../generated/graphql';
 
 interface Result {
-  group: Group;
+  group: NonNullable<GetAwardsForGroupBySlugQuery['group']>;
 }
 
 interface Props {
@@ -52,16 +52,19 @@ const TrophyCabinetContent: React.FC<Result> = ({ group }) => {
 };
 
 export const TrophyCabinet: React.FC<Props> = ({ slug }) => {
-  const { data, loading } = useQuery<Result>(AllAwardsQuery, {
-    variables: { slug },
-  });
+  const { data, loading } = useQuery<GetAwardsForGroupBySlugQuery>(
+    AllAwardsQuery,
+    {
+      variables: { slug },
+    },
+  );
 
   return (
     <ContentCard>
       <h3>Trophy Cabinet</h3>
-      {loading || !data || !data.group === null ? null : (
+      {!loading && data?.group ? (
         <TrophyCabinetContent group={data.group} />
-      )}
+      ) : null}
     </ContentCard>
   );
 };

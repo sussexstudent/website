@@ -1,16 +1,16 @@
 import React from 'react';
 import cx from 'classnames';
 import FauxInternalAppLink from '../../../components/FauxInternalAppLink';
-import {
-  MarketListing,
-  MarketListingState,
-} from '@ussu/common/src/types/market';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
 import { NoListItems } from '../NoListItems';
 import { formatPrice } from '@ussu/common/src/libs/money';
+import {
+  MarketListingState,
+  MarketListingFragment,
+} from '../../../generated/graphql';
 
 interface ListingListProps {
-  items: MarketListing[];
+  items: MarketListingFragment[];
   ownUser?: boolean;
 }
 
@@ -21,14 +21,14 @@ const stateLangMap = {
   [MarketListingState.Unlisted]: 'Unlisted',
 };
 
-const ListingList: React.FC<ListingListProps> = (props) => {
-  if (props.items.length <= 0) {
+const ListingList: React.FC<ListingListProps> = ({ items, ownUser }) => {
+  if (items.length <= 0) {
     return <NoListItems />;
   }
 
   return (
     <ul className="ListingList List--reset">
-      {props.items.map((item) => (
+      {items.map((item) => (
         <li key={item.pk} className="ListingList__item">
           <FauxInternalAppLink href={`/book-market/listing/${item.pk}`} />
           <div className="ListingList__image">
@@ -55,7 +55,7 @@ const ListingList: React.FC<ListingListProps> = (props) => {
                     item.state === MarketListingState.Unlisted,
                 })}
               >
-                {props.ownUser ? stateLangMap[item.state] : null}
+                {ownUser ? stateLangMap[item.state] : null}
               </span>
             </div>
             <div className="ListingList__author">{item.bookAuthor}</div>

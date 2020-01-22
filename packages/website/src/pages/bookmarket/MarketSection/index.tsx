@@ -1,7 +1,6 @@
 import React from 'react';
 import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
 import SECTION_LISTINGS_QUERY from './SectionListings.graphql';
-import { MarketListing, MarketSection } from '@ussu/common/src/types/market';
 import { ListingList } from '../ListingList';
 import { Helmet } from 'react-helmet-async';
 import { InternalAppLink } from '../../../components/InternalAppLink';
@@ -9,31 +8,28 @@ import { RouteComponentProps } from 'react-router';
 import { useQuery } from '@apollo/react-hooks';
 import { Loader } from '../../../components/Loader';
 import { ErrorState } from '../../../components/ErrorState';
+import { GetListingsForSectionQuery } from '../../../generated/graphql';
 
 export type MarketSectionProps = RouteComponentProps<{ sectionSlug: string }>;
 
-interface Result {
-  allMarketListings: {
-    edges: { node: MarketListing }[];
-  };
-  marketSection: MarketSection;
-}
-
-const MarketSection: React.FC<MarketSectionProps> = (props) => {
-  const { data, loading } = useQuery<Result>(SECTION_LISTINGS_QUERY, {
-    variables: {
-      filters: {
-        section: props.match.params.sectionSlug,
+const MarketSection: React.FC<MarketSectionProps> = ({ match }) => {
+  const { data, loading } = useQuery<GetListingsForSectionQuery>(
+    SECTION_LISTINGS_QUERY,
+    {
+      variables: {
+        filters: {
+          section: match.params.sectionSlug,
+        },
+        sectionSlug: match.params.sectionSlug,
       },
-      sectionSlug: props.match.params.sectionSlug,
     },
-  });
+  );
 
   if (loading) {
     return <Loader />;
   }
 
-  if (!data) {
+  if (!data?.marketSection) {
     return <ErrorState />;
   }
 
@@ -41,7 +37,7 @@ const MarketSection: React.FC<MarketSectionProps> = (props) => {
 
   return (
     <div>
-      <Helmet title={data.marketSection && data.marketSection.title} />
+      <Helmet title={data.marketSection.title} />
 
       <BreadcrumbBar>
         <InternalAppLink to="/book-market/">Book Market</InternalAppLink>

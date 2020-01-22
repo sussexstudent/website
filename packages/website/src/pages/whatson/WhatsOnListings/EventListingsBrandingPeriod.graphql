@@ -1,6 +1,9 @@
 #import "./EventListingFragment.graphql"
 
-query EventsListings($filter: EventFilterInput, $brandSlug: String) {
+query EventListingsBrandingPeriod(
+  $filter: EventFilterInput
+  $brandSlug: String!
+) {
   allEvents(filter: $filter) {
     edges {
       node {

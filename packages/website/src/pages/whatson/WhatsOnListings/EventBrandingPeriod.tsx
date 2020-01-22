@@ -16,6 +16,10 @@ import { getFirstItemOrValue } from '@ussu/common/src/libs/qs';
 import qs from 'query-string';
 import { pickBy, mapValues } from 'lodash';
 import { isAfter, max } from 'date-fns';
+import {
+  GetBrandingPeriodQuery,
+  GetAllEventsWithFilterQuery,
+} from '../../../generated/graphql';
 
 export interface EventBrandingPeriodProps
   extends RouteComponentProps<{ brandSlug: string }> {
@@ -51,7 +55,7 @@ export const EventBrandingPeriod: React.FC<EventBrandingPeriodProps> = ({
     data: brandData,
     loading: brandLoading,
     error: brandError,
-  } = useQuery(BrandingPeriodQuery, {
+  } = useQuery<GetBrandingPeriodQuery>(BrandingPeriodQuery, {
     variables: {
       brandSlug,
     },
@@ -60,7 +64,7 @@ export const EventBrandingPeriod: React.FC<EventBrandingPeriodProps> = ({
     data: listingsData,
     loading: listingsLoading,
     error: listingsError,
-  } = useQuery(EventListingsQuery, {
+  } = useQuery<GetAllEventsWithFilterQuery>(EventListingsQuery, {
     variables: {
       filter: {
         brand: brandSlug,
@@ -89,9 +93,7 @@ export const EventBrandingPeriod: React.FC<EventBrandingPeriodProps> = ({
   const { brandingPeriod } = brandData;
   const { allEvents } = listingsData;
 
-  const latestDate = max(
-    allEvents.edges.map((e: any) => new Date(e.node.endTime)),
-  );
+  const latestDate = max(allEvents.edges.map((e) => new Date(e.node.endTime)));
 
   return (
     <div className="LokiContainer">

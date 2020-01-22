@@ -1,5 +1,6 @@
-query Offers {
+query getOffers {
   allOffers {
+    id
     dealTag
     companyName
     companyWebsite

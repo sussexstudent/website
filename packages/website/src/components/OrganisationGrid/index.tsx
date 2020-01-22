@@ -1,9 +1,9 @@
 import React from 'react';
 import { OrganisationCard } from '../OrganisationCard';
-import { StudentGroup } from '@ussu/common/src/types/groups';
+import { StudentGroupFragmentFragment } from '../../generated/graphql';
 
 interface OrganisationGridProps {
-  organisations: StudentGroup[];
+  organisations: StudentGroupFragmentFragment[];
 }
 
 export const OrganisationGrid: React.FC<OrganisationGridProps> = (props) => {

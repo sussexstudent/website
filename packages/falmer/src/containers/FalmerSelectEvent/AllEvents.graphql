@@ -1,6 +1,6 @@
 #import "../FalmerEvents/EventStuff.graphql"
 
-query AllEvents {
+query getAllEvents {
   allEvents {
     edges {
       node {

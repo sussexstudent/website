@@ -62,13 +62,7 @@ module.exports = {
         test: /\.tsx?$/,
         use: [
           {
-            loader: 'awesome-typescript-loader?useBabel=true&useCache=true',
-            options: {
-              useBabel: true,
-              useCache: true,
-              babelCore: "@babel/core",
-              reportFiles: ['src/**/*.{ts,tsx}'],
-            },
+            loader: 'ts-loader',
           },
         ],
       },

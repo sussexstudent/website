@@ -8,16 +8,20 @@ import acceptConsentMutation from '../../mutations/forms/acceptConsent.graphql';
 import { RouteComponentProps } from 'react-router-dom';
 import { useViewer } from '../bookmarket/currentUserData';
 import { ContentCard } from '../../components/ContentCard';
+import { GetConsentFormBySlugQuery } from '../../generated/graphql';
 
 export type ConsentCodeProps = RouteComponentProps<{ slug: string }>;
 
 export const ConsentCode: React.FC<ConsentCodeProps> = (props) => {
   const user = useViewer();
-  const { data, loading, error } = useQuery(getConsentForm, {
-    variables: {
-      slug: props.match.params.slug,
+  const { data, loading, error } = useQuery<GetConsentFormBySlugQuery>(
+    getConsentForm,
+    {
+      variables: {
+        slug: props.match.params.slug,
+      },
     },
-  });
+  );
 
   const [acceptConsent, mut] = useMutation(acceptConsentMutation);
 
@@ -27,6 +31,10 @@ export const ConsentCode: React.FC<ConsentCodeProps> = (props) => {
 
   if (error) {
     return <ErrorState />;
+  }
+
+  if (!data?.consentForm) {
+    return <h1>404</h1>;
   }
 
   return (
@@ -62,6 +70,7 @@ export const ConsentCode: React.FC<ConsentCodeProps> = (props) => {
             <div>
               {user.isAuthenticated ? (
                 <button
+                  type="button"
                   onClick={() => {
                     if (window) window.scroll({ top: 0, behavior: 'smooth' });
 

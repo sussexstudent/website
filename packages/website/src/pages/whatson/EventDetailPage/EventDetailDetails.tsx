@@ -1,5 +1,4 @@
 import React from 'react';
-import { Event } from '@ussu/common/src/types/events';
 import addDays from 'date-fns/addDays';
 import isSameDay from 'date-fns/isSameDay';
 import getHours from 'date-fns/getHours';
@@ -16,6 +15,7 @@ import { generateStylesForBrand, getOrdinal } from '../utils';
 import { getDate } from 'date-fns';
 import { ContentCardContent } from '../../../components/ContentCard';
 import { EventLikeButton } from '../WhatsOnListings/EventLikeButton';
+import { GetFullEventInfoQuery } from '../../../generated/graphql';
 
 function isSameLogicalSleepDay(startDate: Date, endDate: Date): boolean {
   if (isSameDay(startDate, endDate)) {
@@ -26,10 +26,10 @@ function isSameLogicalSleepDay(startDate: Date, endDate: Date): boolean {
 }
 
 interface EventDetailDetailsProps {
-  event: Event;
+  event: GetFullEventInfoQuery['event'];
 }
 
-function renderDates(event: Event) {
+function renderDates(event: GetFullEventInfoQuery['event']) {
   const startDate = new Date(event.startTime);
   const endDate = new Date(event.endTime);
   const isSpanningEvent = !isSameLogicalSleepDay(startDate, endDate);

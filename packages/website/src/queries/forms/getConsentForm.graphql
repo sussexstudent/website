@@ -1,4 +1,4 @@
-query ConsentForm($slug: String!) {
+query getConsentFormBySlug($slug: String!) {
   consentForm(slug: $slug) {
     title
     body

@@ -1,12 +1,15 @@
 import React from 'react';
-import {
-  AwardAuthority,
-  GroupAward,
-  Grade,
-} from '@ussu/common/src/types/awards';
+import { Grade } from '@ussu/common/src/types/awards';
 import { gradeMap, iconMap } from './data';
+import {
+  AwardedFragment,
+  AwardAuthorityFragment,
+} from '../../generated/graphql';
 
-export function getGrade(award: GroupAward, authority: AwardAuthority): Grade {
+export function getGrade(
+  award: AwardedFragment,
+  authority: AwardAuthorityFragment,
+): Grade {
   const authoritySlug = authority.slug;
   if (gradeMap.hasOwnProperty(authoritySlug)) {
     const authorityGrades = gradeMap[authoritySlug];

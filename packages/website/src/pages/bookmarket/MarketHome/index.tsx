@@ -1,30 +1,20 @@
 import React from 'react';
 import qs from 'query-string';
 import { HeadingHero } from '../../../components/HeadingHero';
-import MARKET_HOME_QUERY from './MarketHomeQuery.graphql';
+import GET_ALL_MARKET_SECTIONS_QUERY from '../getAllMarketSections.graphql';
 import { Field, Form } from 'react-final-form';
 import { useViewer } from '../currentUserData';
 import { InternalAppLink } from '../../../components/InternalAppLink';
 import { useQuery } from '@apollo/react-hooks';
 import { Loader } from '../../../components/Loader';
 import { ErrorState } from '../../../components/ErrorState';
+import { GetAllMarketSectionsQuery } from '../../../generated/graphql';
 
-interface ComponentProps {}
-
-interface MarketSection {
-  title: string;
-  slug: string;
-}
-
-interface Result {
-  allMarketSections: MarketSection[];
-}
-
-type IProps = ComponentProps;
-
-export const MarketHome: React.FC<IProps> = (props) => {
+export const MarketHome: React.FC = (props) => {
   const { loading: viewerLoading, isAuthenticated } = useViewer();
-  const { data, loading } = useQuery<Result>(MARKET_HOME_QUERY);
+  const { data, loading } = useQuery<GetAllMarketSectionsQuery>(
+    GET_ALL_MARKET_SECTIONS_QUERY,
+  );
 
   if (viewerLoading || loading) {
     return <Loader />;
@@ -70,7 +60,7 @@ export const MarketHome: React.FC<IProps> = (props) => {
               </h3>
               <ul className="BrickWall List--reset">
                 {data.allMarketSections.map((section) => (
-                  <li className="BrickWall__item">
+                  <li className="BrickWall__item" key={section.slug}>
                     <InternalAppLink
                       className="BrickWall__anchor"
                       to={`/book-market/section/${section.slug}`}

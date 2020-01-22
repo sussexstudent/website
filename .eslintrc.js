@@ -39,7 +39,7 @@ module.exports = {
     "@typescript-eslint/prefer-nullish-coalescing": "warn",
     "@typescript-eslint/require-await": "warn",
     "@typescript-eslint/restrict-plus-operands": "warn",
-    "@typescript-eslint/restrict-template-expressions": "warn",
+    "@typescript-eslint/restrict-template-expressions": ["warn", { allowNumber: true }],
     "@typescript-eslint/generic-type-naming": ["warn", '^T[A-Z][a-zA-Z]+$'],
 
 

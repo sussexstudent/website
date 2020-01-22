@@ -14,7 +14,7 @@ const Menu: React.FC<React.HTMLProps<HTMLUListElement>> = ({
         padding: 0,
         margin: 0,
         listStyle: 'none',
-        display: 'inline',
+        display: 'flex',
       }}
       {...props}
     >
@@ -27,8 +27,8 @@ export const Wayfinder: React.FC = ({ children }) => {
   return (
     <div
       css={[
-        type(TypeSize.Pica, Typeface.Secondary),
         { marginTop: '-1rem', marginBottom: '1rem' },
+        type(TypeSize.Pica, Typeface.Secondary),
       ]}
     >
       {children}
@@ -43,14 +43,17 @@ export const WayfinderTopLevel: React.FC<{ title: string; to: string }> = ({
   title,
   to,
 }) => {
+  if (!Array.isArray(children) || children.length <= 0) {
+    return null;
+  }
+
   return (
     <div
       css={{
         background: COLORS.GREY_SPRING,
-        fontSize: '1.1em',
       }}
     >
-      <div className="LokiContainer">
+      <div className="LokiContainer" css={{ display: 'flex' }}>
         <Link
           css={[
             {
@@ -58,13 +61,12 @@ export const WayfinderTopLevel: React.FC<{ title: string; to: string }> = ({
               fontWeight: 600,
               color: COLORS.GREY_SAD_SLATE,
               textDecoration: 'none',
-              padding: '0.3rem 1rem 0.3rem 0',
-              ...type(TypeSize.DoublePica),
+              padding: '0.4rem 0.8rem',
             },
           ]}
           to={to}
         >
-          {title}
+          {title} ›
         </Link>
 
         <Menu>
@@ -72,15 +74,15 @@ export const WayfinderTopLevel: React.FC<{ title: string; to: string }> = ({
             Array.isArray(children) &&
             flatten(children).map((item: any) =>
               item ? (
-                <li key={item.props.to} css={{ display: 'inline' }}>
+                <li key={item.props.to} css={{ flex: 'none', display: 'flex' }}>
                   <NavLink
                     css={[
                       {
                         display: 'inline-block',
-                        padding: '0.4rem 0.8rem',
                         fontWeight: 600,
                         color: COLORS.GREY_SLATE,
                         textDecoration: 'none',
+                        padding: '0.4em 0.8em',
                       },
                     ]}
                     to={item.props.to}
@@ -102,58 +104,62 @@ export const WayfinderTopLevel: React.FC<{ title: string; to: string }> = ({
 
 export const WayfinderSecondLevel: React.FC<{ title: string; to: string }> = ({
   children,
-  title,
-  to,
 }) => {
   return (
     <div
       css={{
-        background: COLORS.GREY_SUMMER,
         color: '#fff',
         fontWeight: 600,
         padding: '0.2rem 0',
+        background: 'rgb(108, 111, 127)',
       }}
     >
-      <div className="LokiContainer">
-        <Link
+      <div className="LokiContainerDeconstructed">
+        <div
           css={{
-            display: 'inline-blokc',
-            paddingRight: '1rem',
-            color: '#27363E',
-            textDecoration: 'none',
-            paddingTop: '0.4rem',
-            paddingBottom: '0.4rem',
+            overflowX: 'scroll',
+            width: '100%',
+            display: 'flex',
           }}
-          to={to}
         >
-          {title} ›
-        </Link>
-
-        <Menu>
-          {children &&
-            Array.isArray(children) &&
-            flatten(children).map((item: any) =>
-              item ? (
-                <li key={item.props.to} css={{ display: 'inline' }}>
-                  <NavLink
-                    css={[
-                      {
-                        padding: '0 0.4rem',
-                        textDecoration: 'none',
-                        color: '#27363E',
-                      },
-                    ]}
-                    to={item.props.to}
-                    activeStyle={{
-                      borderBottom: '2px solid #fff',
-                    }}
-                  >
-                    {item.props.children}
-                  </NavLink>
-                </li>
-              ) : null,
-            )}
-        </Menu>
+          <div
+            css={{
+              flex: 'none',
+              display: 'flex',
+              padding: '0 1rem',
+              boxSizing: 'border-box',
+            }}
+          >
+            <Menu>
+              {children &&
+                Array.isArray(children) &&
+                flatten(children).map((item: any) =>
+                  item ? (
+                    <li
+                      key={item.props.to}
+                      css={{ flex: 'none', display: 'block' }}
+                    >
+                      <NavLink
+                        css={[
+                          {
+                            padding: '0 0.4rem',
+                            textDecoration: 'none',
+                            color: '#fff',
+                          },
+                        ]}
+                        to={item.props.to}
+                        activeStyle={{
+                          textDecoration: 'underline',
+                        }}
+                      >
+                        {item.props.children}
+                      </NavLink>
+                    </li>
+                  ) : null,
+                )}
+            </Menu>
+          </div>
+        </div>
       </div>
     </div>
   );

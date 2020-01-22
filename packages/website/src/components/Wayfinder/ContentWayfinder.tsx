@@ -11,8 +11,9 @@ interface WayfinderPage {
   title: string;
   path: string;
   contentType: string;
-  ancestorPages: WayfinderPage[];
+  subPagesWayfinding: WayfinderPage[];
   subPages: WayfinderPage[];
+  ancestorPagesGeneric: WayfinderPage[];
 }
 
 export interface WayfinderProps {
@@ -27,9 +28,9 @@ const isUsable = (page: WayfinderPage) =>
   (page !== undefined && !inBlacklist(page) && page) || null;
 
 const getWayfinderDataFromPage = (page: WayfinderPage) => {
-  const { ancestorPages } = page;
+  const { ancestorPagesGeneric } = page;
   const pages = [
-    ...ancestorPages,
+    ...ancestorPagesGeneric,
     { ...page, subPages: (page as any).subPagesWayfinding },
   ];
 
@@ -54,17 +55,19 @@ export const ContentWayfinder: React.FC<WayfinderProps> = ({ page }) => {
   return (
     <Wayfinder>
       <WayfinderTopLevel title={section.title} to={section.path}>
-        {section.subPages.map((subPage) => {
-          return (
-            <WayfinderItem key={subPage.path} to={subPage.path}>
-              {subPage.title}
-            </WayfinderItem>
-          );
-        })}
+        {section.subPagesWayfinding
+          ? section.subPagesWayfinding.map((subPage) => {
+              return (
+                <WayfinderItem key={subPage.path} to={subPage.path}>
+                  {subPage.title}
+                </WayfinderItem>
+              );
+            })
+          : null}
       </WayfinderTopLevel>
-      {topic && topic.subPages.length > 0 ? (
+      {topic?.subPagesWayfinding && topic.subPagesWayfinding.length > 0 ? (
         <WayfinderSecondLevel title={topic.title} to={topic.path}>
-          {topic.subPages.map((subPage) => {
+          {topic.subPagesWayfinding.map((subPage) => {
             return (
               <WayfinderItem key={subPage.path} to={subPage.path}>
                 {subPage.title}
@@ -74,9 +77,9 @@ export const ContentWayfinder: React.FC<WayfinderProps> = ({ page }) => {
         </WayfinderSecondLevel>
       ) : null}
 
-      {subnav && subnav.subPages.length > 0 ? (
+      {subnav?.subPagesWayfinding && subnav.subPagesWayfinding.length > 0 ? (
         <WayfinderThirdLevel title={subnav.title} to={subnav.path}>
-          {subnav.subPages.map((subPage) => (
+          {subnav.subPagesWayfinding.map((subPage) => (
             <WayfinderItem key={subPage.path} to={subPage.path}>
               {subPage.title}
             </WayfinderItem>

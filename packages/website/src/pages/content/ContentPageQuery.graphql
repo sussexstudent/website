@@ -193,7 +193,7 @@ fragment ContentPageGenerals on Page {
     slug
     path
     contentType
-    subPagesGeneric(inMenu: true) {
+    subPagesWayfinding: subPagesGeneric(inMenu: true) {
       contentType
       title
       slug
@@ -228,7 +228,7 @@ fragment ContentPageGeneralsGeneric on GenericPage {
     slug
     path
     contentType
-    subPagesGeneric(inMenu: true) {
+    subPagesWayfinding: subPagesGeneric(inMenu: true) {
       contentType
       title
       slug

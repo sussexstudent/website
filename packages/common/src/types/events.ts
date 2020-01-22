@@ -69,6 +69,8 @@ export interface Event {
   socialFacebook: string;
   canceledAt: string;
 
+  mslEvent: any;
+
   userLike: null | {
     source: 'USER' | 'UNLIKED' | 'RECOMMENDATION';
   };

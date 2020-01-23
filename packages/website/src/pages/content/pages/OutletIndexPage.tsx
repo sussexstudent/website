@@ -50,6 +50,7 @@ const heroContainerStyles = css({
     hsla(0, 0%, 8%, 0.77) 91.9%,
     hsla(0, 0%, 8%, 0.78) 100%
   )`,
+  boxSizing: 'border-box',
   padding: '1rem',
   paddingTop: '6rem',
   textDecoration: 'none',

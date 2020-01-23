@@ -14,7 +14,11 @@ const Menu: React.FC<React.HTMLProps<HTMLUListElement>> = ({
         padding: 0,
         margin: 0,
         listStyle: 'none',
+        flexWrap: 'wrap',
         display: 'flex',
+        '.feature-touch &': {
+          flexWrap: 'nowrap',
+        },
       }}
       {...props}
     >
@@ -117,17 +121,24 @@ export const WayfinderSecondLevel: React.FC<{ title: string; to: string }> = ({
       <div className="LokiContainerDeconstructed">
         <div
           css={{
-            overflowX: 'scroll',
             width: '100%',
             display: 'flex',
+            webkitOverflowScrolling: 'touch',
+            '.feature-touch &': {
+              overflowX: 'scroll',
+            },
           }}
         >
           <div
             css={{
-              flex: 'none',
-              display: 'flex',
+              flex: 'auto',
               padding: '0 1rem',
+              display: 'flex',
               boxSizing: 'border-box',
+              '.feature-touch &': {
+                flex: 'none',
+                padding: '0 1rem',
+              },
             }}
           >
             <Menu>

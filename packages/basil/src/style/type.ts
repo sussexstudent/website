@@ -46,7 +46,7 @@ export function type(
     fontMap['.feature-no-touch &'] = process(sizes[typeSize][Group.D]);
   }
 
-  if (typeface) {
+  if (typeface !== undefined) {
     fontMap['fontFamily'] =
       typeface === Typeface.Secondary ? TYPE_SECONDARY : TYPE_PRIMARY;
   }

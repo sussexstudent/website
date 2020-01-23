@@ -109,7 +109,7 @@ export const EventDetailDetails: React.FC<EventDetailDetailsProps> = (
           ) : null}
         </ul>
         <h2 className="EventDetail__title type-paragon">
-          <div css={{ width: 20, height: 20, display: 'inline-block' }}>
+          <div css={{ width: 36, height: 36, display: 'inline-block' }}>
             <EventLikeButton event={event} />
           </div>{' '}
           {event.title}

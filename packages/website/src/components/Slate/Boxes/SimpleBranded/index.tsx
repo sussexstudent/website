@@ -25,7 +25,7 @@ const component: React.FC<SimpleProps> = ({
         <div
           style={{
             width: '100%',
-            maxWidth: '400px',
+            maxWidth: '600px',
             display: 'block',
             margin: '0 auto',
             padding: '1rem',

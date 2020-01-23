@@ -16,9 +16,7 @@ export const GenericContentStreamPage: React.FC<IProps> = ({
 }) => {
   return (
     <div className="LokiContainer">
-      <div className="Layout">
-        <StreamField items={body} page={page} />
-      </div>
+      <StreamField items={body} page={page} />
     </div>
   );
 };

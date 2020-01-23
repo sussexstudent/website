@@ -2,7 +2,7 @@ query getContentByPath($path: String, $previewToken: String) {
   page(path: $path, previewToken: $previewToken) {
     ...ContentPageGenerals
     ... on DetailedGuidePage {
-      subPagesGeneric {
+      subPages: subPagesGeneric {
         ...ContentPageGeneralsGeneric
       }
       ...KBTypes
@@ -15,7 +15,7 @@ query getContentByPath($path: String, $previewToken: String) {
           relatedLinks
           staffOwners
           ...KBTypes
-          subPagesGeneric {
+          subPages: subPagesGeneric {
             ...ContentPageGeneralsGeneric
           }
         }

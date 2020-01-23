@@ -17,6 +17,7 @@ import {
 import LIVE_BRANDING_PERIOD_QUERY from './LiveBrandingPeriods.graphql';
 import { useQuery } from '@apollo/react-hooks';
 import { GetLiveBrandingPeriodsQuery } from '../../generated/graphql';
+import HeartFull from '../../icons/heart-full.svg';
 
 const LoadableListings = loadable<EventsListProps>(async () => {
   const { EventsList } = await import('./WhatsOnListings');
@@ -85,9 +86,17 @@ export const WhatsOn: React.FC<EventsApplicationProps> = () => {
           <div className="u-keep-footer-down js-expand-container">
             <Wayfinder>
               <WayfinderTopLevel title="What's on" to="/whats-on">
-                {/*<WayfinderItem to="/whats-on/my-programme">*/}
-                {/*  My Programme*/}
-                {/*</WayfinderItem>*/}
+                <WayfinderItem to="/whats-on/liked">
+                  <div
+                    css={{
+                      width: 16,
+                      height: 16,
+                      color: '#ff005d',
+                    }}
+                  >
+                    <HeartFull />
+                  </div>
+                </WayfinderItem>
                 {data?.allBrandingPeriods && data.allBrandingPeriods.length > 0
                   ? data.allBrandingPeriods.map((period) => (
                       <WayfinderItem
@@ -127,10 +136,7 @@ export const WhatsOn: React.FC<EventsApplicationProps> = () => {
                 path="/whats-on/periods/:brandSlug"
                 exact
               />
-              <Route
-                path="/whats-on/my-programme"
-                component={LoadableMyProgramme}
-              />
+              <Route path="/whats-on/liked" component={LoadableMyProgramme} />
               <Route path="/whats-on/**-:eventId" component={LoadableDetail} />
               <Route path="/whats-on/:eventId" component={LoadableDetail} />
             </Switch>

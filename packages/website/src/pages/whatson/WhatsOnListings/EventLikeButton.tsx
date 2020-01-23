@@ -5,7 +5,7 @@ import LikeEvent from './LikeEvent.graphql';
 import { useMutation } from '@apollo/react-hooks';
 import { useViewer } from '../../bookmarket/currentUserData';
 import { useDispatch } from 'redux-react-hook';
-import { openLoginModal } from '../../../ducks/user';
+import * as userActions from '../../../ducks/user';
 import { EventCardFragment } from '../../../generated/graphql';
 
 export const EventLikeButton: React.FC<{ event: EventCardFragment }> = ({
@@ -27,14 +27,13 @@ export const EventLikeButton: React.FC<{ event: EventCardFragment }> = ({
         },
       });
     } else {
-      console.log(isAuthenticated, openLoginModal());
-      dispatch(openLoginModal());
+      dispatch(userActions.openLoginModal());
     }
   }, [isAuthenticated, likeEvent, event.eventId, event.userLike, dispatch]);
 
   const isLiked = event.userLike && event.userLike.source === 'USER';
 
-  if (loading || true) {
+  if (loading) {
     return null;
   }
 
@@ -47,7 +46,8 @@ export const EventLikeButton: React.FC<{ event: EventCardFragment }> = ({
         width: '100%',
         height: '100%',
         padding: 8,
-        color: isLiked ? '#ff62c4' : '#fff',
+        color: isLiked ? '#ff005d' : '#fff',
+        cursor: 'pointer',
         '&:hover': {
           '& svg': {
             transform: 'scale(1.2)',

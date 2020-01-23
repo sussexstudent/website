@@ -5,12 +5,16 @@ import { startOfDay, addMonths } from 'date-fns';
 import { Loader } from '../../../components/Loader';
 import { EventListings } from '../WhatsOnListings/EventListings';
 import { GetUserLikedEventsQuery } from '../../../generated/graphql';
+import { LikedEmptyState } from './LikedEmptyState';
+import { useViewer } from '../../bookmarket/currentUserData';
 
 export const WhatsOnMyProgramme: React.FC = () => {
   const [now] = useState(new Date());
+  const { loading: userLoading, isAuthenticated } = useViewer();
   const { data, loading } = useQuery<GetUserLikedEventsQuery>(
     getUserLikedEvents,
     {
+      fetchPolicy: 'cache-and-network',
       variables: {
         filter: {
           fromTime: startOfDay(now).toISOString(),
@@ -20,13 +24,31 @@ export const WhatsOnMyProgramme: React.FC = () => {
     },
   );
 
+  if (userLoading || loading) {
+    return <Loader />;
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <LikedEmptyState
+        title="Log in to build your events programme"
+        description="Like events you're interested in to save them here"
+      />
+    );
+  }
+
   return (
     <div className="LokiContainer">
-      <h1>Build your own events programme</h1>
-      {loading || !data ? (
-        <Loader />
+      {!data || data.allEvents.edges.length <= 0 ? (
+        <LikedEmptyState
+          title="You haven't got any upcoming events"
+          description="Explore What's On to find events you're interested in"
+        />
       ) : (
-        <EventListings events={data.allEvents} removePast />
+        <React.Fragment>
+          <h1>Liked events</h1>
+          <EventListings events={data.allEvents} removePast />
+        </React.Fragment>
       )}
     </div>
   );

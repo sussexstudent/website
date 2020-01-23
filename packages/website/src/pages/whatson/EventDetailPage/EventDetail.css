@@ -91,6 +91,7 @@
 
   &__title {
     margin: 0 0 0.5rem;
+    margin-left: -8px;
   }
 
   &__details-list-item {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { COLORS } from '@ussu/basil/src/style';
-import { Link, NavLink } from 'react-router-dom';
 import { flatten } from 'lodash';
 import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
+import { InternalAppLink } from '../InternalAppLink';
 
 const Menu: React.FC<React.HTMLProps<HTMLUListElement>> = ({
   children,
@@ -58,7 +58,7 @@ export const WayfinderTopLevel: React.FC<{ title: string; to: string }> = ({
       }}
     >
       <div className="LokiContainer" css={{ display: 'flex' }}>
-        <Link
+        <InternalAppLink
           css={[
             {
               display: 'inline-block',
@@ -71,7 +71,7 @@ export const WayfinderTopLevel: React.FC<{ title: string; to: string }> = ({
           to={to}
         >
           {title} ›
-        </Link>
+        </InternalAppLink>
 
         <Menu>
           {children &&
@@ -79,7 +79,8 @@ export const WayfinderTopLevel: React.FC<{ title: string; to: string }> = ({
             flatten(children).map((item: any) =>
               item ? (
                 <li key={item.props.to} css={{ flex: 'none', display: 'flex' }}>
-                  <NavLink
+                  <InternalAppLink
+                    nav
                     css={[
                       {
                         display: 'inline-block',
@@ -96,7 +97,7 @@ export const WayfinderTopLevel: React.FC<{ title: string; to: string }> = ({
                     }}
                   >
                     {item.props.children}
-                  </NavLink>
+                  </InternalAppLink>
                 </li>
               ) : null,
             )}
@@ -150,7 +151,8 @@ export const WayfinderSecondLevel: React.FC<{ title: string; to: string }> = ({
                       key={item.props.to}
                       css={{ flex: 'none', display: 'block' }}
                     >
-                      <NavLink
+                      <InternalAppLink
+                        nav
                         css={[
                           {
                             padding: '0 0.4rem',
@@ -164,7 +166,7 @@ export const WayfinderSecondLevel: React.FC<{ title: string; to: string }> = ({
                         }}
                       >
                         {item.props.children}
-                      </NavLink>
+                      </InternalAppLink>
                     </li>
                   ) : null,
                 )}
@@ -190,7 +192,7 @@ export const WayfinderThirdLevel: React.FC<{ title: string; to: string }> = ({
       }}
     >
       <div className="LokiContainer">
-        <Link
+        <InternalAppLink
           css={{
             display: 'inline-block',
             paddingRight: '1rem',
@@ -202,7 +204,7 @@ export const WayfinderThirdLevel: React.FC<{ title: string; to: string }> = ({
           to={to}
         >
           {title} ›
-        </Link>
+        </InternalAppLink>
 
         <Menu>
           {children &&
@@ -210,7 +212,7 @@ export const WayfinderThirdLevel: React.FC<{ title: string; to: string }> = ({
             flatten(children).map((item: any) => {
               return item ? (
                 <li key={item.props.to} css={{ display: 'inline' }}>
-                  <Link
+                  <InternalAppLink
                     css={{
                       padding: '0 0.4rem',
                       textDecoration: 'none',
@@ -219,7 +221,7 @@ export const WayfinderThirdLevel: React.FC<{ title: string; to: string }> = ({
                     to={item.props.to}
                   >
                     {item.props.children}
-                  </Link>
+                  </InternalAppLink>
                 </li>
               ) : null;
             })}

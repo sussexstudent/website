@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import routes from '../../routes';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useMappedState } from 'redux-react-hook';
 import { WebsiteRootState } from '../../types/website';
 
@@ -8,6 +8,8 @@ interface InternalAppLinkComponentProps {
   to: string;
   replace?: boolean;
   innerRef?: any;
+  nav?: boolean;
+  activeStyle?: any;
 }
 
 type Props = InternalAppLinkComponentProps & React.HTMLProps<HTMLAnchorElement>;
@@ -15,6 +17,7 @@ type Props = InternalAppLinkComponentProps & React.HTMLProps<HTMLAnchorElement>;
 export const InternalAppLink: React.FC<Props> = ({
   to,
   innerRef,
+  nav,
   ...props
 }) => {
   const mapState = useCallback(
@@ -30,6 +33,9 @@ export const InternalAppLink: React.FC<Props> = ({
 
     if (isClientRendered) {
       if (history) {
+        if (nav) {
+          return <NavLink to={to} {...(props as any)} />; // todo
+        }
         return <Link to={to} {...(props as any)} />; // todo
       }
     }

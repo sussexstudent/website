@@ -1,15 +1,19 @@
 import React from 'react';
-import { Sectionbar, SectionbarItem } from '../Sectionbar';
-import { InternalAppLink } from '../InternalAppLink';
+import { Wayfinder, WayfinderItem, WayfinderTopLevel } from '../Wayfinder';
 
 export const StudentGroupsSectionbar: React.FC = () => {
   return (
-    <Sectionbar title="Societies, sports & media">
-      <SectionbarItem>
-        <InternalAppLink to={'/sport-societies-media/discover'}>
-          Discover
-        </InternalAppLink>
-      </SectionbarItem>
-    </Sectionbar>
+    <Wayfinder>
+      <WayfinderTopLevel
+        title="Societies, sports & media"
+        to="/sport-societies-media"
+      >
+        {[
+          <WayfinderItem key={1} to={'/sport-societies-media/discover'}>
+            Discover
+          </WayfinderItem>,
+        ]}
+      </WayfinderTopLevel>
+    </Wayfinder>
   );
 };

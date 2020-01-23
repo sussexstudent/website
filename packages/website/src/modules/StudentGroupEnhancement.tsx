@@ -6,6 +6,7 @@ import { StoreContext } from 'redux-react-hook';
 import getApolloClientForFalmer from '@ussu/common/src/libs/getApolloClientForFalmer';
 import { store } from '../redux/store';
 import { ApolloProvider } from '@apollo/react-hooks';
+import { BrowserRouter } from '../components/BrowserRouter';
 
 export default function ready() {
   const match = window.location.pathname.match(
@@ -36,7 +37,9 @@ export default function ready() {
 
     ReactDOM.render(
       <StoreContext.Provider value={store}>
-        <StudentGroupsSectionbar />
+        <BrowserRouter>
+          <StudentGroupsSectionbar />
+        </BrowserRouter>
       </StoreContext.Provider>,
       topOfContent,
     );

@@ -1,5 +1,9 @@
 .SelectionGrid {
   font-family: var(--type__primary);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  column-gap: 2rem;
+  row-gap: 2rem;
 
   &__link {
     text-decoration: none;
@@ -10,7 +14,7 @@
 
   &__title {
     font-weight: bold;
-    padding: 0.4rem 0.2rem;
+    padding: 0.6rem 0;
     display: inline-block;
     @mixin type GreatPrimer;
   }

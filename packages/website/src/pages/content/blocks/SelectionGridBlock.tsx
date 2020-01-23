@@ -10,6 +10,7 @@ export type SelectionGridItemData = StreamFieldBlockData<
   {
     title: string;
     link: string;
+    description: string;
     image: FalmerImage;
   }[]
 >;
@@ -27,6 +28,7 @@ export const SelectionGridBlock: StreamFieldBlock<SelectionGridItemData> = ({
           title={item.title}
           link={normaliseContentLink(item.link)}
           imageURL={item.image.resource}
+          description={item.description}
         />
       ))}
     </SelectionGrid>

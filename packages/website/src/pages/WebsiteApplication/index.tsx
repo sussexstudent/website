@@ -132,6 +132,7 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
               path="/get-involved/campaigns-toolkit"
             />
             <Route component={ContentAPI} path="/about-us/contact" />
+            <Route component={ContentAPI} path="/sport-societies-media" exact />
             <Route component={ContentAPI} path="/about-us/shops-and-bars" />
             <Route component={FourOhFourPage} default />
           </Switch>

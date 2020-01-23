@@ -5,5 +5,5 @@ interface SelectionGridProps {
 }
 
 export const SelectionGrid: React.FC<SelectionGridProps> = ({ children }) => (
-  <ul className="SelectionGrid TrailGrid TrailGrid--three">{children}</ul>
+  <ul className="SelectionGrid List List--reset">{children}</ul>
 );

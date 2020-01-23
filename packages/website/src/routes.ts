@@ -21,6 +21,7 @@ export default new PreRouter([
   /^\/about-us$/,
   /^\/about-us\/shops-and-bars/,
   /^\/support$/,
+  /^\/sport-societies-media$/,
   '/get-involved-next',
   '/get-involved/campaigns-toolkit',
   '/about-us-next',

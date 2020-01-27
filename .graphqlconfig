@@ -3,7 +3,7 @@
   "extensions": {
     "endpoints": {
       "Default Introspection Endpoint": {
-        "url": "https://falmer.sussexstudent.com/graphql/",
+        "url": "https://staging.falmer.sussexstudent.com/graphql/",
         "introspect": true,
         "headers": {
           "user-agent": "JS GraphQL"
@@ -16,7 +16,7 @@
         }
       },
       "Production": {
-        "url": "https://falmer.sussexstudent.com/graphql/",
+        "url": "https://staging.falmer.sussexstudent.com/graphql/",
         "headers": {
           "user-agent": "JS GraphQL"
         }

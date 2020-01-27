@@ -53,7 +53,7 @@ export const OfficerEventsPage: React.FC<OfficerEventsPageProps> = ({
       <div className="LokiContainer">
         <h1>{page.title}</h1>
         {convert(page.description)}
-        <EventListings events={data.allEvents} removePast={true} />
+        <EventListings events={data.allEvents.edges} removePast={true} />
       </div>
     </div>
   );

@@ -1,13 +1,14 @@
 import { createBrandedComponent } from './createBrandedComponent';
 import { WhatsOnBrandedComponentLocation } from './locations';
-import React from 'react';
+import React, { useState } from 'react';
 import EVENT_LISTINGS_BUNDLE from '../WhatsOnListings/EventListingsBundle.graphql';
 import { useQuery } from '@apollo/react-hooks';
 import { type, TypeSize } from '@ussu/basil/src/style/type';
-import { Layers, MQ } from '@ussu/basil/src/style';
+import { COLORS, Layers, MQ } from '@ussu/basil/src/style';
 import FauxRouterLink from '../../../components/FauxRouterLink';
 import { BuyButton } from '../EventDetailPage/BuyButton';
 import { GetEventsByBundleSlugQuery } from '../../../generated/graphql';
+import { Modal } from '../../../components/Modal';
 
 export const BrandingContainer = createBrandedComponent(
   WhatsOnBrandedComponentLocation.Container,
@@ -42,7 +43,7 @@ export const BundleBanner = createBrandedComponent(
           zIndex: Layers.Header_mobile,
         }}
       >
-        <div className="LokiContainer">
+        <div>
           <div css={{ padding: '0 1rem' }}>
             <div
               css={{
@@ -115,19 +116,48 @@ export const BundleBanner = createBrandedComponent(
 );
 export const BrandingPeriodHeader = createBrandedComponent<{
   brandingPeriod: any;
-}>(WhatsOnBrandedComponentLocation.PeriodHeader, ({ brandingPeriod }) => (
-  <React.Fragment>
-    <h2 className="type-brevier">Event Period</h2>
-    <div>
-      {brandingPeriod.logoVector ? (
-        <img src={brandingPeriod.logoVector.resource} height="160" />
-      ) : (
-        <h1>{brandingPeriod.name}</h1>
-      )}
-      <div
-        className="type-body-copy"
-        dangerouslySetInnerHTML={{ __html: brandingPeriod.description }}
-      />
-    </div>
-  </React.Fragment>
-));
+}>(WhatsOnBrandedComponentLocation.PeriodHeader, ({ brandingPeriod }) => {
+  const [moreInfoModal, setMoreInfoModal] = useState(false);
+  return (
+    <React.Fragment>
+      <div css={{ paddingTop: '1rem' }}>
+        <div css={{ textAlign: 'center' }}>
+          {brandingPeriod.logoVector ? (
+            <img src={brandingPeriod.logoVector.resource} height="180" />
+          ) : (
+            <h1>{brandingPeriod.name}</h1>
+          )}
+          {/*<div css={{ fontWeight: 600, fontStyle: 'italic' }}>DATES - DATE</div>*/}
+          <button
+            css={[
+              type(TypeSize.Minion),
+              {
+                textDecoration: 'underline',
+                border: 0,
+                background: 'transparent',
+                color: COLORS.GREY_WORST_WINTER,
+              },
+            ]}
+            onClick={() => setMoreInfoModal(true)}
+          >
+            More info
+          </button>
+        </div>
+        <Modal
+          isOpen={moreInfoModal}
+          onRequestClose={() => setMoreInfoModal(false)}
+          footerClose
+        >
+          <div>
+            <h1>{brandingPeriod.name}</h1>
+            <h2>More info</h2>
+            <div
+              className="type-body-copy Prose"
+              dangerouslySetInnerHTML={{ __html: brandingPeriod.description }}
+            />{' '}
+          </div>
+        </Modal>
+      </div>
+    </React.Fragment>
+  );
+});

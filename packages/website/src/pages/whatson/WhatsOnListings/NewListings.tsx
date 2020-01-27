@@ -12,15 +12,19 @@ import {
 } from '../WhatsOnBrandingContext';
 import { GetAllEventsWithFilterQuery } from '../../../generated/graphql';
 import { useEventFilterCapture } from './filtering';
+import { whatsOnListingViews } from './views';
+import { Switch, Route } from 'react-router';
 
 interface OwnProps {
   disableHeader: boolean;
   filter: any; // todo
+  brandSlug?: string;
+  bundleSlug?: string;
 }
 
 export type EventsListProps = OwnProps;
 
-const EventsList: React.FC<EventsListProps> = () => {
+export const NewListings: React.FC<EventsListProps> = () => {
   const dispatch = useWhatsOnThemingContext()[1];
   useEffect(() => {
     dispatch(setBrandingPeriod(null));
@@ -44,25 +48,29 @@ const EventsList: React.FC<EventsListProps> = () => {
     },
   );
 
-  if (loading) {
-    return <Loader dark />;
-  }
-
-  if (!data) {
-    return <h1>404</h1>;
-  }
-
   return (
     <React.Fragment>
       <Helmet>
         <title>{`What's on | Sussex Students' Union`}</title>
       </Helmet>
-      <h1>{filter ? JSON.stringify(filter) : 'All events'}</h1>
-      <h2>Showing {data.allEvents.edges.length} events</h2>
+      <Switch>
+        {whatsOnListingViews.map((view) => (
+          <Route path={view.path} component={view.header} exact={view.exact} />
+        ))}
+      </Switch>
 
-      <EventListings events={data.allEvents.edges} removePast={true} />
+      {/*<h1>{filter ? JSON.stringify(filter) : 'All events'}</h1>*/}
+      {/*<h2>Showing {data.allEvents.edges.length} events</h2>*/}
+
+      {!data && loading ? (
+        <Loader />
+      ) : (
+        <EventListings
+          loading={loading}
+          events={data?.allEvents.edges ?? []}
+          removePast={true}
+        />
+      )}
     </React.Fragment>
   );
 };
-
-export { EventsList };

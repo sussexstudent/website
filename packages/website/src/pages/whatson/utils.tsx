@@ -171,13 +171,14 @@ export function getSmartDate(part: EventPart): string | React.ReactElement {
   }
 
   if (isBefore(part.date, startOfNextWeek)) {
-    return formatDate(part.date, 'EEEE');
+    return `This ${formatDate(part.date, 'EEEE')}`;
   }
 
   return (
     <span>
-      {formatDate(part.date, 'EEEE')} {getDate(part.date)}
-      <sup>{getOrdinal(getDate(part.date))}</sup>
+      {formatDate(part.date, 'EEE')} {getDate(part.date)}
+      <sup>{getOrdinal(getDate(part.date))}</sup>{' '}
+      {formatDate(part.date, 'LLL yyyy')}
     </span>
   );
 }

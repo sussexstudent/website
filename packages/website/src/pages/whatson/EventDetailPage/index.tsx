@@ -161,10 +161,17 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
             </div>
           </div>
           {event.children.length > 0 ? (
-            <div>
+            <div css={{ margin: '2rem 0' }}>
               <span className="u-position-anchor" id="sub-events" />
               <h2 className="Heading Heading--tight">Part of this event</h2>
-              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns:
+                    'repeat( auto-fill, minmax(200px, 1fr) )',
+                  gridGap: '1rem',
+                }}
+              >
                 {event.children.map((childEvent) => (
                   <div>
                     <WhatsOnEventCard event={childEvent} />

@@ -10,6 +10,7 @@ interface InternalAppLinkComponentProps {
   innerRef?: any;
   nav?: boolean;
   activeStyle?: any;
+  exact?: boolean;
 }
 
 type Props = InternalAppLinkComponentProps & React.HTMLProps<HTMLAnchorElement>;
@@ -18,6 +19,7 @@ export const InternalAppLink: React.FC<Props> = ({
   to,
   innerRef,
   nav,
+  exact,
   ...props
 }) => {
   const mapState = useCallback(
@@ -34,7 +36,7 @@ export const InternalAppLink: React.FC<Props> = ({
     if (isClientRendered) {
       if (history) {
         if (nav) {
-          return <NavLink to={to} {...(props as any)} />; // todo
+          return <NavLink to={to} {...(props as any)} exact={exact} />; // todo
         }
         return <Link to={to} {...(props as any)} />; // todo
       }

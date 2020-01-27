@@ -56,16 +56,20 @@ query getFullEventInfo($eventId: Int) {
     audienceGoodToMeetPeople
 
     type {
+      id
       name
     }
 
     categories {
+      id
       name
       slug
       parent {
+        id
         name
         slug
         parent {
+          id
           name
           slug
         }
@@ -73,11 +77,13 @@ query getFullEventInfo($eventId: Int) {
     }
 
     bundle {
+      id
       name
       slug
     }
 
     brand {
+      id
       name
       slug
       eventAppend
@@ -85,6 +91,7 @@ query getFullEventInfo($eventId: Int) {
       overrideListingsRoot
     }
     venue {
+      id
       name
       websiteLink
     }
@@ -92,6 +99,7 @@ query getFullEventInfo($eventId: Int) {
       resource
     }
     studentGroup {
+      id
       name
       link
     }
@@ -121,15 +129,19 @@ fragment EventCard on Event {
   isOver18Only
   canceledAt
   type {
+    id
     name
   }
   categories {
+    id
     name
   }
   bundle {
+    id
     name
   }
   venue {
+    id
     name
     websiteLink
   }

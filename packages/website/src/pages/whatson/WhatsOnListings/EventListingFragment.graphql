@@ -18,18 +18,26 @@ fragment EventListingFragment on Event {
   isOver18Only
 
   type {
+    id
     name
   }
+
   categories {
+    id
     name
   }
+
   userLike {
     source
   }
+
   bundle {
+    id
     name
   }
+
   venue {
+    id
     name
     websiteLink
   }

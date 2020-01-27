@@ -40,7 +40,7 @@ export const EventBundle: React.FC<EventBundleProps> = ({
   const { allEvents, bundle } = data;
 
   return (
-    <div className="LokiContainer">
+    <div css={{ padding: '0 1rem' }}>
       <Helmet>
         <title>{`${bundle.name} | What's on | Sussex Students' Union`}</title>
       </Helmet>
@@ -56,8 +56,7 @@ export const EventBundle: React.FC<EventBundleProps> = ({
       {bundle.ticketData ? (
         <BuyButton title="Buy Bundle" href={bundle.ticketData} />
       ) : null}
-
-      <EventListings events={allEvents} removePast={false} />
+      <EventListings events={allEvents.edges} removePast={false} />
     </div>
   );
 };

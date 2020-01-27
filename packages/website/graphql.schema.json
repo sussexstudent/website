@@ -661,16 +661,6 @@
             "description": "",
             "args": [
               {
-                "name": "brand",
-                "description": "",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
                 "name": "skipEmbargo",
                 "description": "",
                 "type": {
@@ -826,6 +816,78 @@
                   "ofType": {
                     "kind": "OBJECT",
                     "name": "BrandingPeriod",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "allEventCategories",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Category",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "allEventTypes",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Type",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "allGroupsWithEvents",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "StudentGroup",
                     "ofType": null
                   }
                 }
@@ -1117,7 +1179,7 @@
         "fields": [
           {
             "name": "pageInfo",
-            "description": "Pagination data for this connection.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -1176,11 +1238,11 @@
       {
         "kind": "OBJECT",
         "name": "PageInfo",
-        "description": "The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.",
+        "description": "",
         "fields": [
           {
             "name": "hasNextPage",
-            "description": "When paginating forwards, are there more items?",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -1196,7 +1258,7 @@
           },
           {
             "name": "hasPreviousPage",
-            "description": "When paginating backwards, are there more items?",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -1212,7 +1274,7 @@
           },
           {
             "name": "startCursor",
-            "description": "When paginating backwards, the cursor to continue.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -1224,7 +1286,7 @@
           },
           {
             "name": "endCursor",
-            "description": "When paginating forwards, the cursor to continue.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -1290,7 +1352,7 @@
         "fields": [
           {
             "name": "id",
-            "description": "The ID of the object.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -1540,11 +1602,11 @@
       {
         "kind": "INTERFACE",
         "name": "Node",
-        "description": "An object with an ID",
+        "description": "",
         "fields": [
           {
             "name": "id",
-            "description": "The ID of the object.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -1762,7 +1824,7 @@
       {
         "kind": "ENUM",
         "name": "MarketListingState",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -1797,7 +1859,7 @@
       {
         "kind": "SCALAR",
         "name": "DateTime",
-        "description": "The `DateTime` scalar type represents a DateTime\nvalue as specified by\n[iso8601](https://en.wikipedia.org/wiki/ISO_8601).",
+        "description": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -1811,7 +1873,7 @@
         "fields": [
           {
             "name": "pageInfo",
-            "description": "Pagination data for this connection.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -1827,7 +1889,7 @@
           },
           {
             "name": "edges",
-            "description": "Contains the nodes in this connection.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -1854,11 +1916,11 @@
       {
         "kind": "OBJECT",
         "name": "ImageEdge",
-        "description": "A Relay edge containing a `Image` and its cursor.",
+        "description": "",
         "fields": [
           {
             "name": "node",
-            "description": "The item at the end of the edge",
+            "description": "",
             "args": [],
             "type": {
               "kind": "OBJECT",
@@ -1870,7 +1932,7 @@
           },
           {
             "name": "cursor",
-            "description": "A cursor for use in pagination",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -1929,7 +1991,7 @@
           },
           {
             "name": "id",
-            "description": "The ID of the object.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -2081,14 +2143,14 @@
       {
         "kind": "ENUM",
         "name": "FlagMode",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "FORCE",
-            "description": "Force",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -2229,7 +2291,7 @@
       {
         "kind": "SCALAR",
         "name": "JSONString",
-        "description": "Allows use of a JSON String for input / output from the GraphQL schema.\n\nUse of this type is *not recommended* as you lose the benefits of having a defined, static\nschema (one of the key benefits of GraphQL).",
+        "description": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -2388,6 +2450,38 @@
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "identifier",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "isStaff",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -4352,7 +4446,7 @@
       {
         "kind": "SCALAR",
         "name": "GenericStreamFieldType",
-        "description": "",
+        "description": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -4868,7 +4962,7 @@
       {
         "kind": "SCALAR",
         "name": "RichTextFieldType",
-        "description": "",
+        "description": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -7324,7 +7418,7 @@
         "fields": [
           {
             "name": "pageInfo",
-            "description": "Pagination data for this connection.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -7340,7 +7434,7 @@
           },
           {
             "name": "edges",
-            "description": "Contains the nodes in this connection.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -7367,11 +7461,11 @@
       {
         "kind": "OBJECT",
         "name": "EventEdge",
-        "description": "A Relay edge containing a `Event` and its cursor.",
+        "description": "",
         "fields": [
           {
             "name": "node",
-            "description": "The item at the end of the edge",
+            "description": "",
             "args": [],
             "type": {
               "kind": "OBJECT",
@@ -7383,7 +7477,7 @@
           },
           {
             "name": "cursor",
-            "description": "A cursor for use in pagination",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -7666,7 +7760,7 @@
           },
           {
             "name": "id",
-            "description": "The ID of the object.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -8364,7 +8458,7 @@
         "fields": [
           {
             "name": "id",
-            "description": "The ID of the object.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -8817,7 +8911,7 @@
           },
           {
             "name": "outletpageSet",
-            "description": "Link this outlet with a venue's events",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -8870,26 +8964,26 @@
       {
         "kind": "ENUM",
         "name": "VenueContainsLowLight",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "A_0",
-            "description": "Not set/inherit",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_1",
-            "description": "False",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_2",
-            "description": "True",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -8899,26 +8993,26 @@
       {
         "kind": "ENUM",
         "name": "VenueContainsFlashingLights",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "A_0",
-            "description": "Not set/inherit",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_1",
-            "description": "False",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_2",
-            "description": "True",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -8928,26 +9022,26 @@
       {
         "kind": "ENUM",
         "name": "VenueContainsLoudMusic",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "A_0",
-            "description": "Not set/inherit",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_1",
-            "description": "False",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_2",
-            "description": "True",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -8957,26 +9051,26 @@
       {
         "kind": "ENUM",
         "name": "VenueHasGenderNeutralToilets",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "A_0",
-            "description": "Not set/inherit",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_1",
-            "description": "False",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_2",
-            "description": "True",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -8986,26 +9080,26 @@
       {
         "kind": "ENUM",
         "name": "VenueHasAccessibleToilets",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "A_0",
-            "description": "Not set/inherit",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_1",
-            "description": "False",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_2",
-            "description": "True",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -9015,26 +9109,26 @@
       {
         "kind": "ENUM",
         "name": "VenueHasChangingFacilities",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "A_0",
-            "description": "Not set/inherit",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_1",
-            "description": "False",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_2",
-            "description": "True",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -9044,26 +9138,26 @@
       {
         "kind": "ENUM",
         "name": "VenueContainsUnevenGround",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "A_0",
-            "description": "Not set/inherit",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_1",
-            "description": "False",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_2",
-            "description": "True",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -9073,26 +9167,26 @@
       {
         "kind": "ENUM",
         "name": "VenueHasLevelAccess",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "A_0",
-            "description": "Not set/inherit",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_1",
-            "description": "False",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "A_2",
-            "description": "True",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -9102,26 +9196,26 @@
       {
         "kind": "ENUM",
         "name": "VenueVenueType",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "CLUB",
-            "description": "Nightclub",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "BAR",
-            "description": "Bar",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "NA",
-            "description": "Uncategorised",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -9211,7 +9305,7 @@
           },
           {
             "name": "linkedVenue",
-            "description": "Link this outlet with a venue's events",
+            "description": "",
             "args": [],
             "type": {
               "kind": "OBJECT",
@@ -9657,7 +9751,7 @@
         "fields": [
           {
             "name": "id",
-            "description": "The ID of the object.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -10396,56 +10490,56 @@
       {
         "kind": "ENUM",
         "name": "AwardIcon",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "COMMUNITY",
-            "description": "LeafCommunity",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "DEVELOPMENT",
-            "description": "LeafDevelopment",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "SOCIAL",
-            "description": "LeafSocial",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "STUDENT_VOICE",
-            "description": "LeafStudentVoice",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "TEAM_SUSSEX",
-            "description": "LeafTeamSussex",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "COMMUNICATIONS",
-            "description": "LeafCommunications",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "FUNDRAISING",
-            "description": "LeafFundraising",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "INCLUSIVITY",
-            "description": "LeafInclusivity",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -10777,26 +10871,26 @@
       {
         "kind": "ENUM",
         "name": "BundleTicketLevel",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "NA",
-            "description": "Not applicable",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "LA",
-            "description": "Limited availability",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "SO",
-            "description": "Sold out",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -10806,44 +10900,44 @@
       {
         "kind": "ENUM",
         "name": "BundleTicketType",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "NA",
-            "description": "n/a",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "NT",
-            "description": "Native",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "EB",
-            "description": "Eventbrite",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "AC",
-            "description": "ACCA",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "GN",
-            "description": "Generic",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "MSL",
-            "description": "MSL",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -11231,7 +11325,7 @@
             "deprecationReason": null
           },
           {
-            "name": "eventSet",
+            "name": "events",
             "description": "",
             "args": [
               {
@@ -11359,7 +11453,7 @@
             "deprecationReason": null
           },
           {
-            "name": "eventSet",
+            "name": "events",
             "description": "",
             "args": [
               {
@@ -11668,7 +11762,7 @@
           },
           {
             "name": "id",
-            "description": "The ID of the object.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -11836,26 +11930,26 @@
       {
         "kind": "ENUM",
         "name": "EventLikeSource",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "USER",
-            "description": "User",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "UNLIKED",
-            "description": "Unliked",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "RECOMMENDATION",
-            "description": "Recommendation",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -11865,26 +11959,26 @@
       {
         "kind": "ENUM",
         "name": "EventLikeInitialSource",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "USER",
-            "description": "User",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "UNLIKED",
-            "description": "Unliked",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "RECOMMENDATION",
-            "description": "Recommendation",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -11894,26 +11988,26 @@
       {
         "kind": "ENUM",
         "name": "EventLikeSourceLocation",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "LISTINGS",
-            "description": "Listings",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "COLLECTION",
-            "description": "Collection",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "MATCHER",
-            "description": "Matcher",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -19566,7 +19660,7 @@
       {
         "kind": "SCALAR",
         "name": "GenericScalar",
-        "description": "The `GenericScalar` scalar type represents a generic\nGraphQL scalar value that could be:\nString, Boolean, Int, Float, List or Object.",
+        "description": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -19579,6 +19673,38 @@
         "description": "",
         "fields": [
           {
+            "name": "id",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "contentType",
             "description": "",
             "args": [],
@@ -19586,6 +19712,22 @@
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "codename",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -19603,7 +19745,7 @@
         "fields": [
           {
             "name": "pageInfo",
-            "description": "Pagination data for this connection.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -19709,7 +19851,7 @@
         "fields": [
           {
             "name": "id",
-            "description": "The ID of the object.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -19725,7 +19867,7 @@
           },
           {
             "name": "companyName",
-            "description": "Display name of the company offering the deal",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -19741,7 +19883,7 @@
           },
           {
             "name": "companyLogo",
-            "description": "Companies logo displayed next to the offer",
+            "description": "",
             "args": [],
             "type": {
               "kind": "OBJECT",
@@ -19769,7 +19911,7 @@
           },
           {
             "name": "dealTag",
-            "description": "The deal itself, \"40%\", \"By one get one free\", etc",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -19941,14 +20083,14 @@
       {
         "kind": "ENUM",
         "name": "BannerPurpose",
-        "description": "An enumeration.",
+        "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
             "name": "NOTICE",
-            "description": "Notice",
+            "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -20330,7 +20472,7 @@
         "fields": [
           {
             "name": "id",
-            "description": "The ID of the object.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -20431,7 +20573,7 @@
         "fields": [
           {
             "name": "pageInfo",
-            "description": "Pagination data for this connection.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -20561,7 +20703,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "ID",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -20601,7 +20743,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "ID",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -20728,7 +20870,7 @@
         "fields": [
           {
             "name": "pageInfo",
-            "description": "Pagination data for this connection.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -20834,7 +20976,7 @@
         "fields": [
           {
             "name": "pageInfo",
-            "description": "Pagination data for this connection.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -20935,12 +21077,71 @@
       },
       {
         "kind": "OBJECT",
+        "name": "Category",
+        "description": "",
+        "fields": [
+          {
+            "name": "id",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "slug",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
         "name": "StudentGroupConnectionExt",
         "description": "",
         "fields": [
           {
             "name": "pageInfo",
-            "description": "Pagination data for this connection.",
+            "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",

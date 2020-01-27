@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
-import { EventListings } from './EventListings';
 import { Helmet } from 'react-helmet-async';
 import BrandingPeriodQuery from './BrandingPeriod.graphql';
-import EventListingsQuery from './EventListings.graphql';
 import { ErrorState } from '../../../components/ErrorState';
-import { RouteComponentProps } from 'react-router';
 import { useQuery } from '@apollo/react-hooks';
 import { Loader } from '../../../components/Loader';
 import {
@@ -12,44 +9,11 @@ import {
   useWhatsOnThemingContext,
 } from '../WhatsOnBrandingContext';
 import { BrandingPeriodHeader, BundleBanner } from '../branding/components';
-import { getFirstItemOrValue } from '@ussu/common/src/libs/qs';
-import qs from 'query-string';
-import { pickBy, mapValues } from 'lodash';
-import { isAfter, max } from 'date-fns';
-import {
-  GetBrandingPeriodQuery,
-  GetAllEventsWithFilterQuery,
-} from '../../../generated/graphql';
+import { GetBrandingPeriodQuery } from '../../../generated/graphql';
+import { useParams } from 'react-router-dom';
 
-export interface EventBrandingPeriodProps
-  extends RouteComponentProps<{ brandSlug: string }> {
-  filter: any;
-}
-const filteringAcceptions = [
-  'audienceJustForPgs',
-  'audienceSuitableKidsFamilies',
-  'audienceGoodToMeetPeople',
-  'cost',
-  'isOver18Only',
-  'ticketLevel',
-];
-
-const filteringReplacements: { [k: string]: any } = {
-  true: true,
-  false: false,
-  null: null,
-};
-
-export const EventBrandingPeriod: React.FC<EventBrandingPeriodProps> = ({
-  match: {
-    params: { brandSlug },
-  },
-}) => {
-  const filtering = location
-    ? pickBy(getFirstItemOrValue(qs.parse(location.search)), (_v, k) =>
-        filteringAcceptions.includes(k),
-      )
-    : {};
+export const EventBrandingPeriod: React.FC = () => {
+  const { brandSlug } = useParams();
 
   const {
     data: brandData,
@@ -60,59 +24,30 @@ export const EventBrandingPeriod: React.FC<EventBrandingPeriodProps> = ({
       brandSlug,
     },
   });
-  const {
-    data: listingsData,
-    loading: listingsLoading,
-    error: listingsError,
-  } = useQuery<GetAllEventsWithFilterQuery>(EventListingsQuery, {
-    variables: {
-      filter: {
-        brand: brandSlug,
-        ...mapValues(filtering, (v) =>
-          filteringReplacements.hasOwnProperty(v)
-            ? filteringReplacements[v]
-            : v,
-        ),
-      },
-    },
-  });
+
   const dispatch = useWhatsOnThemingContext()[1];
 
   useEffect(() => {
-    dispatch(setBrandingPeriod(brandSlug));
+    dispatch(setBrandingPeriod(brandSlug || ''));
   }, [brandSlug, dispatch]);
 
-  if (brandLoading || listingsLoading) {
+  if (brandLoading) {
     return <Loader dark />;
   }
 
-  if (brandError || !brandData || !listingsData) {
+  if (brandError || !brandData) {
     return <ErrorState />;
   }
 
   const { brandingPeriod } = brandData;
-  const { allEvents } = listingsData;
-
-  const latestDate = max(allEvents.edges.map((e) => new Date(e.node.endTime)));
 
   return (
-    <div className="LokiContainer">
+    <div css={{ padding: '0 1rem' }}>
       <Helmet>
-        <title>{`${brandingPeriod.name} | What's on | Sussex Students' Union`}</title>
+        <title>{`${brandingPeriod.name} | What's on`}</title>
       </Helmet>
 
       <BrandingPeriodHeader brandingPeriod={brandingPeriod} />
-
-      {listingsLoading ? (
-        <Loader dark />
-      ) : listingsData && !listingsError ? (
-        <EventListings
-          events={allEvents}
-          removePast={!isAfter(new Date(), latestDate)}
-        />
-      ) : (
-        <ErrorState />
-      )}
 
       {brandingPeriod.bundleSet && brandingPeriod.bundleSet.length > 0 ? (
         <BundleBanner bundle={brandingPeriod.bundleSet[0]} onEvent={false} />

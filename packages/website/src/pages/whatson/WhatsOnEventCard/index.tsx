@@ -6,8 +6,7 @@ import { EventRelativeTime } from '../WhatsOnListings/EventRelativeTime';
 import { AspectRatio, OneImage } from '../../../components/OneImage';
 import { PatternPlaceholder } from '../../../components/PatternPlaceholder';
 import { EventLikeButton } from '../WhatsOnListings/EventLikeButton';
-import { cardActionable, contentCard } from '@ussu/basil/src/style/cards';
-import { COLORS, MQ } from '@ussu/basil/src/style';
+import { COLORS } from '@ussu/basil/src/style';
 import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 import { getTagsForEvent } from './tags';
 import { renderEventLocation } from './utils';
@@ -34,24 +33,19 @@ export const WhatsOnEventCard: React.FC<EventsCalenderItemProps> = ({
     <div
       className="EventsCalender__item"
       css={[
-        cardActionable,
-        contentCard,
         {
-          background: '#fff',
+          borderRadius: 6,
+          overflow: 'hidden',
           display: 'block',
           position: 'relative',
-          marginBottom: '1rem',
           width: '100%',
-          [MQ.Small]: {
-            width: 240,
-            marginRight: '1rem',
-          },
-          [MQ.Medium]: {
-            width: 280,
-          },
-          [MQ.Large]: {
-            marginRight: '1.5rem',
-            width: 320,
+          transition: 'box-shadow 300ms ease, background 300ms ease',
+          background: 'transparent',
+          boxShadow: '0 2px 0px rgba(30, 30, 30, 0)',
+          '&:hover': {
+            background: '#fff',
+            boxShadow:
+              '0 2px 12px rgba(30, 30, 30, 0.1), 0 0 2px rgba(30, 30, 80, 0.1)',
           },
         },
       ]}
@@ -97,25 +91,31 @@ export const WhatsOnEventCard: React.FC<EventsCalenderItemProps> = ({
           },
         ]}
       >
-        {event.kicker ? (
-          <div
-            css={[
-              type(TypeSize.Minion, Typeface.Secondary),
-              {
-                marginTop: '0.3rem',
-                fontWeight: 600,
-              },
-            ]}
-          >
-            {event.kicker}
-          </div>
-        ) : null}
+        <div css={[type(TypeSize.Minion, Typeface.Secondary)]}>
+          <span css={{ color: COLORS.BRAND_RED, fontWeight: 600 }}>
+            {showDay ? formatDate(new Date(event.startTime), 'EEE ') : ''}
+            {minimalisticTimeRenderer(new Date(event.startTime))}
+          </span>
+          {event.kicker ? (
+            <span
+              css={[
+                {
+                  paddingLeft: '0.5rem',
+                  marginTop: '0.3rem',
+                  fontWeight: 600,
+                },
+              ]}
+            >
+              {event.kicker}
+            </span>
+          ) : null}
+        </div>
         <div
           css={[
-            type(TypeSize.GreatPrimer, Typeface.Secondary),
+            type(TypeSize.Pica, Typeface.Secondary),
             {
               fontWeight: '600',
-              margin: '0.2rem 0 0.4rem 0',
+              padding: '0.2rem 0',
             },
           ]}
         >
@@ -125,6 +125,7 @@ export const WhatsOnEventCard: React.FC<EventsCalenderItemProps> = ({
         <div
           css={{
             fontSize: '0.8rem',
+            display: 'none',
           }}
         >
           {event.shortDescription}
@@ -135,16 +136,11 @@ export const WhatsOnEventCard: React.FC<EventsCalenderItemProps> = ({
             {
               color: COLORS.GREY_SLATE,
               fontWeight: 500,
-              paddingTop: '1rem',
               fontSize: '0.8rem',
             },
           ]}
         >
-          {showDay ? formatDate(new Date(event.startTime), 'EEE ') : ''}
-          {minimalisticTimeRenderer(new Date(event.startTime))}
-          <span> – </span>
-          {minimalisticTimeRenderer(new Date(event.endTime))}
-          {renderEventLocation(event)}
+          <span>{renderEventLocation(event)}</span>
         </div>
       </div>
     </div>

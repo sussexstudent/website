@@ -249,6 +249,14 @@ declare module '*/LikeEvent.graphql' {
   export default defaultDocument;
 }
 
+declare module '*/WhatsOnGroupHeader.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const getStudentGroupBySlug: DocumentNode;
+
+  export default defaultDocument;
+}
+
 declare module '*/MyProgramme.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

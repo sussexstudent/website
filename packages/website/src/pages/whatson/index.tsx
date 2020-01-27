@@ -1,42 +1,19 @@
-import React from 'react';
-import { Switch, Redirect, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { RouteComponent } from '@ussu/common/src/types/routes';
 import { ScrollToTop } from '../../components/ScrollToTop';
-import { EventBundleProps } from './WhatsOnListings/EventBundle';
-import { EventsListProps } from './WhatsOnListings';
-import { EventBrandingPeriodProps } from './WhatsOnListings/EventBrandingPeriod';
 import { EventDetailPageProps } from './EventDetailPage';
 import loadable from '@loadable/component';
 import { BrandingContainer } from './branding/components';
 import { WhatsOnThemingProvider } from './WhatsOnBrandingContext';
-import {
-  Wayfinder,
-  WayfinderTopLevel,
-  WayfinderItem,
-} from '../../components/Wayfinder';
-import LIVE_BRANDING_PERIOD_QUERY from './LiveBrandingPeriods.graphql';
-import { useQuery } from '@apollo/react-hooks';
-import { GetLiveBrandingPeriodsQuery } from '../../generated/graphql';
-import HeartFull from '../../icons/heart-full.svg';
-
-const LoadableListings = loadable<EventsListProps>(async () => {
-  const { EventsList } = await import('./WhatsOnListings');
-  return (props) => <EventsList {...props} />;
-});
-
-const LoadableListingsBranding = loadable<EventBrandingPeriodProps>(
-  async () => {
-    const { EventBrandingPeriod } = await import(
-      './WhatsOnListings/EventBrandingPeriod'
-    );
-    return (props) => <EventBrandingPeriod {...props} />;
-  },
-);
-
-const LoadableBundle = loadable<EventBundleProps>(async () => {
-  const { EventBundle } = await import('./WhatsOnListings/EventBundle');
-  return (props) => <EventBundle {...props} />;
-});
+import { WhatsOnSidebar } from './WhatsOnSidebar';
+import { whatsOnListingViews } from './WhatsOnListings/views';
+import { flatten } from 'lodash';
+import { createBreakpoint } from 'react-use';
+import { NewListings } from './WhatsOnListings/NewListings';
+import { COLORS, MQ } from '@ussu/basil/src/style';
+import { Modal } from '../../components/Modal';
+import { MenuIcon } from '../../components/MenuIcon';
 
 const LoadableDetail = loadable<EventDetailPageProps>(async () => {
   const { EventDetailPage } = await import('./EventDetailPage');
@@ -50,96 +27,116 @@ const LoadableMyProgramme = loadable(async () => {
 
 type EventsApplicationProps = RouteComponent;
 
-// componentDidMount() {
-//   removePageContainer();
-//   window.addEventListener('scroll', debounce(this.onScroll, 100));
-// }
-
-// @bind
-// onScroll() {
-//   if (this.props.location.pathname === '/whats-on' && window.scrollY !== 0) {
-//     this.setState({ currentListingsScrollPosition: window.scrollY });
-//   }
-// }
-//
-// componentDidUpdate(prevProps: EventsApplicationProps) {
-//   if (
-//     this.props.location.pathname === '/whats-on' &&
-//     this.props.location.pathname !== prevProps.location.pathname &&
-//     this.state.currentListingsScrollPosition !== null
-//   ) {
-//     requestAnimationFrame(() =>
-//       window.scrollTo({ top: this.state.currentListingsScrollPosition }),
-//     );
-//   }
-// }
+const useBreakpoint = createBreakpoint({ Medium: 768, Mobile: 350 });
 
 export const WhatsOn: React.FC<EventsApplicationProps> = () => {
-  const { data } = useQuery<GetLiveBrandingPeriodsQuery>(
-    LIVE_BRANDING_PERIOD_QUERY,
-  );
+  const breakpoint = useBreakpoint();
+  const [sidebarModal, setSidebarModal] = useState(false);
 
   return (
     <WhatsOnThemingProvider>
       <ScrollToTop>
         <BrandingContainer>
-          <div className="u-keep-footer-down js-expand-container">
-            <Wayfinder>
-              <WayfinderTopLevel title="What's on" to="/whats-on">
-                <WayfinderItem to="/whats-on/liked">
-                  <div
-                    css={{
-                      width: 16,
-                      height: 16,
-                      color: '#ff005d',
-                    }}
-                  >
-                    <HeartFull />
-                  </div>
-                </WayfinderItem>
-                {data?.allBrandingPeriods && data.allBrandingPeriods.length > 0
-                  ? data.allBrandingPeriods.map((period) => (
-                      <WayfinderItem
-                        key={period.slug}
-                        to={`/whats-on/periods/${period.slug}`}
-                      >
-                        {period.name}
-                      </WayfinderItem>
-                    ))
-                  : null}
-                <WayfinderItem to="/get-involved/societies-and-student-media/guides/events/hold-event'">
-                  Hold an event
-                </WayfinderItem>
-              </WayfinderTopLevel>
-            </Wayfinder>
-            <Switch>
-              <Route component={LoadableListings} path="/whats-on" exact />
-              <Route
-                component={LoadableBundle}
-                path="/whats-on/bundle/:bundleSlug"
-                exact
-              />
-              <Redirect
-                from="/whats-on/period/:brandSlug"
-                to="/whats-on/periods/:brandSlug"
-              />
-              <Redirect
-                from="/whats-on/collections/:brandSlug"
-                to="/whats-on/periods/:brandSlug"
-              />
-              <Redirect
-                from="/whats-on/collection/:brandSlug"
-                to="/whats-on/periods/:brandSlug"
-              />
-              <Route
-                component={LoadableListingsBranding}
-                path="/whats-on/periods/:brandSlug"
-                exact
-              />
-              <Route path="/whats-on/liked" component={LoadableMyProgramme} />
-              <Route path="/whats-on/**-:eventId" component={LoadableDetail} />
-              <Route path="/whats-on/:eventId" component={LoadableDetail} />
-            </Switch>
+          {breakpoint === 'Mobile' && (
+            <button
+              onClick={() => setSidebarModal(true)}
+              css={{
+                zIndex: 200,
+                borderRadius: '50%',
+                boxShadow:
+                  '0 3px 12px 1px rgba(30, 30, 30, 0.22), 0 2px 3px rgba(30, 30, 30, 0.1)',
+                position: 'fixed',
+                bottom: 20,
+                right: 20,
+                display: 'block',
+                width: 48,
+                padding: 12,
+                height: 48,
+                background: COLORS.BRAND_RED,
+                border: 0,
+              }}
+            >
+              <MenuIcon />
+            </button>
+          )}
+          <div
+            css={{
+              display: 'flex',
+              marginTop: '-1rem',
+            }}
+          >
+            {breakpoint === 'Mobile' ? (
+              <Modal
+                isOpen={sidebarModal}
+                footerClose={true}
+                onRequestClose={() => setSidebarModal(false)}
+              >
+                <WhatsOnSidebar />
+              </Modal>
+            ) : (
+              <aside
+                css={{
+                  [MQ.Medium]: {
+                    flex: '0 0 16rem',
+                    position: 'sticky',
+                    height: '100vh',
+                    overflowY: 'auto',
+                    padding: '1rem',
+                    paddingBottom: '3rem',
+                    top: 0,
+                    background: '#f0f0f6',
+                    boxSizing: 'border-box',
+                  },
+                }}
+              >
+                <WhatsOnSidebar />
+              </aside>
+            )}
+
+            <div
+              css={{
+                flex: 'auto',
+              }}
+            >
+              <div className="u-keep-footer-down js-expand-container useAppScroll">
+                <Switch>
+                  <Redirect
+                    from="/whats-on/periods/*"
+                    to="/whats-on/collections/*"
+                  />
+                  <Route
+                    path="/whats-on/groups"
+                    component={() => (
+                      <h1>List of student groups with events</h1>
+                    )}
+                    exact
+                  />
+                  <Route
+                    path="/whats-on/venues"
+                    component={() => <h1>List of venues with events</h1>}
+                    exact
+                  />
+                  <Route
+                    path="/whats-on/collections"
+                    component={() => <h1>List of periods with events</h1>}
+                    exact
+                  />
+                  <Route
+                    path={flatten(whatsOnListingViews.map((view) => view.path))}
+                    component={NewListings}
+                    exact={true}
+                  />
+                  <Route
+                    path="/whats-on/saved"
+                    component={LoadableMyProgramme}
+                  />
+                  <Route
+                    path={['/whats-on/**-:eventId', '/whats-on/:eventId']}
+                    component={LoadableDetail}
+                  />
+                </Switch>
+              </div>
+            </div>
           </div>
         </BrandingContainer>
       </ScrollToTop>

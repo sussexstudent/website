@@ -1,0 +1,11 @@
+query getStudentGroupBySlug($slug: String!) {
+  group(groupSlug: $slug) {
+    id
+    name
+    description
+    logo {
+      id
+      resource
+    }
+  }
+}

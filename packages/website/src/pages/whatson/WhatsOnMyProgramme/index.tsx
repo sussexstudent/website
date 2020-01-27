@@ -32,22 +32,22 @@ export const WhatsOnMyProgramme: React.FC = () => {
     return (
       <LikedEmptyState
         title="Log in to build your events programme"
-        description="Like events you're interested in to save them here"
+        description="Save events you're interested here"
       />
     );
   }
 
   return (
-    <div className="LokiContainer">
+    <div>
       {!data || data.allEvents.edges.length <= 0 ? (
         <LikedEmptyState
-          title="You haven't got any upcoming events"
+          title="You haven't saved any upcoming events"
           description="Explore What's On to find events you're interested in"
         />
       ) : (
         <React.Fragment>
-          <h1>Liked events</h1>
-          <EventListings events={data.allEvents} removePast />
+          <h1>Saved events</h1>
+          <EventListings events={data.allEvents.edges} removePast />
         </React.Fragment>
       )}
     </div>

@@ -1,0 +1,7 @@
+query getGroupsWithEvents {
+  allGroupsWithEvents {
+    id
+    name
+    slug
+  }
+}

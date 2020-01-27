@@ -1,5 +1,6 @@
 query getBrandingPeriod($brandSlug: String!) {
   brandingPeriod(slug: $brandSlug) {
+    id
     name
     logo {
       resource

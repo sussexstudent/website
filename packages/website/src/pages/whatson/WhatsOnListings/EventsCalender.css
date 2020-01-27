@@ -1,10 +1,9 @@
 .EventsCalender {
-  border-left: 3px solid var(--color__brand-green);
-  padding-left: 1lh;
   position: relative;
+  margin: 0 1rem;
 
-  @media (--medium) {
-    margin-left: 10px;
+  &--loading {
+    opacity: 0.4;
   }
 
   &__section {
@@ -28,9 +27,10 @@
   }
 
   &__section-items {
-    margin-bottom: 2rem;
-    display: flex;
-    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 2rem;
 
     & .EventsCalender__part-container:first-child,
     .EventsCalender__item-date-kicker {
@@ -77,48 +77,23 @@
     }
   }
 
-  &__part-container {
-    width: 100%;
-    margin-bottom: 0.5rem;
-
-    @media (--small) {
-      width: auto;
-    }
-  }
-
   &__item-date-kicker {
-    font-weight: 500;
-    color: var(--color__brand-blue);
-    font-family: var(--type__secondary);
+    font-weight: 600;
+    color: var(--color__brand-red);
+    font-family: var(--type__primary);
+    @mixin type DoublePica;
     position: sticky;
     z-index: var(--layer__sticky-section-header-day);
-    top: 74px;
-    background: #fbfbfbee;
-    margin-top: 0;
-    padding-bottom: 0.4rem;
+    top: 0;
+    background: #fbfbfbff;
+    margin: 0 -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 0.2rem;
 
     sup {
       @mixin type Pica;
-    }
-
-    @media (--medium) {
-      top: 25px;
-    }
-
-    &::before {
-      content: '';
-      display: inline-block;
-      border-radius: 50%;
-      width: 12px;
-      height: 12px;
-      margin-left: -30px;
-      margin-right: 18px;
-      background-color: var(--color__brand-blue);
-    }
-
-    &--continuation {
-      opacity: 0;
-      transition: opacity 300ms ease;
     }
   }
 

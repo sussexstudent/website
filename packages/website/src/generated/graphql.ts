@@ -4387,35 +4387,50 @@ export type GetFullEventInfoQuery = {
     audienceSuitableKidsFamilies: boolean;
     audienceGoodToMeetPeople: boolean;
     userLike: Maybe<{ __typename: 'EventLike' } & UserLikeFragment>;
-    type: Maybe<{ __typename: 'Type'; name: string }>;
+    type: Maybe<{ __typename: 'Type'; id: string; name: string }>;
     categories: Array<{
       __typename: 'CategoryNode';
+      id: string;
       name: string;
       slug: string;
       parent: Maybe<{
         __typename: 'CategoryNode';
+        id: string;
         name: string;
         slug: string;
         parent: Maybe<{
           __typename: 'CategoryNode';
+          id: string;
           name: string;
           slug: string;
         }>;
       }>;
     }>;
-    bundle: Maybe<{ __typename: 'Bundle'; name: string; slug: string }>;
+    bundle: Maybe<{
+      __typename: 'Bundle';
+      id: string;
+      name: string;
+      slug: string;
+    }>;
     brand: Maybe<{
       __typename: 'BrandingPeriod';
+      id: string;
       name: string;
       slug: string;
       eventAppend: any;
       accent: string;
       overrideListingsRoot: string;
     }>;
-    venue: Maybe<{ __typename: 'Venue'; name: string; websiteLink: string }>;
+    venue: Maybe<{
+      __typename: 'Venue';
+      id: string;
+      name: string;
+      websiteLink: string;
+    }>;
     featuredImage: Maybe<{ __typename: 'Image'; resource: string }>;
     studentGroup: Maybe<{
       __typename: 'StudentGroup';
+      id: string;
       name: string;
       link: string;
     }>;
@@ -4441,10 +4456,15 @@ export type EventCardFragment = {
   ticketType: EventTicketType;
   isOver18Only: boolean;
   canceledAt: Maybe<any>;
-  type: Maybe<{ __typename: 'Type'; name: string }>;
-  categories: Array<{ __typename: 'CategoryNode'; name: string }>;
-  bundle: Maybe<{ __typename: 'Bundle'; name: string }>;
-  venue: Maybe<{ __typename: 'Venue'; name: string; websiteLink: string }>;
+  type: Maybe<{ __typename: 'Type'; id: string; name: string }>;
+  categories: Array<{ __typename: 'CategoryNode'; id: string; name: string }>;
+  bundle: Maybe<{ __typename: 'Bundle'; id: string; name: string }>;
+  venue: Maybe<{
+    __typename: 'Venue';
+    id: string;
+    name: string;
+    websiteLink: string;
+  }>;
   featuredImage: Maybe<{ __typename: 'Image'; resource: string }>;
   userLike: Maybe<{ __typename: 'EventLike' } & UserLikeFragment>;
 };
@@ -4458,7 +4478,12 @@ export type GetEventTypesQueryVariables = {};
 
 export type GetEventTypesQuery = {
   __typename: 'Queries';
-  allEventTypes: Array<{ __typename: 'Type'; name: string; slug: string }>;
+  allEventTypes: Array<{
+    __typename: 'Type';
+    id: string;
+    name: string;
+    slug: string;
+  }>;
 };
 
 export type GetGroupsWithEventsQueryVariables = {};
@@ -4467,6 +4492,7 @@ export type GetGroupsWithEventsQuery = {
   __typename: 'Queries';
   allGroupsWithEvents: Array<{
     __typename: 'StudentGroup';
+    id: string;
     name: string;
     slug: Maybe<string>;
   }>;
@@ -4478,6 +4504,7 @@ export type GetLiveBrandingPeriodsQuery = {
   __typename: 'Queries';
   allBrandingPeriods: Array<{
     __typename: 'BrandingPeriod';
+    id: string;
     name: string;
     slug: string;
   }>;
@@ -4491,6 +4518,7 @@ export type GetBrandingPeriodQuery = {
   __typename: 'Queries';
   brandingPeriod: {
     __typename: 'BrandingPeriod';
+    id: string;
     name: string;
     description: any;
     accent: string;
@@ -4519,11 +4547,16 @@ export type EventListingFragmentFragment = {
   canceledAt: Maybe<any>;
   audienceSuitableKidsFamilies: boolean;
   isOver18Only: boolean;
-  type: Maybe<{ __typename: 'Type'; name: string }>;
-  categories: Array<{ __typename: 'CategoryNode'; name: string }>;
+  type: Maybe<{ __typename: 'Type'; id: string; name: string }>;
+  categories: Array<{ __typename: 'CategoryNode'; id: string; name: string }>;
   userLike: Maybe<{ __typename: 'EventLike'; source: EventLikeSource }>;
-  bundle: Maybe<{ __typename: 'Bundle'; name: string }>;
-  venue: Maybe<{ __typename: 'Venue'; name: string; websiteLink: string }>;
+  bundle: Maybe<{ __typename: 'Bundle'; id: string; name: string }>;
+  venue: Maybe<{
+    __typename: 'Venue';
+    id: string;
+    name: string;
+    websiteLink: string;
+  }>;
   featuredImage: Maybe<{ __typename: 'Image'; resource: string }>;
 };
 
@@ -4606,6 +4639,21 @@ export type LikeEventMutation = {
       id: string;
       userLike: Maybe<{ __typename: 'EventLike'; source: EventLikeSource }>;
     }>;
+  }>;
+};
+
+export type GetStudentGroupBySlugQueryVariables = {
+  slug: Scalars['String'];
+};
+
+export type GetStudentGroupBySlugQuery = {
+  __typename: 'Queries';
+  group: Maybe<{
+    __typename: 'StudentGroup';
+    id: string;
+    name: string;
+    description: string;
+    logo: Maybe<{ __typename: 'Image'; id: string; resource: string }>;
   }>;
 };
 

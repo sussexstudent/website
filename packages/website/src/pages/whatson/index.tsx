@@ -99,7 +99,7 @@ export const WhatsOn: React.FC<EventsApplicationProps> = () => {
                 flex: 'auto',
               }}
             >
-              <div className="u-keep-footer-down js-expand-container useAppScroll">
+              <div className="u-keep-footer-down js-expand-container">
                 <Switch>
                   <Redirect
                     from="/whats-on/periods/*"

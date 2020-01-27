@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router';
 
-function scrollToTopWithExpanded() {
+function scrollToTopWithExpanded(current: string, next: string) {
   const header = document.querySelector('.LokiHeader');
-  const app = document.querySelector('.useAppScroll');
-  if (app && header) {
+  if (
+    header &&
+    window.getComputedStyle(header).position !== 'fixed' &&
+    current.startsWith('/whats-on') &&
+    next.startsWith('/whats-on')
+  ) {
     window.scrollTo(0, header.getBoundingClientRect().height);
   } else {
     window.scrollTo(0, 0);
@@ -22,7 +26,7 @@ const ScrollToTopComponent: React.FC<RouteComponentProps & {
     const unlisten = history.listen((location) => {
       const key = `${location.pathname}${location.search}`;
       if (currentKey !== key) {
-        scrollToTopWithExpanded();
+        scrollToTopWithExpanded(currentKey, key);
         setKey(key);
       }
     });

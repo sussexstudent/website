@@ -129,6 +129,7 @@ export const BrandingPeriodHeader = createBrandedComponent<{
           )}
           {/*<div css={{ fontWeight: 600, fontStyle: 'italic' }}>DATES - DATE</div>*/}
           <button
+            type="button"
             css={[
               type(TypeSize.Minion),
               {

@@ -53,7 +53,11 @@ export const BuyButton: React.FC<BuyButtonProps> = ({
       {subtitle && <div css={subtitleStyles}>{subtitle}</div>}
     </a>
   ) : (
-    <button css={buttonStyle({ disabled: !!disabled })} onClick={onClick}>
+    <button
+      type="button"
+      css={buttonStyle({ disabled: !!disabled })}
+      onClick={onClick}
+    >
       <div css={titleStyles}>{title}</div>
       {subtitle && <div css={subtitleStyles}>{subtitle}</div>}
     </button>

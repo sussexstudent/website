@@ -97,6 +97,7 @@ const SectionNavFilter: React.FC<{
   return (
     <li>
       <button
+        type="button"
         {...props}
         onClick={() =>
           history.replace(

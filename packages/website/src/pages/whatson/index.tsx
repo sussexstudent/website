@@ -39,6 +39,7 @@ export const WhatsOn: React.FC<EventsApplicationProps> = () => {
         <BrandingContainer>
           {breakpoint === 'Mobile' && (
             <button
+              type="button"
               onClick={() => setSidebarModal(true)}
               css={{
                 zIndex: 200,

@@ -6,7 +6,6 @@ import { AppMountState } from '../../ducks/router';
 import { ContentPage } from '../content/ContentPage';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import ErrorBoundary from '../../components/ErrorBoundary';
-import { FreshersEvents } from '../freshers/FreshersEvents';
 import { RouterAnalytics } from '../../components/RouterAnalytics';
 import { FourOhFourPage } from '../content/FourOhFourPage';
 import {
@@ -99,10 +98,6 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
             <Redirect
               from="/services/outlets/*"
               to="/about-us/shops-and-bars/*"
-            />
-            <Route
-              component={FreshersEvents}
-              path="/whats-on/periods/freshers-week-2019"
             />
             <Route component={ContentAPI} path="/freshers" />
             {/*<EventDiscovery path="/event-discovery" />*/}

@@ -12,7 +12,7 @@ import { BrandingPeriodHeader, BundleBanner } from '../branding/components';
 import { GetBrandingPeriodQuery } from '../../../generated/graphql';
 import { useParams } from 'react-router-dom';
 
-export const EventBrandingPeriod: React.FC = () => {
+export const WhatsOnListingsCollectionHeader: React.FC = () => {
   const { brandSlug } = useParams();
 
   const {

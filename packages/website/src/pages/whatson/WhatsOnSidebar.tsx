@@ -77,7 +77,6 @@ const passQuery = (
     obj[prop] = value;
   }
 
-  console.log(obj);
   return obj;
 };
 
@@ -89,7 +88,6 @@ const SectionNavFilter: React.FC<{
   const location = useLocation();
   const history = useHistory();
   const query = qs.parse(location.search);
-  console.log(query);
 
   const hasParam =
     Object.hasOwnProperty.bind(query, prop) && query[prop]?.includes(value);

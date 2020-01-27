@@ -1,0 +1,12 @@
+query getVenueBySlug($slug: String!) {
+  venue(venueSlug: $slug) {
+    id
+    name
+    slug
+    shortDescription
+    featuredImage {
+      id
+      resource
+    }
+  }
+}

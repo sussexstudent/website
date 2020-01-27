@@ -1,22 +1,18 @@
 import React from 'react';
-import { EventListings } from './EventListings';
+import { WhatsOnEventsList } from './WhatsOnEventsList';
 import { Helmet } from 'react-helmet-async';
 import EventListingsBrandingPeriodQuery from './EventListingsBundle.graphql';
 import { useQuery } from '@apollo/react-hooks';
 import { Loader } from '../../../components/Loader';
 import { ErrorState } from '../../../components/ErrorState';
-import { RouteComponentProps } from 'react-router';
+import { useParams } from 'react-router';
 import { BuyButton } from '../EventDetailPage/BuyButton';
 import { type, TypeSize } from '@ussu/basil/src/style/type';
 import { GetEventsByBundleSlugQuery } from '../../../generated/graphql';
 
-export type EventBundleProps = RouteComponentProps<{ bundleSlug: string }>;
+export const WhatsOnListingsBundleHeader: React.FC = () => {
+  const { bundleSlug } = useParams();
 
-export const EventBundle: React.FC<EventBundleProps> = ({
-  match: {
-    params: { bundleSlug },
-  },
-}) => {
   const { data, loading, error } = useQuery<GetEventsByBundleSlugQuery>(
     EventListingsBrandingPeriodQuery,
     {
@@ -56,7 +52,7 @@ export const EventBundle: React.FC<EventBundleProps> = ({
       {bundle.ticketData ? (
         <BuyButton title="Buy Bundle" href={bundle.ticketData} />
       ) : null}
-      <EventListings events={allEvents.edges} removePast={false} />
+      <WhatsOnEventsList events={allEvents.edges} removePast={false} />
     </div>
   );
 };

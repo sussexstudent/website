@@ -22,7 +22,7 @@ const filteringReplacements: { [k: string]: any } = {
 
 export const useEventFilterCapture = () => {
   const location = useLocation();
-  const { brandSlug, bundleSlug, groupSlug } = useParams();
+  const { brandSlug, bundleSlug, groupSlug, venueSlug } = useParams();
 
   const filtering = location
     ? pickBy(getFirstItemOrValue(qs.parse(location.search)), (_v, k) =>
@@ -44,6 +44,10 @@ export const useEventFilterCapture = () => {
 
   if (bundleSlug) {
     filters.bundle = bundleSlug;
+  }
+
+  if (venueSlug) {
+    filters.venue = venueSlug;
   }
 
   return filters;

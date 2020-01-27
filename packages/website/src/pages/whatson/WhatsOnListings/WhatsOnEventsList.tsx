@@ -29,7 +29,7 @@ function hydrateWithDates(
   }));
 }
 
-export const EventListings: React.FC<EventListingsProps> = ({
+export const WhatsOnEventsList: React.FC<EventListingsProps> = ({
   removePast,
   events,
   loading,

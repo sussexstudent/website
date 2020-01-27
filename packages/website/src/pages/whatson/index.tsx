@@ -10,7 +10,7 @@ import { WhatsOnSidebar } from './WhatsOnSidebar';
 import { whatsOnListingViews } from './WhatsOnListings/views';
 import { flatten } from 'lodash';
 import { createBreakpoint } from 'react-use';
-import { NewListings } from './WhatsOnListings/NewListings';
+import { WhatsOnListings } from './WhatsOnListings';
 import { COLORS, MQ } from '@ussu/basil/src/style';
 import { Modal } from '../../components/Modal';
 import { MenuIcon } from '../../components/MenuIcon';
@@ -124,7 +124,7 @@ export const WhatsOn: React.FC<EventsApplicationProps> = () => {
                   />
                   <Route
                     path={flatten(whatsOnListingViews.map((view) => view.path))}
-                    component={NewListings}
+                    component={WhatsOnListings}
                     exact={true}
                   />
                   <Route

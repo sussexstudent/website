@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import getUserLikedEvents from './MyProgramme.graphql';
 import { startOfDay, addMonths } from 'date-fns';
 import { Loader } from '../../../components/Loader';
-import { EventListings } from '../WhatsOnListings/EventListings';
+import { WhatsOnEventsList } from '../WhatsOnListings/WhatsOnEventsList';
 import { GetUserLikedEventsQuery } from '../../../generated/graphql';
 import { LikedEmptyState } from './LikedEmptyState';
 import { useViewer } from '../../bookmarket/currentUserData';
@@ -47,7 +47,7 @@ export const WhatsOnMyProgramme: React.FC = () => {
       ) : (
         <React.Fragment>
           <h1>Saved events</h1>
-          <EventListings events={data.allEvents.edges} removePast />
+          <WhatsOnEventsList events={data.allEvents.edges} removePast />
         </React.Fragment>
       )}
     </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Page } from '../types';
 import convert from 'htmr';
 import EventListingsQuery from '../../../pages/whatson/WhatsOnListings/EventListings.graphql';
-import { EventListings } from '../../whatson/WhatsOnListings/EventListings';
+import { WhatsOnEventsList } from '../../whatson/WhatsOnListings/WhatsOnEventsList';
 import { useQuery } from '@apollo/react-hooks';
 import { startOfDay, addMonths } from 'date-fns/esm';
 import { Loader } from '../../../components/Loader';
@@ -53,7 +53,7 @@ export const OfficerEventsPage: React.FC<OfficerEventsPageProps> = ({
       <div className="LokiContainer">
         <h1>{page.title}</h1>
         {convert(page.description)}
-        <EventListings events={data.allEvents.edges} removePast={true} />
+        <WhatsOnEventsList events={data.allEvents.edges} removePast={true} />
       </div>
     </div>
   );

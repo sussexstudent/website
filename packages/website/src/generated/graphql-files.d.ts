@@ -225,14 +225,6 @@ declare module '*/EventListings.graphql' {
   export default defaultDocument;
 }
 
-declare module '*/EventListingsBrandingPeriod.graphql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const EventListingsBrandingPeriod: DocumentNode;
-
-  export default defaultDocument;
-}
-
 declare module '*/EventListingsBundle.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -253,6 +245,14 @@ declare module '*/WhatsOnGroupHeader.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const getStudentGroupBySlug: DocumentNode;
+
+  export default defaultDocument;
+}
+
+declare module '*/WhatsOnVenueHeader.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const getVenueBySlug: DocumentNode;
 
   export default defaultDocument;
 }

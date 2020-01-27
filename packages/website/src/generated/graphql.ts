@@ -1849,6 +1849,7 @@ export type Queries = {
   event: Event;
   brandingPeriod: BrandingPeriod;
   bundle: Bundle;
+  venue: Maybe<Venue>;
   allGroups: StudentGroupConnectionExt;
   group: Maybe<StudentGroup>;
 };
@@ -1936,6 +1937,11 @@ export type QueriesBrandingPeriodArgs = {
 
 export type QueriesBundleArgs = {
   slug: Scalars['String'];
+};
+
+export type QueriesVenueArgs = {
+  venueId: Maybe<Scalars['Int']>;
+  venueSlug: Maybe<Scalars['String']>;
 };
 
 export type QueriesAllGroupsArgs = {
@@ -4576,31 +4582,6 @@ export type GetAllEventsWithFilterQuery = {
   };
 };
 
-export type EventListingsBrandingPeriodQueryVariables = {
-  filter: Maybe<EventFilterInput>;
-  brandSlug: Scalars['String'];
-};
-
-export type EventListingsBrandingPeriodQuery = {
-  __typename: 'Queries';
-  allEvents: {
-    __typename: 'EventConnectionExt';
-    edges: Array<{
-      __typename: 'EventEdgeX';
-      node: { __typename: 'Event' } & EventListingFragmentFragment;
-    }>;
-  };
-  brandingPeriod: {
-    __typename: 'BrandingPeriod';
-    name: string;
-    description: any;
-    accent: string;
-    websiteLink: string;
-    logo: Maybe<{ __typename: 'Image'; resource: string }>;
-    logoVector: Maybe<{ __typename: 'File'; resource: Maybe<string> }>;
-  };
-};
-
 export type GetEventsByBundleSlugQueryVariables = {
   filter: Maybe<EventFilterInput>;
   bundleSlug: Scalars['String'];
@@ -4654,6 +4635,22 @@ export type GetStudentGroupBySlugQuery = {
     name: string;
     description: string;
     logo: Maybe<{ __typename: 'Image'; id: string; resource: string }>;
+  }>;
+};
+
+export type GetVenueBySlugQueryVariables = {
+  slug: Scalars['String'];
+};
+
+export type GetVenueBySlugQuery = {
+  __typename: 'Queries';
+  venue: Maybe<{
+    __typename: 'Venue';
+    id: string;
+    name: string;
+    slug: string;
+    shortDescription: string;
+    featuredImage: Maybe<{ __typename: 'Image'; id: string; resource: string }>;
   }>;
 };
 

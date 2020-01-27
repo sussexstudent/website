@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { useParams } from 'react-router-dom';
 import { GetStudentGroupBySlugQuery } from '../../../generated/graphql';
 
-export const StudentGroupHeader: React.FC = () => {
+export const WhatsOnListingsGroupHeader: React.FC = () => {
   const { groupSlug } = useParams();
 
   const { data, loading, error } = useQuery<GetStudentGroupBySlugQuery>(

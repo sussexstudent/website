@@ -3,8 +3,10 @@ import {
   WhatsOnSidebarFilters,
   WhatsOnSidebarGroupsActiveNav,
 } from '../WhatsOnSidebar';
-import { EventBrandingPeriod } from './EventBrandingPeriod';
-import { StudentGroupHeader } from './StudentGroupHeader';
+import { WhatsOnListingsCollectionHeader } from './WhatsOnListingsCollectionHeader';
+import { WhatsOnListingsGroupHeader } from './WhatsOnListingsGroupHeader';
+import { WhatsOnListingsBundleHeader } from './WhatsOnListingsBundleHeader';
+import { WhatsOnListingsVenueHeader } from './WhatsOnListingsVenueHeader';
 
 interface View {
   sidebarAppends: React.FC;
@@ -15,19 +17,25 @@ interface View {
 
 export const whatsOnListingViews: View[] = [
   {
-    header: () => <h1 css={{ padding: '0 1rem' }}>bundle listings</h1>,
+    header: () => <WhatsOnListingsBundleHeader />,
     sidebarAppends: () => null,
     path: '/whats-on/bundle/:bundleSlug',
     exact: true,
   },
   {
-    header: () => <EventBrandingPeriod />,
+    header: () => <WhatsOnListingsCollectionHeader />,
     sidebarAppends: () => <WhatsOnSidebarFilters />,
     path: '/whats-on/collections/:brandSlug',
     exact: true,
   },
   {
-    header: () => <StudentGroupHeader />,
+    header: () => <WhatsOnListingsVenueHeader />,
+    sidebarAppends: () => null,
+    path: '/whats-on/venues/:venueSlug',
+    exact: true,
+  },
+  {
+    header: () => <WhatsOnListingsGroupHeader />,
     sidebarAppends: () => <WhatsOnSidebarGroupsActiveNav />,
     path: '/whats-on/groups/:groupSlug',
     exact: true,

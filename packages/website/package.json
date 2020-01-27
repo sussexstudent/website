@@ -16,7 +16,7 @@
     "bind-decorator": "^1.0.11",
     "classnames": "^2.2.6",
     "date-fns": "^2.9.0",
-    "final-form": "^4.18.6",
+    "final-form": "^4.18.7",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
     "history": "^4.10.1",

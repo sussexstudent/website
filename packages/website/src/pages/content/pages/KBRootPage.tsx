@@ -72,6 +72,7 @@ export const KBRootPage: React.FC<KBRootPageProps> = ({ page }) => (
               '&:hover': {
                 transform: 'scale(1.05)',
               },
+              height: 80,
             }}
             to={category.path}
           >

@@ -8,26 +8,10 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /**
-   * The `DateTime` scalar type represents a DateTime
-   * value as specified by
-   * [iso8601](https://en.wikipedia.org/wiki/ISO_8601).
-   */
   DateTime: any;
-  /**
-   * Allows use of a JSON String for input / output from the GraphQL schema.
-   *
-   * Use of this type is *not recommended* as you lose the benefits of having a defined, static
-   * schema (one of the key benefits of GraphQL).
-   */
   JSONString: any;
   GenericStreamFieldType: any;
   RichTextFieldType: any;
-  /**
-   * The `GenericScalar` scalar type represents a generic
-   * GraphQL scalar value that could be:
-   * String, Boolean, Int, Float, List or Object.
-   */
   GenericScalar: any;
 };
 
@@ -141,23 +125,14 @@ export type AwardAwarded = {
   grade: Scalars['Int'];
 };
 
-/** An enumeration. */
 export enum AwardIcon {
-  /** LeafCommunity */
   Community = 'COMMUNITY',
-  /** LeafDevelopment */
   Development = 'DEVELOPMENT',
-  /** LeafSocial */
   Social = 'SOCIAL',
-  /** LeafStudentVoice */
   StudentVoice = 'STUDENT_VOICE',
-  /** LeafTeamSussex */
   TeamSussex = 'TEAM_SUSSEX',
-  /** LeafCommunications */
   Communications = 'COMMUNICATIONS',
-  /** LeafFundraising */
   Fundraising = 'FUNDRAISING',
-  /** LeafInclusivity */
   Inclusivity = 'INCLUSIVITY',
 }
 
@@ -182,9 +157,7 @@ export type Banner = {
   body: Scalars['RichTextFieldType'];
 };
 
-/** An enumeration. */
 export enum BannerPurpose {
-  /** Notice */
   Notice = 'NOTICE',
 }
 
@@ -283,31 +256,27 @@ export type BundleEventSetArgs = {
   last: Maybe<Scalars['Int']>;
 };
 
-/** An enumeration. */
 export enum BundleTicketLevel {
-  /** Not applicable */
   Na = 'NA',
-  /** Limited availability */
   La = 'LA',
-  /** Sold out */
   So = 'SO',
 }
 
-/** An enumeration. */
 export enum BundleTicketType {
-  /** n/a */
   Na = 'NA',
-  /** Native */
   Nt = 'NT',
-  /** Eventbrite */
   Eb = 'EB',
-  /** ACCA */
   Ac = 'AC',
-  /** Generic */
   Gn = 'GN',
-  /** MSL */
   Msl = 'MSL',
 }
+
+export type Category = {
+  __typename: 'Category';
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  slug: Scalars['String'];
+};
 
 export type CategoryNode = {
   __typename: 'CategoryNode';
@@ -317,11 +286,11 @@ export type CategoryNode = {
   numchild: Scalars['Int'];
   name: Scalars['String'];
   slug: Scalars['String'];
-  eventSet: EventConnection;
+  events: EventConnection;
   parent: Maybe<CategoryNode>;
 };
 
-export type CategoryNodeEventSetArgs = {
+export type CategoryNodeEventsArgs = {
   before: Maybe<Scalars['String']>;
   after: Maybe<Scalars['String']>;
   first: Maybe<Scalars['Int']>;
@@ -383,6 +352,8 @@ export type ClientUser = {
   __typename: 'ClientUser';
   id: Scalars['ID'];
   name: Maybe<Scalars['String']>;
+  identifier: Scalars['String'];
+  isStaff: Scalars['Boolean'];
   hasCmsAccess: Maybe<Scalars['Boolean']>;
   userId: Maybe<Scalars['Int']>;
   permissions: Maybe<Array<Maybe<Scalars['Int']>>>;
@@ -553,7 +524,6 @@ export type Event = Node & {
   containsUnevenGroundReasoning: Scalars['String'];
   hasLevelAccess: PaValues;
   hasLevelAccessReasoning: Scalars['String'];
-  /** The ID of the object. */
   id: Scalars['ID'];
   parent: Maybe<Event>;
   title: Scalars['String'];
@@ -605,15 +575,12 @@ export enum EventAlcohol {
 
 export type EventConnection = {
   __typename: 'EventConnection';
-  /** Pagination data for this connection. */
   pageInfo: PageInfo;
-  /** Contains the nodes in this connection. */
   edges: Array<Maybe<EventEdge>>;
 };
 
 export type EventConnectionExt = {
   __typename: 'EventConnectionExt';
-  /** Pagination data for this connection. */
   pageInfo: PageInfo;
   edges: Array<EventEdgeX>;
   totalCount: Maybe<Scalars['Int']>;
@@ -625,12 +592,9 @@ export enum EventCost {
   Na = 'NA',
 }
 
-/** A Relay edge containing a `Event` and its cursor. */
 export type EventEdge = {
   __typename: 'EventEdge';
-  /** The item at the end of the edge */
   node: Maybe<Event>;
-  /** A cursor for use in pagination */
   cursor: Scalars['String'];
 };
 
@@ -643,11 +607,11 @@ export type EventEdgeX = {
 export type EventFilterInput = {
   title: Maybe<Scalars['String']>;
   venue: Maybe<Scalars['ID']>;
-  type: Maybe<Scalars['ID']>;
+  type: Maybe<Scalars['String']>;
   bundle: Maybe<Scalars['String']>;
   parent: Maybe<Scalars['ID']>;
   brand: Maybe<Scalars['String']>;
-  studentGroup: Maybe<Scalars['ID']>;
+  studentGroup: Maybe<Scalars['String']>;
   fromTime: Maybe<Scalars['DateTime']>;
   toTime: Maybe<Scalars['DateTime']>;
   audienceJustForPgs: Maybe<Scalars['Boolean']>;
@@ -673,33 +637,21 @@ export type EventLike = {
   sourceLocation: EventLikeSourceLocation;
 };
 
-/** An enumeration. */
 export enum EventLikeInitialSource {
-  /** User */
   User = 'USER',
-  /** Unliked */
   Unliked = 'UNLIKED',
-  /** Recommendation */
   Recommendation = 'RECOMMENDATION',
 }
 
-/** An enumeration. */
 export enum EventLikeSource {
-  /** User */
   User = 'USER',
-  /** Unliked */
   Unliked = 'UNLIKED',
-  /** Recommendation */
   Recommendation = 'RECOMMENDATION',
 }
 
-/** An enumeration. */
 export enum EventLikeSourceLocation {
-  /** Listings */
   Listings = 'LISTINGS',
-  /** Collection */
   Collection = 'COLLECTION',
-  /** Matcher */
   Matcher = 'MATCHER',
 }
 
@@ -737,9 +689,7 @@ export type Flag = {
   expired: Scalars['Boolean'];
 };
 
-/** An enumeration. */
 export enum FlagMode {
-  /** Force */
   Force = 'FORCE',
 }
 
@@ -903,7 +853,6 @@ export type Image = Node & {
   __typename: 'Image';
   width: Scalars['Int'];
   height: Scalars['Int'];
-  /** The ID of the object. */
   id: Scalars['ID'];
   resource: Scalars['String'];
   mediaId: Scalars['Int'];
@@ -911,26 +860,20 @@ export type Image = Node & {
 
 export type ImageConnection = {
   __typename: 'ImageConnection';
-  /** Pagination data for this connection. */
   pageInfo: PageInfo;
-  /** Contains the nodes in this connection. */
   edges: Array<Maybe<ImageEdge>>;
 };
 
 export type ImageConnectionExt = {
   __typename: 'ImageConnectionExt';
-  /** Pagination data for this connection. */
   pageInfo: PageInfo;
   edges: Array<ImageEdgeX>;
   totalCount: Maybe<Scalars['Int']>;
 };
 
-/** A Relay edge containing a `Image` and its cursor. */
 export type ImageEdge = {
   __typename: 'ImageEdge';
-  /** The item at the end of the edge */
   node: Maybe<Image>;
-  /** A cursor for use in pagination */
   cursor: Scalars['String'];
 };
 
@@ -1311,7 +1254,6 @@ export type LikeEvent = {
 
 export type MarketListing = Node & {
   __typename: 'MarketListing';
-  /** The ID of the object. */
   id: Scalars['ID'];
   bookTitle: Scalars['String'];
   bookAuthor: Scalars['String'];
@@ -1336,7 +1278,6 @@ export type MarketListingImagesArgs = {
 
 export type MarketListingConnectionExt = {
   __typename: 'MarketListingConnectionExt';
-  /** Pagination data for this connection. */
   pageInfo: PageInfo;
   edges: Array<MarketListingEdgeX>;
   totalCount: Maybe<Scalars['Int']>;
@@ -1372,7 +1313,6 @@ export type MarketListingsFilter = {
   sortBy: Maybe<Scalars['String']>;
 };
 
-/** An enumeration. */
 export enum MarketListingState {
   Draft = 'DRAFT',
   Ready = 'READY',
@@ -1414,7 +1354,6 @@ export type MslEvent = Node & {
   mslEventId: Scalars['Int'];
   bodyHtml: Scalars['String'];
   description: Scalars['String'];
-  /** The ID of the object. */
   id: Scalars['ID'];
 };
 
@@ -1495,22 +1434,16 @@ export type MutationsLikeEventArgs = {
   likeType: Maybe<Scalars['String']>;
 };
 
-/** An object with an ID */
 export type Node = {
-  /** The ID of the object. */
   id: Scalars['ID'];
 };
 
 export type Offer = Node & {
   __typename: 'Offer';
-  /** The ID of the object. */
   id: Scalars['ID'];
-  /** Display name of the company offering the deal */
   companyName: Scalars['String'];
-  /** Companies logo displayed next to the offer */
   companyLogo: Maybe<Image>;
   companyWebsite: Scalars['String'];
-  /** The deal itself, "40%", "By one get one free", etc */
   dealTag: Scalars['String'];
   isFeatured: Scalars['Boolean'];
   main: Maybe<Scalars['GenericScalar']>;
@@ -1737,7 +1670,6 @@ export type OutletPage = Page & {
   openingTimes: Scalars['GenericStreamFieldType'];
   menu: Scalars['GenericStreamFieldType'];
   deals: Scalars['GenericStreamFieldType'];
-  /** Link this outlet with a venue's events */
   linkedVenue: Maybe<Venue>;
   googleMapsPlaceId: Scalars['String'];
   contactDetails: Scalars['RichTextFieldType'];
@@ -1838,16 +1770,11 @@ export type PageClosestAncestorOfTypeGenericArgs = {
   inclusive: Maybe<Scalars['Boolean']>;
 };
 
-/** The Relay compliant `PageInfo` type, containing data necessary to paginate this connection. */
 export type PageInfo = {
   __typename: 'PageInfo';
-  /** When paginating forwards, are there more items? */
   hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
   startCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, the cursor to continue. */
   endCursor: Maybe<Scalars['String']>;
 };
 
@@ -1873,7 +1800,10 @@ export enum PaValues {
 
 export type Permission = {
   __typename: 'Permission';
+  id: Scalars['ID'];
+  name: Scalars['String'];
   contentType: Maybe<Scalars['String']>;
+  codename: Scalars['String'];
 };
 
 export type PublicUser = {
@@ -1913,6 +1843,9 @@ export type Queries = {
   allEvents: EventConnectionExt;
   allVenues: VenueConnectionExt;
   allBrandingPeriods: Array<BrandingPeriod>;
+  allEventCategories: Array<Category>;
+  allEventTypes: Array<Type>;
+  allGroupsWithEvents: Array<StudentGroup>;
   event: Event;
   brandingPeriod: BrandingPeriod;
   bundle: Bundle;
@@ -1976,7 +1909,6 @@ export type QueriesAllSlatesArgs = {
 };
 
 export type QueriesAllEventsArgs = {
-  brand: Maybe<Scalars['String']>;
   skipEmbargo: Maybe<Scalars['Boolean']>;
   viewerLiked: Maybe<Scalars['Boolean']>;
   before: Maybe<Scalars['String']>;
@@ -2296,7 +2228,6 @@ export type SelectionGridPageClosestAncestorOfTypeGenericArgs = {
 
 export type Slate = Node & {
   __typename: 'Slate';
-  /** The ID of the object. */
   id: Scalars['ID'];
   displayFrom: Scalars['DateTime'];
   data: Maybe<Scalars['GenericScalar']>;
@@ -2307,7 +2238,6 @@ export type Slate = Node & {
 
 export type SlateConnectionExt = {
   __typename: 'SlateConnectionExt';
-  /** Pagination data for this connection. */
   pageInfo: PageInfo;
   edges: Array<SlateEdgeX>;
   totalCount: Maybe<Scalars['Int']>;
@@ -2485,7 +2415,6 @@ export type StubPageClosestAncestorOfTypeGenericArgs = {
 
 export type StudentGroup = Node & {
   __typename: 'StudentGroup';
-  /** The ID of the object. */
   id: Scalars['ID'];
   name: Scalars['String'];
   isProspective: Scalars['Boolean'];
@@ -2500,7 +2429,6 @@ export type StudentGroup = Node & {
 
 export type StudentGroupConnectionExt = {
   __typename: 'StudentGroupConnectionExt';
-  /** Pagination data for this connection. */
   pageInfo: PageInfo;
   edges: Array<StudentGroupEdgeX>;
   totalCount: Maybe<Scalars['Int']>;
@@ -2517,10 +2445,10 @@ export type Type = {
   id: Scalars['ID'];
   name: Scalars['String'];
   slug: Scalars['String'];
-  eventSet: EventConnection;
+  events: EventConnection;
 };
 
-export type TypeEventSetArgs = {
+export type TypeEventsArgs = {
   before: Maybe<Scalars['String']>;
   after: Maybe<Scalars['String']>;
   first: Maybe<Scalars['Int']>;
@@ -2541,7 +2469,6 @@ export type UpdateSlate = {
 
 export type Venue = Node & {
   __typename: 'Venue';
-  /** The ID of the object. */
   id: Scalars['ID'];
   containsLowLight: VenueContainsLowLight;
   containsLowLightReasoning: Scalars['String'];
@@ -2568,7 +2495,6 @@ export type Venue = Node & {
   ephemeral: Scalars['Boolean'];
   entryInformation: Scalars['String'];
   eventSet: EventConnection;
-  /** Link this outlet with a venue's events */
   outletpageSet: Array<OutletPage>;
   venueId: Scalars['Int'];
 };
@@ -2582,49 +2508,32 @@ export type VenueEventSetArgs = {
 
 export type VenueConnectionExt = {
   __typename: 'VenueConnectionExt';
-  /** Pagination data for this connection. */
   pageInfo: PageInfo;
   edges: Array<VenueEdgeX>;
   totalCount: Maybe<Scalars['Int']>;
 };
 
-/** An enumeration. */
 export enum VenueContainsFlashingLights {
-  /** Not set/inherit */
   A_0 = 'A_0',
-  /** False */
   A_1 = 'A_1',
-  /** True */
   A_2 = 'A_2',
 }
 
-/** An enumeration. */
 export enum VenueContainsLoudMusic {
-  /** Not set/inherit */
   A_0 = 'A_0',
-  /** False */
   A_1 = 'A_1',
-  /** True */
   A_2 = 'A_2',
 }
 
-/** An enumeration. */
 export enum VenueContainsLowLight {
-  /** Not set/inherit */
   A_0 = 'A_0',
-  /** False */
   A_1 = 'A_1',
-  /** True */
   A_2 = 'A_2',
 }
 
-/** An enumeration. */
 export enum VenueContainsUnevenGround {
-  /** Not set/inherit */
   A_0 = 'A_0',
-  /** False */
   A_1 = 'A_1',
-  /** True */
   A_2 = 'A_2',
 }
 
@@ -2634,53 +2543,33 @@ export type VenueEdgeX = {
   cursor: Scalars['String'];
 };
 
-/** An enumeration. */
 export enum VenueHasAccessibleToilets {
-  /** Not set/inherit */
   A_0 = 'A_0',
-  /** False */
   A_1 = 'A_1',
-  /** True */
   A_2 = 'A_2',
 }
 
-/** An enumeration. */
 export enum VenueHasChangingFacilities {
-  /** Not set/inherit */
   A_0 = 'A_0',
-  /** False */
   A_1 = 'A_1',
-  /** True */
   A_2 = 'A_2',
 }
 
-/** An enumeration. */
 export enum VenueHasGenderNeutralToilets {
-  /** Not set/inherit */
   A_0 = 'A_0',
-  /** False */
   A_1 = 'A_1',
-  /** True */
   A_2 = 'A_2',
 }
 
-/** An enumeration. */
 export enum VenueHasLevelAccess {
-  /** Not set/inherit */
   A_0 = 'A_0',
-  /** False */
   A_1 = 'A_1',
-  /** True */
   A_2 = 'A_2',
 }
 
-/** An enumeration. */
 export enum VenueVenueType {
-  /** Nightclub */
   Club = 'CLUB',
-  /** Bar */
   Bar = 'BAR',
-  /** Uncategorised */
   Na = 'NA',
 }
 
@@ -3214,7 +3103,7 @@ export type GetContentByPathQuery = {
         ContentPageGenerals_ReferencePage_Fragment)
     | ({
         __typename: 'DetailedGuidePage';
-        subPagesGeneric: Array<
+        subPages: Array<
           { __typename: 'GenericPage' } & ContentPageGeneralsGenericFragment
         >;
       } & KbTypes_DetailedGuidePage_Fragment &
@@ -3239,7 +3128,7 @@ export type GetContentByPathQuery = {
               __typename: 'DetailedGuidePage';
               relatedLinks: any;
               staffOwners: any;
-              subPagesGeneric: Array<
+              subPages: Array<
                 {
                   __typename: 'GenericPage';
                 } & ContentPageGeneralsGenericFragment
@@ -3341,7 +3230,7 @@ type ContentPageGenerals_StaffPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3375,7 +3264,7 @@ type ContentPageGenerals_GenericPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3409,7 +3298,7 @@ type ContentPageGenerals_StaffMemberSnippet_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3443,7 +3332,7 @@ type ContentPageGenerals_SectionContentPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3477,7 +3366,7 @@ type ContentPageGenerals_SelectionGridPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3511,7 +3400,7 @@ type ContentPageGenerals_OfficerOverviewPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3545,7 +3434,7 @@ type ContentPageGenerals_OfficersIndex_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3579,7 +3468,7 @@ type ContentPageGenerals_OfficerEventsPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3613,7 +3502,7 @@ type ContentPageGenerals_OutletPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3647,7 +3536,7 @@ type ContentPageGenerals_HomePage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3681,7 +3570,7 @@ type ContentPageGenerals_KbRootPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3715,7 +3604,7 @@ type ContentPageGenerals_KbCategoryPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3749,7 +3638,7 @@ type ContentPageGenerals_AnswerPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3783,7 +3672,7 @@ type ContentPageGenerals_ReferencePage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3817,7 +3706,7 @@ type ContentPageGenerals_DetailedGuidePage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3851,7 +3740,7 @@ type ContentPageGenerals_DetailedGuideSectionPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3885,7 +3774,7 @@ type ContentPageGenerals_StubPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3919,7 +3808,7 @@ type ContentPageGenerals_BasicContentPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3953,7 +3842,7 @@ type ContentPageGenerals_OutletIndexPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -3987,7 +3876,7 @@ type ContentPageGenerals_SchemeIndexPage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -4021,7 +3910,7 @@ type ContentPageGenerals_SchemePage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -4055,7 +3944,7 @@ type ContentPageGenerals_FreshersHomepage_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -4089,7 +3978,7 @@ type ContentPageGenerals_ClickThrough_Fragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -4148,7 +4037,7 @@ export type ContentPageGeneralsGenericFragment = {
     slug: string;
     path: string;
     contentType: string;
-    subPagesGeneric: Array<{
+    subPagesWayfinding: Array<{
       __typename: 'GenericPage';
       contentType: string;
       title: string;
@@ -4563,6 +4452,24 @@ export type EventCardFragment = {
 export type UserLikeFragment = {
   __typename: 'EventLike';
   source: EventLikeSource;
+};
+
+export type GetEventTypesQueryVariables = {};
+
+export type GetEventTypesQuery = {
+  __typename: 'Queries';
+  allEventTypes: Array<{ __typename: 'Type'; name: string; slug: string }>;
+};
+
+export type GetGroupsWithEventsQueryVariables = {};
+
+export type GetGroupsWithEventsQuery = {
+  __typename: 'Queries';
+  allGroupsWithEvents: Array<{
+    __typename: 'StudentGroup';
+    name: string;
+    slug: Maybe<string>;
+  }>;
 };
 
 export type GetLiveBrandingPeriodsQueryVariables = {};

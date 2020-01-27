@@ -25,7 +25,7 @@ export const KBCategoryPage: React.FC<KBCategoryPageProps> = ({ page }) => (
     <h1>{page.title}</h1>
 
     <ul>
-      {page.subPages.map((contentPage) => (
+      {page.subPagesGeneric.map((contentPage) => (
         <li key={contentPage.path}>
           <Link
             css={{

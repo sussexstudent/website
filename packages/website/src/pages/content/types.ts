@@ -3,6 +3,7 @@ export interface Page<S = null> {
   slug: string;
   path: string;
   subPages: S;
+  subPagesGeneric: Page[];
 
   lastPublishedAt: string;
 }

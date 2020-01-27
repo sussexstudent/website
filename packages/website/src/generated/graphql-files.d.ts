@@ -177,6 +177,22 @@ declare module '*/EventsDetailPage.graphql' {
   export default defaultDocument;
 }
 
+declare module '*/EventTypes.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const getEventTypes: DocumentNode;
+
+  export default defaultDocument;
+}
+
+declare module '*/GroupsWithEvents.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const getGroupsWithEvents: DocumentNode;
+
+  export default defaultDocument;
+}
+
 declare module '*/LiveBrandingPeriods.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

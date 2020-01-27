@@ -1,4 +1,6 @@
 .Prose {
+  word-break: break-word;
+
   & > p,
   ul,
   ol {

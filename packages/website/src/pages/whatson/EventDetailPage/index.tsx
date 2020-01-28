@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
-import {
-  ContentCard,
-  ContentCardContent,
-} from '../../../components/ContentCard';
-import { Loader } from '../../../components/Loader';
 import DetailPageQuery from './EventsDetailPage.graphql';
 import { WhatsOnEventCard } from '../WhatsOnEventCard';
 import { AspectRatio, OneImageBackground } from '../../../components/OneImage';
@@ -62,11 +57,7 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
     }
   }, [data, dispatch, history, match.params]);
 
-  if (loading) {
-    return <Loader />;
-  }
-
-  if (!event) {
+  if (!loading && !event) {
     return <h1>404</h1>;
   }
 
@@ -74,36 +65,30 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
     <ScrollToTop>
       <div
         className={cx('EventDetail', {
-          'EventDetail--customImage': event.featuredImage,
+          'EventDetail--customImage': event?.featuredImage,
         })}
       >
-        <EventDetailMetadata event={event} />
-        {event.featuredImage ? (
+        {event && <EventDetailMetadata event={event} />}
+        {event?.featuredImage ? (
           <div className="EventDetail__hero">
-            <div className="LokiContainer">
-              <OneImageBackground
-                className="EventDetail__hero-container"
-                aspectRatio={AspectRatio.r20by9}
-                src={event.featuredImage.resource}
-              >
-                <div className="EventDetail__details">
-                  <EventDetailDetails event={event} />
-                </div>
-              </OneImageBackground>
-            </div>
-
             <OneImageBackground
-              className="EventDetail__hero-bg"
+              className="EventDetail__hero-container"
               aspectRatio={AspectRatio.r20by9}
               src={event.featuredImage.resource}
-            />
+            >
+              <div className="EventDetail__details">
+                <div className="LokiContainer">
+                  <EventDetailDetails event={event} />
+                </div>
+              </div>
+            </OneImageBackground>
           </div>
         ) : (
           <div className="EventDetail__hero">
             <div className="EventDetail__hero-container">
               <div className="EventDetail__details">
                 <div className="LokiContainer">
-                  <EventDetailDetails event={event} />
+                  {event && <EventDetailDetails event={event} />}
                 </div>
               </div>
             </div>
@@ -114,53 +99,50 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
         )}
         <div className="LokiContainer">
           <div className="Layout--sidebar-right">
-            <ContentCard
-              bleed
-              css={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
-            >
-              <ContentCardContent>
-                <div className="Prose type-body-copy">
-                  {event.bodyHtml !== '' ? (
-                    <div dangerouslySetInnerHTML={{ __html: event.bodyHtml }} />
-                  ) : (
-                    <div>{event.shortDescription}</div>
-                  )}
-                  {event.brand && event.brand.eventAppend ? (
-                    <div className="type-long-primer">
-                      <hr />
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: event.brand.eventAppend,
-                        }}
-                      />
-                    </div>
-                  ) : null}
-                </div>
-
-                {event.venue ? (
-                  <div>
-                    <h3>{event.venue.name}</h3>
-                    {event.venue.websiteLink ? (
-                      <InternalAppLink
-                        to={event.venue.websiteLink}
-                        className="Button"
-                      >
-                        More information
-                      </InternalAppLink>
-                    ) : null}
+            {event && (
+              <div className="Prose type-body-copy">
+                {event.bodyHtml !== '' ? (
+                  <div dangerouslySetInnerHTML={{ __html: event.bodyHtml }} />
+                ) : (
+                  <div>{event.shortDescription}</div>
+                )}
+                {event?.brand && event.brand.eventAppend ? (
+                  <div className="type-long-primer">
+                    <hr />
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: event.brand.eventAppend,
+                      }}
+                    />
                   </div>
                 ) : null}
-              </ContentCardContent>
-            </ContentCard>
+              </div>
+            )}
+
+            {event?.venue ? (
+              <div>
+                <h3>{event.venue.name}</h3>
+                {event.venue.websiteLink ? (
+                  <InternalAppLink
+                    to={event.venue.websiteLink}
+                    className="Button"
+                  >
+                    More information
+                  </InternalAppLink>
+                ) : null}
+              </div>
+            ) : null}
             <div>
-              <EventDetailSidebar
-                event={event}
-                msl={mslData}
-                onTicketButton={() => null}
-              />
+              {event && (
+                <EventDetailSidebar
+                  event={event}
+                  msl={mslData}
+                  onTicketButton={() => null}
+                />
+              )}
             </div>
           </div>
-          {event.children.length > 0 ? (
+          {event && event.children.length > 0 ? (
             <div css={{ margin: '2rem 0' }}>
               <span className="u-position-anchor" id="sub-events" />
               <h2 className="Heading Heading--tight">Part of this event</h2>
@@ -181,7 +163,7 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
             </div>
           ) : null}
 
-          {event.ticketType === EventTicketType.Msl ? (
+          {event?.ticketType === EventTicketType.Msl ? (
             <MSLEventCommunication
               ticketData={event.ticketData}
               onData={setMslData}
@@ -198,7 +180,7 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
         </div>
       </div>
 
-      {event.bundle ? (
+      {event?.bundle ? (
         <BundleBanner bundle={event.bundle} onEvent={true} />
       ) : null}
     </ScrollToTop>

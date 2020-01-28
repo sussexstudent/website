@@ -9,6 +9,7 @@ import FauxRouterLink from '../../../components/FauxRouterLink';
 import { BuyButton } from '../EventDetailPage/BuyButton';
 import { GetEventsByBundleSlugQuery } from '../../../generated/graphql';
 import { Modal } from '../../../components/Modal';
+import { Skeleton } from '../../../components/Skeleton';
 
 export const BrandingContainer = createBrandedComponent(
   WhatsOnBrandedComponentLocation.Container,
@@ -122,10 +123,14 @@ export const BrandingPeriodHeader = createBrandedComponent<{
     <React.Fragment>
       <div css={{ paddingTop: '1rem' }}>
         <div css={{ textAlign: 'center' }}>
-          {brandingPeriod.logoVector ? (
+          {brandingPeriod?.logoVector ? (
             <img src={brandingPeriod.logoVector.resource} height="180" />
           ) : (
-            <h1>{brandingPeriod.name}</h1>
+            <h1>
+              {brandingPeriod?.name ?? (
+                <Skeleton template="____ ___ ____ ____" />
+              )}
+            </h1>
           )}
           {/*<div css={{ fontWeight: 600, fontStyle: 'italic' }}>DATES - DATE</div>*/}
           <button
@@ -150,12 +155,20 @@ export const BrandingPeriodHeader = createBrandedComponent<{
           footerClose
         >
           <div>
-            <h1>{brandingPeriod.name}</h1>
+            <h1>
+              {brandingPeriod?.name ?? (
+                <Skeleton template="____ ___ ____ ____" />
+              )}
+            </h1>
             <h2>More info</h2>
-            <div
-              className="type-body-copy Prose"
-              dangerouslySetInnerHTML={{ __html: brandingPeriod.description }}
-            />{' '}
+            {brandingPeriod?.description ? (
+              <div
+                className="type-body-copy Prose"
+                dangerouslySetInnerHTML={{ __html: brandingPeriod.description }}
+              />
+            ) : (
+              <Skeleton count={4} />
+            )}
           </div>
         </Modal>
       </div>

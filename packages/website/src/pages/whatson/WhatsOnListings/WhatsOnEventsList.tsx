@@ -12,6 +12,7 @@ import {
   GetAllEventsWithFilterQuery,
   EventCardFragment,
 } from '../../../generated/graphql';
+import { Skeleton } from '../../../components/Skeleton';
 
 interface EventListingsProps {
   removePast: boolean;
@@ -69,6 +70,44 @@ export const WhatsOnEventsList: React.FC<EventListingsProps> = ({
             ))}
           </div>
         ))}
+    </div>
+  );
+};
+
+export const WhatsOnEventsListSkeleton = () => {
+  return (
+    <div className="EventsCalender">
+      <div className="EventsCalender__section">
+        <div>
+          <h3 className="EventsCalender__item-date-kicker">
+            <Skeleton template="____ ____" />
+          </h3>
+          <div className="EventsCalender__section-items">
+            <div className="EventsCalender__part-container">
+              <WhatsOnEventCard />
+            </div>{' '}
+            <div className="EventsCalender__part-container">
+              <WhatsOnEventCard />
+            </div>
+          </div>
+          <div>
+            <h3 className="EventsCalender__item-date-kicker">
+              <Skeleton template="____ ___" />
+            </h3>
+            <div className="EventsCalender__section-items">
+              <div className="EventsCalender__part-container">
+                <WhatsOnEventCard />
+              </div>{' '}
+              <div className="EventsCalender__part-container">
+                <WhatsOnEventCard />
+              </div>{' '}
+              <div className="EventsCalender__part-container">
+                <WhatsOnEventCard />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

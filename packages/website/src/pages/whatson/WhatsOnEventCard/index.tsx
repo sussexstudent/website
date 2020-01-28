@@ -17,11 +17,12 @@ import {
 } from './WhatsOnEventCardBanner';
 import { WhatsOnEventCardCanceledStamp } from './WhatsOnEventCardCanceledStamp';
 import { EventCardFragment } from 'packages/website/src/generated/graphql';
+import { Skeleton } from '../../../components/Skeleton';
 
 interface EventsCalenderItemProps {
   relative?: boolean;
   showDay?: boolean;
-  event: EventCardFragment;
+  event?: EventCardFragment;
 }
 
 export const WhatsOnEventCard: React.FC<EventsCalenderItemProps> = ({
@@ -50,42 +51,52 @@ export const WhatsOnEventCard: React.FC<EventsCalenderItemProps> = ({
         },
       ]}
     >
-      {event.canceledAt !== null && <WhatsOnEventCardCanceledStamp />}
+      {event && event.canceledAt !== null && <WhatsOnEventCardCanceledStamp />}
 
-      {event.url !== undefined && event.url !== '' ? (
+      {event && event.url !== undefined && event.url !== '' ? (
         <FauxInternalAppLink href={event.url} />
       ) : (
-        <FauxInternalAppLink
-          href={`/whats-on/${event.slug}-${event.eventId}`}
-        />
+        event && (
+          <FauxInternalAppLink
+            href={`/whats-on/${event.slug}-${event.eventId}`}
+          />
+        )
       )}
       <div
-        css={event.canceledAt !== null && { opacity: 0.3 }}
+        css={event?.canceledAt && { opacity: 0.3 }}
         className="EventsCalender__item-image u-responsive-ratio u-responsive-ratio--wide"
       >
-        {event?.featuredImage?.resource ? (
-          <OneImage
-            src={event.featuredImage.resource}
-            aspectRatio={AspectRatio.r16by9}
-            alt=""
-            withoutContainer
-          />
+        {event ? (
+          event.featuredImage?.resource ? (
+            <OneImage
+              src={event.featuredImage.resource}
+              aspectRatio={AspectRatio.r16by9}
+              alt=""
+              withoutContainer
+            />
+          ) : (
+            <PatternPlaceholder />
+          )
         ) : (
-          <PatternPlaceholder />
+          <Skeleton fill />
         )}
-        <div className="EventsCalender__item-image-like">
-          <EventLikeButton event={event} />
-        </div>
-        <WhatsOnEventCardTags tags={Array.from(getTagsForEvent(event))} />
+        {event && (
+          <React.Fragment>
+            <div className="EventsCalender__item-image-like">
+              <EventLikeButton event={event} />
+            </div>
+            <WhatsOnEventCardTags tags={Array.from(getTagsForEvent(event))} />
+          </React.Fragment>
+        )}
       </div>
-      {event.bundle !== null && event.bundle !== undefined ? (
+      {event && event.bundle !== null && event.bundle !== undefined ? (
         <WhatsOnEventCardBanner type={WhatsOnEventCardBannerType.Bundle}>
           Included in the {event.bundle.name}
         </WhatsOnEventCardBanner>
       ) : null}
       <div
         css={[
-          event.canceledAt !== null && { opacity: 0.3 },
+          event?.canceledAt && { opacity: 0.3 },
           {
             padding: '0.5rem',
           },
@@ -93,10 +104,16 @@ export const WhatsOnEventCard: React.FC<EventsCalenderItemProps> = ({
       >
         <div css={[type(TypeSize.Minion, Typeface.Secondary)]}>
           <span css={{ color: COLORS.BRAND_RED, fontWeight: 600 }}>
-            {showDay ? formatDate(new Date(event.startTime), 'EEE ') : ''}
-            {minimalisticTimeRenderer(new Date(event.startTime))}
+            {event && showDay
+              ? formatDate(new Date(event.startTime), 'EEE ')
+              : ''}
+            {event ? (
+              minimalisticTimeRenderer(new Date(event.startTime))
+            ) : (
+              <Skeleton template="___" />
+            )}
           </span>
-          {event.kicker ? (
+          {event && event.kicker ? (
             <span
               css={[
                 {
@@ -119,16 +136,8 @@ export const WhatsOnEventCard: React.FC<EventsCalenderItemProps> = ({
             },
           ]}
         >
-          {event.title}
-          {relative ? <EventRelativeTime event={event} /> : null}
-        </div>
-        <div
-          css={{
-            fontSize: '0.8rem',
-            display: 'none',
-          }}
-        >
-          {event.shortDescription}
+          {event ? event.title : <Skeleton template="_________ ___ ____" />}
+          {event && relative ? <EventRelativeTime event={event} /> : null}
         </div>
         <div
           css={[
@@ -140,7 +149,13 @@ export const WhatsOnEventCard: React.FC<EventsCalenderItemProps> = ({
             },
           ]}
         >
-          <span>{renderEventLocation(event)}</span>
+          <span>
+            {event ? (
+              renderEventLocation(event)
+            ) : (
+              <Skeleton template="_____ ____" />
+            )}
+          </span>
         </div>
       </div>
     </div>

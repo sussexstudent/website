@@ -3,9 +3,11 @@ import { Helmet } from 'react-helmet-async';
 import startOfDay from 'date-fns/startOfDay';
 import addMonths from 'date-fns/addMonths';
 import EventListingsQuery from './EventListings.graphql';
-import { WhatsOnEventsList } from './WhatsOnEventsList';
+import {
+  WhatsOnEventsList,
+  WhatsOnEventsListSkeleton,
+} from './WhatsOnEventsList';
 import { useQuery } from '@apollo/react-hooks';
-import { Loader } from '../../../components/Loader';
 import {
   setBrandingPeriod,
   useWhatsOnThemingContext,
@@ -62,8 +64,8 @@ export const WhatsOnListings: React.FC<EventsListProps> = () => {
       {/*<h1>{filter ? JSON.stringify(filter) : 'All events'}</h1>*/}
       {/*<h2>Showing {data.allEvents.edges.length} events</h2>*/}
 
-      {!data && loading ? (
-        <Loader />
+      {loading ? (
+        <WhatsOnEventsListSkeleton />
       ) : (
         <WhatsOnEventsList
           loading={loading}

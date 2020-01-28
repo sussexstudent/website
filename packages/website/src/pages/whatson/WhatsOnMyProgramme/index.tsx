@@ -46,7 +46,7 @@ export const WhatsOnMyProgramme: React.FC = () => {
         />
       ) : (
         <React.Fragment>
-          <h1>Saved events</h1>
+          <h1 css={{ padding: '0 1rem' }}>Saved events</h1>
           <WhatsOnEventsList events={data.allEvents.edges} removePast />
         </React.Fragment>
       )}

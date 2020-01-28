@@ -118,22 +118,6 @@
     background: white;
   }
 
-  &__hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-
-  .EventDetail--customImage &__hero-bg {
-    background-size: cover;
-    background-position: center center;
-    opacity: 0.8;
-    filter: blur(8px);
-    transform: scale(1.1);
-  }
-
   &__hero-container {
     z-index: 100;
     position: relative;

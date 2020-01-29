@@ -99,39 +99,41 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
         )}
         <div className="LokiContainer">
           <div className="Layout--sidebar-right">
-            {event && (
-              <div className="Prose type-body-copy">
-                {event.bodyHtml !== '' ? (
-                  <div dangerouslySetInnerHTML={{ __html: event.bodyHtml }} />
-                ) : (
-                  <div>{event.shortDescription}</div>
-                )}
-                {event?.brand && event.brand.eventAppend ? (
-                  <div className="type-long-primer">
-                    <hr />
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: event.brand.eventAppend,
-                      }}
-                    />
-                  </div>
-                ) : null}
-              </div>
-            )}
+            <div>
+              {event && (
+                <div className="Prose type-body-copy">
+                  {event.bodyHtml !== '' ? (
+                    <div dangerouslySetInnerHTML={{ __html: event.bodyHtml }} />
+                  ) : (
+                    <div>{event.shortDescription}</div>
+                  )}
+                  {event?.brand && event.brand.eventAppend ? (
+                    <div className="type-long-primer">
+                      <hr />
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: event.brand.eventAppend,
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                </div>
+              )}
 
-            {event?.venue ? (
-              <div>
-                <h3>{event.venue.name}</h3>
-                {event.venue.websiteLink ? (
-                  <InternalAppLink
-                    to={event.venue.websiteLink}
-                    className="Button"
-                  >
-                    More information
-                  </InternalAppLink>
-                ) : null}
-              </div>
-            ) : null}
+              {event?.venue ? (
+                <div>
+                  <h3>{event.venue.name}</h3>
+                  {event.venue.websiteLink ? (
+                    <InternalAppLink
+                      to={event.venue.websiteLink}
+                      className="Button"
+                    >
+                      More information
+                    </InternalAppLink>
+                  ) : null}
+                </div>
+              ) : null}
+            </div>
             <div>
               {event && (
                 <EventDetailSidebar

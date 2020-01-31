@@ -1,16 +1,14 @@
 import cx from 'classnames';
 import React from 'react';
 import {
-  getSmartDate,
+  getSmartDate, hydrateWithDates,
   organisePartsForUI,
   splitEventsInToParts,
-  WithHydratedDates,
 } from '../utils';
 import { EventPart } from '@ussu/common/src/types/events';
 import { WhatsOnEventCard } from '../WhatsOnEventCard';
 import {
   GetAllEventsWithFilterQuery,
-  EventCardFragment,
 } from '../../../generated/graphql';
 import { Skeleton } from '../../../components/Skeleton';
 
@@ -18,16 +16,6 @@ interface EventListingsProps {
   removePast: boolean;
   events: GetAllEventsWithFilterQuery['allEvents']['edges'];
   loading?: boolean;
-}
-
-function hydrateWithDates(
-  events: GetAllEventsWithFilterQuery['allEvents']['edges'],
-): WithHydratedDates<EventCardFragment>[] {
-  return events.map(({ node }) => ({
-    ...node,
-    startDate: new Date(node.startTime),
-    endDate: new Date(node.endTime),
-  }));
 }
 
 export const WhatsOnEventsList: React.FC<EventListingsProps> = ({
@@ -46,10 +34,10 @@ export const WhatsOnEventsList: React.FC<EventListingsProps> = ({
     >
       {monthGroup
         // .slice(0, monthDisplay + 1)
-        .map(({ sectionTitle, parts }) => (
+        .map(({ title, data }) => (
           // sectionTitle might not be unique in the future
-          <div className="EventsCalender__section" key={sectionTitle}>
-            {parts.map((chunk, index) => (
+          <div className="EventsCalender__section" key={title}>
+            {data.map((chunk, index) => (
               <div key={index}>
                 <h3 className={cx('EventsCalender__item-date-kicker')}>
                   {getSmartDate(chunk[0])}

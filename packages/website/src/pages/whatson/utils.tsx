@@ -13,7 +13,10 @@ import formatDate from 'date-fns/format';
 
 import { Brand, EventPart, EventPartType } from '@ussu/common/src/types/events';
 import { addWeeks, getDate, startOfWeek } from 'date-fns';
-import { EventCardFragment } from '../../generated/graphql';
+import {
+  EventCardFragment,
+  GetAllEventsWithFilterQuery
+} from '../../generated/graphql';
 
 const now = setHours(new Date(), 0);
 const rightNow = new Date();
@@ -27,6 +30,16 @@ export type WithHydratedDates<TEvent> = TEvent & {
   endDate: Date;
 };
 
+
+export function hydrateWithDates(
+  events: GetAllEventsWithFilterQuery['allEvents']['edges'],
+): WithHydratedDates<EventCardFragment>[] {
+  return events.map(({ node }) => ({
+    ...node,
+    startDate: new Date(node.startTime),
+    endDate: new Date(node.endTime),
+  }));
+}
 export function splitEventsInToParts(
   events: WithHydratedDates<EventCardFragment>[],
   removePast = true,
@@ -138,9 +151,9 @@ export function organisePartsForUI(eventParts: EventPart[], removePast = true) {
   const asList = sorted
     .filter(([key]) => key !== 'PAST')
     .map(([key, value]) => ({
-      sectionTitle:
+      title:
         key === '0' ? 'This week' : formatDate(value[0].date, 'MMMM'),
-      parts: chunkEventsToRows(value),
+      data: chunkEventsToRows(value),
     }));
 
   return asList;
@@ -181,6 +194,23 @@ export function getSmartDate(part: EventPart): string | React.ReactElement {
       {formatDate(part.date, 'LLL yyyy')}
     </span>
   );
+}
+
+export function getSmartDatePlain(part: EventPart): string {
+  if (isSameDay(new Date(), part.date)) {
+    return 'Today';
+  }
+
+  if (isSameDay(part.date, addDays(new Date(), 1))) {
+    return 'Tomorrow';
+  }
+
+  if (isBefore(part.date, startOfNextWeek)) {
+    return `This ${formatDate(part.date, 'EEEE')}`;
+  }
+
+  return `${formatDate(part.date, 'EEE')} ${getDate(part.date)}${getOrdinal(getDate(part.date))} ${formatDate(part.date, 'LLL yyyy')}`;
+
 }
 
 export function generateStylesForBrand(brand: Brand): object {

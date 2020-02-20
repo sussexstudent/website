@@ -1,11 +1,14 @@
 import React from 'react';
-import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import StreamField from '../StreamField';
 import {
   DocumentLinkBlockData,
   ExternalLinkBlockData,
   InternalLinkBlockData,
 } from './Links';
+import {
+  StreamFieldBlock,
+  StreamFieldBlockData,
+} from '@ussu/common/src/types/content';
 
 export type ButtonGroupBlockData = StreamFieldBlockData<
   'button_group_links',

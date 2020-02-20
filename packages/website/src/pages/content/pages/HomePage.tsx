@@ -1,11 +1,11 @@
 import React from 'react';
-import { Page } from '../types';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { Helmet } from 'react-helmet-async';
 import { PersonCollectionFigure } from '../../../components/PersonCollection/PersonCollectionFigure';
 import { PersonCollection } from '../../../components/PersonCollection';
 import { shuffle } from 'lodash';
 import { ScrollableSlice } from '@ussu/basil/src/ScrollableSlice';
+import { Page } from '@ussu/common/src/types/content';
 
 interface FigureCollectionBlock {
   id: string;

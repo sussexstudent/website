@@ -1,7 +1,10 @@
 import React from 'react';
-import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { OneImage } from '../../../components/OneImage';
+import {
+  StreamFieldBlock,
+  StreamFieldBlockData,
+} from '@ussu/common/src/types/content';
 
 export type ImageBlockData = StreamFieldBlockData<
   'image',

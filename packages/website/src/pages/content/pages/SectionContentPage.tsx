@@ -12,10 +12,10 @@ import {
   generateTitlesFromStream,
 } from '../../../components/ContentNavigation';
 import StreamField from '../StreamField';
-import { Page } from '../types';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { OneImage } from '../../../components/OneImage';
 import { Heading, HeadingLevel } from '../../../components/Heading';
+import { Page } from '@ussu/common/src/types/content';
 
 interface SectionContentPageData extends Page {
   title: string;

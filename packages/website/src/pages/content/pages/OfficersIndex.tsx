@@ -1,11 +1,11 @@
 import React from 'react';
-import { Page } from '../types';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { Link } from 'react-router-dom';
 import { OneImage, AspectRatio } from '../../../components/OneImage';
 import convert from 'htmr';
 import { SocialArray } from '../../../components/SocialArray';
 import { css } from '@emotion/core';
+import { Page } from '@ussu/common/src/types/content';
 
 type IOfficersIndex = Page<Page[]>;
 

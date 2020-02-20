@@ -1,9 +1,9 @@
 import React from 'react';
-import { ContentBrowserPage } from '../../pages/content/types';
 import { InternalAppLink } from '../InternalAppLink';
 import { COLORS } from '@ussu/basil/src/style';
 import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 import { css } from '@emotion/core';
+import { ContentBrowserPage } from '@ussu/common/src/types/content';
 
 export const itemActive = css();
 

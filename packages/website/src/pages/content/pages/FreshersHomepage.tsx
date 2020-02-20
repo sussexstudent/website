@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Page } from '../types';
 import {
   ProfileSliceData,
   SocialSlice,
@@ -18,6 +17,7 @@ import { useCountdown } from '../../../hooks/useCountdown';
 import { useWindowScroll } from 'react-use';
 import sand from '../../../img/freshers-sand.svg';
 import { NewsletterSignup } from '../../../components/NewsletterSignup';
+import { Page } from '@ussu/common/src/types/content';
 
 type FreshersSlices = ProfileSliceData | TwoColSliceData;
 

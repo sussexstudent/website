@@ -1,8 +1,11 @@
 import React from 'react';
-import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import { normaliseContentLink } from '../utils';
 import { BlockLink } from '../../../components/BlockLink';
 import { Button } from '../../../components/Button';
+import {
+  StreamFieldBlock,
+  StreamFieldBlockData,
+} from '@ussu/common/src/types/content';
 
 export type ExternalLinkBlockData = StreamFieldBlockData<
   'external_link',

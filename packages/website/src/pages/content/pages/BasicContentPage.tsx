@@ -1,6 +1,6 @@
 import React from 'react';
-import { Page, StreamFieldData } from '../types';
 import StreamField from '../StreamField';
+import { Page, StreamFieldData } from '@ussu/common/src/types/content';
 
 interface BasicContentPageData extends Page {
   content: StreamFieldData;

@@ -1,6 +1,9 @@
 import React from 'react';
-import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import slugify from '@ussu/common/src/libs/slugify';
+import {
+  StreamFieldBlock,
+  StreamFieldBlockData,
+} from '@ussu/common/src/types/content';
 
 export type HeadingBlockData = StreamFieldBlockData<
   'heading',

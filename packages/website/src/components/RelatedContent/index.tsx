@@ -1,6 +1,6 @@
 import React from 'react';
 import { InternalAppLink } from '../InternalAppLink';
-import { StreamFieldData } from '../../pages/content/types';
+import { StreamFieldData } from '@ussu/common/src/types/content';
 
 interface RelatedContentProps {
   relatedContent: StreamFieldData;

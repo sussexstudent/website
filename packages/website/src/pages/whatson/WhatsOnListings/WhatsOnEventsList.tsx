@@ -1,15 +1,14 @@
 import cx from 'classnames';
 import React from 'react';
 import {
-  getSmartDate, hydrateWithDates,
+  getSmartDate,
+  hydrateWithDates,
   organisePartsForUI,
   splitEventsInToParts,
 } from '../utils';
 import { EventPart } from '@ussu/common/src/types/events';
 import { WhatsOnEventCard } from '../WhatsOnEventCard';
-import {
-  GetAllEventsWithFilterQuery,
-} from '../../../generated/graphql';
+import { GetAllEventsWithFilterQuery } from '../../../generated/graphql';
 import { Skeleton } from '../../../components/Skeleton';
 
 interface EventListingsProps {

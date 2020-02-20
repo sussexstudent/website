@@ -5,7 +5,7 @@ declare function HtmrTransform(
 ): React.ReactNode;
 
 declare interface HtmrTransformMap {
-  [elementName: string]: React.FC<React.HTMLAttributes<any>>;
+  [elementName: string]: React.FC<React.AllHTMLAttributes<any>>;
   _?(node: any, props: any, children: React.ReactChildren): React.ReactNode;
 }
 

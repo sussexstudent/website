@@ -1,5 +1,4 @@
 import React from 'react';
-import { Page, StreamFieldData } from '../types';
 import StreamField from '../StreamField';
 import { getHeadingsFromStreamField } from '../utils';
 import { ContentNavigation } from '../../../components/ContentNavigation';
@@ -8,6 +7,7 @@ import { RelatedContent } from '../../../components/RelatedContent';
 import { StaffOwners } from '../../../components/StaffOwners';
 import { KBContentBreadcrumbBar } from '../../../components/KBContentBreadcrumbBar';
 import { format } from 'date-fns';
+import { Page, StreamFieldData } from '@ussu/common/src/types/content';
 
 interface AnswerPageData extends Page {
   content: StreamFieldData;

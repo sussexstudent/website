@@ -1,5 +1,4 @@
 import React from 'react';
-import { Page, StreamFieldData } from '../types';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import StreamField from '../StreamField';
 import { ContentCard } from '../../../components/ContentCard';
@@ -21,6 +20,7 @@ import {
   CardListActionable,
   CardListActionableDocumentLink,
 } from '../../../components/CardListActionable';
+import { Page, StreamFieldData } from '@ussu/common/src/types/content';
 
 type IOutletIndex = Page<Page[]>;
 

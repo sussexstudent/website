@@ -1,8 +1,8 @@
 import React from 'react';
-import { Page } from '../types';
 import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
 import { Link } from 'react-router-dom';
 import { Typeface, TypeSize, type } from '@ussu/basil/src/style/type';
+import { Page } from '@ussu/common/src/types/content';
 
 interface KBCategoryPageData extends Page<Page[]> {
   rootPage: Page;

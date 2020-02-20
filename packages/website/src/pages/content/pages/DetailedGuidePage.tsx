@@ -1,6 +1,6 @@
 import React from 'react';
-import { Page, StreamFieldData } from '../types';
 import { Redirect } from 'react-router-dom';
+import { Page, StreamFieldData } from '@ussu/common/src/types/content';
 
 interface DetailPageSection extends Page {
   content: StreamFieldData;

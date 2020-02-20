@@ -1,11 +1,11 @@
 import React from 'react';
-import { Page, StreamFieldData } from '../types';
 import StreamField from '../StreamField';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { Link } from 'react-router-dom';
 import { OneImageBackground } from '../../../components/OneImage';
 import { Typeface, TypeSize, type } from '@ussu/basil/src/style/type';
 import { css } from '@emotion/core';
+import { Page, StreamFieldData } from '@ussu/common/src/types/content';
 
 type IOutletIndex = Page<Page[]>;
 

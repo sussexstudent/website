@@ -7,3 +7,8 @@
   display: block;
   z-index: var(--layer__faux-link) !important;
 }
+
+.u-faux-link-inner {
+  position: relative;
+  z-index: var(--layer__faux-link-inner);
+}

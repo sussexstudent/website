@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { COLORS } from '@ussu/basil/src/style';
 import { DocumentLinkBlockData } from '../pages/content/blocks/Links';
-import { StreamFieldBlock } from '../pages/content/types';
 import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
 import { Modal } from './Modal';
+import { StreamFieldBlock } from '@ussu/common/src/types/content';
 
 export const CardListActionable: React.FC = ({ children }) => {
   return (

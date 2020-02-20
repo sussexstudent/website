@@ -1,5 +1,4 @@
 import React from 'react';
-import { Page, StreamFieldData } from '../types';
 import { ContentNavigation } from '../../../components/ContentNavigation';
 import { RelatedContent } from '../../../components/RelatedContent';
 import { StaffOwners } from '../../../components/StaffOwners';
@@ -7,6 +6,7 @@ import StreamField from '../StreamField';
 import { BreadcrumbBar } from '../../../components/BreadcrumbBar';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
+import { Page, StreamFieldData } from '@ussu/common/src/types/content';
 
 interface DetailPage extends Page<DetailPageSection[]> {
   content: StreamFieldData;

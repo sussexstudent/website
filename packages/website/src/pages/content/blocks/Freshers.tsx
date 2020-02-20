@@ -1,5 +1,4 @@
 import React from 'react';
-import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import { css } from '@emotion/core';
 import slugify from '@ussu/common/src/libs/slugify';
 import convert from 'htmr';
@@ -12,6 +11,10 @@ import { AspectRatio, OneImage } from '../../../components/OneImage';
 import { ImageBlockData } from './Image';
 import { SocialArray } from '../../../components/SocialArray';
 import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
+import {
+  StreamFieldBlock,
+  StreamFieldBlockData,
+} from '@ussu/common/src/types/content';
 
 const Slice: React.FC<{ id: string; color: string }> = ({
   children,

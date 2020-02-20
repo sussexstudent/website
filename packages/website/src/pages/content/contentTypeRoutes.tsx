@@ -16,9 +16,7 @@ import { OutletPageProps } from './pages/OutletPage';
 import { OfficerOverviewPageProps } from './pages/OfficerOverviewPage';
 import { OfficerIndexProps } from './pages/OfficersIndex';
 import { OfficerEventsPageProps } from './pages/OfficerEventsPage';
-interface PageComponentMap {
-  [wagtailModel: string]: any; // todo
-}
+import { PageComponentMap } from '@ussu/common/src/types/content';
 
 export const contentTypeMap: PageComponentMap = {
   HomePage: Homepage,

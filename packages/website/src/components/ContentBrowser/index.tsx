@@ -1,6 +1,6 @@
 import React from 'react';
-import { ContentBrowserPage } from '../../pages/content/types';
 import { ContentBrowserColumn } from './ContentBrowserColumn';
+import { ContentBrowserPage } from '@ussu/common/src/types/content';
 
 export interface ContentBrowserProps {
   pages: ContentBrowserPage;

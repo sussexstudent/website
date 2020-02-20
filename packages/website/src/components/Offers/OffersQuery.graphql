@@ -5,6 +5,7 @@ query getOffers {
     companyName
     companyWebsite
     companyLogo {
+      id
       resource
       width
       height

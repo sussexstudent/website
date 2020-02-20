@@ -1,11 +1,14 @@
 import React from 'react';
-import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import convert from 'htmr';
 import { AspectRatio, OneImage } from '@ussu/website/src/components/OneImage';
 import { css } from '@emotion/core';
 import { COLORS } from '@ussu/basil/src/style';
 import { type, TypeSize } from '@ussu/basil/src/style/type';
+import {
+  StreamFieldBlock,
+  StreamFieldBlockData,
+} from '@ussu/common/src/types/content';
 
 const pledgeHeaderStyles = css({
   display: 'flex',

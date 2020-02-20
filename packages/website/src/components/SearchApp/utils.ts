@@ -1,8 +1,8 @@
-import { Page } from '../../pages/content/types';
 import { Event } from '@ussu/common/src/types/events';
 import { StudentGroup } from '@ussu/common/src/types/groups';
 import getFalmerEndpoint from '@ussu/common/src/libs/getFalmerEndpoint';
 import { orderBy } from 'lodash';
+import { Page } from '@ussu/common/src/types/content';
 
 export interface SearchPayload {
   data: {

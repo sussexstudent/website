@@ -1,55 +1,17 @@
-import { Heading, HeadingBlockData } from './blocks/Heading';
-import {
-  HeadingHeroBlock,
-  HeadingHeroBlockData,
-} from './blocks/HeadingHeroBlock';
-import {
-  SelectionGridBlock,
-  SelectionGridItemData,
-} from './blocks/SelectionGridBlock';
-import { StaffList, StaffListBlockData } from '../../components/StaffList';
-import { TextBlock, TextBlockData } from './blocks/TextBlock';
-import {
-  DocumentLink,
-  DocumentLinkBlockData,
-  ExternalLink,
-  ExternalLinkBlockData,
-  InternalLink,
-  InternalLinkBlockData,
-} from './blocks/Links';
-import { ImageBlock, ImageBlockData } from './blocks/Image';
-import { ButtonGroupBlock, ButtonGroupBlockData } from './blocks/ButtonGroup';
-import { StartButtonBlock, StartButtonBlockData } from './blocks/StartButton';
-import { AlertTextBlock, AlertTextBlockData } from './blocks/AlertText';
-import { Pledge, PledgeBlockData } from './blocks/Pledge';
-import {
-  ProfileSlice,
-  ProfileSliceData,
-  TwoColSlice,
-  TwoColSliceData,
-} from './blocks/Freshers';
+import { Heading } from './blocks/Heading';
+import { HeadingHeroBlock } from './blocks/HeadingHeroBlock';
+import { SelectionGridBlock } from './blocks/SelectionGridBlock';
+import { StaffList } from '../../components/StaffList';
+import { TextBlock } from './blocks/TextBlock';
+import { DocumentLink, ExternalLink, InternalLink } from './blocks/Links';
+import { ImageBlock } from './blocks/Image';
+import { ButtonGroupBlock } from './blocks/ButtonGroup';
+import { StartButtonBlock } from './blocks/StartButton';
+import { AlertTextBlock } from './blocks/AlertText';
+import { Pledge } from './blocks/Pledge';
+import { ProfileSlice, TwoColSlice } from './blocks/Freshers';
+import { BlockComponentMap } from '@ussu/common/src/libs/content/blocks';
 
-export type AllBlocks =
-  | HeadingBlockData
-  | HeadingHeroBlockData
-  | SelectionGridItemData
-  | TextBlockData
-  | ImageBlockData
-  | StartButtonBlockData
-  | AlertTextBlockData
-  | StartButtonBlockData
-  | ButtonGroupBlockData
-  | StaffListBlockData
-  | ExternalLinkBlockData
-  | InternalLinkBlockData
-  | DocumentLinkBlockData
-  | PledgeBlockData
-  | ProfileSliceData
-  | TwoColSliceData;
-
-export interface BlockComponentMap {
-  [blockName: string]: any; // todo
-}
 // These keys are from Wagtail, so we use snake case
 /* eslint-disable @typescript-eslint/camelcase */
 const blockComponentMap: BlockComponentMap = {

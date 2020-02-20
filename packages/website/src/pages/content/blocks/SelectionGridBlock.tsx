@@ -1,9 +1,12 @@
 import React from 'react';
-import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import { SelectionGridItem } from '../../../components/SelectionGridItem';
 import { SelectionGrid } from '../../../components/SelectionGrid';
 import { normaliseContentLink } from '../utils';
+import {
+  StreamFieldBlock,
+  StreamFieldBlockData,
+} from '@ussu/common/src/types/content';
 
 export type SelectionGridItemData = StreamFieldBlockData<
   'selection_grid',

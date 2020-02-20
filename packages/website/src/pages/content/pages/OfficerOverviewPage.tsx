@@ -1,5 +1,4 @@
 import React from 'react';
-import { Page, StreamFieldData } from '../types';
 import { AspectRatio, OneImage } from '@ussu/website/src/components/OneImage';
 import { FalmerImage } from '@ussu/common/src/types/events';
 import convert from 'htmr';
@@ -7,6 +6,7 @@ import StreamField from '../StreamField';
 import { css } from '@emotion/core';
 import { Helmet } from 'react-helmet-async';
 import { MQ } from '@ussu/basil/src/style';
+import { Page, StreamFieldData } from '@ussu/common/src/types/content';
 
 type IOfficerOverviewIndex = Page<Page[]>;
 

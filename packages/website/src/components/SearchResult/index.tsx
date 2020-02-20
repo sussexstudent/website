@@ -1,7 +1,7 @@
 import React from 'react';
 import { Event } from '@ussu/common/src/types/events';
-import { ContentBrowserPage } from '../../pages/content/types';
 import { StudentGroup } from '@ussu/common/src/types/groups';
+import { ContentBrowserPage } from '@ussu/common/src/types/content';
 
 const EventSearchResult: React.FC<{
   item: Event;

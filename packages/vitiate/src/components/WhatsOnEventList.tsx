@@ -1,36 +1,33 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  SectionList
-} from 'react-native';
+import {View, Text, SectionList} from 'react-native';
 import {COLORS} from '@ussu/basil/src/style';
-import {Container} from "./Container";
-import {ViewHeading} from "./ViewHeading";
-import {ScrollableActionBar} from "./ScrollableActionBar";
-import {WhatsOnEventCard} from "./WhatsOnEventCard";
-import {useNavigation} from "@react-navigation/native";
-import {useQuery} from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import startOfDay from "date-fns/startOfDay";
-import addMonths from "date-fns/addMonths";
+import {Container} from './Container';
+import {WhatsOnEventCard} from './WhatsOnEventCard';
+import {useNavigation} from '@react-navigation/native';
+import {useQuery} from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import startOfDay from 'date-fns/startOfDay';
+import addMonths from 'date-fns/addMonths';
 import {
   getSmartDatePlain,
   hydrateWithDates,
-  splitEventsInToParts
-} from "@ussu/website/src/pages/whatson/utils";
+  splitEventsInToParts,
+} from '@ussu/website/src/pages/whatson/utils';
 
-export const WhatsOnEventList: React.FC<{viewerLiked?: boolean; filters: any, header: any }> = ({
-  filters,
-  header,
-  viewerLiked
-}) => {
+export const WhatsOnEventList: React.FC<{
+  viewerLiked?: boolean;
+  filters: any;
+  header: any;
+}> = ({filters, header, viewerLiked}) => {
   const [now] = useState(new Date());
   const navigation = useNavigation();
 
   const {data} = useQuery(
     gql`
-      query getAllEventsWithFilter($filter: EventFilterInput, $viewerLiked: Boolean) {
+      query getAllEventsWithFilter(
+        $filter: EventFilterInput
+        $viewerLiked: Boolean
+      ) {
         allEvents(filter: $filter, viewerLiked: $viewerLiked) {
           edges {
             node {
@@ -85,8 +82,9 @@ export const WhatsOnEventList: React.FC<{viewerLiked?: boolean; filters: any, he
       }
     `,
     {
+      fetchPolicy: 'cache-and-network',
       variables: {
-        viewerLiked: filters.viewerLiked ?? undefined,
+        viewerLiked: viewerLiked ?? undefined,
         filter: {
           ...filters,
           fromTime: startOfDay(now).toISOString(),
@@ -97,7 +95,7 @@ export const WhatsOnEventList: React.FC<{viewerLiked?: boolean; filters: any, he
   );
 
   if (!data?.allEvents?.edges) {
-    return <Text>Loading</Text>
+    return <Text>Loading</Text>;
   }
 
   const sections: string[] = [];
@@ -106,19 +104,19 @@ export const WhatsOnEventList: React.FC<{viewerLiked?: boolean; filters: any, he
   splitEventsInToParts(hydrateWithDates(data?.allEvents?.edges ?? []))
     //.splice(0, 5)
     .forEach(part => {
-    const title = getSmartDatePlain(part);
+      const title = getSmartDatePlain(part);
 
-    if (!sections.includes(title)) {
-      sections.push(title);
-      eventsInSection[title] = [part.event];
-    } else {
-      eventsInSection[title].push(part.event);
-    }
-  });
+      if (!sections.includes(title)) {
+        sections.push(title);
+        eventsInSection[title] = [part.event];
+      } else {
+        eventsInSection[title].push(part.event);
+      }
+    });
 
   return (
     <SectionList
-      sections={sections.map(title => ({ title, data: eventsInSection[title] }))}
+      sections={sections.map(title => ({title, data: eventsInSection[title]}))}
       keyExtractor={(item, index) => item + index}
       ListHeaderComponent={header}
       renderItem={({item}) => (
@@ -132,12 +130,12 @@ export const WhatsOnEventList: React.FC<{viewerLiked?: boolean; filters: any, he
         </Container>
       )}
       renderSectionHeader={({section: {title}}) => (
-        <View style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
+        <View style={{backgroundColor: COLORS.GREY_BG}}>
           <Container>
             <Text
               style={{
                 color: COLORS.BRAND_RED,
-                paddingVertical: 8,
+                paddingVertical: 12,
                 fontSize: 22,
                 fontWeight: '700',
               }}>
@@ -146,5 +144,6 @@ export const WhatsOnEventList: React.FC<{viewerLiked?: boolean; filters: any, he
           </Container>
         </View>
       )}
-    />  );
+    />
+  );
 };

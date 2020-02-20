@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Page } from '../types';
 import convert from 'htmr';
 import EventListingsQuery from '../../../pages/whatson/WhatsOnListings/EventListings.graphql';
 import { WhatsOnEventsList } from '../../whatson/WhatsOnListings/WhatsOnEventsList';
@@ -7,6 +6,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { startOfDay, addMonths } from 'date-fns/esm';
 import { Loader } from '../../../components/Loader';
 import { GetAllEventsWithFilterQuery } from '../../../generated/graphql';
+import { Page } from '@ussu/common/src/types/content';
 
 type IOfficerEventsIndex = Page<Page[]>;
 

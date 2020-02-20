@@ -15,7 +15,7 @@ import { Brand, EventPart, EventPartType } from '@ussu/common/src/types/events';
 import { addWeeks, getDate, startOfWeek } from 'date-fns';
 import {
   EventCardFragment,
-  GetAllEventsWithFilterQuery
+  GetAllEventsWithFilterQuery,
 } from '../../generated/graphql';
 
 const now = setHours(new Date(), 0);
@@ -29,7 +29,6 @@ export type WithHydratedDates<TEvent> = TEvent & {
   startDate: Date;
   endDate: Date;
 };
-
 
 export function hydrateWithDates(
   events: GetAllEventsWithFilterQuery['allEvents']['edges'],
@@ -151,8 +150,7 @@ export function organisePartsForUI(eventParts: EventPart[], removePast = true) {
   const asList = sorted
     .filter(([key]) => key !== 'PAST')
     .map(([key, value]) => ({
-      title:
-        key === '0' ? 'This week' : formatDate(value[0].date, 'MMMM'),
+      title: key === '0' ? 'This week' : formatDate(value[0].date, 'MMMM'),
       data: chunkEventsToRows(value),
     }));
 
@@ -209,8 +207,9 @@ export function getSmartDatePlain(part: EventPart): string {
     return `This ${formatDate(part.date, 'EEEE')}`;
   }
 
-  return `${formatDate(part.date, 'EEE')} ${getDate(part.date)}${getOrdinal(getDate(part.date))} ${formatDate(part.date, 'LLL yyyy')}`;
-
+  return `${formatDate(part.date, 'EEE')} ${getDate(part.date)}${getOrdinal(
+    getDate(part.date),
+  )} ${formatDate(part.date, 'LLL yyyy')}`;
 }
 
 export function generateStylesForBrand(brand: Brand): object {

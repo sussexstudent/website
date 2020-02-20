@@ -1,7 +1,10 @@
 import React from 'react';
 import { HeadingHero } from '../../../components/HeadingHero';
-import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import { FalmerImage } from '@ussu/common/src/types/events';
+import {
+  StreamFieldBlock,
+  StreamFieldBlockData,
+} from '@ussu/common/src/types/content';
 
 export type HeadingHeroBlockData = StreamFieldBlockData<
   'heading_hero',

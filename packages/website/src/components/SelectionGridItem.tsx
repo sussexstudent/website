@@ -3,6 +3,7 @@ import { AspectRatio, OneImage } from './OneImage';
 import { InternalAppLink } from './InternalAppLink';
 import convert from 'htmr';
 import { type, Typeface, TypeSize } from '@ussu/basil/src/style/type';
+import FauxRouterLink, { InnerLink } from './FauxInternalAppLink';
 
 interface SelectionGridItemProps {
   link: string;
@@ -18,7 +19,7 @@ export const SelectionGridItem: React.FC<SelectionGridItemProps> = ({
   description,
 }) => (
   <li className="SelectionGrid__item SelectionGrid--underneath" key={link}>
-    <InternalAppLink className="SelectionGrid__link" to={link}>
+    <div className="SelectionGrid__link">
       <OneImage
         className="SelectionGrid__image"
         src={imageURL}
@@ -33,12 +34,15 @@ export const SelectionGridItem: React.FC<SelectionGridItemProps> = ({
             { '& p': { marginTop: 0 } },
           ]}
         >
-          {convert(description)}
+          {convert(description, {transform: {
+            a: ({ href, children }) => <InnerLink to={href ?? ''}>{children}</InnerLink>
+          }})}
           <div>
             <InternalAppLink to={link}>Find out more »</InternalAppLink>
           </div>
         </div>
       ) : null}
-    </InternalAppLink>
+      <FauxRouterLink href={link} />
+    </div>
   </li>
 );

@@ -1,6 +1,9 @@
 import React from 'react';
-import { StreamFieldBlock, StreamFieldBlockData } from '../../types';
 import AlertIcon from '@ussu/common/src/icons/alert-circle.svg';
+import {
+  StreamFieldBlock,
+  StreamFieldBlockData,
+} from '@ussu/common/src/types/content';
 
 export type AlertTextBlockData = StreamFieldBlockData<
   'alert_text',

@@ -1,11 +1,11 @@
 import React from 'react';
 import slugify from '@ussu/common/src/libs/slugify';
 import { FalmerImage } from '@ussu/common/src/types/events';
+import { AspectRatio, OneImage } from '../OneImage';
 import {
   StreamFieldBlock,
   StreamFieldBlockData,
-} from '../../pages/content/types';
-import { AspectRatio, OneImage } from '../OneImage';
+} from '@ussu/common/src/types/content';
 
 interface StaffMemberData {
   photo?: FalmerImage;

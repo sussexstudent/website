@@ -1,6 +1,9 @@
 import React from 'react';
-import { StreamFieldBlock, StreamFieldBlockData } from '../types';
 import { InternalAppLink } from '../../../components/InternalAppLink';
+import {
+  StreamFieldBlock,
+  StreamFieldBlockData,
+} from '@ussu/common/src/types/content';
 
 export type StartButtonBlockData = StreamFieldBlockData<
   'start_button',

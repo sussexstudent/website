@@ -60,7 +60,7 @@
   "devDependencies": {
     "@graphql-codegen/add": "^1.9.1",
     "@graphql-codegen/cli": "^1.9.1",
-    "@graphql-codegen/fragment-matcher": "1.12.1",
+    "@graphql-codegen/fragment-matcher": "1.12.2",
     "@graphql-codegen/introspection": "1.12.1",
     "@graphql-codegen/typescript": "1.12.1",
     "@graphql-codegen/typescript-graphql-files-modules": "^1.9.1",

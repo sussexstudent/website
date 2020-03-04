@@ -1,3 +1,4 @@
+
 declare module '*/AllActiveBanners.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -5,6 +6,7 @@ declare module '*/AllActiveBanners.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/OffersQuery.graphql' {
   import { DocumentNode } from 'graphql';
@@ -13,6 +15,7 @@ declare module '*/OffersQuery.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/ActiveSlate.graphql' {
   import { DocumentNode } from 'graphql';
@@ -21,27 +24,30 @@ declare module '*/ActiveSlate.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/StudentGroupListings.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const getAllStudentGroups: DocumentNode;
-  export const StudentGroupFragment: DocumentNode;
+export const StudentGroupFragment: DocumentNode;
 
   export default defaultDocument;
 }
+    
 
 declare module '*/AllAwards.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const getAwardsForGroupBySlug: DocumentNode;
-  export const award: DocumentNode;
-  export const awardAuthority: DocumentNode;
-  export const awarded: DocumentNode;
-  export const awardsPeriod: DocumentNode;
+export const award: DocumentNode;
+export const awardAuthority: DocumentNode;
+export const awarded: DocumentNode;
+export const awardsPeriod: DocumentNode;
 
   export default defaultDocument;
 }
+    
 
 declare module '*/Flags.graphql' {
   import { DocumentNode } from 'graphql';
@@ -50,6 +56,7 @@ declare module '*/Flags.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/acceptConsent.graphql' {
   import { DocumentNode } from 'graphql';
@@ -58,6 +65,7 @@ declare module '*/acceptConsent.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/ChangeState.graphql' {
   import { DocumentNode } from 'graphql';
@@ -66,6 +74,7 @@ declare module '*/ChangeState.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/GetListing.graphql' {
   import { DocumentNode } from 'graphql';
@@ -74,6 +83,7 @@ declare module '*/GetListing.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/RequestContactDetails.graphql' {
   import { DocumentNode } from 'graphql';
@@ -82,6 +92,7 @@ declare module '*/RequestContactDetails.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/UpdateImage.graphql' {
   import { DocumentNode } from 'graphql';
@@ -90,6 +101,7 @@ declare module '*/UpdateImage.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/CreateListingMutation.graphql' {
   import { DocumentNode } from 'graphql';
@@ -98,6 +110,7 @@ declare module '*/CreateListingMutation.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/CurrentUser.graphql' {
   import { DocumentNode } from 'graphql';
@@ -106,6 +119,7 @@ declare module '*/CurrentUser.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/MyListings.graphql' {
   import { DocumentNode } from 'graphql';
@@ -114,6 +128,7 @@ declare module '*/MyListings.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/GetSearch.graphql' {
   import { DocumentNode } from 'graphql';
@@ -122,6 +137,7 @@ declare module '*/GetSearch.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/SectionListings.graphql' {
   import { DocumentNode } from 'graphql';
@@ -130,6 +146,7 @@ declare module '*/SectionListings.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/getAllMarketSections.graphql' {
   import { DocumentNode } from 'graphql';
@@ -138,6 +155,7 @@ declare module '*/getAllMarketSections.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/marketListingFragment.graphql' {
   import { DocumentNode } from 'graphql';
@@ -146,18 +164,20 @@ declare module '*/marketListingFragment.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/ContentPageQuery.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const getContentByPath: DocumentNode;
-  export const ContentPageGenerals: DocumentNode;
-  export const ContentPageGeneralsGeneric: DocumentNode;
-  export const FalmerImage: DocumentNode;
-  export const KBTypes: DocumentNode;
+export const ContentPageGenerals: DocumentNode;
+export const ContentPageGeneralsGeneric: DocumentNode;
+export const FalmerImage: DocumentNode;
+export const KBTypes: DocumentNode;
 
   export default defaultDocument;
 }
+    
 
 declare module '*/FreshersMenuQuery.graphql' {
   import { DocumentNode } from 'graphql';
@@ -166,16 +186,18 @@ declare module '*/FreshersMenuQuery.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/EventsDetailPage.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const getFullEventInfo: DocumentNode;
-  export const EventCard: DocumentNode;
-  export const userLike: DocumentNode;
+export const EventCard: DocumentNode;
+export const userLike: DocumentNode;
 
   export default defaultDocument;
 }
+    
 
 declare module '*/EventTypes.graphql' {
   import { DocumentNode } from 'graphql';
@@ -184,6 +206,7 @@ declare module '*/EventTypes.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/GroupsWithEvents.graphql' {
   import { DocumentNode } from 'graphql';
@@ -192,6 +215,7 @@ declare module '*/GroupsWithEvents.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/LiveBrandingPeriods.graphql' {
   import { DocumentNode } from 'graphql';
@@ -200,6 +224,7 @@ declare module '*/LiveBrandingPeriods.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/BrandingPeriod.graphql' {
   import { DocumentNode } from 'graphql';
@@ -208,6 +233,7 @@ declare module '*/BrandingPeriod.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/EventListingFragment.graphql' {
   import { DocumentNode } from 'graphql';
@@ -216,6 +242,7 @@ declare module '*/EventListingFragment.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/EventListings.graphql' {
   import { DocumentNode } from 'graphql';
@@ -224,6 +251,7 @@ declare module '*/EventListings.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/EventListingsBundle.graphql' {
   import { DocumentNode } from 'graphql';
@@ -232,6 +260,7 @@ declare module '*/EventListingsBundle.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/LikeEvent.graphql' {
   import { DocumentNode } from 'graphql';
@@ -240,6 +269,7 @@ declare module '*/LikeEvent.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/WhatsOnGroupHeader.graphql' {
   import { DocumentNode } from 'graphql';
@@ -248,6 +278,7 @@ declare module '*/WhatsOnGroupHeader.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/WhatsOnVenueHeader.graphql' {
   import { DocumentNode } from 'graphql';
@@ -256,6 +287,7 @@ declare module '*/WhatsOnVenueHeader.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/MyProgramme.graphql' {
   import { DocumentNode } from 'graphql';
@@ -264,6 +296,7 @@ declare module '*/MyProgramme.graphql' {
 
   export default defaultDocument;
 }
+    
 
 declare module '*/getConsentForm.graphql' {
   import { DocumentNode } from 'graphql';
@@ -272,3 +305,4 @@ declare module '*/getConsentForm.graphql' {
 
   export default defaultDocument;
 }
+    

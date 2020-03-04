@@ -168,6 +168,7 @@ query getContentByPath($path: String, $previewToken: String) {
 }
 
 fragment ContentPageGenerals on Page {
+  pageId
   title
   slug
   path
@@ -203,6 +204,7 @@ fragment ContentPageGenerals on Page {
 }
 
 fragment ContentPageGeneralsGeneric on GenericPage {
+  pageId
   title
   slug
   path

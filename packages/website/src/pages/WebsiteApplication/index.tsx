@@ -102,6 +102,7 @@ const WebsiteApplication: React.FC<WebsiteApplicationProps> = ({
             <Route component={ContentAPI} path="/freshers" />
             {/*<EventDiscovery path="/event-discovery" />*/}
             <Route component={ContentAPI} path="/get-involved" exact />
+            <Route component={ContentAPI} path="/volunteer" exact />
             <Route
               component={ContentAPI}
               path="/get-involved/societies-and-student-media"

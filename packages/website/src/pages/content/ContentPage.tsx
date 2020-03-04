@@ -9,6 +9,7 @@ import qs from 'query-string';
 import { ErrorState } from '../../components/ErrorState';
 import { ContentWayfinder } from '../../components/Wayfinder';
 import { GetContentByPathQuery } from '../../generated/graphql';
+import {useToolkit} from "../../hooks/useToolkit";
 
 interface OwnProps {
   path: string;
@@ -32,6 +33,7 @@ const ContentPageWrapper: React.FC<{
       }
     }, 0); // todo: this is not great
   }, [page.title]);
+  useToolkit('Content', { id: page.pageId, contentType: page.contentType })
 
   return (
     <React.Fragment>

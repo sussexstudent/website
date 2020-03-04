@@ -21,6 +21,7 @@ import {
   GetFullEventInfoQuery,
   EventTicketType,
 } from '../../../generated/graphql';
+import {useToolkit} from "../../../hooks/useToolkit";
 
 interface RouteParams {
   [0]: string;
@@ -41,6 +42,7 @@ export const EventDetailPage: React.FC<EventDetailPageProps> = ({
   });
 
   const event = data?.event;
+  useToolkit('Event', { id: event?.eventId })
 
   useEffect(() => {
     if (data?.event) {

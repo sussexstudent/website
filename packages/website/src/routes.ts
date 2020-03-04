@@ -22,10 +22,10 @@ export default new PreRouter([
   /^\/about-us\/shops-and-bars/,
   /^\/support$/,
   /^\/sport-societies-media$/,
+  /^\/volunteer$/,
   '/get-involved-next',
   '/get-involved/campaigns-toolkit',
   '/about-us-next',
   /^\/volunteer\/support/,
-  '/volunteer',
   /^\/about-us\/officers/,
 ]);

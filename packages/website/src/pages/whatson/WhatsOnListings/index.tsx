@@ -16,6 +16,7 @@ import { GetAllEventsWithFilterQuery } from '../../../generated/graphql';
 import { useEventFilterCapture } from './filtering';
 import { whatsOnListingViews } from './views';
 import { Switch, Route } from 'react-router';
+import {BannerOutlet} from "../../../components/BannerOutlet";
 
 interface OwnProps {
   disableHeader: boolean;
@@ -55,6 +56,7 @@ export const WhatsOnListings: React.FC<EventsListProps> = () => {
       <Helmet>
         <title>{`What's on | Sussex Students' Union`}</title>
       </Helmet>
+      <BannerOutlet outlet="events.listings.top" container={({ children }) => <div css={{ maxWidth: 900, marginTop: '1rem', padding: '0 1rem', marginLeft: 'auto', marginRight: 'auto' }}>{children}</div>} />
       <Switch>
         {whatsOnListingViews.map((view) => (
           <Route path={view.path} component={view.header} exact={view.exact} />

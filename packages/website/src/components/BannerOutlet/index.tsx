@@ -7,9 +7,10 @@ import { GetActiveBannersQuery } from '../../generated/graphql';
 
 interface BannerOutletProps {
   outlet: string;
+  container?: (props: { children: any }) => any;
 }
 
-export const BannerOutlet: React.FC<BannerOutletProps> = ({ outlet }) => {
+export const BannerOutlet: React.FC<BannerOutletProps> = ({ outlet , container }) => {
   const { data, loading } = useQuery<GetActiveBannersQuery>(BANNER_QUERY);
 
   if (loading || !data) {
@@ -24,7 +25,7 @@ export const BannerOutlet: React.FC<BannerOutletProps> = ({ outlet }) => {
     return null;
   }
 
-  return (
+  const content = (
     <ul className="BannerList List--reset">
       {!loading &&
         data &&
@@ -41,4 +42,6 @@ export const BannerOutlet: React.FC<BannerOutletProps> = ({ outlet }) => {
         ))}
     </ul>
   );
+
+  return container ? container({ children: content }) : content;
 };

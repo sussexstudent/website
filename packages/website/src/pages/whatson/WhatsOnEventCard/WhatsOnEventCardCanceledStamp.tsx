@@ -6,7 +6,7 @@ export const WhatsOnEventCardCanceledStamp: React.FC = () => (
     css={[
       type(TypeSize.Trafalgar, Typeface.Secondary),
       {
-        color: '#ff4144',
+        color: '#ff4144aa',
         position: 'absolute',
         textTransform: 'uppercase',
         fontWeight: 800,

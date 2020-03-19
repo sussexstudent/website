@@ -1,6 +1,6 @@
 .Banner {
   padding: 1em;
-  background-color: var(--color__brand-green);
+  background-color: var(--color__brand-coral);
   color: #ffffff;
   text-align: center;
   border-radius: 6px;
@@ -8,6 +8,7 @@
   &__heading {
     font-weight: 600;
     font-family: var(--type__primary);
+  font-size: 1.2rem;
   }
 }
 

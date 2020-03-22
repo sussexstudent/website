@@ -8,6 +8,15 @@ declare module '*/AllActiveBanners.graphql' {
 }
     
 
+declare module '*/exitPollAnswer.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const ExitPollAnswer: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/OffersQuery.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

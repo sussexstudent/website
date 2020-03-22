@@ -16,7 +16,7 @@
         }
       },
       "Production": {
-        "url": "https://staging.falmer.sussexstudent.com/graphql/",
+        "url": "https://falmer.sussexstudent.com/graphql/",
         "headers": {
           "user-agent": "JS GraphQL"
         }

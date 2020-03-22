@@ -22,6 +22,7 @@ export const LokiMenu: React.FC = () => {
         <LokiMenuItem name="What's on" link="/whats-on/" />
         <LokiMenuItem name="Support" link="/support/" />
         <LokiMenuItem name="About us" link="/about-us/" />
+        <LokiMenuItem name="Vote" link="/elections/" />
       </ul>
     </nav>
   );

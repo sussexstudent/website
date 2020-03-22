@@ -4,6 +4,7 @@
   font-family: var(--type__primary);
   font-weight: 600;
   padding: 0 1rem;
+  padding-bottom: 3rem;
   @media (--medium) {
     padding: 0;
   }

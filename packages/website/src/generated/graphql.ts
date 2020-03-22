@@ -645,6 +645,7 @@ export type EventFilterInput = {
   cost: Maybe<Scalars['String']>,
   alcohol: Maybe<Scalars['String']>,
   ticketLevel: Maybe<Scalars['String']>,
+  canceledAt: Maybe<Scalars['DateTime']>,
   curatedBy: Maybe<Scalars['ID']>,
   uncurated: Maybe<Scalars['Boolean']>,
 };
@@ -693,6 +694,21 @@ export enum EventTicketType {
   Generic = 'GENERIC',
   Msl = 'MSL'
 }
+
+export type ExitPollAnswer = {
+   __typename: 'ExitPollAnswer',
+  response: Maybe<ExitPollResponse>,
+};
+
+export type ExitPollResponse = {
+   __typename: 'ExitPollResponse',
+  createdAt: Scalars['DateTime'],
+  updatedAt: Scalars['DateTime'],
+  id: Scalars['ID'],
+  user: ClientUser,
+  response: Scalars['Int'],
+  additionalInfo: Scalars['String'],
+};
 
 export type FalmerFile = {
    __typename: 'FalmerFile',
@@ -1513,6 +1529,7 @@ export type Mutations = {
   updateMarketListing: Maybe<UpdateMarketListing>,
   requestMarketListingContactDetails: Maybe<RequestDetails>,
   acceptConsent: Maybe<AcceptConsentForm>,
+  exitPollResponse: Maybe<ExitPollAnswer>,
   updateSlate: Maybe<UpdateSlate>,
   moveEvent: Maybe<MoveEvent>,
   likeEvent: Maybe<LikeEvent>,
@@ -1538,6 +1555,12 @@ export type MutationsRequestMarketListingContactDetailsArgs = {
 
 export type MutationsAcceptConsentArgs = {
   slug: Maybe<Scalars['String']>
+};
+
+
+export type MutationsExitPollResponseArgs = {
+  additionalInfo: Maybe<Scalars['String']>,
+  response: Maybe<Scalars['Int']>
 };
 
 
@@ -2847,6 +2870,14 @@ export type GetActiveBannersQueryVariables = {};
 
 
 export type GetActiveBannersQuery = { __typename: 'Queries', allActiveBanners: Array<{ __typename: 'Banner', id: string, outlet: string, heading: string, body: any, purpose: BannerPurpose }> };
+
+export type ExitPollAnswerMutationVariables = {
+  response: Scalars['Int'],
+  additionalInfo: Scalars['String']
+};
+
+
+export type ExitPollAnswerMutation = { __typename: 'Mutations', exitPollResponse: Maybe<{ __typename: 'ExitPollAnswer', response: Maybe<{ __typename: 'ExitPollResponse', createdAt: any }> }> };
 
 export type GetOffersQueryVariables = {};
 

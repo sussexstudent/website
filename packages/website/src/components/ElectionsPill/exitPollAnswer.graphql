@@ -1,0 +1,7 @@
+mutation ExitPollAnswer($response: Int!, $additionalInfo: String!) {
+  exitPollResponse(response: $response, additionalInfo: $additionalInfo) {
+    response {
+      createdAt
+    }
+  }
+}

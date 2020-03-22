@@ -67,7 +67,7 @@ export const ElectionsPill = () => {
   return (
     <React.Fragment>
       {pill}
-      <ElectionsModal isOpen={exitPollModal} onRequestClose={() => {setExitPollModal(false)}} onFinish={() => {setExitPollModal(false); localStorage.setItem('su2020ExitPoll', 'true') }} />
+      <ElectionsModal isOpen={exitPollModal} onRequestClose={() => {setExitPollModal(false)}} onFinish={() => {setExitPollModal(false); localStorage.setItem('su2020ExitPoll', 'true'); setMode(PillMode.Hide) }} />
     </React.Fragment>
   );
 }

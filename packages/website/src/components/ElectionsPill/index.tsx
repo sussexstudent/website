@@ -30,14 +30,14 @@ export const ElectionsPill = () => {
   useEffect(() => {
     if (localStorage.getItem('su2020ExitPoll') !== 'true') {
 
-      if (location.pathname.startsWith('/whats-on') || location.pathname === '/elections/') {
-        setMode(PillMode.Hide)
-      } else if (location.pathname.startsWith('/elections/posts/209')) {
+      if (location.pathname.startsWith('/elections/vote')) {
         if (user.isLoggedIn) {
           setMode(PillMode.Exit);
         } else {
           setMode(PillMode.Hide);
         }
+      } else if (location.pathname.startsWith('/whats-on') || location.pathname === '/elections/') {
+        setMode(PillMode.Hide)
       } else {
         setMode(PillMode.Vote)
       }

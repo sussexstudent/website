@@ -5,7 +5,6 @@ import { LokiMenu } from '../LokiMenu';
 import { ProfileLabel } from './ProfileLabel';
 import { LokiSideMenu } from '../LokiSideMenu';
 import { MenuIcon } from '../MenuIcon';
-import { ElectionsPill } from '../ElectionsPill';
 import { CrossIcon } from '../CrossIcon';
 import { SearchIcon } from '../SearchIcon';
 import * as pageActions from '../../ducks/page';
@@ -73,7 +72,6 @@ export const LokiHeaderInner: React.FC = () => {
           }
         />
       </div>
-      <ElectionsPill />
     </React.Fragment>
   );
 };

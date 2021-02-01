@@ -23,7 +23,7 @@
     "@react-navigation/bottom-tabs": "5.1.0",
     "@react-navigation/native": "5.0.8",
     "@react-navigation/native-stack": "5.0.5",
-    "@react-navigation/stack": "5.1.0",
+    "@react-navigation/stack": "5.14.2",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-cache-persist": "^0.1.1",
     "apollo-client": "^2.6.8",

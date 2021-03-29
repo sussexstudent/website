@@ -12,7 +12,7 @@
     "react-dom": "^16.13.0",
     "react-helmet": "^5.2.1",
     "react-jsonschema-form": "^2.0.0-alpha.1",
-    "react-select": "^3.0.8",
+    "react-select": "^4.3.0",
     "redux": "^4.0.4",
     "redux-saga": "^1.1.3"
   },

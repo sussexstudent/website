@@ -54,7 +54,7 @@
     "redux-react-hook": "^4.0.1",
     "unfetch": "^4.1.0",
     "unstated-next": "^1.1.0",
-    "url-parse": "^1.4.7",
+    "url-parse": "^1.5.9",
     "what-input": "^5.2.6"
   },
   "devDependencies": {
